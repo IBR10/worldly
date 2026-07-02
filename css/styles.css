@@ -345,6 +345,30 @@ h1, h2, h3 { line-height: 1.2; }
   .phrase-row { grid-template-columns: 1fr; gap: 2px; }
 }
 
+/* ---- home category tabs --------------------------------------------------- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0 20px;
+  flex-wrap: wrap;
+}
+.tab {
+  font: inherit;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.tab:hover { background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
+.tab.active { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: tab-fade 160ms ease; }
+@keyframes tab-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
 /* ---- top navigation (mirrors the bottom Back/Home row) --------------------- */
 .top-nav {
   display: flex;

@@ -22,6 +22,8 @@ const toastBox = document.getElementById('toasts');
 
 // Active quiz session (null when not playing).
 let S = null;
+// Which home tab is selected (persists while navigating in and out of home).
+let homeTab = 'play';
 
 // ---- tiny helpers ------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -137,6 +139,20 @@ const MAP_CARDS = [
   { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
 ];
 
+// Card markup shared by every home tab. `attr` is the routing attribute
+// (data-go / data-mode / data-map) the click handlers below listen on.
+function homeCard(attr, m) {
+  const icon = m.flagIso
+    ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
+    : `<span class="emoji">${m.emoji}</span>`;
+  return `
+    <button class="card" ${attr}="${m.key}">
+      ${icon}
+      <span class="card-title">${m.title}</span>
+      <span class="card-desc">${m.desc}</span>
+    </button>`;
+}
+
 function showHome() {
   S = null;
   const p = getProfile();
@@ -149,54 +165,47 @@ function showHome() {
     { key: 'religions', emoji: '🕌', title: 'World Religions', desc: 'Founders, texts & holidays — pick a faith.' },
     { key: 'review', emoji: '🔁', title: `Review Missed (${missedCount})`, desc: 'Practice what you got wrong.' },
   ];
+  const journeyCards = [
+    { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
+    { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
+    { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
+    { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
+    { key: 'stats', emoji: '📊', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
+    { key: 'achievements', emoji: '🏆', title: 'Achievements', desc: 'Badges & milestones.' },
+    { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name, leaderboard & reset.' },
+  ];
+  // Each category is its own tab instead of one long scrolling page.
+  const tabs = [
+    { id: 'play', label: '🎮 Play', attr: 'data-go', cards: quickCards },
+    { id: 'quizzes', label: '🧠 Quizzes', attr: 'data-mode', cards: MODE_CARDS },
+    { id: 'maps', label: '🗺️ Maps', attr: 'data-map', cards: MAP_CARDS },
+    { id: 'journey', label: '🧭 Journey', attr: 'data-go', cards: journeyCards },
+  ];
+  if (!tabs.some((t) => t.id === homeTab)) homeTab = 'play';
+
   app.innerHTML = `
     <h1 class="screen-title">Explore the world 🌍</h1>
     <p class="screen-sub">Places, cultures, faiths, languages, music &amp; current events — learn it all through active recall.</p>
 
-    <div class="section-h">Quick play</div>
-    <div class="grid">
-      ${quickCards.map((m) => `
-        <button class="card" data-go="${m.key}">
-          <span class="emoji">${m.emoji}</span>
-          <span class="card-title">${m.title}</span>
-          <span class="card-desc">${m.desc}</span>
-        </button>`).join('')}
+    <div class="tabs" role="tablist">
+      ${tabs.map((t) => `<button class="tab ${t.id === homeTab ? 'active' : ''}" role="tab" aria-selected="${t.id === homeTab}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
 
-    <div class="section-h">Single-topic modes</div>
-    <div class="grid">
-      ${MODE_CARDS.map((m) => `
-        <button class="card" data-mode="${m.key}">
-          ${m.flagIso
-            ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
-            : `<span class="emoji">${m.emoji}</span>`}
-          <span class="card-title">${m.title}</span>
-          <span class="card-desc">${m.desc}</span>
-        </button>`).join('')}
-    </div>
+    ${tabs.map((t) => `
+      <div class="tab-panel ${t.id === homeTab ? 'active' : ''}" data-panel="${t.id}" role="tabpanel">
+        <div class="grid">${t.cards.map((m) => homeCard(t.attr, m)).join('')}</div>
+      </div>`).join('')}`;
 
-    <div class="section-h">Interactive maps</div>
-    <div class="grid">
-      ${MAP_CARDS.map((m) => `
-        <button class="card" data-map="${m.key}">
-          ${m.flagIso
-            ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
-            : `<span class="emoji">${m.emoji}</span>`}
-          <span class="card-title">${m.title}</span>
-          <span class="card-desc">${m.desc}</span>
-        </button>`).join('')}
-    </div>
-
-    <div class="section-h">Your journey</div>
-    <div class="grid">
-      <button class="card" data-go="phrases"><span class="emoji">🗣️</span><span class="card-title">Phrases</span><span class="card-desc">Common phrases & local sayings around the world.</span></button>
-      <button class="card" data-go="music"><span class="emoji">🎵</span><span class="card-title">Music</span><span class="card-desc">Songs that represent each country.</span></button>
-      <button class="card" data-go="crises"><span class="emoji">📰</span><span class="card-title">Crises & Events</span><span class="card-desc">Background on major ongoing world situations.</span></button>
-      <button class="card" data-go="custom"><span class="emoji">🛠️</span><span class="card-title">Custom Study</span><span class="card-desc">Choose topics, continents, difficulty & input.</span></button>
-      <button class="card" data-go="stats"><span class="emoji">📊</span><span class="card-title">Statistics</span><span class="card-desc">Accuracy, weak areas & study time.</span></button>
-      <button class="card" data-go="achievements"><span class="emoji">🏆</span><span class="card-title">Achievements</span><span class="card-desc">Badges & milestones.</span></button>
-      <button class="card" data-go="profile"><span class="emoji">🧭</span><span class="card-title">Profile</span><span class="card-desc">Name, leaderboard & reset.</span></button>
-    </div>`;
+  // Tab switching: show the chosen panel, remember it for next time home loads.
+  app.querySelectorAll('.tab').forEach((btn) => btn.addEventListener('click', () => {
+    homeTab = btn.dataset.tab;
+    app.querySelectorAll('.tab').forEach((b) => {
+      const on = b.dataset.tab === homeTab;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on);
+    });
+    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === homeTab));
+  }));
 
   app.querySelectorAll('[data-mode]').forEach((b) =>
     b.addEventListener('click', () => startQuiz({ title: MODES[b.dataset.mode].label, modes: [b.dataset.mode], total: 10 })));
