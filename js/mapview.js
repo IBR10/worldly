@@ -86,16 +86,42 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     if (pointerId != null) { try { holder.releasePointerCapture(pointerId); } catch { /* ignore */ } }
     pointerId = null; dragging = false;
     if (wasDragging || answered || !interactive) return;
-    // A genuine click: hit-test the region under the pointer. We use
-    // elementFromPoint (rather than e.target) so it works even when a pointer
-    // capture was briefly active, and it respects the CSS transform.
-    const el = document.elementFromPoint(e.clientX, e.clientY);
-    const path = el && el.closest ? el.closest('path[id]') : null;
+    // A genuine click: hit-test the region under the pointer.
+    const path = regionAt(e.clientX, e.clientY);
     if (!path) return;
     answered = true;
     onPick(path.id, path.getAttribute('aria-label') || path.id);
   });
   holder.addEventListener('pointercancel', () => { pointerId = null; dragging = false; });
+
+  // Find the region under a screen point. Small regions are often drawn UNDER a
+  // larger neighbour (e.g. DC under Maryland, Andorra under France, Guanajuato
+  // under Jalisco), so `document.elementFromPoint` — which returns the topmost
+  // painted path — would resolve to the wrong country/state. Instead we test the
+  // click against every region's fill and keep the SMALLEST one that contains it,
+  // so a nested/overlapped region is always selectable.
+  function regionAt(clientX, clientY) {
+    const paths = svg.querySelectorAll('path[id]');
+    const ctm = svg.getScreenCTM();
+    if (ctm && svg.createSVGPoint && paths[0] && paths[0].isPointInFill) {
+      const sp = svg.createSVGPoint();
+      sp.x = clientX; sp.y = clientY;
+      const p = sp.matrixTransform(ctm.inverse()); // screen → SVG user space
+      let best = null, bestArea = Infinity;
+      for (const el of paths) {
+        let inside = false;
+        try { inside = el.isPointInFill(p); } catch { inside = false; }
+        if (!inside) continue;
+        const bb = el.getBBox();
+        const area = bb.width * bb.height;
+        if (area < bestArea) { bestArea = area; best = el; }
+      }
+      if (best) return best;
+    }
+    // Fallback for older engines: topmost painted path under the point.
+    const el = document.elementFromPoint(clientX, clientY);
+    return el && el.closest ? el.closest('path[id]') : null;
+  }
 
   // --- state ------------------------------------------------------------------
   let answered = !interactive;
