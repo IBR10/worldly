@@ -33,19 +33,19 @@ const data = {
       { name: 'Belgium', iso2: 'BE' }, { name: 'Germany', iso2: 'DE' } ] },
   ],
   religions: [
-    { name: 'Christianity', founder: 'Jesus of Nazareth', text: 'The Bible', symbol: 'Cross', holiday: 'Easter', funFact: 'Largest religion.', wiki: 'https://w/Christianity' },
-    { name: 'Islam', founder: 'Prophet Muhammad', text: 'The Quran', symbol: 'Star and crescent', holiday: 'Eid al-Fitr', funFact: 'Five daily prayers.', wiki: 'https://w/Islam' },
-    { name: 'Buddhism', founder: 'Siddhartha Gautama', text: 'Tripitaka', symbol: 'Dharma wheel', holiday: 'Vesak', funFact: 'Path to nirvana.', wiki: 'https://w/Buddhism' },
-    { name: 'Judaism', founder: 'Abraham', text: 'The Torah', symbol: 'Star of David', holiday: 'Passover', funFact: 'Torah scroll.', wiki: 'https://w/Judaism' },
+    { name: 'Christianity', founder: 'Jesus of Nazareth', text: 'The Bible', symbol: 'Cross', holiday: 'Easter', worship: 'Church', origin: 'The Levant', funFact: 'Largest religion.', wiki: 'https://w/Christianity' },
+    { name: 'Islam', founder: 'Prophet Muhammad', text: 'The Quran', symbol: 'Star and crescent', holiday: 'Eid al-Fitr', worship: 'Mosque', origin: 'Arabian Peninsula', funFact: 'Five daily prayers.', wiki: 'https://w/Islam' },
+    { name: 'Buddhism', founder: 'Siddhartha Gautama', text: 'Tripitaka', symbol: 'Dharma wheel', holiday: 'Vesak', worship: 'Vihara (temple)', origin: 'Indian subcontinent', funFact: 'Path to nirvana.', wiki: 'https://w/Buddhism' },
+    { name: 'Judaism', founder: 'Abraham', text: 'The Torah', symbol: 'Star of David', holiday: 'Passover', worship: 'Synagogue', origin: 'Ancient Israel and Judah', funFact: 'Torah scroll.', wiki: 'https://w/Judaism' },
   ],
 };
 
 test('buildPool covers every enabled mode', () => {
   const pool = buildPool(data, { modes: ALL_MODES, continents: 'all' });
   // 5 countries × 5 country-modes (capital, country, language, religion, flag)
-  // + 4 religions × 3 religion-modes (founder, text, holiday)
+  // + 4 religions × 6 religion-modes (founder, text, holiday, symbol, place, origin)
   // + 1 US + 1 MX + 4 historic flags + 6 similar-flag countries (4 + 2)
-  assert.equal(pool.length, 5 * 5 + 4 * 3 + 1 + 1 + 4 + 6);
+  assert.equal(pool.length, 5 * 5 + 4 * 6 + 1 + 1 + 4 + 6);
   assert.ok(pool.every((p) => p.id.includes(':')));
 });
 
@@ -193,6 +193,46 @@ test('makeQuestion (religion_text / religion_holiday) draw from the right field'
     data, { choices: 4 });
   assert.equal(holidayQ.answer, 'Passover');
   assert.ok(holidayQ.choices.includes('Passover'));
+});
+
+test('makeQuestion (religion_symbol / religion_place / religion_origin) draw from the right field', () => {
+  const symbolQ = makeQuestion(
+    { id: 'religion_symbol:Judaism', mode: 'religion_symbol', region: 'World', source: data.religions[3] },
+    data, { choices: 4 });
+  assert.equal(symbolQ.answer, 'Star of David');
+  assert.match(symbolQ.prompt, /Judaism/);
+  assert.ok(symbolQ.choices.includes('Star of David'));
+  assert.equal(symbolQ.choices.length, 4);
+  assert.equal(new Set(symbolQ.choices).size, 4, 'choices are unique');
+
+  const placeQ = makeQuestion(
+    { id: 'religion_place:Islam', mode: 'religion_place', region: 'World', source: data.religions[1] },
+    data, { choices: 4 });
+  assert.equal(placeQ.answer, 'Mosque');
+  assert.match(placeQ.prompt, /Islam/);
+  assert.ok(placeQ.choices.includes('Mosque'));
+  assert.equal(placeQ.choices.length, 4);
+
+  const originQ = makeQuestion(
+    { id: 'religion_origin:Buddhism', mode: 'religion_origin', region: 'World', source: data.religions[2] },
+    data, { choices: 4 });
+  assert.equal(originQ.answer, 'Indian subcontinent');
+  assert.match(originQ.prompt, /Buddhism/);
+  assert.ok(originQ.choices.includes('Indian subcontinent'));
+});
+
+test('new religion modes keep distractors within the religion set', () => {
+  const q = makeQuestion(
+    { id: 'religion_place:Christianity', mode: 'religion_place', region: 'World', source: data.religions[0] },
+    data, { choices: 4 });
+  const places = new Set(data.religions.map((r) => r.worship));
+  assert.ok(q.choices.every((c) => places.has(c)), 'every choice is a known place of worship');
+});
+
+test('a single-faith session now offers at least 6 distinct questions', () => {
+  const pool = buildPool(data, { modes: ALL_MODES, religionFilter: 'Buddhism' });
+  const buddhist = pool.filter((p) => p.source.name === 'Buddhism' && p.region === 'World');
+  assert.equal(buddhist.length, 6, 'founder, text, holiday, symbol, place, origin');
 });
 
 test('makeQuestion (religion) keeps distractors within the religion set, not country names', () => {

@@ -14,6 +14,9 @@ export const MODES = {
   religion_founder: { label: 'Religion → Founder', source: 'religion' },
   religion_text: { label: 'Religion → Holy Text', source: 'religion' },
   religion_holiday: { label: 'Religion → Major Holiday', source: 'religion' },
+  religion_symbol: { label: 'Religion → Symbol', source: 'religion' },
+  religion_place: { label: 'Religion → Place of Worship', source: 'religion' },
+  religion_origin: { label: 'Religion → Origin', source: 'religion' },
   us_capital: { label: 'US State → Capital', source: 'us' },
   mx_capital: { label: 'Mexico State → Capital', source: 'mx' },
   flag: { label: 'Flag → Country', source: 'country' },
@@ -210,6 +213,24 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       prompt = `Which major festival is associated with ${c.name}?`;
       answer = c.holiday;
       distractorValues = (data.religions || []).map((x) => x.holiday);
+      isCountry = false;
+      break;
+    case 'religion_symbol':
+      prompt = `Which symbol is most associated with ${c.name}?`;
+      answer = c.symbol;
+      distractorValues = (data.religions || []).map((x) => x.symbol);
+      isCountry = false;
+      break;
+    case 'religion_place':
+      prompt = `What is the traditional place of worship in ${c.name}?`;
+      answer = c.worship;
+      distractorValues = (data.religions || []).map((x) => x.worship);
+      isCountry = false;
+      break;
+    case 'religion_origin':
+      prompt = `In which region did ${c.name} originate?`;
+      answer = c.origin;
+      distractorValues = (data.religions || []).map((x) => x.origin);
       isCountry = false;
       break;
     case 'flag':

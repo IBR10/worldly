@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tests/
+Disallow: /scripts/
+Disallow: /docs/

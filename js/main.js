@@ -24,6 +24,8 @@ const toastBox = document.getElementById('toasts');
 let S = null;
 // Which home tab is selected (persists while navigating in and out of home).
 let homeTab = 'play';
+// Which crises tab is selected (persists while browsing crisis details).
+let crisesTab = 'underreported';
 
 // ---- tiny helpers ------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -113,7 +115,7 @@ function applyTheme(theme) {
 //  HOME
 // ============================================================================
 // The World Religions quiz bundles the religion-topic modes into one session.
-const RELIGION_MODES = ['religion_founder', 'religion_text', 'religion_holiday'];
+const RELIGION_MODES = ['religion_founder', 'religion_text', 'religion_holiday', 'religion_symbol', 'religion_place', 'religion_origin'];
 
 const MODE_CARDS = [
   { key: 'capital', emoji: '🏙️', title: 'Country → Capital', desc: 'Name the capital city.' },
@@ -154,10 +156,11 @@ function homeCard(attr, m) {
 }
 
 function showHome() {
+  clearTimer(); // a challenge timer must never outlive its screen (crash-loop otherwise)
   S = null;
   const p = getProfile();
   const dailyDone = dailyDoneToday();
-  const missedCount = Object.keys(p.missed).length;
+  const missedCount = reviewableMissedIds().length;
   const quickCards = [
     { key: 'mixed', emoji: '🎲', title: 'Mixed Quiz', desc: 'A bit of everything.' },
     { key: 'challenge', emoji: '⏱️', title: 'Challenge Mode', desc: 'Beat the clock for a high score.' },
@@ -173,6 +176,7 @@ function showHome() {
     { key: 'stats', emoji: '📊', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
     { key: 'achievements', emoji: '🏆', title: 'Achievements', desc: 'Badges & milestones.' },
     { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name, leaderboard & reset.' },
+    { key: 'about', emoji: 'ℹ️', title: 'About', desc: 'Credits, data sources & privacy.' },
   ];
   // Each category is its own tab instead of one long scrolling page.
   const tabs = [
@@ -223,6 +227,50 @@ function showHome() {
   app.querySelector('[data-go="stats"]').addEventListener('click', showStats);
   app.querySelector('[data-go="achievements"]').addEventListener('click', showAchievements);
   app.querySelector('[data-go="profile"]').addEventListener('click', showProfile);
+  app.querySelector('[data-go="about"]').addEventListener('click', showAbout);
+}
+
+// ============================================================================
+//  ABOUT  (credits, data sources, disclaimers, privacy)
+// ============================================================================
+function showAbout() {
+  S = null;
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">About Worldly ℹ️</h1>
+    <p class="screen-sub">A free, open-source learning game. Built with plain HTML, CSS and JavaScript — no accounts, no ads.</p>
+
+    <div class="form-block">
+      <h3>Privacy</h3>
+      <p class="screen-sub">Your progress is stored only in this browser (localStorage). Worldly has no accounts,
+      no analytics and no tracking. Flag images load from flagcdn.com, historic flags from Wikimedia Commons,
+      and music plays through YouTube's privacy-enhanced player, which sets cookies only if you play a video.</p>
+    </div>
+
+    <div class="form-block">
+      <h3>Credits &amp; data sources</h3>
+      <ul class="about-list">
+        <li>Interactive map SVGs adapted from the <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">@svg-maps</a> project (MIT License) by Victor Cazanave and contributors.</li>
+        <li>Flag images served by <a href="https://flagcdn.com" target="_blank" rel="noopener">flagcdn.com</a>.</li>
+        <li>Historic flag images from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.</li>
+        <li>Facts curated from public reference sources, including <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a> and the <a href="https://www.cia.gov/the-world-factbook/" target="_blank" rel="noopener">CIA World Factbook</a>.</li>
+        <li>Music plays via embedded YouTube; all rights remain with the artists and labels.</li>
+      </ul>
+    </div>
+
+    <div class="form-block">
+      <h3>Editorial notes</h3>
+      <ul class="about-list">
+        <li>"Primary language" and "largest religion" are deliberate simplifications of plural realities — they reflect the single most common answer for quiz purposes, not the full picture.</li>
+        <li>Historic flags are shown for educational context only and imply no endorsement of any regime or movement.</li>
+        <li>Crises &amp; Events summaries are curated background written at a point in time (dated on each entry), not live reporting — follow the linked sources for current developments.</li>
+        <li>Spotted an error? Everything lives in open JSON data files — corrections are welcome on GitHub.</li>
+      </ul>
+    </div>
+
+    <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
+  wireNav();
+  app.querySelector('#backHome').addEventListener('click', showHome);
 }
 
 // ============================================================================
@@ -258,7 +306,7 @@ function startDaily() {
 }
 
 function startReview() {
-  const ids = Object.keys(getProfile().missed);
+  const ids = reviewableMissedIds();
   if (ids.length === 0) {
     toast('✅', 'No missed questions', 'Great — your review pile is empty!');
     return;
@@ -439,7 +487,7 @@ function renderMcqQuestion(q) {
   const progressPct = Math.round((S.index / S.total) * 100);
   const multiPill = S.challenge ? `<span class="pill">✖️<span class="accent">${S.multiplier.toFixed(1)}</span></span>` : '';
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}" onerror="this.style.display='none'">` : '';
+  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
 
   app.innerHTML = `
     <div class="quiz-top">
@@ -464,8 +512,9 @@ function renderMcqQuestion(q) {
       <div id="feedback"></div>
     </div>`;
 
-  app.querySelector('#quitBtn').addEventListener('click', () => { clearTimer(); showHome(); });
+  app.querySelector('#quitBtn').addEventListener('click', showHome);
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
+  wireFlagFallback();
 
   if (S.challenge) startTimer();
   renderHUD();
@@ -492,6 +541,26 @@ function startTimer() {
 }
 function clearTimer() {
   if (S && S.timer) { clearInterval(S.timer); S.timer = null; }
+}
+
+// A flag question is unanswerable without its image (e.g. flagcdn unreachable),
+// so on load failure show an explicit message instead of silently hiding it.
+function wireFlagFallback() {
+  const img = app.querySelector('.q-flag');
+  if (!img) return;
+  img.addEventListener('error', () => {
+    const d = document.createElement('div');
+    d.className = 'q-flag-missing';
+    d.textContent = "🚩 The flag image couldn't load — check your connection, then try the next question.";
+    img.replaceWith(d);
+  });
+}
+
+// Review sessions rebuild questions through the MCQ engine, which only knows
+// quiz modes. Map-mode misses (ids like "map_us:Texas") are practised by
+// replaying the map modes instead, so they're excluded from Review Missed.
+function reviewableMissedIds() {
+  return Object.keys(getProfile().missed).filter((id) => MODES[id.split(':')[0]]);
 }
 
 function answer(value) {
@@ -536,7 +605,7 @@ function answer(value) {
 function renderTypedQuestion(q) {
   const progressPct = Math.round((S.index / S.total) * 100);
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}" onerror="this.style.display='none'">` : '';
+  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
   app.innerHTML = `
     <div class="quiz-top">
       <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
@@ -556,7 +625,8 @@ function renderTypedQuestion(q) {
       </form>
       <div id="feedback"></div>
     </div>`;
-  app.querySelector('#quitBtn').addEventListener('click', () => { clearTimer(); showHome(); });
+  app.querySelector('#quitBtn').addEventListener('click', showHome);
+  wireFlagFallback();
   const form = app.querySelector('#typeForm');
   const inp = app.querySelector('#typeInput');
   form.addEventListener('submit', (e) => { e.preventDefault(); answerTyped(inp.value); });
@@ -602,6 +672,7 @@ function renderFeedback(correct, q, xpGained) {
   fb.innerHTML = `
     <h3>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h3>
     <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
+    ${q.source?.note ? `<div class="fact" style="color:var(--muted)">ℹ️ ${esc(q.source.note)}</div>` : ''}
     <div><span style="color:var(--muted);font-size:.85rem">Learn more:</span>
       <div class="learn-more">${links}</div></div>
     <div class="btn-row" style="margin-top:14px">
@@ -854,7 +925,7 @@ function renderMusicDetail(entry) {
     </div>
 
     <div class="yt-frame">
-      <iframe id="ytPlayer" src="https://www.youtube.com/embed/${esc(first.youtubeId)}"
+      <iframe id="ytPlayer" src="https://www.youtube-nocookie.com/embed/${esc(first.youtubeId)}"
         title="YouTube player" frameborder="0" allowfullscreen
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
     </div>
@@ -866,6 +937,7 @@ function renderMusicDetail(entry) {
           <span class="tk-num">${i + 1}</span>
           <span class="tk-title">${esc(s.title)}</span>
           <span class="tk-artist">${esc(s.artist)}</span>
+          ${s.why ? `<span class="tk-why">${esc(s.why)}</span>` : ''}
         </button>`).join('')}
     </div>
 
@@ -882,7 +954,7 @@ function renderMusicDetail(entry) {
   app.querySelectorAll('.track').forEach((b) => b.addEventListener('click', () => {
     app.querySelectorAll('.track').forEach((x) => x.classList.remove('active'));
     b.classList.add('active');
-    player.src = `https://www.youtube.com/embed/${b.dataset.yt}?autoplay=1`;
+    player.src = `https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1`;
   }));
 }
 
@@ -892,22 +964,50 @@ function renderMusicDetail(entry) {
 function showCrises() {
   S = null;
   const entries = getData().crises || [];
+  // Two curated tiers: crises the world under-covers, and the largest ongoing
+  // conflicts regardless of how heavily they are reported.
+  const tiers = [
+    { id: 'underreported', label: '🔦 Underreported', blurb: 'Major crises that receive far less attention than their scale deserves.' },
+    { id: 'major', label: '🌐 Major Conflicts', blurb: 'The largest ongoing conflicts, regardless of how widely they are covered.' },
+  ];
+  if (!tiers.some((t) => t.id === crisesTab)) crisesTab = 'underreported';
+  const cardsFor = (tier) => entries.filter((e) => (e.tier || 'underreported') === tier);
+
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Crises &amp; Events 📰</h1>
-    <p class="screen-sub">Background on major ongoing world situations, with links to live sources. Curated context — not real-time reporting.</p>
-    <div class="grid">
-      ${entries.map((e) => `
-        <button class="card" data-crisis="${esc(e.title)}">
-          <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
-          <span class="card-title">${esc(e.title)}</span>
-          <span class="card-desc">${esc(e.country)}</span>
-        </button>`).join('')}
+    <p class="screen-sub">Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.</p>
+
+    <div class="tabs" role="tablist">
+      ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" aria-selected="${t.id === crisesTab}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
+
+    ${tiers.map((t) => `
+      <div class="tab-panel ${t.id === crisesTab ? 'active' : ''}" data-panel="${t.id}" role="tabpanel">
+        <p class="screen-sub">${esc(t.blurb)}</p>
+        <div class="grid">
+          ${cardsFor(t.id).map((e) => `
+            <button class="card" data-crisis="${esc(e.title)}">
+              <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+              <span class="card-title">${esc(e.title)}</span>
+              <span class="card-desc">${esc(e.country)}</span>
+            </button>`).join('')}
+        </div>
+      </div>`).join('')}
+
     <div class="btn-row" style="margin-top:18px">
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
+  app.querySelectorAll('.tab').forEach((btn) => btn.addEventListener('click', () => {
+    crisesTab = btn.dataset.tab;
+    app.querySelectorAll('.tab').forEach((b) => {
+      const on = b.dataset.tab === crisesTab;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on);
+    });
+    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === crisesTab));
+  }));
   app.querySelector('#backHome').addEventListener('click', showHome);
   app.querySelectorAll('[data-crisis]').forEach((b) =>
     b.addEventListener('click', () => renderCrisisDetail(entries.find((e) => e.title === b.dataset.crisis))));
@@ -929,6 +1029,7 @@ function renderCrisisDetail(entry) {
 
     <div class="crisis-body">
       <p>${esc(entry.summary)}</p>
+      ${entry.asOf ? `<p style="color:var(--muted);font-size:.8rem">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
       <div><span style="color:var(--muted);font-size:.85rem">Follow the latest:</span>
         <div class="learn-more">${links}</div></div>
     </div>
@@ -1099,11 +1200,18 @@ async function boot() {
   try {
     await loadData();
   } catch (err) {
-    app.innerHTML = `<div class="question-card"><h2>Couldn't load data</h2>
+    const isFile = location.protocol === 'file:';
+    app.innerHTML = `<div class="question-card"><h2>Couldn't load the world data</h2>
       <p class="screen-sub">${esc(err.message)}</p>
-      <p>Worldly must be served over HTTP (browsers block <code>fetch</code> on <code>file://</code>).
-      From the <code>Worldly/</code> folder run <code>python -m http.server</code> and open
-      <code>http://localhost:8000</code>.</p></div>`;
+      ${isFile
+        ? `<p>Worldly must be served over HTTP (browsers block <code>fetch</code> on <code>file://</code>).
+           From the <code>Worldly/</code> folder run <code>python -m http.server</code> and open
+           <code>http://localhost:8000</code>.</p>`
+        : `<p>Please check your internet connection and try again.</p>
+           <div class="btn-row"><button class="btn primary" id="retryBtn">↻ Retry</button></div>`}
+      </div>`;
+    const retry = document.getElementById('retryBtn');
+    if (retry) retry.addEventListener('click', () => location.reload());
     return;
   }
   renderHUD();

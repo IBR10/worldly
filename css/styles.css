@@ -141,6 +141,14 @@ h1, h2, h3 { line-height: 1.2; }
 .q-cat { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
 .q-prompt { font-size: 1.5rem; font-weight: 700; margin: 8px 0 18px; }
 .q-flag { display: block; max-width: 240px; width: 60%; margin: 6px 0 18px; border-radius: 8px; border: 1px solid var(--border); }
+.q-flag-missing {
+  margin: 6px 0 18px;
+  padding: 14px 16px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 
 .timer { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-bottom: 16px; }
 .timer > span { display: block; height: 100%; background: var(--good); transition: width 120ms linear; }
@@ -453,6 +461,12 @@ h1, h2, h3 { line-height: 1.2; }
 .track .tk-num { color: var(--muted); font-variant-numeric: tabular-nums; width: 1.4em; text-align: right; }
 .track .tk-title { font-weight: 600; }
 .track .tk-artist { color: var(--muted); font-size: 0.9rem; }
+/* Why this song represents the country — spans under title/artist. */
+.track .tk-why { grid-column: 2 / -1; color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+
+/* ---- about ----------------------------------------------------------------- */
+.about-list { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.7; font-size: 0.92rem; }
+.about-list a { color: var(--accent); }
 
 /* ---- crises detail -------------------------------------------------------- */
 .crisis-body { line-height: 1.6; }

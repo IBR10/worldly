@@ -1,9 +1,95 @@
 [
   {
+    "title": "Gaza — Israel–Hamas War",
+    "country": "Palestinian territories / Israel",
+    "iso2": "PS",
+    "region": "Asia",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "War began in October 2023 with a Hamas-led attack on Israel that killed around 1,200 people and took roughly 250 hostages, followed by a large-scale Israeli military campaign in the Gaza Strip. The fighting has killed tens of thousands of Palestinians, displaced most of Gaza's population, and created famine conditions, while repeated negotiations have sought ceasefires and hostage releases.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Gaza_war" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/pse" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Gaza%20war" }
+    ]
+  },
+  {
+    "title": "Ukraine — Russian Invasion",
+    "country": "Ukraine",
+    "iso2": "UA",
+    "region": "Europe",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "The full-scale invasion launched by Russia in February 2022 became the largest armed conflict in Europe since World War II. It has caused extensive casualties, the displacement of millions of refugees across Europe, and wide-reaching effects on global food and energy supplies.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/ukr" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Ukraine%20war" }
+    ]
+  },
+  {
+    "title": "Syria — War & Transition",
+    "country": "Syria",
+    "iso2": "SY",
+    "region": "Asia",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "More than a decade of civil war devastated Syria and displaced over half its pre-war population. The fall of the Assad government in December 2024 opened a fragile political transition, with a new administration working to rebuild amid episodes of sectarian violence, a shattered economy, and one of the world's largest refugee and humanitarian crises.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Syrian_civil_war" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/syr" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Syria%20transition" }
+    ]
+  },
+  {
+    "title": "Yemen — Civil War & Hunger Crisis",
+    "country": "Yemen",
+    "iso2": "YE",
+    "region": "Asia",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "Civil war since 2014 between the Houthi movement, the internationally recognised government, and regional coalitions has shattered Yemen's economy and health system. Aid agencies have long ranked it among the world's worst humanitarian crises, with millions dependent on assistance, while Houthi attacks on Red Sea shipping have drawn the conflict into wider regional tensions.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/yem" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Yemen%20crisis" }
+    ]
+  },
+  {
+    "title": "Sahel — Insurgency & Coups",
+    "country": "Mali, Burkina Faso & Niger",
+    "iso2": "ML",
+    "region": "Africa",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "A spreading insurgency by armed groups linked to al-Qaeda and Islamic State has made the central Sahel one of the deadliest conflict zones on Earth. Military coups in Mali, Burkina Faso and Niger, the departure of Western and UN forces, and millions of displaced people have deepened a crisis that increasingly spills toward coastal West Africa.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Jihadist_insurgency_in_the_Sahel" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/bfa" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Sahel%20insurgency" }
+    ]
+  },
+  {
+    "title": "Ethiopia — Post-Tigray Instability",
+    "country": "Ethiopia",
+    "iso2": "ET",
+    "region": "Africa",
+    "tier": "major",
+    "asOf": "July 2026",
+    "summary": "The 2020–2022 Tigray war killed hundreds of thousands before a peace deal ended major fighting, but armed conflict has since shifted to the Amhara and Oromia regions. Ongoing clashes, drought, and mass displacement have left tens of millions of Ethiopians in need of humanitarian assistance.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/War_in_Amhara" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/eth" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Ethiopia%20conflict" }
+    ]
+  },
+  {
     "title": "DR Congo — Eastern Conflict",
     "country": "Democratic Republic of the Congo",
     "iso2": "CD",
     "region": "Africa",
+    "tier": "underreported",
+    "asOf": "July 2026",
     "summary": "A long-running conflict in the eastern provinces of North and South Kivu, driven by armed groups including the M23 movement, competition over mineral resources, and regional tensions. Repeated offensives have displaced millions of people and created one of the world's largest and most under-reported humanitarian emergencies.",
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)" },
@@ -16,7 +102,9 @@
     "country": "Sudan",
     "iso2": "SD",
     "region": "Africa",
-    "summary": "Fighting that erupted in 2023 between the Sudanese Armed Forces and the paramilitary Rapid Support Forces has devastated Khartoum and other regions. The war has triggered mass displacement, famine warnings, and what aid agencies describe as one of the worst humanitarian and hunger crises in the world.",
+    "tier": "underreported",
+    "asOf": "July 2026",
+    "summary": "Fighting that erupted in 2023 between the Sudanese Armed Forces and the paramilitary Rapid Support Forces has devastated Khartoum and other regions. The war has triggered mass displacement, famine warnings, and what aid agencies describe as one of the worst humanitarian and hunger crises in the world — yet it receives a fraction of the attention given to other wars.",
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/sdn" },
@@ -28,6 +116,8 @@
     "country": "Haiti",
     "iso2": "HT",
     "region": "North America",
+    "tier": "underreported",
+    "asOf": "July 2026",
     "summary": "Armed gangs control much of the capital Port-au-Prince, fuelling a collapse of public order, displacement, and severe food insecurity. A political vacuum and the deployment of a multinational security support mission have shaped an ongoing struggle to restore stability and basic services.",
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Haitian_crisis_(2018%E2%80%93present)" },
@@ -36,27 +126,45 @@
     ]
   },
   {
-    "title": "Ukraine — Russian Invasion",
-    "country": "Ukraine",
-    "iso2": "UA",
-    "region": "Europe",
-    "summary": "The full-scale invasion launched by Russia in February 2022 became the largest armed conflict in Europe since World War II. It has caused extensive casualties, the displacement of millions of refugees across Europe, and wide-reaching effects on global food and energy supplies.",
-    "links": [
-      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine" },
-      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/ukr" },
-      { "label": "Latest news", "url": "https://news.google.com/search?q=Ukraine%20war" }
-    ]
-  },
-  {
     "title": "Myanmar — Civil War",
     "country": "Myanmar",
     "iso2": "MM",
     "region": "Asia",
+    "tier": "underreported",
+    "asOf": "July 2026",
     "summary": "Following the 2021 military coup, Myanmar descended into widespread armed resistance and civil war between the military junta, ethnic armed organisations, and pro-democracy forces. The conflict has displaced large numbers of civilians and drawn repeated warnings from humanitarian agencies.",
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Myanmar_civil_war_(2021%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/mmr" },
       { "label": "Latest news", "url": "https://news.google.com/search?q=Myanmar%20civil%20war" }
+    ]
+  },
+  {
+    "title": "Central African Republic — Protracted Conflict",
+    "country": "Central African Republic",
+    "iso2": "CF",
+    "region": "Africa",
+    "tier": "underreported",
+    "asOf": "July 2026",
+    "summary": "More than a decade of fighting between government forces, foreign mercenaries, and shifting rebel coalitions has left one of the world's poorest countries in chronic crisis. Roughly half the population needs humanitarian assistance, and violence against civilians continues far from international headlines.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Central_African_Republic_Civil_War" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/caf" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Central%20African%20Republic%20conflict" }
+    ]
+  },
+  {
+    "title": "Cameroon — Anglophone Crisis",
+    "country": "Cameroon",
+    "iso2": "CM",
+    "region": "Africa",
+    "tier": "underreported",
+    "asOf": "July 2026",
+    "summary": "Since 2017, fighting between government forces and separatists seeking an independent 'Ambazonia' in Cameroon's English-speaking Northwest and Southwest regions has killed thousands and displaced close to a million people. School boycotts and attacks on civilians have devastated a generation, in one of the world's most neglected crises.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Anglophone_Crisis" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/cmr" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Cameroon%20Anglophone%20crisis" }
     ]
   }
 ]

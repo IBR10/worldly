@@ -4,7 +4,7 @@ REM  Creates a Desktop shortcut "Worldly" that launches the game (Worldly.bat)
 REM  and uses the custom app icon (assets/worldly.ico). Double-click to install.
 REM ============================================================================
 setlocal
-set "TARGET=%~dp0Worldly.bat"
+set "TARGET=%~dp0..\Worldly.bat"
 set "WORKDIR=%~dp0.."
 set "ICON=%~dp0..\assets\worldly.ico"
 

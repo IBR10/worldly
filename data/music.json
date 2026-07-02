@@ -3,62 +3,148 @@
     "country": "United States",
     "iso2": "US",
     "songs": [
-      { "title": "Uptown Funk", "artist": "Mark Ronson ft. Bruno Mars", "youtubeId": "OPf0YbXqDm0" },
-      { "title": "Roar", "artist": "Katy Perry", "youtubeId": "CevxZvSJLk8" },
-      { "title": "All of Me", "artist": "John Legend", "youtubeId": "450p7goxZqg" }
+      { "title": "Uptown Funk", "artist": "Mark Ronson ft. Bruno Mars", "youtubeId": "OPf0YbXqDm0", "why": "A modern classic of American funk-pop that channels the Minneapolis sound of Prince and James Brown-era showmanship — one of the best-selling digital singles of all time." },
+      { "title": "Roar", "artist": "Katy Perry", "youtubeId": "CevxZvSJLk8", "why": "Arena-sized American pop optimism: a self-empowerment anthem that topped charts worldwide and embodies the polished maximalism of the US pop machine." },
+      { "title": "All of Me", "artist": "John Legend", "youtubeId": "450p7goxZqg", "why": "A piano soul ballad in the great American R&B tradition — Legend's voice carries the lineage of gospel and Motown into the streaming era." }
     ]
   },
   {
     "country": "United Kingdom",
     "iso2": "GB",
     "songs": [
-      { "title": "Shape of You", "artist": "Ed Sheeran", "youtubeId": "JGwWNGJdvx8" },
-      { "title": "Someone Like You", "artist": "Adele", "youtubeId": "hLQl3WQQoQ0" },
-      { "title": "Perfect", "artist": "Ed Sheeran", "youtubeId": "2Vv-BfVoq4g" }
+      { "title": "Shape of You", "artist": "Ed Sheeran", "youtubeId": "JGwWNGJdvx8", "why": "The face of the modern British singer-songwriter boom — for years the most-streamed song in Spotify history, written by a busker from Suffolk." },
+      { "title": "Someone Like You", "artist": "Adele", "youtubeId": "hLQl3WQQoQ0", "why": "British soul balladry at its rawest; Adele's heartbreak anthems continue the UK's long line of world-conquering vocalists from Dusty Springfield to Amy Winehouse." },
+      { "title": "Perfect", "artist": "Ed Sheeran", "youtubeId": "2Vv-BfVoq4g", "why": "A modern British wedding-song standard, proof of the UK's outsized role in global pop songwriting." }
     ]
   },
   {
     "country": "South Korea",
     "iso2": "KR",
     "songs": [
-      { "title": "Gangnam Style", "artist": "PSY", "youtubeId": "9bZkp7q19f0" },
-      { "title": "Dynamite", "artist": "BTS", "youtubeId": "gdZLi9oWNZg" },
-      { "title": "DDU-DU DDU-DU", "artist": "BLACKPINK", "youtubeId": "IHNzOHi8sJs" }
+      { "title": "Gangnam Style", "artist": "PSY", "youtubeId": "9bZkp7q19f0", "why": "The song that put K-pop on the world map — the first video in YouTube history to reach one billion views, satirising the flashy Gangnam district of Seoul." },
+      { "title": "Dynamite", "artist": "BTS", "youtubeId": "gdZLi9oWNZg", "why": "BTS became the biggest boy band on Earth and the flagship of the Korean Wave (Hallyu); Dynamite was the first all-English single to send them to #1 on the US charts." },
+      { "title": "DDU-DU DDU-DU", "artist": "BLACKPINK", "youtubeId": "IHNzOHi8sJs", "why": "The signature hit of the world's biggest girl group — K-pop's precision choreography, fashion and genre-blending sound in one video." }
     ]
   },
   {
     "country": "France",
     "iso2": "FR",
     "songs": [
-      { "title": "Dernière Danse", "artist": "Indila", "youtubeId": "K5KAc5CoCuk" },
-      { "title": "Papaoutai", "artist": "Stromae", "youtubeId": "oiKj0Z_Xnjc" },
-      { "title": "Alors on danse", "artist": "Stromae", "youtubeId": "VHoT4N43jK8" }
+      { "title": "Dernière Danse", "artist": "Indila", "youtubeId": "K5KAc5CoCuk", "why": "A global streaming phenomenon in French — its sweeping, chanson-inflected melancholy carries the torch of Édith Piaf into modern pop." },
+      { "title": "Papaoutai", "artist": "Stromae", "youtubeId": "oiKj0Z_Xnjc", "why": "Francophone pop's great modern storyteller: a danceable song about an absent father that dominated charts across the French-speaking world." },
+      { "title": "Alors on danse", "artist": "Stromae", "youtubeId": "VHoT4N43jK8", "why": "The song that made French-language electro-pop a continental force again — a wry anthem about dancing through hard times." }
     ]
   },
   {
     "country": "Colombia",
     "iso2": "CO",
     "songs": [
-      { "title": "Hips Don't Lie", "artist": "Shakira ft. Wyclef Jean", "youtubeId": "YykjpeuMNEk" },
-      { "title": "Mi Gente", "artist": "J Balvin & Willy William", "youtubeId": "wnJ6LuUFpMo" },
-      { "title": "La Bicicleta", "artist": "Carlos Vives & Shakira", "youtubeId": "-UV0QGLmYys" }
+      { "title": "Hips Don't Lie", "artist": "Shakira ft. Wyclef Jean", "youtubeId": "DUT5rEU6pqM", "why": "Colombia's most famous musical export at her peak — cumbia horns and Barranquilla carnival rhythms smuggled into one of the century's biggest global hits." },
+      { "title": "Mi Gente", "artist": "J Balvin & Willy William", "youtubeId": "wnJ6LuUFpMo", "why": "Medellín's J Balvin led reggaeton's second global wave; Mi Gente became a worldwide #1 and a statement that Spanish-language pop needs no translation." },
+      { "title": "La Bicicleta", "artist": "Carlos Vives & Shakira", "youtubeId": "-UV0QGLmYys", "why": "Two generations of Colombian stars celebrating vallenato — the accordion folk music of the Caribbean coast — in a love letter to their home region." }
     ]
   },
   {
     "country": "Japan",
     "iso2": "JP",
     "songs": [
-      { "title": "Idol", "artist": "YOASOBI", "youtubeId": "ZRtdQ81jPUQ" },
-      { "title": "Lemon", "artist": "Kenshi Yonezu", "youtubeId": "SX_ViT4Ra7k" },
-      { "title": "Sukiyaki (Ue o Muite Arukō)", "artist": "Kyu Sakamoto", "youtubeId": "C35DrtPlUbc" }
+      { "title": "Idol", "artist": "YOASOBI", "youtubeId": "ZRtdQ81jPUQ", "why": "The sound of modern J-pop's anime symbiosis — an Oshi no Ko theme that became the first Japanese-language song to top the Billboard Global chart." },
+      { "title": "Lemon", "artist": "Kenshi Yonezu", "youtubeId": "SX_ViT4Ra7k", "why": "One of the best-selling Japanese songs of the digital era, by a Vocaloid-producer-turned-superstar — grief rendered as immaculate pop craft." },
+      { "title": "Sukiyaki (Ue o Muite Arukō)", "artist": "Kyu Sakamoto", "youtubeId": "C35DrtPlUbc", "why": "The only Japanese-language song ever to top the US Billboard Hot 100 (1963) — a bittersweet classic that introduced Japanese pop to the world." }
     ]
   },
   {
     "country": "Spain",
     "iso2": "ES",
     "songs": [
-      { "title": "Con Altura", "artist": "Rosalía & J Balvin", "youtubeId": "p7bfOZek9t4" },
-      { "title": "Bailando", "artist": "Enrique Iglesias ft. Descemer Bueno, Gente de Zona", "youtubeId": "NUsoVlDFqZg" }
+      { "title": "Con Altura", "artist": "Rosalía & J Balvin", "youtubeId": "p7bfOZek9t4", "why": "Rosalía reinvented flamenco for the streaming age — Con Altura fuses Andalusian tradition with reggaeton and won Video of the Year at the Latin Grammys." },
+      { "title": "Bailando", "artist": "Enrique Iglesias ft. Descemer Bueno, Gente de Zona", "youtubeId": "NUsoVlDFqZg", "why": "Spain's biggest pop export bridging the Spanish-speaking world — flamenco guitar over Cuban rhythms in one of the most-viewed Spanish-language videos ever." }
+    ]
+  },
+  {
+    "country": "Brazil",
+    "iso2": "BR",
+    "songs": [
+      { "title": "Garota de Ipanema", "artist": "Antônio Carlos Jobim", "youtubeId": "uW5acE-5280", "why": "The definitive bossa nova song — born on a Rio beach, it became one of the most recorded songs in history and the sound of Brazil to the world." },
+      { "title": "Mas Que Nada", "artist": "Sérgio Mendes ft. The Black Eyed Peas", "youtubeId": "ucD0gTr66ho", "why": "Jorge Ben's samba standard, carried around the globe by Sérgio Mendes — this 2006 remake introduced Brazil's most joyful groove to a new generation." },
+      { "title": "Ai Se Eu Te Pego", "artist": "Michel Teló", "youtubeId": "hcm55lU9knw", "why": "Sertanejo — Brazil's country music — going global: footballers' goal celebrations turned this party song into a worldwide phenomenon." }
+    ]
+  },
+  {
+    "country": "Mexico",
+    "iso2": "MX",
+    "songs": [
+      { "title": "El Rey", "artist": "Vicente Fernández", "youtubeId": "U6qMQnNst9U", "why": "The unofficial anthem of ranchera music, sung by 'El Rey de la Música Ranchera' himself — mariachi pride, defiance and heartbreak in three minutes." },
+      { "title": "Nunca Es Suficiente", "artist": "Los Ángeles Azules ft. Natalia Lafourcade", "youtubeId": "k76BgIb89-s", "why": "Mexican cumbia royalty meets the country's finest modern folk voice — proof that cumbia sonidera is the heartbeat of Mexican celebrations." },
+      { "title": "Eres", "artist": "Café Tacvba", "youtubeId": "98Akpf1ph2o", "why": "From Mexico's most beloved rock band, a tender standard of rock en español that generations of Mexicans know by heart." }
+    ]
+  },
+  {
+    "country": "Germany",
+    "iso2": "DE",
+    "songs": [
+      { "title": "99 Luftballons", "artist": "Nena", "youtubeId": "Fpu5a0Bl8eY", "why": "Cold-War Berlin in a pop song: a German-language protest hit about balloons triggering nuclear war that conquered charts on both sides of the Atlantic in 1983." },
+      { "title": "Du Hast", "artist": "Rammstein", "youtubeId": "W3q8Od5qJio", "why": "The flagship of Neue Deutsche Härte — Rammstein made industrial metal sung in German a global stadium spectacle." },
+      { "title": "Major Tom (Coming Home)", "artist": "Peter Schilling", "youtubeId": "wO0A0XcWy88", "why": "A synth-pop landmark of the Neue Deutsche Welle (German New Wave) that reimagined Bowie's astronaut and still echoes through pop culture." }
+    ]
+  },
+  {
+    "country": "Italy",
+    "iso2": "IT",
+    "songs": [
+      { "title": "Nel blu dipinto di blu (Volare)", "artist": "Domenico Modugno", "youtubeId": "6jWsIpAbo-8", "why": "Italy's most famous song — the 1958 Sanremo winner that won the first-ever Grammy for Record of the Year and made 'Volare' a word the whole world sings." },
+      { "title": "Con te partirò", "artist": "Andrea Bocelli", "youtubeId": "TdWEhMOrRpQ", "why": "Modern Italy's operatic pop ambassador — the crossover aria that carried the bel canto tradition into stadiums and wedding aisles worldwide." },
+      { "title": "Zitti e Buoni", "artist": "Måneskin", "youtubeId": "QN1odfjtMoo", "why": "The Eurovision 2021 winner that made a Roman glam-rock band a global act — Italian-language rock storming the world's playlists." }
+    ]
+  },
+  {
+    "country": "India",
+    "iso2": "IN",
+    "songs": [
+      { "title": "Jai Ho", "artist": "A. R. Rahman", "youtubeId": "xwwAVRyNmgQ", "why": "The Oscar-winning anthem by India's most celebrated composer — Bollywood's exuberant sound distilled into a worldwide victory chant." },
+      { "title": "Naatu Naatu", "artist": "M. M. Keeravani (from RRR)", "youtubeId": "4_eEgJhsBMo", "why": "The first song from an Indian film to win the Academy Award for Best Original Song — Telugu cinema's explosive energy and dance culture on the world stage." }
+    ]
+  },
+  {
+    "country": "Nigeria",
+    "iso2": "NG",
+    "songs": [
+      { "title": "Calm Down", "artist": "Rema & Selena Gomez", "youtubeId": "WcIcVapfqXw", "why": "The biggest Afrobeats crossover in history — a Benin City artist's melody that spent a record-breaking run on global charts and cemented Nigeria as pop's new powerhouse." },
+      { "title": "Last Last", "artist": "Burna Boy", "youtubeId": "421w1j87fEM", "why": "The self-styled African Giant turning heartbreak into a continental anthem — Afro-fusion built on Nigerian pidgin and a Toni Braxton sample." },
+      { "title": "Essence", "artist": "Wizkid ft. Tems", "youtubeId": "jipQpjUA_o8", "why": "The first Nigerian song to chart on the US Billboard Hot 100 — the smooth, sun-soaked sound that defined Afrobeats' global breakthrough summer." }
+    ]
+  },
+  {
+    "country": "Sweden",
+    "iso2": "SE",
+    "songs": [
+      { "title": "Dancing Queen", "artist": "ABBA", "youtubeId": "xFrGuyw1V8s", "why": "The crown jewel of Sweden's greatest export — ABBA turned Stockholm into a pop songwriting capital, a legacy that runs through Max Martin to today's charts." },
+      { "title": "Wake Me Up", "artist": "Avicii", "youtubeId": "IcrbM1l_BoI", "why": "Stockholm DJ Tim Bergling fused folk and EDM into one of the most-streamed songs ever — the sound of Sweden's world-conquering dance music scene." }
+    ]
+  },
+  {
+    "country": "Jamaica",
+    "iso2": "JM",
+    "songs": [
+      { "title": "Three Little Birds", "artist": "Bob Marley & The Wailers", "youtubeId": "HNBCVM4KbUM", "why": "Reggae's gospel of reassurance — 'every little thing gonna be all right' made a Kingston sound the island's gift to the world." },
+      { "title": "One Love / People Get Ready", "artist": "Bob Marley & The Wailers", "youtubeId": "IN0KkGeEURw", "why": "Jamaica's unofficial anthem of unity, so central to national identity that the country's tourism board adopted it — reggae as a message of peace." }
+    ]
+  },
+  {
+    "country": "Argentina",
+    "iso2": "AR",
+    "songs": [
+      { "title": "De Música Ligera", "artist": "Soda Stereo", "youtubeId": "T_FkEw27XJ0", "why": "The most iconic song of rock en español, from Buenos Aires' legendary Soda Stereo — every Argentine crowd still sings its outro in one voice." },
+      { "title": "Shakira: Bzrp Music Sessions, Vol. 53", "artist": "Bizarrap & Shakira", "youtubeId": "CocEMWdc7Ck", "why": "Bizarrap, a producer from Buenos Aires, turned bedroom sessions into the biggest franchise in Latin music — this one broke YouTube records within hours." }
+    ]
+  },
+  {
+    "country": "Australia",
+    "iso2": "AU",
+    "songs": [
+      { "title": "Down Under", "artist": "Men at Work", "youtubeId": "XfR9iY5y94s", "why": "A cheeky tour of Australian identity — Vegemite sandwiches and all — that became the country's unofficial anthem and a #1 hit worldwide." },
+      { "title": "Thunderstruck", "artist": "AC/DC", "youtubeId": "v2AC41dglnM", "why": "Sydney's AC/DC are among the best-selling bands in history — stadium hard rock that made Australia a permanent fixture of the rock canon." },
+      { "title": "Dance Monkey", "artist": "Tones and I", "youtubeId": "q0hyYWKXF0Q", "why": "From busking on Byron Bay streets to the most-Shazamed song ever — a modern reminder of Australia's knack for left-field global hits." }
     ]
   }
 ]
