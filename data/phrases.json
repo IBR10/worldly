@@ -1,0 +1,1026 @@
+[
+  {
+    "country": "Japan",
+    "iso2": "JP",
+    "language": "Japanese",
+    "langCode": "ja-JP",
+    "nativeCountry": {
+      "local": "日本",
+      "pron": "Nihon"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "こんにちは",
+        "pron": "kon-nee-chee-wah"
+      },
+      {
+        "en": "Thank you",
+        "local": "ありがとう",
+        "pron": "ah-ree-gah-toh"
+      },
+      {
+        "en": "Please",
+        "local": "お願いします",
+        "pron": "oh-neh-gai-shee-mass"
+      },
+      {
+        "en": "Yes / No",
+        "local": "はい / いいえ",
+        "pron": "hai / ee-eh"
+      },
+      {
+        "en": "Goodbye",
+        "local": "さようなら",
+        "pron": "sah-yoh-nah-rah"
+      },
+      {
+        "en": "Excuse me / Sorry",
+        "local": "すみません",
+        "pron": "soo-mee-mah-sen"
+      },
+      {
+        "en": "How are you?",
+        "local": "お元気ですか",
+        "pron": "oh-gen-kee dess-kah"
+      },
+      {
+        "en": "Cheers!",
+        "local": "乾杯",
+        "pron": "kan-pai"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "頑張って",
+        "pron": "gan-bat-teh",
+        "meaning": "Do your best / hang in there — heard constantly before exams, games and challenges."
+      },
+      {
+        "local": "お疲れ様",
+        "pron": "oh-tsu-kah-reh-sah-mah",
+        "meaning": "Thanks for your hard work — said to colleagues at the end of the day."
+      }
+    ]
+  },
+  {
+    "country": "France",
+    "iso2": "FR",
+    "language": "French",
+    "langCode": "fr-FR",
+    "nativeCountry": {
+      "local": "France",
+      "pron": "frahnss"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Bonjour",
+        "pron": "bon-zhoor"
+      },
+      {
+        "en": "Thank you",
+        "local": "Merci",
+        "pron": "mair-see"
+      },
+      {
+        "en": "Please",
+        "local": "S'il vous plaît",
+        "pron": "seel voo pleh"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Oui / Non",
+        "pron": "wee / nohn"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Au revoir",
+        "pron": "oh ruh-vwahr"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Excusez-moi",
+        "pron": "ex-koo-zay mwah"
+      },
+      {
+        "en": "How are you?",
+        "local": "Comment allez-vous?",
+        "pron": "koh-mon tah-lay voo"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Santé",
+        "pron": "sahn-tay"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "C'est la vie",
+        "pron": "say lah vee",
+        "meaning": "That's life — a shrug at things you can't change."
+      },
+      {
+        "local": "Bon appétit",
+        "pron": "bon ah-peh-tee",
+        "meaning": "Enjoy your meal — said before eating together."
+      }
+    ]
+  },
+  {
+    "country": "Spain",
+    "iso2": "ES",
+    "language": "Spanish",
+    "langCode": "es-ES",
+    "nativeCountry": {
+      "local": "España",
+      "pron": "es-PAH-nyah"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Hola",
+        "pron": "oh-lah"
+      },
+      {
+        "en": "Thank you",
+        "local": "Gracias",
+        "pron": "grah-see-ahs"
+      },
+      {
+        "en": "Please",
+        "local": "Por favor",
+        "pron": "por fah-vor"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Sí / No",
+        "pron": "see / noh"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Adiós",
+        "pron": "ah-dee-ohs"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Perdón",
+        "pron": "pair-dohn"
+      },
+      {
+        "en": "How are you?",
+        "local": "¿Cómo estás?",
+        "pron": "koh-moh es-tahs"
+      },
+      {
+        "en": "Cheers!",
+        "local": "¡Salud!",
+        "pron": "sah-lood"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "¡Qué guay!",
+        "pron": "keh gwai",
+        "meaning": "How cool! — everyday Spanish slang for something great."
+      },
+      {
+        "local": "Buen provecho",
+        "pron": "bwen proh-veh-cho",
+        "meaning": "Enjoy your meal — the Spanish table blessing."
+      }
+    ]
+  },
+  {
+    "country": "Germany",
+    "iso2": "DE",
+    "language": "German",
+    "langCode": "de-DE",
+    "nativeCountry": {
+      "local": "Deutschland",
+      "pron": "DOYCH-lahnt"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Hallo",
+        "pron": "hah-loh"
+      },
+      {
+        "en": "Thank you",
+        "local": "Danke",
+        "pron": "dahn-kuh"
+      },
+      {
+        "en": "Please",
+        "local": "Bitte",
+        "pron": "bit-tuh"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Ja / Nein",
+        "pron": "yah / nine"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Auf Wiedersehen",
+        "pron": "owf vee-der-zayn"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Entschuldigung",
+        "pron": "ent-shool-dee-goong"
+      },
+      {
+        "en": "How are you?",
+        "local": "Wie geht's?",
+        "pron": "vee gates"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Prost",
+        "pron": "prohst"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Alles klar",
+        "pron": "ah-less klar",
+        "meaning": "All good / got it — a casual all-purpose acknowledgement."
+      },
+      {
+        "local": "Guten Appetit",
+        "pron": "goo-ten ah-peh-teet",
+        "meaning": "Enjoy your meal — said before eating."
+      }
+    ]
+  },
+  {
+    "country": "Italy",
+    "iso2": "IT",
+    "language": "Italian",
+    "langCode": "it-IT",
+    "nativeCountry": {
+      "local": "Italia",
+      "pron": "ee-TAH-lyah"
+    },
+    "phrases": [
+      {
+        "en": "Hello / Bye",
+        "local": "Ciao",
+        "pron": "chow"
+      },
+      {
+        "en": "Thank you",
+        "local": "Grazie",
+        "pron": "graht-see-eh"
+      },
+      {
+        "en": "Please",
+        "local": "Per favore",
+        "pron": "pair fah-voh-reh"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Sì / No",
+        "pron": "see / noh"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Arrivederci",
+        "pron": "ah-ree-veh-dair-chee"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Scusi",
+        "pron": "skoo-zee"
+      },
+      {
+        "en": "How are you?",
+        "local": "Come stai?",
+        "pron": "koh-meh stai"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Salute",
+        "pron": "sah-loo-teh"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Mamma mia",
+        "pron": "mah-mah mee-ah",
+        "meaning": "An all-purpose exclamation of surprise, delight or dismay."
+      },
+      {
+        "local": "Buon appetito",
+        "pron": "bwon ah-peh-tee-toh",
+        "meaning": "Enjoy your meal — essential before any Italian meal."
+      }
+    ]
+  },
+  {
+    "country": "Brazil",
+    "iso2": "BR",
+    "language": "Portuguese",
+    "langCode": "pt-BR",
+    "nativeCountry": {
+      "local": "Brasil",
+      "pron": "brah-ZEEL"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Olá",
+        "pron": "oh-lah"
+      },
+      {
+        "en": "Thank you",
+        "local": "Obrigado / Obrigada",
+        "pron": "oh-bree-gah-doo / -dah"
+      },
+      {
+        "en": "Please",
+        "local": "Por favor",
+        "pron": "poor fah-vor"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Sim / Não",
+        "pron": "seeng / nowng"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Tchau",
+        "pron": "chow"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Com licença",
+        "pron": "kong lee-sen-sah"
+      },
+      {
+        "en": "How are you?",
+        "local": "Tudo bem?",
+        "pron": "too-doo beng"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Saúde",
+        "pron": "sah-oo-jee"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Beleza",
+        "pron": "beh-leh-zah",
+        "meaning": "Cool / all good — a common way to say things are fine."
+      },
+      {
+        "local": "Saudade",
+        "pron": "sow-dah-jee",
+        "meaning": "A deep, bittersweet longing for someone or something absent — famously hard to translate."
+      }
+    ]
+  },
+  {
+    "country": "Mexico",
+    "iso2": "MX",
+    "language": "Spanish (Mexican)",
+    "langCode": "es-MX",
+    "nativeCountry": {
+      "local": "México",
+      "pron": "MEH-hee-koh"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Hola",
+        "pron": "oh-lah"
+      },
+      {
+        "en": "Thank you",
+        "local": "Gracias",
+        "pron": "grah-see-ahs"
+      },
+      {
+        "en": "Please",
+        "local": "Por favor",
+        "pron": "por fah-vor"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Sí / No",
+        "pron": "see / noh"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Adiós",
+        "pron": "ah-dee-ohs"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Perdón",
+        "pron": "pair-dohn"
+      },
+      {
+        "en": "How are you?",
+        "local": "¿Qué tal?",
+        "pron": "keh tahl"
+      },
+      {
+        "en": "Cheers!",
+        "local": "¡Salud!",
+        "pron": "sah-lood"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "¡Órale!",
+        "pron": "oh-rah-leh",
+        "meaning": "Wow / come on / alright! — hugely versatile Mexican interjection."
+      },
+      {
+        "local": "¿Qué onda?",
+        "pron": "keh on-dah",
+        "meaning": "What's up? — casual Mexican greeting among friends."
+      }
+    ]
+  },
+  {
+    "country": "China",
+    "iso2": "CN",
+    "language": "Mandarin Chinese",
+    "langCode": "zh-CN",
+    "nativeCountry": {
+      "local": "中国",
+      "pron": "Zhōngguó (jong-gwoh)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "你好",
+        "pron": "nee-how"
+      },
+      {
+        "en": "Thank you",
+        "local": "谢谢",
+        "pron": "sheh-sheh"
+      },
+      {
+        "en": "Please",
+        "local": "请",
+        "pron": "cheeng"
+      },
+      {
+        "en": "Yes / No",
+        "local": "是 / 不是",
+        "pron": "shr / boo-shr"
+      },
+      {
+        "en": "Goodbye",
+        "local": "再见",
+        "pron": "dzai-jyen"
+      },
+      {
+        "en": "Excuse me / Sorry",
+        "local": "对不起",
+        "pron": "dway-boo-chee"
+      },
+      {
+        "en": "How are you?",
+        "local": "你好吗?",
+        "pron": "nee how mah"
+      },
+      {
+        "en": "Cheers!",
+        "local": "干杯",
+        "pron": "gan-bay"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "加油",
+        "pron": "jyah-yoh",
+        "meaning": "Add oil! — an all-purpose 'keep going, you can do it!'"
+      },
+      {
+        "local": "慢慢来",
+        "pron": "mahn-mahn-lai",
+        "meaning": "Take your time — no need to rush."
+      }
+    ]
+  },
+  {
+    "country": "India",
+    "iso2": "IN",
+    "language": "Hindi",
+    "langCode": "hi-IN",
+    "nativeCountry": {
+      "local": "भारत",
+      "pron": "Bhārat (BHAA-rut)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "नमस्ते",
+        "pron": "nuh-muh-stay"
+      },
+      {
+        "en": "Thank you",
+        "local": "धन्यवाद",
+        "pron": "dhun-yuh-vaad"
+      },
+      {
+        "en": "Please",
+        "local": "कृपया",
+        "pron": "krip-yah"
+      },
+      {
+        "en": "Yes / No",
+        "local": "हाँ / नहीं",
+        "pron": "haan / nuh-heeng"
+      },
+      {
+        "en": "Goodbye",
+        "local": "अलविदा",
+        "pron": "al-vee-dah"
+      },
+      {
+        "en": "Excuse me",
+        "local": "माफ़ कीजिए",
+        "pron": "maaf kee-jee-yeh"
+      },
+      {
+        "en": "How are you?",
+        "local": "आप कैसे हैं?",
+        "pron": "aap kai-seh hain"
+      },
+      {
+        "en": "Cheers!",
+        "local": "चियर्स",
+        "pron": "cheers"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "जुगाड़",
+        "pron": "joo-gaad",
+        "meaning": "A clever, improvised fix — the celebrated Indian art of the workaround."
+      },
+      {
+        "local": "सब ठीक है",
+        "pron": "sub theek hai",
+        "meaning": "Everything's fine / it's all good."
+      }
+    ]
+  },
+  {
+    "country": "Egypt",
+    "iso2": "EG",
+    "language": "Arabic",
+    "langCode": "ar-EG",
+    "nativeCountry": {
+      "local": "مصر",
+      "pron": "Miṣr (masr)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "مرحبا",
+        "pron": "mar-ha-ban"
+      },
+      {
+        "en": "Thank you",
+        "local": "شكراً",
+        "pron": "shook-ran"
+      },
+      {
+        "en": "Please",
+        "local": "من فضلك",
+        "pron": "min fad-lak"
+      },
+      {
+        "en": "Yes / No",
+        "local": "نعم / لا",
+        "pron": "na-am / laa"
+      },
+      {
+        "en": "Goodbye",
+        "local": "مع السلامة",
+        "pron": "ma-a sa-la-ma"
+      },
+      {
+        "en": "Excuse me",
+        "local": "لو سمحت",
+        "pron": "law sa-maht"
+      },
+      {
+        "en": "How are you?",
+        "local": "إزيك",
+        "pron": "ez-zay-yak"
+      },
+      {
+        "en": "Cheers!",
+        "local": "في صحتك",
+        "pron": "fee sa-het-ak"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "إن شاء الله",
+        "pron": "in-shah-allah",
+        "meaning": "God willing / hopefully — woven into everyday plans and promises."
+      },
+      {
+        "local": "الحمد لله",
+        "pron": "al-ham-doo-lil-lah",
+        "meaning": "Praise be to God — said in gratitude, or simply as 'I'm fine.'"
+      }
+    ]
+  },
+  {
+    "country": "Russia",
+    "iso2": "RU",
+    "language": "Russian",
+    "langCode": "ru-RU",
+    "nativeCountry": {
+      "local": "Россия",
+      "pron": "Rossiya (rah-SEE-yah)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Здравствуйте",
+        "pron": "zdrah-stvooy-tyeh"
+      },
+      {
+        "en": "Thank you",
+        "local": "Спасибо",
+        "pron": "spah-see-bah"
+      },
+      {
+        "en": "Please",
+        "local": "Пожалуйста",
+        "pron": "pah-zhah-loo-stah"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Да / Нет",
+        "pron": "dah / nyet"
+      },
+      {
+        "en": "Goodbye",
+        "local": "До свидания",
+        "pron": "dah svee-dah-nyah"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Извините",
+        "pron": "eez-vee-nee-tyeh"
+      },
+      {
+        "en": "How are you?",
+        "local": "Как дела?",
+        "pron": "kak dyeh-lah"
+      },
+      {
+        "en": "Cheers!",
+        "local": "За здоровье",
+        "pron": "zah zdah-roh-vyeh"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Ничего",
+        "pron": "nee-chee-voh",
+        "meaning": "Literally 'nothing' — used to mean 'it's okay / no worries.'"
+      },
+      {
+        "local": "Давай",
+        "pron": "dah-vai",
+        "meaning": "Come on / let's go — and, casually, 'bye!'"
+      }
+    ]
+  },
+  {
+    "country": "South Korea",
+    "iso2": "KR",
+    "language": "Korean",
+    "langCode": "ko-KR",
+    "nativeCountry": {
+      "local": "한국",
+      "pron": "Hanguk (han-gook)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "안녕하세요",
+        "pron": "an-nyong-ha-seh-yo"
+      },
+      {
+        "en": "Thank you",
+        "local": "감사합니다",
+        "pron": "gam-sa-ham-nee-da"
+      },
+      {
+        "en": "Please give me",
+        "local": "주세요",
+        "pron": "joo-seh-yo"
+      },
+      {
+        "en": "Yes / No",
+        "local": "네 / 아니요",
+        "pron": "neh / ah-nee-yo"
+      },
+      {
+        "en": "Goodbye",
+        "local": "안녕히 가세요",
+        "pron": "an-nyong-hee ga-seh-yo"
+      },
+      {
+        "en": "Excuse me / Sorry",
+        "local": "죄송합니다",
+        "pron": "jweh-song-ham-nee-da"
+      },
+      {
+        "en": "How have you been?",
+        "local": "잘 지냈어요?",
+        "pron": "jal jee-neh-suh-yo"
+      },
+      {
+        "en": "Cheers!",
+        "local": "건배",
+        "pron": "geon-beh"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "화이팅",
+        "pron": "hwa-ee-ting",
+        "meaning": "'Fighting!' — a cheer of encouragement: you've got this!"
+      },
+      {
+        "local": "대박",
+        "pron": "deh-bak",
+        "meaning": "Awesome / jackpot / no way! — an exclamation for anything amazing."
+      }
+    ]
+  },
+  {
+    "country": "Netherlands",
+    "iso2": "NL",
+    "language": "Dutch",
+    "langCode": "nl-NL",
+    "nativeCountry": {
+      "local": "Nederland",
+      "pron": "NAY-der-lant"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Hallo",
+        "pron": "HAH-loh"
+      },
+      {
+        "en": "Thank you",
+        "local": "Dank je",
+        "pron": "dahnk yuh"
+      },
+      {
+        "en": "Please",
+        "local": "Alsjeblieft",
+        "pron": "ahl-shuh-BLEEFT"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Ja / Nee",
+        "pron": "yah / nay"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Tot ziens",
+        "pron": "tot zeens"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Pardon",
+        "pron": "par-DON"
+      },
+      {
+        "en": "How are you?",
+        "local": "Hoe gaat het?",
+        "pron": "hoo khaht ut"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Proost",
+        "pron": "prohst"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Gezellig",
+        "pron": "khuh-ZEL-likh",
+        "meaning": "A cosy, convivial togetherness — a beloved, barely translatable Dutch feeling."
+      },
+      {
+        "local": "Doe maar normaal",
+        "pron": "doo mahr nor-MAHL",
+        "meaning": "\"Just act normal\" — a national motto prizing modesty over showing off."
+      }
+    ]
+  },
+  {
+    "country": "Portugal",
+    "iso2": "PT",
+    "language": "Portuguese",
+    "langCode": "pt-PT",
+    "nativeCountry": {
+      "local": "Portugal",
+      "pron": "poor-too-GAHL"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Olá",
+        "pron": "oh-LAH"
+      },
+      {
+        "en": "Thank you",
+        "local": "Obrigado / Obrigada",
+        "pron": "oh-bree-GAH-doo / -dah"
+      },
+      {
+        "en": "Please",
+        "local": "Por favor",
+        "pron": "poor fah-VOR"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Sim / Não",
+        "pron": "seeng / nowng"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Adeus",
+        "pron": "ah-DEH-oosh"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Desculpe",
+        "pron": "desh-KOOL-puh"
+      },
+      {
+        "en": "How are you?",
+        "local": "Como está?",
+        "pron": "KOH-moo shtah"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Saúde",
+        "pron": "sah-OO-duh"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Saudade",
+        "pron": "sow-DAH-duh",
+        "meaning": "A deep, wistful longing for something or someone absent — famously hard to translate."
+      },
+      {
+        "local": "Fixe",
+        "pron": "feesh",
+        "meaning": "Cool / great — everyday Portuguese slang of approval."
+      }
+    ]
+  },
+  {
+    "country": "Turkey",
+    "iso2": "TR",
+    "language": "Turkish",
+    "langCode": "tr-TR",
+    "nativeCountry": {
+      "local": "Türkiye",
+      "pron": "TUUR-kee-yeh"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Merhaba",
+        "pron": "MEHR-hah-bah"
+      },
+      {
+        "en": "Thank you",
+        "local": "Teşekkürler",
+        "pron": "teh-shek-koor-LEHR"
+      },
+      {
+        "en": "Please",
+        "local": "Lütfen",
+        "pron": "LOOT-fen"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Evet / Hayır",
+        "pron": "EH-vet / HAH-yuhr"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Hoşça kal",
+        "pron": "HOSH-chah kahl"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Affedersiniz",
+        "pron": "ahf-feh-DEHR-see-neez"
+      },
+      {
+        "en": "How are you?",
+        "local": "Nasılsın?",
+        "pron": "NAH-suhl-suhn"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Şerefe",
+        "pron": "sheh-reh-FEH"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Kolay gelsin",
+        "pron": "koh-LIGH gel-SEEN",
+        "meaning": "\"May it come easy\" — a warm wish said to anyone who is working."
+      },
+      {
+        "local": "Afiyet olsun",
+        "pron": "ah-fee-YET ol-SOON",
+        "meaning": "Enjoy your meal — said before and after eating."
+      }
+    ]
+  },
+  {
+    "country": "Greece",
+    "iso2": "GR",
+    "language": "Greek",
+    "langCode": "el-GR",
+    "nativeCountry": {
+      "local": "Ελλάδα",
+      "pron": "Elláda (eh-LAH-thah)"
+    },
+    "phrases": [
+      {
+        "en": "Hello",
+        "local": "Γεια σας",
+        "pron": "yah sahs"
+      },
+      {
+        "en": "Thank you",
+        "local": "Ευχαριστώ",
+        "pron": "ef-kha-ree-STOH"
+      },
+      {
+        "en": "Please",
+        "local": "Παρακαλώ",
+        "pron": "pah-rah-kah-LOH"
+      },
+      {
+        "en": "Yes / No",
+        "local": "Ναι / Όχι",
+        "pron": "neh / OH-hee"
+      },
+      {
+        "en": "Goodbye",
+        "local": "Αντίο",
+        "pron": "ahn-DEE-oh"
+      },
+      {
+        "en": "Excuse me",
+        "local": "Συγγνώμη",
+        "pron": "see-GHNOH-mee"
+      },
+      {
+        "en": "How are you?",
+        "local": "Τι κάνεις;",
+        "pron": "tee KAH-nees"
+      },
+      {
+        "en": "Cheers!",
+        "local": "Γεια μας",
+        "pron": "yah mahs"
+      }
+    ],
+    "sayings": [
+      {
+        "local": "Όπα",
+        "pron": "OH-pah",
+        "meaning": "An exclamation of joy — or a friendly \"watch out!\""
+      },
+      {
+        "local": "Σιγά σιγά",
+        "pron": "see-GHAH see-GHAH",
+        "meaning": "\"Slowly, slowly\" — take it easy, no need to rush."
+      }
+    ]
+  }
+]

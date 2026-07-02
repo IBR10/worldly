@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Christianity",
+    "founder": "Jesus of Nazareth",
+    "text": "The Bible",
+    "symbol": "Cross",
+    "holiday": "Easter",
+    "funFact": "With over 2 billion followers, Christianity is the world's largest religion, spread across every continent.",
+    "wiki": "https://en.wikipedia.org/wiki/Christianity"
+  },
+  {
+    "name": "Islam",
+    "founder": "Prophet Muhammad",
+    "text": "The Quran",
+    "symbol": "Star and crescent",
+    "holiday": "Eid al-Fitr",
+    "funFact": "Muslims pray five times a day facing the Kaaba in Mecca, the holiest site in Islam.",
+    "wiki": "https://en.wikipedia.org/wiki/Islam"
+  },
+  {
+    "name": "Hinduism",
+    "founder": "No single founder",
+    "text": "The Vedas",
+    "symbol": "Om (Aum)",
+    "holiday": "Diwali",
+    "funFact": "Hinduism is often called the world's oldest living religion, with roots stretching back more than 4,000 years.",
+    "wiki": "https://en.wikipedia.org/wiki/Hinduism"
+  },
+  {
+    "name": "Buddhism",
+    "founder": "Siddhartha Gautama (the Buddha)",
+    "text": "Tripitaka",
+    "symbol": "Dharma wheel",
+    "holiday": "Vesak",
+    "funFact": "Buddhism has no single creator god; its goal is liberation (nirvana) from the cycle of suffering.",
+    "wiki": "https://en.wikipedia.org/wiki/Buddhism"
+  },
+  {
+    "name": "Judaism",
+    "founder": "Abraham",
+    "text": "The Torah",
+    "symbol": "Star of David",
+    "holiday": "Passover",
+    "funFact": "The Torah is traditionally read from a hand-written scroll, and copying one by hand can take a scribe over a year.",
+    "wiki": "https://en.wikipedia.org/wiki/Judaism"
+  },
+  {
+    "name": "Sikhism",
+    "founder": "Guru Nanak",
+    "text": "Guru Granth Sahib",
+    "symbol": "Khanda",
+    "holiday": "Vaisakhi",
+    "funFact": "Sikh places of worship (gurdwaras) serve free community meals called langar to anyone, regardless of faith.",
+    "wiki": "https://en.wikipedia.org/wiki/Sikhism"
+  },
+  {
+    "name": "Shinto",
+    "founder": "No single founder",
+    "text": "Kojiki",
+    "symbol": "Torii gate",
+    "holiday": "Shogatsu (New Year)",
+    "funFact": "Shinto shrines are marked by torii gates, which symbolise the boundary between the everyday and the sacred.",
+    "wiki": "https://en.wikipedia.org/wiki/Shinto"
+  },
+  {
+    "name": "Taoism",
+    "founder": "Laozi",
+    "text": "Tao Te Ching",
+    "symbol": "Yin and yang",
+    "holiday": "Qingming Festival",
+    "funFact": "Taoism centers on living in harmony with the Tao, the natural order underlying the universe.",
+    "wiki": "https://en.wikipedia.org/wiki/Taoism"
+  },
+  {
+    "name": "Jainism",
+    "founder": "Mahavira",
+    "text": "Agamas",
+    "symbol": "Ahimsa hand",
+    "holiday": "Paryushana",
+    "funFact": "Jainism teaches radical non-violence (ahimsa); devout Jains take great care to avoid harming even the smallest creatures.",
+    "wiki": "https://en.wikipedia.org/wiki/Jainism"
+  },
+  {
+    "name": "Bahá'í Faith",
+    "founder": "Bahá'u'lláh",
+    "text": "Kitáb-i-Aqdas",
+    "symbol": "Nine-pointed star",
+    "holiday": "Naw-Rúz",
+    "funFact": "The Bahá'í Faith teaches the essential unity of all major world religions and of humanity as one family.",
+    "wiki": "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith"
+  }
+]

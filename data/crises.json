@@ -1,0 +1,62 @@
+[
+  {
+    "title": "DR Congo — Eastern Conflict",
+    "country": "Democratic Republic of the Congo",
+    "iso2": "CD",
+    "region": "Africa",
+    "summary": "A long-running conflict in the eastern provinces of North and South Kivu, driven by armed groups including the M23 movement, competition over mineral resources, and regional tensions. Repeated offensives have displaced millions of people and created one of the world's largest and most under-reported humanitarian emergencies.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/cod" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=DR%20Congo%20M23%20crisis" }
+    ]
+  },
+  {
+    "title": "Sudan — Civil War",
+    "country": "Sudan",
+    "iso2": "SD",
+    "region": "Africa",
+    "summary": "Fighting that erupted in 2023 between the Sudanese Armed Forces and the paramilitary Rapid Support Forces has devastated Khartoum and other regions. The war has triggered mass displacement, famine warnings, and what aid agencies describe as one of the worst humanitarian and hunger crises in the world.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/sdn" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Sudan%20civil%20war" }
+    ]
+  },
+  {
+    "title": "Haiti — Gang Violence & Instability",
+    "country": "Haiti",
+    "iso2": "HT",
+    "region": "North America",
+    "summary": "Armed gangs control much of the capital Port-au-Prince, fuelling a collapse of public order, displacement, and severe food insecurity. A political vacuum and the deployment of a multinational security support mission have shaped an ongoing struggle to restore stability and basic services.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Haitian_crisis_(2018%E2%80%93present)" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/hti" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Haiti%20crisis" }
+    ]
+  },
+  {
+    "title": "Ukraine — Russian Invasion",
+    "country": "Ukraine",
+    "iso2": "UA",
+    "region": "Europe",
+    "summary": "The full-scale invasion launched by Russia in February 2022 became the largest armed conflict in Europe since World War II. It has caused extensive casualties, the displacement of millions of refugees across Europe, and wide-reaching effects on global food and energy supplies.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/ukr" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Ukraine%20war" }
+    ]
+  },
+  {
+    "title": "Myanmar — Civil War",
+    "country": "Myanmar",
+    "iso2": "MM",
+    "region": "Asia",
+    "summary": "Following the 2021 military coup, Myanmar descended into widespread armed resistance and civil war between the military junta, ethnic armed organisations, and pro-democracy forces. The conflict has displaced large numbers of civilians and drawn repeated warnings from humanitarian agencies.",
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Myanmar_civil_war_(2021%E2%80%93present)" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/mmr" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Myanmar%20civil%20war" }
+    ]
+  }
+]

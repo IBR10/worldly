@@ -1,0 +1,98 @@
+// data.js — loads the raw datasets and exposes them to the rest of the app.
+// Everything is static JSON shipped with the app, so a single fetch at startup
+// is enough. We keep the loaded data on a module-level singleton.
+
+import { parseSvgRegions } from './maps.js';
+
+const DATA = {
+  countries: [],
+  usStates: [],
+  mxStates: [],
+  historicFlags: [],
+  similarFlags: [],
+  religions: [],
+  phrases: [],
+  music: [],
+  crises: [],
+  achievements: [],
+  loaded: false,
+};
+
+async function loadJSON(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+  return res.json();
+}
+
+/** Load all datasets once. Safe to call multiple times. */
+export async function loadData() {
+  if (DATA.loaded) return DATA;
+  const [countries, usStates, mxStates, historicFlags, similarFlags, religions, phrases, music, crises, achievements] = await Promise.all([
+    loadJSON('data/countries.json'),
+    loadJSON('data/us_states.json'),
+    loadJSON('data/mexico_states.json'),
+    loadJSON('data/historic_flags.json'),
+    loadJSON('data/similar_flags.json'),
+    loadJSON('data/religions.json'),
+    loadJSON('data/phrases.json'),
+    loadJSON('data/music.json'),
+    loadJSON('data/crises.json'),
+    loadJSON('data/achievements.json'),
+  ]);
+  DATA.countries = countries;
+  DATA.usStates = usStates;
+  DATA.mxStates = mxStates;
+  DATA.historicFlags = historicFlags;
+  DATA.similarFlags = similarFlags;
+  DATA.religions = religions;
+  DATA.phrases = phrases;
+  DATA.music = music;
+  DATA.crises = crises;
+  DATA.achievements = achievements;
+  DATA.loaded = true;
+  return DATA;
+}
+
+export function getData() {
+  return DATA;
+}
+
+/** Distinct continents/regions present in the country dataset. */
+export function getContinents() {
+  return [...new Set(DATA.countries.map((c) => c.region))].sort();
+}
+
+/** Flag image URL from flagcdn (public, no key). Falls back gracefully. */
+export function flagUrl(iso2, size = 'w320') {
+  return `https://flagcdn.com/${size}/${iso2.toLowerCase()}.png`;
+}
+
+/**
+ * Historic-flag image URL via Wikimedia Commons' stable `Special:FilePath`
+ * endpoint. It 302-redirects to the current upload; the `width` query returns a
+ * rasterized thumbnail (works for both SVG and raster sources), so we never have
+ * to deal with Commons' hashed thumbnail paths.
+ */
+export function historicFlagUrl(filename, width = 320) {
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
+}
+
+// ---- interactive map SVGs (lazy-loaded) -------------------------------------
+// The world map is ~1MB, so the map SVGs are fetched on demand the first time a
+// click-the-map mode starts — not at app startup. Each is cached after loading.
+const MAPS = {}; // name ('world'|'usa'|'mexico') -> { svgText, regions:{id:name} }
+
+/** Fetch + parse a bundled map SVG once. Safe to call repeatedly. */
+export async function loadMap(name) {
+  if (MAPS[name]) return MAPS[name];
+  const res = await fetch(`assets/maps/${name}.svg`);
+  if (!res.ok) throw new Error(`Failed to load map ${name}: ${res.status}`);
+  const svgText = await res.text();
+  MAPS[name] = { svgText, regions: parseSvgRegions(svgText) };
+  return MAPS[name];
+}
+
+/** All maps loaded so far, keyed by name. */
+export function getMaps() {
+  return MAPS;
+}

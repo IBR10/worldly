@@ -1,0 +1,114 @@
+[
+  {
+    "group": "Red-white-blue tricolors",
+    "tip": "France is vertical blue-white-red. The Netherlands is horizontal red-white-blue; Luxembourg is the same but longer with a lighter sky-blue; Russia is horizontal white-blue-red.",
+    "countries": [
+      { "name": "France", "iso2": "FR" },
+      { "name": "Netherlands", "iso2": "NL" },
+      { "name": "Luxembourg", "iso2": "LU" },
+      { "name": "Russia", "iso2": "RU" }
+    ]
+  },
+  {
+    "group": "Black-yellow-red",
+    "tip": "Belgium is vertical black-yellow-red; Germany is horizontal black-red-gold — different color order and direction.",
+    "countries": [
+      { "name": "Belgium", "iso2": "BE" },
+      { "name": "Germany", "iso2": "DE" }
+    ]
+  },
+  {
+    "group": "Blue-yellow-red verticals",
+    "tip": "Chad and Romania are almost identical vertical blue-yellow-red (Chad's blue is a touch darker). Andorra and Moldova use the same bands but add a central coat of arms.",
+    "countries": [
+      { "name": "Chad", "iso2": "TD" },
+      { "name": "Romania", "iso2": "RO" },
+      { "name": "Andorra", "iso2": "AD" },
+      { "name": "Moldova", "iso2": "MD" }
+    ]
+  },
+  {
+    "group": "Green-white-orange verticals",
+    "tip": "Ireland is green-white-orange (green at the hoist). Côte d'Ivoire is the mirror image — orange-white-green. Italy swaps orange for red: green-white-red.",
+    "countries": [
+      { "name": "Ireland", "iso2": "IE" },
+      { "name": "Côte d'Ivoire", "iso2": "CI" },
+      { "name": "Italy", "iso2": "IT" }
+    ]
+  },
+  {
+    "group": "Red-and-white bicolours",
+    "tip": "Indonesia and Monaco are both red-over-white (Monaco's is squarer). Poland is the reverse — white-over-red.",
+    "countries": [
+      { "name": "Indonesia", "iso2": "ID" },
+      { "name": "Monaco", "iso2": "MC" },
+      { "name": "Poland", "iso2": "PL" }
+    ]
+  },
+  {
+    "group": "Nordic crosses",
+    "tip": "All feature an off-center Scandinavian cross; tell them apart by color: Denmark red/white, Norway red-white-blue cross, Iceland blue-white-red cross, Sweden yellow on blue, Finland blue on white.",
+    "countries": [
+      { "name": "Denmark", "iso2": "DK" },
+      { "name": "Norway", "iso2": "NO" },
+      { "name": "Iceland", "iso2": "IS" },
+      { "name": "Sweden", "iso2": "SE" },
+      { "name": "Finland", "iso2": "FI" }
+    ]
+  },
+  {
+    "group": "Gran Colombia yellow-blue-red",
+    "tip": "Colombia is a plain yellow-blue-red with a double-width yellow band. Ecuador and Venezuela share the palette but add a coat of arms (Ecuador) or an arc of stars (Venezuela).",
+    "countries": [
+      { "name": "Colombia", "iso2": "CO" },
+      { "name": "Ecuador", "iso2": "EC" },
+      { "name": "Venezuela", "iso2": "VE" }
+    ]
+  },
+  {
+    "group": "Central American blue-white-blue",
+    "tip": "El Salvador, Honduras and Nicaragua all use blue-white-blue horizontal bands with a central emblem. Honduras adds five blue stars; Nicaragua a triangle with a rainbow; El Salvador a golden coat of arms.",
+    "countries": [
+      { "name": "El Salvador", "iso2": "SV" },
+      { "name": "Honduras", "iso2": "HN" },
+      { "name": "Nicaragua", "iso2": "NI" }
+    ]
+  },
+  {
+    "group": "Arab Liberation red-white-black",
+    "tip": "Egypt, Iraq, Syria and Yemen all use red-white-black horizontal bands. Tell them apart by the center: Egypt's golden eagle, Iraq's takbir script, Syria's two green stars, Yemen's plain bands.",
+    "countries": [
+      { "name": "Egypt", "iso2": "EG" },
+      { "name": "Iraq", "iso2": "IQ" },
+      { "name": "Syria", "iso2": "SY" },
+      { "name": "Yemen", "iso2": "YE" }
+    ]
+  },
+  {
+    "group": "West African green-yellow-red",
+    "tip": "Mali is vertical green-yellow-red; Senegal adds a green star in the center; Guinea reverses the order to red-yellow-green.",
+    "countries": [
+      { "name": "Mali", "iso2": "ML" },
+      { "name": "Senegal", "iso2": "SN" },
+      { "name": "Guinea", "iso2": "GN" }
+    ]
+  },
+  {
+    "group": "Pan-Slavic with shields",
+    "tip": "Slovakia, Slovenia, Croatia and Serbia share white-blue-red Slavic colors, distinguished by their coats of arms — and Serbia stacks the colors red-blue-white.",
+    "countries": [
+      { "name": "Slovakia", "iso2": "SK" },
+      { "name": "Slovenia", "iso2": "SI" },
+      { "name": "Croatia", "iso2": "HR" },
+      { "name": "Serbia", "iso2": "RS" }
+    ]
+  },
+  {
+    "group": "Sun-and-stripes of the Americas",
+    "tip": "Argentina is three light-blue/white bands with a golden Sun of May in the center; Uruguay has nine white-and-blue stripes with the sun in a white canton.",
+    "countries": [
+      { "name": "Argentina", "iso2": "AR" },
+      { "name": "Uruguay", "iso2": "UY" }
+    ]
+  }
+]
