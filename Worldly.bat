@@ -14,5 +14,6 @@ if not exist "%PYTHON%" set "PYTHON=py"
 echo Starting Worldly at http://localhost:8000 ...
 echo Close this window (or Ctrl+C) to stop the server.
 start "" "http://localhost:8000"
-"%PYTHON%" -m http.server 8000
+REM No-cache server so the browser always loads the current build (not a stale copy).
+"%PYTHON%" "%~dp0scripts\serve.py" 8000
 endlocal

@@ -35,7 +35,8 @@ REM Open the browser a moment after the server starts (detached helper so the
 REM server itself stays in the foreground and stops when this window closes).
 start "" cmd /c "timeout /t 2 >nul & start "" http://localhost:%PORT%/index.html"
 
-"%PYEXE%" -m http.server %PORT%
+REM Use the no-cache server so the browser never shows a stale (cached) build.
+"%PYEXE%" "%~dp0serve.py" %PORT%
 
 echo.
 echo  -----------------------------------------------------------

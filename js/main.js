@@ -598,8 +598,12 @@ function renderFeedback(correct, q, xpGained) {
     <div class="btn-row" style="margin-top:14px">
       <button class="btn primary" id="nextBtn">${S.index >= S.total ? 'See results →' : 'Next →'}</button>
     </div>`;
-  document.getElementById('nextBtn').addEventListener('click', renderQuestion);
-  document.getElementById('nextBtn').focus();
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.addEventListener('click', renderQuestion);
+  nextBtn.focus({ preventScroll: true });
+  // On the tall click-the-map screens the result can sit below the fold; make
+  // sure the "answer + Next" panel is scrolled into view so the flow is obvious.
+  fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function finishQuiz() {
