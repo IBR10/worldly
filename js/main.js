@@ -179,7 +179,7 @@ function showHome() {
     { id: 'play', label: '🎮 Play', attr: 'data-go', cards: quickCards },
     { id: 'quizzes', label: '🧠 Quizzes', attr: 'data-mode', cards: MODE_CARDS },
     { id: 'maps', label: '🗺️ Maps', attr: 'data-map', cards: MAP_CARDS },
-    { id: 'journey', label: '🧭 Journey', attr: 'data-go', cards: journeyCards },
+    { id: 'explore', label: '🌐 Explore', attr: 'data-go', cards: journeyCards },
   ];
   if (!tabs.some((t) => t.id === homeTab)) homeTab = 'play';
 
