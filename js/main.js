@@ -3,7 +3,7 @@
 
 import { loadData, getData, getContinents, flagUrl, historicFlagUrl, loadMap } from './data.js';
 import {
-  loadProfile, getProfile, saveProfile, resetProfile, levelProgress, accuracy,
+  loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
   dailyDoneToday, addLeaderboard, setTheme, setName,
 } from './state.js';
@@ -1142,6 +1142,15 @@ function showProfile() {
       ${lb.length ? `<ul class="weak-list">${lb.map((e, i) => `<li><span>#${i + 1} · ${esc(e.mode)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>` : '<p class="screen-sub">Play Challenge or Daily to set a high score.</p>'}
     </div>
     <div class="form-block">
+      <h3>Backup &amp; transfer</h3>
+      <p class="screen-sub" style="margin-bottom:10px">Progress lives only in this browser. Export it as a file to back it up or move it to another device / the web version.</p>
+      <div class="btn-row">
+        <button class="btn" id="exportBtn">⬇️ Export progress</button>
+        <button class="btn" id="importBtn">⬆️ Import progress</button>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+      </div>
+    </div>
+    <div class="form-block">
       <h3>Danger zone</h3>
       <p class="screen-sub" style="margin-bottom:10px">Reset all progress, stats and achievements. This cannot be undone.</p>
       <button class="btn" id="resetBtn" style="border-color:var(--bad);color:var(--bad)">Reset all progress</button>
@@ -1152,6 +1161,30 @@ function showProfile() {
   app.querySelector('#saveName').addEventListener('click', () => {
     setName(app.querySelector('#nameInput').value);
     toast('✅', 'Name saved', getProfile().name);
+  });
+  app.querySelector('#exportBtn').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(getProfile(), null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `worldly-profile-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('⬇️', 'Progress exported', 'Keep the file safe — import it anywhere.');
+  });
+  const importFile = app.querySelector('#importFile');
+  app.querySelector('#importBtn').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', async () => {
+    const file = importFile.files[0];
+    if (!file) return;
+    try {
+      const p = importProfile(JSON.parse(await file.text()));
+      applyTheme(p.theme);
+      renderHUD();
+      toast('✅', 'Progress imported', `Welcome back, ${p.name} — level ${levelProgress(p.xp).level}!`);
+      showProfile();
+    } catch (e) {
+      toast('⚠️', "Couldn't import that file", e.message);
+    }
   });
   app.querySelector('#resetBtn').addEventListener('click', () => {
     if (confirm('Really reset ALL progress? This cannot be undone.')) {

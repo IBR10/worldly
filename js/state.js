@@ -65,6 +65,20 @@ export function saveProfile() {
   }
 }
 
+/**
+ * Replace the profile with an imported one (device transfer / backup restore).
+ * Unknown fields are dropped by the spread-over-defaults merge; missing fields
+ * get defaults, so files from older versions keep working.
+ */
+export function importProfile(parsed) {
+  if (!parsed || typeof parsed !== 'object' || typeof parsed.xp !== 'number' || typeof parsed.srs !== 'object') {
+    throw new Error("That file doesn't look like a Worldly profile export.");
+  }
+  profile = { ...DEFAULT_PROFILE(), ...parsed };
+  saveProfile();
+  return profile;
+}
+
 export function resetProfile() {
   const theme = profile.theme;
   profile = DEFAULT_PROFILE();
