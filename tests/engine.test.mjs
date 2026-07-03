@@ -370,6 +370,13 @@ test('answerMatches is accent- and case-insensitive and trims/normalizes', () =>
   assert.ok(!answerMatches('', 'Tokyo'), 'empty input is never a match');
 });
 
+test('answerMatches tolerates spacing differences from stripped punctuation', () => {
+  assert.ok(answerMatches('washington dc', 'Washington, D.C.'), 'D.C. abbreviation');
+  assert.ok(answerMatches('washington d c', 'Washington, D.C.'));
+  assert.ok(answerMatches("st johns", "St. John's"), 'possessive + abbreviation');
+  assert.ok(!answerMatches('washington', 'Washington, D.C.'), 'missing part still fails');
+});
+
 // ---- per-religion filter (World Religions "pick a faith") ------------------
 
 test('buildPool honours religionFilter for religion modes', () => {

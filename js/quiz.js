@@ -54,7 +54,11 @@ export function answerMatches(input, answer) {
     .replace(/\s+/g, ' ')
     .trim();
   if (!input) return false;
-  return norm(input) === norm(answer) && norm(answer) !== '';
+  const a = norm(input), b = norm(answer);
+  if (b === '') return false;
+  // Also compare with spaces removed, so punctuation-derived spacing can't
+  // fail a correct answer ("washington dc" vs "Washington, D.C." → "d c").
+  return a === b || a.replace(/ /g, '') === b.replace(/ /g, '');
 }
 
 /**
