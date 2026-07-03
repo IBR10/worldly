@@ -8,8 +8,9 @@ setlocal
 cd /d "%~dp0"
 title Worldly
 
-set "PYTHON=C:\Users\isaac\AppData\Local\Programs\Python\Python312\python.exe"
-if not exist "%PYTHON%" set "PYTHON=py"
+REM Prefer the Anaconda interpreter; fall back to whatever python is on PATH.
+set "PYTHON=C:\Users\isaac\anaconda3\python.exe"
+if not exist "%PYTHON%" set "PYTHON=python"
 
 echo Starting Worldly at http://localhost:8000 ...
 echo Close this window (or Ctrl+C) to stop the server.
