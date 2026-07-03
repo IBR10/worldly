@@ -259,6 +259,13 @@ function showAbout() {
     </div>
 
     <div class="form-block">
+      <h3>Feedback &amp; requests</h3>
+      <p class="screen-sub">Found a bug, spotted a wrong fact, or want a new mode?
+      <a href="https://github.com/IBR10/worldly/issues/new" target="_blank" rel="noopener">Open an issue on GitHub ↗</a>
+      — data corrections are especially welcome.</p>
+    </div>
+
+    <div class="form-block">
       <h3>Editorial notes</h3>
       <ul class="about-list">
         <li>"Primary language" and "largest religion" are deliberate simplifications of plural realities — they reflect the single most common answer for quiz purposes, not the full picture.</li>

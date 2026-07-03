@@ -89,6 +89,8 @@ body {
 /* ---- layout ---- */
 .app { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 22px 18px 60px; flex: 1; }
 .footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 16px; border-top: 1px solid var(--border); }
+.footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.footer-link:hover { color: var(--accent); }
 
 h1, h2, h3 { line-height: 1.2; }
 .screen-title { font-size: 1.6rem; margin: 4px 0 2px; }
