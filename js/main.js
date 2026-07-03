@@ -5,8 +5,9 @@ import { loadData, getData, getContinents, flagUrl, historicFlagUrl, loadMap } f
 import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
-  dailyDoneToday, addLeaderboard, setTheme, setName,
+  dailyDoneToday, addLeaderboard, setTheme, setName, setOnboarded, localDateStr,
 } from './state.js';
+import { track, tag } from './analytics.js';
 import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
@@ -56,6 +57,43 @@ function topNav(back = null) {
 }
 function wireNav() {
   app.querySelectorAll('[data-topnav="home"]').forEach((b) => b.addEventListener('click', showHome));
+  focusTitle();
+}
+
+// Move keyboard/screen-reader focus to the new screen's heading after a render,
+// so assistive tech isn't stranded on a removed element.
+function focusTitle() {
+  const h = app.querySelector('.screen-title, .q-prompt');
+  if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+}
+
+// Accessible tab bar shared by Home and Crises: click + Arrow/Home/End keys,
+// roving tabindex. `onChange(id)` persists the selection.
+function wireTabs(onChange) {
+  const tabs = [...app.querySelectorAll('.tab')];
+  const activate = (id, focus = false) => {
+    onChange(id);
+    tabs.forEach((b) => {
+      const on = b.dataset.tab === id;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on);
+      b.tabIndex = on ? 0 : -1;
+      if (on && focus) b.focus();
+    });
+    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === id));
+  };
+  tabs.forEach((b, i) => {
+    b.addEventListener('click', () => activate(b.dataset.tab));
+    b.addEventListener('keydown', (e) => {
+      const n = tabs.length;
+      let j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % n;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + n) % n;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = n - 1;
+      if (j != null) { e.preventDefault(); activate(tabs[j].dataset.tab, true); }
+    });
+  });
 }
 const fmtTime = (ms) => {
   const m = Math.floor(ms / 60000);
@@ -76,7 +114,9 @@ function seededRng(seed) {
   };
 }
 function dailySeed() {
-  const d = new Date().toISOString().slice(0, 10);
+  // Local calendar date: the daily rolls over at the player's midnight, and the
+  // same date string yields the same seeded set for everyone.
+  const d = localDateStr();
   let h = 0;
   for (let i = 0; i < d.length; i++) h = (h * 31 + d.charCodeAt(i)) | 0;
   return h;
@@ -99,10 +139,13 @@ function renderHUD() {
   const lp = levelProgress(p.xp);
   hud.innerHTML = `
     <div class="chip" title="${esc(levelTitle(p.xp))}">Lvl <strong>${lp.level}</strong>
-      <span class="xpbar"><span style="width:${lp.pct}%"></span></span></div>
+      <span class="xpbar"><span></span></span></div>
     <div class="chip hide-sm">XP <strong>${p.xp}</strong></div>
     <div class="chip" title="Current streak">🔥 <strong>${p.currentStreak}</strong></div>
     <div class="chip hide-sm" title="Overall accuracy">🎯 <strong>${accuracy()}%</strong></div>`;
+  // Widths are set via CSSOM (not inline style attributes) so the CSP can stay
+  // free of style-src 'unsafe-inline'.
+  hud.querySelector('.xpbar > span').style.width = lp.pct + '%';
 }
 
 // ---- theme -------------------------------------------------------------------
@@ -187,29 +230,38 @@ function showHome() {
   ];
   if (!tabs.some((t) => t.id === homeTab)) homeTab = 'play';
 
+  // First-visit explainer — dismissed once, never shown again.
+  const onboarding = !p.onboarded ? `
+    <div class="callout" role="note">
+      <strong>👋 New here?</strong> Every answer teaches a real fact · missed questions
+      come back until you know them (that's spaced repetition) · build 🔥 streaks with
+      the 📅 Daily Challenge.
+      <div class="btn-row mt-10">
+        <button class="btn primary" id="onboardGotIt">Got it</button>
+        <button class="btn ghost" id="onboardMore">Learn more</button>
+      </div>
+    </div>` : '';
+
   app.innerHTML = `
     <h1 class="screen-title">Explore the world 🌍</h1>
     <p class="screen-sub">Places, cultures, faiths, languages, music &amp; current events — learn it all through active recall.</p>
-
+    ${onboarding}
     <div class="tabs" role="tablist">
-      ${tabs.map((t) => `<button class="tab ${t.id === homeTab ? 'active' : ''}" role="tab" aria-selected="${t.id === homeTab}" data-tab="${t.id}">${t.label}</button>`).join('')}
+      ${tabs.map((t) => `<button class="tab ${t.id === homeTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === homeTab}" tabindex="${t.id === homeTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
 
     ${tabs.map((t) => `
-      <div class="tab-panel ${t.id === homeTab ? 'active' : ''}" data-panel="${t.id}" role="tabpanel">
+      <div class="tab-panel ${t.id === homeTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
         <div class="grid">${t.cards.map((m) => homeCard(t.attr, m)).join('')}</div>
       </div>`).join('')}`;
 
-  // Tab switching: show the chosen panel, remember it for next time home loads.
-  app.querySelectorAll('.tab').forEach((btn) => btn.addEventListener('click', () => {
-    homeTab = btn.dataset.tab;
-    app.querySelectorAll('.tab').forEach((b) => {
-      const on = b.dataset.tab === homeTab;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-selected', on);
-    });
-    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === homeTab));
-  }));
+  wireTabs((id) => { homeTab = id; });
+  focusTitle(); // home doesn't use wireNav, so focus explicitly
+  const gotIt = app.querySelector('#onboardGotIt');
+  if (gotIt) {
+    gotIt.addEventListener('click', () => { setOnboarded(); app.querySelector('.callout').remove(); });
+    app.querySelector('#onboardMore').addEventListener('click', () => { setOnboarded(); showAbout(); });
+  }
 
   app.querySelectorAll('[data-mode]').forEach((b) =>
     b.addEventListener('click', () => startQuiz({ title: MODES[b.dataset.mode].label, modes: [b.dataset.mode], total: 10 })));
@@ -242,9 +294,11 @@ function showAbout() {
 
     <div class="form-block">
       <h3>Privacy</h3>
-      <p class="screen-sub">Your progress is stored only in this browser (localStorage). Worldly has no accounts,
-      no analytics and no tracking. Flag images load from flagcdn.com, historic flags from Wikimedia Commons,
-      and music plays through YouTube's privacy-enhanced player, which sets cookies only if you play a video.</p>
+      <p class="screen-sub">Your progress is stored only in this browser (localStorage) — Worldly has no accounts.
+      We use Microsoft Clarity for anonymous usage analytics (which screens and modes get used) to improve the game;
+      no names, quiz answers or saved progress are ever sent. Flag images load from flagcdn.com, historic flags from
+      Wikimedia Commons, and music plays through YouTube's privacy-enhanced player, which sets cookies only if you
+      play a video.</p>
     </div>
 
     <div class="form-block">
@@ -298,6 +352,10 @@ function startQuiz(opts) {
     return;
   }
 
+  track('quiz_started');
+  if (challenge) track(daily ? 'daily_challenge_started' : 'challenge_started');
+  tag('mode', title);
+
   S = {
     // Clamp to the number of unique questions so a session never has to repeat.
     title, engine, total: Math.min(total, engine.size), challenge, daily, input, lastOpts: opts,
@@ -318,6 +376,7 @@ function startReview() {
     toast('✅', 'No missed questions', 'Great — your review pile is empty!');
     return;
   }
+  track('review_missed_used');
   startQuiz({ title: 'Review Missed', modes: ALL_MODES, total: Math.min(ids.length, 20), reviewIds: ids });
 }
 
@@ -375,6 +434,9 @@ async function startMapQuiz(opts) {
     return showHome();
   }
 
+  track('map_mode_started');
+  tag('mode', title);
+
   // Inline SRS-weighted engine mirroring createQuiz's interface. Uses the shared
   // no-repeat sampler so a map session never asks the same region twice.
   const state = { asked: new Set(), lastId: null };
@@ -400,7 +462,7 @@ function renderMapQuestion(q) {
   app.innerHTML = `
     <div class="quiz-top">
       <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span style="width:${progressPct}%"></span></div>
+      <div class="progress"><span></span></div>
       <span class="pill">${S.index + 1}/${S.total}</span>
       <span class="pill fire">🔥 ${S.runStreak}</span>
       <span class="pill">⭐ ${S.xpRun}</span>
@@ -409,9 +471,10 @@ function renderMapQuestion(q) {
       <div class="q-cat">${esc(catLabel(q.category))}</div>
       <div class="q-prompt">${esc(q.prompt)}</div>
       <div id="mapMount" class="map-mount"></div>
-      <div id="feedback"></div>
+      <div id="feedback" role="status" aria-live="assertive"></div>
     </div>`;
 
+  app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id) });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
@@ -426,6 +489,8 @@ function mapAnswer(clickedId) {
   S.mapView.reveal(clickedId, q.targetId);
 
   const res = recordAnswer(q, correct, {});
+  track('map_guess_made');
+  track('question_answered');
   S.index += 1;
   if (correct) {
     S.correct += 1;
@@ -439,6 +504,7 @@ function mapAnswer(clickedId) {
 
   const newly = checkAchievements(getProfile());
   saveProfile();
+  if (newly.length) track('achievement_unlocked');
   if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
@@ -453,7 +519,7 @@ function renderReverseMapQuestion(q) {
   app.innerHTML = `
     <div class="quiz-top">
       <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span style="width:${progressPct}%"></span></div>
+      <div class="progress"><span></span></div>
       <span class="pill">${S.index + 1}/${S.total}</span>
       <span class="pill fire">🔥 ${S.runStreak}</span>
       <span class="pill">⭐ ${S.xpRun}</span>
@@ -468,8 +534,9 @@ function renderReverseMapQuestion(q) {
             <span class="key">${i + 1}</span><span>${esc(c)}</span>
           </button>`).join('')}
       </div>
-      <div id="feedback"></div>
+      <div id="feedback" role="status" aria-live="assertive"></div>
     </div>`;
+  app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
@@ -485,9 +552,10 @@ function renderQuestion() {
   if (!q) return finishQuiz();
   S.current = q;
   S.phase = 'answer';
-  if (S.kind === 'map') return q.reverse ? renderReverseMapQuestion(q) : renderMapQuestion(q);
-  if (S.input === 'type') return renderTypedQuestion(q);
-  return renderMcqQuestion(q);
+  if (S.kind === 'map') { q.reverse ? renderReverseMapQuestion(q) : renderMapQuestion(q); }
+  else if (S.input === 'type') { renderTypedQuestion(q); return; } // keeps focus on the input
+  else renderMcqQuestion(q);
+  focusTitle(); // announce the new question to assistive tech
 }
 
 function renderMcqQuestion(q) {
@@ -499,13 +567,13 @@ function renderMcqQuestion(q) {
   app.innerHTML = `
     <div class="quiz-top">
       <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span style="width:${progressPct}%"></span></div>
+      <div class="progress"><span></span></div>
       <span class="pill">${S.index + 1}/${S.total}</span>
       <span class="pill fire">🔥 ${S.runStreak}</span>
       ${multiPill}
       <span class="pill">⭐ ${S.xpRun}</span>
     </div>
-    ${S.challenge ? '<div class="timer" id="timer"><span style="width:100%"></span></div>' : ''}
+    ${S.challenge ? '<div class="timer" id="timer"><span></span></div>' : ''}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
       ${flag}
@@ -516,9 +584,10 @@ function renderMcqQuestion(q) {
             <span class="key">${i + 1}</span><span>${esc(c)}</span>
           </button>`).join('')}
       </div>
-      <div id="feedback"></div>
+      <div id="feedback" role="status" aria-live="assertive"></div>
     </div>`;
 
+  app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
   wireFlagFallback();
@@ -598,8 +667,10 @@ function answer(value) {
   }
 
   // achievements & level-ups
+  track('question_answered');
   const newly = checkAchievements(getProfile());
   saveProfile();
+  if (newly.length) track('achievement_unlocked');
   if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
@@ -616,7 +687,7 @@ function renderTypedQuestion(q) {
   app.innerHTML = `
     <div class="quiz-top">
       <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span style="width:${progressPct}%"></span></div>
+      <div class="progress"><span></span></div>
       <span class="pill">${S.index + 1}/${S.total}</span>
       <span class="pill fire">🔥 ${S.runStreak}</span>
       <span class="pill">⭐ ${S.xpRun}</span>
@@ -630,8 +701,9 @@ function renderTypedQuestion(q) {
                autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
         <button class="btn primary" type="submit">Submit</button>
       </form>
-      <div id="feedback"></div>
+      <div id="feedback" role="status" aria-live="assertive"></div>
     </div>`;
+  app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   wireFlagFallback();
   const form = app.querySelector('#typeForm');
@@ -651,6 +723,7 @@ function answerTyped(value) {
   if (inp) { inp.disabled = true; inp.classList.add(correct ? 'correct' : 'wrong'); }
 
   const res = recordAnswer(q, correct, {});
+  track('question_answered');
   S.index += 1;
   if (correct) {
     S.correct += 1;
@@ -664,6 +737,7 @@ function answerTyped(value) {
 
   const newly = checkAchievements(getProfile());
   saveProfile();
+  if (newly.length) track('achievement_unlocked');
   if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
@@ -679,10 +753,10 @@ function renderFeedback(correct, q, xpGained) {
   fb.innerHTML = `
     <h3>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h3>
     <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
-    ${q.source?.note ? `<div class="fact" style="color:var(--muted)">ℹ️ ${esc(q.source.note)}</div>` : ''}
-    <div><span style="color:var(--muted);font-size:.85rem">Learn more:</span>
+    ${q.source?.note ? `<div class="fact muted">ℹ️ ${esc(q.source.note)}</div>` : ''}
+    <div><span class="muted-note">Learn more:</span>
       <div class="learn-more">${links}</div></div>
-    <div class="btn-row" style="margin-top:14px">
+    <div class="btn-row mt-14">
       <button class="btn primary" id="nextBtn">${S.index >= S.total ? 'See results →' : 'Next →'}</button>
     </div>`;
   const nextBtn = document.getElementById('nextBtn');
@@ -702,8 +776,12 @@ function finishQuiz() {
   if (perfect) recordPerfectQuiz();
   if (S.daily) markDailyComplete(score);
   else if (S.challenge) addLeaderboard(score, 'Challenge');
+  track('quiz_completed');
+  if (S.daily) track('daily_challenge_completed');
+  else if (S.challenge) track('challenge_completed');
   const newly = checkAchievements(getProfile());
   saveProfile();
+  if (newly.length) track('achievement_unlocked');
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
   const missedList = S.missed.length
@@ -720,7 +798,7 @@ function finishQuiz() {
       <div class="sub">${acc}% accuracy · +${score} XP · best streak ${S.runBest}${perfect ? ' · 💯 perfect!' : ''}</div>
     </div>
     ${missedList}
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn primary" id="againBtn">↻ Play again</button>
       ${S.missed.length ? '<button class="btn" id="reviewBtn">🔁 Review these now</button>' : ''}
       <button class="btn ghost" id="homeBtn">🏠 Home</button>
@@ -753,7 +831,7 @@ function showCustom() {
     </div>
 
     <div class="form-block">
-      <h3>Continents <span style="color:var(--muted);font-weight:400;font-size:.85rem">(country modes only)</span></h3>
+      <h3>Continents <span class="muted-note">(country modes only)</span></h3>
       <div class="checks" id="contChecks">
         ${continents.map((c) => `<label class="check"><input type="checkbox" value="${esc(c)}" checked>${esc(c)}</label>`).join('')}
       </div>
@@ -766,13 +844,13 @@ function showCustom() {
         <button data-d="medium" class="active">Medium</button>
         <button data-d="hard">Hard</button>
       </div>
-      <h3 style="margin-top:16px">Length</h3>
+      <h3 class="mt-16">Length</h3>
       <div class="seg" id="lenSeg">
         <button data-n="10" class="active">10</button>
         <button data-n="20">20</button>
         <button data-n="30">30</button>
       </div>
-      <h3 style="margin-top:16px">Answer input</h3>
+      <h3 class="mt-16">Answer input</h3>
       <div class="seg" id="inputSeg">
         <button data-i="mcq" class="active">Multiple choice</button>
         <button data-i="type">Type it</button>
@@ -825,7 +903,7 @@ function showPhrases() {
           <span class="card-desc">${esc(e.language)}</span>
         </button>`).join('')}
     </div>
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
@@ -853,8 +931,8 @@ function renderPhraseDetail(entry) {
     <div class="phrase-head">
       <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
-        <h1 class="screen-title" style="margin:0">${esc(entry.country)}</h1>
-        <p class="screen-sub" style="margin:2px 0 0">${esc(entry.language)}</p>
+        <h1 class="screen-title m-0">${esc(entry.country)}</h1>
+        <p class="screen-sub m-tight">${esc(entry.language)}</p>
         ${native}
       </div>
     </div>
@@ -878,7 +956,7 @@ function renderPhraseDetail(entry) {
         </div>`).join('')}
     </div>
 
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backPhrases">← All countries</button>
       <button class="btn ghost" id="backHome">🏠 Home</button>
     </div>`;
@@ -909,7 +987,7 @@ function showMusic() {
           <span class="card-desc">${e.songs.length} songs</span>
         </button>`).join('')}
     </div>
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
@@ -926,8 +1004,8 @@ function renderMusicDetail(entry) {
     <div class="phrase-head">
       <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
-        <h1 class="screen-title" style="margin:0">${esc(entry.country)}</h1>
-        <p class="screen-sub" style="margin:2px 0 0">Songs that represent ${esc(entry.country)}</p>
+        <h1 class="screen-title m-0">${esc(entry.country)}</h1>
+        <p class="screen-sub m-tight">Songs that represent ${esc(entry.country)}</p>
       </div>
     </div>
 
@@ -948,7 +1026,7 @@ function renderMusicDetail(entry) {
         </button>`).join('')}
     </div>
 
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backMusic">← All countries</button>
       <button class="btn ghost" id="backHome">🏠 Home</button>
     </div>`;
@@ -986,11 +1064,11 @@ function showCrises() {
     <p class="screen-sub">Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.</p>
 
     <div class="tabs" role="tablist">
-      ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" aria-selected="${t.id === crisesTab}" data-tab="${t.id}">${t.label}</button>`).join('')}
+      ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === crisesTab}" tabindex="${t.id === crisesTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
 
     ${tiers.map((t) => `
-      <div class="tab-panel ${t.id === crisesTab ? 'active' : ''}" data-panel="${t.id}" role="tabpanel">
+      <div class="tab-panel ${t.id === crisesTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
         <p class="screen-sub">${esc(t.blurb)}</p>
         <div class="grid">
           ${cardsFor(t.id).map((e) => `
@@ -1002,19 +1080,11 @@ function showCrises() {
         </div>
       </div>`).join('')}
 
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  app.querySelectorAll('.tab').forEach((btn) => btn.addEventListener('click', () => {
-    crisesTab = btn.dataset.tab;
-    app.querySelectorAll('.tab').forEach((b) => {
-      const on = b.dataset.tab === crisesTab;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-selected', on);
-    });
-    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === crisesTab));
-  }));
+  wireTabs((id) => { crisesTab = id; });
   app.querySelector('#backHome').addEventListener('click', showHome);
   app.querySelectorAll('[data-crisis]').forEach((b) =>
     b.addEventListener('click', () => renderCrisisDetail(entries.find((e) => e.title === b.dataset.crisis))));
@@ -1029,19 +1099,19 @@ function renderCrisisDetail(entry) {
     <div class="phrase-head">
       <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
-        <h1 class="screen-title" style="margin:0">${esc(entry.title)}</h1>
-        <p class="screen-sub" style="margin:2px 0 0">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}</p>
+        <h1 class="screen-title m-0">${esc(entry.title)}</h1>
+        <p class="screen-sub m-tight">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}</p>
       </div>
     </div>
 
     <div class="crisis-body">
       <p>${esc(entry.summary)}</p>
-      ${entry.asOf ? `<p style="color:var(--muted);font-size:.8rem">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
-      <div><span style="color:var(--muted);font-size:.85rem">Follow the latest:</span>
+      ${entry.asOf ? `<p class="muted-note">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
+      <div><span class="muted-note">Follow the latest:</span>
         <div class="learn-more">${links}</div></div>
     </div>
 
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn ghost" id="backCrises">← All crises</button>
       <button class="btn ghost" id="backHome">🏠 Home</button>
     </div>`;
@@ -1063,7 +1133,7 @@ function showStats() {
   const bar = (label, c) => {
     const pct = c.answered ? Math.round((c.correct / c.answered) * 100) : 0;
     return `<div class="bar-row"><span class="name">${esc(label)}</span>
-      <div class="bar-track"><span style="width:${pct}%"></span></div>
+      <div class="bar-track"><span data-w="${pct}"></span></div>
       <span class="pct">${pct}%</span></div>`;
   };
   const missed = Object.entries(p.missed).sort((a, b) => b[1].wrong - a[1].wrong).slice(0, 12);
@@ -1092,10 +1162,11 @@ function showStats() {
     <div class="section-h">Weak areas (most missed)</div>
     ${missed.length ? `<ul class="weak-list">${missed.map(([, m]) => `<li><span>${esc(m.label)}</span><span class="ans">${esc(m.answer)} · missed ${m.wrong}×</span></li>`).join('')}</ul>` : '<p class="screen-sub">Nothing missed — keep it up!</p>'}
 
-    <div class="btn-row" style="margin-top:18px">
+    <div class="btn-row mt-18">
       <button class="btn" id="reviewW" ${missed.length ? '' : 'disabled'}>🔁 Practice weak areas</button>
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
+  app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
   wireNav();
   app.querySelector('#backHome').addEventListener('click', showHome);
   const rw = app.querySelector('#reviewW');
@@ -1118,11 +1189,12 @@ function showAchievements() {
           <div class="ic">${a.icon}</div>
           <div class="nm">${esc(a.name)}</div>
           <div class="ds">${esc(a.desc)}</div>
-          <div class="mini"><span style="width:${a.pct}%"></span></div>
-          <div class="lbl" style="color:var(--muted);font-size:.75rem;margin-top:4px">${a.current}/${a.threshold}</div>
+          <div class="mini"><span data-w="${a.pct}"></span></div>
+          <div class="lbl ach-lbl">${a.current}/${a.threshold}</div>
         </div>`).join('')}
     </div>
-    <div class="btn-row" style="margin-top:18px"><button class="btn ghost" id="backHome">← Back</button></div>`;
+    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
+  app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
   wireNav();
   app.querySelector('#backHome').addEventListener('click', showHome);
 }
@@ -1140,7 +1212,7 @@ function showProfile() {
     <div class="form-block">
       <h3>Display name</h3>
       <div class="btn-row">
-        <input id="nameInput" class="btn" style="min-width:200px" value="${esc(p.name)}" maxlength="20">
+        <input id="nameInput" class="btn name-input" value="${esc(p.name)}" maxlength="20">
         <button class="btn primary" id="saveName">Save</button>
       </div>
     </div>
@@ -1150,17 +1222,17 @@ function showProfile() {
     </div>
     <div class="form-block">
       <h3>Backup &amp; transfer</h3>
-      <p class="screen-sub" style="margin-bottom:10px">Progress lives only in this browser. Export it as a file to back it up or move it to another device / the web version.</p>
+      <p class="screen-sub mb-10">Progress lives only in this browser. Export it as a file to back it up or move it to another device / the web version.</p>
       <div class="btn-row">
         <button class="btn" id="exportBtn">⬇️ Export progress</button>
         <button class="btn" id="importBtn">⬆️ Import progress</button>
-        <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+        <input type="file" id="importFile" accept="application/json,.json" class="hidden">
       </div>
     </div>
     <div class="form-block">
       <h3>Danger zone</h3>
-      <p class="screen-sub" style="margin-bottom:10px">Reset all progress, stats and achievements. This cannot be undone.</p>
-      <button class="btn" id="resetBtn" style="border-color:var(--bad);color:var(--bad)">Reset all progress</button>
+      <p class="screen-sub mb-10">Reset all progress, stats and achievements. This cannot be undone.</p>
+      <button class="btn" id="resetBtn" class="btn danger">Reset all progress</button>
     </div>
     <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
@@ -1233,8 +1305,21 @@ async function boot() {
     applyTheme(next);
     setTheme(next);
   });
-  document.getElementById('brand').addEventListener('click', showHome);
+  const brand = document.getElementById('brand');
+  brand.addEventListener('click', showHome);
+  brand.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showHome(); }
+  });
+  document.getElementById('helpBtn').addEventListener('click', showAbout);
   document.addEventListener('keydown', onKeydown);
+
+  // Surface storage failures once per session instead of losing progress silently.
+  let warnedSave = false;
+  window.addEventListener('worldly:save-failed', () => {
+    if (warnedSave) return;
+    warnedSave = true;
+    toast('⚠️', "Progress can't be saved", 'Browser storage may be full or blocked (private mode).');
+  });
 
   app.innerHTML = '<p class="screen-sub">Loading the world…</p>';
   try {
@@ -1256,6 +1341,12 @@ async function boot() {
   }
   renderHUD();
   showHome();
+
+  // Offline resilience: cache app shell + seen flags (see sw.js). Feature-
+  // detected and fire-and-forget — a failure must never affect the app.
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('sw.js').catch(() => { /* ignore */ });
+  }
 }
 
 boot();

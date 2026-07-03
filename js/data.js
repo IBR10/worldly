@@ -82,13 +82,18 @@ export function historicFlagUrl(filename, width = 320) {
 // click-the-map mode starts — not at app startup. Each is cached after loading.
 const MAPS = {}; // name ('world'|'usa'|'mexico') -> { svgText, regions:{id:name} }
 
-/** Fetch + parse a bundled map SVG once. Safe to call repeatedly. */
-export async function loadMap(name) {
+/** Fetch + parse a bundled map SVG once. Safe to call repeatedly — the
+ *  in-flight promise is cached, so rapid double-clicks share one fetch. */
+export function loadMap(name) {
   if (MAPS[name]) return MAPS[name];
-  const res = await fetch(`assets/maps/${name}.svg`);
-  if (!res.ok) throw new Error(`Failed to load map ${name}: ${res.status}`);
-  const svgText = await res.text();
-  MAPS[name] = { svgText, regions: parseSvgRegions(svgText) };
+  MAPS[name] = (async () => {
+    const res = await fetch(`assets/maps/${name}.svg`);
+    if (!res.ok) throw new Error(`Failed to load map ${name}: ${res.status}`);
+    const svgText = await res.text();
+    return { svgText, regions: parseSvgRegions(svgText) };
+  })();
+  // A failed fetch must not poison the cache for retries.
+  MAPS[name].catch(() => { delete MAPS[name]; });
   return MAPS[name];
 }
 

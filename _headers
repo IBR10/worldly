@@ -1,15 +1,18 @@
-# Cloudflare Pages headers.
+# Cloudflare Pages/Workers headers.
 # No build step = no hashed filenames, so code/data get short browser caching
-# (edge cache self-invalidates on each atomic Pages deployment).
+# (the edge cache self-invalidates on each atomic deployment).
 
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://flagcdn.com https://commons.wikimedia.org https://upload.wikimedia.org; frame-src https://www.youtube-nocookie.com; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://flagcdn.com https://commons.wikimedia.org https://upload.wikimedia.org; frame-src https://www.youtube-nocookie.com; style-src 'self'; script-src 'self' https://www.clarity.ms; connect-src 'self' https://*.clarity.ms; worker-src 'self'
 
 /index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
   Cache-Control: public, max-age=0, must-revalidate
 
 /js/*

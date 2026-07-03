@@ -27,7 +27,13 @@ const DEFAULT_PROFILE = () => ({
   achievements: {}, // id -> ISO timestamp unlocked
   leaderboard: [], // { score, mode, date }
   theme: 'dark',
+  onboarded: false, // first-visit explainer dismissed
 });
+
+/** Today as YYYY-MM-DD in the player's LOCAL timezone (daily-challenge day). */
+export function localDateStr(d = new Date()) {
+  return d.toLocaleDateString('en-CA'); // en-CA formats as YYYY-MM-DD
+}
 
 let profile = DEFAULT_PROFILE();
 
@@ -62,7 +68,17 @@ export function saveProfile() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
   } catch (e) {
     console.warn('Could not persist profile.', e);
+    // Let the UI surface this (quota full / private mode) instead of losing
+    // progress silently. Guarded so the pure-Node test runner never sees it.
+    if (typeof window !== 'undefined' && window.dispatchEvent) {
+      window.dispatchEvent(new CustomEvent('worldly:save-failed'));
+    }
   }
+}
+
+export function setOnboarded() {
+  profile.onboarded = true;
+  saveProfile();
 }
 
 /**
@@ -187,7 +203,7 @@ export function recordPerfectQuiz() {
 
 /** Mark today's daily challenge complete (only counts once per calendar day). */
 export function markDailyComplete(score) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = localDateStr();
   if (profile.lastDaily !== today) {
     profile.lastDaily = today;
     profile.dailyCompleted += 1;
@@ -197,7 +213,7 @@ export function markDailyComplete(score) {
 }
 
 export function dailyDoneToday() {
-  return profile.lastDaily === new Date().toISOString().slice(0, 10);
+  return profile.lastDaily === localDateStr();
 }
 
 export function addLeaderboard(score, mode) {

@@ -18,6 +18,11 @@ Living checklist of what's done and what's planned. Tick items as they ship.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,
       youtube-nocookie embeds, `_headers` (CSP/caching), 404/robots/manifest,
       OG meta, flag-load fallback UI, challenge-timer & review-missed bugfixes.
+- [x] **Audit remediation**: first-visit onboarding + ❓ help, focus management
+      & aria-live answer announcements, arrow-key tabs, 44px touch targets,
+      map pinch-zoom, local-midnight daily, storage-failure toast, service
+      worker (offline shell + flag caching), CSP without unsafe-inline,
+      Microsoft Clarity analytics (anonymous events), GitHub Actions CI.
 
 ## Flag capability — enhancements
 Flag → country already exists. Planned extensions:
@@ -48,12 +53,8 @@ Flag → country already exists. Planned extensions:
 - [ ] Per-country deep-dive study pages (population, currency, neighbours…).
 
 ## Platform / polish
-- [x] Web app manifest (installable shell); service worker / offline play still to do.
-- [ ] PWA service worker → full offline play (bundle or cache flags).
-- [ ] First-visit onboarding (explain SRS / streaks / daily) + help affordance.
-- [ ] Export/import progress (JSON) for device transfer.
+- [x] Web app manifest + service worker (offline app shell; flags cached after first sight).
+- [ ] Full offline play (bundle all flag images locally).
+- [x] Export/import progress (JSON) for device transfer.
 - [ ] Daily-result share (emoji grid) + streak calendar.
-- [ ] Map pinch-zoom on touch devices.
-- [ ] Accessibility pass: focus management on screen changes, aria-live answer
-      feedback, arrow-key tab navigation.
 - [ ] Optional online leaderboard / cloud sync (currently local-first).

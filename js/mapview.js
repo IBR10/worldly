@@ -58,41 +58,68 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.15 : 1 / 1.15);
   }, { passive: false });
 
-  // --- drag-to-pan vs click ---------------------------------------------------
-  // We only capture the pointer (and treat the gesture as a pan) once it moves
-  // past a small threshold. That way a plain click is NEVER swallowed by a tiny
-  // mouse twitch — the previous version set `moved` on any >3px jitter and then
-  // dropped the click, which is why some regions felt unresponsive.
+  // --- drag-to-pan vs click vs pinch-zoom --------------------------------------
+  // Single pointer: a pan only starts past a small threshold, so a plain click
+  // is never swallowed by a tiny mouse twitch. Two pointers: pinch-zoom around
+  // the gesture midpoint (reusing zoomAt's anchor math); a pinch always
+  // suppresses the click on release.
   const DRAG_THRESHOLD = 6; // px
-  let pointerId = null, dragging = false, downX = 0, downY = 0, panOX = 0, panOY = 0;
+  const pointers = new Map(); // active pointerId -> { x, y }
+  let dragging = false, pinched = false, pinchDist = null;
+  let downX = 0, downY = 0, panOX = 0, panOY = 0;
+
+  const pinchPair = () => {
+    const [a, b] = [...pointers.values()];
+    return { dist: Math.hypot(a.x - b.x, a.y - b.y), midX: (a.x + b.x) / 2, midY: (a.y + b.y) / 2 };
+  };
 
   holder.addEventListener('pointerdown', (e) => {
-    if (e.button != null && e.button !== 0) return; // primary button only
-    pointerId = e.pointerId;
-    dragging = false;
-    downX = e.clientX; downY = e.clientY;
-    panOX = e.clientX - tx; panOY = e.clientY - ty;
+    if (e.button != null && e.button !== 0) return; // primary button / touch only
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    try { holder.setPointerCapture(e.pointerId); } catch { /* ignore */ }
+    if (pointers.size === 2) {
+      pinched = true; // this gesture is a zoom, never a click
+      dragging = false;
+      pinchDist = pinchPair().dist;
+    } else if (pointers.size === 1) {
+      dragging = false; pinched = false;
+      downX = e.clientX; downY = e.clientY;
+      panOX = e.clientX - tx; panOY = e.clientY - ty;
+    }
   });
   holder.addEventListener('pointermove', (e) => {
-    if (pointerId == null) return;
-    if (!dragging && Math.hypot(e.clientX - downX, e.clientY - downY) > DRAG_THRESHOLD) {
-      dragging = true;
-      try { holder.setPointerCapture(pointerId); } catch { /* ignore */ }
+    if (!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size >= 2) {
+      const { dist, midX, midY } = pinchPair();
+      if (pinchDist && dist > 0) zoomAt(midX, midY, dist / pinchDist);
+      pinchDist = dist;
+      return;
     }
+    if (pinched) return; // fingers lifting after a pinch — don't start a pan
+    if (!dragging && Math.hypot(e.clientX - downX, e.clientY - downY) > DRAG_THRESHOLD) dragging = true;
     if (dragging) { tx = e.clientX - panOX; ty = e.clientY - panOY; apply(); }
   });
+  const endPointer = (e) => {
+    pointers.delete(e.pointerId);
+    try { holder.releasePointerCapture(e.pointerId); } catch { /* ignore */ }
+    if (pointers.size < 2) pinchDist = null;
+  };
   holder.addEventListener('pointerup', (e) => {
-    const wasDragging = dragging;
-    if (pointerId != null) { try { holder.releasePointerCapture(pointerId); } catch { /* ignore */ } }
-    pointerId = null; dragging = false;
-    if (wasDragging || answered || !interactive) return;
+    const wasDragging = dragging, wasPinch = pinched;
+    endPointer(e);
+    if (pointers.size === 0) { dragging = false; pinched = false; }
+    if (wasDragging || wasPinch || answered || !interactive || pointers.size > 0) return;
     // A genuine click: hit-test the region under the pointer.
     const path = regionAt(e.clientX, e.clientY);
     if (!path) return;
     answered = true;
     onPick(path.id, path.getAttribute('aria-label') || path.id);
   });
-  holder.addEventListener('pointercancel', () => { pointerId = null; dragging = false; });
+  holder.addEventListener('pointercancel', (e) => {
+    endPointer(e);
+    if (pointers.size === 0) { dragging = false; pinched = false; }
+  });
 
   // Find the region under a screen point. Small regions are often drawn UNDER a
   // larger neighbour (e.g. DC under Maryland, Andorra under France, Guanajuato

@@ -92,6 +92,10 @@ body {
 .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 .footer-link:hover { color: var(--accent); }
 
+/* Comfortable touch targets (WCAG 2.5.8): icon buttons, map controls, quiz quit. */
+.icon-btn, .map-btn { min-width: 44px; min-height: 44px; }
+.quiz-top .btn.ghost { min-height: 44px; }
+
 h1, h2, h3 { line-height: 1.2; }
 .screen-title { font-size: 1.6rem; margin: 4px 0 2px; }
 .screen-sub { color: var(--muted); margin: 0 0 20px; }
@@ -245,6 +249,7 @@ h1, h2, h3 { line-height: 1.2; }
 .map-mount { margin: 6px 0 4px; }
 .map-wrap { position: relative; }
 .map-holder {
+  touch-action: none; /* wrangle pinch/pan ourselves (pointer events) */
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -466,6 +471,18 @@ h1, h2, h3 { line-height: 1.2; }
 /* Why this song represents the country — spans under title/artist. */
 .track .tk-why { grid-column: 2 / -1; color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
 
+/* ---- onboarding callout ----------------------------------------------------- */
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.mt-10 { margin-top: 10px; }
+
 /* ---- about ----------------------------------------------------------------- */
 .about-list { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.7; font-size: 0.92rem; }
 .about-list a { color: var(--accent); }
@@ -478,3 +495,19 @@ h1, h2, h3 { line-height: 1.2; }
   .track { grid-template-columns: auto 1fr; }
   .track .tk-artist { grid-column: 2; }
 }
+
+/* ---- utility classes (replacing inline styles; keeps CSP free of unsafe-inline) */
+.mt-10 { margin-top: 10px; }
+.mt-14 { margin-top: 14px; }
+.mt-16 { margin-top: 16px; }
+.mt-18 { margin-top: 18px; }
+.mb-10 { margin-bottom: 10px; }
+.m-0 { margin: 0; }
+.m-tight { margin: 2px 0 0; }
+.muted-note { color: var(--muted); font-size: .85rem; font-weight: 400; }
+.fact.muted { color: var(--muted); }
+.ach .ach-lbl { color: var(--muted); font-size: .75rem; margin-top: 4px; }
+.name-input { min-width: 200px; }
+.hidden { display: none; }
+.btn.danger { border-color: var(--bad); color: var(--bad); }
+.timer > span { width: 100%; }

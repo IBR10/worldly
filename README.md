@@ -1,5 +1,7 @@
 # Worldly 🌍
 
+![tests](https://github.com/IBR10/worldly/actions/workflows/test.yml/badge.svg)
+
 A polished, no-build **world-knowledge & cultural-awareness** learning game. The
 goal isn't just memorising capitals — it's building global literacy: languages,
 religions, flags, maps, music, everyday phrases and current events, reinforced
@@ -26,7 +28,7 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 44 tests over the quiz, SRS and map engines
+npm test        # 45+ tests over the quiz, SRS and map engines
 ```
 
 ## What's inside
@@ -106,13 +108,13 @@ contested facts). Flags render from [flagcdn.com](https://flagcdn.com) by ISO
 code; historic flags from Wikimedia Commons. The player profile lives in
 `localStorage` under `worldly_profile_v1`.
 
-## Deployment (Cloudflare Pages)
+## Deployment (Cloudflare)
 
-Connect the repo in the Cloudflare dashboard: framework preset **None**, build
-command **empty**, output directory **`/`**. Every push to `main` deploys
-atomically; other branches get preview URLs. Caching and security headers ship
-in `_headers`. After the first deploy, update the `og:url` / `og:image` /
-`canonical` URLs in `index.html` to the real domain.
+**The git integration is the single deploy path** — pushes to `main` deploy
+atomically (CI runs the test suite on every push). Local `wrangler deploy` is
+for emergencies only. Caching + security headers (strict CSP, no
+`unsafe-inline`) ship in `_headers`; a service worker (`sw.js`) provides
+offline resilience and caches flags after first sight.
 
 ## Data sources, accuracy & privacy
 
@@ -123,8 +125,10 @@ Contested facts carry an inline note (e.g. Jerusalem's disputed status).
 Historic flags are shown for educational context only. Crises summaries are
 dated, curated background — not live reporting.
 
-**Privacy:** progress is stored only in your browser. No accounts, no
-analytics, no tracking. Music uses YouTube's privacy-enhanced (nocookie) embed.
+**Privacy:** progress is stored only in your browser; no accounts. Anonymous
+usage analytics via Microsoft Clarity (which screens/modes get used — never
+names, answers or saved progress). Music uses YouTube's privacy-enhanced
+(nocookie) embed.
 
 Corrections welcome — everything lives in `data/*.json` and needs no code
 changes to extend.
