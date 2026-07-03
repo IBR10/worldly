@@ -1,0 +1,17 @@
+# Files that must never be uploaded/served as site assets.
+# (Cloudflare's CI runs npm install, so node_modules appears in the build dir —
+#  its 121 MiB workerd binary is what failed build #2c3762d5.)
+node_modules
+.wrangler
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+package.json
+package-lock.json
+tests
+scripts
+docs
+Worldly.bat
+README.md
+ROADMAP.md
