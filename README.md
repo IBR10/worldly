@@ -11,7 +11,7 @@ Pure HTML/CSS/vanilla-JS (ES modules). No framework, no build step, no backend,
 no accounts, no tracking. All progress is saved locally in your browser. Deploys
 as plain static files (Cloudflare Pages / any static host).
 
-**▶ Play it live: [worldly.ibr10.workers.dev](https://worldly.ibr10.workers.dev)**
+**▶ Play it live: [worldly.ibr10.workers.dev](https://playworldly.pages.dev)**
 
 ![home screen](assets/screenshot-home.png)
 

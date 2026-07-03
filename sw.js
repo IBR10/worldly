@@ -34,8 +34,13 @@ async function networkFirst(req) {
   } catch {
     const hit = await cache.match(req, { ignoreSearch: req.mode === 'navigate' });
     if (hit) return hit;
-    if (req.mode === 'navigate') return cache.match('/');
-    throw new Error('offline and not cached');
+    if (req.mode === 'navigate') {
+      const shell = await cache.match('/');
+      if (shell) return shell;
+    }
+    // Graceful network-error response: respondWith() must never reject, or the
+    // browser logs SW errors for every aborted image/fetch.
+    return Response.error();
   }
 }
 
@@ -43,10 +48,21 @@ async function cacheFirst(req) {
   const cache = await caches.open(CACHE);
   const hit = await cache.match(req);
   if (hit) return hit;
-  const res = await fetch(req);
-  if (res.ok || res.type === 'opaque') cache.put(req, res.clone());
-  return res;
+  try {
+    const res = await fetch(req);
+    // Opaque (no-cors flag/commons images) responses are cacheable too; put()
+    // can throw on quota — never let that break the response.
+    if (res.ok || res.type === 'opaque') cache.put(req, res.clone()).catch(() => {});
+    return res;
+  } catch {
+    return Response.error(); // lets <img onerror> fallbacks do their job
+  }
 }
+
+// respondWith() must NEVER reject (browsers log SW errors for every aborted
+// image/page load otherwise) — any unexpected failure becomes a network error,
+// which lets <img onerror> fallbacks behave exactly as they would without a SW.
+const safely = (p) => p.catch(() => Response.error());
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
@@ -57,8 +73,8 @@ self.addEventListener('fetch', (e) => {
   if (url.hostname.endsWith('clarity.ms') || url.hostname.includes('youtube')) return;
 
   if (CACHE_FIRST_HOSTS.includes(url.hostname) || url.pathname.startsWith('/assets/')) {
-    e.respondWith(cacheFirst(req));
+    e.respondWith(safely(cacheFirst(req)));
   } else if (url.origin === self.location.origin) {
-    e.respondWith(networkFirst(req));
+    e.respondWith(safely(networkFirst(req)));
   }
 });

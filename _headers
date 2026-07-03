@@ -7,7 +7,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://flagcdn.com https://commons.wikimedia.org https://upload.wikimedia.org; frame-src https://www.youtube-nocookie.com; style-src 'self'; script-src 'self' https://www.clarity.ms; connect-src 'self' https://*.clarity.ms; worker-src 'self'
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://flagcdn.com https://commons.wikimedia.org https://upload.wikimedia.org https://*.clarity.ms; frame-src https://www.youtube-nocookie.com; style-src 'self'; script-src 'self' https://www.clarity.ms https://scripts.clarity.ms; connect-src 'self' https://*.clarity.ms; worker-src 'self'
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
