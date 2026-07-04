@@ -29,6 +29,8 @@ Flag → country already exists. Planned extensions:
 - [ ] **Country → flag** (reverse): show the country name, pick the correct flag
       from four flag thumbnails.
 - [ ] **Flag → capital / region** variants for harder play.
+- [ ] **Map ↔ flag modes**: a country highlighted on the map → pick its flag, and
+      the reverse (see a flag → click the country on the map).
 - [x] **Similar Flags** mode: identify a flag when every distractor is a real
       look-alike (France/Netherlands/Luxembourg, Belgium/Germany, Chad/Romania,
       Nordic crosses…). Curated confusion groups in `data/similar_flags.json`,

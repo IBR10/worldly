@@ -8,7 +8,7 @@
 // The SW file itself is served with no-cache headers, so updates roll out on
 // the next visit.
 
-const CACHE = 'worldly-v1';
+const CACHE = 'worldly-v2'; // v2: connect-src fix — SW fetch of flag CDNs was blocked by the worker's own CSP
 
 const CACHE_FIRST_HOSTS = ['flagcdn.com', 'commons.wikimedia.org', 'upload.wikimedia.org'];
 
