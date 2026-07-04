@@ -18,6 +18,10 @@ export const MAP_MODES = {
   map_country_reverse: { label: 'Name the Country', source: 'country', svg: 'world', reverse: true },
   map_us_reverse: { label: 'Name the US State', source: 'us', svg: 'usa', reverse: true },
   map_mx_reverse: { label: 'Name the Mexican State', source: 'mx', svg: 'mexico', reverse: true },
+  // Flag ↔ map crossovers (world map only — states have no flags in our data):
+  // see a flag → click its country; see a highlighted country → pick its flag.
+  map_flag_country: { label: 'Flag → Find on Map', source: 'country', svg: 'world', flagPrompt: true },
+  map_country_flag: { label: 'Map → Pick the Flag', source: 'country', svg: 'world', reverse: true, flagChoices: true },
 };
 
 export const ALL_MAP_MODES = Object.keys(MAP_MODES);
@@ -53,8 +57,8 @@ export function normalizeName(s) {
  * Returns null when the region isn't present in the SVG.
  */
 export function regionIdFor(mode, source, regions) {
-  const base = mode.replace('_reverse', '');
-  if (base === 'map_country') {
+  // All country-sourced modes (incl. the flag↔map crossovers) join by iso2.
+  if (MAP_MODES[mode]?.source === 'country') {
     if (!source.iso2) return null;
     const id = source.iso2.toLowerCase();
     return regions[id] ? id : null;
@@ -124,8 +128,9 @@ const REVERSE_PROMPTS = {
  */
 export function makeMapQuestion(item, { data = null, rng = Math.random, choices = 4 } = {}) {
   const c = item.source;
+  const def = MAP_MODES[item.mode] || {};
   const base = item.mode.replace('_reverse', '');
-  const isCountry = base === 'map_country';
+  const isCountry = def.source === 'country';
   const q = {
     id: item.id,
     category: item.mode,
@@ -146,8 +151,20 @@ export function makeMapQuestion(item, { data = null, rng = Math.random, choices 
     q.highlightId = item.targetId;
     q.prompt = REVERSE_PROMPTS[base] || 'Which region is highlighted?';
     q.choices = shuffle([c.name, ...distractors], rng);
+    if (def.flagChoices) {
+      // The renderer shows the options as flag images; answers stay keyed by
+      // name so the shared answer() flow needs no changes.
+      const iso = new Map((data?.countries || []).map((x) => [x.name, x.iso2]));
+      q.flagChoices = true;
+      q.flagByName = Object.fromEntries(q.choices.map((n) => [n, iso.get(n)]));
+      q.prompt = 'A country is highlighted on the map — which flag flies there?';
+    }
   } else {
     q.prompt = (PROMPTS[item.mode] || PROMPTS.map_country)(c.name);
+    if (def.flagPrompt) {
+      q.flagIso = c.iso2;
+      q.prompt = 'Which country flies this flag? Click it on the map.';
+    }
   }
   return q;
 }

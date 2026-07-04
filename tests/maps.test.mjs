@@ -106,6 +106,43 @@ test('regionIdFor resolves reverse modes like their forward twin', () => {
   assert.equal(regionIdFor('map_us_reverse', data.usStates[0], regionsByMap.usa), 'co');
 });
 
+test('buildMapPool covers the flag↔map modes (world map only)', () => {
+  const flagToMap = buildMapPool(data, regionsByMap, { modes: ['map_flag_country'] });
+  assert.equal(flagToMap.length, 3); // Japan, France, Brazil — Atlantis has no path
+  assert.ok(flagToMap.every((p) => p.svg === 'world' && !p.reverse));
+
+  const mapToFlag = buildMapPool(data, regionsByMap, { modes: ['map_country_flag'] });
+  assert.equal(mapToFlag.length, 3);
+  assert.ok(mapToFlag.every((p) => p.svg === 'world' && p.reverse));
+});
+
+test('makeMapQuestion (map_flag_country) shows a flag and asks for a map click', () => {
+  const item = buildMapPool(data, regionsByMap, { modes: ['map_flag_country'] })
+    .find((p) => p.source.name === 'France');
+  const q = makeMapQuestion(item);
+  assert.ok(!q.reverse, 'forward click mode');
+  assert.equal(q.flagIso, 'FR', 'carries the iso2 so the UI can show the flag');
+  assert.equal(q.targetId, 'fr');
+  assert.equal(q.answer, 'France');
+  assert.match(q.prompt, /flag/i);
+  assert.match(q.prompt, /click/i);
+});
+
+test('makeMapQuestion (map_country_flag) highlights a country and offers flag choices', () => {
+  const item = buildMapPool(data, regionsByMap, { modes: ['map_country_flag'] })
+    .find((p) => p.source.name === 'Japan');
+  const q = makeMapQuestion(item, { data, rng: () => 0.5, choices: 4 });
+  assert.equal(q.reverse, true);
+  assert.equal(q.highlightId, 'jp');
+  assert.equal(q.answer, 'Japan');
+  assert.equal(q.flagChoices, true, 'renderer shows flags instead of names');
+  assert.ok(q.choices.includes('Japan'));
+  for (const name of q.choices) {
+    assert.match(q.flagByName[name] || '', /^[A-Z]{2}$/, `every choice has an iso2 (${name})`);
+  }
+  assert.match(q.prompt, /flag/i);
+});
+
 test('makeMapQuestion (reverse) highlights the region and offers multiple choice', () => {
   const item = buildMapPool(data, regionsByMap, { modes: ['map_country_reverse'] })
     .find((p) => p.source.name === 'Japan');

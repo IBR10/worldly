@@ -182,6 +182,8 @@ const MAP_CARDS = [
   { key: 'map_country_reverse', emoji: '🔎', title: 'Name the Country', desc: 'A country is highlighted — name it.' },
   { key: 'map_us_reverse', flagIso: 'US', title: 'Name the US State', desc: 'A state is highlighted — name it.' },
   { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
+  { key: 'map_flag_country', emoji: '🚩', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
+  { key: 'map_country_flag', emoji: '🎏', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
 ];
 
 // Card markup shared by every home tab. `attr` is the routing attribute
@@ -469,6 +471,7 @@ function renderMapQuestion(q) {
     </div>
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
+      ${q.flagIso ? `<img class="q-flag" alt="Flag to locate" src="${flagUrl(q.flagIso)}">` : ''}
       <div class="q-prompt">${esc(q.prompt)}</div>
       <div id="mapMount" class="map-mount"></div>
       <div id="feedback" role="status" aria-live="assertive"></div>
@@ -476,6 +479,7 @@ function renderMapQuestion(q) {
 
   app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
+  wireFlagFallback();
   S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id) });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
   renderHUD();
@@ -529,10 +533,13 @@ function renderReverseMapQuestion(q) {
       <div class="q-prompt">${esc(q.prompt)}</div>
       <div id="mapMount" class="map-mount"></div>
       <div class="choices" id="choices">
-        ${q.choices.map((c, i) => `
-          <button class="choice" data-val="${esc(c)}">
-            <span class="key">${i + 1}</span><span>${esc(c)}</span>
-          </button>`).join('')}
+        ${q.choices.map((c, i) => q.flagChoices
+          ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag option ${i + 1}">
+               <span class="key">${i + 1}</span><img src="${flagUrl(q.flagByName[c], 'w160')}" alt="">
+             </button>`
+          : `<button class="choice" data-val="${esc(c)}">
+               <span class="key">${i + 1}</span><span>${esc(c)}</span>
+             </button>`).join('')}
       </div>
       <div id="feedback" role="status" aria-live="assertive"></div>
     </div>`;
