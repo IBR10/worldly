@@ -11,7 +11,7 @@ Pure HTML/CSS/vanilla-JS (ES modules). No framework, no build step, no backend,
 no accounts, no tracking. All progress is saved locally in your browser. Deploys
 as plain static files (Cloudflare Pages / any static host).
 
-**▶ Play it live: [worldly.ibr10.workers.dev](https://playworldly.pages.dev)**
+**▶ Play it live: [playworldly.pages.dev](https://playworldly.pages.dev)**
 
 ![home screen](assets/screenshot-home.png)
 
@@ -28,7 +28,7 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 45+ tests over the quiz, SRS and map engines
+npm test        # 48 tests over the quiz, SRS and map engines
 ```
 
 ## What's inside
@@ -49,8 +49,10 @@ npm test        # 45+ tests over the quiz, SRS and map engines
 
 ### Interactive maps
 Click-the-country (world), click-the-state (US, Mexico), plus **reverse modes**
-(a region is highlighted — name it). Inline SVG with pan/zoom and smallest-region
-hit-testing so nested regions (DC, Andorra…) are always selectable.
+(a region is highlighted — name it) and **flag crossovers** (see a flag → click
+its country, or a country is highlighted → pick its flag). Inline SVG with
+pan/zoom and smallest-region hit-testing so nested regions (DC, Andorra…) are
+always selectable.
 
 ### Explore
 - **Phrases** — common phrases & local sayings for 16 countries, with
@@ -91,7 +93,7 @@ Worldly/
 │   └── main.js             # controller: routing, rendering, quiz session
 ├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
 ├── assets/maps/*.svg       # bundled world/US/Mexico maps (@svg-maps, MIT)
-├── tests/*.test.mjs        # 44 Node tests for quiz.js, srs.js, maps.js
+├── tests/*.test.mjs        # 48 Node tests for quiz.js, srs.js, maps.js
 ├── _headers                # Cloudflare Pages security + caching headers
 └── 404.html, robots.txt, site.webmanifest, LICENSE
 ```
