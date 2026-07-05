@@ -23,6 +23,12 @@ const toastBox = document.getElementById('toasts');
 
 // Active quiz session (null when not playing).
 let S = null;
+// Bumped every time the player leaves whatever screen/session was active.
+// Async work that outlives its screen (e.g. a slow map SVG fetch) checks this
+// before touching S/#app, so a late response can never hijack a screen the
+// user has already navigated away from.
+let sessionGen = 0;
+function leaveSession() { S = null; sessionGen += 1; }
 // Which home tab is selected (persists while navigating in and out of home).
 let homeTab = 'play';
 // Which crises tab is selected (persists while browsing crisis details).
@@ -202,7 +208,7 @@ function homeCard(attr, m) {
 
 function showHome() {
   clearTimer(); // a challenge timer must never outlive its screen (crash-loop otherwise)
-  S = null;
+  leaveSession();
   const p = getProfile();
   const dailyDone = dailyDoneToday();
   const missedCount = reviewableMissedIds().length;
@@ -288,7 +294,7 @@ function showHome() {
 //  ABOUT  (credits, data sources, disclaimers, privacy)
 // ============================================================================
 function showAbout() {
-  S = null;
+  leaveSession();
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">About Worldly ℹ️</h1>
@@ -384,7 +390,7 @@ function startReview() {
 
 // World Religions chooser: study every faith, or focus on a single one.
 function showReligions() {
-  S = null;
+  leaveSession();
   const faiths = (getData().religions || []).map((r) => r.name);
   app.innerHTML = `
     ${topNav()}
@@ -420,14 +426,22 @@ async function startMapQuiz(opts) {
   const svgName = MAP_MODES[mode]?.svg;
   if (!svgName) return;
 
+  // Starting a map quiz supersedes whatever screen/session was active. The SVG
+  // fetch below can take a while, so we stamp this attempt with the current
+  // generation and re-check it after every await — if the player has since
+  // left (Home, another mode, etc.) sessionGen will have moved on and this
+  // stale load must NOT hijack whatever screen they're looking at now.
+  const myGen = ++sessionGen;
   app.innerHTML = '<p class="screen-sub">Loading the map…</p>';
   let map;
   try {
     map = await loadMap(svgName);
   } catch (err) {
+    if (myGen !== sessionGen) return; // player already navigated away
     toast('🗺️', "Couldn't load the map", err.message);
     return showHome();
   }
+  if (myGen !== sessionGen) return; // player already navigated away
 
   const data = getData();
   const pool = buildMapPool(data, { [svgName]: map.regions }, { modes: [mode] });
@@ -534,8 +548,8 @@ function renderReverseMapQuestion(q) {
       <div id="mapMount" class="map-mount"></div>
       <div class="choices" id="choices">
         ${q.choices.map((c, i) => q.flagChoices
-          ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag option ${i + 1}">
-               <span class="key">${i + 1}</span><img src="${flagUrl(q.flagByName[c], 'w160')}" alt="">
+          ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag of ${esc(c)}">
+               <span class="key">${i + 1}</span><img src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
              </button>`
           : `<button class="choice" data-val="${esc(c)}">
                <span class="key">${i + 1}</span><span>${esc(c)}</span>
@@ -545,6 +559,7 @@ function renderReverseMapQuestion(q) {
     </div>`;
   app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
+  if (q.flagChoices) wireFlagFallback('.choice-flag img');
   S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
@@ -628,14 +643,14 @@ function clearTimer() {
 
 // A flag question is unanswerable without its image (e.g. flagcdn unreachable),
 // so on load failure show an explicit message instead of silently hiding it.
-function wireFlagFallback() {
-  const img = app.querySelector('.q-flag');
-  if (!img) return;
-  img.addEventListener('error', () => {
-    const d = document.createElement('div');
-    d.className = 'q-flag-missing';
-    d.textContent = "🚩 The flag image couldn't load — check your connection, then try the next question.";
-    img.replaceWith(d);
+function wireFlagFallback(selector = '.q-flag') {
+  app.querySelectorAll(selector).forEach((img) => {
+    img.addEventListener('error', () => {
+      const d = document.createElement('div');
+      d.className = 'q-flag-missing';
+      d.textContent = "🚩 The flag image couldn't load — check your connection, then try the next question.";
+      img.replaceWith(d);
+    });
   });
 }
 
@@ -702,10 +717,10 @@ function renderTypedQuestion(q) {
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
       ${flag}
-      <div class="q-prompt">${esc(q.prompt)}</div>
+      <div class="q-prompt" id="qPrompt">${esc(q.prompt)}</div>
       <form class="type-form" id="typeForm" autocomplete="off">
         <input class="type-input" id="typeInput" type="text" placeholder="Type your answer…"
-               autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+               aria-labelledby="qPrompt" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
         <button class="btn primary" type="submit">Submit</button>
       </form>
       <div id="feedback" role="status" aria-live="assertive"></div>
@@ -823,7 +838,7 @@ function finishQuiz() {
 //  CUSTOM STUDY
 // ============================================================================
 function showCustom() {
-  S = null;
+  leaveSession();
   const continents = getContinents();
   app.innerHTML = `
     ${topNav()}
@@ -896,7 +911,7 @@ function showCustom() {
 //  PHRASES  (browse common phrases & popular local sayings by country)
 // ============================================================================
 function showPhrases() {
-  S = null;
+  leaveSession();
   const entries = getData().phrases || [];
   app.innerHTML = `
     ${topNav()}
@@ -980,7 +995,7 @@ function renderPhraseDetail(entry) {
 //  MUSIC  (songs that represent each country — embedded YouTube player)
 // ============================================================================
 function showMusic() {
-  S = null;
+  leaveSession();
   const entries = getData().music || [];
   app.innerHTML = `
     ${topNav()}
@@ -1054,7 +1069,7 @@ function renderMusicDetail(entry) {
 //  CRISES & CURRENT EVENTS  (curated background + live-source links)
 // ============================================================================
 function showCrises() {
-  S = null;
+  leaveSession();
   const entries = getData().crises || [];
   // Two curated tiers: crises the world under-covers, and the largest ongoing
   // conflicts regardless of how heavily they are reported.
@@ -1133,7 +1148,7 @@ function renderCrisisDetail(entry) {
 //  STATISTICS
 // ============================================================================
 function showStats() {
-  S = null;
+  leaveSession();
   const p = getProfile();
   const cats = Object.entries(p.perCategory);
   const regs = Object.entries(p.perRegion);
@@ -1184,7 +1199,7 @@ function showStats() {
 //  ACHIEVEMENTS
 // ============================================================================
 function showAchievements() {
-  S = null;
+  leaveSession();
   const list = achievementStatus(getProfile());
   app.innerHTML = `
     ${topNav()}
@@ -1210,7 +1225,7 @@ function showAchievements() {
 //  PROFILE
 // ============================================================================
 function showProfile() {
-  S = null;
+  leaveSession();
   const p = getProfile();
   const lb = p.leaderboard;
   app.innerHTML = `
@@ -1288,8 +1303,11 @@ function showProfile() {
 function onKeydown(e) {
   if (!S) return;
   if (S.phase === 'answer') {
-    // Click-only (map) and type-only modes don't use number-key shortcuts.
-    if (S.kind === 'map' || S.input === 'type' || !S.current?.choices) return;
+    // Number-key shortcuts need real MCQ choices to key against. Click-only
+    // forward map questions never set `choices` (checked below), so this also
+    // correctly covers them without excluding reverse map modes, which DO
+    // render numbered .choice buttons just like any other MCQ.
+    if (S.input === 'type' || !S.current?.choices) return;
     const n = parseInt(e.key, 10);
     if (n >= 1 && n <= S.current.choices.length) {
       const btn = app.querySelectorAll('.choice')[n - 1];

@@ -51,6 +51,17 @@
 
 * { box-sizing: border-box; }
 
+/* Visually hidden but still announced by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -92,9 +103,12 @@ body {
 .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 .footer-link:hover { color: var(--accent); }
 
-/* Comfortable touch targets (WCAG 2.5.8): icon buttons, map controls, quiz quit. */
+/* Comfortable touch targets (WCAG 2.5.8): icon buttons, map controls, quiz quit,
+   home/crises tabs, segmented controls, checkbox labels, speaker buttons. */
 .icon-btn, .map-btn { min-width: 44px; min-height: 44px; }
 .quiz-top .btn.ghost { min-height: 44px; }
+.tab, .seg button, .check { min-height: 44px; }
+.spk { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 
 h1, h2, h3 { line-height: 1.2; }
 .screen-title { font-size: 1.6rem; margin: 4px 0 2px; }
@@ -286,6 +300,7 @@ h1, h2, h3 { line-height: 1.2; }
   transition: fill .12s ease;
 }
 .map-svg path:hover { fill: var(--accent); }
+.map-svg path:focus-visible { outline: 3px solid var(--primary); outline-offset: 1px; }
 .map-svg.map-answered path { cursor: default; pointer-events: none; }
 .map-svg path.region-correct { fill: var(--good); stroke: var(--good); }
 .map-svg path.region-wrong { fill: var(--bad); stroke: var(--bad); }

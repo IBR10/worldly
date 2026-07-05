@@ -30,9 +30,17 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
   if (!interactive) svg.classList.add('map-static');
 
   // Pre-highlight a region (reverse mode shows the region and asks its name).
+  // The highlight itself is only a fill-color change, which is invisible to a
+  // screen reader — add a visually-hidden text alternative so the highlighted
+  // region's name is actually announced, not just shown.
+  const srAnnounce = document.createElement('p');
+  srAnnounce.className = 'sr-only';
   if (highlightId) {
     const hl = svg.querySelector(`#${CSS.escape(highlightId)}`);
-    if (hl) hl.classList.add('region-highlight');
+    if (hl) {
+      hl.classList.add('region-highlight');
+      srAnnounce.textContent = `Highlighted on the map: ${hl.getAttribute('aria-label') || hl.id}`;
+    }
   }
 
   // --- pan / zoom state -------------------------------------------------------
@@ -172,7 +180,30 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     mkBtn('⟳', 'Reset view', () => { scale = 1; tx = 0; ty = 0; apply(); }),
   );
 
-  wrap.append(holder, controls);
+  // Interactive (forward) modes: make every region keyboard-operable — Tab to
+  // a region, Enter/Space picks it, mirroring the click/hit-test behaviour.
+  if (interactive) {
+    svg.querySelectorAll('path[id]').forEach((p) => {
+      p.setAttribute('tabindex', '0');
+      p.setAttribute('role', 'button');
+      if (!p.hasAttribute('aria-label')) p.setAttribute('aria-label', p.id);
+    });
+    holder.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const path = e.target.closest && e.target.closest('path[id]');
+      if (!path || answered) return;
+      e.preventDefault();
+      // onPick() synchronously flips the quiz to its feedback phase. Without
+      // stopping propagation, this SAME keydown event keeps bubbling to the
+      // document-level handler, which would see the now-updated phase and
+      // immediately auto-advance past the feedback screen on this one keypress.
+      e.stopPropagation();
+      answered = true;
+      onPick(path.id, path.getAttribute('aria-label') || path.id);
+    });
+  }
+
+  wrap.append(holder, controls, srAnnounce);
 
   /** Color the answered regions: target green, a wrong pick red; lock the map. */
   function reveal(clickedId, targetId) {
