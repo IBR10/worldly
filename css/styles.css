@@ -113,6 +113,12 @@ body {
 h1, h2, h3 { line-height: 1.2; }
 .screen-title { font-size: 1.6rem; margin: 4px 0 2px; }
 .screen-sub { color: var(--muted); margin: 0 0 20px; }
+/* focusTitle() (main.js) gives the title/prompt tabindex="-1" so screen readers
+   announce each new screen — it's never reachable by tabbing, so the visible
+   focus ring browsers draw for it serves no one and just looks like a stray
+   highlight box on every navigation. Suppress it; the a11y benefit doesn't
+   depend on any visible styling. */
+.screen-title:focus, .q-prompt:focus { outline: none; }
 
 /* ---- buttons ---- */
 .btn { font-family: inherit; font-size: 1rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 11px 16px; cursor: pointer; transition: var(--transition); }
