@@ -352,6 +352,49 @@ test('geoDistractors never duplicates a value across tiers', () => {
   assert.equal(new Set(picks).size, picks.length, 'no duplicate values even when tiers overlap in the top-up');
 });
 
+test('makeQuestion (capital) draws its one distractor from the same subregion when available', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  const item = { id: 'capital:Kenya', mode: 'capital', region: 'Africa', source: kenya };
+  const q = makeQuestion(item, data, { choices: 2 }); // answer + 1 distractor
+  assert.equal(q.choices.length, 2);
+  assert.ok(q.choices.includes('Nairobi'));
+  assert.ok(q.choices.includes('Dodoma'), 'the one distractor is Tanzania (same East Africa subregion), not a random country');
+});
+
+test('makeQuestion (language/religion/country/flag) also use geography-tiered distractors', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  // Kenya and Tanzania share the identical language value ("Swahili") in this
+  // fixture, so Tanzania cannot supply a *distinct* subregion-tier distractor
+  // here — this must correctly fall through to the region tier (Africa) and
+  // pick up Egypt's "Arabic" instead, proving tier fallback is value-aware,
+  // not just country-aware.
+  const langQ = makeQuestion({ id: 'language:Kenya', mode: 'language', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.equal(langQ.choices.length, 2);
+  assert.ok(langQ.choices.includes('Swahili'), 'the answer is present');
+  assert.ok(langQ.choices.includes('Arabic'), 'falls back to the region tier (Egypt) since Tanzania has no distinct language value');
+
+  const countryQ = makeQuestion({ id: 'country:Kenya', mode: 'country', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.ok(countryQ.choices.includes('Kenya'));
+  assert.ok(countryQ.choices.includes('Tanzania'), 'country mode also prefers the subregion neighbor');
+
+  const flagQ = makeQuestion({ id: 'flag:Kenya', mode: 'flag', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.ok(flagQ.choices.includes('Kenya'));
+  assert.ok(flagQ.choices.includes('Tanzania'), 'flag mode also prefers the subregion neighbor');
+});
+
+test('makeQuestion (historic_flag) region-preference is still gated by difficulty (unchanged behavior)', () => {
+  const item = { id: 'historic_flag:Rhodesia', mode: 'historic_flag', region: 'Africa', source: data.historicFlags[2] };
+  // Only Rhodesia is Africa-region among the 4 historic flags; the other 3
+  // (Soviet Union, Ottoman Empire, Yugoslavia) are Europe/Asia. With
+  // difficulty left at its 'medium' default (not 'hard'), the pre-existing
+  // same-region gate must NOT kick in, so all 4 entries stay eligible — with
+  // choices=4 and exactly 4 total entries, every one of them must appear.
+  const q = makeQuestion(item, data, { choices: 4 });
+  assert.equal(q.choices.length, 4);
+  const nonAfrica = ['Soviet Union', 'Ottoman Empire', 'Yugoslavia'];
+  assert.ok(nonAfrica.every((n) => q.choices.includes(n)), 'medium difficulty still pulls from every region, unaffected by the new always-on country-mode tiering');
+});
+
 // ---- no-duplicate sessions (the core fix) ----------------------------------
 
 test('a session never repeats a question until the pool is exhausted', () => {

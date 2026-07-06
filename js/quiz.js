@@ -201,30 +201,22 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
   const mode = item.mode;
   let prompt, answer, distractorValues, flagIso = null, flagImg = null, isCountry = true;
 
-  // For "hard", prefer distractors from the same region to make them confusable.
-  const sameRegion = data.countries.filter((x) => x.region === c.region);
-  const countryPool = difficulty === 'hard' && sameRegion.length >= choices ? sameRegion : data.countries;
-
   switch (mode) {
     case 'capital':
       prompt = `What is the capital of ${c.name}?`;
       answer = c.capital;
-      distractorValues = countryPool.map((x) => x.capital);
       break;
     case 'country':
       prompt = `Which country has the capital ${c.capital}?`;
       answer = c.name;
-      distractorValues = countryPool.map((x) => x.name);
       break;
     case 'language':
       prompt = `What is the most widely spoken language in ${c.name}?`;
       answer = c.language;
-      distractorValues = data.countries.map((x) => x.language);
       break;
     case 'religion':
       prompt = `What is the largest religion in ${c.name}?`;
       answer = c.religion;
-      distractorValues = data.countries.map((x) => x.religion);
       break;
     case 'religion_founder':
       prompt = `Who is the central figure most associated with ${c.name}?`;
@@ -266,7 +258,6 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       prompt = 'Which country does this flag belong to?';
       answer = c.name;
       flagIso = c.iso2;
-      distractorValues = countryPool.map((x) => x.name);
       break;
     case 'similar_flag':
       prompt = 'These flags all look alike — which country is this?';
@@ -282,9 +273,11 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       answer = c.name;
       flagImg = c.img;
       isCountry = false;
-      // Keep options coherent: distractors are other historic entities. On hard,
-      // prefer same-region entities; fall back to the full set when a region is
-      // short so we can always fill the requested number of choices.
+      // Keep options coherent: distractors are other historic entities. On
+      // hard, prefer same-region entities; fall back to the full set when a
+      // region is short so we can always fill the requested number of
+      // choices. (Unchanged — historic flags are out of scope for the
+      // always-on geography tiering used by the country modes below.)
       const all = data.historicFlags || [];
       const sameRegionHist = all.filter((x) => x.region === c.region);
       const histPool = difficulty === 'hard' && sameRegionHist.length >= choices ? sameRegionHist : all;
@@ -307,33 +300,40 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       throw new Error(`Unknown mode: ${mode}`);
   }
 
-  const distractors = sampleDistinct(distractorValues, answer, choices - 1, rng);
-  // Top up from the global country set if a narrow region pool ran short.
-  // Historic-flag and religion questions keep their options within their own
-  // set (nations of the past / world religions), so they're excluded here.
-  const selfContained = mode === 'historic_flag' || mode === 'similar_flag' || MODES[mode]?.source === 'religion';
-  // Similar-flag groups smaller than `choices` top up from the wider pool of
-  // look-alike countries so options stay hard to tell apart (never plain random
-  // countries, which would give the answer away).
-  if (distractors.length < choices - 1 && mode === 'similar_flag') {
-    // Exclude names already chosen (and the answer) *before* sampling, so we
-    // don't draw a duplicate and then filter it out — which would under-fill
-    // small groups like Ireland / Côte d'Ivoire / Italy.
-    const chosen = new Set([answer, ...distractors]);
-    const allSimilar = (data.similarFlags || [])
-      .flatMap((g) => g.countries.map((x) => x.name))
-      .filter((n) => !chosen.has(n));
-    const extra = sampleDistinct(allSimilar, answer, choices - 1 - distractors.length, rng);
-    distractors.push(...extra);
-  }
-  if (distractors.length < choices - 1 && !selfContained) {
-    const extra = sampleDistinct(
-      [...data.countries.map((x) => x.name), ...data.countries.map((x) => x.capital)],
-      answer,
-      choices - 1 - distractors.length,
-      rng
-    ).filter((v) => !distractors.includes(v));
-    distractors.push(...extra);
+  // The five country-based modes always draw distractors from nearby
+  // countries (same subregion, falling back to region, falling back to the
+  // whole world) so wrong answers can't be eliminated just by "that's not
+  // even close." This applies unconditionally, regardless of `difficulty`.
+  const GEO_FIELD = { capital: 'capital', country: 'name', language: 'language', religion: 'religion', flag: 'name' };
+  const geoField = GEO_FIELD[mode];
+  let distractors;
+  if (geoField) {
+    distractors = geoDistractors(data.countries, c, geoField, choices - 1, rng);
+  } else {
+    distractors = sampleDistinct(distractorValues, answer, choices - 1, rng);
+    // Similar-flag groups smaller than `choices` top up from the wider pool of
+    // look-alike countries so options stay hard to tell apart (never plain
+    // random countries, which would give the answer away).
+    if (distractors.length < choices - 1 && mode === 'similar_flag') {
+      const chosenSet = new Set([answer, ...distractors]);
+      const allSimilar = (data.similarFlags || [])
+        .flatMap((g) => g.countries.map((x) => x.name))
+        .filter((n) => !chosenSet.has(n));
+      const extra = sampleDistinct(allSimilar, answer, choices - 1 - distractors.length, rng);
+      distractors.push(...extra);
+    }
+    // Historic-flag and religion questions keep their options within their
+    // own set (nations of the past / world religions) — no global top-up.
+    const selfContained = mode === 'historic_flag' || mode === 'similar_flag' || MODES[mode]?.source === 'religion';
+    if (distractors.length < choices - 1 && !selfContained) {
+      const extra = sampleDistinct(
+        [...data.countries.map((x) => x.name), ...data.countries.map((x) => x.capital)],
+        answer,
+        choices - 1 - distractors.length,
+        rng
+      ).filter((v) => !distractors.includes(v));
+      distractors.push(...extra);
+    }
   }
 
   const options = shuffle([answer, ...distractors], rng);
