@@ -147,6 +147,8 @@ h1, h2, h3 { line-height: 1.2; }
   text-align: left;
 }
 .card:hover { transform: translateY(-3px); border-color: var(--primary); }
+.flagkey-card { cursor: default; }
+.flagkey-card:hover { transform: none; border-color: var(--border); }
 .card .emoji { font-size: 1.8rem; }
 /* Flag image used in place of an emoji on cards (Windows lacks flag emoji). */
 .card .emoji-flag { width: 40px; height: auto; border-radius: 4px; border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,.25); }

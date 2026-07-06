@@ -984,11 +984,12 @@ function showFlagKey() {
   function wireFlagKeyControls(id) {
     const panel = app.querySelector(`.tab-panel[data-panel="${id}"]`);
     panel.querySelector('.flagkey-search').addEventListener('input', (e) => {
+      const pos = e.target.selectionStart;
       flagKeySearch[id] = e.target.value;
       rerenderGroup(id);
-      panel.querySelector('.flagkey-search').focus();
-      const v = panel.querySelector('.flagkey-search').value;
-      panel.querySelector('.flagkey-search').setSelectionRange(v.length, v.length);
+      const newInput = panel.querySelector('.flagkey-search');
+      newInput.focus();
+      newInput.setSelectionRange(pos, pos);
     });
     panel.querySelector('.flagkey-region').addEventListener('change', (e) => {
       flagKeyRegion[id] = e.target.value;
