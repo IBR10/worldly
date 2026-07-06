@@ -113,7 +113,7 @@
     "language": "Arabic",
     "religion": "Islam",
     "currency": "Saudi riyal",
-    "funFact": "Saudi Arabia has no rivers \u2014 it is the largest country in the world without one.",
+    "funFact": "Saudi Arabia has no rivers — it is the largest country in the world without one.",
     "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
   },
   {
@@ -192,7 +192,7 @@
     "language": "English",
     "religion": "Christianity",
     "currency": "Pound sterling",
-    "funFact": "The UK has no single written constitution \u2014 its laws come from statutes, court rulings and conventions.",
+    "funFact": "The UK has no single written constitution — its laws come from statutes, court rulings and conventions.",
     "wiki": "https://en.wikipedia.org/wiki/United_Kingdom"
   },
   {
@@ -244,7 +244,7 @@
     "language": "Spanish",
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
-    "funFact": "Spain produces around 44% of the world's olive oil \u2014 more than any other country.",
+    "funFact": "Spain produces around 44% of the world's olive oil — more than any other country.",
     "wiki": "https://en.wikipedia.org/wiki/Spain"
   },
   {
@@ -257,7 +257,7 @@
     "language": "Portuguese",
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
-    "funFact": "Lisbon is older than Rome \u2014 it was a trading port centuries before the Roman Empire.",
+    "funFact": "Lisbon is older than Rome — it was a trading port centuries before the Roman Empire.",
     "wiki": "https://en.wikipedia.org/wiki/Portugal"
   },
   {
@@ -432,13 +432,13 @@
   {
     "name": "Costa Rica",
     "iso2": "CR",
-    "capital": "San Jos\u00e9",
+    "capital": "San José",
     "region": "North America",
     "subregion": "Central America",
     "population": 5200000,
     "language": "Spanish",
     "religion": "Christianity (Catholic)",
-    "currency": "Costa Rican col\u00f3n",
+    "currency": "Costa Rican colón",
     "funFact": "Costa Rica abolished its army in 1948 and invests the savings in education and health.",
     "wiki": "https://en.wikipedia.org/wiki/Costa_Rica"
   },
@@ -471,7 +471,7 @@
   {
     "name": "Brazil",
     "iso2": "BR",
-    "capital": "Bras\u00edlia",
+    "capital": "Brasília",
     "region": "South America",
     "subregion": "South America",
     "population": 215300000,
@@ -497,7 +497,7 @@
   {
     "name": "Colombia",
     "iso2": "CO",
-    "capital": "Bogot\u00e1",
+    "capital": "Bogotá",
     "region": "South America",
     "subregion": "South America",
     "population": 51900000,
@@ -530,7 +530,7 @@
     "language": "Spanish",
     "religion": "Christianity (Catholic)",
     "currency": "Chilean peso",
-    "funFact": "Chile's Atacama Desert is the driest non-polar desert on Earth \u2014 some areas have never recorded rain.",
+    "funFact": "Chile's Atacama Desert is the driest non-polar desert on Earth — some areas have never recorded rain.",
     "wiki": "https://en.wikipedia.org/wiki/Chile"
   },
   {
@@ -542,7 +542,7 @@
     "population": 28300000,
     "language": "Spanish",
     "religion": "Christianity (Catholic)",
-    "currency": "Venezuelan bol\u00edvar",
+    "currency": "Venezuelan bolívar",
     "funFact": "Venezuela is home to Angel Falls, the world's tallest uninterrupted waterfall at 979 m.",
     "wiki": "https://en.wikipedia.org/wiki/Venezuela"
   },
@@ -647,7 +647,7 @@
     "language": "Amharic",
     "religion": "Christianity (Orthodox)",
     "currency": "Ethiopian birr",
-    "funFact": "Ethiopia follows its own calendar with 13 months and is roughly 7\u20138 years behind the Gregorian one.",
+    "funFact": "Ethiopia follows its own calendar with 13 months and is roughly 7–8 years behind the Gregorian one.",
     "wiki": "https://en.wikipedia.org/wiki/Ethiopia"
   },
   {
@@ -764,7 +764,7 @@
     "language": "Tok Pisin",
     "religion": "Christianity",
     "currency": "Papua New Guinean kina",
-    "funFact": "Papua New Guinea has over 800 living languages \u2014 the most linguistically diverse country on Earth.",
+    "funFact": "Papua New Guinea has over 800 living languages — the most linguistically diverse country on Earth.",
     "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea"
   },
   {
@@ -776,7 +776,7 @@
     "population": 380000,
     "language": "Icelandic",
     "religion": "Christianity (Lutheran)",
-    "currency": "Icelandic kr\u00f3na",
+    "currency": "Icelandic króna",
     "funFact": "Iceland runs almost entirely on renewable geothermal and hydroelectric power.",
     "wiki": "https://en.wikipedia.org/wiki/Iceland"
   },
@@ -880,7 +880,7 @@
     "population": 3400000,
     "language": "Mongolian",
     "religion": "Buddhism",
-    "currency": "Mongolian t\u00f6gr\u00f6g",
+    "currency": "Mongolian tögrög",
     "funFact": "Mongolia is the most sparsely populated sovereign nation on Earth.",
     "wiki": "https://en.wikipedia.org/wiki/Mongolia"
   },
@@ -1108,7 +1108,7 @@
   {
     "name": "Togo",
     "iso2": "TG",
-    "capital": "Lom\u00e9",
+    "capital": "Lomé",
     "region": "Africa",
     "subregion": "West Africa",
     "population": 9000000,
@@ -1212,7 +1212,7 @@
   {
     "name": "Cameroon",
     "iso2": "CM",
-    "capital": "Yaound\u00e9",
+    "capital": "Yaoundé",
     "region": "Africa",
     "subregion": "Central Africa",
     "population": 28000000,
@@ -1413,7 +1413,7 @@
     "population": 220000,
     "language": "Samoan",
     "religion": "Christianity",
-    "currency": "Samoan t\u0101l\u0101",
+    "currency": "Samoan tālā",
     "funFact": "Samoa switched which side of the International Date Line it's on in 2011, skipping December 30 entirely to align its trade week with Australia and New Zealand.",
     "wiki": "https://en.wikipedia.org/wiki/Samoa"
   },
@@ -1426,7 +1426,7 @@
     "population": 100000,
     "language": "Tongan",
     "religion": "Christianity",
-    "currency": "Tongan pa\u02bbanga",
+    "currency": "Tongan paʻanga",
     "funFact": "Tonga is one of the few Pacific island nations never colonized by a European power and maintains its own monarchy.",
     "wiki": "https://en.wikipedia.org/wiki/Tonga"
   },
@@ -1570,7 +1570,7 @@
     "language": "Arabic",
     "religion": "Islam",
     "currency": "Yemeni rial",
-    "funFact": "Yemen is home to Socotra Island, often called the 'Gal\u00e1pagos of the Indian Ocean' due to its unique and endemic flora.",
+    "funFact": "Yemen is home to Socotra Island, often called the 'Galápagos of the Indian Ocean' due to its unique and endemic flora.",
     "wiki": "https://en.wikipedia.org/wiki/Yemen"
   },
   {
@@ -1894,7 +1894,7 @@
     "population": 7142099,
     "language": "Spanish",
     "religion": "Christianity",
-    "currency": "Nicaraguan c\u00f3rdoba",
+    "currency": "Nicaraguan córdoba",
     "funFact": "Nicaragua is home to Lake Nicaragua, the largest lake in Central America, which contains freshwater sharks.",
     "wiki": "https://en.wikipedia.org/wiki/Nicaragua"
   },
@@ -1918,7 +1918,7 @@
     "region": "North America",
     "subregion": "Central America",
     "population": 408487,
-    "language": "English",
+    "language": "Spanish",
     "religion": "Christianity",
     "currency": "Belize dollar",
     "funFact": "Belize is the only Central American country with English as the official language and is home to the Belize Barrier Reef, a UNESCO World Heritage Site.",
@@ -1979,13 +1979,13 @@
   {
     "name": "Paraguay",
     "iso2": "PY",
-    "capital": "Asunci\u00f3n",
+    "capital": "Asunción",
     "region": "South America",
     "subregion": "South America",
     "population": 6780744,
     "language": "Guarani",
     "religion": "Christianity",
-    "currency": "Paraguayan guaran\u00ed",
+    "currency": "Paraguayan guaraní",
     "funFact": "Paraguay is one of only a few countries in the world where an indigenous language, Guarani, is spoken by a majority of the population alongside Spanish.",
     "wiki": "https://en.wikipedia.org/wiki/Paraguay"
   },
