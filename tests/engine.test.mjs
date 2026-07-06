@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
-import { historicFlagUrl } from '../js/data.js';
+import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 
 // A small synthetic dataset that mirrors the real JSON shape.
 const data = {
@@ -271,6 +271,13 @@ test('historicFlagUrl builds a stable Wikimedia Special:FilePath URL', () => {
   const url = historicFlagUrl('Flag of the Soviet Union.svg');
   assert.match(url, /commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
   assert.match(url, /Flag%20of%20the%20Soviet%20Union\.svg/);
+  assert.match(url, /width=320/);
+});
+
+test('stateFlagUrl builds a stable Wikimedia Special:FilePath URL', () => {
+  const url = stateFlagUrl('Flag of Alabama.svg');
+  assert.match(url, /commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
+  assert.match(url, /Flag%20of%20Alabama\.svg/);
   assert.match(url, /width=320/);
 });
 

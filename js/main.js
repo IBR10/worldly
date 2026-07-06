@@ -1,7 +1,7 @@
 // main.js — application controller. Owns routing between screens, renders the
 // HUD, runs a quiz session, and reacts to answers (scoring, XP, achievements).
 
-import { loadData, getData, getContinents, flagUrl, historicFlagUrl, loadMap } from './data.js';
+import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
 import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
@@ -221,6 +221,7 @@ function showHome() {
   ];
   const journeyCards = [
     { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
+    { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state & Mexican state by flag and name.' },
     { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
     { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
     { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
@@ -281,6 +282,7 @@ function showHome() {
   app.querySelector('[data-go="religions"]').addEventListener('click', showReligions);
   app.querySelector('[data-go="review"]').addEventListener('click', startReview);
   app.querySelector('[data-go="phrases"]').addEventListener('click', showPhrases);
+  app.querySelector('[data-go="flagkey"]').addEventListener('click', showFlagKey);
   app.querySelector('[data-go="music"]').addEventListener('click', showMusic);
   app.querySelector('[data-go="crises"]').addEventListener('click', showCrises);
   app.querySelector('[data-go="custom"]').addEventListener('click', showCustom);
@@ -905,6 +907,95 @@ function showCustom() {
     if (modes.length === 0) return toast('⚠️', 'Pick at least one question type');
     startQuiz({ title: 'Custom Study', modes, continents: conts.length ? conts : 'all', difficulty, total: length, input });
   });
+}
+
+// ============================================================================
+//  FLAG KEY  (browsable reference: every country / US state / Mexican state,
+//  with its flag and name — not a quiz, just a legend to look things up in)
+// ============================================================================
+let flagKeyTab = 'countries';
+let flagKeySearch = { countries: '', us: '', mx: '' };
+let flagKeyRegion = { countries: '', us: '', mx: '' };
+
+function showFlagKey() {
+  leaveSession();
+  const data = getData();
+  const groups = [
+    { id: 'countries', label: 'Countries', list: data.countries, flagFn: (x) => flagUrl(x.iso2, 'w80') },
+    { id: 'us', label: 'US States', list: data.usStates, flagFn: (x) => stateFlagUrl(x.flag) },
+    { id: 'mx', label: 'Mexican States', list: data.mxStates, flagFn: (x) => stateFlagUrl(x.flag) },
+  ];
+  if (!groups.some((g) => g.id === flagKeyTab)) flagKeyTab = 'countries';
+
+  const panelFor = (g) => {
+    const regions = getRegions(g.list);
+    const term = flagKeySearch[g.id].toLowerCase();
+    const region = flagKeyRegion[g.id];
+    const visible = g.list.filter((x) =>
+      (!term || x.name.toLowerCase().includes(term)) && (!region || x.region === region));
+    return `
+      <div class="form-block">
+        <input type="text" class="type-input flagkey-search" data-group="${g.id}" placeholder="Search ${esc(g.label.toLowerCase())}…" value="${esc(flagKeySearch[g.id])}">
+        <select class="select mt-10 flagkey-region" data-group="${g.id}">
+          <option value="">All regions</option>
+          ${regions.map((r) => `<option value="${esc(r)}" ${r === region ? 'selected' : ''}>${esc(r)}</option>`).join('')}
+        </select>
+      </div>
+      <div class="grid flagkey-grid" data-group="${g.id}">
+        ${visible.map((x) => `
+          <div class="card flagkey-card">
+            <img class="emoji-flag" alt="" src="${g.flagFn(x)}" onerror="this.style.display='none'">
+            <span class="card-title">${esc(x.name)}</span>
+            <span class="card-desc">${esc(x.capital)}</span>
+          </div>`).join('')}
+      </div>
+      ${visible.length === 0 ? '<p class="screen-sub">No matches.</p>' : ''}`;
+  };
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Flag Key 🚩</h1>
+    <p class="screen-sub">A browsable reference — every country, US state and Mexican state, by flag and name. Not a quiz.</p>
+
+    <div class="tabs" role="tablist">
+      ${groups.map((g) => `<button class="tab ${g.id === flagKeyTab ? 'active' : ''}" role="tab" id="tab-${g.id}" aria-controls="panel-${g.id}" aria-selected="${g.id === flagKeyTab}" tabindex="${g.id === flagKeyTab ? 0 : -1}" data-tab="${g.id}">${esc(g.label)}</button>`).join('')}
+    </div>
+
+    ${groups.map((g) => `
+      <div class="tab-panel ${g.id === flagKeyTab ? 'active' : ''}" data-panel="${g.id}" id="panel-${g.id}" role="tabpanel" aria-labelledby="tab-${g.id}">
+        ${panelFor(g)}
+      </div>`).join('')}
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="backHome">← Back</button>
+    </div>`;
+
+  wireNav();
+  wireTabs((id) => { flagKeyTab = id; });
+  app.querySelector('#backHome').addEventListener('click', showHome);
+
+  // Re-render just the active panel's grid on every search/region change,
+  // without losing focus or rebuilding the whole screen.
+  const rerenderGroup = (id) => {
+    const g = groups.find((x) => x.id === id);
+    app.querySelector(`.tab-panel[data-panel="${id}"]`).innerHTML = panelFor(g);
+    wireFlagKeyControls(id);
+  };
+  function wireFlagKeyControls(id) {
+    const panel = app.querySelector(`.tab-panel[data-panel="${id}"]`);
+    panel.querySelector('.flagkey-search').addEventListener('input', (e) => {
+      flagKeySearch[id] = e.target.value;
+      rerenderGroup(id);
+      panel.querySelector('.flagkey-search').focus();
+      const v = panel.querySelector('.flagkey-search').value;
+      panel.querySelector('.flagkey-search').setSelectionRange(v.length, v.length);
+    });
+    panel.querySelector('.flagkey-region').addEventListener('change', (e) => {
+      flagKeyRegion[id] = e.target.value;
+      rerenderGroup(id);
+    });
+  }
+  groups.forEach((g) => wireFlagKeyControls(g.id));
 }
 
 // ============================================================================

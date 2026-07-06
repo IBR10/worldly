@@ -82,6 +82,11 @@ export function historicFlagUrl(filename, width = 320) {
   return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
 }
 
+/** US/Mexico state flag image URL, same stable Wikimedia Commons endpoint as historicFlagUrl. */
+export function stateFlagUrl(filename, width = 320) {
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
+}
+
 // ---- interactive map SVGs (lazy-loaded) -------------------------------------
 // The world map is ~1MB, so the map SVGs are fetched on demand the first time a
 // click-the-map mode starts — not at app startup. Each is cached after loading.
