@@ -49,7 +49,7 @@ Flag → country already exists. Planned extensions:
       pan/zoom + native SVG hit-testing; pure logic lives in `js/maps.js`.
 
 ## Content & data
-- [ ] Expand country set from 76 → all ~195 sovereign states.
+- [x] Expand country set from 76 → 155 (biggest gaps in Africa/Oceania filled; full ~195 coverage remains a future stretch goal).
 - [ ] Famous-landmark mode (image → country).
 - [ ] Cultural-quiz mode (food / festivals / traditions) with its own data file.
 - [ ] Per-country deep-dive study pages (population, currency, neighbours…).
