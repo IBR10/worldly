@@ -11,11 +11,12 @@ import { historicFlagUrl } from '../js/data.js';
 // A small synthetic dataset that mirrors the real JSON shape.
 const data = {
   countries: [
-    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', language: 'Japanese', religion: 'Shinto/Buddhism', funFact: 'Many islands.', wiki: 'https://w/Japan' },
-    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', language: 'French', religion: 'Christianity', funFact: 'Most visited.', wiki: 'https://w/France' },
-    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', language: 'Portuguese', religion: 'Christianity', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
-    { name: 'Egypt', iso2: 'EG', capital: 'Cairo', region: 'Africa', language: 'Arabic', religion: 'Islam', funFact: 'Pyramids.', wiki: 'https://w/Egypt' },
-    { name: 'Kenya', iso2: 'KE', capital: 'Nairobi', region: 'Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Safari.', wiki: 'https://w/Kenya' },
+    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', subregion: 'East Asia', language: 'Japanese', religion: 'Shinto/Buddhism', funFact: 'Many islands.', wiki: 'https://w/Japan' },
+    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', subregion: 'Western Europe', language: 'French', religion: 'Christianity', funFact: 'Most visited.', wiki: 'https://w/France' },
+    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', subregion: 'South America', language: 'Portuguese', religion: 'Christianity', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
+    { name: 'Egypt', iso2: 'EG', capital: 'Cairo', region: 'Africa', subregion: 'North Africa', language: 'Arabic', religion: 'Islam', funFact: 'Pyramids.', wiki: 'https://w/Egypt' },
+    { name: 'Kenya', iso2: 'KE', capital: 'Nairobi', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Safari.', wiki: 'https://w/Kenya' },
+    { name: 'Tanzania', iso2: 'TZ', capital: 'Dodoma', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Serengeti.', wiki: 'https://w/Tanzania' },
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Jalisco', capital: 'Guadalajara', region: 'West', funFact: 'Tequila.', wiki: 'https://w/JAL' }],
@@ -42,16 +43,16 @@ const data = {
 
 test('buildPool covers every enabled mode', () => {
   const pool = buildPool(data, { modes: ALL_MODES, continents: 'all' });
-  // 5 countries × 5 country-modes (capital, country, language, religion, flag)
+  // 6 countries × 5 country-modes (capital, country, language, religion, flag)
   // + 4 religions × 6 religion-modes (founder, text, holiday, symbol, place, origin)
   // + 1 US + 1 MX + 4 historic flags + 6 similar-flag countries (4 + 2)
-  assert.equal(pool.length, 5 * 5 + 4 * 6 + 1 + 1 + 4 + 6);
+  assert.equal(pool.length, 6 * 5 + 4 * 6 + 1 + 1 + 4 + 6);
   assert.ok(pool.every((p) => p.id.includes(':')));
 });
 
 test('buildPool filters by continent for country modes', () => {
   const pool = buildPool(data, { modes: ['capital'], continents: ['Africa'] });
-  assert.equal(pool.length, 2); // Egypt + Kenya
+  assert.equal(pool.length, 3); // Egypt + Kenya + Tanzania
 });
 
 test('buildPool builds one item per historic flag', () => {
