@@ -79,7 +79,9 @@ process.exit(fails ? 1 : 0);
 "
 ```
 
-Expected: `total: 115` (76 existing + 29 Africa + 10 Oceania), Africa: 39, Oceania: 14, and `failures: 0`. Fix any reported issue before proceeding.
+Expected: `total: 116` (76 existing + 30 Africa + 10 Oceania — the enumerated list in Step 1 has 30 entries; treat that list, not the prose count, as authoritative if they ever disagree), Africa: 40, Oceania: 14, and `failures: 0`. Fix any reported issue before proceeding.
+
+> **Note (post-implementation):** Task 1 actually shipped with 30 African additions (116 total, Africa 40) — the plan's prose originally said "29" but the enumerated list always had 30. All "Expected" counts below are corrected to match.
 
 - [ ] **Step 4: Curl-validate the wiki URL of every country added in this task** (the schema check above only confirms the URL *looks* like `https://...`, not that the article resolves — every new external URL must be checked per the Global Constraints):
 
@@ -137,7 +139,7 @@ git commit -m "Worldly: add 29 African and 10 Oceanian countries (76 -> 115)"
 
 - [ ] **Step 3: Run the validation script from Task 1, Step 3** (the Node schema/dup/subregion check)
 
-Expected: `total: 143`, Asia: 39, Europe: 34, `failures: 0`.
+Expected: `total: 144`, Asia: 39, Europe: 34, `failures: 0`.
 
 - [ ] **Step 4: Curl-validate the wiki URL of every country added in this task** — reuse Task 1 Step 4's exact curl loop, with `added` replaced by this task's 16+12 names:
 
@@ -163,7 +165,7 @@ Run: `npm test` — expect all pass.
 
 ```bash
 git add data/countries.json
-git commit -m "Worldly: add 16 Asian and 12 European countries (115 -> 143)"
+git commit -m "Worldly: add 16 Asian and 12 European countries (116 -> 144)"
 ```
 
 ### Task 3: Add Americas top-up countries (final data batch)
@@ -172,7 +174,7 @@ git commit -m "Worldly: add 16 Asian and 12 European countries (115 -> 143)"
 - Modify: `data/countries.json`
 
 **Interfaces:**
-- Produces: 16 North America entries (8 existing + 8 new), 12 South America entries (9 existing + 3 new). Final total: 154.
+- Produces: 16 North America entries (8 existing + 8 new), 12 South America entries (9 existing + 3 new). Final total: 155.
 
 - [ ] **Step 1: Add these 8 North American countries**: Honduras, Nicaragua, El Salvador, Belize, Dominican Republic, Haiti, Bahamas, Trinidad and Tobago.
 
@@ -194,7 +196,7 @@ git commit -m "Worldly: add 16 Asian and 12 European countries (115 -> 143)"
 
 - [ ] **Step 3: Run the validation script from Task 1, Step 3** (the Node schema/dup/subregion check)
 
-Expected: `total: 154`, North America: 16, South America: 12, and every region count matching: Asia 39, Europe 34, North America 16, South America 12, Africa 39, Oceania 14 (sum = 154). `failures: 0`.
+Expected: `total: 155`, North America: 16, South America: 12, and every region count matching: Asia 39, Europe 34, North America 16, South America 12, Africa 40, Oceania 14 (sum = 155). `failures: 0`.
 
 - [ ] **Step 4: Curl-validate the wiki URL of every country added in this task**:
 
@@ -222,13 +224,13 @@ Run: `npm test` — expect all pass.
 
 - [ ] **Step 7: Update docs**
 
-Modify `README.md` and `ROADMAP.md`: change any reference to "76 countries" to "154 countries" (grep for `76` in both files first to find exact lines), and mark the ROADMAP.md line `Expand country set from 76 → all ~195 sovereign states` as partially done, e.g. `- [x] Expand country set from 76 → 154 (biggest gaps in Africa/Oceania filled; full ~195 coverage remains a future stretch goal).`
+Modify `README.md` and `ROADMAP.md`: change any reference to "76 countries" to "155 countries" (grep for `76` in both files first to find exact lines), and mark the ROADMAP.md line `Expand country set from 76 → all ~195 sovereign states` as partially done, e.g. `- [x] Expand country set from 76 → 155 (biggest gaps in Africa/Oceania filled; full ~195 coverage remains a future stretch goal).`
 
 - [ ] **Step 8: Commit**
 
 ```bash
 git add data/countries.json README.md ROADMAP.md
-git commit -m "Worldly: add 8 North American and 3 South American countries (143 -> 154), update docs"
+git commit -m "Worldly: add 8 North American and 3 South American countries (144 -> 155), update docs"
 ```
 
 ---
