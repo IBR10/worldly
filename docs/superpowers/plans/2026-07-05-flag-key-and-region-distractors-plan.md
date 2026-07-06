@@ -673,13 +673,50 @@ git commit -m "Worldly: generalize getContinents() into dataset-agnostic getRegi
 
 **Files:**
 - Modify: `js/main.js` — add import, add a home-card entry, add the new screen function
+- Modify: `js/data.js` — add `stateFlagUrl()` (pulled forward from what was originally Task 11 — see note below)
+- Modify: `tests/engine.test.mjs` — one new test for `stateFlagUrl()`
 - Modify: `css/styles.css` — one small addition if needed (checked in Step 4 below; the existing `.grid`/`.card`/`.form-block`/`.select`/`.type-input`/`.tabs` classes already cover this screen)
 
 **Interfaces:**
 - Consumes: `getData()`, `getRegions()`, `flagUrl()` from `js/data.js` (Task 7); `wireTabs()`, `topNav()`, `wireNav()`, `esc()` already in `js/main.js`.
-- Produces: `showFlagKey()`, wired to a new `key` entry in the `journeyCards` array and a new `data-go="key"` click handler in `showHome()`.
+- Produces: `showFlagKey()`, wired to a new `key` entry in the `journeyCards` array and a new `data-go="key"` click handler in `showHome()`. Also produces `stateFlagUrl(filename, width = 320)` in `js/data.js`.
 
-- [ ] **Step 1: Update the `data.js` import line** at the top of `js/main.js` (currently around line 4):
+> **Why `stateFlagUrl` is defined in this task, not later:** the original plan defined it in a later task (state-flag data sourcing), assuming `showFlagKey()` calling an as-yet-undefined `stateFlagUrl` would only produce a broken *image* on the US/Mexico tabs (a network-level failure, caught by the existing `onerror` handler on each `<img>`). That assumption was wrong: an undefined function reference throws a `ReferenceError` synchronously while the template string is being built, which fails the *entire* screen's render — not just the two tabs that use it. So `stateFlagUrl()` ships here, in the same task that first calls it, making this task genuinely self-contained and testable on its own (matching what "no unit test for DOM-heavy UI — verify in a real browser" in Step 5 already assumed was possible). The state-flag *data* (which filenames each state actually has) still arrives in the later data-sourcing tasks — until then, `stateFlagUrl(undefined)` produces a well-formed but 404ing URL, which the existing `onerror` handler catches exactly as originally intended.
+
+- [ ] **Step 1: Write the failing test for `stateFlagUrl`** — add to `tests/engine.test.mjs`, right after the existing `'historicFlagUrl builds a stable Wikimedia Special:FilePath URL'` test:
+
+```js
+test('stateFlagUrl builds a stable Wikimedia Special:FilePath URL', () => {
+  const url = stateFlagUrl('Flag of Alabama.svg');
+  assert.match(url, /commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
+  assert.match(url, /Flag%20of%20Alabama\.svg/);
+  assert.match(url, /width=320/);
+});
+```
+
+Add `stateFlagUrl` to the existing `data.js` import line at the top of `tests/engine.test.mjs`:
+```js
+import { historicFlagUrl } from '../js/data.js';
+```
+becomes:
+```js
+import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
+```
+
+Run `node --test tests/engine.test.mjs 2>&1 | grep -A3 stateFlagUrl` — expect FAIL (`stateFlagUrl is not a function` or an import error), confirming RED.
+
+- [ ] **Step 2: Implement `stateFlagUrl`** in `js/data.js`, right after `historicFlagUrl`:
+
+```js
+/** US/Mexico state flag image URL, same stable Wikimedia Commons endpoint as historicFlagUrl. */
+export function stateFlagUrl(filename, width = 320) {
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
+}
+```
+
+Run `node --test tests/engine.test.mjs` — expect the new test to pass (GREEN).
+
+- [ ] **Step 3: Update the `data.js` import line** at the top of `js/main.js` (currently around line 4):
 
 Change:
 ```js
@@ -687,10 +724,10 @@ import { loadData, getData, getContinents, flagUrl, historicFlagUrl, loadMap } f
 ```
 to:
 ```js
-import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, loadMap } from './data.js';
+import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
 ```
 
-- [ ] **Step 2: Register the new card** — in `showHome()`'s `journeyCards` array (around line 222-231), add one entry right after `phrases`:
+- [ ] **Step 4: Register the new card** — in `showHome()`'s `journeyCards` array (around line 222-231), add one entry right after `phrases`:
 
 ```js
     { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
@@ -704,7 +741,7 @@ And add the click handler right after the existing `phrases` handler (around lin
   app.querySelector('[data-go="flagkey"]').addEventListener('click', showFlagKey);
 ```
 
-- [ ] **Step 3: Write `showFlagKey()`** — add this function to `js/main.js`, right before `showPhrases()` (find `function showPhrases() {` and insert above it):
+- [ ] **Step 5: Write `showFlagKey()`** — add this function to `js/main.js`, right before `showPhrases()` (find `function showPhrases() {` and insert above it):
 
 ```js
 // ============================================================================
@@ -797,28 +834,29 @@ function showFlagKey() {
 }
 ```
 
-- [ ] **Step 4: Check whether any new CSS is needed**
+- [ ] **Step 6: Check whether any new CSS is needed**
 
-Run: `grep -n "flagkey" css/styles.css` — expect no matches (new markup reuses `.form-block`, `.type-input`, `.select`, `.grid`, `.card`, `.emoji-flag`, `.card-title`, `.card-desc`, `.mt-10`, `.mt-18` — all already styled). If the flag key cards look wrong once verified in the browser (Task 9), only then add a `.flagkey-card { cursor: default; }` rule (since these cards are non-interactive, unlike quiz `.card` buttons) to `css/styles.css` right after the existing `.card:hover` rule.
+Run: `grep -n "flagkey" css/styles.css` — expect no matches (new markup reuses `.form-block`, `.type-input`, `.select`, `.grid`, `.card`, `.emoji-flag`, `.card-title`, `.card-desc`, `.mt-10`, `.mt-18` — all already styled). If the flag key cards look wrong once verified in the browser (Step 7), only then add a `.flagkey-card { cursor: default; }` rule (since these cards are non-interactive, unlike quiz `.card` buttons) to `css/styles.css` right after the existing `.card:hover` rule.
 
-- [ ] **Step 5: Manual verification (no unit test for DOM-heavy UI — verify in a real browser)**
+- [ ] **Step 7: Manual verification (no unit test for DOM-heavy UI — verify in a real browser)**
 
 Run: `python3 -m http.server 8000` from the `Worldly/` directory, open `http://localhost:8000`, click **Explore → Flag Key**, and confirm:
+- The screen actually renders (no blank/crashed screen, no console errors) — this is the specific failure mode this task's reordering fixes, so confirm it explicitly.
 - Three tabs (Countries / US States / Mexican States) switch correctly.
 - Typing in the search box filters the visible cards live, without losing focus mid-keystroke.
 - The region dropdown filters correctly and combines with the search box (AND logic).
 - Cards show a flag image, name, and capital; nothing is clickable (no console errors on click).
-- US/Mexico tabs show a broken-image icon for now (Task 9/10 haven't added `flag` data yet) — this is expected at this point in the plan.
+- US/Mexico tabs show a broken-image icon for now (`stateFlagUrl(undefined)` 404s since Tasks 9/10 haven't added `flag` data yet — the existing `onerror` handler catches this gracefully) — this is expected at this point in the plan, not a bug.
 
-- [ ] **Step 6: Run tests**
+- [ ] **Step 8: Run tests**
 
-Run: `npm test` — expect all pass (this task adds no new unit-testable pure logic).
+Run: `npm test` — expect all pass, one more than before this task (this task adds exactly one new unit test, for `stateFlagUrl`; the screen itself has no unit-testable pure logic).
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 9: Commit**
 
 ```bash
-git add js/main.js css/styles.css
-git commit -m "Worldly: add Flag Key screen (sub-tabs, live search, region dropdown)"
+git add js/main.js js/data.js tests/engine.test.mjs css/styles.css
+git commit -m "Worldly: add Flag Key screen (sub-tabs, live search, region dropdown) + stateFlagUrl()"
 ```
 
 ---
@@ -831,7 +869,7 @@ git commit -m "Worldly: add Flag Key screen (sub-tabs, live search, region dropd
 - Modify: `data/us_states.json` (add a `flag` field to all 50 entries)
 
 **Interfaces:**
-- Produces: every US state record gains `"flag": "Flag of <State>.svg"` (Wikimedia Commons filename), consumed by `stateFlagUrl()` in Task 11.
+- Produces: every US state record gains `"flag": "Flag of <State>.svg"` (Wikimedia Commons filename), consumed by `stateFlagUrl()` (now defined in Task 8).
 
 - [ ] **Step 1: Add a `flag` field to every one of the 50 entries** in `data/us_states.json`, following the Wikimedia Commons naming convention `Flag of <State Name>.svg` (this is the standard, verified naming pattern Commons uses for all 50 US state flags). Example for the first entry:
 
@@ -876,7 +914,7 @@ git commit -m "Worldly: add Wikimedia Commons flag filenames for all 50 US state
 - Modify: `data/mexico_states.json` (add a `flag` field to all 32 entries)
 
 **Interfaces:**
-- Produces: every Mexican state record gains a `flag` field (Wikimedia Commons filename), consumed by `stateFlagUrl()` in Task 11.
+- Produces: every Mexican state record gains a `flag` field (Wikimedia Commons filename), consumed by `stateFlagUrl()` (now defined in Task 8).
 
 - [ ] **Step 1: Add a `flag` field to every one of the 32 entries** in `data/mexico_states.json`. Mexican state flags on Commons are inconsistently named (some as `"Flag of <State>.svg"`, others as `"Bandera de <Estado>.svg"`) — for each state, search Wikimedia Commons directly (e.g. `https://commons.wikimedia.org/wiki/Category:Flags_of_Mexican_states`) to find the exact real filename, rather than assuming one convention. Example for the first entry (Aguascalientes' actual Commons file is `"Flag of Aguascalientes.svg"`):
 
@@ -913,74 +951,31 @@ git add data/mexico_states.json
 git commit -m "Worldly: add Wikimedia Commons flag filenames for all 32 Mexican states"
 ```
 
-### Task 11: Add `stateFlagUrl()` helper and wire it into the Flag Key
+### Task 11: Final Flag Key verification (real state flags now available)
+
+> **Note (post-implementation reordering):** `stateFlagUrl()` was originally planned for this task, but Task 8's implementer correctly caught that `showFlagKey()` calling an undefined `stateFlagUrl` doesn't degrade to a broken IMAGE (network-level, caught by the existing `onerror` handler) — it throws a `ReferenceError` synchronously while building the template string, which fails the *entire* screen's render, not just the US/Mexico tabs. My original self-review notes wrongly assumed the intermediate state was harmless; it wasn't, since Task 8's own manual-verification step requires the app to actually render. Fix: `stateFlagUrl()` (function + its test + its `main.js` import) was pulled forward into **Task 8 itself**, making Task 8 fully self-contained and runnable as originally intended. This task is now just the final end-to-end check now that Tasks 9/10 (state flag data) have also landed.
 
 **Files:**
-- Modify: `js/data.js` (new exported function, alongside `historicFlagUrl`)
-- Test: `tests/engine.test.mjs` (one new test)
+- None (verification only — no code changes expected)
 
 **Interfaces:**
-- Produces: `export function stateFlagUrl(filename, width = 320)` — identical shape to `historicFlagUrl`, already referenced by `showFlagKey()` in Task 8.
+- Consumes: `stateFlagUrl()` (now defined in Task 8) + the `flag` fields added to `data/us_states.json`/`data/mexico_states.json` (Tasks 9/10).
 
-- [ ] **Step 1: Write the failing test** — add to `tests/engine.test.mjs`, right after the existing `'historicFlagUrl builds a stable Wikimedia Special:FilePath URL'` test:
+- [ ] **Step 1: Manual verification in the browser**
 
-```js
-test('stateFlagUrl builds a stable Wikimedia Special:FilePath URL', () => {
-  const url = stateFlagUrl('Flag of Alabama.svg');
-  assert.match(url, /commons\.wikimedia\.org\/wiki\/Special:FilePath\//);
-  assert.match(url, /Flag%20of%20Alabama\.svg/);
-  assert.match(url, /width=320/);
-});
-```
+Run: `python3 -m http.server 8000` from `Worldly/`, open `http://localhost:8000`, go to **Explore → Flag Key → US States** and **Mexican States** tabs, and confirm real flag images now load for every card (no broken-image icons, no console errors). Spot-check 5 states per tab.
 
-And add `stateFlagUrl` to the existing `data.js` import line at the top of the file:
-```js
-import { historicFlagUrl } from '../js/data.js';
-```
-becomes:
-```js
-import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
-```
+- [ ] **Step 2: If anything is broken, fix it now**
 
-- [ ] **Step 2: Run the test to verify it fails**
+If any flag image fails to load, cross-check that state's `flag` filename in the relevant JSON file against Wikimedia Commons directly (same technique as Tasks 9/10's validation scripts) and correct it.
 
-Run: `node --test tests/engine.test.mjs 2>&1 | grep -A3 stateFlagUrl`
-Expected: FAIL — `stateFlagUrl is not a function`.
-
-- [ ] **Step 3: Implement `stateFlagUrl`** in `js/data.js`, right after `historicFlagUrl` (after line 78):
-
-```js
-/** US/Mexico state flag image URL, same stable Wikimedia Commons endpoint as historicFlagUrl. */
-export function stateFlagUrl(filename, width = 320) {
-  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
-}
-```
-
-- [ ] **Step 4: Run the test to verify it passes**
-
-Run: `npm test` — expect all pass (56/56 — 55 from Phase 2 + 1 new).
-
-- [ ] **Step 5: Add the `stateFlagUrl` import to `main.js`**
-
-Change the `data.js` import line in `js/main.js` (already updated in Task 8, Step 1) from:
-```js
-import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, loadMap } from './data.js';
-```
-to:
-```js
-import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
-```
-
-- [ ] **Step 6: Manual verification in the browser**
-
-Run: `python3 -m http.server 8000` from `Worldly/`, open `http://localhost:8000`, go to **Explore → Flag Key → US States** and **Mexican States** tabs, and confirm real flag images now load for every card (no broken-image icons). Spot-check 5 states per tab.
-
-- [ ] **Step 7: Commit**
+- [ ] **Step 3: Commit (only if Step 2 required a fix)**
 
 ```bash
-git add js/data.js js/main.js tests/engine.test.mjs
-git commit -m "Worldly: add stateFlagUrl() helper, wire real state flags into the Flag Key"
+git add data/us_states.json data/mexico_states.json
+git commit -m "Worldly: fix state flag filename(s) found during final Flag Key verification"
 ```
+(Skip this step entirely if Step 1 found no issues — there is nothing to commit for a clean verification pass.)
 
 ---
 
