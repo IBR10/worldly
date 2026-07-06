@@ -1,52 +1,402 @@
 [
-  { "name": "Alabama", "capital": "Montgomery", "region": "South", "funFact": "Montgomery was the first capital of the Confederacy in 1861.", "wiki": "https://en.wikipedia.org/wiki/Alabama" },
-  { "name": "Alaska", "capital": "Juneau", "region": "West", "funFact": "Juneau is the only U.S. state capital with no road connection to the rest of the state.", "wiki": "https://en.wikipedia.org/wiki/Alaska" },
-  { "name": "Arizona", "capital": "Phoenix", "region": "West", "funFact": "Phoenix is the most populous state capital in the United States.", "wiki": "https://en.wikipedia.org/wiki/Arizona" },
-  { "name": "Arkansas", "capital": "Little Rock", "region": "South", "funFact": "Little Rock is named after a small rock formation on the Arkansas River.", "wiki": "https://en.wikipedia.org/wiki/Arkansas" },
-  { "name": "California", "capital": "Sacramento", "region": "West", "funFact": "Sacramento was a hub of the 1849 Gold Rush and California's first incorporated city.", "wiki": "https://en.wikipedia.org/wiki/California" },
-  { "name": "Colorado", "capital": "Denver", "region": "West", "funFact": "Denver is nicknamed the 'Mile-High City' because it sits exactly 5,280 feet above sea level.", "wiki": "https://en.wikipedia.org/wiki/Colorado" },
-  { "name": "Connecticut", "capital": "Hartford", "region": "Northeast", "funFact": "Hartford is home to the oldest continuously published U.S. newspaper, the Hartford Courant.", "wiki": "https://en.wikipedia.org/wiki/Connecticut" },
-  { "name": "Delaware", "capital": "Dover", "region": "Northeast", "funFact": "Delaware was the first state to ratify the U.S. Constitution, in 1787.", "wiki": "https://en.wikipedia.org/wiki/Delaware" },
-  { "name": "Florida", "capital": "Tallahassee", "region": "South", "funFact": "Tallahassee was chosen as capital because it sat halfway between St. Augustine and Pensacola.", "wiki": "https://en.wikipedia.org/wiki/Florida" },
-  { "name": "Georgia", "capital": "Atlanta", "region": "South", "funFact": "Atlanta hosted the 1996 Summer Olympics and is home to the world's busiest airport.", "wiki": "https://en.wikipedia.org/wiki/Georgia_(U.S._state)" },
-  { "name": "Hawaii", "capital": "Honolulu", "region": "West", "funFact": "Honolulu is home to Iolani Palace, the only royal palace on U.S. soil.", "wiki": "https://en.wikipedia.org/wiki/Hawaii" },
-  { "name": "Idaho", "capital": "Boise", "region": "West", "funFact": "Boise's name likely comes from the French 'les bois', meaning 'the woods'.", "wiki": "https://en.wikipedia.org/wiki/Idaho" },
-  { "name": "Illinois", "capital": "Springfield", "region": "Midwest", "funFact": "Springfield was home to Abraham Lincoln for nearly 25 years before his presidency.", "wiki": "https://en.wikipedia.org/wiki/Illinois" },
-  { "name": "Indiana", "capital": "Indianapolis", "region": "Midwest", "funFact": "Indianapolis hosts the Indy 500, the largest single-day sporting event in the world.", "wiki": "https://en.wikipedia.org/wiki/Indiana" },
-  { "name": "Iowa", "capital": "Des Moines", "region": "Midwest", "funFact": "Des Moines holds the nation's first presidential caucuses every election cycle.", "wiki": "https://en.wikipedia.org/wiki/Iowa" },
-  { "name": "Kansas", "capital": "Topeka", "region": "Midwest", "funFact": "Topeka was the setting of the landmark 1954 Brown v. Board of Education ruling.", "wiki": "https://en.wikipedia.org/wiki/Kansas" },
-  { "name": "Kentucky", "capital": "Frankfort", "region": "South", "funFact": "Frankfort is one of the least populous state capitals in the U.S.", "wiki": "https://en.wikipedia.org/wiki/Kentucky" },
-  { "name": "Louisiana", "capital": "Baton Rouge", "region": "South", "funFact": "Baton Rouge means 'red stick' in French, named for a boundary marker on the river.", "wiki": "https://en.wikipedia.org/wiki/Louisiana" },
-  { "name": "Maine", "capital": "Augusta", "region": "Northeast", "funFact": "Maine is the only U.S. state whose name is just one syllable.", "wiki": "https://en.wikipedia.org/wiki/Maine" },
-  { "name": "Maryland", "capital": "Annapolis", "region": "Northeast", "funFact": "Annapolis served briefly as the U.S. capital in 1783–84 and hosts the Naval Academy.", "wiki": "https://en.wikipedia.org/wiki/Maryland" },
-  { "name": "Massachusetts", "capital": "Boston", "region": "Northeast", "funFact": "Boston is home to the oldest public park in the U.S., Boston Common, founded in 1634.", "wiki": "https://en.wikipedia.org/wiki/Massachusetts" },
-  { "name": "Michigan", "capital": "Lansing", "region": "Midwest", "funFact": "Lansing became the capital in 1847 to move government away from vulnerable Detroit.", "wiki": "https://en.wikipedia.org/wiki/Michigan" },
-  { "name": "Minnesota", "capital": "Saint Paul", "region": "Midwest", "funFact": "Saint Paul and Minneapolis are known together as the Twin Cities.", "wiki": "https://en.wikipedia.org/wiki/Minnesota" },
-  { "name": "Mississippi", "capital": "Jackson", "region": "South", "funFact": "Jackson is named after President Andrew Jackson.", "wiki": "https://en.wikipedia.org/wiki/Mississippi" },
-  { "name": "Missouri", "capital": "Jefferson City", "region": "Midwest", "funFact": "Jefferson City was purpose-built as a capital and named after Thomas Jefferson.", "wiki": "https://en.wikipedia.org/wiki/Missouri" },
-  { "name": "Montana", "capital": "Helena", "region": "West", "funFact": "Helena was founded as a gold-mining camp called 'Last Chance Gulch'.", "wiki": "https://en.wikipedia.org/wiki/Montana" },
-  { "name": "Nebraska", "capital": "Lincoln", "region": "Midwest", "funFact": "Lincoln's capitol is a 400-foot tower nicknamed 'The Tower on the Plains'.", "wiki": "https://en.wikipedia.org/wiki/Nebraska" },
-  { "name": "Nevada", "capital": "Carson City", "region": "West", "funFact": "Carson City is named after frontiersman Kit Carson.", "wiki": "https://en.wikipedia.org/wiki/Nevada" },
-  { "name": "New Hampshire", "capital": "Concord", "region": "Northeast", "funFact": "Concord is a center of the granite industry, giving NH its 'Granite State' nickname.", "wiki": "https://en.wikipedia.org/wiki/New_Hampshire" },
-  { "name": "New Jersey", "capital": "Trenton", "region": "Northeast", "funFact": "Trenton briefly served as the capital of the United States in 1784.", "wiki": "https://en.wikipedia.org/wiki/New_Jersey" },
-  { "name": "New Mexico", "capital": "Santa Fe", "region": "West", "funFact": "Santa Fe, founded in 1610, is the oldest state capital in the United States.", "wiki": "https://en.wikipedia.org/wiki/New_Mexico" },
-  { "name": "New York", "capital": "Albany", "region": "Northeast", "funFact": "Albany is one of the oldest surviving European settlements from the original 13 colonies.", "wiki": "https://en.wikipedia.org/wiki/New_York_(state)" },
-  { "name": "North Carolina", "capital": "Raleigh", "region": "South", "funFact": "Raleigh is nicknamed the 'City of Oaks' for its many willow oak trees.", "wiki": "https://en.wikipedia.org/wiki/North_Carolina" },
-  { "name": "North Dakota", "capital": "Bismarck", "region": "Midwest", "funFact": "Bismarck was named to attract German railroad investment in the 1870s.", "wiki": "https://en.wikipedia.org/wiki/North_Dakota" },
-  { "name": "Ohio", "capital": "Columbus", "region": "Midwest", "funFact": "Columbus is named after explorer Christopher Columbus.", "wiki": "https://en.wikipedia.org/wiki/Ohio" },
-  { "name": "Oklahoma", "capital": "Oklahoma City", "region": "South", "funFact": "Oklahoma City grew to 10,000 people in a single day during the 1889 Land Run.", "wiki": "https://en.wikipedia.org/wiki/Oklahoma" },
-  { "name": "Oregon", "capital": "Salem", "region": "West", "funFact": "Salem sits in the fertile Willamette Valley, a major wine and farming region.", "wiki": "https://en.wikipedia.org/wiki/Oregon" },
-  { "name": "Pennsylvania", "capital": "Harrisburg", "region": "Northeast", "funFact": "Harrisburg was a key transportation hub on the Pennsylvania Canal and railroads.", "wiki": "https://en.wikipedia.org/wiki/Pennsylvania" },
-  { "name": "Rhode Island", "capital": "Providence", "region": "Northeast", "funFact": "Providence was founded in 1636 by Roger Williams as a haven for religious freedom.", "wiki": "https://en.wikipedia.org/wiki/Rhode_Island" },
-  { "name": "South Carolina", "capital": "Columbia", "region": "South", "funFact": "Columbia was one of the first planned cities in the United States, laid out in 1786.", "wiki": "https://en.wikipedia.org/wiki/South_Carolina" },
-  { "name": "South Dakota", "capital": "Pierre", "region": "Midwest", "funFact": "Pierre (pronounced 'peer') is one of the smallest state capitals by population.", "wiki": "https://en.wikipedia.org/wiki/South_Dakota" },
-  { "name": "Tennessee", "capital": "Nashville", "region": "South", "funFact": "Nashville is known as 'Music City', home of country music and the Grand Ole Opry.", "wiki": "https://en.wikipedia.org/wiki/Tennessee" },
-  { "name": "Texas", "capital": "Austin", "region": "South", "funFact": "Austin's slogan is 'Keep Austin Weird' and it hosts the SXSW festival.", "wiki": "https://en.wikipedia.org/wiki/Texas" },
-  { "name": "Utah", "capital": "Salt Lake City", "region": "West", "funFact": "Salt Lake City was founded in 1847 by Mormon pioneers led by Brigham Young.", "wiki": "https://en.wikipedia.org/wiki/Utah" },
-  { "name": "Vermont", "capital": "Montpelier", "region": "Northeast", "funFact": "Montpelier is the least populous state capital in the U.S. and has no McDonald's.", "wiki": "https://en.wikipedia.org/wiki/Vermont" },
-  { "name": "Virginia", "capital": "Richmond", "region": "South", "funFact": "Richmond was the capital of the Confederacy during most of the Civil War.", "wiki": "https://en.wikipedia.org/wiki/Virginia" },
-  { "name": "Washington", "capital": "Olympia", "region": "West", "funFact": "Olympia sits at the southern tip of Puget Sound, framed by the Olympic Mountains.", "wiki": "https://en.wikipedia.org/wiki/Washington_(state)" },
-  { "name": "West Virginia", "capital": "Charleston", "region": "South", "funFact": "West Virginia split from Virginia in 1863 to remain in the Union during the Civil War.", "wiki": "https://en.wikipedia.org/wiki/West_Virginia" },
-  { "name": "Wisconsin", "capital": "Madison", "region": "Midwest", "funFact": "Madison is built on an isthmus between Lake Mendota and Lake Monona.", "wiki": "https://en.wikipedia.org/wiki/Wisconsin" },
-  { "name": "Wyoming", "capital": "Cheyenne", "region": "West", "funFact": "Wyoming was the first U.S. territory to grant women the right to vote, in 1869.", "wiki": "https://en.wikipedia.org/wiki/Wyoming" }
+  {
+    "name": "Alabama",
+    "capital": "Montgomery",
+    "region": "South",
+    "funFact": "Montgomery was the first capital of the Confederacy in 1861.",
+    "wiki": "https://en.wikipedia.org/wiki/Alabama",
+    "flag": "Flag of Alabama.svg"
+  },
+  {
+    "name": "Alaska",
+    "capital": "Juneau",
+    "region": "West",
+    "funFact": "Juneau is the only U.S. state capital with no road connection to the rest of the state.",
+    "wiki": "https://en.wikipedia.org/wiki/Alaska",
+    "flag": "Flag of Alaska.svg"
+  },
+  {
+    "name": "Arizona",
+    "capital": "Phoenix",
+    "region": "West",
+    "funFact": "Phoenix is the most populous state capital in the United States.",
+    "wiki": "https://en.wikipedia.org/wiki/Arizona",
+    "flag": "Flag of Arizona.svg"
+  },
+  {
+    "name": "Arkansas",
+    "capital": "Little Rock",
+    "region": "South",
+    "funFact": "Little Rock is named after a small rock formation on the Arkansas River.",
+    "wiki": "https://en.wikipedia.org/wiki/Arkansas",
+    "flag": "Flag of Arkansas.svg"
+  },
+  {
+    "name": "California",
+    "capital": "Sacramento",
+    "region": "West",
+    "funFact": "Sacramento was a hub of the 1849 Gold Rush and California's first incorporated city.",
+    "wiki": "https://en.wikipedia.org/wiki/California",
+    "flag": "Flag of California.svg"
+  },
+  {
+    "name": "Colorado",
+    "capital": "Denver",
+    "region": "West",
+    "funFact": "Denver is nicknamed the 'Mile-High City' because it sits exactly 5,280 feet above sea level.",
+    "wiki": "https://en.wikipedia.org/wiki/Colorado",
+    "flag": "Flag of Colorado.svg"
+  },
+  {
+    "name": "Connecticut",
+    "capital": "Hartford",
+    "region": "Northeast",
+    "funFact": "Hartford is home to the oldest continuously published U.S. newspaper, the Hartford Courant.",
+    "wiki": "https://en.wikipedia.org/wiki/Connecticut",
+    "flag": "Flag of Connecticut.svg"
+  },
+  {
+    "name": "Delaware",
+    "capital": "Dover",
+    "region": "Northeast",
+    "funFact": "Delaware was the first state to ratify the U.S. Constitution, in 1787.",
+    "wiki": "https://en.wikipedia.org/wiki/Delaware",
+    "flag": "Flag of Delaware.svg"
+  },
+  {
+    "name": "Florida",
+    "capital": "Tallahassee",
+    "region": "South",
+    "funFact": "Tallahassee was chosen as capital because it sat halfway between St. Augustine and Pensacola.",
+    "wiki": "https://en.wikipedia.org/wiki/Florida",
+    "flag": "Flag of Florida.svg"
+  },
+  {
+    "name": "Georgia",
+    "capital": "Atlanta",
+    "region": "South",
+    "funFact": "Atlanta hosted the 1996 Summer Olympics and is home to the world's busiest airport.",
+    "wiki": "https://en.wikipedia.org/wiki/Georgia_(U.S._state)",
+    "flag": "Flag of Georgia.svg"
+  },
+  {
+    "name": "Hawaii",
+    "capital": "Honolulu",
+    "region": "West",
+    "funFact": "Honolulu is home to Iolani Palace, the only royal palace on U.S. soil.",
+    "wiki": "https://en.wikipedia.org/wiki/Hawaii",
+    "flag": "Flag of Hawaii.svg"
+  },
+  {
+    "name": "Idaho",
+    "capital": "Boise",
+    "region": "West",
+    "funFact": "Boise's name likely comes from the French 'les bois', meaning 'the woods'.",
+    "wiki": "https://en.wikipedia.org/wiki/Idaho",
+    "flag": "Flag of Idaho.svg"
+  },
+  {
+    "name": "Illinois",
+    "capital": "Springfield",
+    "region": "Midwest",
+    "funFact": "Springfield was home to Abraham Lincoln for nearly 25 years before his presidency.",
+    "wiki": "https://en.wikipedia.org/wiki/Illinois",
+    "flag": "Flag of Illinois.svg"
+  },
+  {
+    "name": "Indiana",
+    "capital": "Indianapolis",
+    "region": "Midwest",
+    "funFact": "Indianapolis hosts the Indy 500, the largest single-day sporting event in the world.",
+    "wiki": "https://en.wikipedia.org/wiki/Indiana",
+    "flag": "Flag of Indiana.svg"
+  },
+  {
+    "name": "Iowa",
+    "capital": "Des Moines",
+    "region": "Midwest",
+    "funFact": "Des Moines holds the nation's first presidential caucuses every election cycle.",
+    "wiki": "https://en.wikipedia.org/wiki/Iowa",
+    "flag": "Flag of Iowa.svg"
+  },
+  {
+    "name": "Kansas",
+    "capital": "Topeka",
+    "region": "Midwest",
+    "funFact": "Topeka was the setting of the landmark 1954 Brown v. Board of Education ruling.",
+    "wiki": "https://en.wikipedia.org/wiki/Kansas",
+    "flag": "Flag of Kansas.svg"
+  },
+  {
+    "name": "Kentucky",
+    "capital": "Frankfort",
+    "region": "South",
+    "funFact": "Frankfort is one of the least populous state capitals in the U.S.",
+    "wiki": "https://en.wikipedia.org/wiki/Kentucky",
+    "flag": "Flag of Kentucky.svg"
+  },
+  {
+    "name": "Louisiana",
+    "capital": "Baton Rouge",
+    "region": "South",
+    "funFact": "Baton Rouge means 'red stick' in French, named for a boundary marker on the river.",
+    "wiki": "https://en.wikipedia.org/wiki/Louisiana",
+    "flag": "Flag of Louisiana.svg"
+  },
+  {
+    "name": "Maine",
+    "capital": "Augusta",
+    "region": "Northeast",
+    "funFact": "Maine is the only U.S. state whose name is just one syllable.",
+    "wiki": "https://en.wikipedia.org/wiki/Maine",
+    "flag": "Flag of Maine.svg"
+  },
+  {
+    "name": "Maryland",
+    "capital": "Annapolis",
+    "region": "Northeast",
+    "funFact": "Annapolis served briefly as the U.S. capital in 1783–84 and hosts the Naval Academy.",
+    "wiki": "https://en.wikipedia.org/wiki/Maryland",
+    "flag": "Flag of Maryland.svg"
+  },
+  {
+    "name": "Massachusetts",
+    "capital": "Boston",
+    "region": "Northeast",
+    "funFact": "Boston is home to the oldest public park in the U.S., Boston Common, founded in 1634.",
+    "wiki": "https://en.wikipedia.org/wiki/Massachusetts",
+    "flag": "Flag of Massachusetts.svg"
+  },
+  {
+    "name": "Michigan",
+    "capital": "Lansing",
+    "region": "Midwest",
+    "funFact": "Lansing became the capital in 1847 to move government away from vulnerable Detroit.",
+    "wiki": "https://en.wikipedia.org/wiki/Michigan",
+    "flag": "Flag of Michigan.svg"
+  },
+  {
+    "name": "Minnesota",
+    "capital": "Saint Paul",
+    "region": "Midwest",
+    "funFact": "Saint Paul and Minneapolis are known together as the Twin Cities.",
+    "wiki": "https://en.wikipedia.org/wiki/Minnesota",
+    "flag": "Flag of Minnesota.svg"
+  },
+  {
+    "name": "Mississippi",
+    "capital": "Jackson",
+    "region": "South",
+    "funFact": "Jackson is named after President Andrew Jackson.",
+    "wiki": "https://en.wikipedia.org/wiki/Mississippi",
+    "flag": "Flag of Mississippi.svg"
+  },
+  {
+    "name": "Missouri",
+    "capital": "Jefferson City",
+    "region": "Midwest",
+    "funFact": "Jefferson City was purpose-built as a capital and named after Thomas Jefferson.",
+    "wiki": "https://en.wikipedia.org/wiki/Missouri",
+    "flag": "Flag of Missouri.svg"
+  },
+  {
+    "name": "Montana",
+    "capital": "Helena",
+    "region": "West",
+    "funFact": "Helena was founded as a gold-mining camp called 'Last Chance Gulch'.",
+    "wiki": "https://en.wikipedia.org/wiki/Montana",
+    "flag": "Flag of Montana.svg"
+  },
+  {
+    "name": "Nebraska",
+    "capital": "Lincoln",
+    "region": "Midwest",
+    "funFact": "Lincoln's capitol is a 400-foot tower nicknamed 'The Tower on the Plains'.",
+    "wiki": "https://en.wikipedia.org/wiki/Nebraska",
+    "flag": "Flag of Nebraska.svg"
+  },
+  {
+    "name": "Nevada",
+    "capital": "Carson City",
+    "region": "West",
+    "funFact": "Carson City is named after frontiersman Kit Carson.",
+    "wiki": "https://en.wikipedia.org/wiki/Nevada",
+    "flag": "Flag of Nevada.svg"
+  },
+  {
+    "name": "New Hampshire",
+    "capital": "Concord",
+    "region": "Northeast",
+    "funFact": "Concord is a center of the granite industry, giving NH its 'Granite State' nickname.",
+    "wiki": "https://en.wikipedia.org/wiki/New_Hampshire",
+    "flag": "Flag of New Hampshire.svg"
+  },
+  {
+    "name": "New Jersey",
+    "capital": "Trenton",
+    "region": "Northeast",
+    "funFact": "Trenton briefly served as the capital of the United States in 1784.",
+    "wiki": "https://en.wikipedia.org/wiki/New_Jersey",
+    "flag": "Flag of New Jersey.svg"
+  },
+  {
+    "name": "New Mexico",
+    "capital": "Santa Fe",
+    "region": "West",
+    "funFact": "Santa Fe, founded in 1610, is the oldest state capital in the United States.",
+    "wiki": "https://en.wikipedia.org/wiki/New_Mexico",
+    "flag": "Flag of New Mexico.svg"
+  },
+  {
+    "name": "New York",
+    "capital": "Albany",
+    "region": "Northeast",
+    "funFact": "Albany is one of the oldest surviving European settlements from the original 13 colonies.",
+    "wiki": "https://en.wikipedia.org/wiki/New_York_(state)",
+    "flag": "Flag of New York.svg"
+  },
+  {
+    "name": "North Carolina",
+    "capital": "Raleigh",
+    "region": "South",
+    "funFact": "Raleigh is nicknamed the 'City of Oaks' for its many willow oak trees.",
+    "wiki": "https://en.wikipedia.org/wiki/North_Carolina",
+    "flag": "Flag of North Carolina.svg"
+  },
+  {
+    "name": "North Dakota",
+    "capital": "Bismarck",
+    "region": "Midwest",
+    "funFact": "Bismarck was named to attract German railroad investment in the 1870s.",
+    "wiki": "https://en.wikipedia.org/wiki/North_Dakota",
+    "flag": "Flag of North Dakota.svg"
+  },
+  {
+    "name": "Ohio",
+    "capital": "Columbus",
+    "region": "Midwest",
+    "funFact": "Columbus is named after explorer Christopher Columbus.",
+    "wiki": "https://en.wikipedia.org/wiki/Ohio",
+    "flag": "Flag of Ohio.svg"
+  },
+  {
+    "name": "Oklahoma",
+    "capital": "Oklahoma City",
+    "region": "South",
+    "funFact": "Oklahoma City grew to 10,000 people in a single day during the 1889 Land Run.",
+    "wiki": "https://en.wikipedia.org/wiki/Oklahoma",
+    "flag": "Flag of Oklahoma.svg"
+  },
+  {
+    "name": "Oregon",
+    "capital": "Salem",
+    "region": "West",
+    "funFact": "Salem sits in the fertile Willamette Valley, a major wine and farming region.",
+    "wiki": "https://en.wikipedia.org/wiki/Oregon",
+    "flag": "Flag of Oregon.svg"
+  },
+  {
+    "name": "Pennsylvania",
+    "capital": "Harrisburg",
+    "region": "Northeast",
+    "funFact": "Harrisburg was a key transportation hub on the Pennsylvania Canal and railroads.",
+    "wiki": "https://en.wikipedia.org/wiki/Pennsylvania",
+    "flag": "Flag of Pennsylvania.svg"
+  },
+  {
+    "name": "Rhode Island",
+    "capital": "Providence",
+    "region": "Northeast",
+    "funFact": "Providence was founded in 1636 by Roger Williams as a haven for religious freedom.",
+    "wiki": "https://en.wikipedia.org/wiki/Rhode_Island",
+    "flag": "Flag of Rhode Island.svg"
+  },
+  {
+    "name": "South Carolina",
+    "capital": "Columbia",
+    "region": "South",
+    "funFact": "Columbia was one of the first planned cities in the United States, laid out in 1786.",
+    "wiki": "https://en.wikipedia.org/wiki/South_Carolina",
+    "flag": "Flag of South Carolina.svg"
+  },
+  {
+    "name": "South Dakota",
+    "capital": "Pierre",
+    "region": "Midwest",
+    "funFact": "Pierre (pronounced 'peer') is one of the smallest state capitals by population.",
+    "wiki": "https://en.wikipedia.org/wiki/South_Dakota",
+    "flag": "Flag of South Dakota.svg"
+  },
+  {
+    "name": "Tennessee",
+    "capital": "Nashville",
+    "region": "South",
+    "funFact": "Nashville is known as 'Music City', home of country music and the Grand Ole Opry.",
+    "wiki": "https://en.wikipedia.org/wiki/Tennessee",
+    "flag": "Flag of Tennessee.svg"
+  },
+  {
+    "name": "Texas",
+    "capital": "Austin",
+    "region": "South",
+    "funFact": "Austin's slogan is 'Keep Austin Weird' and it hosts the SXSW festival.",
+    "wiki": "https://en.wikipedia.org/wiki/Texas",
+    "flag": "Flag of Texas.svg"
+  },
+  {
+    "name": "Utah",
+    "capital": "Salt Lake City",
+    "region": "West",
+    "funFact": "Salt Lake City was founded in 1847 by Mormon pioneers led by Brigham Young.",
+    "wiki": "https://en.wikipedia.org/wiki/Utah",
+    "flag": "Flag of Utah.svg"
+  },
+  {
+    "name": "Vermont",
+    "capital": "Montpelier",
+    "region": "Northeast",
+    "funFact": "Montpelier is the least populous state capital in the U.S. and has no McDonald's.",
+    "wiki": "https://en.wikipedia.org/wiki/Vermont",
+    "flag": "Flag of Vermont.svg"
+  },
+  {
+    "name": "Virginia",
+    "capital": "Richmond",
+    "region": "South",
+    "funFact": "Richmond was the capital of the Confederacy during most of the Civil War.",
+    "wiki": "https://en.wikipedia.org/wiki/Virginia",
+    "flag": "Flag of Virginia.svg"
+  },
+  {
+    "name": "Washington",
+    "capital": "Olympia",
+    "region": "West",
+    "funFact": "Olympia sits at the southern tip of Puget Sound, framed by the Olympic Mountains.",
+    "wiki": "https://en.wikipedia.org/wiki/Washington_(state)",
+    "flag": "Flag of Washington.svg"
+  },
+  {
+    "name": "West Virginia",
+    "capital": "Charleston",
+    "region": "South",
+    "funFact": "West Virginia split from Virginia in 1863 to remain in the Union during the Civil War.",
+    "wiki": "https://en.wikipedia.org/wiki/West_Virginia",
+    "flag": "Flag of West Virginia.svg"
+  },
+  {
+    "name": "Wisconsin",
+    "capital": "Madison",
+    "region": "Midwest",
+    "funFact": "Madison is built on an isthmus between Lake Mendota and Lake Monona.",
+    "wiki": "https://en.wikipedia.org/wiki/Wisconsin",
+    "flag": "Flag of Wisconsin.svg"
+  },
+  {
+    "name": "Wyoming",
+    "capital": "Cheyenne",
+    "region": "West",
+    "funFact": "Wyoming was the first U.S. territory to grant women the right to vote, in 1869.",
+    "wiki": "https://en.wikipedia.org/wiki/Wyoming",
+    "flag": "Flag of Wyoming.svg"
+  }
 ]
