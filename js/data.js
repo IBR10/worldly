@@ -57,9 +57,14 @@ export function getData() {
   return DATA;
 }
 
-/** Distinct continents/regions present in the country dataset. */
+/** Distinct region/continent values in any list of records with a `.region` field. */
+export function getRegions(list) {
+  return [...new Set(list.map((x) => x.region))].sort();
+}
+
+/** Distinct continents/regions present in the country dataset (back-compat wrapper). */
 export function getContinents() {
-  return [...new Set(DATA.countries.map((c) => c.region))].sort();
+  return getRegions(DATA.countries);
 }
 
 /** Flag image URL from flagcdn (public, no key). Falls back gracefully. */
