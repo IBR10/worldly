@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPool, makeQuestion, createQuiz, shuffle, ALL_MODES, drawWithoutRepeat, answerMatches } from '../js/quiz.js';
+import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
 import { historicFlagUrl } from '../js/data.js';
 
@@ -318,6 +318,38 @@ test('weakCount tallies low-box missed items', () => {
     c: { box: 1, correct: 1, wrong: 1, lastSeen: 0 },
   };
   assert.equal(weakCount(srs), 2); // a and c
+});
+
+// ---- geography-aware distractors --------------------------------------------
+
+test('geoDistractors prefers same-subregion countries first', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  const picks = geoDistractors(data.countries, kenya, 'capital', 1, () => 0.5);
+  assert.deepEqual(picks, ['Dodoma'], 'Tanzania (same East Africa subregion) is the only tier-1 candidate');
+});
+
+test('geoDistractors falls back to region when the subregion is empty', () => {
+  const egypt = data.countries.find((c) => c.name === 'Egypt');
+  // Egypt is alone in "North Africa" in this fixture — tier 1 is empty, so it
+  // must fall back to the "Africa" region, which has Kenya and Tanzania.
+  const picks = geoDistractors(data.countries, egypt, 'capital', 2, () => 0.5);
+  assert.equal(picks.length, 2);
+  assert.ok(picks.every((v) => ['Nairobi', 'Dodoma'].includes(v)), 'falls back to region-mates (Kenya/Tanzania)');
+});
+
+test('geoDistractors falls back to the whole world when region-mates run out', () => {
+  const japan = data.countries.find((c) => c.name === 'Japan');
+  // Japan is alone in both its subregion and region in this fixture, so all
+  // 3 distractors must come from the global fallback tier.
+  const picks = geoDistractors(data.countries, japan, 'capital', 3, () => 0.5);
+  assert.equal(picks.length, 3, 'still fills all 3 distractors via the global fallback');
+  assert.ok(!picks.includes('Tokyo'), 'never includes the answer itself');
+});
+
+test('geoDistractors never duplicates a value across tiers', () => {
+  const egypt = data.countries.find((c) => c.name === 'Egypt');
+  const picks = geoDistractors(data.countries, egypt, 'capital', 5, () => 0.1);
+  assert.equal(new Set(picks).size, picks.length, 'no duplicate values even when tiers overlap in the top-up');
 });
 
 // ---- no-duplicate sessions (the core fix) ----------------------------------

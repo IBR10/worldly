@@ -42,6 +42,31 @@ export function sampleDistinct(values, exclude, n, rng) {
   return shuffle(pool, rng).slice(0, n);
 }
 
+/**
+ * Distractor VALUES for a country-based question, preferring answers from
+ * geographically nearby countries so wrong choices can't be eliminated just
+ * by "that's obviously not even on the right continent." Draws from the
+ * target's subregion first, tops up from its region if the subregion doesn't
+ * have enough distinct values, and finally tops up from the whole country
+ * list — so a question always gets `n` distractors, even for countries in
+ * very sparse subregions/regions.
+ */
+export function geoDistractors(countries, target, field, n, rng) {
+  const chosen = [];
+  const tiers = [
+    countries.filter((x) => x !== target && x.subregion === target.subregion),
+    countries.filter((x) => x !== target && x.region === target.region),
+    countries,
+  ];
+  for (const tier of tiers) {
+    if (chosen.length >= n) break;
+    const values = tier.map((x) => x[field]).filter((v) => v && v !== target[field] && !chosen.includes(v));
+    const picked = sampleDistinct(values, target[field], n - chosen.length, rng);
+    chosen.push(...picked);
+  }
+  return chosen;
+}
+
 // Accent- and case-insensitive comparison for the typed-answer mode. Folds
 // diacritics, lowercases, and collapses punctuation/whitespace so "Cote d'Ivoire"
 // matches "Côte d’Ivoire" and "  united  states " matches "United States".
