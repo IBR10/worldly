@@ -48,11 +48,23 @@ export function sampleDistinct(values, exclude, n, rng) {
  * by "that's obviously not even on the right continent." Draws from the
  * target's subregion first, tops up from its region if the subregion doesn't
  * have enough distinct values, and finally tops up from the whole country
- * list — so a question always gets `n` distractors, even for countries in
- * very sparse subregions/regions.
+ * list — so every question always gets `n` distractors, even for countries
+ * in very sparse subregions/regions.
+ *
+ * `normalize` controls what counts as "the same value" for exclusion/dedup
+ * purposes (default: exact string match). Some fields have near-duplicate
+ * variants that are all effectively the same answer — e.g. religion values
+ * like "Christianity", "Christianity (Catholic)", "Christianity/Irreligion"
+ * are all Christianity-family, and offering one as a wrong answer for a
+ * country whose real answer is another is unfair, not merely close. Pass a
+ * normalize function (e.g. one that strips a parenthetical/slash qualifier)
+ * to treat same-base variants as duplicates for selection purposes while
+ * still returning their original, unnormalized text as the distractor.
  */
-export function geoDistractors(countries, target, field, n, rng) {
+export function geoDistractors(countries, target, field, n, rng, normalize = (v) => v) {
+  const targetNorm = normalize(target[field]);
   const chosen = [];
+  const chosenNorm = [];
   const tiers = [
     countries.filter((x) => x !== target && x.subregion === target.subregion),
     countries.filter((x) => x !== target && x.region === target.region),
@@ -60,8 +72,20 @@ export function geoDistractors(countries, target, field, n, rng) {
   ];
   for (const tier of tiers) {
     if (chosen.length >= n) break;
-    const values = tier.map((x) => x[field]).filter((v) => v && v !== target[field] && !chosen.includes(v));
-    const picked = sampleDistinct(values, target[field], n - chosen.length, rng);
+    // Dedupe by normalized form so two same-base variants (e.g. "Islam" and
+    // "Islam (Shia)") can't both slip in as if they were different answers.
+    const seenNorm = new Set();
+    const candidates = tier
+      .map((x) => x[field])
+      .filter((v) => v && normalize(v) !== targetNorm && !chosenNorm.includes(normalize(v)))
+      .filter((v) => {
+        const nv = normalize(v);
+        if (seenNorm.has(nv)) return false;
+        seenNorm.add(nv);
+        return true;
+      });
+    const picked = sampleDistinct(candidates, target[field], n - chosen.length, rng);
+    picked.forEach((v) => chosenNorm.push(normalize(v)));
     chosen.push(...picked);
   }
   return chosen;
@@ -308,7 +332,12 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
   const geoField = GEO_FIELD[mode];
   let distractors;
   if (geoField) {
-    distractors = geoDistractors(data.countries, c, geoField, choices - 1, rng);
+    // Religion strings carry qualifiers ("Christianity (Catholic)",
+    // "Christianity/Irreligion") that are all the same base religion —
+    // normalize to the text before "(" or "/" so same-base variants don't
+    // count as valid distractors for each other (see geoDistractors' doc).
+    const normalize = mode === 'religion' ? (v) => String(v).split(/[/(]/)[0].trim() : undefined;
+    distractors = geoDistractors(data.countries, c, geoField, choices - 1, rng, normalize);
   } else {
     distractors = sampleDistinct(distractorValues, answer, choices - 1, rng);
     // Similar-flag groups smaller than `choices` top up from the wider pool of

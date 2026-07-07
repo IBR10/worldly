@@ -16,7 +16,7 @@ const data = {
     { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', subregion: 'South America', language: 'Portuguese', religion: 'Christianity', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
     { name: 'Egypt', iso2: 'EG', capital: 'Cairo', region: 'Africa', subregion: 'North Africa', language: 'Arabic', religion: 'Islam', funFact: 'Pyramids.', wiki: 'https://w/Egypt' },
     { name: 'Kenya', iso2: 'KE', capital: 'Nairobi', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Safari.', wiki: 'https://w/Kenya' },
-    { name: 'Tanzania', iso2: 'TZ', capital: 'Dodoma', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Serengeti.', wiki: 'https://w/Tanzania' },
+    { name: 'Tanzania', iso2: 'TZ', capital: 'Dodoma', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity (Catholic)', funFact: 'Serengeti.', wiki: 'https://w/Tanzania' },
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Jalisco', capital: 'Guadalajara', region: 'West', funFact: 'Tequila.', wiki: 'https://w/JAL' }],
@@ -357,6 +357,30 @@ test('geoDistractors never duplicates a value across tiers', () => {
   const egypt = data.countries.find((c) => c.name === 'Egypt');
   const picks = geoDistractors(data.countries, egypt, 'capital', 5, () => 0.1);
   assert.equal(new Set(picks).size, picks.length, 'no duplicate values even when tiers overlap in the top-up');
+});
+
+test('geoDistractors with a normalize function treats same-base variants as duplicates', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  // Tanzania is Kenya's only East Africa subregion-mate, but now has
+  // "Christianity (Catholic)" vs Kenya's plain "Christianity" — without
+  // normalization these look like different answers; with normalization
+  // (strip the parenthetical) they're recognized as the same base religion
+  // and Tanzania must NOT be offered as a distractor for Kenya.
+  const baseReligion = (v) => String(v).split(/[/(]/)[0].trim();
+  const picks = geoDistractors(data.countries, kenya, 'religion', 1, () => 0.5, baseReligion);
+  assert.equal(picks.length, 1);
+  assert.notEqual(picks[0], 'Christianity (Catholic)', 'same-base Tanzania is excluded even though the exact string differs');
+  // Falls through to the region tier (Africa) or beyond to find a genuinely
+  // different religion (Egypt's "Islam").
+  assert.equal(picks[0], 'Islam');
+});
+
+test('makeQuestion (religion) with normalize does not offer a same-base-religion variant as a distractor', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  const q = makeQuestion({ id: 'religion:Kenya', mode: 'religion', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.equal(q.choices.length, 2);
+  assert.ok(q.choices.includes('Christianity'), 'the answer is present');
+  assert.ok(!q.choices.includes('Christianity (Catholic)'), 'Tanzania is NOT offered — same base religion as the answer');
 });
 
 test('makeQuestion (capital) draws its one distractor from the same subregion when available', () => {
