@@ -62,6 +62,9 @@ always selectable.
 - **Crises & Events** — curated, dated background on ongoing world situations
   in two tiers: **Underreported** and **Major Conflicts**, with links to live
   sources (Wikipedia, ReliefWeb, news).
+- **Flag Key** — a browsable reference (not a quiz) of every country, US
+  state, and Mexican state by flag and name, with live search and a region
+  filter on each tab.
 
 ### Learning design
 - **Every answer teaches something**: fun fact + *Learn More* links (Wikipedia,
