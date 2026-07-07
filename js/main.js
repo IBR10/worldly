@@ -40,13 +40,46 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 // Speak text aloud via the browser's built-in speech synthesis (free, offline,
 // no dependency). `lang` is a BCP-47 tag (e.g. 'ja-JP') so the OS can pick a
 // matching voice. Silently no-ops where the Web Speech API is unavailable.
+//
+// `lang` on the utterance is only a hint: if the OS/browser has no installed
+// voice for that language, most engines silently substitute an unrelated
+// default voice (usually an English one). Fed non-Latin script it can't read,
+// that fallback voice often spells out individual letters/characters instead
+// of pronouncing the word — the bug reports as "it's naming the Greek letters,
+// not saying the word." So we look for an actual matching voice first; if none
+// is installed, we speak `fallbackText` (the romanized pronunciation, which
+// any voice can read as real words) instead of feeding native script to a
+// voice that can't handle it.
 const ttsAvailable = () => typeof window !== 'undefined' && 'speechSynthesis' in window;
-function speak(text, lang) {
+let voicesCache = [];
+function refreshVoices() {
+  if (ttsAvailable()) voicesCache = window.speechSynthesis.getVoices();
+}
+if (ttsAvailable()) {
+  refreshVoices();
+  window.speechSynthesis.onvoiceschanged = refreshVoices;
+}
+function pickVoice(lang) {
+  if (!lang || !voicesCache.length) return null;
+  const target = lang.toLowerCase();
+  const exact = voicesCache.find((v) => v.lang.toLowerCase() === target);
+  if (exact) return exact;
+  const primary = target.split('-')[0];
+  return voicesCache.find((v) => v.lang.toLowerCase().split('-')[0] === primary) || null;
+}
+function speak(text, lang, fallbackText) {
   if (!ttsAvailable() || !text) return;
   try {
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    if (lang) u.lang = lang;
+    if (!voicesCache.length) refreshVoices(); // some browsers populate the list lazily
+    const voice = pickVoice(lang);
+    const u = new SpeechSynthesisUtterance(voice || !fallbackText ? text : fallbackText);
+    if (voice) {
+      u.voice = voice;
+      u.lang = voice.lang;
+    } else if (lang) {
+      u.lang = lang;
+    }
     u.rate = 0.9;
     window.speechSynthesis.speak(u);
   } catch { /* ignore — audio is a nice-to-have */ }
@@ -1027,17 +1060,24 @@ function showPhrases() {
 }
 
 // A small 🔊 button that speaks `text` in the entry's language (hidden when the
-// Web Speech API is unavailable). Wired via [data-speak] after render.
-function speakBtn(text, lang) {
+// Web Speech API is unavailable). `fallback` is the romanized pronunciation,
+// used when no voice for `lang` is installed (see speak() above). Wired via
+// [data-speak] after render.
+function speakBtn(text, lang, fallback) {
   if (!ttsAvailable() || !text) return '';
-  return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" title="Hear it" aria-label="Hear pronunciation">🔊</button>`;
+  return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" data-fallback="${esc(fallback || '')}" title="Hear it" aria-label="Hear pronunciation">🔊</button>`;
 }
+
+// nativeCountry.pron mixes a romanized name with a bracketed simple phonetic
+// for non-Latin-script entries, e.g. "Zhōngguó (jong-gwoh)" — the bracketed
+// part alone is what we want a mismatched-voice TTS fallback to read.
+const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [, pron])[1];
 
 function renderPhraseDetail(entry) {
   if (!entry) return showPhrases();
   const lang = entry.langCode || '';
   const native = entry.nativeCountry
-    ? `<div class="native-name">${esc(entry.nativeCountry.local)} ${speakBtn(entry.nativeCountry.local, lang)}
+    ? `<div class="native-name">${esc(entry.nativeCountry.local)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
          <span class="say-pron">${esc(entry.nativeCountry.pron)}</span></div>`
     : '';
   app.innerHTML = `
@@ -1056,7 +1096,7 @@ function renderPhraseDetail(entry) {
       ${entry.phrases.map((p) => `
         <div class="phrase-row">
           <span class="ph-en">${esc(p.en)}</span>
-          <span class="ph-local">${esc(p.local)} ${speakBtn(p.local, lang)}</span>
+          <span class="ph-local">${esc(p.local)} ${speakBtn(p.local, lang, p.pron)}</span>
           <span class="ph-pron">${esc(p.pron)}</span>
         </div>`).join('')}
     </div>
@@ -1065,7 +1105,7 @@ function renderPhraseDetail(entry) {
     <div class="saying-list">
       ${entry.sayings.map((s) => `
         <div class="saying">
-          <div class="say-local">${esc(s.local)} ${speakBtn(s.local, lang)} <span class="say-pron">${esc(s.pron)}</span></div>
+          <div class="say-local">${esc(s.local)} ${speakBtn(s.local, lang, s.pron)} <span class="say-pron">${esc(s.pron)}</span></div>
           <div class="say-meaning">${esc(s.meaning)}</div>
         </div>`).join('')}
     </div>
@@ -1080,7 +1120,7 @@ function renderPhraseDetail(entry) {
   app.querySelector('#backPhrases').addEventListener('click', showPhrases);
   app.querySelector('#backHome').addEventListener('click', showHome);
   app.querySelectorAll('[data-speak]').forEach((b) =>
-    b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang)));
+    b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang, b.dataset.fallback)));
 }
 
 // ============================================================================
