@@ -97,7 +97,7 @@ Worldly/
 │   ├── achievements.js     # achievement evaluation against the profile
 │   └── main.js             # controller: routing, rendering, quiz session
 ├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
-├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, MIT)
+├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, CC BY / CC BY-NC)
 ├── tests/*.test.mjs        # 48 Node tests for quiz.js, srs.js, maps.js
 ├── _headers                # Cloudflare Pages security + caching headers
 └── 404.html, robots.txt, site.webmanifest, LICENSE
@@ -152,7 +152,8 @@ changes to extend.
 ## Credits
 
 Map SVGs adapted from [@svg-maps](https://github.com/VictorCazanave/svg-maps)
-(MIT) · flags by [flagcdn.com](https://flagcdn.com) · historic flag images from
+(world/Mexico/Canada: CC BY 4.0 · USA: CC BY-NC 4.0) · flags by
+[flagcdn.com](https://flagcdn.com) · historic flag images from
 [Wikimedia Commons](https://commons.wikimedia.org) · facts from Wikipedia & the
 CIA World Factbook · music via embedded YouTube (all rights remain with the
 artists and labels).

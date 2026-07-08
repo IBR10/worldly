@@ -360,7 +360,7 @@ function showAbout() {
     <div class="form-block">
       <h3>Credits &amp; data sources</h3>
       <ul class="about-list">
-        <li>Interactive map SVGs adapted from the <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">@svg-maps</a> project (MIT License) by Victor Cazanave and contributors.</li>
+        <li>Interactive map SVGs adapted from the <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">@svg-maps</a> project by Victor Cazanave and contributors — world, Mexico and Canada maps are CC BY 4.0; the USA map is CC BY-NC 4.0 (non-commercial).</li>
         <li>Flag images served by <a href="https://flagcdn.com" target="_blank" rel="noopener">flagcdn.com</a>.</li>
         <li>Historic flag images from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.</li>
         <li>Facts curated from public reference sources, including <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a> and the <a href="https://www.cia.gov/the-world-factbook/" target="_blank" rel="noopener">CIA World Factbook</a>.</li>

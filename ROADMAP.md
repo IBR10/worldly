@@ -40,7 +40,7 @@ Flag → country already exists. Planned extensions:
 
 ## Interactive maps (biggest next feature)
 - [x] **Click-the-country** world map mode (inline SVG world map; click the right
-      country). Uses bundled MIT `@svg-maps/world` SVG, ISO2-keyed regions.
+      country). Uses bundled `@svg-maps/world` SVG (CC BY 4.0), ISO2-keyed regions.
 - [x] **Click-the-US-state** map mode (SVG of 50 states).
 - [x] **Click-the-Mexican-state** map mode (SVG of 32 states).
 - [x] **Click-the-Canadian-province** map mode (SVG of 13 provinces/territories).
