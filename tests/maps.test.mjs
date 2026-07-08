@@ -34,11 +34,11 @@ const canadaSvg = `
 
 const data = {
   countries: [
-    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', funFact: 'Islands.', wiki: 'https://w/Japan' },
-    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', funFact: 'Visited.', wiki: 'https://w/France' },
-    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
+    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', subregion: 'East Asia', funFact: 'Islands.', wiki: 'https://w/Japan' },
+    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', subregion: 'Western Europe', funFact: 'Visited.', wiki: 'https://w/France' },
+    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', subregion: 'South America', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
     // No path in our tiny SVG → must be excluded from any map pool.
-    { name: 'Atlantis', iso2: 'AT', capital: 'Nowhere', region: 'Ocean', funFact: 'Myth.', wiki: 'https://w/Atlantis' },
+    { name: 'Atlantis', iso2: 'AT', capital: 'Nowhere', region: 'Ocean', subregion: 'Ocean', funFact: 'Myth.', wiki: 'https://w/Atlantis' },
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Nuevo León', capital: 'Monterrey', region: 'North', funFact: 'Industry.', wiki: 'https://w/NL' }],
@@ -113,6 +113,14 @@ test('buildMapPool restricts country-sourced modes to the given continent', () =
   // A continent with no matching countries in the pool yields an empty pool.
   const none = buildMapPool(data, regionsByMap, { modes: ['map_country'], continent: 'Antarctica' });
   assert.deepEqual(none, []);
+});
+
+test('buildMapPool also matches finer subregions (e.g. "East Asia"), not just continents', () => {
+  const subregion = buildMapPool(data, regionsByMap, { modes: ['map_country'], continent: 'East Asia' });
+  assert.deepEqual(subregion.map((p) => p.source.name), ['Japan']);
+
+  const western = buildMapPool(data, regionsByMap, { modes: ['map_country_reverse'], continent: 'Western Europe' });
+  assert.deepEqual(western.map((p) => p.source.name), ['France']);
 });
 
 test('buildMapPool never filters US/MX/CA state modes by continent', () => {

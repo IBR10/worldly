@@ -1,7 +1,7 @@
 // main.js — application controller. Owns routing between screens, renders the
 // HUD, runs a quiz session, and reacts to answers (scoring, XP, achievements).
 
-import { loadData, getData, getContinents, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
+import { loadData, getData, getContinents, getSubregions, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
 import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
@@ -220,19 +220,21 @@ const MODE_CARDS = [
 
 // Interactive click-the-map modes (each is its own SVG-backed session).
 const MAP_CARDS = [
+  // Unlike the cards below (which start a specific MAP_MODES key directly),
+  // this opens a chooser screen — so it overrides the tab's default attr.
+  { key: 'map_regions', attr: 'data-go', emoji: '🌍', title: 'Regions & Continents', desc: 'Pick a continent or region — the map zooms in so you only see that part of the world.' },
+  // Grouped by entity (world, US, Mexico, Canada) so each pair of forward/
+  // reverse modes for the same place sits next to each other.
   { key: 'map_country', emoji: '🌍', title: 'Find the Country', desc: 'Click the country on a world map.' },
-  { key: 'map_us', flagIso: 'US', title: 'Find the US State', desc: 'Click the state on a US map.' },
-  { key: 'map_mx', flagIso: 'MX', title: 'Find the Mexican State', desc: 'Click the state on a Mexico map.' },
-  { key: 'map_ca', flagIso: 'CA', title: 'Find the Canadian Province', desc: 'Click the province on a Canada map.' },
   { key: 'map_country_reverse', emoji: '🔎', title: 'Name the Country', desc: 'A country is highlighted — name it.' },
-  { key: 'map_us_reverse', flagIso: 'US', title: 'Name the US State', desc: 'A state is highlighted — name it.' },
-  { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
-  { key: 'map_ca_reverse', flagIso: 'CA', title: 'Name the Canadian Province', desc: 'A province is highlighted — name it.' },
   { key: 'map_flag_country', emoji: '🚩', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
   { key: 'map_country_flag', emoji: '🎏', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
-  // Unlike the cards above (which start a specific MAP_MODES key directly),
-  // this opens a chooser screen — so it overrides the tab's default attr.
-  { key: 'map_regions', attr: 'data-go', emoji: '🌍', title: 'Regions & Continents', desc: 'Pick a continent — the map zooms in so you only see that part of the world.' },
+  { key: 'map_us', flagIso: 'US', title: 'Find the US State', desc: 'Click the state on a US map.' },
+  { key: 'map_us_reverse', flagIso: 'US', title: 'Name the US State', desc: 'A state is highlighted — name it.' },
+  { key: 'map_mx', flagIso: 'MX', title: 'Find the Mexican State', desc: 'Click the state on a Mexico map.' },
+  { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
+  { key: 'map_ca', flagIso: 'CA', title: 'Find the Canadian Province', desc: 'Click the province on a Canada map.' },
+  { key: 'map_ca_reverse', flagIso: 'CA', title: 'Name the Canadian Province', desc: 'A province is highlighted — name it.' },
 ];
 
 // Card markup shared by every home tab. `attr` is the routing attribute
@@ -466,19 +468,26 @@ function showReligions() {
   });
 }
 
-// Regions & Continents chooser: pick a continent + a world-map mode, then play
-// it zoomed into just that continent (see startMapQuiz's `continent` handling).
+// Regions & Continents chooser: pick a continent or a finer subregion (e.g.
+// "Middle East", "Central America") + a world-map mode, then play it zoomed
+// into just that area (see startMapQuiz's `continent` handling).
 function showMapRegions() {
   leaveSession();
   const continents = getContinents();
+  const subregions = getSubregions();
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Regions &amp; Continents 🌍</h1>
-    <p class="screen-sub">Pick a continent — the map zooms in so you're only looking at that part of the world.</p>
+    <p class="screen-sub">Pick a continent or region — the map zooms in so you're only looking at that part of the world.</p>
     <div class="form-block">
-      <h3>Continent</h3>
+      <h3>Continent / Region</h3>
       <select id="contSel" class="select">
-        ${continents.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('')}
+        <optgroup label="Continents">
+          ${continents.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('')}
+        </optgroup>
+        <optgroup label="Regions">
+          ${subregions.map((r) => `<option value="${esc(r)}">${esc(r)}</option>`).join('')}
+        </optgroup>
       </select>
     </div>
     <div class="form-block">
@@ -532,10 +541,11 @@ async function startMapQuiz(opts) {
     return showHome();
   }
 
-  // Zoom the map view to the chosen continent's countries. Only meaningful for
-  // country-sourced (world map) modes — US/MX state modes have no continent.
+  // Zoom the map view to the chosen area's countries (a broad continent like
+  // "Asia" or a finer subregion like "Middle East"). Only meaningful for
+  // country-sourced (world map) modes — US/MX/CA state modes have no continent.
   const focusIds = (continent && MAP_MODES[mode]?.source === 'country')
-    ? data.countries.filter((c) => c.region === continent && c.iso2 && map.regions[c.iso2.toLowerCase()])
+    ? data.countries.filter((c) => (c.region === continent || c.subregion === continent) && c.iso2 && map.regions[c.iso2.toLowerCase()])
         .map((c) => c.iso2.toLowerCase())
     : null;
 

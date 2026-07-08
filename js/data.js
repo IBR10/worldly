@@ -60,14 +60,19 @@ export function getData() {
   return DATA;
 }
 
-/** Distinct region/continent values in any list of records with a `.region` field. */
-export function getRegions(list) {
-  return [...new Set(list.map((x) => x.region))].sort();
+/** Distinct values of `field` (default `.region`) in any list of records. */
+export function getRegions(list, field = 'region') {
+  return [...new Set(list.map((x) => x[field]))].sort();
 }
 
 /** Distinct continents/regions present in the country dataset (back-compat wrapper). */
 export function getContinents() {
   return getRegions(DATA.countries);
+}
+
+/** Distinct subregions (e.g. "Middle East", "Central America") present in the country dataset. */
+export function getSubregions() {
+  return getRegions(DATA.countries, 'subregion');
 }
 
 /** Flag image URL from flagcdn (public, no key). Falls back gracefully. */

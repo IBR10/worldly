@@ -79,7 +79,9 @@ export function regionIdFor(mode, source, regions) {
  * @param {object} regionsByMap  { world, usa, mexico, canada } → { id: name } tables
  * @param {object} cfg           { modes, continent } — `continent` restricts
  *   country-sourced modes (map_country*, map_flag_country, map_country_flag)
- *   to one region/continent; US/MX state modes are unaffected.
+ *   to one area, matched against either a country's broad region (e.g. "Asia")
+ *   or its finer subregion (e.g. "Middle East"); US/MX/CA state modes are
+ *   unaffected.
  */
 export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES, continent = null } = {}) {
   const pool = [];
@@ -98,7 +100,7 @@ export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES, contin
     const regions = regionsByMap[def.svg];
     if (!cfg || !regions) continue;
     for (const source of cfg.list) {
-      if (def.source === 'country' && continent && source.region !== continent) continue;
+      if (def.source === 'country' && continent && source.region !== continent && source.subregion !== continent) continue;
       const targetId = regionIdFor(mode, source, regions);
       if (!targetId) continue;
       pool.push({
