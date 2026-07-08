@@ -212,6 +212,7 @@ const MODE_CARDS = [
   // real flag images from flagcdn instead of a regional-indicator emoji.
   { key: 'us_capital', flagIso: 'US', title: 'US States → Capitals', desc: 'All 50 state capitals.' },
   { key: 'mx_capital', flagIso: 'MX', title: 'Mexico States → Capitals', desc: 'All 32 state capitals.' },
+  { key: 'ca_capital', flagIso: 'CA', title: 'Canada Provinces → Capitals', desc: 'All 13 provinces & territories.' },
   { key: 'flag', emoji: '🚩', title: 'Flag Mode', desc: 'Identify the country from its flag.' },
   { key: 'historic_flag', emoji: '🏴', title: 'Historic Flags', desc: 'Identify the nation from a flag of the past.' },
   { key: 'similar_flag', emoji: '🎌', title: 'Similar Flags', desc: 'Tell look-alike flags apart (France vs Netherlands…).' },
@@ -222,9 +223,11 @@ const MAP_CARDS = [
   { key: 'map_country', emoji: '🌍', title: 'Find the Country', desc: 'Click the country on a world map.' },
   { key: 'map_us', flagIso: 'US', title: 'Find the US State', desc: 'Click the state on a US map.' },
   { key: 'map_mx', flagIso: 'MX', title: 'Find the Mexican State', desc: 'Click the state on a Mexico map.' },
+  { key: 'map_ca', flagIso: 'CA', title: 'Find the Canadian Province', desc: 'Click the province on a Canada map.' },
   { key: 'map_country_reverse', emoji: '🔎', title: 'Name the Country', desc: 'A country is highlighted — name it.' },
   { key: 'map_us_reverse', flagIso: 'US', title: 'Name the US State', desc: 'A state is highlighted — name it.' },
   { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
+  { key: 'map_ca_reverse', flagIso: 'CA', title: 'Name the Canadian Province', desc: 'A province is highlighted — name it.' },
   { key: 'map_flag_country', emoji: '🚩', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
   { key: 'map_country_flag', emoji: '🎏', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
   // Unlike the cards above (which start a specific MAP_MODES key directly),
@@ -263,7 +266,7 @@ function showHome() {
   ];
   const journeyCards = [
     { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
-    { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state & Mexican state by flag and name.' },
+    { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
     { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
     { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
     { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
@@ -998,8 +1001,8 @@ function showCustom() {
 //  with its flag and name — not a quiz, just a legend to look things up in)
 // ============================================================================
 let flagKeyTab = 'countries';
-let flagKeySearch = { countries: '', us: '', mx: '' };
-let flagKeyRegion = { countries: '', us: '', mx: '' };
+let flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
+let flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
 
 function showFlagKey() {
   leaveSession();
@@ -1008,6 +1011,7 @@ function showFlagKey() {
     { id: 'countries', label: 'Countries', list: data.countries, flagFn: (x) => flagUrl(x.iso2, 'w80') },
     { id: 'us', label: 'US States', list: data.usStates, flagFn: (x) => stateFlagUrl(x.flag) },
     { id: 'mx', label: 'Mexican States', list: data.mxStates, flagFn: (x) => stateFlagUrl(x.flag) },
+    { id: 'ca', label: 'Canadian Provinces', list: data.caStates, flagFn: (x) => stateFlagUrl(x.flag) },
   ];
   if (!groups.some((g) => g.id === flagKeyTab)) flagKeyTab = 'countries';
 
@@ -1039,7 +1043,7 @@ function showFlagKey() {
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Flag Key 🚩</h1>
-    <p class="screen-sub">A browsable reference — every country, US state and Mexican state, by flag and name. Not a quiz.</p>
+    <p class="screen-sub">A browsable reference — every country, US state, Mexican state and Canadian province, by flag and name. Not a quiz.</p>
 
     <div class="tabs" role="tablist">
       ${groups.map((g) => `<button class="tab ${g.id === flagKeyTab ? 'active' : ''}" role="tab" id="tab-${g.id}" aria-controls="panel-${g.id}" aria-selected="${g.id === flagKeyTab}" tabindex="${g.id === flagKeyTab ? 0 : -1}" data-tab="${g.id}">${esc(g.label)}</button>`).join('')}

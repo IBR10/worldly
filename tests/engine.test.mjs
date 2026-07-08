@@ -20,6 +20,7 @@ const data = {
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Jalisco', capital: 'Guadalajara', region: 'West', funFact: 'Tequila.', wiki: 'https://w/JAL' }],
+  caStates: [{ name: 'Alberta', capital: 'Edmonton', region: 'Prairies', funFact: 'Rockies.', wiki: 'https://w/AB' }],
   historicFlags: [
     { name: 'Soviet Union', img: 'Flag of the Soviet Union.svg', era: '1922–1991', region: 'Europe', funFact: 'Hammer and sickle.', wiki: 'https://w/USSR' },
     { name: 'Ottoman Empire', img: 'Flag of the Ottoman Empire.svg', era: '1844–1922', region: 'Asia', funFact: 'Crescent.', wiki: 'https://w/Ottoman' },
@@ -45,9 +46,25 @@ test('buildPool covers every enabled mode', () => {
   const pool = buildPool(data, { modes: ALL_MODES, continents: 'all' });
   // 6 countries × 5 country-modes (capital, country, language, religion, flag)
   // + 4 religions × 6 religion-modes (founder, text, holiday, symbol, place, origin)
-  // + 1 US + 1 MX + 4 historic flags + 6 similar-flag countries (4 + 2)
-  assert.equal(pool.length, 6 * 5 + 4 * 6 + 1 + 1 + 4 + 6);
+  // + 1 US + 1 MX + 1 CA + 4 historic flags + 6 similar-flag countries (4 + 2)
+  assert.equal(pool.length, 6 * 5 + 4 * 6 + 1 + 1 + 1 + 4 + 6);
   assert.ok(pool.every((p) => p.id.includes(':')));
+});
+
+test('buildPool builds one item per Canadian province/territory for ca_capital', () => {
+  const pool = buildPool(data, { modes: ['ca_capital'], continents: 'all' });
+  assert.equal(pool.length, data.caStates.length);
+  assert.equal(pool[0].region, 'North America');
+  assert.equal(pool[0].id, 'ca_capital:Alberta');
+});
+
+test('makeQuestion (ca_capital) mirrors the US/MX state-capital modes', () => {
+  const item = { id: 'ca_capital:Alberta', mode: 'ca_capital', region: 'North America', source: data.caStates[0] };
+  const q = makeQuestion(item, data, { choices: 4 });
+  assert.equal(q.answer, 'Edmonton');
+  assert.match(q.prompt, /capital of Alberta/);
+  assert.ok(q.choices.includes('Edmonton'));
+  assert.equal(q.choices.length, 4);
 });
 
 test('buildPool filters by continent for country modes', () => {

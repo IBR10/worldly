@@ -8,6 +8,7 @@ const DATA = {
   countries: [],
   usStates: [],
   mxStates: [],
+  caStates: [],
   historicFlags: [],
   similarFlags: [],
   religions: [],
@@ -27,10 +28,11 @@ async function loadJSON(path) {
 /** Load all datasets once. Safe to call multiple times. */
 export async function loadData() {
   if (DATA.loaded) return DATA;
-  const [countries, usStates, mxStates, historicFlags, similarFlags, religions, phrases, music, crises, achievements] = await Promise.all([
+  const [countries, usStates, mxStates, caStates, historicFlags, similarFlags, religions, phrases, music, crises, achievements] = await Promise.all([
     loadJSON('data/countries.json'),
     loadJSON('data/us_states.json'),
     loadJSON('data/mexico_states.json'),
+    loadJSON('data/canada_provinces.json'),
     loadJSON('data/historic_flags.json'),
     loadJSON('data/similar_flags.json'),
     loadJSON('data/religions.json'),
@@ -42,6 +44,7 @@ export async function loadData() {
   DATA.countries = countries;
   DATA.usStates = usStates;
   DATA.mxStates = mxStates;
+  DATA.caStates = caStates;
   DATA.historicFlags = historicFlags;
   DATA.similarFlags = similarFlags;
   DATA.religions = religions;
@@ -82,7 +85,7 @@ export function historicFlagUrl(filename, width = 320) {
   return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
 }
 
-/** US/Mexico state flag image URL, same stable Wikimedia Commons endpoint as historicFlagUrl. */
+/** US/Mexico/Canada state-or-province flag image URL, same stable Wikimedia Commons endpoint as historicFlagUrl. */
 export function stateFlagUrl(filename, width = 320) {
   return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=${width}`;
 }
@@ -90,7 +93,7 @@ export function stateFlagUrl(filename, width = 320) {
 // ---- interactive map SVGs (lazy-loaded) -------------------------------------
 // The world map is ~1MB, so the map SVGs are fetched on demand the first time a
 // click-the-map mode starts — not at app startup. Each is cached after loading.
-const MAPS = {}; // name ('world'|'usa'|'mexico') -> { svgText, regions:{id:name} }
+const MAPS = {}; // name ('world'|'usa'|'mexico'|'canada') -> { svgText, regions:{id:name} }
 
 /** Fetch + parse a bundled map SVG once. Safe to call repeatedly — the
  *  in-flight promise is cached, so rapid double-clicks share one fetch. */

@@ -39,7 +39,7 @@ npm test        # 48 tests over the quiz, SRS and map engines
 | **Country ↔ Capital** | Both directions |
 | **Country → Language / Religion** | Most widely spoken language, largest religion |
 | **World Religions** | Founders, sacred texts, holidays, symbols, places of worship, origins — study all faiths or focus on one |
-| **US / Mexico States → Capitals** | All 50 + all 32 |
+| **US / Mexico / Canada States → Capitals** | All 50 + all 32 + all 13 |
 | **Flag Mode** | Identify the country from its flag |
 | **Historic Flags** | Identify the nation from a flag of the past (34 entities) |
 | **Similar Flags** | Tell look-alike flags apart, with tips (12 confusion groups) |
@@ -48,11 +48,13 @@ npm test        # 48 tests over the quiz, SRS and map engines
 | **Review Missed** | Practise exactly what you got wrong |
 
 ### Interactive maps
-Click-the-country (world), click-the-state (US, Mexico), plus **reverse modes**
-(a region is highlighted — name it) and **flag crossovers** (see a flag → click
-its country, or a country is highlighted → pick its flag). Inline SVG with
-pan/zoom and smallest-region hit-testing so nested regions (DC, Andorra…) are
-always selectable.
+Click-the-country (world), click-the-state (US, Mexico, Canada), plus
+**reverse modes** (a region is highlighted — name it) and **flag crossovers**
+(see a flag → click its country, or a country is highlighted → pick its
+flag). A **Regions & Continents** mode lets you pick one continent — the
+world map zooms into just that part of the world. Inline SVG with pan/zoom
+and smallest-region hit-testing so nested regions (DC, Andorra…) are always
+selectable.
 
 ### Explore
 - **Phrases** — common phrases & local sayings for 16 countries, with
@@ -95,7 +97,7 @@ Worldly/
 │   ├── achievements.js     # achievement evaluation against the profile
 │   └── main.js             # controller: routing, rendering, quiz session
 ├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
-├── assets/maps/*.svg       # bundled world/US/Mexico maps (@svg-maps, MIT)
+├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, MIT)
 ├── tests/*.test.mjs        # 48 Node tests for quiz.js, srs.js, maps.js
 ├── _headers                # Cloudflare Pages security + caching headers
 └── 404.html, robots.txt, site.webmanifest, LICENSE

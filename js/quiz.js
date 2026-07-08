@@ -19,6 +19,7 @@ export const MODES = {
   religion_origin: { label: 'Religion → Origin', source: 'religion' },
   us_capital: { label: 'US State → Capital', source: 'us' },
   mx_capital: { label: 'Mexico State → Capital', source: 'mx' },
+  ca_capital: { label: 'Canada Province → Capital', source: 'ca' },
   flag: { label: 'Flag → Country', source: 'country' },
   historic_flag: { label: 'Historic Flags', source: 'historic' },
   similar_flag: { label: 'Similar Flags', source: 'similar' },
@@ -187,6 +188,10 @@ export function buildPool(data, { modes = ALL_MODES, continents = 'all', religio
       for (const s of data.mxStates) {
         pool.push({ id: `${mode}:${s.name}`, mode, region: 'North America', source: s });
       }
+    } else if (src === 'ca') {
+      for (const s of data.caStates) {
+        pool.push({ id: `${mode}:${s.name}`, mode, region: 'North America', source: s });
+      }
     } else if (src === 'historic') {
       for (const h of data.historicFlags || []) {
         pool.push({ id: `${mode}:${h.name}`, mode, region: h.region, source: h });
@@ -318,6 +323,12 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       prompt = `What is the capital of ${c.name}? (Mexican state)`;
       answer = c.capital;
       distractorValues = data.mxStates.map((x) => x.capital);
+      isCountry = false;
+      break;
+    case 'ca_capital':
+      prompt = `What is the capital of ${c.name}? (Canadian province/territory)`;
+      answer = c.capital;
+      distractorValues = data.caStates.map((x) => x.capital);
       isCountry = false;
       break;
     default:

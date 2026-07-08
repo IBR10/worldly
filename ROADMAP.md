@@ -43,9 +43,12 @@ Flag → country already exists. Planned extensions:
       country). Uses bundled MIT `@svg-maps/world` SVG, ISO2-keyed regions.
 - [x] **Click-the-US-state** map mode (SVG of 50 states).
 - [x] **Click-the-Mexican-state** map mode (SVG of 32 states).
+- [x] **Click-the-Canadian-province** map mode (SVG of 13 provinces/territories).
+- [x] **Regions & Continents mode**: pick one continent — the world map
+      (and any world-map mode) is restricted to it and zoomed in.
 - [ ] **Map-location mode**: given a country, click roughly where it is; score by
       distance.
-- [x] Reusable `MapMode` component (`js/mapview.js`) — all three maps share
+- [x] Reusable `MapMode` component (`js/mapview.js`) — all maps share
       pan/zoom + native SVG hit-testing; pure logic lives in `js/maps.js`.
 
 ## Content & data

@@ -15,9 +15,11 @@ export const MAP_MODES = {
   map_country: { label: 'Find the Country', source: 'country', svg: 'world' },
   map_us: { label: 'Find the US State', source: 'us', svg: 'usa' },
   map_mx: { label: 'Find the Mexican State', source: 'mx', svg: 'mexico' },
+  map_ca: { label: 'Find the Canadian Province', source: 'ca', svg: 'canada' },
   map_country_reverse: { label: 'Name the Country', source: 'country', svg: 'world', reverse: true },
   map_us_reverse: { label: 'Name the US State', source: 'us', svg: 'usa', reverse: true },
   map_mx_reverse: { label: 'Name the Mexican State', source: 'mx', svg: 'mexico', reverse: true },
+  map_ca_reverse: { label: 'Name the Canadian Province', source: 'ca', svg: 'canada', reverse: true },
   // Flag ↔ map crossovers (world map only — states have no flags in our data):
   // see a flag → click its country; see a highlighted country → pick its flag.
   map_flag_country: { label: 'Flag → Find on Map', source: 'country', svg: 'world', flagPrompt: true },
@@ -74,7 +76,7 @@ export function regionIdFor(mode, source, regions) {
  * Build the askable items for the given map modes. Only regions present in BOTH
  * the dataset and the backing SVG are included, so every question is clickable.
  * @param {object} data          loaded datasets
- * @param {object} regionsByMap  { world, usa, mexico } → { id: name } tables
+ * @param {object} regionsByMap  { world, usa, mexico, canada } → { id: name } tables
  * @param {object} cfg           { modes, continent } — `continent` restricts
  *   country-sourced modes (map_country*, map_flag_country, map_country_flag)
  *   to one region/continent; US/MX state modes are unaffected.
@@ -86,6 +88,7 @@ export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES, contin
     country: { list: data.countries, region: (c) => c.region },
     us: { list: data.usStates, region: () => 'North America' },
     mx: { list: data.mxStates, region: () => 'North America' },
+    ca: { list: data.caStates, region: () => 'North America' },
   };
 
   for (const mode of modes) {
@@ -116,12 +119,14 @@ const PROMPTS = {
   map_country: (n) => `Where is ${n}? Click the country on the map.`,
   map_us: (n) => `Where is ${n}? Click the U.S. state on the map.`,
   map_mx: (n) => `Where is ${n}? Click the Mexican state on the map.`,
+  map_ca: (n) => `Where is ${n}? Click the Canadian province/territory on the map.`,
 };
 
 const REVERSE_PROMPTS = {
   map_country: 'Which country is highlighted on the map?',
   map_us: 'Which U.S. state is highlighted on the map?',
   map_mx: 'Which Mexican state is highlighted on the map?',
+  map_ca: 'Which Canadian province/territory is highlighted on the map?',
 };
 
 /**
@@ -146,7 +151,7 @@ export function makeMapQuestion(item, { data = null, rng = Math.random, choices 
     source: c,
   };
   if (item.reverse) {
-    const listBySource = { country: data?.countries, us: data?.usStates, mx: data?.mxStates };
+    const listBySource = { country: data?.countries, us: data?.usStates, mx: data?.mxStates, ca: data?.caStates };
     const sourceKey = MAP_MODES[item.mode]?.source;
     const names = (listBySource[sourceKey] || []).map((x) => x.name);
     const distractors = sampleDistinct(names, c.name, choices - 1, rng);

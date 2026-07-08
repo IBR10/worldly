@@ -26,6 +26,11 @@ const mxSvg = `
   <path id="jal" aria-label="Jalisco" d="m0" />
   <path id="nle" aria-label="Nuevo León" d="m1" />
 </svg>`;
+const canadaSvg = `
+<svg viewBox="0 0 100 100">
+  <path id="ab" aria-label="Alberta" d="m0" />
+  <path id="qc" aria-label="Quebec" d="m1" />
+</svg>`;
 
 const data = {
   countries: [
@@ -37,12 +42,14 @@ const data = {
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Nuevo León', capital: 'Monterrey', region: 'North', funFact: 'Industry.', wiki: 'https://w/NL' }],
+  caStates: [{ name: 'Alberta', capital: 'Edmonton', region: 'Prairies', funFact: 'Rockies.', wiki: 'https://w/AB' }],
 };
 
 const regionsByMap = {
   world: parseSvgRegions(worldSvg),
   usa: parseSvgRegions(usaSvg),
   mexico: parseSvgRegions(mxSvg),
+  canada: parseSvgRegions(canadaSvg),
 };
 
 test('parseSvgRegions reads id→name regardless of attribute order', () => {
@@ -78,6 +85,16 @@ test('buildMapPool includes only SVG-present regions and covers all modes', () =
   assert.equal(all.filter((p) => p.mode === 'map_country').length, 3);
   assert.equal(all.filter((p) => p.mode === 'map_us').length, 1);
   assert.equal(all.filter((p) => p.mode === 'map_mx').length, 1);
+  assert.equal(all.filter((p) => p.mode === 'map_ca').length, 1);
+});
+
+test('buildMapPool builds a map_ca pool joined by province name, like map_us/map_mx', () => {
+  const pool = buildMapPool(data, regionsByMap, { modes: ['map_ca'] });
+  assert.equal(pool.length, 1);
+  assert.equal(pool[0].source.name, 'Alberta');
+  assert.equal(pool[0].targetId, 'ab');
+  assert.equal(pool[0].svg, 'canada');
+  assert.equal(pool[0].region, 'North America');
 });
 
 test('buildMapPool restricts country-sourced modes to the given continent', () => {
@@ -98,12 +115,14 @@ test('buildMapPool restricts country-sourced modes to the given continent', () =
   assert.deepEqual(none, []);
 });
 
-test('buildMapPool never filters US/MX state modes by continent', () => {
-  const withContinent = buildMapPool(data, regionsByMap, { modes: ['map_us', 'map_mx'], continent: 'Asia' });
-  const withoutContinent = buildMapPool(data, regionsByMap, { modes: ['map_us', 'map_mx'] });
+test('buildMapPool never filters US/MX/CA state modes by continent', () => {
+  const modes = ['map_us', 'map_mx', 'map_ca'];
+  const withContinent = buildMapPool(data, regionsByMap, { modes, continent: 'Asia' });
+  const withoutContinent = buildMapPool(data, regionsByMap, { modes });
   assert.equal(withContinent.length, withoutContinent.length);
   assert.equal(withContinent.filter((p) => p.mode === 'map_us').length, 1);
   assert.equal(withContinent.filter((p) => p.mode === 'map_mx').length, 1);
+  assert.equal(withContinent.filter((p) => p.mode === 'map_ca').length, 1);
 });
 
 test('makeMapQuestion carries target id, answer and learn-more links', () => {
@@ -124,12 +143,23 @@ test('buildMapPool covers reverse modes and flags them', () => {
   assert.equal(all.filter((p) => p.mode === 'map_country_reverse').length, 3);
   assert.equal(all.filter((p) => p.mode === 'map_us_reverse').length, 1);
   assert.equal(all.filter((p) => p.mode === 'map_mx_reverse').length, 1);
+  assert.equal(all.filter((p) => p.mode === 'map_ca_reverse').length, 1);
   assert.ok(all.filter((p) => p.reverse).length >= 5);
 });
 
 test('regionIdFor resolves reverse modes like their forward twin', () => {
   assert.equal(regionIdFor('map_country_reverse', data.countries[0], regionsByMap.world), 'jp');
   assert.equal(regionIdFor('map_us_reverse', data.usStates[0], regionsByMap.usa), 'co');
+  assert.equal(regionIdFor('map_ca_reverse', data.caStates[0], regionsByMap.canada), 'ab');
+});
+
+test('makeMapQuestion (map_ca) mirrors map_us/map_mx', () => {
+  const item = buildMapPool(data, regionsByMap, { modes: ['map_ca'] })[0];
+  const q = makeMapQuestion(item);
+  assert.equal(q.answer, 'Alberta');
+  assert.equal(q.targetId, 'ab');
+  assert.equal(q.svg, 'canada');
+  assert.match(q.prompt, /Alberta/);
 });
 
 test('buildMapPool covers the flag↔map modes (world map only)', () => {
