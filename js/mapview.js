@@ -12,9 +12,11 @@
  *   onPick       (id, name) => void, fired once when the player clicks a region
  *   highlightId  optional region id to pre-highlight (used by reverse "name it" mode)
  *   interactive  when false, the map is display-only (no picking) — reverse mode
+ *   focusIds     optional list of region ids to zoom the initial view to (e.g.
+ *                every country in one continent) instead of showing the whole map
  * @returns {{ el: HTMLElement, reveal: (clickedId, targetId) => void }}
  */
-export function createMapView({ svgText, onPick, highlightId = null, interactive = true }) {
+export function createMapView({ svgText, onPick, highlightId = null, interactive = true, focusIds = null }) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
 
@@ -45,8 +47,40 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
 
   // --- pan / zoom state -------------------------------------------------------
   let scale = 1, tx = 0, ty = 0;
+  // "Home" view — plain scale=1/centered by default, but re-anchored to a
+  // continent's bounding box by fitToIds() below. Reset view returns here.
+  let homeScale = 1, homeTx = 0, homeTy = 0;
   const apply = () => { svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; };
   const clampScale = (s) => Math.min(8, Math.max(1, s));
+
+  // Zoom the initial view to fit the union of the given region ids (e.g. every
+  // country in one continent), so a region/continent mode opens already zoomed
+  // in instead of showing the whole map. Runs once, on the next animation frame
+  // so the SVG has been laid out (main.js always appends `.el` synchronously
+  // right after createMapView() returns, well before the next frame).
+  function fitToIds(ids) {
+    const els = ids.map((id) => svg.querySelector(`#${CSS.escape(id)}`)).filter(Boolean);
+    if (!els.length) return;
+    const holderRect = holder.getBoundingClientRect();
+    if (!holderRect.width || !holderRect.height) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const el of els) {
+      const r = el.getBoundingClientRect(); // baseline screen rect (scale=1, tx=ty=0 still in effect)
+      minX = Math.min(minX, r.left); minY = Math.min(minY, r.top);
+      maxX = Math.max(maxX, r.right); maxY = Math.max(maxY, r.bottom);
+    }
+    const bboxW = maxX - minX, bboxH = maxY - minY;
+    if (bboxW <= 0 || bboxH <= 0) return;
+    const cx = minX + bboxW / 2 - holderRect.left, cy = minY + bboxH / 2 - holderRect.top;
+    const FILL = 0.75; // the region fills ~75% of the viewport, leaving surrounding context
+    const s = clampScale(Math.min((holderRect.width * FILL) / bboxW, (holderRect.height * FILL) / bboxH));
+    homeScale = s;
+    homeTx = holderRect.width / 2 - cx * s;
+    homeTy = holderRect.height / 2 - cy * s;
+    scale = homeScale; tx = homeTx; ty = homeTy;
+    apply();
+  }
+  if (focusIds && focusIds.length) requestAnimationFrame(() => fitToIds(focusIds));
 
   function zoomAt(cx, cy, factor) {
     const rect = holder.getBoundingClientRect();
@@ -177,7 +211,7 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
   controls.append(
     mkBtn('＋', 'Zoom in', () => zoomCenter(1.3)),
     mkBtn('－', 'Zoom out', () => zoomCenter(1 / 1.3)),
-    mkBtn('⟳', 'Reset view', () => { scale = 1; tx = 0; ty = 0; apply(); }),
+    mkBtn('⟳', 'Reset view', () => { scale = homeScale; tx = homeTx; ty = homeTy; apply(); }),
   );
 
   // Interactive (forward) modes: make every region keyboard-operable — Tab to

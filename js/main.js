@@ -17,6 +17,10 @@ import { checkAchievements, achievementStatus, levelTitle } from './achievements
 // Combined category label lookup (quiz modes + map modes) for HUD/stats.
 const catLabel = (k) => MODES[k]?.label || MAP_MODES[k]?.label || k;
 
+// The four map modes backed by the world SVG — the only ones a continent
+// filter/zoom makes sense for (US/MX state modes have no continent variation).
+const WORLD_MAP_MODES = ALL_MAP_MODES.filter((m) => MAP_MODES[m].svg === 'world');
+
 const app = document.getElementById('app');
 const hud = document.getElementById('hud');
 const toastBox = document.getElementById('toasts');
@@ -223,16 +227,21 @@ const MAP_CARDS = [
   { key: 'map_mx_reverse', flagIso: 'MX', title: 'Name the Mexican State', desc: 'A state is highlighted — name it.' },
   { key: 'map_flag_country', emoji: '🚩', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
   { key: 'map_country_flag', emoji: '🎏', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
+  // Unlike the cards above (which start a specific MAP_MODES key directly),
+  // this opens a chooser screen — so it overrides the tab's default attr.
+  { key: 'map_regions', attr: 'data-go', emoji: '🌍', title: 'Regions & Continents', desc: 'Pick a continent — the map zooms in so you only see that part of the world.' },
 ];
 
 // Card markup shared by every home tab. `attr` is the routing attribute
-// (data-go / data-mode / data-map) the click handlers below listen on.
+// (data-go / data-mode / data-map) the click handlers below listen on; a card
+// can override it with its own `m.attr` (e.g. a map card that opens a chooser
+// screen instead of starting a mode directly).
 function homeCard(attr, m) {
   const icon = m.flagIso
     ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
     : `<span class="emoji">${m.emoji}</span>`;
   return `
-    <button class="card" ${attr}="${m.key}">
+    <button class="card" ${m.attr || attr}="${m.key}">
       ${icon}
       <span class="card-title">${m.title}</span>
       <span class="card-desc">${m.desc}</span>
@@ -309,6 +318,7 @@ function showHome() {
     b.addEventListener('click', () => startQuiz({ title: MODES[b.dataset.mode].label, modes: [b.dataset.mode], total: 10 })));
   app.querySelectorAll('[data-map]').forEach((b) =>
     b.addEventListener('click', () => startMapQuiz({ title: MAP_MODES[b.dataset.map].label, mode: b.dataset.map, total: 10 })));
+  app.querySelector('[data-go="map_regions"]').addEventListener('click', showMapRegions);
   app.querySelector('[data-go="mixed"]').addEventListener('click', () => startQuiz({ title: 'Mixed Quiz', modes: ALL_MODES, total: 12 }));
   app.querySelector('[data-go="challenge"]').addEventListener('click', () => startQuiz({ title: 'Challenge Mode', modes: ALL_MODES, total: 15, challenge: true }));
   app.querySelector('[data-go="daily"]').addEventListener('click', startDaily);
@@ -453,11 +463,45 @@ function showReligions() {
   });
 }
 
+// Regions & Continents chooser: pick a continent + a world-map mode, then play
+// it zoomed into just that continent (see startMapQuiz's `continent` handling).
+function showMapRegions() {
+  leaveSession();
+  const continents = getContinents();
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Regions &amp; Continents 🌍</h1>
+    <p class="screen-sub">Pick a continent — the map zooms in so you're only looking at that part of the world.</p>
+    <div class="form-block">
+      <h3>Continent</h3>
+      <select id="contSel" class="select">
+        ${continents.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('')}
+      </select>
+    </div>
+    <div class="form-block">
+      <h3>Mode</h3>
+      <select id="modeSel" class="select">
+        ${WORLD_MAP_MODES.map((m) => `<option value="${m}">${esc(MAP_MODES[m].label)}</option>`).join('')}
+      </select>
+    </div>
+    <div class="btn-row">
+      <button class="btn primary" id="startRegion">▶ Start</button>
+      <button class="btn ghost" id="backHome">← Back</button>
+    </div>`;
+  wireNav();
+  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#startRegion').addEventListener('click', () => {
+    const continent = app.querySelector('#contSel').value;
+    const mode = app.querySelector('#modeSel').value;
+    startMapQuiz({ title: `${MAP_MODES[mode].label} — ${continent}`, mode, continent, total: 10 });
+  });
+}
+
 // ============================================================================
 //  MAP QUIZ (click-the-map modes)
 // ============================================================================
 async function startMapQuiz(opts) {
-  const { title, mode, total = 10 } = opts;
+  const { title, mode, total = 10, continent = null } = opts;
   const svgName = MAP_MODES[mode]?.svg;
   if (!svgName) return;
 
@@ -479,11 +523,18 @@ async function startMapQuiz(opts) {
   if (myGen !== sessionGen) return; // player already navigated away
 
   const data = getData();
-  const pool = buildMapPool(data, { [svgName]: map.regions }, { modes: [mode] });
+  const pool = buildMapPool(data, { [svgName]: map.regions }, { modes: [mode], continent });
   if (pool.length === 0) {
     toast('🤷', 'Nothing to quiz', 'That map has no questions yet.');
     return showHome();
   }
+
+  // Zoom the map view to the chosen continent's countries. Only meaningful for
+  // country-sourced (world map) modes — US/MX state modes have no continent.
+  const focusIds = (continent && MAP_MODES[mode]?.source === 'country')
+    ? data.countries.filter((c) => c.region === continent && c.iso2 && map.regions[c.iso2.toLowerCase()])
+        .map((c) => c.iso2.toLowerCase())
+    : null;
 
   track('map_mode_started');
   tag('mode', title);
@@ -503,7 +554,7 @@ async function startMapQuiz(opts) {
     kind: 'map', title, engine, total: Math.min(total, pool.length), challenge: false, daily: false,
     lastOpts: opts, index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
     missed: [], startTime: Date.now(), phase: 'answer', current: null, timer: null, multiplier: 1,
-    svgText: map.svgText, mapView: null,
+    svgText: map.svgText, mapView: null, focusIds,
   };
   renderQuestion();
 }
@@ -529,7 +580,7 @@ function renderMapQuestion(q) {
   app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   wireFlagFallback();
-  S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id) });
+  S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id), focusIds: S.focusIds });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
   renderHUD();
 }
@@ -595,7 +646,7 @@ function renderReverseMapQuestion(q) {
   app.querySelector('.progress > span').style.width = progressPct + '%';
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   if (q.flagChoices) wireFlagFallback('.choice-flag img');
-  S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false });
+  S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false, focusIds: S.focusIds });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
   renderHUD();

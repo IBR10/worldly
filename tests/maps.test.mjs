@@ -80,6 +80,32 @@ test('buildMapPool includes only SVG-present regions and covers all modes', () =
   assert.equal(all.filter((p) => p.mode === 'map_mx').length, 1);
 });
 
+test('buildMapPool restricts country-sourced modes to the given continent', () => {
+  const asia = buildMapPool(data, regionsByMap, { modes: ['map_country'], continent: 'Asia' });
+  assert.deepEqual(asia.map((p) => p.source.name), ['Japan']);
+
+  const europe = buildMapPool(data, regionsByMap, { modes: ['map_country_reverse'], continent: 'Europe' });
+  assert.deepEqual(europe.map((p) => p.source.name), ['France']);
+
+  const flagToMap = buildMapPool(data, regionsByMap, { modes: ['map_flag_country'], continent: 'South America' });
+  assert.deepEqual(flagToMap.map((p) => p.source.name), ['Brazil']);
+
+  const mapToFlag = buildMapPool(data, regionsByMap, { modes: ['map_country_flag'], continent: 'Asia' });
+  assert.deepEqual(mapToFlag.map((p) => p.source.name), ['Japan']);
+
+  // A continent with no matching countries in the pool yields an empty pool.
+  const none = buildMapPool(data, regionsByMap, { modes: ['map_country'], continent: 'Antarctica' });
+  assert.deepEqual(none, []);
+});
+
+test('buildMapPool never filters US/MX state modes by continent', () => {
+  const withContinent = buildMapPool(data, regionsByMap, { modes: ['map_us', 'map_mx'], continent: 'Asia' });
+  const withoutContinent = buildMapPool(data, regionsByMap, { modes: ['map_us', 'map_mx'] });
+  assert.equal(withContinent.length, withoutContinent.length);
+  assert.equal(withContinent.filter((p) => p.mode === 'map_us').length, 1);
+  assert.equal(withContinent.filter((p) => p.mode === 'map_mx').length, 1);
+});
+
 test('makeMapQuestion carries target id, answer and learn-more links', () => {
   const item = buildMapPool(data, regionsByMap, { modes: ['map_country'] })
     .find((p) => p.source.name === 'Japan');

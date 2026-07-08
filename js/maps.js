@@ -75,9 +75,11 @@ export function regionIdFor(mode, source, regions) {
  * the dataset and the backing SVG are included, so every question is clickable.
  * @param {object} data          loaded datasets
  * @param {object} regionsByMap  { world, usa, mexico } → { id: name } tables
- * @param {object} cfg           { modes }
+ * @param {object} cfg           { modes, continent } — `continent` restricts
+ *   country-sourced modes (map_country*, map_flag_country, map_country_flag)
+ *   to one region/continent; US/MX state modes are unaffected.
  */
-export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES } = {}) {
+export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES, continent = null } = {}) {
   const pool = [];
   // Keyed by the dataset slice (`source`), so forward and reverse modes share it.
   const lists = {
@@ -93,6 +95,7 @@ export function buildMapPool(data, regionsByMap, { modes = ALL_MAP_MODES } = {})
     const regions = regionsByMap[def.svg];
     if (!cfg || !regions) continue;
     for (const source of cfg.list) {
+      if (def.source === 'country' && continent && source.region !== continent) continue;
       const targetId = regionIdFor(mode, source, regions);
       if (!targetId) continue;
       pool.push({
