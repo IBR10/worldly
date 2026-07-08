@@ -144,6 +144,20 @@
     "note": "Jerusalem's status as capital is internationally disputed; most countries keep their embassies in Tel Aviv."
   },
   {
+    "name": "Palestine",
+    "iso2": "PS",
+    "capital": "Ramallah",
+    "region": "Asia",
+    "subregion": "Middle East",
+    "population": 5400000,
+    "language": "Arabic",
+    "religion": "Islam",
+    "currency": "Israeli new shekel",
+    "funFact": "Palestine has no currency of its own — it mainly uses the Israeli shekel, with the Jordanian dinar also legal tender in the West Bank.",
+    "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine",
+    "note": "The State of Palestine designates East Jerusalem as its capital, but does not administer it; Ramallah is the seat of government in practice. Palestine is a UN observer state, recognized by most UN member states but not universally."
+  },
+  {
     "name": "Iran",
     "iso2": "IR",
     "capital": "Tehran",

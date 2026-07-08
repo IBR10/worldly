@@ -117,9 +117,18 @@ code; historic flags from Wikimedia Commons. The player profile lives in
 
 ## Deployment (Cloudflare)
 
-**The git integration is the single deploy path** — pushes to `main` deploy
-atomically (CI runs the test suite on every push). Local `wrangler deploy` is
-for emergencies only. Caching + security headers (strict CSP, no
+The live site (`playworldly.pages.dev`) is a Cloudflare Pages project
+deployed by **direct upload**, not git integration — pushing to `main` runs
+the test suite in CI but does **not** publish the site. To ship a change,
+deploy it explicitly:
+
+```bash
+npx wrangler pages deploy . --project-name=playworldly
+```
+
+(A separate, legacy Cloudflare Worker is still git-connected for historical
+reasons — its "Workers Builds" check on GitHub is unrelated to the live site
+and safe to ignore.) Caching + security headers (strict CSP, no
 `unsafe-inline`) ship in `_headers`; a service worker (`sw.js`) provides
 offline resilience and caches flags after first sight.
 
