@@ -6,7 +6,11 @@
     "region": "Asia",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "War began in October 2023 with a Hamas-led attack on Israel that killed around 1,200 people and took roughly 250 hostages, followed by a large-scale Israeli military campaign in the Gaza Strip. The fighting has killed tens of thousands of Palestinians, displaced most of Gaza's population, and created famine conditions, while repeated negotiations have sought ceasefires and hostage releases.",
+    "summary": [
+      "The war began on 7 October 2023, when Hamas and allied militants crossed from Gaza into southern Israel, killing around 1,200 people, mostly civilians, and taking roughly 250 people hostage. Israel responded with a large-scale air and ground campaign in Gaza aimed at dismantling Hamas's military and governing capacity and recovering the hostages. The attack followed decades of unresolved conflict over the occupation, the blockade of Gaza, and the status of a future Palestinian state.",
+      "The campaign has killed tens of thousands of Palestinians, according to Gaza health officials, and displaced the overwhelming majority of the strip's roughly two million residents, many of them repeatedly. Large areas of Gaza's cities have been reduced to rubble, and Israel's blockade has restricted the entry of food, fuel, and medical supplies, producing famine conditions in parts of the territory. Successive ceasefire and hostage-release negotiations, mediated chiefly by Qatar, Egypt, and the United States, have produced only partial and temporary halts to the fighting.",
+      "The war has destabilized the wider region, drawing in Hezbollah in Lebanon, Houthi attacks on shipping from Yemen, and direct Israel-Iran confrontation, while fueling protests and diplomatic rifts worldwide. Rebuilding Gaza, agreeing on who will govern it, and the fate of remaining hostages and detainees remain the central unresolved questions, with a lasting settlement to the broader Israeli-Palestinian conflict still elusive."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Gaza_war" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/pse" },
@@ -20,7 +24,11 @@
     "region": "Europe",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "The full-scale invasion launched by Russia in February 2022 became the largest armed conflict in Europe since World War II. It has caused extensive casualties, the displacement of millions of refugees across Europe, and wide-reaching effects on global food and energy supplies.",
+    "summary": [
+      "Russia launched a full-scale invasion of Ukraine on 24 February 2022, expanding a war that had already been underway in eastern Ukraine's Donbas region and Crimea since 2014. Moscow's stated aims included preventing Ukraine's alignment with NATO and the European Union and asserting claims over Ukrainian territory and identity; Kyiv and most of the international community rejected these as a war of aggression in violation of international law.",
+      "Ukrainian forces halted Russia's initial drive on Kyiv and have since fought a grinding war of attrition along a front line running through the east and south, marked by trench warfare, drone strikes, and long-range missile attacks on cities and infrastructure on both sides. Russia occupies roughly a fifth of Ukrainian territory, including Crimea and parts of four other regions it formally annexed in 2022, though full control of those regions is contested.",
+      "The war has caused hundreds of thousands of military casualties on both sides and forced millions of Ukrainians to flee abroad, mostly to Europe, while millions more are displaced within the country. It has also disrupted global grain and energy markets, prompted sweeping Western sanctions on Russia, and made Ukraine's future security guarantees — including any path to NATO or EU membership — a central question in periodic negotiations over how the war might end."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/ukr" },
@@ -34,7 +42,11 @@
     "region": "Asia",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "More than a decade of civil war devastated Syria and displaced over half its pre-war population. The fall of the Assad government in December 2024 opened a fragile political transition, with a new administration working to rebuild amid episodes of sectarian violence, a shattered economy, and one of the world's largest refugee and humanitarian crises.",
+    "summary": [
+      "Syria's civil war began in 2011 after security forces violently suppressed peaceful protests that were part of the wider Arab Spring, escalating into an armed uprising against President Bashar al-Assad's government. The conflict drew in a fragmented array of rebel and jihadist factions, Kurdish forces, and foreign powers including Russia, Iran, Turkey, and a US-led coalition against the Islamic State, killing hundreds of thousands of people over more than a decade.",
+      "The Assad government fell in December 2024 when a rebel offensive led by the Hayat Tahrir al-Sham group swept from the northwest and captured Damascus within days, ending more than five decades of Assad family rule. A transitional administration has since sought to consolidate control, unify the country's armed factions, and win international recognition and sanctions relief, while facing outbreaks of sectarian violence against Alawite, Druze, and other minority communities.",
+      "Syria remains one of the world's largest displacement crises, with millions of refugees abroad, chiefly in Turkey, Lebanon, and Jordan, and millions more displaced inside the country. Rebuilding a shattered economy and infrastructure, integrating former rebel groups into a national army, and managing the return of refugees are likely to shape Syria's transition for years, even as the fall of Assad removed one of the region's longest-standing dictatorships."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Syrian_civil_war" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/syr" },
@@ -48,7 +60,11 @@
     "region": "Asia",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "Civil war since 2014 between the Houthi movement, the internationally recognised government, and regional coalitions has shattered Yemen's economy and health system. Aid agencies have long ranked it among the world's worst humanitarian crises, with millions dependent on assistance, while Houthi attacks on Red Sea shipping have drawn the conflict into wider regional tensions.",
+    "summary": [
+      "Yemen's civil war escalated in 2014–2015 when the Houthi movement, drawing on a base in the north, seized the capital Sanaa and forced the internationally recognized government to flee, prompting a Saudi Arabia-led coalition to intervene militarily on the government's behalf. The war compounded Yemen's existing poverty and fragile institutions, splitting the country between Houthi-controlled areas in the north and government and separatist-held areas in the south.",
+      "A UN-brokered truce in 2022 significantly reduced large-scale fighting, and Saudi Arabia and the Houthis have since held on-and-off talks toward a broader settlement, though a comprehensive peace deal has not been finalized. Since late 2023, the Houthis have also launched missile and drone attacks on shipping in the Red Sea and Gulf of Aden in solidarity with Palestinians in Gaza, drawing US and allied naval strikes and threatening a key global trade route.",
+      "Years of war have left Yemen's health, water, and economic systems in collapse, and aid organizations have repeatedly ranked it among the world's worst humanitarian crises, with millions of people acutely food insecure and dependent on international assistance that has been shrinking due to funding shortfalls. A durable peace remains elusive, with the country still effectively divided and its economy dependent on foreign aid and remittances."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/yem" },
@@ -62,7 +78,11 @@
     "region": "Africa",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "A spreading insurgency by armed groups linked to al-Qaeda and Islamic State has made the central Sahel one of the deadliest conflict zones on Earth. Military coups in Mali, Burkina Faso and Niger, the departure of Western and UN forces, and millions of displaced people have deepened a crisis that increasingly spills toward coastal West Africa.",
+    "summary": [
+      "Instability in the central Sahel traces to the 2012 Tuareg rebellion and the collapse of Libya after Muammar Gaddafi's fall, which flooded the region with weapons and fighters. Groups affiliated with al-Qaeda and the Islamic State subsequently built strongholds across Mali, Burkina Faso, and Niger, exploiting weak state presence, ethnic tensions, and competition over land and resources to expand their reach.",
+      "Frustration over the deteriorating security situation fueled a wave of military coups — in Mali in 2020 and 2021, Burkina Faso in 2022, and Niger in 2023 — bringing juntas to power that expelled French and other Western militaries and UN peacekeepers, turning instead to Russian-linked mercenary forces, including the Wagner Group and its successor Africa Corps. The three juntas formed the Alliance of Sahel States and withdrew from the West African regional bloc ECOWAS.",
+      "Despite this new military cooperation, jihadist violence has continued to intensify, with insurgents besieging towns, blockading supply routes, and increasingly attacking targets toward coastal states such as Benin, Togo, and Ivory Coast. Millions of people across the three countries have been displaced, and large swathes of territory remain outside effective government control, making the central Sahel one of the deadliest and fastest-growing conflict zones in the world."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Jihadist_insurgency_in_the_Sahel" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/bfa" },
@@ -76,7 +96,11 @@
     "region": "Africa",
     "tier": "major",
     "asOf": "July 2026",
-    "summary": "The 2020–2022 Tigray war killed hundreds of thousands before a peace deal ended major fighting, but armed conflict has since shifted to the Amhara and Oromia regions. Ongoing clashes, drought, and mass displacement have left tens of millions of Ethiopians in need of humanitarian assistance.",
+    "summary": [
+      "War broke out in Ethiopia's northern Tigray region in November 2020 between the federal government and the Tigray People's Liberation Front, which had dominated Ethiopian politics for decades before Prime Minister Abiy Ahmed took office. The two-year conflict, which also drew in Eritrean forces, killed an estimated several hundred thousand people through fighting, famine, and atrocities before a November 2022 peace agreement halted major combat.",
+      "Peace in Tigray did not extend to the rest of the country: since 2023, fighting has spread through the Amhara region, where the Fano militia — former government allies during the Tigray war — turned against federal forces amid disputes over regional autonomy and the integration of militia fighters into the national army. Unrest and insurgent violence have also persisted in the Oromia region, driven by longstanding grievances of the Oromo ethnic group.",
+      "The compounding conflicts, alongside repeated droughts linked to climate change, have left tens of millions of Ethiopians facing food insecurity and in need of humanitarian assistance. Ethiopia's federal system, built around ethnically defined regions, continues to strain under the competing demands of its many ethnic groups, leaving the country's stability, and that of the wider Horn of Africa, uncertain."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/War_in_Amhara" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/eth" },
@@ -90,7 +114,11 @@
     "region": "Africa",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "A long-running conflict in the eastern provinces of North and South Kivu, driven by armed groups including the M23 movement, competition over mineral resources, and regional tensions. Repeated offensives have displaced millions of people and created one of the world's largest and most under-reported humanitarian emergencies.",
+    "summary": [
+      "Conflict in the eastern Democratic Republic of the Congo has simmered since the 1990s, rooted in the aftermath of the Rwandan genocide, competition over the region's vast mineral wealth — including gold, tin, and coltan used in electronics — and a patchwork of more than a hundred armed groups. The M23 rebel movement, composed largely of ethnic Tutsi fighters and widely reported by UN experts to be backed by neighboring Rwanda, resurfaced in 2021 after a decade of dormancy.",
+      "M23 has since seized large parts of North Kivu and South Kivu provinces, including the regional capitals Goma and Bukavu, in offensives that have humiliated the Congolese army and the UN peacekeeping force MONUSCO. Congo has accused Rwanda of direct military involvement to control mining areas, an allegation Rwanda denies, and the two countries have repeatedly traded blame while regional and international mediation efforts, including talks hosted by the United States and Qatar, have struggled to produce a lasting ceasefire.",
+      "The fighting has displaced millions of people within Congo and triggered widespread reports of massacres, sexual violence, and looting of mineral resources. Despite the scale of the crisis — among the largest displacement and hunger emergencies in the world — it draws comparatively little international media coverage or funding relative to conflicts of similar magnitude elsewhere."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/cod" },
@@ -104,7 +132,11 @@
     "region": "Africa",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "Fighting that erupted in 2023 between the Sudanese Armed Forces and the paramilitary Rapid Support Forces has devastated Khartoum and other regions. The war has triggered mass displacement, famine warnings, and what aid agencies describe as one of the worst humanitarian and hunger crises in the world — yet it receives a fraction of the attention given to other wars.",
+    "summary": [
+      "War broke out in Sudan in April 2023 between the Sudanese Armed Forces, led by General Abdel Fattah al-Burhan, and the paramilitary Rapid Support Forces (RSF), led by Mohamed Hamdan Dagalo, after the two generals — former allies who had jointly ousted a civilian-led transitional government in 2021 — fell out over plans to integrate the RSF into the regular army. The RSF traces its roots to the Janjaweed militias implicated in atrocities in Darfur in the 2000s.",
+      "Fighting has devastated the capital Khartoum and spread across much of the country, with the RSF seizing most of Darfur and parts of the west while the army has held out in the east and parts of the center. Both sides have been accused of atrocities against civilians, including ethnically targeted killings in Darfur that the United States and other observers have labeled genocide, and each has received backing from competing foreign states accused of supplying weapons.",
+      "The war has displaced more than ten million people, the largest displacement crisis in the world, and pushed parts of the country into famine, according to UN-backed assessments. Despite the scale of the catastrophe, Sudan's war has received only a fraction of the international media attention and humanitarian funding directed at conflicts such as Ukraine or Gaza, prompting aid agencies to repeatedly call it one of the most neglected crises on Earth."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/sdn" },
@@ -118,7 +150,11 @@
     "region": "North America",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "Armed gangs control much of the capital Port-au-Prince, fuelling a collapse of public order, displacement, and severe food insecurity. A political vacuum and the deployment of a multinational security support mission have shaped an ongoing struggle to restore stability and basic services.",
+    "summary": [
+      "Haiti's current crisis traces to the 2021 assassination of President Jovenel Moïse, which left the country without an elected government and accelerated a collapse of state authority that armed gangs moved to fill. By 2024, gang coalitions controlled most of the capital, Port-au-Prince, effectively besieging the national palace, main port, and international airport and forcing the resignation of Prime Minister Ariel Henry.",
+      "A transitional presidential council has since nominally governed the country, backed by a Kenya-led multinational security support mission authorized by the UN Security Council to help Haiti's overwhelmed police force confront the gangs. Progress has been limited: gangs continue to control large parts of the capital and have expanded into previously unaffected regions, while repeated efforts to organize elections have stalled amid the insecurity.",
+      "The violence has driven hundreds of thousands of Haitians from their homes, fueled acute hunger, and triggered waves of migration and deportation disputes with neighboring countries and the United States. With state institutions hollowed out and gangs entrenched, restoring basic security and a path to elected government remains a distant prospect for the hemisphere's poorest country."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Haitian_crisis_(2018%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/hti" },
@@ -132,7 +168,11 @@
     "region": "Asia",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "Following the 2021 military coup, Myanmar descended into widespread armed resistance and civil war between the military junta, ethnic armed organisations, and pro-democracy forces. The conflict has displaced large numbers of civilians and drawn repeated warnings from humanitarian agencies.",
+    "summary": [
+      "Myanmar's military seized power in a February 2021 coup, overthrowing the elected government of Aung San Suu Kyi's National League for Democracy shortly after it won a landslide re-election. Mass peaceful protests met a violent crackdown, and many protesters and former lawmakers subsequently took up arms, forming People's Defence Forces aligned with a shadow National Unity Government.",
+      "The junta's forces have since fought on multiple fronts against these new resistance forces and against long-established ethnic armed organizations, some of which control substantial territory along Myanmar's borders. A rare alliance of ethnic armies launched a major offensive in 2023 that seized swaths of territory and infrastructure, exposing the military's overstretched position, though the junta has hit back with air strikes on civilian areas.",
+      "The war has displaced millions of people, wrecked the economy, and left the junta in control of a shrinking share of the country's territory while still holding most major cities. A devastating 2025 earthquake compounded the humanitarian toll in a country where aid access is already tightly restricted, leaving Myanmar's civil war among the world's least-covered major conflicts despite its scale."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Myanmar_civil_war_(2021%E2%80%93present)" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/mmr" },
@@ -146,7 +186,11 @@
     "region": "Africa",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "More than a decade of fighting between government forces, foreign mercenaries, and shifting rebel coalitions has left one of the world's poorest countries in chronic crisis. Roughly half the population needs humanitarian assistance, and violence against civilians continues far from international headlines.",
+    "summary": [
+      "The Central African Republic has cycled through crisis since a 2013 coup by the mostly Muslim Séléka rebel coalition triggered a brutal sectarian backlash from Christian and animist \"anti-balaka\" militias, killing thousands and displacing a large share of the population. Despite a 2019 peace agreement among armed groups, fighting has continued in various forms ever since.",
+      "The government, led by President Faustin-Archange Touadéra, has relied heavily on Russian mercenaries — first the Wagner Group, later reorganized as Africa Corps — to fight rebel coalitions and secure access to the country's diamond and gold mines, arrangements that have drawn accusations of abuses against civilians. A patchwork of armed groups still controls significant rural territory outside the capital, Bangui.",
+      "One of the world's poorest and least developed countries even before the crisis, the Central African Republic now has roughly half its population in need of humanitarian aid, with recurring displacement, weak infrastructure, and sporadic violence against civilians that rarely reaches international attention."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Central_African_Republic_Civil_War" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/caf" },
@@ -160,7 +204,11 @@
     "region": "Africa",
     "tier": "underreported",
     "asOf": "July 2026",
-    "summary": "Since 2017, fighting between government forces and separatists seeking an independent 'Ambazonia' in Cameroon's English-speaking Northwest and Southwest regions has killed thousands and displaced close to a million people. School boycotts and attacks on civilians have devastated a generation, in one of the world's most neglected crises.",
+    "summary": [
+      "Cameroon's Anglophone crisis grew out of long-standing grievances among the English-speaking minority in the country's Northwest and Southwest regions, a legacy of British and French colonial rule that left Cameroon with two official languages and legal systems. Protests by lawyers and teachers in 2016 over the marginalization of English-language institutions were met with a heavy security crackdown, and by 2017 armed separatist groups had emerged seeking an independent state they call \"Ambazonia.\"",
+      "The conflict since has settled into a grinding, low-intensity war between government forces and a fragmented array of separatist militias, marked by village raids, kidnappings, and government-imposed lockdowns that separatists have used to enforce school boycotts, crippling education for an entire generation of children in the two regions. Peace talks have made little headway, and both sides have been accused of serious abuses against civilians.",
+      "The fighting has killed thousands of people and displaced close to a million within Cameroon and into neighboring Nigeria, yet it remains one of the most neglected crises globally, receiving comparatively little international media coverage, diplomatic attention, or humanitarian funding relative to its toll."
+    ],
     "links": [
       { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Anglophone_Crisis" },
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/cmr" },

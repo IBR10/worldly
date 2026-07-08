@@ -1313,6 +1313,8 @@ function renderCrisisDetail(entry) {
   if (!entry) return showCrises();
   const links = (entry.links || []).filter((l) => l.url)
     .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
+  // `summary` is an array of paragraphs (older single-string entries still work).
+  const paragraphs = Array.isArray(entry.summary) ? entry.summary : [entry.summary];
   app.innerHTML = `
     ${topNav({ id: 'backCrisesTop', label: '← All crises' })}
     <div class="phrase-head">
@@ -1324,7 +1326,7 @@ function renderCrisisDetail(entry) {
     </div>
 
     <div class="crisis-body">
-      <p>${esc(entry.summary)}</p>
+      ${paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}
       ${entry.asOf ? `<p class="muted-note">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
       <div><span class="muted-note">Follow the latest:</span>
         <div class="learn-more">${links}</div></div>
