@@ -45,7 +45,7 @@ npm test        # 48 tests over the quiz, SRS and map engines
 | **Similar Flags** | Tell look-alike flags apart, with tips (12 confusion groups) |
 | **Mixed / Challenge / Daily** | Everything shuffled · timed with streak multiplier · one fixed set per day |
 | **Custom Study** | Choose topics, continents, difficulty, length — and multiple-choice or **typed answers** |
-| **Review Missed** | Practise exactly what you got wrong |
+| **Review Missed** | Practice exactly what you got wrong |
 
 ### Interactive maps
 Click-the-country (world), click-the-state (US, Mexico, Canada), plus

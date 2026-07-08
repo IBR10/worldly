@@ -164,7 +164,7 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
   });
 
   // Find the region under a screen point. Small regions are often drawn UNDER a
-  // larger neighbour (e.g. DC under Maryland, Andorra under France, Guanajuato
+  // larger neighbor (e.g. DC under Maryland, Andorra under France, Guanajuato
   // under Jalisco), so `document.elementFromPoint` — which returns the topmost
   // painted path — would resolve to the wrong country/state. Instead we test the
   // click against every region's fill and keep the SMALLEST one that contains it,
@@ -215,7 +215,7 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
   );
 
   // Interactive (forward) modes: make every region keyboard-operable — Tab to
-  // a region, Enter/Space picks it, mirroring the click/hit-test behaviour.
+  // a region, Enter/Space picks it, mirroring the click/hit-test behavior.
   if (interactive) {
     svg.querySelectorAll('path[id]').forEach((p) => {
       p.setAttribute('tabindex', '0');

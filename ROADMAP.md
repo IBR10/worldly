@@ -55,7 +55,7 @@ Flag → country already exists. Planned extensions:
 - [x] Expand country set from 76 → 155 (biggest gaps in Africa/Oceania filled; full ~195 coverage remains a future stretch goal).
 - [ ] Famous-landmark mode (image → country).
 - [ ] Cultural-quiz mode (food / festivals / traditions) with its own data file.
-- [ ] Per-country deep-dive study pages (population, currency, neighbours…).
+- [ ] Per-country deep-dive study pages (population, currency, neighbors…).
 
 ## Platform / polish
 - [x] Web app manifest + service worker (offline app shell; flags cached after first sight).

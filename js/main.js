@@ -756,7 +756,7 @@ function wireFlagFallback(selector = '.q-flag') {
 }
 
 // Review sessions rebuild questions through the MCQ engine, which only knows
-// quiz modes. Map-mode misses (ids like "map_us:Texas") are practised by
+// quiz modes. Map-mode misses (ids like "map_us:Texas") are practiced by
 // replaying the map modes instead, so they're excluded from Review Missed.
 function reviewableMissedIds() {
   return Object.keys(getProfile().missed).filter((id) => MODES[id.split(':')[0]]);
