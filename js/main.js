@@ -181,6 +181,7 @@ function renderHUD() {
   const p = getProfile();
   const lp = levelProgress(p.xp);
   hud.innerHTML = `
+    <button class="chip chip-name hide-sm" id="hudName" title="View profile">👤 <strong>${esc(p.name)}</strong></button>
     <div class="chip" title="${esc(levelTitle(p.xp))}">Lvl <strong>${lp.level}</strong>
       <span class="xpbar"><span></span></span></div>
     <div class="chip hide-sm">XP <strong>${p.xp}</strong></div>
@@ -189,6 +190,7 @@ function renderHUD() {
   // Widths are set via CSSOM (not inline style attributes) so the CSP can stay
   // free of style-src 'unsafe-inline'.
   hud.querySelector('.xpbar > span').style.width = lp.pct + '%';
+  hud.querySelector('#hudName').addEventListener('click', showProfile);
 }
 
 // ---- theme -------------------------------------------------------------------
@@ -274,7 +276,7 @@ function showHome() {
     { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
     { key: 'stats', emoji: '📊', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
     { key: 'achievements', emoji: '🏆', title: 'Achievements', desc: 'Badges & milestones.' },
-    { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name, leaderboard & reset.' },
+    { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name & reset.' },
     { key: 'about', emoji: 'ℹ️', title: 'About', desc: 'Credits, data sources & privacy.' },
   ];
   // Each category is its own tab instead of one long scrolling page.
@@ -1421,12 +1423,29 @@ function showAchievements() {
 }
 
 // ============================================================================
+//  LEADERBOARD
+// ============================================================================
+function showLeaderboard() {
+  leaveSession();
+  const lb = getProfile().leaderboard;
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Leaderboard 🏆</h1>
+    <p class="screen-sub">Your best local scores from Challenge and Daily runs.</p>
+    <div class="form-block">
+      ${lb.length ? `<ul class="weak-list">${lb.map((e, i) => `<li><span>#${i + 1} · ${esc(e.mode)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>` : '<p class="screen-sub">Play Challenge or Daily to set a high score.</p>'}
+    </div>
+    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
+  wireNav();
+  app.querySelector('#backHome').addEventListener('click', showHome);
+}
+
+// ============================================================================
 //  PROFILE
 // ============================================================================
 function showProfile() {
   leaveSession();
   const p = getProfile();
-  const lb = p.leaderboard;
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Profile 🧭</h1>
@@ -1436,10 +1455,6 @@ function showProfile() {
         <input id="nameInput" class="btn name-input" value="${esc(p.name)}" maxlength="20">
         <button class="btn primary" id="saveName">Save</button>
       </div>
-    </div>
-    <div class="form-block">
-      <h3>Local leaderboard (best scores)</h3>
-      ${lb.length ? `<ul class="weak-list">${lb.map((e, i) => `<li><span>#${i + 1} · ${esc(e.mode)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>` : '<p class="screen-sub">Play Challenge or Daily to set a high score.</p>'}
     </div>
     <div class="form-block">
       <h3>Backup &amp; transfer</h3>
@@ -1535,6 +1550,7 @@ async function boot() {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showHome(); }
   });
   document.getElementById('helpBtn').addEventListener('click', showAbout);
+  document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
   document.addEventListener('keydown', onKeydown);
 
   // Surface storage failures once per session instead of losing progress silently.
