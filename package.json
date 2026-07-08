@@ -7,8 +7,19 @@
   "scripts": {
     "start": "python3 -m http.server 8000",
     "serve": "python3 -m http.server 8000",
-    "test": "node --test --test-reporter=./scripts/tdd-guard-reporter.mjs --test-reporter-destination=stdout \"tests/*.test.mjs\""
+    "test": "node --test --test-reporter=./scripts/tdd-guard-reporter.mjs --test-reporter-destination=stdout \"tests/*.test.mjs\"",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
-  "keywords": ["geography", "education", "quiz", "spaced-repetition", "game"],
-  "license": "MIT"
+  "keywords": [
+    "geography",
+    "education",
+    "quiz",
+    "spaced-repetition",
+    "game"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.107.1"
+  }
 }
