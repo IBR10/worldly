@@ -37,6 +37,8 @@ function leaveSession() { S = null; sessionGen += 1; }
 let homeTab = 'play';
 // Which crises tab is selected (persists while browsing crisis details).
 let crisesTab = 'underreported';
+// Which leaderboard tab is selected (persists while browsing the leaderboard).
+let leaderboardTab = 'challenge';
 
 // ---- tiny helpers ------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -1539,16 +1541,53 @@ function showAchievements() {
 function showLeaderboard() {
   leaveSession();
   const lb = getProfile().leaderboard;
+  const tiers = [
+    { id: 'challenge', label: '⏱️ Challenge' },
+    { id: 'daily', label: '📅 Daily' },
+  ];
+  if (!tiers.some((t) => t.id === leaderboardTab)) leaderboardTab = 'challenge';
+
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Leaderboard 🏆</h1>
-    <p class="screen-sub">Your best local scores from Challenge and Daily runs.</p>
+
+    <div class="section-h">🌍 Global</div>
+    <div class="tabs" role="tablist">
+      ${tiers.map((t) => `<button class="tab ${t.id === leaderboardTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === leaderboardTab}" tabindex="${t.id === leaderboardTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
+    </div>
+    ${tiers.map((t) => `
+      <div class="tab-panel ${t.id === leaderboardTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
+        <div class="form-block" id="globalList-${t.id}"><p class="screen-sub">Loading…</p></div>
+      </div>`).join('')}
+
+    <div class="section-h">📱 Your personal bests</div>
     <div class="form-block">
       ${lb.length ? `<ul class="weak-list">${lb.map((e, i) => `<li><span>#${i + 1} · ${esc(e.mode)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>` : '<p class="screen-sub">Play Challenge or Daily to set a high score.</p>'}
     </div>
+
     <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
+  wireTabs((id) => { leaderboardTab = id; });
   app.querySelector('#backHome').addEventListener('click', showHome);
+  tiers.forEach((t) => loadGlobalLeaderboard(t.id));
+}
+
+async function loadGlobalLeaderboard(mode) {
+  const myGen = sessionGen;
+  const target = document.getElementById(`globalList-${mode}`);
+  try {
+    const res = await fetch(`/api/leaderboard?mode=${mode}`);
+    if (myGen !== sessionGen || !target) return; // player already navigated away
+    if (!res.ok) throw new Error('load_failed');
+    const { entries } = await res.json();
+    target.innerHTML = entries.length
+      ? `<ul class="weak-list">${entries.map((e, i) => `<li><span>#${i + 1} · ${esc(e.name)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>`
+      : '<p class="screen-sub">No scores yet — be the first!</p>';
+  } catch {
+    if (myGen === sessionGen && target) {
+      target.innerHTML = '<p class="screen-sub">Couldn\'t reach the global leaderboard — check your connection.</p>';
+    }
+  }
 }
 
 // ============================================================================
