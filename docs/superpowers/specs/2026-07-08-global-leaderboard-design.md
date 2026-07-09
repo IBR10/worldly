@@ -28,16 +28,81 @@ server-side piece.
 
 ## Why real anti-cheat is actually feasible here
 
-Score calculation was traced end-to-end in `js/main.js`/`js/state.js`:
-- Challenge Mode's per-question XP is `Math.round((10 + streakBonus) * multiplier)`
-  (`state.js:169`), where `multiplier = 1 + min(2, runStreak * 0.2)`
-  (`main.js:729`) — a pure function of the *sequence of correct/incorrect
-  answers*. The 10-second-per-question timer only ever produces a timeout
-  that counts as wrong (`main.js:735-737`); no raw timing value ever feeds
-  the score formula.
-- This means a server that independently knows (a) the question set and (b)
-  each submitted answer can recompute the *exact* final score — not an
-  approximation, a bit-for-bit match with what the client would compute.
+Score calculation was traced end-to-end in `js/main.js`/`js/state.js`. The
+timer only ever produces a timeout that counts as wrong (`main.js:735-737`)
+— no raw timing value ever feeds any score formula, in-session or
+lifetime. This means a server that independently knows (a) the question set
+and (b) each submitted answer can recompute an exact, non-approximate final
+score — **provided the formula only depends on data the server itself
+holds**, which required one correction (see next section).
+
+### Correction: the score must be a new, session-only formula, not today's XP
+
+`state.js:recordAnswer` computes `xpGained = round((10 + streakBonus) *
+multiplier)` where `streakBonus = min(10, floor(profile.currentStreak / 2))`
+— and `profile.currentStreak` is the player's **lifetime** correct-answer
+streak across every mode they've ever played, not this session's streak.
+That's private client state the server can't see, and trusting a
+client-reported value for it would reopen exactly the fabrication hole this
+feature exists to close. It also means two players with an identical
+run today can already get different scores for reasons neither controls —
+which undermines "compare me against another player" even before cheating
+enters the picture.
+
+**Resolution (confirmed with the user):** introduce a new, self-contained
+**Challenge Score** formula, used only for the leaderboard, that depends
+only on in-session data:
+
+```js
+// js/quiz.js — pure, no profile/state dependency, importable by both the
+// client and the server (Pages Function) unmodified.
+export function challengeMultiplier(runStreakBeforeQuestion) {
+  return 1 + Math.min(2, runStreakBeforeQuestion * 0.2);
+}
+export function sessionQuestionXp(runStreakBeforeQuestion, correct) {
+  if (!correct) return 0;
+  const streakAfter = runStreakBeforeQuestion + 1;
+  const bonus = Math.min(10, Math.floor(streakAfter / 2));
+  return Math.round((10 + bonus) * challengeMultiplier(runStreakBeforeQuestion));
+}
+```
+
+This exactly mirrors the shape of today's lifetime formula (increment
+streak, bonus from the post-increment value, multiply, round) but with
+`profile.currentStreak` replaced by the session's own running streak. It's
+identical in spirit to what `main.js` already tracks as `S.runStreak` and
+already computes inline in `startTimer()` as `S.multiplier = 1 +
+Math.min(2, S.runStreak * 0.2)` — that inline calculation is replaced by a
+call to the new exported `challengeMultiplier()` so there is exactly one
+implementation, not two that could drift.
+
+**What does and doesn't change:**
+- `recordAnswer()` keeps running exactly as it does today, for every mode,
+  updating `profile.xp`, level, lifetime streak, SRS, and achievements —
+  completely untouched. Playing a verified Challenge/Daily session still
+  contributes to your real profile progression, using the server-confirmed
+  `correct` boolean in place of a locally-computed one.
+- Only `S.xpRun` — the number shown live during a **Challenge or Daily**
+  run and the number written to the leaderboard (local personal-best list
+  *and* the global board) — switches to the new session-only formula.
+  Regular practice/review modes are unaffected (they never fed the
+  leaderboard and their displayed XP is still `recordAnswer`'s real
+  `xpGained`, unchanged).
+- This is a third, explicit behavior change, alongside the two below: the
+  number shown as your Challenge/Daily score today (lifetime-streak-
+  influenced) will generally differ slightly from what the same run scores
+  after this change (session-streak-only). Existing entries already in a
+  player's local `profile.leaderboard` are left as historical data,
+  unconverted — only new runs use the new formula.
+
+The client-side change this requires: in `answer()`/`answerTyped()`
+(`js/main.js`), when `S.challenge` is true, `S.xpRun += sessionQuestionXp(S.runStreak, correct)`
+(computed **before** `S.runStreak` is incremented for this question)
+instead of `S.xpRun += res.xpGained` (the `recordAnswer` return value,
+which is still used to drive `renderFeedback()`'s "+N XP" text for
+non-challenge modes only, unchanged). For challenge/daily runs, the
+feedback text's "+N XP" now shows the new session score's per-question
+contribution instead of `recordAnswer`'s lifetime-influenced one.
 - `js/quiz.js` (`buildPool`, `makeQuestion`, `createQuiz`, `learnMoreFor`) is
   pure — no DOM, no `window`, already unit-tested via plain `node --test`.
   It can run unmodified inside a Cloudflare Worker/Pages Function.
@@ -123,11 +188,13 @@ Errors: `400` invalid mode, `429` rate-limited (see Abuse handling).
 Request: `{ sessionId, questionId, value }` (`value` may be `null` for a timeout, matching today's `answer(null)` on timeout)
 
 Server looks up the session, finds the matching question by `questionId`,
-grades it (`value === stored.answer`), advances the stored `runStreak` /
-computes this question's `multiplier` and XP exactly as
-`state.js:recordAnswer` does today, adds to `runningScore`, marks the
-question answered (rejects a second grade attempt for the same
-`questionId` — one grade per question, no retries-until-correct).
+grades it (`value === stored.answer`), computes this question's XP via the
+shared `sessionQuestionXp(storedRunStreak, correct)` from `js/quiz.js` (see
+"Correction: the score must be a new, session-only formula" above),
+updates the stored running streak (+1 if correct, reset to 0 if not) and
+`runningScore`, marks the question answered (rejects a second grade
+attempt for the same `questionId` — one grade per question, no
+retries-until-correct).
 
 Response: `{ correct, correctAnswer, funFact, learnMore, xpGained, runningScore, runningStreak }`
 
@@ -189,28 +256,38 @@ CREATE INDEX idx_leaderboard_mode_date ON leaderboard (mode, date, score DESC);
 - `answer()` / `answerTyped()`: when `S.remote`, become async — call
   `POST /api/session/answer`, use the response's `correct`/`funFact`/
   `learnMore`/`xpGained` to drive the exact same `renderFeedback()` UI as
-  today. The player's own profile progression (XP, level, streaks,
-  achievements, SRS) is still updated locally via the existing
-  `recordAnswer(q, correct, opts)` — using the server-confirmed `correct`
-  boolean instead of a locally-computed one. That keeps all
-  profile/achievement logic exactly as it is today; only the
-  leaderboard-eligible *score number* is server-authoritative.
+  today.
+  - **Profile progression** (XP, level, lifetime streak, achievements,
+    SRS) is still updated locally via the existing
+    `recordAnswer(q, correct, opts)` — using the server-confirmed
+    `correct` boolean instead of a locally-computed one. Unchanged logic,
+    just fed a verified input.
+  - **Leaderboard score** (`S.xpRun`, for challenge/daily runs only) no
+    longer comes from `recordAnswer`'s return value. It's computed by the
+    new shared `sessionQuestionXp(S.runStreak, correct)` from `js/quiz.js`
+    (see the score-formula correction above) — called with the *current*
+    `S.runStreak` *before* it's incremented for this question, both when
+    remote (mirroring the server's `session/answer` response, which uses
+    the identical function) and in the local-fallback path.
   - If a mid-quiz `session/answer` call fails (connection drops), fall
-    back for the *rest of that run*: grade remaining questions locally
-    (matching today's logic) and don't call `session/finish` — the
-    already-graded prefix simply doesn't get submitted anywhere; the
-    player still finishes their quiz normally and it's saved to their
-    local personal-best list as it is today.
+    back for the *rest of that run*: grade remaining questions locally,
+    still using `sessionQuestionXp` for `S.xpRun` (so the final number is
+    internally consistent regardless of where the connection dropped),
+    and don't call `session/finish` — the already-graded prefix simply
+    doesn't get submitted anywhere; the player still finishes their quiz
+    normally and it's saved to their local personal-best list as it is
+    today.
 - `finishQuiz()`: if the run was remote and fully server-graded, call
   `POST /api/session/finish` with the player's `profile.name` in the
   background (fire-and-forget relative to showing results — the client
-  already knows its own final score from the running local computation,
-  which is guaranteed to match the server's by construction, so there's no
-  need to block the results screen on this call). On success, show a
-  small "🌍 Synced — you're #N globally" note; on failure, no error
-  shown, it just doesn't appear on the global board this time.
-  `addLeaderboard(score, mode)` (existing local personal-best list) is
-  called exactly as it is today, in **all** cases — remote or local-fallback.
+  already knows its own final score, computed via the same
+  `sessionQuestionXp` calls the server made, so there's no need to block
+  the results screen on this call). On success, show a small "🌍 Synced —
+  you're #N globally" note; on failure, no error shown, it just doesn't
+  appear on the global board this time. `addLeaderboard(score, mode)`
+  (existing local personal-best list) is called exactly as it is today,
+  in **all** cases — remote or local-fallback, always using the new
+  session-only score.
 
 ## Behavior changes (flagged explicitly, not silent)
 
@@ -226,6 +303,12 @@ CREATE INDEX idx_leaderboard_mode_date ON leaderboard (mode, date, score DESC);
    everyone. (The player's local streak/`dailyDoneToday()` logic, which
    uses local date for *when the button greys out on your device*, is
    unaffected — this only changes which question set is authoritative.)
+3. **Challenge/Daily's displayed and saved score switches from the
+   lifetime-streak-influenced XP formula to the new session-only
+   `sessionQuestionXp` formula** (see "Correction" above). Numbers for new
+   runs will generally differ slightly from what the same run would have
+   scored before this change. Profile XP/level/lifetime streak are
+   unaffected — only the Challenge/Daily score number changes.
 
 ## Abuse handling (kept intentionally light)
 
@@ -257,12 +340,16 @@ Two sections, stacked:
 
 ## Testing
 
-- **Pure grading logic** (the per-question correctness/multiplier/XP
-  recompute, and the Challenge/Daily pool generation given a seed) is
-  extracted into a small server-side module that is itself framework-free
-  and testable with plain `node --test`, following the exact pattern of
-  `tests/quiz.test.mjs` — this is new test coverage, not a gap, since it's
-  the piece carrying the actual security property.
+- **`challengeMultiplier`/`sessionQuestionXp`** (added to `js/quiz.js`,
+  see the score-formula correction above) get direct `node --test`
+  coverage in `tests/quiz.test.mjs`, alongside the existing pool/question
+  tests — this pair of functions carries the actual security/fairness
+  property, so it needs real unit tests, not just manual verification.
+- **Server-side session grading** (looking up a stored question by id,
+  comparing the submitted value, calling the same `sessionQuestionXp`) is
+  a thin wrapper around already-tested pure functions; it's covered by the
+  manual API verification below rather than duplicating engine-level unit
+  tests.
 - **API endpoints**: manual verification against a local
   `wrangler pages dev` instance (Cloudflare's local emulator, which
   supports local D1/KV bindings) — start a session, answer all questions
