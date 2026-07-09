@@ -824,6 +824,13 @@ async function answer(value) {
       S.remote = false;
       correct = false; // this one question's grade is lost with the dropped request
       xpGained = 0;
+      // The server never sent this question's answer/fact/links (that's the
+      // whole security point), and the request that would have revealed them
+      // just failed — fill in safe placeholders so the feedback screen can
+      // still render instead of crashing on an undefined field.
+      q.answer = q.answer ?? '(connection lost — not graded)';
+      q.funFact = q.funFact ?? '';
+      q.learnMore = q.learnMore ?? [];
       toast('📡', 'Connection lost', "Switched to local scoring — this run won't count for the global board.");
     }
   } else {
