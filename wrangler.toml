@@ -1,0 +1,13 @@
+name = "playworldly"
+pages_build_output_dir = "."
+compatibility_date = "2026-07-08"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "worldly-leaderboard"
+database_id = "32f75b53-2a4a-4070-92f3-c423be4e47e5"
+
+[[kv_namespaces]]
+binding = "SESSIONS_KV"
+id = "50d99f55e9724e548871875cfa1d6a48"
