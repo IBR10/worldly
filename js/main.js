@@ -426,7 +426,7 @@ async function startQuiz(opts) {
       });
       if (res.ok) {
         const parsed = await res.json();
-        if (Array.isArray(parsed?.questions)) remote = parsed;
+        if (Array.isArray(parsed?.questions) && parsed.questions.length > 0) remote = parsed;
       }
     } catch {
       remote = null;
@@ -926,6 +926,10 @@ function renderTypedQuestion(q) {
   renderHUD();
 }
 
+// MCQ-only: typed input never coexists with challenge:true (Custom Study is
+// the only caller, and it never sets challenge). Remote/session-verified
+// scoring lives entirely in answer() — if a typed Challenge mode is ever
+// added, that logic needs to be ported here too, not assumed to apply.
 function answerTyped(value) {
   if (S.phase !== 'answer') return;
   clearTimer();
