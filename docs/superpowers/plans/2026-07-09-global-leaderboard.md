@@ -710,13 +710,13 @@ Expected: `incomplete-finish->409` (no questions were answered). Then stop the d
 const sanitizeName = (raw) => String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20) || 'Explorer';
 console.log(sanitizeName('   '));                     // -> Explorer
 console.log(sanitizeName('A'.repeat(30)));             // -> 20 A's
-console.log(sanitizeName('Bob'));                // -> Bob
+console.log(sanitizeName('Bob'));                // -> Bob
 ```
 Run: `node -e "$(cat <<'EOF'
 const sanitizeName = (raw) => String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20) || 'Explorer';
 console.log(sanitizeName('   '));
 console.log(sanitizeName('A'.repeat(30)));
-console.log(sanitizeName('Bob'));
+console.log(sanitizeName('Bob'));
 EOF
 )"`
 Expected: `Explorer`, `AAAAAAAAAAAAAAAAAAAA` (20 chars), `Bob`.
