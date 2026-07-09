@@ -387,11 +387,15 @@ function showAbout() {
 async function startQuiz(opts) {
   const { title, modes, continents = 'all', difficulty = 'medium', total = 10, challenge = false, daily = false, reviewIds = null, seed = null, religionFilter = null, input = 'mcq' } = opts;
 
+  // Every call — sync or async — stamps its own generation up front, so a
+  // synchronous call (e.g. Mixed Quiz) correctly invalidates an earlier
+  // still-in-flight async Challenge/Daily attempt when it later resolves.
+  const myGen = ++sessionGen;
+
   // Challenge/Daily attempt a server-verified session first, so the score is
   // eligible for the global leaderboard. Everything else (and any failure
   // below) uses the existing fully-local engine, unchanged.
   if (challenge) {
-    const myGen = ++sessionGen;
     let remote = null;
     try {
       const res = await fetch('/api/session/start', {
@@ -399,7 +403,10 @@ async function startQuiz(opts) {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ mode: daily ? 'daily' : 'challenge' }),
       });
-      if (res.ok) remote = await res.json();
+      if (res.ok) {
+        const parsed = await res.json();
+        if (Array.isArray(parsed?.questions)) remote = parsed;
+      }
     } catch {
       remote = null;
     }
