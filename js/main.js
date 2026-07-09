@@ -843,7 +843,7 @@ async function answer(value) {
       // just failed — fill in safe placeholders so the feedback screen can
       // still render instead of crashing on an undefined field.
       q.answer = q.answer ?? '(connection lost — not graded)';
-      q.funFact = q.funFact ?? '';
+      q.funFact = q.funFact ?? "This question wasn't graded — the connection dropped before the server could reveal it.";
       q.learnMore = q.learnMore ?? [];
       // The remaining pre-fetched remote questions have no answer data (and
       // never will — the server never sends it), so the rest of this run
