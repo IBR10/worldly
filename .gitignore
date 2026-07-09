@@ -4,3 +4,6 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# superpowers scratch (task briefs, review packages, progress ledger)
+.superpowers/
