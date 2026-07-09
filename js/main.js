@@ -384,8 +384,49 @@ function showAbout() {
 // ============================================================================
 //  QUIZ
 // ============================================================================
-function startQuiz(opts) {
+async function startQuiz(opts) {
   const { title, modes, continents = 'all', difficulty = 'medium', total = 10, challenge = false, daily = false, reviewIds = null, seed = null, religionFilter = null, input = 'mcq' } = opts;
+
+  // Challenge/Daily attempt a server-verified session first, so the score is
+  // eligible for the global leaderboard. Everything else (and any failure
+  // below) uses the existing fully-local engine, unchanged.
+  if (challenge) {
+    const myGen = ++sessionGen;
+    let remote = null;
+    try {
+      const res = await fetch('/api/session/start', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ mode: daily ? 'daily' : 'challenge' }),
+      });
+      if (res.ok) remote = await res.json();
+    } catch {
+      remote = null;
+    }
+    if (myGen !== sessionGen) return; // player already navigated away
+
+    if (remote) {
+      track('quiz_started');
+      track(daily ? 'daily_challenge_started' : 'challenge_started');
+      tag('mode', title);
+      let nextIndex = 0;
+      const engine = {
+        size: remote.questions.length,
+        next() { return nextIndex < remote.questions.length ? remote.questions[nextIndex++] : null; },
+      };
+      S = {
+        title, engine, total: remote.questions.length, challenge, daily, input, lastOpts: opts,
+        index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
+        missed: [], startTime: Date.now(), phase: 'answer', current: null,
+        timer: null, multiplier: 1,
+        remote: true, sessionId: remote.sessionId,
+      };
+      renderQuestion();
+      return;
+    }
+    // Fall through to the fully-local path below on any failure.
+  }
+
   const data = getData();
   const rng = seed != null ? seededRng(seed) : Math.random;
   const config = { modes, continents, difficulty, choices: 4, rng, religionFilter };
@@ -404,11 +445,11 @@ function startQuiz(opts) {
   tag('mode', title);
 
   S = {
-    // Clamp to the number of unique questions so a session never has to repeat.
     title, engine, total: Math.min(total, engine.size), challenge, daily, input, lastOpts: opts,
     index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
     missed: [], startTime: Date.now(), phase: 'answer', current: null,
     timer: null, multiplier: 1,
+    remote: false, sessionId: null,
   };
   renderQuestion();
 }
