@@ -797,14 +797,41 @@ function reviewableMissedIds() {
   return Object.keys(getProfile().missed).filter((id) => MODES[id.split(':')[0]]);
 }
 
-function answer(value) {
+async function answer(value) {
   if (S.phase !== 'answer') return;
   clearTimer();
   S.phase = 'feedback';
   const q = S.current;
-  const correct = value === q.answer;
-  const multiplier = S.challenge ? S.multiplier : 1;
+  const myGen = sessionGen;
 
+  let correct, xpGained;
+  if (S.remote) {
+    try {
+      const res = await fetch('/api/session/answer', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ sessionId: S.sessionId, questionId: q.id, value }),
+      });
+      if (myGen !== sessionGen) return; // player already navigated away
+      if (!res.ok) throw new Error('grade_failed');
+      const graded = await res.json();
+      correct = graded.correct;
+      q.answer = graded.correctAnswer;
+      q.funFact = graded.funFact;
+      q.learnMore = graded.learnMore;
+      xpGained = graded.xpGained;
+    } catch {
+      S.remote = false;
+      correct = false; // this one question's grade is lost with the dropped request
+      xpGained = 0;
+      toast('📡', 'Connection lost', "Switched to local scoring — this run won't count for the global board.");
+    }
+  } else {
+    correct = value === q.answer;
+    xpGained = S.challenge ? sessionQuestionXp(S.runStreak, correct) : 0;
+  }
+
+  const multiplier = S.challenge ? challengeMultiplier(S.runStreak) : 1;
   // visually mark choices
   app.querySelectorAll('.choice').forEach((b) => {
     b.disabled = true;
@@ -818,11 +845,11 @@ function answer(value) {
     S.correct += 1;
     S.runStreak += 1;
     S.runBest = Math.max(S.runBest, S.runStreak);
-    S.xpRun += res.xpGained;
   } else {
     S.runStreak = 0;
     S.missed.push(q);
   }
+  S.xpRun += S.challenge ? xpGained : res.xpGained;
 
   // achievements & level-ups
   track('question_answered');
@@ -832,7 +859,7 @@ function answer(value) {
   if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
-  renderFeedback(correct, q, res.xpGained);
+  renderFeedback(correct, q, S.challenge ? xpGained : res.xpGained);
   renderHUD();
 }
 
