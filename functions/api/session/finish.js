@@ -3,7 +3,7 @@ function json(obj, status = 200) {
 }
 
 function sanitizeName(raw) {
-  const cleaned = String(raw ?? '').replace(/[ -]/g, '').trim().slice(0, 20);
+  const cleaned = String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20);
   return cleaned || 'Explorer';
 }
 
