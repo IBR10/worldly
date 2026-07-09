@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches } from '../js/quiz.js';
+import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
 import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 
@@ -507,4 +507,38 @@ test('buildPool honours religionFilter for religion modes', () => {
   const pool = buildPool(data, { modes: ['religion_founder', 'religion_text'], religionFilter: 'Islam' });
   assert.equal(pool.length, 2, 'one item per religion mode, filtered to Islam');
   assert.ok(pool.every((p) => p.source.name === 'Islam'));
+});
+
+test('challengeMultiplier grows with streak, capped at 3x', () => {
+  assert.equal(challengeMultiplier(0), 1);
+  assert.equal(challengeMultiplier(5), 2);
+  assert.equal(challengeMultiplier(10), 3);
+  assert.equal(challengeMultiplier(50), 3); // capped
+});
+
+test('sessionQuestionXp is 0 for a wrong answer regardless of streak', () => {
+  assert.equal(sessionQuestionXp(7, false), 0);
+});
+
+test('sessionQuestionXp matches the documented formula for a correct answer', () => {
+  // streak 0 -> after=1, bonus=floor(1/2)=0, multiplier=1 -> round(10*1)=10
+  assert.equal(sessionQuestionXp(0, true), 10);
+  // streak 3 -> after=4, bonus=floor(4/2)=2, multiplier=1+min(2,3*0.2)=1.6 -> round(12*1.6)=19
+  assert.equal(sessionQuestionXp(3, true), 19);
+  // streak 20 -> after=21, bonus=min(10,floor(21/2))=10, multiplier capped at 3 -> round(20*3)=60
+  assert.equal(sessionQuestionXp(20, true), 60);
+});
+
+test('seededRng is deterministic for a given seed', () => {
+  const a = seededRng(42);
+  const b = seededRng(42);
+  const seqA = [a(), a(), a()];
+  const seqB = [b(), b(), b()];
+  assert.deepEqual(seqA, seqB);
+  assert.ok(seqA.every((v) => v >= 0 && v < 1));
+});
+
+test('dateSeed is deterministic for a given date string and differs across dates', () => {
+  assert.equal(dateSeed('2026-07-09'), dateSeed('2026-07-09'));
+  assert.notEqual(dateSeed('2026-07-09'), dateSeed('2026-07-10'));
 });

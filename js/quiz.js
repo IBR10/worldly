@@ -38,6 +38,51 @@ export function shuffle(arr, rng = Math.random) {
   return a;
 }
 
+// ---- Challenge/Daily session scoring (server + client share this exactly) --
+
+/** Speed/streak multiplier for the question about to be answered, given the
+ *  in-session streak going INTO it. Capped at 3x. Session-only — never uses
+ *  the player's lifetime streak, so it's safe for a server to recompute. */
+export function challengeMultiplier(runStreakBeforeQuestion) {
+  return 1 + Math.min(2, runStreakBeforeQuestion * 0.2);
+}
+
+/** XP earned for one question in a Challenge/Daily session, given the streak
+ *  going INTO the question and whether it was answered correctly. Mirrors the
+ *  shape of state.js's lifetime-XP formula but is entirely self-contained —
+ *  no dependency on private profile state — so client and server always agree. */
+export function sessionQuestionXp(runStreakBeforeQuestion, correct) {
+  if (!correct) return 0;
+  const streakAfter = runStreakBeforeQuestion + 1;
+  const bonus = Math.min(10, Math.floor(streakAfter / 2));
+  return Math.round((10 + bonus) * challengeMultiplier(runStreakBeforeQuestion));
+}
+
+// ---- Seeded RNG (mulberry32) — moved here from main.js so the server can ----
+// ---- import the exact same implementation the client uses. -----------------
+
+/** Deterministic RNG from a numeric seed, so the Daily Challenge is identical
+ *  for everyone who plays it (client and server alike). */
+export function seededRng(seed) {
+  let t = seed >>> 0;
+  return function () {
+    t += 0x6d2b79f5;
+    let x = t;
+    x = Math.imul(x ^ (x >>> 15), x | 1);
+    x ^= x + Math.imul(x ^ (x >>> 7), x | 61);
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Numeric seed from a "yyyy-mm-dd" date string — same date string always
+ *  yields the same seed. The caller decides which date string to use (the
+ *  client passes its local date; the server passes its own UTC date). */
+export function dateSeed(dateStr) {
+  let h = 0;
+  for (let i = 0; i < dateStr.length; i++) h = (h * 31 + dateStr.charCodeAt(i)) | 0;
+  return h;
+}
+
 export function sampleDistinct(values, exclude, n, rng) {
   const pool = [...new Set(values)].filter((v) => v && v !== exclude);
   return shuffle(pool, rng).slice(0, n);

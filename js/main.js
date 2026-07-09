@@ -8,7 +8,7 @@ import {
   dailyDoneToday, addLeaderboard, setTheme, setName, setOnboarded, localDateStr,
 } from './state.js';
 import { track, tag } from './analytics.js';
-import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches } from './quiz.js';
+import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
 import { pickWeighted, weakCount } from './srs.js';
@@ -145,24 +145,11 @@ const fmtTime = (ms) => {
   return `${m}m`;
 };
 
-// Seeded RNG (mulberry32) so the Daily Challenge is identical for everyone.
-function seededRng(seed) {
-  let t = seed >>> 0;
-  return function () {
-    t += 0x6d2b79f5;
-    let x = t;
-    x = Math.imul(x ^ (x >>> 15), x | 1);
-    x ^= x + Math.imul(x ^ (x >>> 7), x | 61);
-    return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
-  };
-}
+// Local calendar date: the daily rolls over at the player's midnight, and the
+// same date string yields the same seeded set for everyone playing locally.
+// (The server-verified path uses its own UTC date instead — see startQuiz.)
 function dailySeed() {
-  // Local calendar date: the daily rolls over at the player's midnight, and the
-  // same date string yields the same seeded set for everyone.
-  const d = localDateStr();
-  let h = 0;
-  for (let i = 0; i < d.length; i++) h = (h * 31 + d.charCodeAt(i)) | 0;
-  return h;
+  return dateSeed(localDateStr());
 }
 
 function toast(icon, title, sub) {
