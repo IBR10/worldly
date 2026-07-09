@@ -384,6 +384,25 @@ function showAbout() {
 // ============================================================================
 //  QUIZ
 // ============================================================================
+
+// Builds a fully-local question engine (real .answer/.funFact/.learnMore on
+// every question) from the same opts a quiz was started with. Used both for
+// the normal local-only path below, and to swap a remote Challenge/Daily
+// session onto genuinely-answerable questions if the connection drops
+// mid-run (the remaining pre-fetched remote questions never carry answers —
+// that data only exists server-side — so there is nothing to "fall back to"
+// in that array once the server round trip has failed).
+function buildLocalEngine(opts) {
+  const { modes, continents = 'all', difficulty = 'medium', daily = false, reviewIds = null, seed = null, religionFilter = null } = opts;
+  const data = getData();
+  const rng = seed != null ? seededRng(seed) : Math.random;
+  const config = { modes, continents, difficulty, choices: 4, rng, religionFilter };
+  // Daily uses plain seeded picking (same for everyone); other modes use SRS
+  // weighting so forgotten/missed items resurface more often.
+  const pick = daily ? null : (pool, srsMap) => pickWeighted(pool, srsMap, rng);
+  return createQuiz({ data, config, srsMap: getProfile().srs, reviewIds, pick, rng });
+}
+
 async function startQuiz(opts) {
   const { title, modes, continents = 'all', difficulty = 'medium', total = 10, challenge = false, daily = false, reviewIds = null, seed = null, religionFilter = null, input = 'mcq' } = opts;
 
@@ -434,13 +453,7 @@ async function startQuiz(opts) {
     // Fall through to the fully-local path below on any failure.
   }
 
-  const data = getData();
-  const rng = seed != null ? seededRng(seed) : Math.random;
-  const config = { modes, continents, difficulty, choices: 4, rng, religionFilter };
-  // Daily uses plain seeded picking (same for everyone); other modes use SRS
-  // weighting so forgotten/missed items resurface more often.
-  const pick = daily ? null : (pool, srsMap) => pickWeighted(pool, srsMap, rng);
-  const engine = createQuiz({ data, config, srsMap: getProfile().srs, reviewIds, pick, rng });
+  const engine = buildLocalEngine(opts);
 
   if (engine.size === 0) {
     toast('🤷', 'Nothing to quiz', 'That selection has no questions yet.');
@@ -821,6 +834,7 @@ async function answer(value) {
       q.learnMore = graded.learnMore;
       xpGained = graded.xpGained;
     } catch {
+      if (myGen !== sessionGen) return; // player already navigated away
       S.remote = false;
       correct = false; // this one question's grade is lost with the dropped request
       xpGained = 0;
@@ -831,6 +845,11 @@ async function answer(value) {
       q.answer = q.answer ?? '(connection lost — not graded)';
       q.funFact = q.funFact ?? '';
       q.learnMore = q.learnMore ?? [];
+      // The remaining pre-fetched remote questions have no answer data (and
+      // never will — the server never sends it), so the rest of this run
+      // must come from a fresh, genuinely-answerable local pool instead of
+      // continuing to pull from that array.
+      S.engine = buildLocalEngine(S.lastOpts);
       toast('📡', 'Connection lost', "Switched to local scoring — this run won't count for the global board.");
     }
   } else {
