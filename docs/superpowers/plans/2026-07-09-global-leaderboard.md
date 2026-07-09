@@ -593,7 +593,7 @@ function json(obj, status = 200) {
 }
 
 function sanitizeName(raw) {
-  const cleaned = String(raw ?? '').replace(/[ -]/g, '').trim().slice(0, 20);
+  const cleaned = String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20);
   return cleaned || 'Explorer';
 }
 
@@ -707,13 +707,13 @@ Expected: `incomplete-finish->409` (no questions were answered). Then stop the d
 
 ```js
 // throwaway node check, not part of the codebase
-const sanitizeName = (raw) => String(raw ?? '').replace(/[ -]/g, '').trim().slice(0, 20) || 'Explorer';
+const sanitizeName = (raw) => String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20) || 'Explorer';
 console.log(sanitizeName('   '));                     // -> Explorer
 console.log(sanitizeName('A'.repeat(30)));             // -> 20 A's
 console.log(sanitizeName('Bob'));                // -> Bob
 ```
 Run: `node -e "$(cat <<'EOF'
-const sanitizeName = (raw) => String(raw ?? '').replace(/[ -]/g, '').trim().slice(0, 20) || 'Explorer';
+const sanitizeName = (raw) => String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20) || 'Explorer';
 console.log(sanitizeName('   '));
 console.log(sanitizeName('A'.repeat(30)));
 console.log(sanitizeName('Bob'));
