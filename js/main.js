@@ -1002,11 +1002,14 @@ function finishQuiz() {
 
   const lastOpts = S.lastOpts;
   const wasMap = S.kind === 'map';
+  const wasRemote = S.remote && S.challenge;
+  const sessionId = S.sessionId;
   app.innerHTML = `
     ${topNav()}
     <div class="question-card result-hero">
       <div class="score">${S.correct}/${S.total}</div>
       <div class="sub">${acc}% accuracy · +${score} XP · best streak ${S.runBest}${perfect ? ' · 💯 perfect!' : ''}</div>
+      ${wasRemote ? '<div class="screen-sub" id="globalSyncNote">🌍 Syncing to the global leaderboard…</div>' : ''}
     </div>
     ${missedList}
     <div class="btn-row mt-18">
@@ -1021,6 +1024,26 @@ function finishQuiz() {
   const rb = document.getElementById('reviewBtn');
   if (rb) rb.addEventListener('click', startReview);
   renderHUD();
+
+  if (wasRemote) submitToGlobalLeaderboard(sessionId);
+}
+
+async function submitToGlobalLeaderboard(sessionId) {
+  const myGen = sessionGen;
+  const note = document.getElementById('globalSyncNote');
+  try {
+    const res = await fetch('/api/session/finish', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ sessionId, name: getProfile().name }),
+    });
+    if (myGen !== sessionGen) return; // player already left the results screen
+    if (!res.ok) throw new Error('finish_failed');
+    const result = await res.json();
+    if (note) note.textContent = `🌍 Synced — you're #${result.rank} of ${result.total} globally.`;
+  } catch {
+    if (myGen === sessionGen && note) note.textContent = '';
+  }
 }
 
 // ============================================================================
