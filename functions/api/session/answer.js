@@ -38,6 +38,7 @@ export async function onRequestPost(context) {
     correctAnswer: q.answer,
     funFact: q.funFact,
     history: q.history,
+    symbolImg: q.symbolImg,
     learnMore: q.learnMore,
     xpGained,
     runningScore: session.runningScore,

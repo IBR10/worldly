@@ -181,6 +181,18 @@ h1, h2, h3 { line-height: 1.2; }
   display: block;
 }
 
+/* Religious-symbol reveal image (many Commons symbol SVGs are dark line art,
+   so a white backing keeps them visible against the dark theme). */
+.symbol-img-wrap {
+  display: inline-block;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 8px 0;
+}
+.symbol-img-wrap img { display: block; width: 96px; max-width: 100%; height: auto; }
+
 .q-flag-missing {
   margin: 6px 0 18px;
   padding: 14px 16px;

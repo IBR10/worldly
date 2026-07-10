@@ -1,7 +1,7 @@
 // main.js — application controller. Owns routing between screens, renders the
 // HUD, runs a quiz session, and reacts to answers (scoring, XP, achievements).
 
-import { loadData, getData, getContinents, getSubregions, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, loadMap } from './data.js';
+import { loadData, getData, getContinents, getSubregions, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, symbolImageUrl, loadMap } from './data.js';
 import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
@@ -836,6 +836,7 @@ async function answer(value) {
       q.answer = graded.correctAnswer;
       q.funFact = graded.funFact;
       q.history = graded.history;
+      q.symbolImg = graded.symbolImg;
       q.learnMore = graded.learnMore;
       xpGained = graded.xpGained;
     } catch {
@@ -970,8 +971,12 @@ function renderFeedback(correct, q, xpGained) {
   const links = q.learnMore.filter((l) => l.url)
     .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
   fb.className = `feedback ${correct ? 'ok' : 'no'} pop`;
+  const symbol = q.symbolImg
+    ? `<div class="symbol-img-wrap"><img src="${symbolImageUrl(q.symbolImg)}" alt="${esc(q.answer)} symbol"></div>`
+    : '';
   fb.innerHTML = `
     <h3>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h3>
+    ${symbol}
     <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
     ${q.history ? `<div class="fact">📜 <strong>History:</strong> ${esc(q.history)}</div>` : ''}
     ${q.source?.note ? `<div class="fact muted">ℹ️ ${esc(q.source.note)}</div>` : ''}
@@ -1036,6 +1041,19 @@ function finishQuiz() {
   renderHUD();
 
   if (wasRemote) submitToGlobalLeaderboard(sessionId);
+  submitLifetimeXp();
+}
+
+// Background sync of the player's lifetime XP total (every quiz mode, not
+// just Challenge/Daily — see functions/api/xp.js for why this can't be
+// verified server-side the way the other leaderboard tabs are). Best-effort:
+// no UI feedback, silent on failure.
+function submitLifetimeXp() {
+  fetch('/api/xp', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ name: getProfile().name, xp: getProfile().xp }),
+  }).catch(() => {});
 }
 
 async function submitToGlobalLeaderboard(sessionId) {
@@ -1566,7 +1584,7 @@ function showLeaderboard() {
     </div>
     ${tiers.map((t) => `
       <div class="tab-panel ${t.id === leaderboardTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
-        ${t.id === 'xp' ? '<p class="screen-sub mb-10">Total XP from verified Challenge &amp; Daily runs — not the full lifetime XP shown on your Profile, which also counts every other quiz mode.</p>' : ''}
+        ${t.id === 'xp' ? '<p class="screen-sub mb-10">Lifetime XP across every quiz mode, synced from your device — self-reported, unlike the Challenge &amp; Daily tabs.</p>' : ''}
         <div class="form-block" id="globalList-${t.id}"><p class="screen-sub">Loading…</p></div>
       </div>`).join('')}
 

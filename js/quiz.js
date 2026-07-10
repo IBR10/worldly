@@ -275,7 +275,7 @@ export function buildPool(data, { modes = ALL_MODES, continents = 'all', religio
 export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, rng = Math.random } = {}) {
   const c = item.source;
   const mode = item.mode;
-  let prompt, answer, distractorValues, flagIso = null, flagImg = null, isCountry = true;
+  let prompt, answer, distractorValues, flagIso = null, flagImg = null, symbolImg = null, isCountry = true;
 
   switch (mode) {
     case 'capital':
@@ -324,6 +324,7 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       prompt = `Which symbol is most associated with ${c.name}?`;
       answer = c.symbol;
       distractorValues = (data.religions || []).map((x) => x.symbol);
+      symbolImg = c.symbolImg;
       isCountry = false;
       break;
     case 'religion_place':
@@ -449,6 +450,7 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
     choices: options,
     flagIso,
     flagImg,
+    symbolImg,
     funFact: c.funFact,
     history: c.history,
     learnMore: learnMoreFor(c, isCountry),
