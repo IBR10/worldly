@@ -38,6 +38,7 @@ npm test        # 48 tests over the quiz, SRS and map engines
 |------|----------|
 | **Country ↔ Capital** | Both directions |
 | **Country → Language / Religion** | Most widely spoken language, largest religion |
+| **Country → Currency / Population** | Official currency, population (comma-formatted) |
 | **World Religions** | Founders, sacred texts, holidays, symbols, places of worship, origins — study all faiths or focus on one |
 | **US / Mexico / Canada States → Capitals** | All 50 + all 32 + all 13 |
 | **Flag Mode** | Identify the country from its flag |

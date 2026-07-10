@@ -11,12 +11,12 @@ import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 // A small synthetic dataset that mirrors the real JSON shape.
 const data = {
   countries: [
-    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', subregion: 'East Asia', language: 'Japanese', religion: 'Shinto/Buddhism', funFact: 'Many islands.', wiki: 'https://w/Japan' },
-    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', subregion: 'Western Europe', language: 'French', religion: 'Christianity', funFact: 'Most visited.', wiki: 'https://w/France' },
-    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', subregion: 'South America', language: 'Portuguese', religion: 'Christianity', funFact: 'Amazon.', wiki: 'https://w/Brazil' },
-    { name: 'Egypt', iso2: 'EG', capital: 'Cairo', region: 'Africa', subregion: 'North Africa', language: 'Arabic', religion: 'Islam', funFact: 'Pyramids.', wiki: 'https://w/Egypt' },
-    { name: 'Kenya', iso2: 'KE', capital: 'Nairobi', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', funFact: 'Safari.', wiki: 'https://w/Kenya' },
-    { name: 'Tanzania', iso2: 'TZ', capital: 'Dodoma', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity (Catholic)', funFact: 'Serengeti.', wiki: 'https://w/Tanzania' },
+    { name: 'Japan', iso2: 'JP', capital: 'Tokyo', region: 'Asia', subregion: 'East Asia', language: 'Japanese', religion: 'Shinto/Buddhism', currency: 'Japanese yen', population: 125700000, funFact: 'Many islands.', wiki: 'https://w/Japan' },
+    { name: 'France', iso2: 'FR', capital: 'Paris', region: 'Europe', subregion: 'Western Europe', language: 'French', religion: 'Christianity', currency: 'Euro', population: 68000000, funFact: 'Most visited.', wiki: 'https://w/France' },
+    { name: 'Brazil', iso2: 'BR', capital: 'Brasília', region: 'South America', subregion: 'South America', language: 'Portuguese', religion: 'Christianity', currency: 'Brazilian real', population: 216000000, funFact: 'Amazon.', wiki: 'https://w/Brazil' },
+    { name: 'Egypt', iso2: 'EG', capital: 'Cairo', region: 'Africa', subregion: 'North Africa', language: 'Arabic', religion: 'Islam', currency: 'Egyptian pound', population: 104000000, funFact: 'Pyramids.', wiki: 'https://w/Egypt' },
+    { name: 'Kenya', iso2: 'KE', capital: 'Nairobi', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity', currency: 'Kenyan shilling', population: 53000000, funFact: 'Safari.', wiki: 'https://w/Kenya' },
+    { name: 'Tanzania', iso2: 'TZ', capital: 'Dodoma', region: 'Africa', subregion: 'East Africa', language: 'Swahili', religion: 'Christianity (Catholic)', currency: 'Kenyan shilling', population: 61000000, funFact: 'Serengeti.', wiki: 'https://w/Tanzania' },
   ],
   usStates: [{ name: 'Colorado', capital: 'Denver', region: 'West', funFact: 'Mile high.', wiki: 'https://w/CO' }],
   mxStates: [{ name: 'Jalisco', capital: 'Guadalajara', region: 'West', funFact: 'Tequila.', wiki: 'https://w/JAL' }],
@@ -44,10 +44,11 @@ const data = {
 
 test('buildPool covers every enabled mode', () => {
   const pool = buildPool(data, { modes: ALL_MODES, continents: 'all' });
-  // 6 countries × 5 country-modes (capital, country, language, religion, flag)
+  // 6 countries × 7 country-modes (capital, country, language, religion,
+  // currency, population, flag)
   // + 4 religions × 6 religion-modes (founder, text, holiday, symbol, place, origin)
   // + 1 US + 1 MX + 1 CA + 4 historic flags + 6 similar-flag countries (4 + 2)
-  assert.equal(pool.length, 6 * 5 + 4 * 6 + 1 + 1 + 1 + 4 + 6);
+  assert.equal(pool.length, 6 * 7 + 4 * 6 + 1 + 1 + 1 + 4 + 6);
   assert.ok(pool.every((p) => p.id.includes(':')));
 });
 
@@ -398,6 +399,29 @@ test('makeQuestion (religion) with normalize does not offer a same-base-religion
   assert.equal(q.choices.length, 2);
   assert.ok(q.choices.includes('Christianity'), 'the answer is present');
   assert.ok(!q.choices.includes('Christianity (Catholic)'), 'Tanzania is NOT offered — same base religion as the answer');
+});
+
+test('makeQuestion (currency) uses geography-tiered distractors, falling back past a shared value', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  // Kenya and Tanzania share the identical currency value ("Kenyan shilling")
+  // in this fixture, so Tanzania can't supply a *distinct* subregion-tier
+  // distractor — must fall through to the region tier (Africa) and pick up
+  // Egypt's "Egyptian pound" instead.
+  const q = makeQuestion({ id: 'currency:Kenya', mode: 'currency', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.equal(q.prompt, 'What is the official currency of Kenya?');
+  assert.equal(q.choices.length, 2);
+  assert.ok(q.choices.includes('Kenyan shilling'), 'the answer is present');
+  assert.ok(q.choices.includes('Egyptian pound'), 'falls back to the region tier since Tanzania has no distinct currency value');
+});
+
+test('makeQuestion (population) formats the answer and distractors as comma-grouped numbers', () => {
+  const kenya = data.countries.find((c) => c.name === 'Kenya');
+  const q = makeQuestion({ id: 'population:Kenya', mode: 'population', region: 'Africa', source: kenya }, data, { choices: 2 });
+  assert.equal(q.prompt, 'What is the population of Kenya?');
+  assert.equal(q.answer, '53,000,000');
+  assert.equal(q.choices.length, 2);
+  assert.ok(q.choices.includes('53,000,000'), 'the answer is present, formatted');
+  assert.ok(q.choices.includes('61,000,000'), 'Tanzania (same subregion) supplies the distractor, also formatted');
 });
 
 test('makeQuestion (capital) draws its one distractor from the same subregion when available', () => {

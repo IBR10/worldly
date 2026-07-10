@@ -199,6 +199,8 @@ const MODE_CARDS = [
   { key: 'country', emoji: '📍', title: 'Capital → Country', desc: 'Which country is this the capital of?' },
   { key: 'religion', emoji: '🕊️', title: 'Largest Religion', desc: 'The most practiced faith.' },
   { key: 'language', emoji: '🗣️', title: 'Primary Language', desc: 'The most widely spoken language.' },
+  { key: 'currency', emoji: '💱', title: 'Currency', desc: 'The official currency used.' },
+  { key: 'population', emoji: '👥', title: 'Population', desc: 'How many people live there.' },
   // Windows has no flag-emoji font (🇺🇸 renders as "US"), so these two cards use
   // real flag images from flagcdn instead of a regional-indicator emoji.
   { key: 'us_capital', flagIso: 'US', title: 'US States → Capitals', desc: 'All 50 state capitals.' },

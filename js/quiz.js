@@ -11,6 +11,8 @@ export const MODES = {
   country: { label: 'Capital → Country', source: 'country' },
   language: { label: 'Country → Language', source: 'country' },
   religion: { label: 'Country → Religion', source: 'country' },
+  currency: { label: 'Country → Currency', source: 'country' },
+  population: { label: 'Country → Population', source: 'country' },
   religion_founder: { label: 'Religion → Founder', source: 'religion' },
   religion_text: { label: 'Religion → Holy Text', source: 'religion' },
   religion_holiday: { label: 'Religion → Major Holiday', source: 'religion' },
@@ -292,6 +294,14 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       prompt = `What is the largest religion in ${c.name}?`;
       answer = c.religion;
       break;
+    case 'currency':
+      prompt = `What is the official currency of ${c.name}?`;
+      answer = c.currency;
+      break;
+    case 'population':
+      prompt = `What is the population of ${c.name}?`;
+      answer = c.population;
+      break;
     case 'religion_founder':
       prompt = `Who is the central figure most associated with ${c.name}?`;
       answer = c.founder;
@@ -384,7 +394,7 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
   // countries (same subregion, falling back to region, falling back to the
   // whole world) so wrong answers can't be eliminated just by "that's not
   // even close." This applies unconditionally, regardless of `difficulty`.
-  const GEO_FIELD = { capital: 'capital', country: 'name', language: 'language', religion: 'religion', flag: 'name' };
+  const GEO_FIELD = { capital: 'capital', country: 'name', language: 'language', religion: 'religion', currency: 'currency', population: 'population', flag: 'name' };
   const geoField = GEO_FIELD[mode];
   let distractors;
   if (geoField) {
@@ -394,6 +404,13 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
     // count as valid distractors for each other (see geoDistractors' doc).
     const normalize = mode === 'religion' ? (v) => String(v).split(/[/(]/)[0].trim() : undefined;
     distractors = geoDistractors(data.countries, c, geoField, choices - 1, rng, normalize);
+    // Population is numeric — format both the answer and its distractors as
+    // comma-grouped strings only after distractor selection, so proximity
+    // selection above still compares real numbers, not formatted text.
+    if (mode === 'population') {
+      answer = answer.toLocaleString('en-US');
+      distractors = distractors.map((n) => n.toLocaleString('en-US'));
+    }
   } else {
     distractors = sampleDistinct(distractorValues, answer, choices - 1, rng);
     // Similar-flag groups smaller than `choices` top up from the wider pool of
