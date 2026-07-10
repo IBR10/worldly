@@ -1550,6 +1550,7 @@ function showLeaderboard() {
   const tiers = [
     { id: 'challenge', label: '⏱️ Challenge' },
     { id: 'daily', label: '📅 Daily' },
+    { id: 'xp', label: '🎖️ Level/XP' },
   ];
   if (!tiers.some((t) => t.id === leaderboardTab)) leaderboardTab = 'challenge';
 
@@ -1563,6 +1564,7 @@ function showLeaderboard() {
     </div>
     ${tiers.map((t) => `
       <div class="tab-panel ${t.id === leaderboardTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
+        ${t.id === 'xp' ? '<p class="screen-sub mb-10">Total XP from verified Challenge &amp; Daily runs — not the full lifetime XP shown on your Profile, which also counts every other quiz mode.</p>' : ''}
         <div class="form-block" id="globalList-${t.id}"><p class="screen-sub">Loading…</p></div>
       </div>`).join('')}
 
@@ -1587,7 +1589,7 @@ async function loadGlobalLeaderboard(mode) {
     if (!res.ok) throw new Error('load_failed');
     const { entries } = await res.json();
     target.innerHTML = entries.length
-      ? `<ul class="weak-list">${entries.map((e, i) => `<li><span>#${i + 1} · ${esc(e.name)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>`
+      ? `<ul class="weak-list">${entries.map((e, i) => `<li><span>#${i + 1} · ${esc(e.name)}</span><span class="ans">${mode === 'xp' ? `Lvl ${levelProgress(e.score).level} · ` : ''}${e.score} XP</span></li>`).join('')}</ul>`
       : '<p class="screen-sub">No scores yet — be the first!</p>';
   } catch {
     if (myGen === sessionGen && target) {
