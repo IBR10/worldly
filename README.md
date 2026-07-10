@@ -111,10 +111,12 @@ install`, no transpiler to age out, deploys anywhere static. The separation of
 
 ### Data model
 `countries.json` records carry `name, iso2, capital, region, subregion,
-population, language, religion, currency, funFact, wiki` (+ optional `note` for
-contested facts). Flags render from [flagcdn.com](https://flagcdn.com) by ISO
-code; historic flags from Wikimedia Commons. The player profile lives in
-`localStorage` under `worldly_profile_v1`.
+population, language, religion, currency, funFact, history, wiki` (+ optional
+`note` for contested facts). `history` is a one-sentence founding/independence
+note (who from, and when) shown alongside the fun fact on the reveal screen.
+Flags render from [flagcdn.com](https://flagcdn.com) by ISO code; historic
+flags from Wikimedia Commons. The player profile lives in `localStorage` under
+`worldly_profile_v1`.
 
 ## Deployment (Cloudflare)
 

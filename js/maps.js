@@ -149,6 +149,7 @@ export function makeMapQuestion(item, { data = null, rng = Math.random, choices 
     targetId: item.targetId,
     svg: item.svg,
     funFact: c.funFact,
+    history: c.history,
     learnMore: learnMoreFor(c, isCountry),
     source: c,
   };

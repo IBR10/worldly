@@ -61,7 +61,7 @@ export async function onRequestPost(context) {
   const stored = {
     mode,
     date,
-    questions: full.map((q) => ({ id: q.id, answer: q.answer, funFact: q.funFact, learnMore: q.learnMore })),
+    questions: full.map((q) => ({ id: q.id, answer: q.answer, funFact: q.funFact, history: q.history, learnMore: q.learnMore })),
     answered: {},
     runStreak: 0,
     runningScore: 0,

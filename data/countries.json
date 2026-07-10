@@ -10,6 +10,7 @@
     "religion": "Shinto/Buddhism",
     "currency": "Japanese yen",
     "funFact": "Japan is made up of over 6,800 islands, though only about 430 are inhabited.",
+    "history": "Japan has never been colonized; its imperial line is traditionally dated to 660 BCE, making it one of the world's oldest continuous monarchies.",
     "wiki": "https://en.wikipedia.org/wiki/Japan"
   },
   {
@@ -23,6 +24,7 @@
     "religion": "Folk religion/Buddhism",
     "currency": "Renminbi",
     "funFact": "The Great Wall of China is not a single wall but a network of walls stretching over 21,000 km (13,050 mi).",
+    "history": "The People's Republic of China was founded in 1949 after the Chinese Civil War, but Chinese statehood traces back over 3,000 years.",
     "wiki": "https://en.wikipedia.org/wiki/China"
   },
   {
@@ -36,6 +38,7 @@
     "religion": "Hinduism",
     "currency": "Indian rupee",
     "funFact": "India has the world's largest postal network, with over 150,000 post offices.",
+    "history": "India gained independence from the United Kingdom on August 15, 1947, ending nearly two centuries of British rule.",
     "wiki": "https://en.wikipedia.org/wiki/India"
   },
   {
@@ -49,6 +52,7 @@
     "religion": "Islam",
     "currency": "Indonesian rupiah",
     "funFact": "Indonesia is the largest archipelago on Earth, with more than 17,000 islands.",
+    "history": "Indonesia declared independence from the Netherlands in 1945, though the Dutch didn't formally recognize it until 1949.",
     "wiki": "https://en.wikipedia.org/wiki/Indonesia"
   },
   {
@@ -62,6 +66,7 @@
     "religion": "Irreligion/Christianity",
     "currency": "South Korean won",
     "funFact": "South Korea has one of the fastest average internet speeds in the world.",
+    "history": "Korea was liberated from 35 years of Japanese colonial rule in 1945, and the Republic of Korea was established in the south in 1948.",
     "wiki": "https://en.wikipedia.org/wiki/South_Korea"
   },
   {
@@ -75,6 +80,7 @@
     "religion": "Buddhism",
     "currency": "Thai baht",
     "funFact": "Bangkok's full ceremonial name is the longest place name in the world, with 168 letters.",
+    "history": "Thailand is the only Southeast Asian country never colonized by a European power, having skillfully played Britain and France off each other.",
     "wiki": "https://en.wikipedia.org/wiki/Thailand"
   },
   {
@@ -88,6 +94,7 @@
     "religion": "Folk religion/Buddhism",
     "currency": "Vietnamese dong",
     "funFact": "Vietnam is the world's second-largest exporter of coffee, after Brazil.",
+    "history": "Vietnam declared independence from France in 1945, but full sovereignty over a unified country wasn't achieved until 1975 after decades of war.",
     "wiki": "https://en.wikipedia.org/wiki/Vietnam"
   },
   {
@@ -101,6 +108,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Philippine peso",
     "funFact": "The Philippines is made up of 7,641 islands and is one of the most biodiverse nations on Earth.",
+    "history": "The Philippines gained independence from the United States in 1946, after nearly 400 years of Spanish rule and almost 50 years of American administration.",
     "wiki": "https://en.wikipedia.org/wiki/Philippines"
   },
   {
@@ -114,6 +122,7 @@
     "religion": "Islam",
     "currency": "Saudi riyal",
     "funFact": "Saudi Arabia has no rivers — it is the largest country in the world without one.",
+    "history": "The modern Kingdom of Saudi Arabia was founded in 1932 by Ibn Saud, who unified the territory after decades of conquest.",
     "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
   },
   {
@@ -127,6 +136,7 @@
     "religion": "Islam",
     "currency": "Turkish lira",
     "funFact": "Istanbul is the only major city in the world that sits on two continents, Europe and Asia.",
+    "history": "The Republic of Turkey was founded in 1923 by Mustafa Kemal Atatürk from the remnants of the Ottoman Empire.",
     "wiki": "https://en.wikipedia.org/wiki/Turkey"
   },
   {
@@ -140,6 +150,7 @@
     "religion": "Judaism",
     "currency": "Israeli new shekel",
     "funFact": "The Dead Sea, on Israel's border, is the lowest point on Earth's land surface.",
+    "history": "Israel declared independence in 1948, immediately following the expiration of the British Mandate for Palestine.",
     "wiki": "https://en.wikipedia.org/wiki/Israel",
     "note": "Jerusalem's status as capital is internationally disputed; most countries keep their embassies in Tel Aviv."
   },
@@ -154,6 +165,7 @@
     "religion": "Islam",
     "currency": "Israeli new shekel",
     "funFact": "Palestine has no currency of its own — it mainly uses the Israeli shekel, with the Jordanian dinar also legal tender in the West Bank.",
+    "history": "Palestine declared statehood in 1988, though it remains only partially recognized and much of its territory has been under Israeli administration since 1967.",
     "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine",
     "note": "The State of Palestine designates East Jerusalem as its capital, but does not administer it; Ramallah is the seat of government in practice. Palestine is a UN observer state, recognized by most UN member states but not universally."
   },
@@ -168,6 +180,7 @@
     "religion": "Islam (Shia)",
     "currency": "Iranian rial",
     "funFact": "Iran is home to one of the world's oldest continuous civilizations, dating back over 5,000 years.",
+    "history": "Iran was never formally colonized; Persian statehood stretches back over 2,500 years, and the modern Islamic Republic was founded in 1979.",
     "wiki": "https://en.wikipedia.org/wiki/Iran"
   },
   {
@@ -181,6 +194,7 @@
     "religion": "Islam",
     "currency": "Pakistani rupee",
     "funFact": "Pakistan has the world's highest paved international road, the Karakoram Highway.",
+    "history": "Pakistan was created in 1947 when British India was partitioned, gaining independence from the United Kingdom the same day as India.",
     "wiki": "https://en.wikipedia.org/wiki/Pakistan"
   },
   {
@@ -194,6 +208,7 @@
     "religion": "Islam",
     "currency": "Bangladeshi taka",
     "funFact": "Bangladesh hosts the largest mangrove forest in the world, the Sundarbans.",
+    "history": "Bangladesh gained independence from Pakistan in 1971 after a nine-month war of liberation.",
     "wiki": "https://en.wikipedia.org/wiki/Bangladesh"
   },
   {
@@ -207,6 +222,7 @@
     "religion": "Christianity",
     "currency": "Pound sterling",
     "funFact": "The UK has no single written constitution — its laws come from statutes, court rulings and conventions.",
+    "history": "The United Kingdom was formed by the Acts of Union — England and Scotland unified in 1707, joined by Ireland in 1801 (most of which later became independent).",
     "wiki": "https://en.wikipedia.org/wiki/United_Kingdom"
   },
   {
@@ -220,6 +236,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "France is the most visited country in the world, welcoming around 90 million tourists a year.",
+    "history": "France's modern republic dates to 1792, though the current Fifth Republic was established in 1958 under Charles de Gaulle.",
     "wiki": "https://en.wikipedia.org/wiki/France"
   },
   {
@@ -233,6 +250,7 @@
     "religion": "Christianity",
     "currency": "Euro",
     "funFact": "Germany has over 1,500 types of beer and more than 20,000 castles.",
+    "history": "Germany was first unified as a nation-state in 1871; the modern Federal Republic was founded in 1949 and reunified with East Germany in 1990.",
     "wiki": "https://en.wikipedia.org/wiki/Germany"
   },
   {
@@ -246,6 +264,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Italy has more UNESCO World Heritage Sites than any other country.",
+    "history": "Italy was unified into a single kingdom in 1861 after centuries of fragmented city-states and foreign rule.",
     "wiki": "https://en.wikipedia.org/wiki/Italy"
   },
   {
@@ -259,6 +278,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Spain produces around 44% of the world's olive oil — more than any other country.",
+    "history": "Spain was unified through the 1469 marriage of Ferdinand and Isabella, with the Reconquista completed in 1492.",
     "wiki": "https://en.wikipedia.org/wiki/Spain"
   },
   {
@@ -272,6 +292,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Lisbon is older than Rome — it was a trading port centuries before the Roman Empire.",
+    "history": "Portugal is one of Europe's oldest nation-states, with borders essentially unchanged since 1143.",
     "wiki": "https://en.wikipedia.org/wiki/Portugal"
   },
   {
@@ -285,6 +306,7 @@
     "religion": "Irreligion/Christianity",
     "currency": "Euro",
     "funFact": "About a third of the Netherlands lies below sea level, protected by dikes and pumps.",
+    "history": "The Netherlands declared independence from Spain in 1581, formally recognized in 1648 under the Peace of Westphalia after the Eighty Years' War.",
     "wiki": "https://en.wikipedia.org/wiki/Netherlands"
   },
   {
@@ -298,6 +320,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Euro",
     "funFact": "Greece has around 6,000 islands and islets, of which only about 227 are inhabited.",
+    "history": "Greece gained independence from the Ottoman Empire in 1830 after a war of independence that began in 1821.",
     "wiki": "https://en.wikipedia.org/wiki/Greece"
   },
   {
@@ -311,6 +334,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Russian ruble",
     "funFact": "Russia is the largest country on Earth, spanning 11 time zones.",
+    "history": "The Russian Federation was established in 1991 following the collapse of the Soviet Union, though the Russian state traces back to Kievan Rus in the 9th century.",
     "wiki": "https://en.wikipedia.org/wiki/Russia"
   },
   {
@@ -324,6 +348,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Polish zloty",
     "funFact": "Poland is home to Europe's last remaining lowland primeval forest, Bialowieza.",
+    "history": "Poland regained independence in 1918 after being partitioned and erased from the map by Russia, Prussia and Austria for over a century.",
     "wiki": "https://en.wikipedia.org/wiki/Poland"
   },
   {
@@ -337,6 +362,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Swedish krona",
     "funFact": "Sweden's right of public access lets anyone roam, camp and forage on most land.",
+    "history": "Sweden became fully independent from the Kalmar Union with Denmark in 1523 under King Gustav Vasa.",
     "wiki": "https://en.wikipedia.org/wiki/Sweden"
   },
   {
@@ -350,6 +376,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Norwegian krone",
     "funFact": "In parts of northern Norway the sun does not set for weeks during the midnight-sun season.",
+    "history": "Norway peacefully dissolved its union with Sweden in 1905, gaining full independence.",
     "wiki": "https://en.wikipedia.org/wiki/Norway"
   },
   {
@@ -363,6 +390,7 @@
     "religion": "Christianity",
     "currency": "Swiss franc",
     "funFact": "Switzerland has four official languages: German, French, Italian and Romansh.",
+    "history": "Switzerland traces its founding to a 1291 alliance of three cantons, with independence from the Holy Roman Empire formally recognized in 1648.",
     "wiki": "https://en.wikipedia.org/wiki/Switzerland"
   },
   {
@@ -376,6 +404,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Ireland is known as the Emerald Isle for its lush green landscape, fed by frequent rain.",
+    "history": "Ireland gained independence from the United Kingdom in 1922 after the Anglo-Irish War, becoming a republic fully in 1949.",
     "wiki": "https://en.wikipedia.org/wiki/Ireland"
   },
   {
@@ -389,6 +418,7 @@
     "religion": "Christianity",
     "currency": "US dollar",
     "funFact": "The U.S. has no official national language at the federal level.",
+    "history": "The United States declared independence from Great Britain in 1776, with sovereignty confirmed by the 1783 Treaty of Paris.",
     "wiki": "https://en.wikipedia.org/wiki/United_States"
   },
   {
@@ -402,6 +432,7 @@
     "religion": "Christianity",
     "currency": "Canadian dollar",
     "funFact": "Canada has the longest coastline of any country, at over 202,000 km (125,500 mi).",
+    "history": "Canada became a self-governing dominion in 1867 and only gained full constitutional independence from the United Kingdom in 1982.",
     "wiki": "https://en.wikipedia.org/wiki/Canada"
   },
   {
@@ -415,6 +446,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Mexican peso",
     "funFact": "Mexico City is sinking up to 50 cm a year because it was built on a drained lake bed.",
+    "history": "Mexico gained independence from Spain in 1821 after an eleven-year war that began with Miguel Hidalgo's 1810 Cry of Dolores.",
     "wiki": "https://en.wikipedia.org/wiki/Mexico"
   },
   {
@@ -428,6 +460,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Cuban peso",
     "funFact": "Classic 1950s American cars are still common on Cuban streets after decades of trade embargo.",
+    "history": "Cuba gained independence from Spain in 1898, though the U.S. controlled the island until it became a formal republic in 1902.",
     "wiki": "https://en.wikipedia.org/wiki/Cuba"
   },
   {
@@ -441,6 +474,7 @@
     "religion": "Christianity",
     "currency": "Guatemalan quetzal",
     "funFact": "Guatemala's currency, the quetzal, is named after its national bird.",
+    "history": "Guatemala gained independence from Spain in 1821 as part of the Federal Republic of Central America, becoming fully separate in 1841.",
     "wiki": "https://en.wikipedia.org/wiki/Guatemala"
   },
   {
@@ -454,6 +488,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Costa Rican colón",
     "funFact": "Costa Rica abolished its army in 1948 and invests the savings in education and health.",
+    "history": "Costa Rica gained independence from Spain in 1821, along with the rest of Central America.",
     "wiki": "https://en.wikipedia.org/wiki/Costa_Rica"
   },
   {
@@ -467,6 +502,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Panamanian balboa",
     "funFact": "The Panama Canal lets ships pass between the Atlantic and Pacific, saving an 8,000-mile trip.",
+    "history": "Panama gained independence from Colombia in 1903, with U.S. support tied to construction of the Panama Canal.",
     "wiki": "https://en.wikipedia.org/wiki/Panama"
   },
   {
@@ -480,6 +516,7 @@
     "religion": "Christianity",
     "currency": "Jamaican dollar",
     "funFact": "Jamaica is the birthplace of reggae music and the genre's global ambassador, Bob Marley.",
+    "history": "Jamaica gained independence from the United Kingdom in 1962, ending over 300 years of British colonial rule.",
     "wiki": "https://en.wikipedia.org/wiki/Jamaica"
   },
   {
@@ -493,6 +530,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Brazilian real",
     "funFact": "The Amazon rainforest, mostly in Brazil, is the most biodiverse place on the planet.",
+    "history": "Brazil declared independence from Portugal in 1822, uniquely becoming an empire rather than a republic at first.",
     "wiki": "https://en.wikipedia.org/wiki/Brazil"
   },
   {
@@ -506,6 +544,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Argentine peso",
     "funFact": "Argentina is home to both the highest and lowest points in the Southern Hemisphere.",
+    "history": "Argentina declared independence from Spain in 1816, led in part by liberator José de San Martín.",
     "wiki": "https://en.wikipedia.org/wiki/Argentina"
   },
   {
@@ -519,6 +558,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Colombian peso",
     "funFact": "Colombia has more bird species than any other country on Earth.",
+    "history": "Colombia gained independence from Spain in 1819 following Simón Bolívar's campaign, initially as part of Gran Colombia.",
     "wiki": "https://en.wikipedia.org/wiki/Colombia"
   },
   {
@@ -532,6 +572,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Peruvian sol",
     "funFact": "Machu Picchu, the Inca citadel, sits about 2,430 m (7,970 ft) above sea level in the Andes.",
+    "history": "Peru declared independence from Spain in 1821, with Spanish forces finally defeated at the Battle of Ayacucho in 1824.",
     "wiki": "https://en.wikipedia.org/wiki/Peru"
   },
   {
@@ -545,6 +586,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Chilean peso",
     "funFact": "Chile's Atacama Desert is the driest non-polar desert on Earth — some areas have never recorded rain.",
+    "history": "Chile declared independence from Spain in 1818 after a war led by Bernardo O'Higgins and José de San Martín.",
     "wiki": "https://en.wikipedia.org/wiki/Chile"
   },
   {
@@ -558,6 +600,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Venezuelan bolívar",
     "funFact": "Venezuela is home to Angel Falls, the world's tallest uninterrupted waterfall at 979 m (3,212 ft).",
+    "history": "Venezuela was among the first Spanish colonies to declare independence, in 1811, though it wasn't secured until Bolívar's victory in 1821.",
     "wiki": "https://en.wikipedia.org/wiki/Venezuela"
   },
   {
@@ -571,6 +614,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "US dollar",
     "funFact": "Ecuador is named after the Equator, which passes through the country.",
+    "history": "Ecuador gained independence from Spain in 1822 as part of Gran Colombia, becoming a fully separate republic in 1830.",
     "wiki": "https://en.wikipedia.org/wiki/Ecuador"
   },
   {
@@ -584,6 +628,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Bolivian boliviano",
     "funFact": "Bolivia's Salar de Uyuni is the world's largest salt flat, turning into a giant mirror when wet.",
+    "history": "Bolivia gained independence from Spain in 1825 and is named after liberator Simón Bolívar.",
     "wiki": "https://en.wikipedia.org/wiki/Bolivia"
   },
   {
@@ -597,6 +642,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Uruguayan peso",
     "funFact": "Uruguay was one of the first countries to generate nearly all its electricity from renewables.",
+    "history": "Uruguay declared independence from Brazil in 1825, with its sovereignty guaranteed by an 1828 treaty between Argentina and Brazil.",
     "wiki": "https://en.wikipedia.org/wiki/Uruguay"
   },
   {
@@ -610,6 +656,7 @@
     "religion": "Islam",
     "currency": "Egyptian pound",
     "funFact": "The Great Pyramid of Giza was the tallest human-made structure for nearly 4,000 years.",
+    "history": "Egypt gained nominal independence from the United Kingdom in 1922, though British influence persisted until the 1952 revolution.",
     "wiki": "https://en.wikipedia.org/wiki/Egypt"
   },
   {
@@ -623,6 +670,7 @@
     "religion": "Islam/Christianity",
     "currency": "Nigerian naira",
     "funFact": "Nigeria is Africa's most populous country and home to Nollywood, a top-three film industry by output.",
+    "history": "Nigeria gained independence from the United Kingdom in 1960, uniting dozens of distinct ethnic nations under one flag.",
     "wiki": "https://en.wikipedia.org/wiki/Nigeria"
   },
   {
@@ -636,6 +684,7 @@
     "religion": "Christianity",
     "currency": "South African rand",
     "funFact": "South Africa has three capital cities: Pretoria, Cape Town and Bloemfontein.",
+    "history": "South Africa became a self-governing dominion of the United Kingdom in 1910 and a fully independent republic in 1961.",
     "wiki": "https://en.wikipedia.org/wiki/South_Africa"
   },
   {
@@ -649,6 +698,7 @@
     "religion": "Christianity",
     "currency": "Kenyan shilling",
     "funFact": "Kenya's Maasai Mara hosts the annual wildebeest migration, one of nature's greatest spectacles.",
+    "history": "Kenya gained independence from the United Kingdom in 1963 after years of the Mau Mau uprising.",
     "wiki": "https://en.wikipedia.org/wiki/Kenya"
   },
   {
@@ -662,6 +712,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Ethiopian birr",
     "funFact": "Ethiopia follows its own calendar with 13 months and is roughly 7–8 years behind the Gregorian one.",
+    "history": "Ethiopia is Africa's oldest independent country, having never been colonized except for a brief Italian occupation from 1936 to 1941.",
     "wiki": "https://en.wikipedia.org/wiki/Ethiopia"
   },
   {
@@ -675,6 +726,7 @@
     "religion": "Islam",
     "currency": "Moroccan dirham",
     "funFact": "The medina of Fez is one of the world's largest car-free urban areas.",
+    "history": "Morocco gained independence from France in 1956, with Spain relinquishing its remaining protectorate zones soon after.",
     "wiki": "https://en.wikipedia.org/wiki/Morocco"
   },
   {
@@ -688,6 +740,7 @@
     "religion": "Christianity",
     "currency": "Ghanaian cedi",
     "funFact": "Ghana was the first sub-Saharan African nation to gain independence from colonial rule, in 1957.",
+    "history": "Ghana became the first sub-Saharan African colony to gain independence, from the United Kingdom, in 1957.",
     "wiki": "https://en.wikipedia.org/wiki/Ghana"
   },
   {
@@ -701,6 +754,7 @@
     "religion": "Christianity/Islam",
     "currency": "Tanzanian shilling",
     "funFact": "Mount Kilimanjaro in Tanzania is the highest free-standing mountain in the world.",
+    "history": "Tanzania formed in 1964 when Tanganyika (independent from the UK in 1961) united with Zanzibar (independent in 1963).",
     "wiki": "https://en.wikipedia.org/wiki/Tanzania"
   },
   {
@@ -714,6 +768,7 @@
     "religion": "Islam",
     "currency": "Algerian dinar",
     "funFact": "Algeria is the largest country in Africa, with the Sahara covering over 80% of its land.",
+    "history": "Algeria gained independence from France in 1962 after an eight-year war that killed hundreds of thousands.",
     "wiki": "https://en.wikipedia.org/wiki/Algeria"
   },
   {
@@ -727,6 +782,7 @@
     "religion": "Islam",
     "currency": "West African CFA franc",
     "funFact": "Dakar gave its name to the famous Dakar Rally, which originally finished in the city.",
+    "history": "Senegal gained independence from France in 1960, briefly as part of the short-lived Mali Federation.",
     "wiki": "https://en.wikipedia.org/wiki/Senegal"
   },
   {
@@ -740,6 +796,7 @@
     "religion": "Christianity",
     "currency": "Australian dollar",
     "funFact": "Australia is home to the Great Barrier Reef, the largest living structure visible from space.",
+    "history": "Australia federated as a commonwealth in 1901 and gained full legislative independence from the United Kingdom with the Statute of Westminster and the 1986 Australia Act.",
     "wiki": "https://en.wikipedia.org/wiki/Australia"
   },
   {
@@ -753,6 +810,7 @@
     "religion": "Christianity/Irreligion",
     "currency": "New Zealand dollar",
     "funFact": "New Zealand has more sheep than people, by a ratio of roughly five to one.",
+    "history": "New Zealand became a dominion in 1907 and adopted full independence from the United Kingdom in 1947.",
     "wiki": "https://en.wikipedia.org/wiki/New_Zealand"
   },
   {
@@ -766,6 +824,7 @@
     "religion": "Christianity",
     "currency": "Fijian dollar",
     "funFact": "Fiji is an archipelago of more than 330 islands, of which about a third are inhabited.",
+    "history": "Fiji gained independence from the United Kingdom in 1970.",
     "wiki": "https://en.wikipedia.org/wiki/Fiji"
   },
   {
@@ -779,6 +838,7 @@
     "religion": "Christianity",
     "currency": "Papua New Guinean kina",
     "funFact": "Papua New Guinea has over 800 living languages — the most linguistically diverse country on Earth.",
+    "history": "Papua New Guinea gained independence from Australia in 1975.",
     "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea"
   },
   {
@@ -792,6 +852,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Icelandic króna",
     "funFact": "Iceland runs almost entirely on renewable geothermal and hydroelectric power.",
+    "history": "Iceland became a fully independent republic in 1944, dissolving its union with Denmark during World War II.",
     "wiki": "https://en.wikipedia.org/wiki/Iceland"
   },
   {
@@ -805,6 +866,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Euro",
     "funFact": "Finland has about 188,000 lakes and is nicknamed 'the land of a thousand lakes'.",
+    "history": "Finland declared independence from Russia in 1917, amid the chaos of the Russian Revolution.",
     "wiki": "https://en.wikipedia.org/wiki/Finland"
   },
   {
@@ -818,6 +880,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Vienna has been ranked the world's most liveable city multiple times.",
+    "history": "Austria became a republic in 1918 after the collapse of the Austro-Hungarian Empire, and regained full sovereignty in 1955 when Allied occupation ended.",
     "wiki": "https://en.wikipedia.org/wiki/Austria"
   },
   {
@@ -831,6 +894,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Belgium produces over 220,000 tonnes of chocolate a year and has more than 1,100 chocolatiers.",
+    "history": "Belgium gained independence from the Netherlands in 1830 following the Belgian Revolution.",
     "wiki": "https://en.wikipedia.org/wiki/Belgium"
   },
   {
@@ -844,6 +908,7 @@
     "religion": "Islam",
     "currency": "UAE dirham",
     "funFact": "Dubai's Burj Khalifa is the tallest building in the world at 828 m (2,717 ft).",
+    "history": "The United Arab Emirates was formed in 1971 when seven emirates united after the United Kingdom withdrew from the Gulf.",
     "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   },
   {
@@ -857,6 +922,7 @@
     "religion": "Buddhism/Christianity/Islam",
     "currency": "Singapore dollar",
     "funFact": "Singapore is one of only three surviving city-states in the world.",
+    "history": "Singapore gained independence from the United Kingdom via merger with Malaysia in 1963, then became a fully separate republic in 1965 after being expelled from the federation.",
     "wiki": "https://en.wikipedia.org/wiki/Singapore"
   },
   {
@@ -870,6 +936,7 @@
     "religion": "Islam",
     "currency": "Malaysian ringgit",
     "funFact": "The Petronas Towers in Kuala Lumpur were the world's tallest buildings from 1998 to 2004.",
+    "history": "The Federation of Malaya gained independence from the United Kingdom in 1957; Malaysia was formed in 1963 by merging with Singapore, Sabah and Sarawak.",
     "wiki": "https://en.wikipedia.org/wiki/Malaysia"
   },
   {
@@ -883,6 +950,7 @@
     "religion": "Hinduism",
     "currency": "Nepalese rupee",
     "funFact": "Nepal contains eight of the world's ten highest peaks, including Mount Everest.",
+    "history": "Nepal was never colonized, having successfully resisted British expansion, though it ceded some territory after the 1814-16 Anglo-Nepalese War.",
     "wiki": "https://en.wikipedia.org/wiki/Nepal"
   },
   {
@@ -896,6 +964,7 @@
     "religion": "Buddhism",
     "currency": "Mongolian tögrög",
     "funFact": "Mongolia is the most sparsely populated sovereign nation on Earth.",
+    "history": "Mongolia declared independence from Qing China in 1911 and secured it with Soviet backing in 1921.",
     "wiki": "https://en.wikipedia.org/wiki/Mongolia"
   },
   {
@@ -909,6 +978,7 @@
     "religion": "Islam",
     "currency": "Kazakhstani tenge",
     "funFact": "Kazakhstan is the world's largest landlocked country.",
+    "history": "Kazakhstan gained independence from the Soviet Union in 1991, the last Soviet republic to declare independence.",
     "wiki": "https://en.wikipedia.org/wiki/Kazakhstan"
   },
   {
@@ -922,6 +992,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Ukrainian hryvnia",
     "funFact": "Ukraine is the largest country located entirely within Europe.",
+    "history": "Ukraine gained independence from the Soviet Union in 1991 following a referendum with over 90% support.",
     "wiki": "https://en.wikipedia.org/wiki/Ukraine"
   },
   {
@@ -935,6 +1006,7 @@
     "religion": "Irreligion/Christianity",
     "currency": "Czech koruna",
     "funFact": "Czechia has the highest beer consumption per person of any country in the world.",
+    "history": "Czechoslovakia gained independence from Austria-Hungary in 1918; it peacefully split into the Czech Republic and Slovakia in 1993.",
     "wiki": "https://en.wikipedia.org/wiki/Czech_Republic"
   },
   {
@@ -948,6 +1020,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Hungarian forint",
     "funFact": "Budapest sits on over 100 thermal springs and is known as the 'City of Spas'.",
+    "history": "Hungary became independent in 1918 as the Austro-Hungarian Empire dissolved at the end of World War I.",
     "wiki": "https://en.wikipedia.org/wiki/Hungary"
   },
   {
@@ -961,6 +1034,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Danish krone",
     "funFact": "Denmark is often ranked among the happiest countries in the world.",
+    "history": "Denmark is home to one of the world's oldest continuous monarchies, with a kingdom traceable to the 10th century.",
     "wiki": "https://en.wikipedia.org/wiki/Denmark"
   },
   {
@@ -974,6 +1048,7 @@
     "religion": "Islam",
     "currency": "Qatari riyal",
     "funFact": "Qatar hosted the 2022 FIFA World Cup, the first ever held in the Middle East.",
+    "history": "Qatar gained independence from the United Kingdom in 1971.",
     "wiki": "https://en.wikipedia.org/wiki/Qatar"
   },
   {
@@ -987,6 +1062,7 @@
     "religion": "Buddhism",
     "currency": "Cambodian riel",
     "funFact": "Angkor Wat in Cambodia is the largest religious monument in the world.",
+    "history": "Cambodia gained independence from France in 1953.",
     "wiki": "https://en.wikipedia.org/wiki/Cambodia"
   },
   {
@@ -1000,6 +1076,7 @@
     "religion": "Buddhism",
     "currency": "Sri Lankan rupee",
     "funFact": "Sri Lanka was the first country in the world to elect a female head of government, in 1960.",
+    "history": "Sri Lanka (then Ceylon) gained independence from the United Kingdom in 1948.",
     "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka"
   },
   {
@@ -1013,6 +1090,7 @@
     "religion": "Islam",
     "currency": "Tunisian dinar",
     "funFact": "Tunisia is home to the ancient city of Carthage, a former great power that rivaled Rome.",
+    "history": "Tunisia gained independence from France in 1956.",
     "wiki": "https://en.wikipedia.org/wiki/Tunisia"
   },
   {
@@ -1026,6 +1104,7 @@
     "religion": "Islam",
     "currency": "Libyan dinar",
     "funFact": "Libya has the largest proven oil reserves in Africa.",
+    "history": "Libya gained independence in 1951, the first country to achieve independence through the United Nations, after Italian colonization ended in World War II.",
     "wiki": "https://en.wikipedia.org/wiki/Libya"
   },
   {
@@ -1039,6 +1118,7 @@
     "religion": "Islam",
     "currency": "Sudanese pound",
     "funFact": "Sudan is home to the Nubian pyramids, with more pyramids than Egypt.",
+    "history": "Sudan gained independence in 1956 from joint British-Egyptian rule.",
     "wiki": "https://en.wikipedia.org/wiki/Sudan"
   },
   {
@@ -1052,6 +1132,7 @@
     "religion": "Islam",
     "currency": "West African CFA franc",
     "funFact": "Ivory Coast is the world's largest producer of cocoa, supplying about 40% of global cocoa.",
+    "history": "Ivory Coast (Côte d'Ivoire) gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Ivory_Coast"
   },
   {
@@ -1065,6 +1146,7 @@
     "religion": "Islam",
     "currency": "West African CFA franc",
     "funFact": "Mali was home to the Mali Empire, which controlled important trans-Saharan trade routes and was renowned for its wealth in gold.",
+    "history": "Mali gained independence from France in 1960, briefly federated with Senegal beforehand.",
     "wiki": "https://en.wikipedia.org/wiki/Mali"
   },
   {
@@ -1078,6 +1160,7 @@
     "religion": "Islam",
     "currency": "West African CFA franc",
     "funFact": "Niger is home to the W National Park, one of the largest protected wildlife areas in West Africa, shared with Benin and Burkina Faso.",
+    "history": "Niger gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Niger"
   },
   {
@@ -1091,6 +1174,7 @@
     "religion": "Islam",
     "currency": "Guinean franc",
     "funFact": "Guinea has the world's largest reserves of bauxite, the primary ore from which aluminum is extracted.",
+    "history": "Guinea gained independence from France in 1958, the first French colony in Africa to do so after voting against a new French constitution.",
     "wiki": "https://en.wikipedia.org/wiki/Guinea"
   },
   {
@@ -1104,6 +1188,7 @@
     "religion": "Islam",
     "currency": "Sierra Leonean leone",
     "funFact": "Sierra Leone was founded in 1787 as a home for freed slaves, with its capital Freetown named after their freedom.",
+    "history": "Sierra Leone gained independence from the United Kingdom in 1961.",
     "wiki": "https://en.wikipedia.org/wiki/Sierra_Leone"
   },
   {
@@ -1117,6 +1202,7 @@
     "religion": "Christianity",
     "currency": "West African CFA franc",
     "funFact": "Benin is considered the birthplace of Vodou (often called Voodoo), a spiritual practice that influences the culture and religion of the region.",
+    "history": "Benin (then Dahomey) gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Benin"
   },
   {
@@ -1130,6 +1216,7 @@
     "religion": "Christianity",
     "currency": "West African CFA franc",
     "funFact": "Togo is one of the smallest countries in Africa, measuring only about 579 kilometers (360 mi) from north to south.",
+    "history": "Togo gained independence from France in 1960, having earlier been a German then French/British-administered territory.",
     "wiki": "https://en.wikipedia.org/wiki/Togo"
   },
   {
@@ -1143,6 +1230,7 @@
     "religion": "Islam",
     "currency": "West African CFA franc",
     "funFact": "Burkina Faso means 'land of honest people' in the local Mossi and Dioula languages.",
+    "history": "Burkina Faso (then Upper Volta) gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Burkina_Faso"
   },
   {
@@ -1156,6 +1244,7 @@
     "religion": "Islam",
     "currency": "Gambian dalasi",
     "funFact": "Gambia is the smallest independent country in mainland Africa, nearly surrounded by Senegal.",
+    "history": "The Gambia gained independence from the United Kingdom in 1965.",
     "wiki": "https://en.wikipedia.org/wiki/Gambia"
   },
   {
@@ -1169,6 +1258,7 @@
     "religion": "Christianity",
     "currency": "Ugandan shilling",
     "funFact": "Uganda is home to the source of the White Nile River and has the second-highest concentration of mountain gorillas in the world.",
+    "history": "Uganda gained independence from the United Kingdom in 1962.",
     "wiki": "https://en.wikipedia.org/wiki/Uganda"
   },
   {
@@ -1182,6 +1272,7 @@
     "religion": "Christianity",
     "currency": "Rwandan franc",
     "funFact": "Rwanda is known as the 'Land of a Thousand Hills' due to its rolling terrain and lush green landscape.",
+    "history": "Rwanda gained independence from Belgium in 1962.",
     "wiki": "https://en.wikipedia.org/wiki/Rwanda"
   },
   {
@@ -1195,6 +1286,7 @@
     "religion": "Islam",
     "currency": "Somali shilling",
     "funFact": "Somalia has the longest coastline of any African country, stretching along the Indian Ocean and the Gulf of Aden.",
+    "history": "Somalia formed in 1960 when British Somaliland and Italian Somaliland each gained independence and united.",
     "wiki": "https://en.wikipedia.org/wiki/Somalia"
   },
   {
@@ -1208,6 +1300,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Eritrean nakfa",
     "funFact": "Eritrea is one of Africa's youngest nations, having gained independence from Ethiopia in 1993 after a 30-year war.",
+    "history": "Eritrea gained independence from Ethiopia in 1993 after a 30-year war and a UN-supervised referendum.",
     "wiki": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
@@ -1221,6 +1314,7 @@
     "religion": "Islam",
     "currency": "Djiboutian franc",
     "funFact": "Djibouti is located at the gateway to the Red Sea and houses a major strategic port serving the wider region.",
+    "history": "Djibouti gained independence from France in 1977.",
     "wiki": "https://en.wikipedia.org/wiki/Djibouti"
   },
   {
@@ -1234,6 +1328,7 @@
     "religion": "Christianity",
     "currency": "Central African CFA franc",
     "funFact": "Cameroon is known as 'Africa in miniature' due to its geographical and cultural diversity, from rainforests to deserts.",
+    "history": "Cameroon gained independence from France in 1960, with the southern part of British Cameroons joining a year later.",
     "wiki": "https://en.wikipedia.org/wiki/Cameroon"
   },
   {
@@ -1247,6 +1342,7 @@
     "religion": "Christianity",
     "currency": "Congolese franc",
     "funFact": "The Democratic Republic of the Congo has the world's second-largest rainforest after the Amazon, covering over 2 million square kilometers (772,000 sq mi).",
+    "history": "The Democratic Republic of the Congo gained independence from Belgium in 1960, following brutal colonial exploitation dating back to King Leopold II's personal rule.",
     "wiki": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
   },
   {
@@ -1260,6 +1356,7 @@
     "religion": "Christianity",
     "currency": "Central African CFA franc",
     "funFact": "Gabon is one of Africa's most sparsely populated countries, with about 80% of its land covered in rainforest.",
+    "history": "Gabon gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Gabon"
   },
   {
@@ -1273,6 +1370,7 @@
     "religion": "Islam",
     "currency": "Central African CFA franc",
     "funFact": "Chad is home to Lake Chad, one of the world's largest freshwater lakes, though it has shrunk significantly due to climate change.",
+    "history": "Chad gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Chad"
   },
   {
@@ -1286,6 +1384,7 @@
     "religion": "Christianity",
     "currency": "Central African CFA franc",
     "funFact": "The Central African Republic sits at the geographic center of Africa and is home to vast diamond and gold reserves.",
+    "history": "The Central African Republic gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Central_African_Republic"
   },
   {
@@ -1299,6 +1398,7 @@
     "religion": "Christianity",
     "currency": "Angolan kwanza",
     "funFact": "Angola is the second-largest oil producer in Africa and has significant diamond reserves.",
+    "history": "Angola gained independence from Portugal in 1975 after a 14-year independence war, followed immediately by decades of civil war.",
     "wiki": "https://en.wikipedia.org/wiki/Angola"
   },
   {
@@ -1312,6 +1412,7 @@
     "religion": "Christianity",
     "currency": "Zimbabwean dollar",
     "funFact": "Zimbabwe is home to Victoria Falls, one of the Seven Natural Wonders of the World, shared with Zambia.",
+    "history": "Zimbabwe (then Rhodesia) gained internationally recognized independence from the United Kingdom in 1980, following a guerrilla war against the white-minority government.",
     "wiki": "https://en.wikipedia.org/wiki/Zimbabwe"
   },
   {
@@ -1325,6 +1426,7 @@
     "religion": "Christianity",
     "currency": "Botswana pula",
     "funFact": "Botswana is home to the Kalahari Desert and the Okavango Delta, one of the world's largest inland deltas.",
+    "history": "Botswana gained independence from the United Kingdom in 1966.",
     "wiki": "https://en.wikipedia.org/wiki/Botswana"
   },
   {
@@ -1338,6 +1440,7 @@
     "religion": "Christianity",
     "currency": "Namibian dollar",
     "funFact": "Namibia is home to the Namib Desert, one of the oldest deserts in the world, and has some of the highest sand dunes on Earth.",
+    "history": "Namibia gained independence from South Africa in 1990, one of the last African countries to do so.",
     "wiki": "https://en.wikipedia.org/wiki/Namibia"
   },
   {
@@ -1351,6 +1454,7 @@
     "religion": "Christianity",
     "currency": "Mozambican metical",
     "funFact": "Mozambique has a long coastline along the Indian Ocean and is becoming an increasingly popular tourist destination.",
+    "history": "Mozambique gained independence from Portugal in 1975 after a decade-long liberation war.",
     "wiki": "https://en.wikipedia.org/wiki/Mozambique"
   },
   {
@@ -1364,6 +1468,7 @@
     "religion": "Christianity",
     "currency": "Zambian kwacha",
     "funFact": "Zambia is home to Victoria Falls, known locally as Mosi-oa-Tunya, meaning 'The Smoke That Thunders'.",
+    "history": "Zambia (then Northern Rhodesia) gained independence from the United Kingdom in 1964.",
     "wiki": "https://en.wikipedia.org/wiki/Zambia"
   },
   {
@@ -1377,6 +1482,7 @@
     "religion": "Christianity",
     "currency": "Malawian kwacha",
     "funFact": "Malawi is home to Lake Malawi, one of the largest and most biodiverse freshwater lakes in Africa.",
+    "history": "Malawi (then Nyasaland) gained independence from the United Kingdom in 1964.",
     "wiki": "https://en.wikipedia.org/wiki/Malawi"
   },
   {
@@ -1390,6 +1496,7 @@
     "religion": "Christianity",
     "currency": "Malagasy ariary",
     "funFact": "Madagascar is the world's fourth-largest island and has unique wildlife found nowhere else on Earth, including lemurs.",
+    "history": "Madagascar gained independence from France in 1960.",
     "wiki": "https://en.wikipedia.org/wiki/Madagascar"
   },
   {
@@ -1403,6 +1510,7 @@
     "religion": "Christianity",
     "currency": "Vanuatu vatu",
     "funFact": "Vanuatu is located on the Pacific Ring of Fire and experiences frequent volcanic activity with several active volcanoes.",
+    "history": "Vanuatu gained independence in 1980 from an unusual joint British-French condominium government.",
     "wiki": "https://en.wikipedia.org/wiki/Vanuatu"
   },
   {
@@ -1416,6 +1524,7 @@
     "religion": "Christianity",
     "currency": "Solomon Islands dollar",
     "funFact": "The Solomon Islands archipelago consists of nearly 1,000 islands stretching across 1,400 kilometers (870 mi) of the Pacific Ocean.",
+    "history": "The Solomon Islands gained independence from the United Kingdom in 1978.",
     "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands"
   },
   {
@@ -1429,6 +1538,7 @@
     "religion": "Christianity",
     "currency": "Samoan tālā",
     "funFact": "Samoa switched which side of the International Date Line it's on in 2011, skipping December 30 entirely to align its trade week with Australia and New Zealand.",
+    "history": "Samoa gained independence from New Zealand in 1962, the first Pacific island nation to do so in the 20th century.",
     "wiki": "https://en.wikipedia.org/wiki/Samoa"
   },
   {
@@ -1442,6 +1552,7 @@
     "religion": "Christianity",
     "currency": "Tongan paʻanga",
     "funFact": "Tonga is one of the few Pacific island nations never colonized by a European power and maintains its own monarchy.",
+    "history": "Tonga is the only Pacific nation never colonized, ending its status as a British-protected state in 1970.",
     "wiki": "https://en.wikipedia.org/wiki/Tonga"
   },
   {
@@ -1455,6 +1566,7 @@
     "religion": "Christianity",
     "currency": "Tuvaluan dollar",
     "funFact": "Tuvalu is one of the most vulnerable nations to climate change due to rising sea levels, with the highest point only 5 meters (16 ft) above sea level.",
+    "history": "Tuvalu gained independence from the United Kingdom in 1978.",
     "wiki": "https://en.wikipedia.org/wiki/Tuvalu"
   },
   {
@@ -1468,6 +1580,7 @@
     "religion": "Christianity",
     "currency": "Kiribati dollar",
     "funFact": "Kiribati straddles the International Date Line and the equator, making it one of the most geographically dispersed nations.",
+    "history": "Kiribati gained independence from the United Kingdom in 1979.",
     "wiki": "https://en.wikipedia.org/wiki/Kiribati"
   },
   {
@@ -1481,6 +1594,7 @@
     "religion": "Christianity",
     "currency": "US dollar",
     "funFact": "The Federated States of Micronesia consists of four states spread across the western Pacific Ocean with a total area smaller than Rhode Island.",
+    "history": "The Federated States of Micronesia gained independence from the United States in 1986, after decades as a UN Trust Territory.",
     "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia"
   },
   {
@@ -1494,6 +1608,7 @@
     "religion": "Christianity",
     "currency": "US dollar",
     "funFact": "Palau is famous for Jellyfish Lake, which is home to millions of stingless golden jellyfish found nowhere else on Earth.",
+    "history": "Palau gained independence from the United States in 1994, the last UN Trust Territory to do so.",
     "wiki": "https://en.wikipedia.org/wiki/Palau"
   },
   {
@@ -1507,6 +1622,7 @@
     "religion": "Christianity",
     "currency": "US dollar",
     "funFact": "The Marshall Islands is composed of 29 atolls and 5 islands spread across the Pacific Ocean, with Majuro being one of the largest atolls in the world.",
+    "history": "The Marshall Islands gained independence from the United States in 1986.",
     "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands"
   },
   {
@@ -1520,6 +1636,7 @@
     "religion": "Christianity",
     "currency": "Australian dollar",
     "funFact": "Nauru is the smallest republic in the world by both area and population, measuring only 21 square kilometers (8 sq mi).",
+    "history": "Nauru gained independence in 1968, and remains the world's smallest island nation.",
     "wiki": "https://en.wikipedia.org/wiki/Nauru"
   },
   {
@@ -1533,6 +1650,7 @@
     "religion": "Islam",
     "currency": "Afghan afghani",
     "funFact": "Afghanistan is home to the Hindu Kush mountains and sits at the crossroads of Central and South Asia, a crucial historical trade route.",
+    "history": "Afghanistan regained full control of its foreign affairs from the United Kingdom in 1919 after the third Anglo-Afghan War, having never been formally colonized.",
     "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
   },
   {
@@ -1546,6 +1664,7 @@
     "religion": "Buddhism",
     "currency": "Burmese kyat",
     "funFact": "Myanmar is home to the Irrawaddy River, one of Southeast Asia's most important waterways, and thousands of golden temples.",
+    "history": "Myanmar (then Burma) gained independence from the United Kingdom in 1948.",
     "wiki": "https://en.wikipedia.org/wiki/Myanmar"
   },
   {
@@ -1559,6 +1678,7 @@
     "religion": "Buddhism",
     "currency": "Laotian kip",
     "funFact": "Laos is the only landlocked country in Southeast Asia and is known for its ancient temples and the Mekong River.",
+    "history": "Laos gained independence from France in 1953.",
     "wiki": "https://en.wikipedia.org/wiki/Laos"
   },
   {
@@ -1572,6 +1692,7 @@
     "religion": "Irreligion",
     "currency": "North Korean won",
     "funFact": "North Korea is one of the most isolated nations on Earth, with limited internet access and strict government control over information.",
+    "history": "North Korea was established in 1948, three years after Korea was liberated from 35 years of Japanese colonial rule.",
     "wiki": "https://en.wikipedia.org/wiki/North_Korea"
   },
   {
@@ -1585,6 +1706,7 @@
     "religion": "Islam",
     "currency": "Yemeni rial",
     "funFact": "Yemen is home to Socotra Island, often called the 'Galápagos of the Indian Ocean' due to its unique and endemic flora.",
+    "history": "Yemen unified in 1990 from two states: North Yemen, independent from the Ottoman Empire since 1918, and South Yemen, independent from the United Kingdom since 1967.",
     "wiki": "https://en.wikipedia.org/wiki/Yemen"
   },
   {
@@ -1598,6 +1720,7 @@
     "religion": "Islam",
     "currency": "Jordanian dinar",
     "funFact": "Jordan is home to Petra, a city carved directly into rose-colored sandstone cliffs by the Nabataeans over 2,000 years ago.",
+    "history": "Jordan gained independence from the United Kingdom in 1946.",
     "wiki": "https://en.wikipedia.org/wiki/Jordan"
   },
   {
@@ -1611,6 +1734,7 @@
     "religion": "Islam/Christianity",
     "currency": "Lebanese pound",
     "funFact": "Lebanon is home to the Cedars of God, ancient cedar trees that appear on the country's flag and have been revered for thousands of years.",
+    "history": "Lebanon gained independence from France in 1943.",
     "wiki": "https://en.wikipedia.org/wiki/Lebanon"
   },
   {
@@ -1624,6 +1748,7 @@
     "religion": "Islam",
     "currency": "Iraqi dinar",
     "funFact": "Iraq is home to the ruins of Babylon, one of the most important cities in ancient Mesopotamia and a center of learning and culture.",
+    "history": "Iraq gained independence from the United Kingdom in 1932.",
     "wiki": "https://en.wikipedia.org/wiki/Iraq"
   },
   {
@@ -1637,6 +1762,7 @@
     "religion": "Islam",
     "currency": "Omani rial",
     "funFact": "Oman is known for its dramatic mountainous terrain and stunning beaches along the Arabian Sea, and was a major maritime trading power.",
+    "history": "Oman has been continuously independent for centuries, never formally colonized, making it one of the oldest states in the Arab world.",
     "wiki": "https://en.wikipedia.org/wiki/Oman"
   },
   {
@@ -1650,6 +1776,7 @@
     "religion": "Islam",
     "currency": "Kuwaiti dinar",
     "funFact": "Kuwait is one of the world's richest countries per capita due to its vast oil reserves and is known for its modern architecture.",
+    "history": "Kuwait gained independence from the United Kingdom in 1961.",
     "wiki": "https://en.wikipedia.org/wiki/Kuwait"
   },
   {
@@ -1663,6 +1790,7 @@
     "religion": "Islam",
     "currency": "Uzbekistani som",
     "funFact": "Uzbekistan is home to Samarkand and Bukhara, ancient Silk Road cities renowned for their stunning Islamic architecture and tiles.",
+    "history": "Uzbekistan gained independence from the Soviet Union in 1991.",
     "wiki": "https://en.wikipedia.org/wiki/Uzbekistan"
   },
   {
@@ -1676,6 +1804,7 @@
     "religion": "Islam",
     "currency": "Turkmenistani manat",
     "funFact": "Turkmenistan is home to the Darvaza gas crater, a burning natural gas field that has burned continuously for over 50 years.",
+    "history": "Turkmenistan gained independence from the Soviet Union in 1991.",
     "wiki": "https://en.wikipedia.org/wiki/Turkmenistan"
   },
   {
@@ -1689,6 +1818,7 @@
     "religion": "Islam",
     "currency": "Kyrgyzstani som",
     "funFact": "Kyrgyzstan is known as the 'Mountain Country' with over 90% of its territory covered by mountains, including parts of the Tian Shan range.",
+    "history": "Kyrgyzstan gained independence from the Soviet Union in 1991.",
     "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan"
   },
   {
@@ -1702,6 +1832,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Georgian lari",
     "funFact": "Georgia is believed to be where wine was first created, with evidence of winemaking dating back over 8,000 years.",
+    "history": "Georgia gained independence from the Soviet Union in 1991.",
     "wiki": "https://en.wikipedia.org/wiki/Georgia"
   },
   {
@@ -1715,6 +1846,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Armenian dram",
     "funFact": "Armenia was the first country to officially adopt Christianity as its state religion in 301 AD.",
+    "history": "Armenia gained independence from the Soviet Union in 1991, though it also briefly declared independence in 1918.",
     "wiki": "https://en.wikipedia.org/wiki/Armenia"
   },
   {
@@ -1728,6 +1860,7 @@
     "religion": "Buddhism",
     "currency": "Bhutanese ngultrum",
     "funFact": "Bhutan measures progress by Gross National Happiness instead of GDP and prohibits tobacco sales to protect public health.",
+    "history": "Bhutan was never colonized and has been ruled by its own monarchy since it was unified in 1907.",
     "wiki": "https://en.wikipedia.org/wiki/Bhutan"
   },
   {
@@ -1741,6 +1874,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Croatia's Plitvice Lakes National Park has 16 terraced lakes connected by waterfalls, all colored different shades of blue and green by mineral deposits.",
+    "history": "Croatia declared independence from Yugoslavia in 1991, a move that helped trigger the Yugoslav Wars.",
     "wiki": "https://en.wikipedia.org/wiki/Croatia"
   },
   {
@@ -1754,6 +1888,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Serbian dinar",
     "funFact": "Belgrade, Serbia's capital, sits at the confluence of the Danube and Sava rivers and has been destroyed and rebuilt over 40 times.",
+    "history": "Serbia's independence from the Ottoman Empire was recognized in 1878; it became a separate state again in 2006 after Montenegro's split.",
     "wiki": "https://en.wikipedia.org/wiki/Serbia"
   },
   {
@@ -1767,6 +1902,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Slovenia is one of Europe's greenest countries, with over 60% of its territory covered by forests.",
+    "history": "Slovenia declared independence from Yugoslavia in 1991 after only a brief Ten-Day War.",
     "wiki": "https://en.wikipedia.org/wiki/Slovenia"
   },
   {
@@ -1780,6 +1916,7 @@
     "religion": "Islam/Christianity",
     "currency": "Albanian lek",
     "funFact": "Albania is home to Lake Ohrid, one of Europe's deepest and oldest lakes, shared with North Macedonia.",
+    "history": "Albania declared independence from the Ottoman Empire in 1912.",
     "wiki": "https://en.wikipedia.org/wiki/Albania"
   },
   {
@@ -1793,6 +1930,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Macedonian denar",
     "funFact": "North Macedonia is home to Lake Ohrid, which is one of the world's oldest freshwater lakes with unique endemic fish species.",
+    "history": "North Macedonia declared independence from Yugoslavia in 1991, the only former Yugoslav republic to do so without violence at the time.",
     "wiki": "https://en.wikipedia.org/wiki/North_Macedonia"
   },
   {
@@ -1806,6 +1944,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Romanian leu",
     "funFact": "Romania is home to the Carpathian Mountains and is believed to be the inspiration for Bram Stoker's Dracula.",
+    "history": "Romania formed in 1859 by uniting Wallachia and Moldavia, and gained full independence from the Ottoman Empire in 1878.",
     "wiki": "https://en.wikipedia.org/wiki/Romania"
   },
   {
@@ -1819,6 +1958,7 @@
     "religion": "Christianity (Orthodox)",
     "currency": "Bulgarian lev",
     "funFact": "Bulgaria is the world's leading producer of rose oil, producing about 70% of the global supply.",
+    "history": "Bulgaria gained autonomy from the Ottoman Empire in 1878 and declared full independence in 1908.",
     "wiki": "https://en.wikipedia.org/wiki/Bulgaria"
   },
   {
@@ -1832,6 +1972,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Slovakia is home to the High Tatras mountains and has more UNESCO World Heritage Sites per capita than most European countries.",
+    "history": "Slovakia became independent in 1993 in the peaceful 'Velvet Divorce' split from Czechoslovakia.",
     "wiki": "https://en.wikipedia.org/wiki/Slovakia"
   },
   {
@@ -1845,6 +1986,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Lithuania is home to the Hill of Crosses, a unique pilgrimage site where thousands of crosses have been placed over centuries.",
+    "history": "Lithuania was the first Soviet republic to declare independence from the USSR, in 1990, having also been briefly independent between 1918 and 1940.",
     "wiki": "https://en.wikipedia.org/wiki/Lithuania"
   },
   {
@@ -1858,6 +2000,7 @@
     "religion": "Christianity",
     "currency": "Euro",
     "funFact": "Latvia's capital Riga is known for its outstanding Art Nouveau architecture and has one of the widest waterfalls in Europe.",
+    "history": "Latvia regained independence from the Soviet Union in 1991, having also been independent from 1918 to 1940.",
     "wiki": "https://en.wikipedia.org/wiki/Latvia"
   },
   {
@@ -1871,6 +2014,7 @@
     "religion": "Christianity (Lutheran)",
     "currency": "Euro",
     "funFact": "Estonia is a leader in digital innovation and e-governance, being one of the first countries to offer digital residency.",
+    "history": "Estonia regained independence from the Soviet Union in 1991, having also been independent from 1918 to 1940.",
     "wiki": "https://en.wikipedia.org/wiki/Estonia"
   },
   {
@@ -1884,6 +2028,7 @@
     "religion": "Christianity (Catholic)",
     "currency": "Euro",
     "funFact": "Luxembourg is one of the richest countries in the world per capita and is known for its medieval old town and picturesque castles.",
+    "history": "Luxembourg gained independence from the Netherlands in 1839 under the Treaty of London.",
     "wiki": "https://en.wikipedia.org/wiki/Luxembourg"
   },
   {
@@ -1897,6 +2042,7 @@
     "religion": "Christianity",
     "currency": "Honduran lempira",
     "funFact": "The Bay Islands off Honduras's Caribbean coast sit on the second-largest barrier reef system in the world, after Australia's Great Barrier Reef.",
+    "history": "Honduras gained independence from Spain in 1821 as part of Central America's joint declaration.",
     "wiki": "https://en.wikipedia.org/wiki/Honduras"
   },
   {
@@ -1910,6 +2056,7 @@
     "religion": "Christianity",
     "currency": "Nicaraguan córdoba",
     "funFact": "Nicaragua is home to Lake Nicaragua, the largest lake in Central America, which contains freshwater sharks.",
+    "history": "Nicaragua gained independence from Spain in 1821.",
     "wiki": "https://en.wikipedia.org/wiki/Nicaragua"
   },
   {
@@ -1923,6 +2070,7 @@
     "religion": "Christianity",
     "currency": "United States dollar",
     "funFact": "El Salvador is the smallest country in Central America and the most densely populated.",
+    "history": "El Salvador gained independence from Spain in 1821.",
     "wiki": "https://en.wikipedia.org/wiki/El_Salvador"
   },
   {
@@ -1936,6 +2084,7 @@
     "religion": "Christianity",
     "currency": "Belize dollar",
     "funFact": "Belize is the only Central American country with English as the official language and is home to the Belize Barrier Reef, a UNESCO World Heritage Site.",
+    "history": "Belize gained independence from the United Kingdom in 1981, the last Central American country to do so.",
     "wiki": "https://en.wikipedia.org/wiki/Belize"
   },
   {
@@ -1949,6 +2098,7 @@
     "religion": "Christianity",
     "currency": "Dominican peso",
     "funFact": "The Dominican Republic occupies two-thirds of the island of Hispaniola and is known for its beautiful beaches and mountain ranges.",
+    "history": "The Dominican Republic gained independence from Haiti in 1844, having earlier been a Spanish and then Haitian-ruled colony.",
     "wiki": "https://en.wikipedia.org/wiki/Dominican_Republic"
   },
   {
@@ -1962,6 +2112,7 @@
     "religion": "Christianity",
     "currency": "Haitian gourde",
     "funFact": "Haiti was the first independent nation in Latin America and the Caribbean, and the first Black-led republic in the world.",
+    "history": "Haiti gained independence from France in 1804 after a successful slave revolt, becoming the world's first Black-led republic.",
     "wiki": "https://en.wikipedia.org/wiki/Haiti"
   },
   {
@@ -1975,6 +2126,7 @@
     "religion": "Christianity",
     "currency": "Bahamian dollar",
     "funFact": "The Bahamas is an archipelago of more than 700 islands and cays and is famous for its crystal-clear waters.",
+    "history": "The Bahamas gained independence from the United Kingdom in 1973.",
     "wiki": "https://en.wikipedia.org/wiki/Bahamas"
   },
   {
@@ -1988,6 +2140,7 @@
     "religion": "Christianity",
     "currency": "Trinidad and Tobago dollar",
     "funFact": "Trinidad and Tobago is the southernmost Caribbean nation and is known for its diverse cultural heritage and Carnival celebration.",
+    "history": "Trinidad and Tobago gained independence from the United Kingdom in 1962.",
     "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago"
   },
   {
@@ -2001,6 +2154,7 @@
     "religion": "Christianity",
     "currency": "Paraguayan guaraní",
     "funFact": "Paraguay is one of only a few countries in the world where an indigenous language, Guarani, is spoken by a majority of the population alongside Spanish.",
+    "history": "Paraguay gained independence from Spain in 1811, one of the earliest South American colonies to do so.",
     "wiki": "https://en.wikipedia.org/wiki/Paraguay"
   },
   {
@@ -2014,6 +2168,7 @@
     "religion": "Christianity",
     "currency": "Guyanese dollar",
     "funFact": "Guyana is the only English-speaking country in South America and is known for its pristine rainforests and biodiversity.",
+    "history": "Guyana gained independence from the United Kingdom in 1966.",
     "wiki": "https://en.wikipedia.org/wiki/Guyana"
   },
   {
@@ -2027,6 +2182,7 @@
     "religion": "Christianity",
     "currency": "Surinamese dollar",
     "funFact": "Suriname is the smallest country in South America and the only Dutch-speaking country on the continent.",
+    "history": "Suriname gained independence from the Netherlands in 1975.",
     "wiki": "https://en.wikipedia.org/wiki/Suriname"
   }
 ]

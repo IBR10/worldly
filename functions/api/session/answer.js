@@ -37,6 +37,7 @@ export async function onRequestPost(context) {
     correct,
     correctAnswer: q.answer,
     funFact: q.funFact,
+    history: q.history,
     learnMore: q.learnMore,
     xpGained,
     runningScore: session.runningScore,

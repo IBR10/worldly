@@ -450,6 +450,7 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
     flagIso,
     flagImg,
     funFact: c.funFact,
+    history: c.history,
     learnMore: learnMoreFor(c, isCountry),
     source: c,
   };

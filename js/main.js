@@ -835,6 +835,7 @@ async function answer(value) {
       correct = graded.correct;
       q.answer = graded.correctAnswer;
       q.funFact = graded.funFact;
+      q.history = graded.history;
       q.learnMore = graded.learnMore;
       xpGained = graded.xpGained;
     } catch {
@@ -972,6 +973,7 @@ function renderFeedback(correct, q, xpGained) {
   fb.innerHTML = `
     <h3>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h3>
     <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
+    ${q.history ? `<div class="fact">📜 <strong>History:</strong> ${esc(q.history)}</div>` : ''}
     ${q.source?.note ? `<div class="fact muted">ℹ️ ${esc(q.source.note)}</div>` : ''}
     <div><span class="muted-note">Learn more:</span>
       <div class="learn-more">${links}</div></div>
