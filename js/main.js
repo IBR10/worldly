@@ -1409,11 +1409,13 @@ function renderMusicDetail(entry) {
 function showCrises() {
   leaveSession();
   const entries = getData().crises || [];
-  // Two curated tiers: crises the world under-covers, and the largest ongoing
-  // conflicts regardless of how heavily they are reported.
+  // Three curated tiers: crises the world under-covers, the largest ongoing
+  // conflicts regardless of how heavily they are reported, and notable crises
+  // from history — both famous and underreported.
   const tiers = [
     { id: 'underreported', label: '🔦 Underreported', blurb: 'Major crises that receive far less attention than their scale deserves.' },
     { id: 'major', label: '🌐 Major Conflicts', blurb: 'The largest ongoing conflicts, regardless of how widely they are covered.' },
+    { id: 'historical', label: '🏺 Historical', blurb: 'Famous and lesser-known crises from history — what happened, and why it still matters.' },
   ];
   if (!tiers.some((t) => t.id === crisesTab)) crisesTab = 'underreported';
   const cardsFor = (tier) => entries.filter((e) => (e.tier || 'underreported') === tier);
@@ -1421,7 +1423,7 @@ function showCrises() {
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Crises &amp; Events 📰</h1>
-    <p class="screen-sub">Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.</p>
+    <p class="screen-sub">Background on world crises, past and present, with links to learn more. Curated context — not real-time reporting.</p>
 
     <div class="tabs" role="tablist">
       ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === crisesTab}" tabindex="${t.id === crisesTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
@@ -1462,14 +1464,14 @@ function renderCrisisDetail(entry) {
       <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.title)}</h1>
-        <p class="screen-sub m-tight">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}</p>
+        <p class="screen-sub m-tight">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}${entry.era ? ' · ' + esc(entry.era) : ''}</p>
       </div>
     </div>
 
     <div class="crisis-body">
       ${paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}
       ${entry.asOf ? `<p class="muted-note">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
-      <div><span class="muted-note">Follow the latest:</span>
+      <div><span class="muted-note">${entry.tier === 'historical' ? 'Learn more' : 'Follow the latest'}:</span>
         <div class="learn-more">${links}</div></div>
     </div>
 

@@ -220,5 +220,224 @@
       { "label": "ReliefWeb", "url": "https://reliefweb.int/country/cmr" },
       { "label": "Latest news", "url": "https://news.google.com/search?q=Cameroon%20Anglophone%20crisis" }
     ]
+  },
+  {
+    "title": "The Holocaust",
+    "country": "Nazi Germany & occupied Europe",
+    "iso2": "DE",
+    "region": "Europe",
+    "tier": "historical",
+    "era": "1941–1945",
+    "summary": [
+      "Nazi persecution of Jews began as soon as Adolf Hitler took power in Germany in 1933, with boycotts, the 1935 Nuremberg Laws stripping Jews of citizenship, and the 1938 Kristallnacht pogrom that destroyed Jewish homes, businesses, and synagogues across the country. As Germany invaded and occupied much of Europe from 1939, it forced Jewish populations into overcrowded ghettos and subjected them to forced labor, starvation, and disease.",
+      "After Germany invaded the Soviet Union in 1941, mobile killing squads called Einsatzgruppen began mass shootings of Jews and other targeted groups across occupied Eastern Europe. In January 1942, senior Nazi officials met at the Wannsee Conference to coordinate the 'Final Solution' — the systematic murder of Europe's Jews — and built dedicated extermination camps, including Auschwitz-Birkenau, Treblinka, and Sobibor, where victims were killed in gas chambers on an industrial scale.",
+      "By the war's end in 1945, roughly six million Jews had been murdered — about two-thirds of Europe's pre-war Jewish population — alongside millions of Roma, disabled people, Soviet prisoners of war, political dissidents, and gay men, bringing the total death toll to an estimated eleven million. Soviet, American, and British forces liberated the camps in 1944–45, revealing the scale of the atrocity to the world.",
+      "The Holocaust's aftermath reshaped international law and politics: the Nuremberg trials established that following orders was no defense against charges of crimes against humanity, the 1948 Genocide Convention codified genocide as an international crime, and the atrocity became a central argument for the creation of the state of Israel later that year. Holocaust remembrance and education remain central to how many countries teach the dangers of state-sponsored hatred."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/The_Holocaust" },
+      { "label": "US Holocaust Memorial Museum", "url": "https://www.ushmm.org" },
+      { "label": "Yad Vashem", "url": "https://www.yadvashem.org" }
+    ]
+  },
+  {
+    "title": "Rwandan Genocide",
+    "country": "Rwanda",
+    "iso2": "RW",
+    "region": "Africa",
+    "tier": "historical",
+    "era": "April–July 1994",
+    "summary": [
+      "Belgian colonial administrators hardened a loose social distinction between Rwanda's Hutu majority and Tutsi minority into fixed ethnic identities, issuing ID cards and favoring Tutsi for decades before independence, then abruptly backing a Hutu-led revolution in 1959 that drove many Tutsi into exile. Periodic ethnic violence followed for decades, and in 1990 Tutsi exiles based in Uganda, organized as the Rwandan Patriotic Front (RPF), invaded northern Rwanda, beginning a civil war that hardened Hutu extremist politics.",
+      "On 6 April 1994, a plane carrying Rwanda's Hutu president was shot down, and within hours Hutu Power extremists — who had spent months stockpiling weapons and drawing up target lists — launched a coordinated campaign of mass killing against Tutsi civilians and moderate Hutu, organized through the government, army, and Interahamwe militia and incited over radio broadcasts. Over roughly 100 days, an estimated 800,000 people were killed, overwhelmingly with machetes and clubs at close range in what became one of the fastest mass killings in modern history.",
+      "The United Nations peacekeeping force in Rwanda, commanded by General Roméo Dallaire, was denied reinforcement and a stronger mandate as the killing unfolded, and most Western governments withdrew personnel rather than intervene. The genocide ended only when the RPF, advancing from the north, captured the capital Kigali in July 1994; roughly two million Hutu, including many perpetrators, then fled into refugee camps in neighboring Zaire, destabilizing the region and helping trigger the First and Second Congo Wars.",
+      "Rwanda has since prosecuted tens of thousands of suspects through the UN-backed International Criminal Tribunal for Rwanda and community-based gacaca courts, and the RPF's Paul Kagame, president since 2000, has overseen rapid economic development alongside an increasingly authoritarian government. The genocide's legacy still shapes regional politics, including Rwanda's contested role in ongoing conflict in eastern DR Congo."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Rwandan_genocide" },
+      { "label": "UN Outreach Programme on the Rwanda Genocide", "url": "https://www.un.org/en/preventgenocide/rwanda" },
+      { "label": "Kigali Genocide Memorial", "url": "https://kgm.rw" }
+    ]
+  },
+  {
+    "title": "Cambodian Genocide — Khmer Rouge",
+    "country": "Cambodia",
+    "iso2": "KH",
+    "region": "Asia",
+    "tier": "historical",
+    "era": "1975–1979",
+    "summary": [
+      "Cambodia was destabilized by the Vietnam War, as US bombing campaigns targeted communist supply lines on Cambodian soil and a 1970 coup plunged the country into civil war. The chaos allowed the communist Khmer Rouge, led by Pol Pot, to grow from a small insurgency into a force that captured the capital, Phnom Penh, in April 1975.",
+      "The Khmer Rouge immediately emptied Phnom Penh and other cities, forcing the entire population into rural labor camps as part of a radical plan to build an agrarian utopia from 'Year Zero.' Money, private property, religion, and education were abolished, families were broken up, and the regime systematically targeted intellectuals, professionals, ethnic and religious minorities such as Cham Muslims and ethnic Vietnamese, and anyone associated with the former government.",
+      "Over roughly four years, an estimated 1.5 to 2 million people — around a quarter of Cambodia's population — died from execution, starvation, disease, and forced labor, documented at sites such as the Choeung Ek killing fields and the Tuol Sleng (S-21) torture and interrogation center in Phnom Penh.",
+      "Vietnam invaded and toppled the regime in January 1979, though the Khmer Rouge continued as an insurgency along the Thai border into the 1990s, propped up in part by Cold War politics that saw the US and China continue to recognize it diplomatically. A UN-backed tribunal, the Extraordinary Chambers in the Courts of Cambodia, began convicting senior Khmer Rouge leaders only in the 2010s, decades after the atrocities."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Cambodian_genocide" },
+      { "label": "Documentation Center of Cambodia", "url": "https://www.dccam.org" },
+      { "label": "Khmer Rouge Tribunal (ECCC)", "url": "https://www.eccc.gov.kh" }
+    ]
+  },
+  {
+    "title": "Bosnian War & Srebrenica Genocide",
+    "country": "Bosnia and Herzegovina",
+    "iso2": "BA",
+    "region": "Europe",
+    "tier": "historical",
+    "era": "1992–1995",
+    "summary": [
+      "Yugoslavia fractured in the early 1990s as nationalist politics rose after the death of longtime leader Josip Broz Tito. Bosnia and Herzegovina — home to a mix of Bosniak Muslims, Orthodox Christian Serbs, and Catholic Croats — voted for independence in early 1992, prompting Bosnian Serb forces, armed and backed by Serbia and the Yugoslav army, to seize territory and declare their own breakaway republic.",
+      "Bosnian Serb forces under political leader Radovan Karadžić and General Ratko Mladić besieged the capital, Sarajevo, for nearly four years — the longest siege of a capital city in modern warfare — while carrying out a campaign of 'ethnic cleansing' against Bosniak and Croat civilians elsewhere in the country, including mass detention camps and widespread systematic rape used as a weapon of war.",
+      "In July 1995, Bosnian Serb forces overran the UN-declared 'safe area' of Srebrenica, where a lightly armed Dutch peacekeeping contingent failed to stop them, and murdered more than 8,000 Bosniak men and boys over several days — the worst atrocity in Europe since the Second World War, later ruled a genocide by international courts.",
+      "The war ended with the US-brokered Dayton Accords in late 1995, dividing Bosnia into two semi-autonomous entities under a weak central government. The International Criminal Tribunal for the former Yugoslavia went on to convict Karadžić, Mladić, and other senior figures of genocide and crimes against humanity, but Bosnia remains politically fragile and divided along the ethnic lines the war drew three decades ago."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Bosnian_genocide" },
+      { "label": "ICTY case archive", "url": "https://www.icty.org" },
+      { "label": "Srebrenica Memorial Center", "url": "https://srebrenicamemorial.org" }
+    ]
+  },
+  {
+    "title": "Armenian Genocide",
+    "country": "Ottoman Empire (present-day Turkey)",
+    "iso2": "TR",
+    "region": "Asia",
+    "tier": "historical",
+    "era": "1915–1917",
+    "summary": [
+      "The Ottoman Empire's Armenian Christian minority faced periodic discrimination and massacres in the late 19th century. World War I, and the empire's alliance with Germany against Russia, heightened suspicion among the ruling 'Young Turk' government that Armenians near the Russian front posed a security threat.",
+      "Beginning 24 April 1915 — still commemorated annually as Armenian Genocide Remembrance Day — Ottoman authorities arrested and executed hundreds of Armenian political and intellectual leaders in Constantinople, then ordered the mass deportation of Armenians from Anatolia. Deportees were forced on death marches into the Syrian desert with little food or water, and massacres, starvation, and disease killed huge numbers along the way.",
+      "An estimated 1 to 1.5 million Armenians died, alongside significant numbers of Assyrian and Greek Christians killed in related campaigns, effectively ending millennia of Armenian presence across most of Anatolia.",
+      "The killings helped inspire lawyer Raphael Lemkin to coin the term 'genocide' decades later. More than 30 countries and most historians now formally recognize the events as genocide, but the Turkish government disputes both the term and the death toll, making it one of the most politically contested atrocities of the modern era."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Armenian_genocide" },
+      { "label": "Armenian Genocide Museum-Institute", "url": "https://www.genocide-museum.am" }
+    ]
+  },
+  {
+    "title": "Holodomor — Soviet Famine",
+    "country": "Soviet Ukraine",
+    "iso2": "UA",
+    "region": "Europe",
+    "tier": "historical",
+    "era": "1932–1933",
+    "summary": [
+      "Beginning in 1929, Joseph Stalin's Soviet government forced the collectivization of agriculture across the USSR, seizing peasant land and livestock into state-run farms. Resistance was especially strong in Ukraine, the empire's most productive grain-growing region, which Soviet authorities viewed with particular suspicion as a center of Ukrainian national identity.",
+      "In 1932–33, Soviet officials imposed grain quotas on Ukraine that far exceeded what farms could produce, then sealed the republic's borders to prevent starving peasants from fleeing and sent brigades door to door to confiscate remaining food, even as grain continued to be exported abroad. Many historians describe these actions as a deliberate, man-made famine aimed at breaking Ukrainian peasant resistance and national identity.",
+      "An estimated 3.5 to 5 million Ukrainians died of starvation and related causes in what is known as the Holodomor, meaning 'death by hunger' or 'to kill by starvation.' The Soviet government denied the famine was occurring at the time and suppressed accurate mortality figures for decades afterward.",
+      "Ukraine and more than 30 other countries now formally recognize the Holodomor as a genocide against the Ukrainian people, a designation Russia rejects. The famine remains a defining event in Ukrainian national memory and a frequent reference point in the modern history of Russian-Ukrainian relations, including the current war."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Holodomor" },
+      { "label": "Holodomor Museum", "url": "https://holodomormuseum.org.ua" }
+    ]
+  },
+  {
+    "title": "Congo Free State Atrocities",
+    "country": "Congo Free State (present-day DR Congo)",
+    "iso2": "CD",
+    "region": "Africa",
+    "tier": "historical",
+    "era": "1885–1908",
+    "summary": [
+      "At the 1884–85 Berlin Conference, where European powers carved up Africa among themselves, King Leopold II of Belgium secured personal control of the Congo Free State — not as a colony of Belgium, but as his own private territory, one of the largest personal fiefdoms in history, publicly justified as a humanitarian and anti-slavery mission.",
+      "In practice, Leopold's administration ran Congo as a forced-labor extraction operation, first for ivory and then, as global demand exploded, for wild rubber. Private companies and state-sanctioned militias held entire villages hostage — often seizing women and children — to compel men to meet punishing rubber quotas, and mutilated or killed those who fell short; severed hands, taken as proof that ammunition wasn't being wasted, became the regime's notorious symbol of terror.",
+      "Combined with introduced disease, famine, and a collapsing birth rate caused by the constant disruption of village life, the Congo's population is estimated to have fallen by roughly half during Leopold's rule — a death toll historians place between 5 and 10 million people, on a scale comparable to the worst atrocities of the 20th century despite remaining far less widely known.",
+      "Sustained international exposure, driven by campaigners such as E. D. Morel and diplomat Roger Casement, forced Leopold to relinquish personal control in 1908, after which Belgium annexed the territory directly as the Belgian Congo. The episode is now widely cited by historians as a founding case study in colonial-era genocide and one of the first successful international human rights campaigns."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Congo_Free_State" },
+      { "label": "Britannica", "url": "https://www.britannica.com/place/Congo-Free-State" }
+    ]
+  },
+  {
+    "title": "Herero and Namaqua Genocide",
+    "country": "German South-West Africa (present-day Namibia)",
+    "iso2": "NA",
+    "region": "Africa",
+    "tier": "historical",
+    "era": "1904–1908",
+    "summary": [
+      "Germany colonized present-day Namibia as German South-West Africa in the 1880s, and settlers steadily seized land and cattle from the Herero and Nama peoples, while colonial courts and debt schemes accelerated the dispossession of local herders, fueling deep resentment.",
+      "When the Herero rose in revolt in January 1904, followed by the Nama later that year, the German colonial commander, General Lothar von Trotha, issued an extermination order, driving Herero survivors into the waterless Omaheke desert and posting guards at wells and waterholes to ensure those who fled would die of thirst. Survivors of both the Herero and Nama uprisings were subsequently interned in concentration camps, a term and practice historians trace directly to this campaign, where forced labor, starvation, and documented medical experiments killed many more.",
+      "An estimated 65,000 to 80,000 Herero — roughly 80% of their population — and around 10,000 Nama, about half of theirs, died, in what historians widely regard as the first genocide of the 20th century.",
+      "Germany formally acknowledged the killings as genocide only in 2021, more than a century later, agreeing to fund over a billion euros in development projects in Namibia — though descendant Herero and Nama communities have criticized the deal for excluding them from negotiations and for not constituting direct reparations."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Herero_and_Nama_genocide" },
+      { "label": "Britannica", "url": "https://www.britannica.com/event/Herero-and-Nama-genocide" }
+    ]
+  },
+  {
+    "title": "Bengal Famine of 1943",
+    "country": "British India (present-day India & Bangladesh)",
+    "iso2": "IN",
+    "region": "Asia",
+    "tier": "historical",
+    "era": "1943",
+    "summary": [
+      "In 1943, the Bengal province of British India faced a severe food crisis after Japan's occupation of Burma cut off rice imports, a devastating cyclone destroyed local crops, and wartime inflation and hoarding disrupted grain markets. Historians broadly agree the disaster that followed was less a natural famine than a policy failure.",
+      "Britain's colonial government in India, overseen by Winston Churchill's wartime cabinet in London, prioritized shipping and food supplies for the military and for Britain itself, denied repeated requests to divert ships to import grain, and continued exporting rice from India even as Bengal starved, while turning down offers of food aid from the United States, Canada, and elsewhere.",
+      "An estimated 2 to 3 million people died from starvation and related disease in Bengal in 1943 — one of the deadliest famines of the 20th century — yet it remains far less globally recognized than contemporaneous atrocities of the Second World War, and Churchill's dismissive wartime remarks about the famine remain a lasting source of controversy.",
+      "The catastrophe became a landmark case in economist Amartya Sen's influential later argument that famines are caused less by an absolute shortage of food than by failures of distribution, markets, and political accountability — an analysis he developed in direct response to Bengal in 1943."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Bengal_famine_of_1943" },
+      { "label": "Britannica", "url": "https://www.britannica.com/event/Bengal-famine-of-1943" }
+    ]
+  },
+  {
+    "title": "Circassian Genocide",
+    "country": "Russian Empire (Caucasus region)",
+    "iso2": "RU",
+    "region": "Europe",
+    "tier": "historical",
+    "era": "1860s (culminating 1864)",
+    "summary": [
+      "The Circassians, a Muslim ethnic group native to the northwest Caucasus along the Black Sea coast, resisted Russian imperial expansion for decades during the long Caucasian War, which began in 1817.",
+      "As Russian forces closed in on the last Circassian strongholds in the early 1860s, imperial commanders pursued a deliberate campaign of village burning, massacre, and mass expulsion, giving Circassian communities a choice between resettlement deep in the Russian interior or expulsion to the Ottoman Empire. Contemporary accounts describe columns of refugees dying by the tens of thousands from starvation, disease, and exposure while awaiting transport ships on the Black Sea coast.",
+      "Estimates of the death toll vary widely, from several hundred thousand to over a million people, with the large majority of the Circassian population — by some estimates as much as 90% — killed or expelled from their homeland by 1864, the year Russia declared the Caucasian War over. Most Circassians today live in Turkey and the wider Middle East rather than the Caucasus, a legacy directly traceable to the expulsions.",
+      "Georgia formally recognized the events as genocide in 2011, but Russia does not, and the episode remains largely absent from Western historical memory of 19th-century Europe compared with better-known conflicts of the same era."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Circassian_genocide" }
+    ]
+  },
+  {
+    "title": "East Timor — Indonesian Occupation",
+    "country": "Timor-Leste",
+    "iso2": "TL",
+    "region": "Asia",
+    "tier": "historical",
+    "era": "1975–1999",
+    "summary": [
+      "Portugal abruptly abandoned its centuries-old colony of East Timor in 1974–75 amid political upheaval at home, and the territory briefly declared independence before Indonesia invaded in December 1975 — an invasion carried out with the tacit approval of the United States and Australia, wary of a leftist-led government emerging so soon after the Vietnam War.",
+      "Indonesian occupation forces waged a brutal counterinsurgency against the pro-independence Fretilin movement over the next two decades, using forced resettlement, aerial bombardment of civilian areas, and deliberate starvation of the population as tools of war. The 1991 Santa Cruz massacre, in which troops opened fire on mourners at a funeral procession in the capital Dili, was one of the few episodes to draw significant international attention at the time.",
+      "Estimates place the death toll from violence, disease, and famine during the occupation between 100,000 and 200,000 people — as much as a third of East Timor's pre-invasion population — making it, proportionally, one of the deadliest conflicts of the late 20th century, despite receiving only sporadic Western media or diplomatic scrutiny for most of its duration.",
+      "A UN-supervised independence referendum in 1999 saw nearly 80% of Timorese vote to separate from Indonesia, triggering a final wave of scorched-earth violence by Indonesian-backed militias before international peacekeepers intervened. Timor-Leste formally became independent in 2002, and a UN-backed tribunal later indicted senior Indonesian military officers for crimes against humanity."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Indonesian_occupation_of_East_Timor" },
+      { "label": "CAVR truth commission report", "url": "https://www.etan.org/news/2006/cavr.htm" }
+    ]
+  },
+  {
+    "title": "Guatemalan Genocide",
+    "country": "Guatemala",
+    "iso2": "GT",
+    "region": "North America",
+    "tier": "historical",
+    "era": "1960–1996 (worst 1981–1983)",
+    "summary": [
+      "Guatemala's 36-year civil war began in 1960, rooted partly in a 1954 CIA-backed coup that overthrew a democratically elected reformist government and installed a series of military regimes, fueling a leftist guerrilla insurgency drawn heavily from the country's Indigenous Maya majority.",
+      "Under General Efraín Ríos Montt in 1982–83, the military launched a scorched-earth counterinsurgency campaign that explicitly targeted Maya communities suspected of guerrilla sympathies, destroying hundreds of villages and carrying out systematic massacres, sexual violence, and forced disappearances. A UN-backed truth commission — and later a Guatemalan court — concluded these acts constituted genocide against specific Maya ethnic groups.",
+      "An estimated 200,000 people were killed or forcibly disappeared over the course of the war, the vast majority Indigenous Maya civilians, with US military aid and training to Guatemala's armed forces continuing through much of the worst violence as part of Cold War-era anti-communist policy.",
+      "A 1996 peace accord ended the war, and Ríos Montt was convicted of genocide by a Guatemalan court in 2013 — the first time a former head of state was convicted of genocide by a domestic court anywhere in the world — though the verdict was annulled on procedural grounds days later and never fully resolved before his death, leaving the case a lasting symbol of Guatemala's unfinished reckoning with the war."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Guatemalan_genocide" },
+      { "label": "Britannica", "url": "https://www.britannica.com/event/Guatemalan-Civil-War" }
+    ]
   }
 ]
