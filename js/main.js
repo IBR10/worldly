@@ -35,7 +35,9 @@ let sessionGen = 0;
 function leaveSession() { S = null; sessionGen += 1; }
 // Which home tab is selected (persists while navigating in and out of home).
 let homeTab = 'play';
-// Which crises tab is selected (persists while browsing crisis details).
+// Which crises period (current vs. historical) and coverage tab are selected
+// (persists while browsing crisis details).
+let crisesPeriod = 'current';
 let crisesTab = 'underreported';
 // Which leaderboard tab is selected (persists while browsing the leaderboard).
 let leaderboardTab = 'challenge';
@@ -113,9 +115,10 @@ function focusTitle() {
 }
 
 // Accessible tab bar shared by Home and Crises: click + Arrow/Home/End keys,
-// roving tabindex. `onChange(id)` persists the selection.
-function wireTabs(onChange) {
-  const tabs = [...app.querySelectorAll('.tab')];
+// roving tabindex. `onChange(id)` persists the selection. `root` scopes the
+// tab/panel lookup so a screen can host more than one independent tab group.
+function wireTabs(onChange, root = app) {
+  const tabs = [...root.querySelectorAll('.tab')];
   const activate = (id, focus = false) => {
     onChange(id);
     tabs.forEach((b) => {
@@ -125,7 +128,7 @@ function wireTabs(onChange) {
       b.tabIndex = on ? 0 : -1;
       if (on && focus) b.focus();
     });
-    app.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === id));
+    root.querySelectorAll('.tab-panel').forEach((pl) => pl.classList.toggle('active', pl.dataset.panel === id));
   };
   tabs.forEach((b, i) => {
     b.addEventListener('click', () => activate(b.dataset.tab));
@@ -1409,44 +1412,61 @@ function renderMusicDetail(entry) {
 function showCrises() {
   leaveSession();
   const entries = getData().crises || [];
-  // Three curated tiers: crises the world under-covers, the largest ongoing
-  // conflicts regardless of how heavily they are reported, and notable crises
-  // from history — both famous and underreported.
-  const tiers = [
-    { id: 'underreported', label: '🔦 Underreported', blurb: 'Major crises that receive far less attention than their scale deserves.' },
-    { id: 'major', label: '🌐 Major Conflicts', blurb: 'The largest ongoing conflicts, regardless of how widely they are covered.' },
-    { id: 'historical', label: '🏺 Historical', blurb: 'Famous and lesser-known crises from history — what happened, and why it still matters.' },
+  // Two independent axes: which time period (current vs. historical), and
+  // which coverage tier within it (underreported vs. famous) — four pages total.
+  const periods = [
+    { id: 'current', label: '📰 Current' },
+    { id: 'historical', label: '🏺 Historical' },
   ];
+  const tiers = [
+    { id: 'underreported', label: '🔦 Underreported', blurb: 'Crises that receive far less attention than their scale deserves.' },
+    { id: 'famous', label: '🌐 Famous', blurb: 'The largest or most widely known crises, regardless of how heavily they are covered.' },
+  ];
+  if (!periods.some((p) => p.id === crisesPeriod)) crisesPeriod = 'current';
   if (!tiers.some((t) => t.id === crisesTab)) crisesTab = 'underreported';
-  const cardsFor = (tier) => entries.filter((e) => (e.tier || 'underreported') === tier);
+  const cardsFor = (tier) => entries.filter((e) =>
+    (e.period || 'current') === crisesPeriod && (e.tier || 'underreported') === tier);
 
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Crises &amp; Events 📰</h1>
-    <p class="screen-sub">Background on world crises, past and present, with links to learn more. Curated context — not real-time reporting.</p>
+    <p class="screen-sub">${crisesPeriod === 'historical'
+      ? 'Famous and underreported crises from history — what happened, and why it still matters.'
+      : 'Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.'}</p>
 
-    <div class="tabs" role="tablist">
-      ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === crisesTab}" tabindex="${t.id === crisesTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
+    <div class="tabs" id="periodTabs" role="tablist" aria-label="Time period">
+      ${periods.map((p) => `<button class="tab ${p.id === crisesPeriod ? 'active' : ''}" role="tab" id="period-${p.id}" aria-selected="${p.id === crisesPeriod}" tabindex="${p.id === crisesPeriod ? 0 : -1}" data-tab="${p.id}">${p.label}</button>`).join('')}
     </div>
 
-    ${tiers.map((t) => `
-      <div class="tab-panel ${t.id === crisesTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
-        <p class="screen-sub">${esc(t.blurb)}</p>
-        <div class="grid">
-          ${cardsFor(t.id).map((e) => `
-            <button class="card" data-crisis="${esc(e.title)}">
-              <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
-              <span class="card-title">${esc(e.title)}</span>
-              <span class="card-desc">${esc(e.country)}</span>
-            </button>`).join('')}
-        </div>
-      </div>`).join('')}
+    <div id="tierSection">
+      <div class="tabs" role="tablist" aria-label="Coverage">
+        ${tiers.map((t) => `<button class="tab ${t.id === crisesTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === crisesTab}" tabindex="${t.id === crisesTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
+      </div>
+
+      ${tiers.map((t) => `
+        <div class="tab-panel ${t.id === crisesTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
+          <p class="screen-sub">${esc(t.blurb)}</p>
+          <div class="grid">
+            ${cardsFor(t.id).map((e) => `
+              <button class="card" data-crisis="${esc(e.title)}">
+                <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+                <span class="card-title">${esc(e.title)}</span>
+                <span class="card-desc">${esc(e.country)}</span>
+              </button>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>
 
     <div class="btn-row mt-18">
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  wireTabs((id) => { crisesTab = id; });
+  wireTabs((id) => {
+    crisesPeriod = id;
+    showCrises();
+    app.querySelector(`#period-${id}`)?.focus();
+  }, app.querySelector('#periodTabs'));
+  wireTabs((id) => { crisesTab = id; }, app.querySelector('#tierSection'));
   app.querySelector('#backHome').addEventListener('click', showHome);
   app.querySelectorAll('[data-crisis]').forEach((b) =>
     b.addEventListener('click', () => renderCrisisDetail(entries.find((e) => e.title === b.dataset.crisis))));
@@ -1471,7 +1491,7 @@ function renderCrisisDetail(entry) {
     <div class="crisis-body">
       ${paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}
       ${entry.asOf ? `<p class="muted-note">Background written as of ${esc(entry.asOf)} — follow the live sources below for current developments.</p>` : ''}
-      <div><span class="muted-note">${entry.tier === 'historical' ? 'Learn more' : 'Follow the latest'}:</span>
+      <div><span class="muted-note">${entry.period === 'historical' ? 'Learn more' : 'Follow the latest'}:</span>
         <div class="learn-more">${links}</div></div>
     </div>
 

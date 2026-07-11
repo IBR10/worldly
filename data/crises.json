@@ -4,7 +4,7 @@
     "country": "Palestinian territories / Israel",
     "iso2": "PS",
     "region": "Asia",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "The conflict's roots run back more than a century. Ottoman, then British-administered Palestine saw growing Jewish immigration and Arab-Jewish tension from the early 1900s, formalized by Britain's 1917 Balfour Declaration backing a 'national home for the Jewish people' alongside a British pledge to protect the rights of the existing Arab population. The United Nations' 1947 plan to partition the territory into Jewish and Arab states was accepted by Jewish leaders and rejected by Arab leaders and neighboring states; the 1948 war that followed Israel's declaration of independence is remembered by Israelis as the War of Independence and by Palestinians as the Nakba ('catastrophe'), in which roughly 700,000 Palestinians fled or were expelled from what became Israel and were never permitted to return.",
@@ -24,7 +24,7 @@
     "country": "Ukraine",
     "iso2": "UA",
     "region": "Europe",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "Russia launched a full-scale invasion of Ukraine on 24 February 2022, expanding a war that had already been underway in eastern Ukraine's Donbas region and Crimea since 2014. Moscow's stated aims included preventing Ukraine's alignment with NATO and the European Union and asserting claims over Ukrainian territory and identity; Kyiv and most of the international community rejected these as a war of aggression in violation of international law.",
@@ -42,7 +42,7 @@
     "country": "Syria",
     "iso2": "SY",
     "region": "Asia",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "Syria's civil war began in 2011 after security forces violently suppressed peaceful protests that were part of the wider Arab Spring, escalating into an armed uprising against President Bashar al-Assad's government. The conflict drew in a fragmented array of rebel and jihadist factions, Kurdish forces, and foreign powers including Russia, Iran, Turkey, and a US-led coalition against the Islamic State, killing hundreds of thousands of people over more than a decade.",
@@ -60,7 +60,7 @@
     "country": "Yemen",
     "iso2": "YE",
     "region": "Asia",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "Yemen's civil war escalated in 2014–2015 when the Houthi movement, drawing on a base in the north, seized the capital Sanaa and forced the internationally recognized government to flee, prompting a Saudi Arabia-led coalition to intervene militarily on the government's behalf. The war compounded Yemen's existing poverty and fragile institutions, splitting the country between Houthi-controlled areas in the north and government and separatist-held areas in the south.",
@@ -78,7 +78,7 @@
     "country": "Mali, Burkina Faso & Niger",
     "iso2": "ML",
     "region": "Africa",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "Instability in the central Sahel traces to the 2012 Tuareg rebellion and the collapse of Libya after Muammar Gaddafi's fall, which flooded the region with weapons and fighters. Groups affiliated with al-Qaeda and the Islamic State subsequently built strongholds across Mali, Burkina Faso, and Niger, exploiting weak state presence, ethnic tensions, and competition over land and resources to expand their reach.",
@@ -96,7 +96,7 @@
     "country": "Ethiopia",
     "iso2": "ET",
     "region": "Africa",
-    "tier": "major",
+    "tier": "famous",
     "asOf": "July 2026",
     "summary": [
       "Ethiopia's current fractures sit atop a much longer history. An ancient empire never colonized by a European power, it came under the Marxist Derg dictatorship after army officers overthrew Emperor Haile Selassie in 1974, then endured a brutal 17-year civil war until a coalition led by the Tigray People's Liberation Front (TPLF) toppled the Derg in 1991. The new government redrew Ethiopia's internal map into ethnically defined regional states — intended to grant self-rule to the country's more than 80 ethnic groups, though critics say it also hardened ethnicity as the basis of political power — and the TPLF dominated national politics for the next 27 years, until mass protests (largely by Oromo and Amhara youth) forced a change in leadership and brought reformist Prime Minister Abiy Ahmed to power in 2018.",
@@ -226,7 +226,8 @@
     "country": "Nazi Germany & occupied Europe",
     "iso2": "DE",
     "region": "Europe",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "1941–1945",
     "summary": [
       "Nazi persecution of Jews began as soon as Adolf Hitler took power in Germany in 1933, with boycotts, the 1935 Nuremberg Laws stripping Jews of citizenship, and the 1938 Kristallnacht pogrom that destroyed Jewish homes, businesses, and synagogues across the country. As Germany invaded and occupied much of Europe from 1939, it forced Jewish populations into overcrowded ghettos and subjected them to forced labor, starvation, and disease.",
@@ -245,7 +246,8 @@
     "country": "Rwanda",
     "iso2": "RW",
     "region": "Africa",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "April–July 1994",
     "summary": [
       "Belgian colonial administrators hardened a loose social distinction between Rwanda's Hutu majority and Tutsi minority into fixed ethnic identities, issuing ID cards and favoring Tutsi for decades before independence, then abruptly backing a Hutu-led revolution in 1959 that drove many Tutsi into exile. Periodic ethnic violence followed for decades, and in 1990 Tutsi exiles based in Uganda, organized as the Rwandan Patriotic Front (RPF), invaded northern Rwanda, beginning a civil war that hardened Hutu extremist politics.",
@@ -264,7 +266,8 @@
     "country": "Cambodia",
     "iso2": "KH",
     "region": "Asia",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "1975–1979",
     "summary": [
       "Cambodia was destabilized by the Vietnam War, as US bombing campaigns targeted communist supply lines on Cambodian soil and a 1970 coup plunged the country into civil war. The chaos allowed the communist Khmer Rouge, led by Pol Pot, to grow from a small insurgency into a force that captured the capital, Phnom Penh, in April 1975.",
@@ -283,7 +286,8 @@
     "country": "Bosnia and Herzegovina",
     "iso2": "BA",
     "region": "Europe",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "1992–1995",
     "summary": [
       "Yugoslavia fractured in the early 1990s as nationalist politics rose after the death of longtime leader Josip Broz Tito. Bosnia and Herzegovina — home to a mix of Bosniak Muslims, Orthodox Christian Serbs, and Catholic Croats — voted for independence in early 1992, prompting Bosnian Serb forces, armed and backed by Serbia and the Yugoslav army, to seize territory and declare their own breakaway republic.",
@@ -302,7 +306,8 @@
     "country": "Ottoman Empire (present-day Turkey)",
     "iso2": "TR",
     "region": "Asia",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "1915–1917",
     "summary": [
       "The Ottoman Empire's Armenian Christian minority faced periodic discrimination and massacres in the late 19th century. World War I, and the empire's alliance with Germany against Russia, heightened suspicion among the ruling 'Young Turk' government that Armenians near the Russian front posed a security threat.",
@@ -320,7 +325,8 @@
     "country": "Soviet Ukraine",
     "iso2": "UA",
     "region": "Europe",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "famous",
     "era": "1932–1933",
     "summary": [
       "Beginning in 1929, Joseph Stalin's Soviet government forced the collectivization of agriculture across the USSR, seizing peasant land and livestock into state-run farms. Resistance was especially strong in Ukraine, the empire's most productive grain-growing region, which Soviet authorities viewed with particular suspicion as a center of Ukrainian national identity.",
@@ -338,7 +344,8 @@
     "country": "Congo Free State (present-day DR Congo)",
     "iso2": "CD",
     "region": "Africa",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1885–1908",
     "summary": [
       "At the 1884–85 Berlin Conference, where European powers carved up Africa among themselves, King Leopold II of Belgium secured personal control of the Congo Free State — not as a colony of Belgium, but as his own private territory, one of the largest personal fiefdoms in history, publicly justified as a humanitarian and anti-slavery mission.",
@@ -356,7 +363,8 @@
     "country": "German South-West Africa (present-day Namibia)",
     "iso2": "NA",
     "region": "Africa",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1904–1908",
     "summary": [
       "Germany colonized present-day Namibia as German South-West Africa in the 1880s, and settlers steadily seized land and cattle from the Herero and Nama peoples, while colonial courts and debt schemes accelerated the dispossession of local herders, fueling deep resentment.",
@@ -374,7 +382,8 @@
     "country": "British India (present-day India & Bangladesh)",
     "iso2": "IN",
     "region": "Asia",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1943",
     "summary": [
       "In 1943, the Bengal province of British India faced a severe food crisis after Japan's occupation of Burma cut off rice imports, a devastating cyclone destroyed local crops, and wartime inflation and hoarding disrupted grain markets. Historians broadly agree the disaster that followed was less a natural famine than a policy failure.",
@@ -392,7 +401,8 @@
     "country": "Russian Empire (Caucasus region)",
     "iso2": "RU",
     "region": "Europe",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1860s (culminating 1864)",
     "summary": [
       "The Circassians, a Muslim ethnic group native to the northwest Caucasus along the Black Sea coast, resisted Russian imperial expansion for decades during the long Caucasian War, which began in 1817.",
@@ -409,7 +419,8 @@
     "country": "Timor-Leste",
     "iso2": "TL",
     "region": "Asia",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1975–1999",
     "summary": [
       "Portugal abruptly abandoned its centuries-old colony of East Timor in 1974–75 amid political upheaval at home, and the territory briefly declared independence before Indonesia invaded in December 1975 — an invasion carried out with the tacit approval of the United States and Australia, wary of a leftist-led government emerging so soon after the Vietnam War.",
@@ -427,7 +438,8 @@
     "country": "Guatemala",
     "iso2": "GT",
     "region": "North America",
-    "tier": "historical",
+    "period": "historical",
+    "tier": "underreported",
     "era": "1960–1996 (worst 1981–1983)",
     "summary": [
       "Guatemala's 36-year civil war began in 1960, rooted partly in a 1954 CIA-backed coup that overthrew a democratically elected reformist government and installed a series of military regimes, fueling a leftist guerrilla insurgency drawn heavily from the country's Indigenous Maya majority.",
