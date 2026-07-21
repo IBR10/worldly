@@ -7,7 +7,7 @@ import {
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
   dailyDoneToday, addLeaderboard, setTheme, setName, setOnboarded, localDateStr,
 } from './state.js';
-import { track, tag } from './analytics.js';
+import { track, tag, loadAnalytics, analyticsOptedOut, setAnalyticsOptOut } from './analytics.js';
 import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
@@ -123,7 +123,15 @@ function wireNav() {
 
 // Move keyboard/screen-reader focus to the new screen's heading after a render,
 // so assistive tech isn't stranded on a removed element.
+//
+// Suppressed for the very first render: on load the document order is already
+// correct and focus belongs at the top of the page. Pulling it into the <h1>
+// pushed the entire header past the page content -- measured, Home /
+// Leaderboard / Theme became tab stops 12-14, reachable only after cycling
+// every card and footer link.
+let allowFocusTitle = false;
 function focusTitle() {
+  if (!allowFocusTitle) return;
   const h = app.querySelector('.screen-title, .q-prompt');
   if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
 }
@@ -200,9 +208,21 @@ function renderHUD() {
 }
 
 // ---- theme -------------------------------------------------------------------
+/** The OS preference, used when the player has not chosen explicitly. */
+function systemTheme() {
+  try {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  } catch {
+    return 'dark';
+  }
+}
+
+/** Resolve `null` (follow the OS) to a concrete palette and apply it. */
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('themeToggle').textContent = theme === 'dark' ? '🌙' : '☀️';
+  const resolved = theme === 'light' || theme === 'dark' ? theme : systemTheme();
+  document.documentElement.setAttribute('data-theme', resolved);
+  document.getElementById('themeToggle').textContent = resolved === 'dark' ? '🌙' : '☀️';
+  return resolved;
 }
 
 // ============================================================================
@@ -253,7 +273,7 @@ const MAP_CARDS = [
 // screen instead of starting a mode directly).
 function homeCard(attr, m) {
   const icon = m.flagIso
-    ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
+    ? `<img decoding="async" class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
     : `<span class="emoji">${m.emoji}</span>`;
   return `
     <button class="card" ${m.attr || attr}="${m.key}">
@@ -363,8 +383,10 @@ function showAbout() {
     <div class="form-block">
       <h2>Privacy</h2>
       <p class="screen-sub">Your progress is stored only in this browser (localStorage) — Worldly has no accounts.
-      We use Microsoft Clarity for anonymous usage analytics (which screens and modes get used) to improve the game;
-      no names, quiz answers or saved progress are ever sent. Flag images load from flagcdn.com, historic flags from
+      We use Microsoft Clarity for anonymous usage analytics, which records how screens are used, to improve the game;
+      no names, quiz answers or saved progress are ever sent. You can turn this off in
+      <strong>Profile → Privacy</strong>, and it is off automatically if your browser sends a Do Not Track or Global
+      Privacy Control signal. Flag images load from flagcdn.com, historic flags from
       Wikimedia Commons, and music plays through YouTube's privacy-enhanced player, which sets cookies only if you
       play a video.</p>
     </div>
@@ -681,7 +703,7 @@ function renderMapQuestion(q) {
     ${quizChrome()}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
-      ${q.flagIso ? `<img class="q-flag" alt="Flag to locate" src="${flagUrl(q.flagIso)}">` : ''}
+      ${q.flagIso ? `<img decoding="async" class="q-flag" alt="Flag to locate" src="${flagUrl(q.flagIso)}">` : ''}
       <h1 class="q-prompt">${esc(q.prompt)}</h1>
       <div id="mapMount" class="map-mount"></div>
       <div id="feedback" role="status"></div>
@@ -738,7 +760,7 @@ function renderReverseMapQuestion(q) {
       <div class="choices" id="choices">
         ${q.choices.map((c, i) => q.flagChoices
           ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag of ${esc(c)}">
-               <span class="key">${i + 1}</span><img src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
+               <span class="key">${i + 1}</span><img decoding="async" src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
              </button>`
           : `<button class="choice" data-val="${esc(c)}">
                <span class="key">${i + 1}</span><span>${esc(c)}</span>
@@ -771,7 +793,7 @@ function renderQuestion() {
 
 function renderMcqQuestion(q) {
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
+  const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
 
   app.innerHTML = `
     ${quizChrome()}
@@ -926,7 +948,7 @@ async function answer(value) {
 // it's checked with accent/case-insensitive matching (answerMatches).
 function renderTypedQuestion(q) {
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
+  const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
   app.innerHTML = `
     ${quizChrome()}
     <div class="question-card">
@@ -992,7 +1014,7 @@ function renderFeedback(correct, q, xpGained) {
     .map((l) => `<a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
   fb.className = `feedback ${correct ? 'ok' : 'no'} pop`;
   const symbol = q.symbolImg
-    ? `<div class="symbol-img-wrap"><img src="${symbolImageUrl(q.symbolImg)}" alt="${esc(q.answer)} symbol"></div>`
+    ? `<div class="symbol-img-wrap"><img decoding="async" src="${symbolImageUrl(q.symbolImg)}" alt="${esc(q.answer)} symbol"></div>`
     : '';
   fb.innerHTML = `
     <h2>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h2>
@@ -1305,7 +1327,7 @@ function showPhrases() {
     <div class="grid">
       ${entries.map((e) => `
         <button class="card" data-country="${esc(e.country)}">
-          <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+          <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
           <span class="card-title">${esc(e.country)}</span>
           <span class="card-desc">${esc(e.language)}</span>
         </button>`).join('')}
@@ -1323,6 +1345,14 @@ function showPhrases() {
 // Web Speech API is unavailable). `fallback` is the romanized pronunciation,
 // used when no voice for `lang` is installed (see speak() above). Wired via
 // [data-speak] after render.
+// Foreign-language text tagged with its BCP-47 code, so a screen reader speaks
+// it with a matching voice instead of reading e.g. Japanese with an English
+// one. The tag wraps only the phrase -- not the adjacent pronunciation button,
+// whose label is English.
+function localText(text, lang) {
+  return lang ? `<span lang="${esc(lang)}">${esc(text)}</span>` : esc(text);
+}
+
 function speakBtn(text, lang, fallback) {
   if (!ttsAvailable() || !text) return '';
   return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" data-fallback="${esc(fallback || '')}" title="Hear it" aria-label="Hear pronunciation">🔊</button>`;
@@ -1337,13 +1367,13 @@ function renderPhraseDetail(entry) {
   if (!entry) return showPhrases();
   const lang = entry.langCode || '';
   const native = entry.nativeCountry
-    ? `<div class="native-name">${esc(entry.nativeCountry.local)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
+    ? `<div class="native-name">${localText(entry.nativeCountry.local, lang)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
          <span class="say-pron">${esc(entry.nativeCountry.pron)}</span></div>`
     : '';
   app.innerHTML = `
     ${topNav({ id: 'backPhrasesTop', label: '← All countries' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.country)}</h1>
         <p class="screen-sub m-tight">${esc(entry.language)}</p>
@@ -1356,7 +1386,7 @@ function renderPhraseDetail(entry) {
       ${entry.phrases.map((p) => `
         <div class="phrase-row">
           <span class="ph-en">${esc(p.en)}</span>
-          <span class="ph-local">${esc(p.local)} ${speakBtn(p.local, lang, p.pron)}</span>
+          <span class="ph-local">${localText(p.local, lang)} ${speakBtn(p.local, lang, p.pron)}</span>
           <span class="ph-pron">${esc(p.pron)}</span>
         </div>`).join('')}
     </div>
@@ -1365,7 +1395,7 @@ function renderPhraseDetail(entry) {
     <div class="saying-list">
       ${entry.sayings.map((s) => `
         <div class="saying">
-          <div class="say-local">${esc(s.local)} ${speakBtn(s.local, lang, s.pron)} <span class="say-pron">${esc(s.pron)}</span></div>
+          <div class="say-local">${localText(s.local, lang)} ${speakBtn(s.local, lang, s.pron)} <span class="say-pron">${esc(s.pron)}</span></div>
           <div class="say-meaning">${esc(s.meaning)}</div>
         </div>`).join('')}
     </div>
@@ -1396,7 +1426,7 @@ function showMusic() {
     <div class="grid">
       ${entries.map((e) => `
         <button class="card" data-country="${esc(e.country)}">
-          <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+          <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
           <span class="card-title">${esc(e.country)}</span>
           <span class="card-desc">${e.songs.length} songs</span>
         </button>`).join('')}
@@ -1416,7 +1446,7 @@ function renderMusicDetail(entry) {
   app.innerHTML = `
     ${topNav({ id: 'backMusicTop', label: '← All countries' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.country)}</h1>
         <p class="screen-sub m-tight">Songs that represent ${esc(entry.country)}</p>
@@ -1500,7 +1530,7 @@ function showCrises() {
           <div class="grid">
             ${cardsFor(t.id).map((e) => `
               <button class="card" data-crisis="${esc(e.title)}">
-                <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+                <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
                 <span class="card-title">${esc(e.title)}</span>
                 <span class="card-desc">${esc(e.country)}</span>
               </button>`).join('')}
@@ -1532,7 +1562,7 @@ function renderCrisisDetail(entry) {
   app.innerHTML = `
     ${topNav({ id: 'backCrisesTop', label: '← All crises' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.title)}</h1>
         <p class="screen-sub m-tight">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}${entry.era ? ' · ' + esc(entry.era) : ''}</p>
@@ -1717,6 +1747,17 @@ function showProfile() {
       </div>
     </div>
     <div class="form-block">
+      <h2>Privacy</h2>
+      <p class="screen-sub mb-10">Worldly uses Microsoft Clarity for anonymous usage analytics, which records how
+      screens are used. No names, quiz answers or saved progress are ever sent. Turning this off stops the analytics
+      script from loading at all.</p>
+      <label class="check">
+        <input type="checkbox" id="analyticsOptOut" ${analyticsOptedOut() ? 'checked' : ''}>
+        Don't send anonymous usage analytics
+      </label>
+      <p class="screen-sub mt-10 muted-note" id="dntNote"></p>
+    </div>
+    <div class="form-block">
       <h2>Danger zone</h2>
       <p class="screen-sub mb-10">Reset all progress, stats and achievements. This cannot be undone.</p>
       <button class="btn danger" id="resetBtn">Reset all progress</button>
@@ -1752,6 +1793,21 @@ function showProfile() {
       toast('⚠️', "Couldn't import that file", e.message);
     }
   });
+  const optOutBox = app.querySelector('#analyticsOptOut');
+  const dntNote = app.querySelector('#dntNote');
+  // A browser-level signal already decides this; say so rather than letting the
+  // checkbox look like it is being ignored.
+  const browserSignal = analyticsOptedOut() && localStorage.getItem('worldly_analytics_optout') !== '1';
+  if (browserSignal) {
+    optOutBox.disabled = true;
+    dntNote.textContent = 'Your browser sends a Do Not Track / Global Privacy Control signal, so analytics are already off.';
+  }
+  optOutBox.addEventListener('change', () => {
+    setAnalyticsOptOut(optOutBox.checked);
+    if (optOutBox.checked) toast('🔕', 'Analytics off', 'Nothing further will be sent from this browser.');
+    else { loadAnalytics(); toast('📊', 'Analytics on', 'Thanks — it helps show which modes get used.'); }
+  });
+
   app.querySelector('#resetBtn').addEventListener('click', () => {
     if (confirm('Really reset ALL progress? This cannot be undone.')) {
       resetProfile();
@@ -1790,16 +1846,24 @@ function onKeydown(e) {
 async function boot() {
   const p = loadProfile();
   applyTheme(p.theme);
+  // Gated rather than loaded on import: Clarity records sessions, so it must
+  // not fetch at all when the visitor has signalled otherwise (GPC / DNT /
+  // the Profile opt-out).
+  loadAnalytics();
   document.getElementById('themeToggle').addEventListener('click', () => {
+    // Toggling is always an explicit choice, so it stops following the OS.
     const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     setTheme(next);
   });
-  const brand = document.getElementById('brand');
-  brand.addEventListener('click', showHome);
-  brand.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showHome(); }
-  });
+  // Track the OS while the player has no explicit preference of their own.
+  try {
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+      if (!getProfile().theme) applyTheme(null);
+    });
+  } catch { /* older engines: the initial resolution still applies */ }
+  // #brand is a real <button>, so Enter/Space activation is handled natively.
+  document.getElementById('brand').addEventListener('click', showHome);
   document.getElementById('helpBtn').addEventListener('click', showAbout);
   document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
   document.addEventListener('keydown', onKeydown);
@@ -1832,6 +1896,8 @@ async function boot() {
   }
   renderHUD();
   showHome();
+  // Every render from here on is a navigation, where moving focus is correct.
+  allowFocusTitle = true;
 
   // Offline resilience: cache app shell + seen flags (see sw.js). Feature-
   // detected and fire-and-forget — a failure must never affect the app.

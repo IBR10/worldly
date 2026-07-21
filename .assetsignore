@@ -22,3 +22,7 @@ playwright.config.js
 .gitattributes
 playwright-report
 test-results
+SECURITY.md
+CONTRIBUTING.md
+.nvmrc
+migrations

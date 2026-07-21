@@ -43,7 +43,9 @@ const DEFAULT_PROFILE = () => ({
   missed: {}, // itemId -> { category, region, label, answer, wrong, lastWrong }
   achievements: {}, // id -> ISO timestamp unlocked
   leaderboard: [], // { score, mode, date }
-  theme: 'dark',
+  // null = follow the OS. Existing profiles keep whatever they stored, so this
+  // only changes what a first-time visitor sees.
+  theme: null,
   onboarded: false, // first-visit explainer dismissed
 });
 

@@ -62,6 +62,41 @@
   border: 0;
 }
 
+/* First focusable element: lets keyboard and screen-reader users jump the
+   header straight to the screen content. Visible only while focused. */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: var(--primary-ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition);
+}
+.skip-link:focus { top: 8px; }
+
+/* One focus ring for every interactive control. Previously these fell back to
+   the browser default, which differs per engine and reads as foreign to the
+   rest of the UI. :focus-visible so pointer users never see it. */
+.btn:focus-visible,
+.card:focus-visible,
+.tab:focus-visible,
+.choice:focus-visible,
+.icon-btn:focus-visible,
+.brand:focus-visible,
+.track:focus-visible,
+.map-btn:focus-visible,
+.spk:focus-visible,
+.chip-name:focus-visible,
+.skip-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -86,7 +121,9 @@ body {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-.brand { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 1.15rem; letter-spacing: .2px; }
+/* A <button>, so the UA button defaults (background, border, system font)
+   have to be cleared for it to read as the wordmark it is. */
+.brand { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 1.15rem; letter-spacing: .2px; background: none; border: none; padding: 0; color: var(--text); font-family: inherit; }
 .brand-globe { font-size: 1.4rem; }
 .brand-name { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hud { display: flex; align-items: center; gap: 14px; margin-left: auto; flex-wrap: wrap; }
@@ -177,7 +214,11 @@ h1, h2, h3 { line-height: 1.2; }
 .question-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
 .q-cat { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
 .q-prompt { font-size: 1.5rem; font-weight: 700; margin: 8px 0 18px; }
-.q-flag { display: block; max-width: 240px; width: 60%; margin: 6px 0 18px; border-radius: 8px; border: 1px solid var(--border); }
+/* aspect-ratio + contain reserves the box before the image arrives, so a flag
+   question no longer shifts its layout on load. contain rather than a hard
+   ratio because flags run from 1:1 (Switzerland, Vatican) to 28:11 (Qatar) --
+   a single ratio would stretch them. */
+.q-flag { display: block; max-width: 240px; width: 60%; aspect-ratio: 3 / 2; object-fit: contain; object-position: left center; margin: 6px 0 18px; border-radius: 8px; border: 1px solid var(--border); }
 /* Flag-image answer options (Map → Flag mode). */
 .choice-flag { justify-content: flex-start; }
 .choice-flag img {
