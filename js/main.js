@@ -411,7 +411,11 @@ function buildLocalEngine(opts) {
 }
 
 async function startQuiz(opts) {
-  const { title, modes, continents = 'all', difficulty = 'medium', total = 10, challenge = false, daily = false, reviewIds = null, seed = null, religionFilter = null, input = 'mcq' } = opts;
+  // Only the fields this function itself reads are destructured; the pool
+  // options (modes/continents/difficulty/reviewIds/seed/religionFilter) are
+  // consumed by buildLocalEngine(opts) below, which re-reads them from `opts`
+  // and applies its own defaults.
+  const { title, total = 10, challenge = false, daily = false, input = 'mcq' } = opts;
 
   // Every call — sync or async — stamps its own generation up front, so a
   // synchronous call (e.g. Mixed Quiz) correctly invalidates an earlier
@@ -1155,8 +1159,8 @@ function showCustom() {
 //  with its flag and name — not a quiz, just a legend to look things up in)
 // ============================================================================
 let flagKeyTab = 'countries';
-let flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
-let flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
+const flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
+const flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
 
 function showFlagKey() {
   leaveSession();
@@ -1280,7 +1284,7 @@ function speakBtn(text, lang, fallback) {
 // nativeCountry.pron mixes a romanized name with a bracketed simple phonetic
 // for non-Latin-script entries, e.g. "Zhōngguó (jong-gwoh)" — the bracketed
 // part alone is what we want a mismatched-voice TTS fallback to read.
-const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [, pron])[1];
+const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [null, pron])[1];
 
 function renderPhraseDetail(entry) {
   if (!entry) return showPhrases();

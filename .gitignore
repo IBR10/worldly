@@ -1,3 +1,10 @@
+# dependencies (dev-only: wrangler + linters; the site itself ships no runtime deps)
+node_modules/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
 # wrangler files
 .wrangler
 .dev.vars*
