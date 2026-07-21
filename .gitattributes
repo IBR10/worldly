@@ -1,0 +1,13 @@
+# Normalise line endings so the working tree stops showing every file as
+# modified on Windows/WSL checkouts. The index already stores LF; declaring
+# `text=auto eol=lf` makes Git normalise on comparison, so no content rewrite
+# is needed. Batch files keep CRLF — cmd.exe can mis-parse LF-only labels.
+
+* text=auto eol=lf
+
+*.bat text eol=crlf
+
+*.svg text eol=lf
+
+*.png binary
+*.ico binary
