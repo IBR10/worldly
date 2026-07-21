@@ -8,8 +8,9 @@
     "start": "python3 -m http.server 8000",
     "serve": "python3 -m http.server 8000",
     "test": "node --test --test-reporter=./scripts/tdd-guard-reporter.mjs --test-reporter-destination=stdout \"tests/*.test.mjs\"",
-    "deploy": "wrangler deploy",
-    "preview": "wrangler dev"
+    "test:ci": "node --test tests/*.test.mjs",
+    "deploy": "wrangler pages deploy . --project-name=playworldly",
+    "preview": "wrangler pages dev ."
   },
   "keywords": [
     "geography",

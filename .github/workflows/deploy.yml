@@ -1,0 +1,52 @@
+name: deploy
+
+# The site was previously deployed by hand (`wrangler pages deploy` from a
+# laptop), so the commit CI tested and the artefact actually serving traffic
+# were unrelated -- no provenance, no rollback, and nothing stopping untested
+# local edits from going live. This workflow makes `main` the only thing that
+# ever reaches production.
+#
+# Requires two repository secrets (Settings > Secrets and variables > Actions):
+#   CLOUDFLARE_API_TOKEN   -- token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  -- the account the playworldly Pages project lives in
+#
+# Provenance comes from Cloudflare: because actions/checkout leaves the git
+# metadata in place, wrangler records the deploying commit against the Pages
+# deployment, and rollback is "Retry deployment" on any previous entry.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys race and upload an older tree after a newer one.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+# Least privilege: this job only ever reads the repo.
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Gate: never publish a tree whose engine tests fail.
+      - name: Run engine tests
+        run: npm run test:ci
+
+      - name: Deploy to Cloudflare Pages
+        run: npx wrangler pages deploy . --project-name=playworldly --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -28,7 +28,7 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 48 tests over the quiz, SRS and map engines
+npm test        # 72 tests over the quiz, SRS and map engines
 ```
 
 ## What's inside
@@ -120,14 +120,17 @@ flags from Wikimedia Commons. The player profile lives in `localStorage` under
 
 ## Deployment (Cloudflare)
 
-The live site (`playworldly.pages.dev`) is a Cloudflare Pages project
-deployed by **direct upload**, not git integration — pushing to `main` runs
-the test suite in CI but does **not** publish the site. To ship a change,
-deploy it explicitly:
+The live site (`playworldly.pages.dev`) is a Cloudflare Pages project.
+**Merging to `main` deploys it** — `.github/workflows/deploy.yml` runs the
+engine tests and then uploads the tree, so the commit CI tested is always the
+commit serving traffic. Nothing else should publish.
 
-```bash
-npx wrangler pages deploy . --project-name=playworldly
-```
+Rollback is "Retry deployment" on any earlier entry in the Cloudflare Pages
+dashboard; each deployment records the commit it came from.
+
+The workflow needs two repository secrets — `CLOUDFLARE_API_TOKEN` (with the
+*Cloudflare Pages: Edit* permission) and `CLOUDFLARE_ACCOUNT_ID`. To deploy by
+hand in an emergency, `npm run deploy`.
 
 (A separate, legacy Cloudflare Worker is still git-connected for historical
 reasons — its "Workers Builds" check on GitHub is unrelated to the live site
