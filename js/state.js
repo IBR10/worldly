@@ -8,8 +8,25 @@ const STORAGE_KEY = 'worldly_profile_v1';
 // all their XP, streaks and achievements after the rename to Worldly.
 const LEGACY_STORAGE_KEY = 'geogenius_profile_v1';
 
+/** Opaque per-player id for the XP leaderboard. Keying that board on the
+ *  display name merged every player who never set one into a single
+ *  'Explorer' row. Generated once and carried through export/import so a
+ *  transferred profile keeps its leaderboard entry rather than forking it. */
+function newPlayerId() {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    // randomUUID needs a secure context; fall back so file:// / http:// still work.
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+  }
+}
+
 const DEFAULT_PROFILE = () => ({
   version: 1,
+  playerId: newPlayerId(),
   name: 'Explorer',
   xp: 0,
   bestStreak: 0,
@@ -50,6 +67,12 @@ export function loadProfile() {
     if (raw) {
       const parsed = JSON.parse(raw);
       profile = { ...DEFAULT_PROFILE(), ...parsed };
+      // Profiles saved before playerId existed spread a `undefined` over the
+      // generated default; mint one and persist so it stays stable afterwards.
+      if (!profile.playerId) {
+        profile.playerId = newPlayerId();
+        migrated = true;
+      }
       if (migrated) saveProfile(); // copy old progress under the Worldly key
     }
   } catch (e) {
@@ -91,14 +114,18 @@ export function importProfile(parsed) {
     throw new Error("That file doesn't look like a Worldly profile export.");
   }
   profile = { ...DEFAULT_PROFILE(), ...parsed };
+  if (!profile.playerId) profile.playerId = newPlayerId(); // pre-playerId export
   saveProfile();
   return profile;
 }
 
 export function resetProfile() {
-  const theme = profile.theme;
+  const { theme, playerId } = profile;
   profile = DEFAULT_PROFILE();
   profile.theme = theme;
+  // Same device, same person: minting a new id would orphan the old
+  // leaderboard row (which can never be lowered) and grow the table forever.
+  profile.playerId = playerId || profile.playerId;
   saveProfile();
   return profile;
 }

@@ -1072,12 +1072,18 @@ function finishQuiz() {
 // just Challenge/Daily — see functions/api/xp.js for why this can't be
 // verified server-side the way the other leaderboard tabs are). Best-effort:
 // no UI feedback, silent on failure.
+let lastSyncedXp = null;
 function submitLifetimeXp() {
+  const p = getProfile();
+  // Nothing to report when the total has not moved (a run with no correct
+  // answers, say). Every skipped call is one fewer write against the free tier.
+  if (p.xp === lastSyncedXp) return;
+  lastSyncedXp = p.xp;
   fetch('/api/xp', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ name: getProfile().name, xp: getProfile().xp }),
-  }).catch(() => {});
+    body: JSON.stringify({ playerId: p.playerId, name: p.name, xp: p.xp }),
+  }).catch(() => { lastSyncedXp = null; }); // allow the next run to retry
 }
 
 async function submitToGlobalLeaderboard(sessionId) {
