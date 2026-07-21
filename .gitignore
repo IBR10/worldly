@@ -1,6 +1,11 @@
 # dependencies (dev-only: wrangler + linters; the site itself ships no runtime deps)
 node_modules/
 
+# playwright artefacts
+playwright-report/
+test-results/
+blob-report/
+
 # OS cruft
 .DS_Store
 Thumbs.db

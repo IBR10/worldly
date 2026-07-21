@@ -15,3 +15,10 @@ docs
 Worldly.bat
 README.md
 ROADMAP.md
+eslint.config.js
+playwright.config.js
+.stylelintrc.json
+.editorconfig
+.gitattributes
+playwright-report
+test-results

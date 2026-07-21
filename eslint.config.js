@@ -65,4 +65,19 @@ export default [
       globals: { process: 'readonly', console: 'readonly', crypto: 'readonly', Response: 'readonly', URL: 'readonly' },
     },
   },
+  {
+    // Playwright specs run in Node but contain page.evaluate() callbacks that
+    // execute in the browser, so both sets of globals are legitimately in play.
+    files: ['tests/e2e/**/*.js', 'playwright.config.js'],
+    languageOptions: {
+      globals: {
+        ...browserGlobals,
+        process: 'readonly',
+        Buffer: 'readonly',
+        Element: 'readonly',
+        DOMException: 'readonly',
+        getComputedStyle: 'readonly',
+      },
+    },
+  },
 ];
