@@ -1,7 +1,7 @@
 // main.js — application controller. Owns routing between screens, renders the
 // HUD, runs a quiz session, and reacts to answers (scoring, XP, achievements).
 
-import { loadData, getData, getContinents, getSubregions, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, symbolImageUrl, loadMap } from './data.js';
+import { loadData, loadDataset, getData, getContinents, getSubregions, getRegions, flagUrl, historicFlagUrl, stateFlagUrl, symbolImageUrl, loadMap } from './data.js';
 import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
@@ -859,6 +859,28 @@ function wireFlagFallback(selector = '.q-flag') {
 // Review sessions rebuild questions through the MCQ engine, which only knows
 // quiz modes. Map-mode misses (ids like "map_us:Texas") are practiced by
 // replaying the map modes instead, so they're excluded from Review Missed.
+/**
+ * Make sure an on-demand Explore dataset is present before rendering a screen
+ * that needs it. Shows a placeholder while fetching and, like startMapQuiz,
+ * checks the session generation afterwards so a slow response can never
+ * overwrite a screen the player has already moved on from.
+ * @returns {Promise<boolean>} false when the caller should stop rendering.
+ */
+async function ensureDataset(name) {
+  if (getData()[name]?.length) return true;
+  const myGen = ++sessionGen;
+  app.innerHTML = '<p class="screen-sub">Loading…</p>';
+  try {
+    await loadDataset(name);
+  } catch (err) {
+    if (myGen !== sessionGen) return false;
+    toast('⚠️', "Couldn't load that section", err.message);
+    showHome();
+    return false;
+  }
+  return myGen === sessionGen;
+}
+
 function reviewableMissedIds() {
   return Object.keys(getProfile().missed).filter((id) => MODES[id.split(':')[0]]);
 }
@@ -1317,8 +1339,9 @@ function showFlagKey() {
 // ============================================================================
 //  PHRASES  (browse common phrases & popular local sayings by country)
 // ============================================================================
-function showPhrases() {
+async function showPhrases() {
   leaveSession();
+  if (!(await ensureDataset('phrases'))) return;
   const entries = getData().phrases || [];
   app.innerHTML = `
     ${topNav()}
@@ -1416,8 +1439,9 @@ function renderPhraseDetail(entry) {
 // ============================================================================
 //  MUSIC  (songs that represent each country — embedded YouTube player)
 // ============================================================================
-function showMusic() {
+async function showMusic() {
   leaveSession();
+  if (!(await ensureDataset('music'))) return;
   const entries = getData().music || [];
   app.innerHTML = `
     ${topNav()}
@@ -1490,8 +1514,9 @@ function renderMusicDetail(entry) {
 // ============================================================================
 //  CRISES & CURRENT EVENTS  (curated background + live-source links)
 // ============================================================================
-function showCrises() {
+async function showCrises() {
   leaveSession();
+  if (!(await ensureDataset('crises'))) return;
   const entries = getData().crises || [];
   // Two independent axes: which time period (current vs. historical), and
   // which coverage tier within it (underreported vs. famous) — four pages total.
@@ -1542,9 +1567,11 @@ function showCrises() {
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  wireTabs((id) => {
+  wireTabs(async (id) => {
     crisesPeriod = id;
-    showCrises();
+    // showCrises() replaces the whole screen, so the tab to focus does not
+    // exist until it has finished -- awaiting matters now that it is async.
+    await showCrises();
     app.querySelector(`#period-${id}`)?.focus();
   }, app.querySelector('#periodTabs'));
   wireTabs((id) => { crisesTab = id; }, app.querySelector('#tierSection'));
