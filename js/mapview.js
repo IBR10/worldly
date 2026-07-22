@@ -31,6 +31,19 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
   svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
   if (!interactive) svg.classList.add('map-static');
 
+  // Shape the frame to the map instead of letterboxing the map into a fixed
+  // box. A landscape map in a portrait phone viewport wasted 48% of the frame
+  // (measured: a 300x439 holder painting 316x216 of map), which pushed the
+  // answer controls below the fold for no benefit. Set via CSSOM rather than a
+  // style attribute so the CSP can stay free of unsafe-inline.
+  try {
+    const vb = svg.viewBox?.baseVal;
+    if (vb && vb.width > 0 && vb.height > 0) {
+      holder.style.aspectRatio = `${vb.width} / ${vb.height}`;
+      holder.style.height = 'auto';
+    }
+  } catch { /* keep the CSS fallback height */ }
+
   // Pre-highlight a region (reverse mode shows the region and asks its name).
   // The highlight itself is only a fill-color change, which is invisible to a
   // screen reader — add a visually-hidden text alternative so the highlighted
@@ -99,6 +112,15 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     e.preventDefault();
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.15 : 1 / 1.15);
   }, { passive: false });
+
+  // Double-tap/click to zoom in on the point. Small regions (DC renders about
+  // 1px wide on a phone, Rhode Island under 5px) are only realistically
+  // clickable zoomed in, and pinching is the sort of thing players have to
+  // guess at. dblclick fires for touch too, so one handler covers both.
+  holder.addEventListener('dblclick', (e) => {
+    e.preventDefault();
+    zoomAt(e.clientX, e.clientY, 2);
+  });
 
   // --- drag-to-pan vs click vs pinch-zoom --------------------------------------
   // Single pointer: a pan only starts past a small threshold, so a plain click
@@ -237,7 +259,17 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     });
   }
 
-  wrap.append(holder, controls, srAnnounce);
+  // Zoom is the only practical way to hit the smallest regions, so say so
+  // rather than leaving players to guess. Interactive modes only -- there is
+  // nothing to aim at on a display-only map.
+  if (interactive) {
+    const hint = document.createElement('p');
+    hint.className = 'map-hint';
+    hint.textContent = 'Tip: double-tap, pinch or use ＋ to zoom in on small regions. Drag to pan.';
+    wrap.append(holder, controls, srAnnounce, hint);
+  } else {
+    wrap.append(holder, controls, srAnnounce);
+  }
 
   /** Color the answered regions: target green, a wrong pick red; lock the map. */
   function reveal(clickedId, targetId) {

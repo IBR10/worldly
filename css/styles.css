@@ -353,7 +353,11 @@ h1, h2, h3 { line-height: 1.2; }
   position: relative;
   overflow: hidden;
   width: 100%;
+  /* Fallback for the rare case mapview.js cannot read a viewBox; normally it
+     replaces this with the map's own aspect ratio so no frame area is wasted. */
   height: clamp(300px, 52vh, 560px);
+  /* Keeps a tall map (Canada) from running off a short viewport. */
+  max-height: min(72vh, 620px);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -408,6 +412,8 @@ h1, h2, h3 { line-height: 1.2; }
   cursor: pointer;
 }
 .map-btn:hover { background: var(--accent); }
+
+.map-hint { margin: 8px 0 0; color: var(--muted); font-size: .8rem; line-height: 1.4; }
 
 /* ---- phrases section ---- */
 .phrase-head {

@@ -25,10 +25,18 @@ async function loadJSON(path) {
   return res.json();
 }
 
-/** Load all datasets once. Safe to call multiple times. */
+/**
+ * Load the datasets every screen depends on. Safe to call multiple times.
+ *
+ * The three Explore-only datasets (phrases, music, crises — about 30 KB
+ * together) are NOT loaded here: they were previously fetched and parsed on
+ * the critical path by every visitor, including the majority who never open
+ * those screens. They now load on demand via loadDataset(), reusing the same
+ * in-flight-promise caching as the map SVGs below.
+ */
 export async function loadData() {
   if (DATA.loaded) return DATA;
-  const [countries, usStates, mxStates, caStates, historicFlags, similarFlags, religions, phrases, music, crises, achievements] = await Promise.all([
+  const [countries, usStates, mxStates, caStates, historicFlags, similarFlags, religions, achievements] = await Promise.all([
     loadJSON('data/countries.json'),
     loadJSON('data/us_states.json'),
     loadJSON('data/mexico_states.json'),
@@ -36,9 +44,6 @@ export async function loadData() {
     loadJSON('data/historic_flags.json'),
     loadJSON('data/similar_flags.json'),
     loadJSON('data/religions.json'),
-    loadJSON('data/phrases.json'),
-    loadJSON('data/music.json'),
-    loadJSON('data/crises.json'),
     loadJSON('data/achievements.json'),
   ]);
   DATA.countries = countries;
@@ -48,12 +53,34 @@ export async function loadData() {
   DATA.historicFlags = historicFlags;
   DATA.similarFlags = similarFlags;
   DATA.religions = religions;
-  DATA.phrases = phrases;
-  DATA.music = music;
-  DATA.crises = crises;
   DATA.achievements = achievements;
   DATA.loaded = true;
   return DATA;
+}
+
+// On-demand datasets: name -> the promise that resolves once it has landed.
+const LAZY = {};
+const LAZY_FILES = {
+  phrases: 'data/phrases.json',
+  music: 'data/music.json',
+  crises: 'data/crises.json',
+};
+
+/**
+ * Fetch one Explore dataset, populating DATA[name]. Repeat calls share the
+ * in-flight promise, and a failure never poisons the cache for retries.
+ * @param {'phrases'|'music'|'crises'} name
+ */
+export function loadDataset(name) {
+  if (LAZY[name]) return LAZY[name];
+  const path = LAZY_FILES[name];
+  if (!path) return Promise.reject(new Error(`Unknown dataset: ${name}`));
+  LAZY[name] = loadJSON(path).then((rows) => {
+    DATA[name] = rows;
+    return rows;
+  });
+  LAZY[name].catch(() => { delete LAZY[name]; });
+  return LAZY[name];
 }
 
 export function getData() {
