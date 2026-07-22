@@ -26,10 +26,12 @@
   <!-- Flags come from flagcdn on nearly every screen; open the connection
        during head parsing rather than at first <img>. countries.json is needed
        before anything can render, and is otherwise only requested once
-       main.js -> data.js has loaded. No crossorigin: the real request is
-       same-origin and non-CORS, and mismatching it would fetch twice. -->
+       main.js -> data.js has loaded.
+       `crossorigin` is required even though this is same-origin: as="fetch"
+       always uses CORS mode, so without it the preload and the later fetch()
+       are different requests and the file is downloaded twice (verified). -->
   <link rel="preconnect" href="https://flagcdn.com" />
-  <link rel="preload" href="data/countries.json" as="fetch" />
+  <link rel="preload" href="data/countries.json" as="fetch" crossorigin />
 
   <link rel="icon" href="assets/worldly.ico" sizes="any" />
   <link rel="icon" type="image/png" href="assets/worldly-icon.png" />
