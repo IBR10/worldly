@@ -7,7 +7,7 @@ import {
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
   dailyDoneToday, addLeaderboard, setTheme, setName, setOnboarded, localDateStr,
 } from './state.js';
-import { track, tag } from './analytics.js';
+import { track, tag, loadAnalytics, analyticsOptedOut, setAnalyticsOptOut } from './analytics.js';
 import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
@@ -44,6 +44,20 @@ let leaderboardTab = 'challenge';
 
 // ---- tiny helpers ------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// URLs interpolated into an href need more than esc(): a `javascript:` URL is
+// perfectly valid HTML and CSP does not block it on navigation. Link targets
+// come from data/*.json, which README invites corrections to, so an untrusted
+// scheme is a realistic path rather than a hypothetical one. Anything that is
+// not http(s) collapses to '#'.
+function safeUrl(raw) {
+  try {
+    const parsed = new URL(String(raw), location.origin);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:' ? esc(parsed.href) : '#';
+  } catch {
+    return '#';
+  }
+}
 
 // Speak text aloud via the browser's built-in speech synthesis (free, offline,
 // no dependency). `lang` is a BCP-47 tag (e.g. 'ja-JP') so the OS can pick a
@@ -109,7 +123,15 @@ function wireNav() {
 
 // Move keyboard/screen-reader focus to the new screen's heading after a render,
 // so assistive tech isn't stranded on a removed element.
+//
+// Suppressed for the very first render: on load the document order is already
+// correct and focus belongs at the top of the page. Pulling it into the <h1>
+// pushed the entire header past the page content -- measured, Home /
+// Leaderboard / Theme became tab stops 12-14, reachable only after cycling
+// every card and footer link.
+let allowFocusTitle = false;
 function focusTitle() {
+  if (!allowFocusTitle) return;
   const h = app.querySelector('.screen-title, .q-prompt');
   if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
 }
@@ -186,9 +208,21 @@ function renderHUD() {
 }
 
 // ---- theme -------------------------------------------------------------------
+/** The OS preference, used when the player has not chosen explicitly. */
+function systemTheme() {
+  try {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  } catch {
+    return 'dark';
+  }
+}
+
+/** Resolve `null` (follow the OS) to a concrete palette and apply it. */
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('themeToggle').textContent = theme === 'dark' ? '🌙' : '☀️';
+  const resolved = theme === 'light' || theme === 'dark' ? theme : systemTheme();
+  document.documentElement.setAttribute('data-theme', resolved);
+  document.getElementById('themeToggle').textContent = resolved === 'dark' ? '🌙' : '☀️';
+  return resolved;
 }
 
 // ============================================================================
@@ -239,7 +273,7 @@ const MAP_CARDS = [
 // screen instead of starting a mode directly).
 function homeCard(attr, m) {
   const icon = m.flagIso
-    ? `<img class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
+    ? `<img decoding="async" class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
     : `<span class="emoji">${m.emoji}</span>`;
   return `
     <button class="card" ${m.attr || attr}="${m.key}">
@@ -347,16 +381,18 @@ function showAbout() {
     <p class="screen-sub">A free, open-source learning game. Built with plain HTML, CSS and JavaScript — no accounts, no ads.</p>
 
     <div class="form-block">
-      <h3>Privacy</h3>
+      <h2>Privacy</h2>
       <p class="screen-sub">Your progress is stored only in this browser (localStorage) — Worldly has no accounts.
-      We use Microsoft Clarity for anonymous usage analytics (which screens and modes get used) to improve the game;
-      no names, quiz answers or saved progress are ever sent. Flag images load from flagcdn.com, historic flags from
+      We use Microsoft Clarity for anonymous usage analytics, which records how screens are used, to improve the game;
+      no names, quiz answers or saved progress are ever sent. You can turn this off in
+      <strong>Profile → Privacy</strong>, and it is off automatically if your browser sends a Do Not Track or Global
+      Privacy Control signal. Flag images load from flagcdn.com, historic flags from
       Wikimedia Commons, and music plays through YouTube's privacy-enhanced player, which sets cookies only if you
       play a video.</p>
     </div>
 
     <div class="form-block">
-      <h3>Credits &amp; data sources</h3>
+      <h2>Credits &amp; data sources</h2>
       <ul class="about-list">
         <li>Interactive map SVGs adapted from the <a href="https://github.com/VictorCazanave/svg-maps" target="_blank" rel="noopener">@svg-maps</a> project by Victor Cazanave and contributors — world, Mexico and Canada maps are CC BY 4.0; the USA map is CC BY-NC 4.0 (non-commercial).</li>
         <li>Flag images served by <a href="https://flagcdn.com" target="_blank" rel="noopener">flagcdn.com</a>.</li>
@@ -367,14 +403,14 @@ function showAbout() {
     </div>
 
     <div class="form-block">
-      <h3>Feedback &amp; requests</h3>
+      <h2>Feedback &amp; requests</h2>
       <p class="screen-sub">Found a bug, spotted a wrong fact, or want a new mode?
       <a href="https://github.com/IBR10/worldly/issues/new" target="_blank" rel="noopener">Open an issue on GitHub ↗</a>
       — data corrections are especially welcome.</p>
     </div>
 
     <div class="form-block">
-      <h3>Editorial notes</h3>
+      <h2>Editorial notes</h2>
       <ul class="about-list">
         <li>"Primary language" and "largest religion" are deliberate simplifications of plural realities — they reflect the single most common answer for quiz purposes, not the full picture.</li>
         <li>Historic flags are shown for educational context only and imply no endorsement of any regime or movement.</li>
@@ -411,7 +447,11 @@ function buildLocalEngine(opts) {
 }
 
 async function startQuiz(opts) {
-  const { title, modes, continents = 'all', difficulty = 'medium', total = 10, challenge = false, daily = false, reviewIds = null, seed = null, religionFilter = null, input = 'mcq' } = opts;
+  // Only the fields this function itself reads are destructured; the pool
+  // options (modes/continents/difficulty/reviewIds/seed/religionFilter) are
+  // consumed by buildLocalEngine(opts) below, which re-reads them from `opts`
+  // and applies its own defaults.
+  const { title, total = 10, challenge = false, daily = false, input = 'mcq' } = opts;
 
   // Every call — sync or async — stamps its own generation up front, so a
   // synchronous call (e.g. Mixed Quiz) correctly invalidates an earlier
@@ -504,7 +544,7 @@ function showReligions() {
     <h1 class="screen-title">World Religions 🕌</h1>
     <p class="screen-sub">Founders, sacred texts and major holidays. Study every faith, or focus on just one.</p>
     <div class="form-block">
-      <h3>Choose a faith</h3>
+      <h2>Choose a faith</h2>
       <select id="faithSel" class="select">
         <option value="">All faiths</option>
         ${faiths.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('')}
@@ -537,7 +577,7 @@ function showMapRegions() {
     <h1 class="screen-title">Regions &amp; Continents 🌍</h1>
     <p class="screen-sub">Pick a continent or region — the map zooms in so you're only looking at that part of the world.</p>
     <div class="form-block">
-      <h3>Continent / Region</h3>
+      <h2>Continent / Region</h2>
       <select id="contSel" class="select">
         <optgroup label="Continents">
           ${continents.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('')}
@@ -548,7 +588,7 @@ function showMapRegions() {
       </select>
     </div>
     <div class="form-block">
-      <h3>Mode</h3>
+      <h2>Mode</h2>
       <select id="modeSel" class="select">
         ${WORLD_MAP_MODES.map((m) => `<option value="${m}">${esc(MAP_MODES[m].label)}</option>`).join('')}
       </select>
@@ -629,25 +669,47 @@ async function startMapQuiz(opts) {
   renderQuestion();
 }
 
-function renderMapQuestion(q) {
-  const progressPct = Math.round((S.index / S.total) * 100);
-  app.innerHTML = `
+// The progress header for every question renderer (MCQ, typed, click-the-map,
+// reverse map). It used to be duplicated in all four, which is why the progress
+// bug below had to be fixed in four places -- and so never was.
+function quizChrome() {
+  const multiPill = S.challenge
+    ? `<span class="pill">✖️<span class="accent">${S.multiplier.toFixed(1)}</span></span>`
+    : '';
+  return `
     <div class="quiz-top">
-      <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
+      <button class="btn ghost" id="quitBtn" title="Quit quiz" aria-label="Quit quiz">✕</button>
       <div class="progress"><span></span></div>
       <span class="pill">${S.index + 1}/${S.total}</span>
       <span class="pill fire">🔥 ${S.runStreak}</span>
+      ${multiPill}
       <span class="pill">⭐ ${S.xpRun}</span>
-    </div>
+    </div>`;
+}
+
+// S.index counts ANSWERED questions -- answer() increments it before calling
+// renderFeedback() -- so S.index/S.total is the right fraction at both phases.
+// The bug was never the formula: the width was only ever set while rendering a
+// *question*, so the bar sat at 0% through the whole first question, still read
+// 0% on its feedback screen, and could never reach 100%. renderFeedback() now
+// calls this too.
+function syncQuizProgress() {
+  const bar = app.querySelector('.progress > span');
+  if (bar) bar.style.width = Math.round((S.index / S.total) * 100) + '%';
+}
+
+function renderMapQuestion(q) {
+  app.innerHTML = `
+    ${quizChrome()}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
-      ${q.flagIso ? `<img class="q-flag" alt="Flag to locate" src="${flagUrl(q.flagIso)}">` : ''}
-      <div class="q-prompt">${esc(q.prompt)}</div>
+      ${q.flagIso ? `<img decoding="async" class="q-flag" alt="Flag to locate" src="${flagUrl(q.flagIso)}">` : ''}
+      <h1 class="q-prompt">${esc(q.prompt)}</h1>
       <div id="mapMount" class="map-mount"></div>
-      <div id="feedback" role="status" aria-live="assertive"></div>
+      <div id="feedback" role="status"></div>
     </div>`;
 
-  app.querySelector('.progress > span').style.width = progressPct + '%';
+  syncQuizProgress();
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   wireFlagFallback();
   S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id), focusIds: S.focusIds });
@@ -689,31 +751,24 @@ function mapAnswer(clickedId) {
 // Reverse map mode: the target region is highlighted on a display-only map and
 // the player picks its name from multiple choice (reuses the MCQ answer flow).
 function renderReverseMapQuestion(q) {
-  const progressPct = Math.round((S.index / S.total) * 100);
   app.innerHTML = `
-    <div class="quiz-top">
-      <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span></span></div>
-      <span class="pill">${S.index + 1}/${S.total}</span>
-      <span class="pill fire">🔥 ${S.runStreak}</span>
-      <span class="pill">⭐ ${S.xpRun}</span>
-    </div>
+    ${quizChrome()}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
-      <div class="q-prompt">${esc(q.prompt)}</div>
+      <h1 class="q-prompt">${esc(q.prompt)}</h1>
       <div id="mapMount" class="map-mount"></div>
       <div class="choices" id="choices">
         ${q.choices.map((c, i) => q.flagChoices
           ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag of ${esc(c)}">
-               <span class="key">${i + 1}</span><img src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
+               <span class="key">${i + 1}</span><img decoding="async" src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
              </button>`
           : `<button class="choice" data-val="${esc(c)}">
                <span class="key">${i + 1}</span><span>${esc(c)}</span>
              </button>`).join('')}
       </div>
-      <div id="feedback" role="status" aria-live="assertive"></div>
+      <div id="feedback" role="status"></div>
     </div>`;
-  app.querySelector('.progress > span').style.width = progressPct + '%';
+  syncQuizProgress();
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   if (q.flagChoices) wireFlagFallback('.choice-flag img');
   S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false, focusIds: S.focusIds });
@@ -737,35 +792,26 @@ function renderQuestion() {
 }
 
 function renderMcqQuestion(q) {
-  const progressPct = Math.round((S.index / S.total) * 100);
-  const multiPill = S.challenge ? `<span class="pill">✖️<span class="accent">${S.multiplier.toFixed(1)}</span></span>` : '';
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
+  const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
 
   app.innerHTML = `
-    <div class="quiz-top">
-      <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span></span></div>
-      <span class="pill">${S.index + 1}/${S.total}</span>
-      <span class="pill fire">🔥 ${S.runStreak}</span>
-      ${multiPill}
-      <span class="pill">⭐ ${S.xpRun}</span>
-    </div>
+    ${quizChrome()}
     ${S.challenge ? '<div class="timer" id="timer"><span></span></div>' : ''}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
       ${flag}
-      <div class="q-prompt">${esc(q.prompt)}</div>
+      <h1 class="q-prompt">${esc(q.prompt)}</h1>
       <div class="choices" id="choices">
         ${q.choices.map((c, i) => `
           <button class="choice" data-val="${esc(c)}">
             <span class="key">${i + 1}</span><span>${esc(c)}</span>
           </button>`).join('')}
       </div>
-      <div id="feedback" role="status" aria-live="assertive"></div>
+      <div id="feedback" role="status"></div>
     </div>`;
 
-  app.querySelector('.progress > span').style.width = progressPct + '%';
+  syncQuizProgress();
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
   wireFlagFallback();
@@ -901,29 +947,22 @@ async function answer(value) {
 // Typed-answer mode: same questions as MCQ, but the player types the answer and
 // it's checked with accent/case-insensitive matching (answerMatches).
 function renderTypedQuestion(q) {
-  const progressPct = Math.round((S.index / S.total) * 100);
   const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
-  const flag = flagSrc ? `<img class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
+  const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
   app.innerHTML = `
-    <div class="quiz-top">
-      <button class="btn ghost" id="quitBtn" title="Back to home">✕</button>
-      <div class="progress"><span></span></div>
-      <span class="pill">${S.index + 1}/${S.total}</span>
-      <span class="pill fire">🔥 ${S.runStreak}</span>
-      <span class="pill">⭐ ${S.xpRun}</span>
-    </div>
+    ${quizChrome()}
     <div class="question-card">
       <div class="q-cat">${esc(catLabel(q.category))}</div>
       ${flag}
-      <div class="q-prompt" id="qPrompt">${esc(q.prompt)}</div>
+      <h1 class="q-prompt" id="qPrompt">${esc(q.prompt)}</h1>
       <form class="type-form" id="typeForm" autocomplete="off">
         <input class="type-input" id="typeInput" type="text" placeholder="Type your answer…"
                aria-labelledby="qPrompt" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
         <button class="btn primary" type="submit">Submit</button>
       </form>
-      <div id="feedback" role="status" aria-live="assertive"></div>
+      <div id="feedback" role="status"></div>
     </div>`;
-  app.querySelector('.progress > span').style.width = progressPct + '%';
+  syncQuizProgress();
   app.querySelector('#quitBtn').addEventListener('click', showHome);
   wireFlagFallback();
   const form = app.querySelector('#typeForm');
@@ -972,13 +1011,13 @@ function answerTyped(value) {
 function renderFeedback(correct, q, xpGained) {
   const fb = document.getElementById('feedback');
   const links = q.learnMore.filter((l) => l.url)
-    .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
+    .map((l) => `<a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
   fb.className = `feedback ${correct ? 'ok' : 'no'} pop`;
   const symbol = q.symbolImg
-    ? `<div class="symbol-img-wrap"><img src="${symbolImageUrl(q.symbolImg)}" alt="${esc(q.answer)} symbol"></div>`
+    ? `<div class="symbol-img-wrap"><img decoding="async" src="${symbolImageUrl(q.symbolImg)}" alt="${esc(q.answer)} symbol"></div>`
     : '';
   fb.innerHTML = `
-    <h3>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h3>
+    <h2>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h2>
     ${symbol}
     <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
     ${q.history ? `<div class="fact">📜 <strong>History:</strong> ${esc(q.history)}</div>` : ''}
@@ -988,6 +1027,10 @@ function renderFeedback(correct, q, xpGained) {
     <div class="btn-row mt-14">
       <button class="btn primary" id="nextBtn">${S.index >= S.total ? 'See results →' : 'Next →'}</button>
     </div>`;
+  // The question just answered now counts toward progress. Without this the bar
+  // only ever moved when the NEXT question rendered, so it read 0% for the
+  // whole of question 1 and never reached 100%.
+  syncQuizProgress();
   const nextBtn = document.getElementById('nextBtn');
   nextBtn.addEventListener('click', renderQuestion);
   nextBtn.focus({ preventScroll: true });
@@ -1051,12 +1094,18 @@ function finishQuiz() {
 // just Challenge/Daily — see functions/api/xp.js for why this can't be
 // verified server-side the way the other leaderboard tabs are). Best-effort:
 // no UI feedback, silent on failure.
+let lastSyncedXp = null;
 function submitLifetimeXp() {
+  const p = getProfile();
+  // Nothing to report when the total has not moved (a run with no correct
+  // answers, say). Every skipped call is one fewer write against the free tier.
+  if (p.xp === lastSyncedXp) return;
+  lastSyncedXp = p.xp;
   fetch('/api/xp', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ name: getProfile().name, xp: getProfile().xp }),
-  }).catch(() => {});
+    body: JSON.stringify({ playerId: p.playerId, name: p.name, xp: p.xp }),
+  }).catch(() => { lastSyncedXp = null; }); // allow the next run to retry
 }
 
 async function submitToGlobalLeaderboard(sessionId) {
@@ -1089,33 +1138,33 @@ function showCustom() {
     <p class="screen-sub">Tailor a session to exactly what you want to practice.</p>
 
     <div class="form-block">
-      <h3>Question types</h3>
+      <h2>Question types</h2>
       <div class="checks" id="modeChecks">
         ${ALL_MODES.map((m) => `<label class="check"><input type="checkbox" value="${m}" checked>${esc(MODES[m].label)}</label>`).join('')}
       </div>
     </div>
 
     <div class="form-block">
-      <h3>Continents <span class="muted-note">(country modes only)</span></h3>
+      <h2>Continents <span class="muted-note">(country modes only)</span></h2>
       <div class="checks" id="contChecks">
         ${continents.map((c) => `<label class="check"><input type="checkbox" value="${esc(c)}" checked>${esc(c)}</label>`).join('')}
       </div>
     </div>
 
     <div class="form-block">
-      <h3>Difficulty</h3>
+      <h2>Difficulty</h2>
       <div class="seg" id="diffSeg">
         <button data-d="easy">Easy</button>
         <button data-d="medium" class="active">Medium</button>
         <button data-d="hard">Hard</button>
       </div>
-      <h3 class="mt-16">Length</h3>
+      <h2 class="mt-16">Length</h2>
       <div class="seg" id="lenSeg">
         <button data-n="10" class="active">10</button>
         <button data-n="20">20</button>
         <button data-n="30">30</button>
       </div>
-      <h3 class="mt-16">Answer input</h3>
+      <h2 class="mt-16">Answer input</h2>
       <div class="seg" id="inputSeg">
         <button data-i="mcq" class="active">Multiple choice</button>
         <button data-i="type">Type it</button>
@@ -1155,8 +1204,8 @@ function showCustom() {
 //  with its flag and name — not a quiz, just a legend to look things up in)
 // ============================================================================
 let flagKeyTab = 'countries';
-let flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
-let flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
+const flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
+const flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
 
 function showFlagKey() {
   leaveSession();
@@ -1169,30 +1218,33 @@ function showFlagKey() {
   ];
   if (!groups.some((g) => g.id === flagKeyTab)) flagKeyTab = 'countries';
 
+  // Controls only — the grid starts empty and is filled by populate() for the
+  // active tab alone. Building all four grids up front (and hiding three with
+  // display:none) still downloads every image: 251 requests on open.
   const panelFor = (g) => {
     const regions = getRegions(g.list);
-    const term = flagKeySearch[g.id].toLowerCase();
     const region = flagKeyRegion[g.id];
-    const visible = g.list.filter((x) =>
-      (!term || x.name.toLowerCase().includes(term)) && (!region || x.region === region));
     return `
       <div class="form-block">
         <input type="text" class="type-input flagkey-search" data-group="${g.id}" placeholder="Search ${esc(g.label.toLowerCase())}…" value="${esc(flagKeySearch[g.id])}">
         <select class="select mt-10 flagkey-region" data-group="${g.id}">
           <option value="">All regions</option>
-          ${regions.map((r) => `<option value="${esc(r)}" ${r === region ? 'selected' : ''}>${esc(r)}</option>`).join('')}
+          ${regions.map((r) => `<option value="${esc(r)}"${r === region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
         </select>
       </div>
-      <div class="grid flagkey-grid" data-group="${g.id}">
-        ${visible.map((x) => `
-          <div class="card flagkey-card">
-            <img class="emoji-flag" alt="" src="${g.flagFn(x)}" onerror="this.style.display='none'">
-            <span class="card-title">${esc(x.name)}</span>
-            <span class="card-desc">${esc(x.capital)}</span>
-          </div>`).join('')}
-      </div>
-      ${visible.length === 0 ? '<p class="screen-sub">No matches.</p>' : ''}`;
+      <div class="grid flagkey-grid" data-group="${g.id}"></div>
+      <p class="screen-sub flagkey-empty hidden" data-group="${g.id}">No matches.</p>`;
   };
+
+  // Search/region state lives on the card as data-*, so filtering is a class
+  // toggle rather than a rebuild. Rebuilding discarded and recreated up to 251
+  // <img> elements per keystroke, which is what made typing cost ~1.6s.
+  const cardFor = (g, x) => `
+    <div class="card flagkey-card" data-name="${esc(String(x.name).toLowerCase())}" data-region="${esc(x.region || '')}">
+      <img class="emoji-flag" alt="" loading="lazy" decoding="async" src="${g.flagFn(x)}">
+      <span class="card-title">${esc(x.name)}</span>
+      <span class="card-desc">${esc(x.capital)}</span>
+    </div>`;
 
   app.innerHTML = `
     ${topNav()}
@@ -1213,32 +1265,53 @@ function showFlagKey() {
     </div>`;
 
   wireNav();
-  wireTabs((id) => { flagKeyTab = id; });
   app.querySelector('#backHome').addEventListener('click', showHome);
 
-  // Re-render just the active panel's grid on every search/region change,
-  // without losing focus or rebuilding the whole screen.
-  const rerenderGroup = (id) => {
+  const panelOf = (id) => app.querySelector(`.tab-panel[data-panel="${id}"]`);
+
+  /** Build a tab's cards once, the first time that tab is shown. */
+  function populate(id) {
+    const grid = panelOf(id).querySelector('.flagkey-grid');
+    if (grid.childElementCount) return;
     const g = groups.find((x) => x.id === id);
-    app.querySelector(`.tab-panel[data-panel="${id}"]`).innerHTML = panelFor(g);
-    wireFlagKeyControls(id);
-  };
-  function wireFlagKeyControls(id) {
-    const panel = app.querySelector(`.tab-panel[data-panel="${id}"]`);
+    grid.innerHTML = g.list.map((x) => cardFor(g, x)).join('');
+    // A flag Commons/flagcdn cannot serve would otherwise render as a broken
+    // image icon. This replaces an inline onerror= handler, which never ran:
+    // the CSP has no unsafe-inline, so inline handlers are dead on arrival.
+    grid.querySelectorAll('img').forEach((img) =>
+      img.addEventListener('error', () => img.classList.add('hidden')));
+    applyFilter(id);
+  }
+
+  /** Show/hide already-rendered cards. No markup is regenerated. */
+  function applyFilter(id) {
+    const panel = panelOf(id);
+    const term = flagKeySearch[id].trim().toLowerCase();
+    const region = flagKeyRegion[id];
+    let shown = 0;
+    panel.querySelectorAll('.flagkey-card').forEach((card) => {
+      const match = (!term || card.dataset.name.includes(term))
+        && (!region || card.dataset.region === region);
+      card.classList.toggle('hidden', !match);
+      if (match) shown++;
+    });
+    panel.querySelector('.flagkey-empty').classList.toggle('hidden', shown > 0);
+  }
+
+  groups.forEach((g) => {
+    const panel = panelOf(g.id);
     panel.querySelector('.flagkey-search').addEventListener('input', (e) => {
-      const pos = e.target.selectionStart;
-      flagKeySearch[id] = e.target.value;
-      rerenderGroup(id);
-      const newInput = panel.querySelector('.flagkey-search');
-      newInput.focus();
-      newInput.setSelectionRange(pos, pos);
+      flagKeySearch[g.id] = e.target.value;
+      applyFilter(g.id);
     });
     panel.querySelector('.flagkey-region').addEventListener('change', (e) => {
-      flagKeyRegion[id] = e.target.value;
-      rerenderGroup(id);
+      flagKeyRegion[g.id] = e.target.value;
+      applyFilter(g.id);
     });
-  }
-  groups.forEach((g) => wireFlagKeyControls(g.id));
+  });
+
+  wireTabs((id) => { flagKeyTab = id; populate(id); });
+  populate(flagKeyTab);
 }
 
 // ============================================================================
@@ -1254,7 +1327,7 @@ function showPhrases() {
     <div class="grid">
       ${entries.map((e) => `
         <button class="card" data-country="${esc(e.country)}">
-          <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+          <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
           <span class="card-title">${esc(e.country)}</span>
           <span class="card-desc">${esc(e.language)}</span>
         </button>`).join('')}
@@ -1272,6 +1345,14 @@ function showPhrases() {
 // Web Speech API is unavailable). `fallback` is the romanized pronunciation,
 // used when no voice for `lang` is installed (see speak() above). Wired via
 // [data-speak] after render.
+// Foreign-language text tagged with its BCP-47 code, so a screen reader speaks
+// it with a matching voice instead of reading e.g. Japanese with an English
+// one. The tag wraps only the phrase -- not the adjacent pronunciation button,
+// whose label is English.
+function localText(text, lang) {
+  return lang ? `<span lang="${esc(lang)}">${esc(text)}</span>` : esc(text);
+}
+
 function speakBtn(text, lang, fallback) {
   if (!ttsAvailable() || !text) return '';
   return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" data-fallback="${esc(fallback || '')}" title="Hear it" aria-label="Hear pronunciation">🔊</button>`;
@@ -1280,19 +1361,19 @@ function speakBtn(text, lang, fallback) {
 // nativeCountry.pron mixes a romanized name with a bracketed simple phonetic
 // for non-Latin-script entries, e.g. "Zhōngguó (jong-gwoh)" — the bracketed
 // part alone is what we want a mismatched-voice TTS fallback to read.
-const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [, pron])[1];
+const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [null, pron])[1];
 
 function renderPhraseDetail(entry) {
   if (!entry) return showPhrases();
   const lang = entry.langCode || '';
   const native = entry.nativeCountry
-    ? `<div class="native-name">${esc(entry.nativeCountry.local)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
+    ? `<div class="native-name">${localText(entry.nativeCountry.local, lang)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
          <span class="say-pron">${esc(entry.nativeCountry.pron)}</span></div>`
     : '';
   app.innerHTML = `
     ${topNav({ id: 'backPhrasesTop', label: '← All countries' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.country)}</h1>
         <p class="screen-sub m-tight">${esc(entry.language)}</p>
@@ -1305,7 +1386,7 @@ function renderPhraseDetail(entry) {
       ${entry.phrases.map((p) => `
         <div class="phrase-row">
           <span class="ph-en">${esc(p.en)}</span>
-          <span class="ph-local">${esc(p.local)} ${speakBtn(p.local, lang, p.pron)}</span>
+          <span class="ph-local">${localText(p.local, lang)} ${speakBtn(p.local, lang, p.pron)}</span>
           <span class="ph-pron">${esc(p.pron)}</span>
         </div>`).join('')}
     </div>
@@ -1314,7 +1395,7 @@ function renderPhraseDetail(entry) {
     <div class="saying-list">
       ${entry.sayings.map((s) => `
         <div class="saying">
-          <div class="say-local">${esc(s.local)} ${speakBtn(s.local, lang, s.pron)} <span class="say-pron">${esc(s.pron)}</span></div>
+          <div class="say-local">${localText(s.local, lang)} ${speakBtn(s.local, lang, s.pron)} <span class="say-pron">${esc(s.pron)}</span></div>
           <div class="say-meaning">${esc(s.meaning)}</div>
         </div>`).join('')}
     </div>
@@ -1345,7 +1426,7 @@ function showMusic() {
     <div class="grid">
       ${entries.map((e) => `
         <button class="card" data-country="${esc(e.country)}">
-          <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+          <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
           <span class="card-title">${esc(e.country)}</span>
           <span class="card-desc">${e.songs.length} songs</span>
         </button>`).join('')}
@@ -1365,7 +1446,7 @@ function renderMusicDetail(entry) {
   app.innerHTML = `
     ${topNav({ id: 'backMusicTop', label: '← All countries' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.country)}</h1>
         <p class="screen-sub m-tight">Songs that represent ${esc(entry.country)}</p>
@@ -1449,7 +1530,7 @@ function showCrises() {
           <div class="grid">
             ${cardsFor(t.id).map((e) => `
               <button class="card" data-crisis="${esc(e.title)}">
-                <img class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
+                <img decoding="async" class="emoji-flag" alt="" src="${flagUrl(e.iso2, 'w80')}">
                 <span class="card-title">${esc(e.title)}</span>
                 <span class="card-desc">${esc(e.country)}</span>
               </button>`).join('')}
@@ -1475,13 +1556,13 @@ function showCrises() {
 function renderCrisisDetail(entry) {
   if (!entry) return showCrises();
   const links = (entry.links || []).filter((l) => l.url)
-    .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
+    .map((l) => `<a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
   // `summary` is an array of paragraphs (older single-string entries still work).
   const paragraphs = Array.isArray(entry.summary) ? entry.summary : [entry.summary];
   app.innerHTML = `
     ${topNav({ id: 'backCrisesTop', label: '← All crises' })}
     <div class="phrase-head">
-      <img class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(entry.iso2, 'w160')}">
       <div>
         <h1 class="screen-title m-0">${esc(entry.title)}</h1>
         <p class="screen-sub m-tight">${esc(entry.country)}${entry.region ? ' · ' + esc(entry.region) : ''}${entry.era ? ' · ' + esc(entry.era) : ''}</p>
@@ -1650,14 +1731,14 @@ function showProfile() {
     ${topNav()}
     <h1 class="screen-title">Profile 🧭</h1>
     <div class="form-block">
-      <h3>Display name</h3>
+      <h2>Display name</h2>
       <div class="btn-row">
         <input id="nameInput" class="btn name-input" value="${esc(p.name)}" maxlength="20">
         <button class="btn primary" id="saveName">Save</button>
       </div>
     </div>
     <div class="form-block">
-      <h3>Backup &amp; transfer</h3>
+      <h2>Backup &amp; transfer</h2>
       <p class="screen-sub mb-10">Progress lives only in this browser. Export it as a file to back it up or move it to another device / the web version.</p>
       <div class="btn-row">
         <button class="btn" id="exportBtn">⬇️ Export progress</button>
@@ -1666,9 +1747,20 @@ function showProfile() {
       </div>
     </div>
     <div class="form-block">
-      <h3>Danger zone</h3>
+      <h2>Privacy</h2>
+      <p class="screen-sub mb-10">Worldly uses Microsoft Clarity for anonymous usage analytics, which records how
+      screens are used. No names, quiz answers or saved progress are ever sent. Turning this off stops the analytics
+      script from loading at all.</p>
+      <label class="check">
+        <input type="checkbox" id="analyticsOptOut" ${analyticsOptedOut() ? 'checked' : ''}>
+        Don't send anonymous usage analytics
+      </label>
+      <p class="screen-sub mt-10 muted-note" id="dntNote"></p>
+    </div>
+    <div class="form-block">
+      <h2>Danger zone</h2>
       <p class="screen-sub mb-10">Reset all progress, stats and achievements. This cannot be undone.</p>
-      <button class="btn" id="resetBtn" class="btn danger">Reset all progress</button>
+      <button class="btn danger" id="resetBtn">Reset all progress</button>
     </div>
     <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
@@ -1701,6 +1793,21 @@ function showProfile() {
       toast('⚠️', "Couldn't import that file", e.message);
     }
   });
+  const optOutBox = app.querySelector('#analyticsOptOut');
+  const dntNote = app.querySelector('#dntNote');
+  // A browser-level signal already decides this; say so rather than letting the
+  // checkbox look like it is being ignored.
+  const browserSignal = analyticsOptedOut() && localStorage.getItem('worldly_analytics_optout') !== '1';
+  if (browserSignal) {
+    optOutBox.disabled = true;
+    dntNote.textContent = 'Your browser sends a Do Not Track / Global Privacy Control signal, so analytics are already off.';
+  }
+  optOutBox.addEventListener('change', () => {
+    setAnalyticsOptOut(optOutBox.checked);
+    if (optOutBox.checked) toast('🔕', 'Analytics off', 'Nothing further will be sent from this browser.');
+    else { loadAnalytics(); toast('📊', 'Analytics on', 'Thanks — it helps show which modes get used.'); }
+  });
+
   app.querySelector('#resetBtn').addEventListener('click', () => {
     if (confirm('Really reset ALL progress? This cannot be undone.')) {
       resetProfile();
@@ -1739,16 +1846,24 @@ function onKeydown(e) {
 async function boot() {
   const p = loadProfile();
   applyTheme(p.theme);
+  // Gated rather than loaded on import: Clarity records sessions, so it must
+  // not fetch at all when the visitor has signalled otherwise (GPC / DNT /
+  // the Profile opt-out).
+  loadAnalytics();
   document.getElementById('themeToggle').addEventListener('click', () => {
+    // Toggling is always an explicit choice, so it stops following the OS.
     const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     setTheme(next);
   });
-  const brand = document.getElementById('brand');
-  brand.addEventListener('click', showHome);
-  brand.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showHome(); }
-  });
+  // Track the OS while the player has no explicit preference of their own.
+  try {
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+      if (!getProfile().theme) applyTheme(null);
+    });
+  } catch { /* older engines: the initial resolution still applies */ }
+  // #brand is a real <button>, so Enter/Space activation is handled natively.
+  document.getElementById('brand').addEventListener('click', showHome);
   document.getElementById('helpBtn').addEventListener('click', showAbout);
   document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
   document.addEventListener('keydown', onKeydown);
@@ -1781,6 +1896,8 @@ async function boot() {
   }
   renderHUD();
   showHome();
+  // Every render from here on is a navigation, where moving focus is correct.
+  allowFocusTitle = true;
 
   // Offline resilience: cache app shell + seen flags (see sw.js). Feature-
   // detected and fire-and-forget — a failure must never affect the app.

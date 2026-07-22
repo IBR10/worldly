@@ -1,0 +1,24 @@
+# Keeps new files consistent with the existing hand-written style.
+# There is deliberately no Prettier config: the codebase is already internally
+# consistent, a formatter would find no defects, and running one across it
+# would rewrite ~5,000 lines and destroy `git blame` -- the exact damage
+# .gitattributes was added to prevent.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.bat]
+end_of_line = crlf
+
+[Makefile]
+indent_style = tab

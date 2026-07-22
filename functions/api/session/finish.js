@@ -1,26 +1,17 @@
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
-}
+import { json, readJson, readSession, deleteSession, sanitizeName, methodNotAllowed } from '../_shared.js';
 
-function sanitizeName(raw) {
-  const cleaned = String(raw ?? '').replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 20);
-  return cleaned || 'Explorer';
-}
-
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: 'invalid_json' }, 400);
-  }
-  const { sessionId } = body || {};
+  if (request.method !== 'POST') return methodNotAllowed();
+
+  const body = await readJson(request);
+  if (!body) return json({ error: 'invalid_json' }, 400);
+
+  const { sessionId } = body;
   if (!sessionId) return json({ error: 'invalid_body' }, 400);
 
-  const raw = await env.SESSIONS_KV.get(`session:${sessionId}`);
-  if (!raw) return json({ error: 'session_not_found' }, 410);
-  const session = JSON.parse(raw);
+  const session = await readSession(env, sessionId);
+  if (!session) return json({ error: 'session_not_found' }, 410);
 
   const allAnswered = session.questions.every((q) => session.answered[q.id]);
   if (!allAnswered) return json({ error: 'incomplete' }, 409);
@@ -31,7 +22,7 @@ export async function onRequestPost(context) {
   await env.DB.prepare('INSERT INTO leaderboard (name, mode, score, date) VALUES (?, ?, ?, ?)')
     .bind(name, session.mode, session.runningScore, date)
     .run();
-  await env.SESSIONS_KV.delete(`session:${sessionId}`);
+  await deleteSession(env, sessionId);
 
   const higherQuery = session.mode === 'daily'
     ? env.DB.prepare('SELECT COUNT(*) as n FROM leaderboard WHERE mode = ? AND date = ? AND score > ?').bind('daily', date, session.runningScore)

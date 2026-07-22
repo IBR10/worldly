@@ -147,7 +147,7 @@ export function answerMatches(input, answer) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
-    .replace(/[.,'’`()\-]/g, ' ')
+    .replace(/[.,'’`()-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
   if (!input) return false;

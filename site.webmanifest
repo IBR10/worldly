@@ -1,11 +1,16 @@
 {
+  "id": "/",
   "name": "Worldly — World Knowledge & Culture",
   "short_name": "Worldly",
   "description": "Learn the world through active recall: capitals, flags, maps, religions, languages, music and current events.",
+  "lang": "en",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0f1420",
-  "theme_color": "#0f1420",
+  "orientation": "any",
+  "categories": ["education", "games"],
+  "background_color": "#0f1525",
+  "theme_color": "#0f1525",
   "icons": [
     { "src": "assets/worldly-icon.png", "sizes": "256x256", "type": "image/png", "purpose": "any" }
   ]

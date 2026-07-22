@@ -1,25 +1,19 @@
 import { sessionQuestionXp } from '../../../js/quiz.js';
+import { json, readJson, readSession, updateSessionProgress, methodNotAllowed } from '../_shared.js';
 
-const SESSION_TTL_SECONDS = 3600;
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
-}
-
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: 'invalid_json' }, 400);
-  }
-  const { sessionId, questionId, value } = body || {};
-  if (!sessionId || !questionId) return json({ error: 'invalid_body' }, 400);
+  if (request.method !== 'POST') return methodNotAllowed();
 
-  const raw = await env.SESSIONS_KV.get(`session:${sessionId}`);
-  if (!raw) return json({ error: 'session_not_found' }, 404);
-  const session = JSON.parse(raw);
+  const body = await readJson(request);
+  if (!body) return json({ error: 'invalid_json' }, 400);
+
+  const { sessionId, questionId, value } = body;
+  if (!sessionId || !questionId) return json({ error: 'invalid_body' }, 400);
+  if (value != null && typeof value !== 'string') return json({ error: 'invalid_body' }, 400);
+
+  const session = await readSession(env, sessionId);
+  if (!session) return json({ error: 'session_not_found' }, 404);
 
   if (session.answered[questionId]) return json({ error: 'already_answered' }, 409);
   const q = session.questions.find((x) => x.id === questionId);
@@ -31,7 +25,11 @@ export async function onRequestPost(context) {
   session.runningScore += xpGained;
   session.answered[questionId] = true;
 
-  await env.SESSIONS_KV.put(`session:${sessionId}`, JSON.stringify(session), { expirationTtl: SESSION_TTL_SECONDS });
+  // One UPDATE per answer. This used to be a KV put on the same key for the
+  // whole run, which is capped at 1 write/second -- a player answering two
+  // questions inside a second got a 429, and the client turned that into a
+  // wrong answer plus a "Connection lost" toast.
+  await updateSessionProgress(env, session);
 
   return json({
     correct,

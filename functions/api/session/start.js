@@ -6,35 +6,24 @@ import caStates from '../../../data/canada_provinces.json';
 import historicFlags from '../../../data/historic_flags.json';
 import similarFlags from '../../../data/similar_flags.json';
 import religions from '../../../data/religions.json';
+import { json, readJson, withinRateLimit, createSession, methodNotAllowed } from '../_shared.js';
 
 const DATA = { countries, usStates, mxStates, caStates, historicFlags, similarFlags, religions };
 
-const RATE_LIMIT_WINDOW_SECONDS = 600;
-const RATE_LIMIT_MAX = 20;
-const SESSION_TTL_SECONDS = 3600;
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), { status, headers: { 'Content-Type': 'application/json' } });
-}
-
-export async function onRequestPost(context) {
+// Single catch-all handler: Pages treats an exported `onRequest` as covering
+// every method, so method dispatch happens here rather than by also exporting
+// onRequestPost (which `onRequest` would shadow).
+export async function onRequest(context) {
   const { request, env } = context;
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json({ error: 'invalid_json' }, 400);
-  }
-  const mode = body?.mode;
+  if (request.method !== 'POST') return methodNotAllowed();
+
+  const body = await readJson(request);
+  if (!body) return json({ error: 'invalid_json' }, 400);
+
+  const mode = body.mode;
   if (mode !== 'challenge' && mode !== 'daily') return json({ error: 'invalid_mode' }, 400);
 
-  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  const bucket = Math.floor(Date.now() / (RATE_LIMIT_WINDOW_SECONDS * 1000));
-  const rlKey = `ratelimit:${ip}:${bucket}`;
-  const countStr = await env.SESSIONS_KV.get(rlKey);
-  const count = countStr ? parseInt(countStr, 10) : 0;
-  if (count >= RATE_LIMIT_MAX) return json({ error: 'rate_limited' }, 429);
-  await env.SESSIONS_KV.put(rlKey, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS });
+  if (!(await withinRateLimit(env, 'session', request))) return json({ error: 'rate_limited' }, 429);
 
   const total = mode === 'daily' ? 10 : 15;
   let date = null;
@@ -58,15 +47,19 @@ export async function onRequestPost(context) {
   }
 
   const sessionId = crypto.randomUUID();
-  const stored = {
+  await createSession(env, {
+    id: sessionId,
     mode,
     date,
-    questions: full.map((q) => ({ id: q.id, answer: q.answer, funFact: q.funFact, history: q.history, symbolImg: q.symbolImg, learnMore: q.learnMore })),
+    // Answers and reveal copy stay server-side until the client has answered.
+    questions: full.map((q) => ({
+      id: q.id, answer: q.answer, funFact: q.funFact, history: q.history,
+      symbolImg: q.symbolImg, learnMore: q.learnMore,
+    })),
     answered: {},
     runStreak: 0,
     runningScore: 0,
-  };
-  await env.SESSIONS_KV.put(`session:${sessionId}`, JSON.stringify(stored), { expirationTtl: SESSION_TTL_SECONDS });
+  });
 
   const safeQuestions = full.map((q) => ({
     id: q.id, category: q.category, region: q.region, prompt: q.prompt,
