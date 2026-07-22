@@ -53,7 +53,21 @@
     <button id="themeToggle" class="icon-btn" title="Toggle light / dark" aria-label="Toggle theme">🌙</button>
   </header>
 
-  <main id="app" class="app"><!-- screens render here --></main>
+  <main id="app" class="app">
+    <!-- screens render here; main.js replaces this whole subtree on boot.
+         Without JS the page was previously blank — no explanation, no content,
+         no way to tell a broken deploy from a deliberate requirement. -->
+    <noscript>
+      <h1>Worldly needs JavaScript</h1>
+      <p>Worldly is a world-knowledge and cultural-awareness learning game. It quizzes you on
+        capitals, flags, languages, religions, maps, music, phrases and current events, and uses
+        spaced repetition so the things you get wrong come back until they stick.</p>
+      <p>The whole game runs in your browser — there is no account and nothing to install — which
+        is also why it cannot run with JavaScript turned off. Enable JavaScript for this site and
+        reload to play.</p>
+      <p>Source and issue tracker: <a href="https://github.com/IBR10/worldly">github.com/IBR10/worldly</a></p>
+    </noscript>
+  </main>
 
   <div id="toasts" class="toasts" aria-live="polite"></div>
 

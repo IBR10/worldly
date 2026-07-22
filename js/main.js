@@ -274,12 +274,16 @@ const MAP_CARDS = [
 function homeCard(attr, m) {
   const icon = m.flagIso
     ? `<img decoding="async" class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
-    : `<span class="emoji">${m.emoji}</span>`;
+    : `<span class="emoji">${esc(m.emoji)}</span>`;
+  // Every field is escaped even though the mode list is a static constant
+  // today. The point isn't the current data — it's that the day someone makes
+  // card titles data-driven, the unescaped version becomes an XSS, and nobody
+  // reviewing *that* change would think to look in here.
   return `
-    <button class="card" ${m.attr || attr}="${m.key}">
+    <button class="card" ${m.attr || attr}="${esc(m.key)}">
       ${icon}
-      <span class="card-title">${m.title}</span>
-      <span class="card-desc">${m.desc}</span>
+      <span class="card-title">${esc(m.title)}</span>
+      <span class="card-desc">${esc(m.desc)}</span>
     </button>`;
 }
 
