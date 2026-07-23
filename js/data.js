@@ -37,14 +37,14 @@ async function loadJSON(path) {
 export async function loadData() {
   if (DATA.loaded) return DATA;
   const [countries, usStates, mxStates, caStates, historicFlags, similarFlags, religions, achievements] = await Promise.all([
-    loadJSON('data/countries.json'),
-    loadJSON('data/us_states.json'),
-    loadJSON('data/mexico_states.json'),
-    loadJSON('data/canada_provinces.json'),
-    loadJSON('data/historic_flags.json'),
-    loadJSON('data/similar_flags.json'),
-    loadJSON('data/religions.json'),
-    loadJSON('data/achievements.json'),
+    loadJSON('/data/countries.json'),
+    loadJSON('/data/us_states.json'),
+    loadJSON('/data/mexico_states.json'),
+    loadJSON('/data/canada_provinces.json'),
+    loadJSON('/data/historic_flags.json'),
+    loadJSON('/data/similar_flags.json'),
+    loadJSON('/data/religions.json'),
+    loadJSON('/data/achievements.json'),
   ]);
   DATA.countries = countries;
   DATA.usStates = usStates;
@@ -61,9 +61,9 @@ export async function loadData() {
 // On-demand datasets: name -> the promise that resolves once it has landed.
 const LAZY = {};
 const LAZY_FILES = {
-  phrases: 'data/phrases.json',
-  music: 'data/music.json',
-  crises: 'data/crises.json',
+  phrases: '/data/phrases.json',
+  music: '/data/music.json',
+  crises: '/data/crises.json',
 };
 
 /**
@@ -137,7 +137,7 @@ const MAPS = {}; // name ('world'|'usa'|'mexico'|'canada') -> { svgText, regions
 export function loadMap(name) {
   if (MAPS[name]) return MAPS[name];
   MAPS[name] = (async () => {
-    const res = await fetch(`assets/maps/${name}.svg`);
+    const res = await fetch(`/assets/maps/${name}.svg`);
     if (!res.ok) throw new Error(`Failed to load map ${name}: ${res.status}`);
     const svgText = await res.text();
     return { svgText, regions: parseSvgRegions(svgText) };

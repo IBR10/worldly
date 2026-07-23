@@ -163,7 +163,10 @@ h1, h2, h3 { line-height: 1.2; }
 .screen-title:focus, .q-prompt:focus { outline: none; }
 
 /* ---- buttons ---- */
-.btn { font-family: inherit; font-size: 1rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 11px 16px; cursor: pointer; transition: var(--transition); }
+/* display/text-decoration are no-ops for <button> but let an <a class="btn">
+   (the 404 and error screens) render identically instead of as an underlined
+   inline link. */
+.btn { font-family: inherit; font-size: 1rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 11px 16px; cursor: pointer; transition: var(--transition); display: inline-block; text-decoration: none; text-align: center; }
 .btn:hover { background: var(--surface-2); transform: translateY(-1px); }
 .btn.primary { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
 .btn.primary:hover { filter: brightness(1.08); }
@@ -212,6 +215,9 @@ h1, h2, h3 { line-height: 1.2; }
 .pill.fire { color: var(--bad); }
 
 .question-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+/* Centred card body — used by the client-rendered 404 screen. */
+.center-block { text-align: center; }
+.center-block .btn-row { justify-content: center; }
 .q-cat { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
 .q-prompt { font-size: 1.5rem; font-weight: 700; margin: 8px 0 18px; }
 /* aspect-ratio + contain reserves the box before the image arrives, so a flag

@@ -31,13 +31,17 @@
        always uses CORS mode, so without it the preload and the later fetch()
        are different requests and the file is downloaded twice (verified). -->
   <link rel="preconnect" href="https://flagcdn.com" />
-  <link rel="preload" href="data/countries.json" as="fetch" crossorigin />
+  <link rel="preload" href="/data/countries.json" as="fetch" crossorigin />
 
-  <link rel="icon" href="assets/worldly.ico" sizes="any" />
-  <link rel="icon" type="image/png" href="assets/worldly-icon.png" />
-  <link rel="apple-touch-icon" href="assets/worldly-icon.png" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Root-absolute so they resolve identically on a deep-linked, multi-segment
+       route (e.g. /crises/sudan). A relative href would resolve against the
+       route's path and 404. `<base href="/">` would fix it in one line, but the
+       CSP sets `base-uri 'none'`, so absolute paths it is. -->
+  <link rel="icon" href="/assets/worldly.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/assets/worldly-icon.png" />
+  <link rel="apple-touch-icon" href="/assets/worldly-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#app">Skip to main content</a>
@@ -77,6 +81,6 @@
       · <a class="footer-link" href="https://github.com/IBR10/worldly" target="_blank" rel="noopener">GitHub</a></span>
   </footer>
 
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

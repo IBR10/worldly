@@ -4,9 +4,11 @@ import { defineConfig, devices } from '@playwright/test';
 // routing, every screen and the quiz session, and none of it is exercised by
 // tests/*.test.mjs (those cover the pure engines only).
 //
-// Served by Python's http.server, matching `npm start` and the README. That
-// means /api/* does not exist here, so the leaderboard spec asserts the error
-// path; the success path is verified against the real deployment.
+// Served by scripts/spa-serve.py, which mirrors Cloudflare Pages: real files are
+// served directly and any other path falls back to index.html (200) so the
+// History-API router can handle deep links and reloads. /api/* still 404s here
+// (those are Pages Functions in production), so the leaderboard spec asserts the
+// error path; the success path is verified against the real deployment.
 
 const PORT = 8123;
 
@@ -28,7 +30,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: `python3 -m http.server ${PORT}`,
+    command: `python3 scripts/spa-serve.py ${PORT}`,
     url: `http://127.0.0.1:${PORT}/index.html`,
     reuseExistingServer: !process.env.CI,
     stdout: 'ignore',

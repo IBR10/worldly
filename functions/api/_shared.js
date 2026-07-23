@@ -120,9 +120,9 @@ export async function deleteSession(env, id) {
 }
 
 /**
- * Reject non-POST verbs with JSON instead of falling through to the SPA's
- * 404.html, which previously answered `GET /api/session/start` with an HTML
- * page and a 404 status.
+ * Reject non-POST verbs with JSON. Without this the request would fall through
+ * to static-asset routing and be answered with the SPA shell (an HTML 200) —
+ * the API surface should always speak JSON, whatever the verb.
  */
 export function methodNotAllowed(allow = 'POST') {
   return json({ error: 'method_not_allowed' }, 405, { Allow: allow });

@@ -28,7 +28,7 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 72 tests over the quiz, SRS and map engines
+npm test        # 80 Node tests over the quiz, SRS, map and router logic
 ```
 
 ## What's inside
@@ -96,13 +96,25 @@ Worldly/
 │   ├── maps.js             # pure question engine for click-the-map modes
 │   ├── mapview.js          # the one DOM-coupled map widget (pan/zoom/hit-test)
 │   ├── achievements.js     # achievement evaluation against the profile
-│   └── main.js             # controller: routing, rendering, quiz session
+│   ├── router.js           # tiny History-API router (screen-agnostic; matchPath is unit-tested)
+│   └── main.js             # controller: route table, rendering, quiz session
 ├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
 ├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, CC BY / CC BY-NC)
-├── tests/*.test.mjs        # 48 Node tests for quiz.js, srs.js, maps.js
+├── tests/*.test.mjs        # 80 Node tests for quiz.js, srs.js, maps.js, router.js
+├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
 ├── _headers                # Cloudflare Pages security + caching headers
-└── 404.html, robots.txt, site.webmanifest, LICENSE
+└── robots.txt, sitemap.xml, site.webmanifest, LICENSE
 ```
+
+**Routing.** Every screen has a real URL (`/`, `/flags`, `/leaderboard`,
+`/quiz/:mode`, `/map/:mode`, `/crises/:slug`, …) via the History API, so Back /
+Forward, bookmarks and deep links work. On Cloudflare Pages this needs no config
+beyond *not* shipping a top-level `404.html`: Pages then serves the app shell for
+any unmatched path (SPA fallback), with Functions (`/api/*`) and real static
+assets still matched first. Unknown paths render an in-app 404 tagged `noindex`.
+Because asset URLs must resolve from multi-segment routes, all asset/`fetch`
+paths are root-absolute (a `<base>` tag would collide with the CSP's
+`base-uri 'none'`).
 
 **Why vanilla / no-build?** Longevity and portability — nothing to `npm
 install`, no transpiler to age out, deploys anywhere static. The separation of

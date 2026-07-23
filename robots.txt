@@ -3,3 +3,5 @@ Allow: /
 Disallow: /tests/
 Disallow: /scripts/
 Disallow: /docs/
+
+Sitemap: https://playworldly.pages.dev/sitemap.xml

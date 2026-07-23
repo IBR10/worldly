@@ -13,6 +13,7 @@ import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.
 import { createMapView } from './mapview.js';
 import { pickWeighted, weakCount } from './srs.js';
 import { checkAchievements, achievementStatus, levelTitle } from './achievements.js';
+import { createRouter } from './router.js';
 
 // Combined category label lookup (quiz modes + map modes) for HUD/stats.
 const catLabel = (k) => MODES[k]?.label || MAP_MODES[k]?.label || k;
@@ -33,6 +34,22 @@ let S = null;
 // user has already navigated away from.
 let sessionGen = 0;
 function leaveSession() { S = null; sessionGen += 1; }
+
+// ---- routing -----------------------------------------------------------------
+// The router owns the URL; every screen below is just a renderer it calls. The
+// instance is built in boot() (once every render function is defined); until
+// then navigate() is a no-op, which is safe because nothing can fire a handler
+// before the first render. Route table and starters live near boot().
+let router = null;
+function navigate(to, opts) { if (router) return router.navigate(to, opts); }
+
+// A URL-safe slug for a content entry (crisis title, phrase/music country).
+// Deterministic and reversible-enough: the detail routes look an entry up by
+// re-slugifying every candidate and comparing, so we never store the slug.
+function slugify(s) {
+  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 // Which home tab is selected (persists while navigating in and out of home).
 let homeTab = 'play';
 // Which crises period (current vs. historical) and coverage tab are selected
@@ -117,7 +134,7 @@ function topNav(back = null) {
   </div>`;
 }
 function wireNav() {
-  app.querySelectorAll('[data-topnav="home"]').forEach((b) => b.addEventListener('click', showHome));
+  app.querySelectorAll('[data-topnav="home"]').forEach((b) => b.addEventListener('click', () => navigate('/')));
   focusTitle();
 }
 
@@ -204,7 +221,7 @@ function renderHUD() {
   // Widths are set via CSSOM (not inline style attributes) so the CSP can stay
   // free of style-src 'unsafe-inline'.
   hud.querySelector('.xpbar > span').style.width = lp.pct + '%';
-  hud.querySelector('#hudName').addEventListener('click', showProfile);
+  hud.querySelector('#hudName').addEventListener('click', () => navigate('/profile'));
 }
 
 // ---- theme -------------------------------------------------------------------
@@ -350,28 +367,88 @@ function showHome() {
   const gotIt = app.querySelector('#onboardGotIt');
   if (gotIt) {
     gotIt.addEventListener('click', () => { setOnboarded(); app.querySelector('.callout').remove(); });
-    app.querySelector('#onboardMore').addEventListener('click', () => { setOnboarded(); showAbout(); });
+    app.querySelector('#onboardMore').addEventListener('click', () => { setOnboarded(); navigate('/about'); });
   }
 
+  // Every card is a link now: clicking it changes the URL, and the route table
+  // (see boot) turns that URL back into this same screen. Quiz/map cards carry a
+  // mode key; the Play/Explore cards carry a data-go key mapped by GO_ROUTES.
   app.querySelectorAll('[data-mode]').forEach((b) =>
-    b.addEventListener('click', () => startQuiz({ title: MODES[b.dataset.mode].label, modes: [b.dataset.mode], total: 10 })));
+    b.addEventListener('click', () => navigate('/quiz/' + b.dataset.mode)));
   app.querySelectorAll('[data-map]').forEach((b) =>
-    b.addEventListener('click', () => startMapQuiz({ title: MAP_MODES[b.dataset.map].label, mode: b.dataset.map, total: 10 })));
-  app.querySelector('[data-go="map_regions"]').addEventListener('click', showMapRegions);
-  app.querySelector('[data-go="mixed"]').addEventListener('click', () => startQuiz({ title: 'Mixed Quiz', modes: ALL_MODES, total: 12 }));
-  app.querySelector('[data-go="challenge"]').addEventListener('click', () => startQuiz({ title: 'Challenge Mode', modes: ALL_MODES, total: 15, challenge: true }));
-  app.querySelector('[data-go="daily"]').addEventListener('click', startDaily);
-  app.querySelector('[data-go="religions"]').addEventListener('click', showReligions);
-  app.querySelector('[data-go="review"]').addEventListener('click', startReview);
-  app.querySelector('[data-go="phrases"]').addEventListener('click', showPhrases);
-  app.querySelector('[data-go="flagkey"]').addEventListener('click', showFlagKey);
-  app.querySelector('[data-go="music"]').addEventListener('click', showMusic);
-  app.querySelector('[data-go="crises"]').addEventListener('click', showCrises);
-  app.querySelector('[data-go="custom"]').addEventListener('click', showCustom);
-  app.querySelector('[data-go="stats"]').addEventListener('click', showStats);
-  app.querySelector('[data-go="achievements"]').addEventListener('click', showAchievements);
-  app.querySelector('[data-go="profile"]').addEventListener('click', showProfile);
-  app.querySelector('[data-go="about"]').addEventListener('click', showAbout);
+    b.addEventListener('click', () => navigate('/map/' + b.dataset.map)));
+  app.querySelectorAll('[data-go]').forEach((b) =>
+    b.addEventListener('click', () => navigate(GO_ROUTES[b.dataset.go] || '/')));
+}
+
+// Home Play/Explore cards (and the map-regions chooser) use short data-go keys;
+// this is the one place they map to real URLs.
+const GO_ROUTES = {
+  mixed: '/quiz/mixed', challenge: '/quiz/challenge', daily: '/quiz/daily', review: '/quiz/review',
+  religions: '/religions', map_regions: '/regions',
+  phrases: '/phrases', flagkey: '/flags', music: '/music', crises: '/crises',
+  custom: '/custom', stats: '/stats', achievements: '/achievements', profile: '/profile', about: '/about',
+};
+
+// Start a quiz from a `/quiz/:mode` URL. Both a Home card and a direct deep link
+// land here, so the key→options mapping lives in exactly one place.
+function startQuizByKey(mode) {
+  if (mode === 'mixed') return startQuiz({ title: 'Mixed Quiz', modes: ALL_MODES, total: 12 });
+  if (mode === 'challenge') return startQuiz({ title: 'Challenge Mode', modes: ALL_MODES, total: 15, challenge: true });
+  if (mode === 'daily') return startDaily();
+  if (mode === 'review') return startReview();
+  if (MODES[mode]) return startQuiz({ title: MODES[mode].label, modes: [mode], total: 10 });
+  return navigate('/404', { replace: true });
+}
+
+// Start a click-the-map quiz from a `/map/:mode` URL, or open the region chooser
+// at /map/regions (kept as an alias of /regions).
+function startMapByKey(mode) {
+  if (mode === 'regions') return showMapRegions();
+  if (MAP_MODES[mode]) return startMapQuiz({ title: MAP_MODES[mode].label, mode, total: 10 });
+  return navigate('/404', { replace: true });
+}
+
+// Client-rendered not-found. Without SSR the server returns the app shell at 200
+// for any unmatched path (Cloudflare SPA fallback), so the router tags this view
+// noindex (see router.js) rather than pretending it is a real 404 response.
+function showNotFound() {
+  leaveSession();
+  clearTimer();
+  app.innerHTML = `
+    ${topNav()}
+    <div class="question-card center-block">
+      <div class="score">🌍 404</div>
+      <p class="screen-sub">That page fell off the map.</p>
+      <div class="btn-row mt-18"><a class="btn primary" href="/">← Back to Worldly</a></div>
+    </div>`;
+  wireNav();
+}
+
+// Detail routes (/phrases/:slug, /music/:slug, /crises/:slug). Each ensures its
+// lazy dataset is loaded, finds the entry by re-slugifying its natural key, and
+// renders the existing detail view — or falls back to the list (replace, so the
+// dud slug does not linger in history) when a slug matches nothing.
+async function routePhraseDetail(slug) {
+  if (!(await ensureDataset('phrases'))) return;
+  const entry = (getData().phrases || []).find((e) => slugify(e.country) === slug);
+  if (!entry) return navigate('/phrases', { replace: true });
+  document.title = `${entry.country} phrases — Worldly`;
+  renderPhraseDetail(entry);
+}
+async function routeMusicDetail(slug) {
+  if (!(await ensureDataset('music'))) return;
+  const entry = (getData().music || []).find((e) => slugify(e.country) === slug);
+  if (!entry) return navigate('/music', { replace: true });
+  document.title = `${entry.country} music — Worldly`;
+  renderMusicDetail(entry);
+}
+async function routeCrisisDetail(slug) {
+  if (!(await ensureDataset('crises'))) return;
+  const entry = (getData().crises || []).find((e) => slugify(e.title) === slug);
+  if (!entry) return navigate('/crises', { replace: true });
+  document.title = `${entry.title} — Worldly`;
+  renderCrisisDetail(entry);
 }
 
 // ============================================================================
@@ -425,7 +502,7 @@ function showAbout() {
 
     <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
 }
 
 // ============================================================================
@@ -559,7 +636,7 @@ function showReligions() {
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#startRel').addEventListener('click', () => {
     const val = app.querySelector('#faithSel').value;
     startQuiz({
@@ -602,7 +679,7 @@ function showMapRegions() {
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#startRegion').addEventListener('click', () => {
     const continent = app.querySelector('#contSel').value;
     const mode = app.querySelector('#modeSel').value;
@@ -631,7 +708,7 @@ async function startMapQuiz(opts) {
   } catch (err) {
     if (myGen !== sessionGen) return; // player already navigated away
     toast('🗺️', "Couldn't load the map", err.message);
-    return showHome();
+    return navigate('/', { replace: true });
   }
   if (myGen !== sessionGen) return; // player already navigated away
 
@@ -639,7 +716,7 @@ async function startMapQuiz(opts) {
   const pool = buildMapPool(data, { [svgName]: map.regions }, { modes: [mode], continent });
   if (pool.length === 0) {
     toast('🤷', 'Nothing to quiz', 'That map has no questions yet.');
-    return showHome();
+    return navigate('/', { replace: true });
   }
 
   // Zoom the map view to the chosen area's countries (a broad continent like
@@ -714,7 +791,7 @@ function renderMapQuestion(q) {
     </div>`;
 
   syncQuizProgress();
-  app.querySelector('#quitBtn').addEventListener('click', showHome);
+  app.querySelector('#quitBtn').addEventListener('click', () => navigate('/'));
   wireFlagFallback();
   S.mapView = createMapView({ svgText: S.svgText, onPick: (id) => mapAnswer(id), focusIds: S.focusIds });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
@@ -773,7 +850,7 @@ function renderReverseMapQuestion(q) {
       <div id="feedback" role="status"></div>
     </div>`;
   syncQuizProgress();
-  app.querySelector('#quitBtn').addEventListener('click', showHome);
+  app.querySelector('#quitBtn').addEventListener('click', () => navigate('/'));
   if (q.flagChoices) wireFlagFallback('.choice-flag img');
   S.mapView = createMapView({ svgText: S.svgText, highlightId: q.highlightId, interactive: false, focusIds: S.focusIds });
   app.querySelector('#mapMount').appendChild(S.mapView.el);
@@ -816,7 +893,7 @@ function renderMcqQuestion(q) {
     </div>`;
 
   syncQuizProgress();
-  app.querySelector('#quitBtn').addEventListener('click', showHome);
+  app.querySelector('#quitBtn').addEventListener('click', () => navigate('/'));
   app.querySelectorAll('.choice').forEach((b) => b.addEventListener('click', () => answer(b.dataset.val)));
   wireFlagFallback();
 
@@ -879,7 +956,7 @@ async function ensureDataset(name) {
   } catch (err) {
     if (myGen !== sessionGen) return false;
     toast('⚠️', "Couldn't load that section", err.message);
-    showHome();
+    navigate('/', { replace: true });
     return false;
   }
   return myGen === sessionGen;
@@ -989,7 +1066,7 @@ function renderTypedQuestion(q) {
       <div id="feedback" role="status"></div>
     </div>`;
   syncQuizProgress();
-  app.querySelector('#quitBtn').addEventListener('click', showHome);
+  app.querySelector('#quitBtn').addEventListener('click', () => navigate('/'));
   wireFlagFallback();
   const form = app.querySelector('#typeForm');
   const inp = app.querySelector('#typeInput');
@@ -1107,9 +1184,9 @@ function finishQuiz() {
 
   wireNav();
   document.getElementById('againBtn').addEventListener('click', () => (wasMap ? startMapQuiz(lastOpts) : startQuiz(lastOpts)));
-  document.getElementById('homeBtn').addEventListener('click', showHome);
+  document.getElementById('homeBtn').addEventListener('click', () => navigate('/'));
   const rb = document.getElementById('reviewBtn');
-  if (rb) rb.addEventListener('click', startReview);
+  if (rb) rb.addEventListener('click', () => navigate('/quiz/review'));
   renderHUD();
 
   if (wasRemote) submitToGlobalLeaderboard(sessionId);
@@ -1216,7 +1293,7 @@ function showCustom() {
     app.querySelectorAll('#inputSeg button').forEach((x) => x.classList.remove('active'));
     b.classList.add('active'); input = b.dataset.i;
   }));
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#startCustom').addEventListener('click', () => {
     const modes = [...app.querySelectorAll('#modeChecks input:checked')].map((i) => i.value);
     const conts = [...app.querySelectorAll('#contChecks input:checked')].map((i) => i.value);
@@ -1291,7 +1368,7 @@ function showFlagKey() {
     </div>`;
 
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
 
   const panelOf = (id) => app.querySelector(`.tab-panel[data-panel="${id}"]`);
 
@@ -1363,9 +1440,9 @@ async function showPhrases() {
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelectorAll('[data-country]').forEach((b) =>
-    b.addEventListener('click', () => renderPhraseDetail(entries.find((e) => e.country === b.dataset.country))));
+    b.addEventListener('click', () => navigate('/phrases/' + slugify(b.dataset.country))));
 }
 
 // A small 🔊 button that speaks `text` in the entry's language (hidden when the
@@ -1391,7 +1468,7 @@ function speakBtn(text, lang, fallback) {
 const phoneticOf = (pron) => (/\(([^)]+)\)/.exec(pron || '') || [null, pron])[1];
 
 function renderPhraseDetail(entry) {
-  if (!entry) return showPhrases();
+  if (!entry) return navigate('/phrases', { replace: true });
   const lang = entry.langCode || '';
   const native = entry.nativeCountry
     ? `<div class="native-name">${localText(entry.nativeCountry.local, lang)} ${speakBtn(entry.nativeCountry.local, lang, phoneticOf(entry.nativeCountry.pron))}
@@ -1433,9 +1510,9 @@ function renderPhraseDetail(entry) {
     </div>`;
   wireNav();
   const bpt = app.querySelector('#backPhrasesTop');
-  if (bpt) bpt.addEventListener('click', showPhrases);
-  app.querySelector('#backPhrases').addEventListener('click', showPhrases);
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  if (bpt) bpt.addEventListener('click', () => navigate('/phrases'));
+  app.querySelector('#backPhrases').addEventListener('click', () => navigate('/phrases'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelectorAll('[data-speak]').forEach((b) =>
     b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang, b.dataset.fallback)));
 }
@@ -1463,13 +1540,13 @@ async function showMusic() {
       <button class="btn ghost" id="backHome">← Back</button>
     </div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelectorAll('[data-country]').forEach((b) =>
-    b.addEventListener('click', () => renderMusicDetail(entries.find((e) => e.country === b.dataset.country))));
+    b.addEventListener('click', () => navigate('/music/' + slugify(b.dataset.country))));
 }
 
 function renderMusicDetail(entry) {
-  if (!entry) return showMusic();
+  if (!entry) return navigate('/music', { replace: true });
   const first = entry.songs[0];
   app.innerHTML = `
     ${topNav({ id: 'backMusicTop', label: '← All countries' })}
@@ -1504,9 +1581,9 @@ function renderMusicDetail(entry) {
     </div>`;
   wireNav();
   const bmt = app.querySelector('#backMusicTop');
-  if (bmt) bmt.addEventListener('click', showMusic);
-  app.querySelector('#backMusic').addEventListener('click', showMusic);
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  if (bmt) bmt.addEventListener('click', () => navigate('/music'));
+  app.querySelector('#backMusic').addEventListener('click', () => navigate('/music'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   const player = app.querySelector('#ytPlayer');
   app.querySelectorAll('.track').forEach((b) => b.addEventListener('click', () => {
     app.querySelectorAll('.track').forEach((x) => x.classList.remove('active'));
@@ -1579,13 +1656,13 @@ async function showCrises() {
     app.querySelector(`#period-${id}`)?.focus();
   }, app.querySelector('#periodTabs'));
   wireTabs((id) => { crisesTab = id; }, app.querySelector('#tierSection'));
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelectorAll('[data-crisis]').forEach((b) =>
-    b.addEventListener('click', () => renderCrisisDetail(entries.find((e) => e.title === b.dataset.crisis))));
+    b.addEventListener('click', () => navigate('/crises/' + slugify(b.dataset.crisis))));
 }
 
 function renderCrisisDetail(entry) {
-  if (!entry) return showCrises();
+  if (!entry) return navigate('/crises', { replace: true });
   const links = (entry.links || []).filter((l) => l.url)
     .map((l) => `<a href="${safeUrl(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
   // `summary` is an array of paragraphs (older single-string entries still work).
@@ -1613,9 +1690,9 @@ function renderCrisisDetail(entry) {
     </div>`;
   wireNav();
   const bct = app.querySelector('#backCrisesTop');
-  if (bct) bct.addEventListener('click', showCrises);
-  app.querySelector('#backCrises').addEventListener('click', showCrises);
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  if (bct) bct.addEventListener('click', () => navigate('/crises'));
+  app.querySelector('#backCrises').addEventListener('click', () => navigate('/crises'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
 }
 
 // ============================================================================
@@ -1664,9 +1741,9 @@ function showStats() {
     </div>`;
   app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   const rw = app.querySelector('#reviewW');
-  if (missed.length) rw.addEventListener('click', startReview);
+  if (missed.length) rw.addEventListener('click', () => navigate('/quiz/review'));
 }
 
 // ============================================================================
@@ -1692,7 +1769,7 @@ function showAchievements() {
     <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
   app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
 }
 
 // ============================================================================
@@ -1730,7 +1807,7 @@ function showLeaderboard() {
     <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
   wireTabs((id) => { leaderboardTab = id; });
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   tiers.forEach((t) => loadGlobalLeaderboard(t.id));
 }
 
@@ -1795,7 +1872,7 @@ function showProfile() {
     </div>
     <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
   wireNav();
-  app.querySelector('#backHome').addEventListener('click', showHome);
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#saveName').addEventListener('click', () => {
     setName(app.querySelector('#nameInput').value);
     toast('✅', 'Name saved', getProfile().name);
@@ -1844,7 +1921,7 @@ function showProfile() {
       resetProfile();
       renderHUD();
       toast('🧹', 'Progress reset', 'A fresh start!');
-      showHome();
+      navigate('/');
     }
   });
 }
@@ -1894,9 +1971,9 @@ async function boot() {
     });
   } catch { /* older engines: the initial resolution still applies */ }
   // #brand is a real <button>, so Enter/Space activation is handled natively.
-  document.getElementById('brand').addEventListener('click', showHome);
-  document.getElementById('helpBtn').addEventListener('click', showAbout);
-  document.getElementById('leaderboardBtn').addEventListener('click', showLeaderboard);
+  document.getElementById('brand').addEventListener('click', () => navigate('/'));
+  document.getElementById('helpBtn').addEventListener('click', () => navigate('/about'));
+  document.getElementById('leaderboardBtn').addEventListener('click', () => navigate('/leaderboard'));
   document.addEventListener('keydown', onKeydown);
 
   // Surface storage failures once per session instead of losing progress silently.
@@ -1926,14 +2003,52 @@ async function boot() {
     return;
   }
   renderHUD();
-  showHome();
-  // Every render from here on is a navigation, where moving focus is correct.
+
+  // The route table: URL → screen. Titles are set here for the static screens
+  // (detail routes set their own from the entry). Order matters only in that the
+  // first match wins; the patterns here are mutually exclusive, so it doesn't.
+  router = createRouter({
+    routes: [
+      { path: '/', title: 'Worldly — World Knowledge & Culture', render: showHome },
+      { path: '/about', title: 'About — Worldly', render: showAbout },
+      { path: '/flags', title: 'Flag Key — Worldly', render: showFlagKey },
+      { path: '/phrases', title: 'Phrases — Worldly', render: showPhrases },
+      { path: '/phrases/:slug', render: (p) => routePhraseDetail(p.slug) },
+      { path: '/music', title: 'Music — Worldly', render: showMusic },
+      { path: '/music/:slug', render: (p) => routeMusicDetail(p.slug) },
+      { path: '/crises', title: 'Crises & Events — Worldly', render: showCrises },
+      { path: '/crises/:slug', render: (p) => routeCrisisDetail(p.slug) },
+      { path: '/leaderboard', title: 'Leaderboard — Worldly', render: showLeaderboard },
+      { path: '/stats', title: 'Statistics — Worldly', render: showStats },
+      { path: '/achievements', title: 'Achievements — Worldly', render: showAchievements },
+      { path: '/profile', title: 'Profile — Worldly', render: showProfile },
+      { path: '/custom', title: 'Custom Study — Worldly', render: showCustom },
+      { path: '/religions', title: 'World Religions — Worldly', render: showReligions },
+      { path: '/regions', title: 'Regions & Continents — Worldly', render: showMapRegions },
+      { path: '/quiz/:mode', render: (p) => startQuizByKey(p.mode) },
+      { path: '/map/:mode', render: (p) => startMapByKey(p.mode) },
+    ],
+    fallback: { title: 'Page not found — Worldly', noindex: true, render: showNotFound },
+    onError: (err) => {
+      // A screen renderer throwing must not leave the app blank.
+      app.innerHTML = `<div class="question-card"><h2>Something went wrong</h2>
+        <p class="screen-sub">${esc(err && err.message || String(err))}</p>
+        <div class="btn-row mt-18"><a class="btn primary" href="/">← Home</a></div></div>`;
+    },
+  });
+
+  // start() renders whatever URL the app was opened on (Cloudflare's SPA fallback
+  // serves the shell for any deep link), so `/leaderboard` opens the leaderboard,
+  // not the home screen. The initial render must not steal focus into the <h1>
+  // (that pushed the header past the content — see focusTitle), so enable that
+  // only once the first render has completed.
+  await router.start();
   allowFocusTitle = true;
 
   // Offline resilience: cache app shell + seen flags (see sw.js). Feature-
   // detected and fire-and-forget — a failure must never affect the app.
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    navigator.serviceWorker.register('sw.js').catch(() => { /* ignore */ });
+    navigator.serviceWorker.register('/sw.js').catch(() => { /* ignore */ });
   }
 }
 
