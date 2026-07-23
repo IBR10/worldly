@@ -339,6 +339,16 @@ h1, h2, h3 { line-height: 1.2; }
   .brand-name { display: none; }
   .bar-row { grid-template-columns: 96px 1fr 40px; }
   .hud .chip.hide-sm { display: none; }
+
+  /* At 390px the bar spent ~100px on padding and gaps alone (18px × 2 padding,
+     16px × 4 gaps) before the three 44px icon buttons, which cannot shrink —
+     they are the WCAG 2.5.8 touch-target floor. The hud absorbed the deficit
+     and pushed the last button 11px past the viewport, giving every screen on
+     the majority platform a horizontal scrollbar. Reclaiming spacing and
+     narrowing the decorative XP bar (a progress indicator, not a control)
+     clears it down to 320px without hiding a control or shrinking a target. */
+  .topbar { gap: 10px; padding: 12px 12px; }
+  .xpbar { width: 56px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
