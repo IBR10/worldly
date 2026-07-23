@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static top-level routes only. Per-item content pages (/crises/:slug,
+     /phrases/:slug, /music/:slug) are intentionally omitted: without
+     server-side rendering every one of them returns the same client-rendered
+     shell, so listing them would advertise ~240 URLs that all look identical to
+     a crawler. Revisit this once (and if) the content routes are pre-rendered. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://playworldly.pages.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://playworldly.pages.dev/flags</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/phrases</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/music</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playworldly.pages.dev/crises</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/leaderboard</loc><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playworldly.pages.dev/about</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+</urlset>
