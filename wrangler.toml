@@ -6,8 +6,8 @@ compatibility_flags = ["nodejs_compat"]
 # Sessions and rate-limit counters used to live in KV (SESSIONS_KV). They moved
 # to D1 in migrations/0003 because KV Free allows only 1,000 writes/day and one
 # write per second per key, which a single Challenge run could exhaust or trip.
-# The namespace can be deleted in the dashboard once no in-flight session
-# predates the deploy (sessions expire after an hour).
+# The old `worldly-sessions` KV namespace has since been deleted; the only
+# stateful binding is the D1 database below.
 [[d1_databases]]
 binding = "DB"
 database_name = "worldly-leaderboard"
