@@ -1200,15 +1200,20 @@ function finishQuiz() {
 let lastSyncedXp = null;
 function submitLifetimeXp() {
   const p = getProfile();
+  // A player who has not scored yet has nothing to place on the board, and a
+  // zero-XP row is a write spent to say nothing.
+  if (!p.xp) return Promise.resolve(false);
   // Nothing to report when the total has not moved (a run with no correct
   // answers, say). Every skipped call is one fewer write against the free tier.
-  if (p.xp === lastSyncedXp) return;
+  if (p.xp === lastSyncedXp) return Promise.resolve(false);
   lastSyncedXp = p.xp;
-  fetch('/api/xp', {
+  return fetch('/api/xp', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ playerId: p.playerId, name: p.name, xp: p.xp }),
-  }).catch(() => { lastSyncedXp = null; }); // allow the next run to retry
+  })
+    .then((res) => res.ok)
+    .catch(() => { lastSyncedXp = null; return false; }); // allow the next run to retry
 }
 
 async function submitToGlobalLeaderboard(sessionId) {
@@ -1808,14 +1813,29 @@ function showLeaderboard() {
   wireNav();
   wireTabs((id) => { leaderboardTab = id; });
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+  // Push the player's lifetime total before reading the board back. Syncing
+  // only at the end of a quiz meant anyone who had earned XP and then came to
+  // look was absent from the Level/XP tab -- it read "No scores yet" to a
+  // player sitting on thousands of XP, which made the tab look broken. The
+  // lastSyncedXp guard in submitLifetimeXp still collapses this to one write
+  // per change, so repeat visits cost nothing.
+  const synced = submitLifetimeXp();
   tiers.forEach((t) => loadGlobalLeaderboard(t.id));
+  // The XP read carries max-age=60, and the fetch above races the write
+  // anyway, so the first render can miss the player. Re-read that one tab once
+  // the write has landed, bypassing the cache, so a returning player sees
+  // themselves now rather than on their next visit.
+  const myGen = sessionGen;
+  synced.then((wrote) => {
+    if (wrote && myGen === sessionGen) loadGlobalLeaderboard('xp', { fresh: true });
+  });
 }
 
-async function loadGlobalLeaderboard(mode) {
+async function loadGlobalLeaderboard(mode, { fresh = false } = {}) {
   const myGen = sessionGen;
   const target = document.getElementById(`globalList-${mode}`);
   try {
-    const res = await fetch(`/api/leaderboard?mode=${mode}`);
+    const res = await fetch(`/api/leaderboard?mode=${mode}`, fresh ? { cache: 'no-store' } : undefined);
     if (myGen !== sessionGen || !target) return; // player already navigated away
     if (!res.ok) throw new Error('load_failed');
     const { entries } = await res.json();
