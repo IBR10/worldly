@@ -60,6 +60,19 @@ let crisesTab = 'underreported';
 let leaderboardTab = 'challenge';
 
 // ---- tiny helpers ------------------------------------------------------------
+/** Newest `asOf` ("September 2026") among the current crisis entries, or ''.
+ *  Lets the Crises screen state how fresh its curated background actually is,
+ *  rather than leaving the reader to guess. */
+function newestAsOf(entries) {
+  let best = '', bestT = -Infinity;
+  for (const e of entries) {
+    if ((e.period || 'current') !== 'current' || !e.asOf) continue;
+    const t = Date.parse(`1 ${e.asOf}`);
+    if (Number.isFinite(t) && t > bestT) { bestT = t; best = e.asOf; }
+  }
+  return best;
+}
+
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 // URLs interpolated into an href need more than esc(): a `javascript:` URL is
@@ -1618,6 +1631,9 @@ async function showCrises() {
   if (!tiers.some((t) => t.id === crisesTab)) crisesTab = 'underreported';
   const cardsFor = (tier) => entries.filter((e) =>
     (e.period || 'current') === crisesPeriod && (e.tier || 'underreported') === tier);
+  // The file carries no metadata object — it is a bare array the render walks —
+  // so freshness is derived from the newest asOf among the current entries.
+  const reviewed = newestAsOf(entries);
 
   app.innerHTML = `
     ${topNav()}
@@ -1625,6 +1641,7 @@ async function showCrises() {
     <p class="screen-sub">${crisesPeriod === 'historical'
       ? 'Famous and underreported crises from history — what happened, and why it still matters.'
       : 'Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.'}</p>
+    ${crisesPeriod === 'current' && reviewed ? `<p class="muted-note">Current entries reviewed ${esc(reviewed)}.</p>` : ''}
 
     <div class="tabs" id="periodTabs" role="tablist" aria-label="Time period">
       ${periods.map((p) => `<button class="tab ${p.id === crisesPeriod ? 'active' : ''}" role="tab" id="period-${p.id}" aria-selected="${p.id === crisesPeriod}" tabindex="${p.id === crisesPeriod ? 0 : -1}" data-tab="${p.id}">${p.label}</button>`).join('')}
