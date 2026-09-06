@@ -1,0 +1,3579 @@
+[
+  {
+    "iso2": "AD",
+    "name": "Andorra",
+    "language": "Catalan",
+    "family": "romance",
+    "langCode": "ca-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gràcies", "pron": "GRAH-see-uhs" },
+      { "en": "Goodbye", "local": "Adéu", "pron": "ah-DEH-oo" }
+    ]
+  },
+  {
+    "iso2": "AE",
+    "name": "United Arab Emirates",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "AF",
+    "name": "Afghanistan",
+    "language": "Dari",
+    "family": "indo-iranian",
+    "langCode": "fa-AF",
+    "hello": "سلام",
+    "pron": "Salaam (sah-LAAM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "تشکر", "pron": "tash-ah-KOR" },
+      { "en": "Goodbye", "local": "خدا حافظ", "pron": "khoo-DAH HAH-fez" }
+    ]
+  },
+  {
+    "iso2": "AG",
+    "name": "Antigua and Barbuda",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "AI",
+    "name": "Anguilla",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "AL",
+    "name": "Albania",
+    "language": "Albanian",
+    "family": "other-indo-european",
+    "langCode": "sq-AL",
+    "hello": "Përshëndetje",
+    "pron": "per-shen-DET-yeh",
+    "literal": "Greetings",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Faleminderit", "pron": "fah-leh-min-DEH-rit" },
+      { "en": "Goodbye", "local": "Mirupafshim", "pron": "mee-roo-PAHF-shim" }
+    ]
+  },
+  {
+    "iso2": "AM",
+    "name": "Armenia",
+    "language": "Armenian",
+    "family": "other-indo-european",
+    "langCode": "hy-AM",
+    "hello": "Բարև",
+    "pron": "Barev (bah-REV)",
+    "literal": "Good sun",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Շնորհակալություն", "pron": "shnor-hah-kah-loo-TYOON" },
+      { "en": "Goodbye", "local": "Ցտեսություն", "pron": "tsteh-soo-TYOON" }
+    ]
+  },
+  {
+    "iso2": "AO",
+    "name": "Angola",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "AR",
+    "name": "Argentina",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-AR",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ],
+    "greetingNote": "One kiss on the cheek is standard between almost anyone, men included."
+  },
+  {
+    "iso2": "AS",
+    "name": "American Samoa",
+    "language": "Samoan",
+    "family": "austronesian",
+    "langCode": "sm-WS",
+    "hello": "Talofa",
+    "pron": "tah-LOH-fah",
+    "literal": "Greetings with love",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Fa’afetai", "pron": "fah-ah-feh-TIE" },
+      { "en": "Goodbye", "local": "Tōfā", "pron": "TOH-fah" }
+    ],
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "AT",
+    "name": "Austria",
+    "language": "German",
+    "family": "germanic",
+    "langCode": "de-DE",
+    "hello": "Grüß Gott",
+    "pron": "grooss GOT",
+    "literal": "God greet you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danke", "pron": "DAHN-kuh" },
+      { "en": "Goodbye", "local": "Auf Wiedersehen", "pron": "owf VEE-der-zayn" }
+    ]
+  },
+  {
+    "iso2": "AU",
+    "name": "Australia",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-AU",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "‘G’day’ is real but informal; a handshake and first names are the norm."
+  },
+  {
+    "iso2": "AW",
+    "name": "Aruba",
+    "language": "Papiamento",
+    "family": "creole",
+    "langCode": "pap-AW",
+    "hello": "Bon dia",
+    "pron": "bohn DEE-ah",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danki", "pron": "DAHN-kee" },
+      { "en": "Goodbye", "local": "Ayó", "pron": "ah-YOH" }
+    ],
+    "territoryOf": "the Netherlands"
+  },
+  {
+    "iso2": "AX",
+    "name": "Åland Islands",
+    "language": "Swedish",
+    "family": "germanic",
+    "langCode": "sv-SE",
+    "hello": "Hej",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tack", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Hej då", "pron": "hay doh" }
+    ],
+    "territoryOf": "Finland"
+  },
+  {
+    "iso2": "AZ",
+    "name": "Azerbaijan",
+    "language": "Azerbaijani",
+    "family": "turkic",
+    "langCode": "az-AZ",
+    "hello": "Salam",
+    "pron": "sah-LAHM",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Təşəkkür", "pron": "teh-shek-KUR" },
+      { "en": "Goodbye", "local": "Sağ ol", "pron": "sahgh ohl" }
+    ]
+  },
+  {
+    "iso2": "BA",
+    "name": "Bosnia and Herzegovina",
+    "language": "Bosnian",
+    "family": "slavic",
+    "langCode": "bs-BA",
+    "hello": "Dobar dan",
+    "pron": "DOH-bar dahn",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Hvala", "pron": "HVAH-lah" },
+      { "en": "Goodbye", "local": "Doviđenja", "pron": "doh-vee-JEN-yah" }
+    ]
+  },
+  {
+    "iso2": "BB",
+    "name": "Barbados",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "BD",
+    "name": "Bangladesh",
+    "language": "Bengali",
+    "family": "indo-iranian",
+    "langCode": "bn-BD",
+    "hello": "নমস্কার",
+    "pron": "Nomoskar (noh-moh-SHKAR)",
+    "literal": "I bow to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ধন্যবাদ", "pron": "DHON-noh-bad" },
+      { "en": "Goodbye", "local": "বিদায়", "pron": "bee-DAI" }
+    ]
+  },
+  {
+    "iso2": "BE",
+    "name": "Belgium",
+    "language": "Dutch",
+    "family": "germanic",
+    "langCode": "nl-NL",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Dank je", "pron": "dahnk yuh" },
+      { "en": "Goodbye", "local": "Tot ziens", "pron": "tot ZEENS" }
+    ],
+    "greetingNote": "Language is political here — Dutch in Flanders, French in Wallonia. In Brussels, either."
+  },
+  {
+    "iso2": "BF",
+    "name": "Burkina Faso",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "BG",
+    "name": "Bulgaria",
+    "language": "Bulgarian",
+    "family": "slavic",
+    "langCode": "bg-BG",
+    "hello": "Здравей",
+    "pron": "Zdravey (zdrah-VAY)",
+    "literal": "Be healthy",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Благодаря", "pron": "blah-goh-dah-RYAH" },
+      { "en": "Goodbye", "local": "Довиждане", "pron": "doh-VEEZH-dah-neh" }
+    ]
+  },
+  {
+    "iso2": "BH",
+    "name": "Bahrain",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "BI",
+    "name": "Burundi",
+    "language": "Kirundi",
+    "family": "niger-congo",
+    "langCode": "rn-BI",
+    "hello": "Bwakeye",
+    "pron": "bwah-KEH-yeh",
+    "literal": "Good morning",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Murakoze", "pron": "moo-rah-KOH-zeh" },
+      { "en": "Goodbye", "local": "N’agasaga", "pron": "nah-gah-SAH-gah" }
+    ]
+  },
+  {
+    "iso2": "BJ",
+    "name": "Benin",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "BL",
+    "name": "Saint Barthélemy",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "BM",
+    "name": "Bermuda",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "BN",
+    "name": "Brunei",
+    "language": "Malay",
+    "family": "austronesian",
+    "langCode": "ms-MY",
+    "hello": "Selamat sejahtera",
+    "pron": "seh-LAH-maht seh-jah-TEH-rah",
+    "literal": "Peace and prosperity",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Terima kasih", "pron": "teh-REE-mah KAH-seh" },
+      { "en": "Goodbye", "local": "Selamat tinggal", "pron": "seh-LAH-maht TING-gahl" }
+    ]
+  },
+  {
+    "iso2": "BO",
+    "name": "Bolivia",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "BQ",
+    "name": "Bonaire, Sint Eustatius and Saba",
+    "language": "Papiamento",
+    "family": "creole",
+    "langCode": "pap-AW",
+    "hello": "Bon dia",
+    "pron": "bohn DEE-ah",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danki", "pron": "DAHN-kee" },
+      { "en": "Goodbye", "local": "Ayó", "pron": "ah-YOH" }
+    ],
+    "territoryOf": "the Netherlands"
+  },
+  {
+    "iso2": "BR",
+    "name": "Brazil",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-BR",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ],
+    "greetingNote": "Warm and physical: expect a hug or cheek kisses rather than a handshake."
+  },
+  {
+    "iso2": "BS",
+    "name": "Bahamas",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "BT",
+    "name": "Bhutan",
+    "language": "Dzongkha",
+    "family": "sino-tibetan",
+    "langCode": "dz-BT",
+    "hello": "ཀུ་ཟུ་ཟང་པོ་ལ",
+    "pron": "Kuzuzangpo la (koo-zoo-ZAHNG-poh lah)",
+    "literal": "Greetings to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "བཀྲིན་ཆེ་ལ", "pron": "kah-DRIN-cheh lah" },
+      { "en": "Goodbye", "local": "ལོག་འཇལ་གེ", "pron": "log-JAL-geh" }
+    ]
+  },
+  {
+    "iso2": "BV",
+    "name": "Bouvet Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "Norway"
+  },
+  {
+    "iso2": "BW",
+    "name": "Botswana",
+    "language": "Setswana",
+    "family": "niger-congo",
+    "langCode": "tn-BW",
+    "hello": "Dumela",
+    "pron": "doo-MEH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ke a leboga", "pron": "keh ah leh-BOH-gah" },
+      { "en": "Goodbye", "local": "Tsamaya sentle", "pron": "tsah-MY-ah sen-TLEH" }
+    ]
+  },
+  {
+    "iso2": "BY",
+    "name": "Belarus",
+    "language": "Russian",
+    "family": "slavic",
+    "langCode": "ru-RU",
+    "hello": "Здравствуйте",
+    "pron": "Zdravstvuyte (ZDRAHST-vooy-tyeh)",
+    "literal": "Be healthy",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Спасибо", "pron": "spah-SEE-bah" },
+      { "en": "Goodbye", "local": "До свидания", "pron": "dah svee-DAH-nyah" }
+    ]
+  },
+  {
+    "iso2": "BZ",
+    "name": "Belize",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ],
+    "greetingNote": "English is official and Spanish is spoken in most homes — either greeting lands well."
+  },
+  {
+    "iso2": "CA",
+    "name": "Canada",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-CA",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "In Quebec, lead with Bonjour — it is genuinely appreciated."
+  },
+  {
+    "iso2": "CC",
+    "name": "Cocos (Keeling) Islands",
+    "language": "Malay",
+    "family": "austronesian",
+    "langCode": "ms-MY",
+    "hello": "Selamat sejahtera",
+    "pron": "seh-LAH-maht seh-jah-TEH-rah",
+    "literal": "Peace and prosperity",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Terima kasih", "pron": "teh-REE-mah KAH-seh" },
+      { "en": "Goodbye", "local": "Selamat tinggal", "pron": "seh-LAH-maht TING-gahl" }
+    ],
+    "territoryOf": "Australia"
+  },
+  {
+    "iso2": "CD",
+    "name": "Democratic Republic of the Congo",
+    "language": "Lingala",
+    "family": "niger-congo",
+    "langCode": "ln-CD",
+    "hello": "Mbote",
+    "pron": "mm-BOH-teh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Melesi", "pron": "meh-LEH-see" },
+      { "en": "Goodbye", "local": "Tikala malamu", "pron": "tee-KAH-lah mah-LAH-moo" }
+    ]
+  },
+  {
+    "iso2": "CF",
+    "name": "Central African Republic",
+    "language": "Sango",
+    "family": "niger-congo",
+    "langCode": "sg-CF",
+    "hello": "Bara ala",
+    "pron": "BAH-rah AH-lah",
+    "literal": "I greet you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Singila", "pron": "seen-GEE-lah" },
+      { "en": "Goodbye", "local": "Ala gue nzoni", "pron": "AH-lah gweh nn-ZOH-nee" }
+    ]
+  },
+  {
+    "iso2": "CG",
+    "name": "Republic of the Congo",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "CH",
+    "name": "Switzerland",
+    "language": "German",
+    "family": "germanic",
+    "langCode": "de-DE",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danke", "pron": "DAHN-kuh" },
+      { "en": "Goodbye", "local": "Auf Wiedersehen", "pron": "owf VEE-der-zayn" }
+    ],
+    "greetingNote": "Four national languages. German, French or Italian depending on the canton; try Grüezi in Zurich."
+  },
+  {
+    "iso2": "CI",
+    "name": "Ivory Coast",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "CK",
+    "name": "Cook Islands",
+    "language": "Cook Islands Māori",
+    "family": "austronesian",
+    "langCode": "rar-CK",
+    "hello": "Kia orana",
+    "pron": "kee-ah oh-RAH-nah",
+    "literal": "May you live on",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Meitaki", "pron": "may-TAH-kee" },
+      { "en": "Goodbye", "local": "Aere rā", "pron": "EYE-reh rah" }
+    ],
+    "territoryOf": "New Zealand"
+  },
+  {
+    "iso2": "CL",
+    "name": "Chile",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-CL",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "CM",
+    "name": "Cameroon",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "CN",
+    "name": "China",
+    "language": "Mandarin Chinese",
+    "family": "sino-tibetan",
+    "langCode": "zh-CN",
+    "hello": "你好",
+    "pron": "Nǐ hǎo (nee HOW)",
+    "literal": "You good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "谢谢", "pron": "SHYEH-shyeh" },
+      { "en": "Goodbye", "local": "再见", "pron": "dzai-JYEN" }
+    ],
+    "greetingNote": "A slight nod and a handshake; skip the hug with someone you have just met."
+  },
+  {
+    "iso2": "CO",
+    "name": "Colombia",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-CO",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "CR",
+    "name": "Costa Rica",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "CU",
+    "name": "Cuba",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-CU",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "CV",
+    "name": "Cape Verde",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "CW",
+    "name": "Curaçao",
+    "language": "Papiamento",
+    "family": "creole",
+    "langCode": "pap-AW",
+    "hello": "Bon dia",
+    "pron": "bohn DEE-ah",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danki", "pron": "DAHN-kee" },
+      { "en": "Goodbye", "local": "Ayó", "pron": "ah-YOH" }
+    ],
+    "territoryOf": "the Netherlands"
+  },
+  {
+    "iso2": "CX",
+    "name": "Christmas Island",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "Australia"
+  },
+  {
+    "iso2": "CY",
+    "name": "Cyprus",
+    "language": "Greek",
+    "family": "other-indo-european",
+    "langCode": "el-GR",
+    "hello": "Γεια σας",
+    "pron": "Yia sas (yah sahs)",
+    "literal": "Health to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ευχαριστώ", "pron": "ef-kha-ree-STOH" },
+      { "en": "Goodbye", "local": "Αντίο", "pron": "ahn-DEE-oh" }
+    ]
+  },
+  {
+    "iso2": "CZ",
+    "name": "Czechia",
+    "language": "Czech",
+    "family": "slavic",
+    "langCode": "cs-CZ",
+    "hello": "Ahoj",
+    "pron": "AH-hoy",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Děkuji", "pron": "DYEH-koo-yee" },
+      { "en": "Goodbye", "local": "Na shledanou", "pron": "nah SHLEH-dah-noh" }
+    ]
+  },
+  {
+    "iso2": "DE",
+    "name": "Germany",
+    "language": "German",
+    "family": "germanic",
+    "langCode": "de-DE",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danke", "pron": "DAHN-kuh" },
+      { "en": "Goodbye", "local": "Auf Wiedersehen", "pron": "owf VEE-der-zayn" }
+    ]
+  },
+  {
+    "iso2": "DJ",
+    "name": "Djibouti",
+    "language": "Somali",
+    "family": "afro-asiatic",
+    "langCode": "so-SO",
+    "hello": "Salaan",
+    "pron": "sah-LAAN",
+    "literal": "Peace / greeting",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mahadsanid", "pron": "mah-hahd-SAH-nid" },
+      { "en": "Goodbye", "local": "Nabadgelyo", "pron": "nah-bahd-GEL-yoh" }
+    ]
+  },
+  {
+    "iso2": "DK",
+    "name": "Denmark",
+    "language": "Danish",
+    "family": "germanic",
+    "langCode": "da-DK",
+    "hello": "Hej",
+    "pron": "hi",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tak", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Farvel", "pron": "fah-VEL" }
+    ]
+  },
+  {
+    "iso2": "DM",
+    "name": "Dominica",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "DO",
+    "name": "Dominican Republic",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "DZ",
+    "name": "Algeria",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "EC",
+    "name": "Ecuador",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "EE",
+    "name": "Estonia",
+    "language": "Estonian",
+    "family": "uralic",
+    "langCode": "et-EE",
+    "hello": "Tere",
+    "pron": "TEH-reh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Aitäh", "pron": "EYE-tah" },
+      { "en": "Goodbye", "local": "Nägemist", "pron": "NAH-geh-mist" }
+    ]
+  },
+  {
+    "iso2": "EG",
+    "name": "Egypt",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-EG",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ],
+    "greetingNote": "The reply to Assalamu alaikum is Wa alaikum assalam — peace upon you too."
+  },
+  {
+    "iso2": "EH",
+    "name": "Western Sahara",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "ER",
+    "name": "Eritrea",
+    "language": "Tigrinya",
+    "family": "afro-asiatic",
+    "langCode": "ti-ER",
+    "hello": "ሰላም",
+    "pron": "Selam (seh-LAHM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "የቐንየለይ", "pron": "yeh-KHEN-yeh-lay" },
+      { "en": "Goodbye", "local": "ደሓን ኩን", "pron": "deh-HAHN koon" }
+    ]
+  },
+  {
+    "iso2": "ES",
+    "name": "Spain",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ],
+    "greetingNote": "Two cheek kisses, right cheek first, between women or a woman and a man."
+  },
+  {
+    "iso2": "ET",
+    "name": "Ethiopia",
+    "language": "Amharic",
+    "family": "afro-asiatic",
+    "langCode": "am-ET",
+    "hello": "ሰላም",
+    "pron": "Selam (seh-LAHM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "አመሰግናለሁ", "pron": "ah-meh-seh-guh-NAH-leh-hoo" },
+      { "en": "Goodbye", "local": "ደህና ሁን", "pron": "DEH-nah hoon" }
+    ]
+  },
+  {
+    "iso2": "FI",
+    "name": "Finland",
+    "language": "Finnish",
+    "family": "uralic",
+    "langCode": "fi-FI",
+    "hello": "Hei",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Kiitos", "pron": "KEE-tohs" },
+      { "en": "Goodbye", "local": "Näkemiin", "pron": "NAH-keh-meen" }
+    ]
+  },
+  {
+    "iso2": "FJ",
+    "name": "Fiji",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "FK",
+    "name": "Falkland Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "FM",
+    "name": "Federated States of Micronesia",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "FO",
+    "name": "Faroe Islands",
+    "language": "Faroese",
+    "family": "germanic",
+    "langCode": "fo-FO",
+    "hello": "Hey",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Takk", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Farvæl", "pron": "far-VAIL" }
+    ],
+    "territoryOf": "Denmark"
+  },
+  {
+    "iso2": "FR",
+    "name": "France",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "greetingNote": "Always open with Bonjour before anything else — skipping it reads as rude."
+  },
+  {
+    "iso2": "GA",
+    "name": "Gabon",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "GB",
+    "name": "United Kingdom",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "A handshake or just a nod. In Wales try Shwmae, in Scotland Hullo."
+  },
+  {
+    "iso2": "GD",
+    "name": "Grenada",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "GE",
+    "name": "Georgia",
+    "language": "Georgian",
+    "family": "other",
+    "langCode": "ka-GE",
+    "hello": "გამარჯობა",
+    "pron": "Gamarjoba (gah-mar-JOH-bah)",
+    "literal": "Victory to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "გმადლობთ", "pron": "gmahd-LOHBT" },
+      { "en": "Goodbye", "local": "ნახვამდის", "pron": "nakh-VAHM-dis" }
+    ]
+  },
+  {
+    "iso2": "GF",
+    "name": "French Guiana",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "GG",
+    "name": "Guernsey",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the British Crown"
+  },
+  {
+    "iso2": "GH",
+    "name": "Ghana",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "GI",
+    "name": "Gibraltar",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "GL",
+    "name": "Greenland",
+    "language": "Greenlandic",
+    "family": "other",
+    "langCode": "kl-GL",
+    "hello": "Aluu",
+    "pron": "ah-LOO",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Qujanaq", "pron": "koo-YAH-nahk" },
+      { "en": "Goodbye", "local": "Inuulluarit", "pron": "ee-nool-LOO-ah-rit" }
+    ],
+    "greetingNote": "Danish is also widely spoken.",
+    "territoryOf": "Denmark"
+  },
+  {
+    "iso2": "GM",
+    "name": "Gambia",
+    "language": "Wolof",
+    "family": "niger-congo",
+    "langCode": "wo-SN",
+    "hello": "Salaam aleekum",
+    "pron": "sah-LAAM ah-LEH-koom",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Jërëjëf", "pron": "JEH-reh-jef" },
+      { "en": "Goodbye", "local": "Ba beneen", "pron": "bah beh-NEEN" }
+    ]
+  },
+  {
+    "iso2": "GN",
+    "name": "Guinea",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "GO",
+    "name": "Glorioso Islands",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "GP",
+    "name": "Guadeloupe",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "GQ",
+    "name": "Equatorial Guinea",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "GR",
+    "name": "Greece",
+    "language": "Greek",
+    "family": "other-indo-european",
+    "langCode": "el-GR",
+    "hello": "Γεια σας",
+    "pron": "Yia sas (yah sahs)",
+    "literal": "Health to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ευχαριστώ", "pron": "ef-kha-ree-STOH" },
+      { "en": "Goodbye", "local": "Αντίο", "pron": "ahn-DEE-oh" }
+    ]
+  },
+  {
+    "iso2": "GS",
+    "name": "South Georgia and the South Sandwich Islands",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "GT",
+    "name": "Guatemala",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "GU",
+    "name": "Guam",
+    "language": "Chamorro",
+    "family": "austronesian",
+    "langCode": "ch-GU",
+    "hello": "Håfa adai",
+    "pron": "HAH-fah ah-DIE",
+    "literal": "What is happening",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Si Yu’us ma’åse", "pron": "see JOOS mah-AH-seh" },
+      { "en": "Goodbye", "local": "Adios", "pron": "ah-DYOHS" }
+    ],
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "GW",
+    "name": "Guinea-Bissau",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "GY",
+    "name": "Guyana",
+    "language": "Guyanese Creole",
+    "family": "creole",
+    "langCode": "gyn-GY",
+    "hello": "Wah gwaan",
+    "pron": "wah GWAHN",
+    "literal": "What's going on",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tanks", "pron": "tahnks" },
+      { "en": "Goodbye", "local": "Latah", "pron": "LAH-tah" }
+    ]
+  },
+  {
+    "iso2": "HK",
+    "name": "Hong Kong",
+    "language": "Cantonese",
+    "family": "sino-tibetan",
+    "langCode": "yue-HK",
+    "hello": "你好",
+    "pron": "Nei hou (nay HOH)",
+    "literal": "You good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "多謝", "pron": "doh-JEH" },
+      { "en": "Goodbye", "local": "再見", "pron": "joy-GEEN" }
+    ],
+    "greetingNote": "Cantonese, not Mandarin — Nei hou, not Ni hao.",
+    "territoryOf": "China"
+  },
+  {
+    "iso2": "HM",
+    "name": "Heard Island and McDonald Islands",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "Australia"
+  },
+  {
+    "iso2": "HN",
+    "name": "Honduras",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "HR",
+    "name": "Croatia",
+    "language": "Croatian",
+    "family": "slavic",
+    "langCode": "hr-HR",
+    "hello": "Dobar dan",
+    "pron": "DOH-bar dahn",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Hvala", "pron": "HVAH-lah" },
+      { "en": "Goodbye", "local": "Doviđenja", "pron": "doh-vee-JEN-yah" }
+    ]
+  },
+  {
+    "iso2": "HT",
+    "name": "Haiti",
+    "language": "Haitian Creole",
+    "family": "creole",
+    "langCode": "ht-HT",
+    "hello": "Bonjou",
+    "pron": "bon-ZHOO",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mèsi", "pron": "MEH-see" },
+      { "en": "Goodbye", "local": "Orevwa", "pron": "oh-rev-WAH" }
+    ]
+  },
+  {
+    "iso2": "HU",
+    "name": "Hungary",
+    "language": "Hungarian",
+    "family": "uralic",
+    "langCode": "hu-HU",
+    "hello": "Szia",
+    "pron": "SEE-yah",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Köszönöm", "pron": "KUH-suh-nuhm" },
+      { "en": "Goodbye", "local": "Viszlát", "pron": "VEES-laht" }
+    ]
+  },
+  {
+    "iso2": "ID",
+    "name": "Indonesia",
+    "language": "Indonesian",
+    "family": "austronesian",
+    "langCode": "id-ID",
+    "hello": "Halo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Terima kasih", "pron": "teh-REE-mah KAH-see" },
+      { "en": "Goodbye", "local": "Selamat tinggal", "pron": "seh-LAH-maht TING-gahl" }
+    ]
+  },
+  {
+    "iso2": "IE",
+    "name": "Ireland",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "IL",
+    "name": "Israel",
+    "language": "Hebrew",
+    "family": "afro-asiatic",
+    "langCode": "he-IL",
+    "hello": "שלום",
+    "pron": "Shalom (shah-LOHM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "תודה", "pron": "toh-DAH" },
+      { "en": "Goodbye", "local": "להתראות", "pron": "leh-hit-rah-OHT" }
+    ]
+  },
+  {
+    "iso2": "IM",
+    "name": "Isle of Man",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the British Crown"
+  },
+  {
+    "iso2": "IN",
+    "name": "India",
+    "language": "Hindi",
+    "family": "indo-iranian",
+    "langCode": "hi-IN",
+    "hello": "नमस्ते",
+    "pron": "Namaste (nuh-MUH-stay)",
+    "literal": "I bow to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "धन्यवाद", "pron": "DHUN-yuh-vaad" },
+      { "en": "Goodbye", "local": "अलविदा", "pron": "ul-vee-DAH" }
+    ],
+    "greetingNote": "Press your palms together at chest height as you say it; a handshake is also fine."
+  },
+  {
+    "iso2": "IO",
+    "name": "British Indian Ocean Territory",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "IQ",
+    "name": "Iraq",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-IQ",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "IR",
+    "name": "Iran",
+    "language": "Persian",
+    "family": "indo-iranian",
+    "langCode": "fa-IR",
+    "hello": "سلام",
+    "pron": "Salaam (sah-LAAM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ممنون", "pron": "mahm-NOON" },
+      { "en": "Goodbye", "local": "خداحافظ", "pron": "khoh-dah-HAH-fez" }
+    ],
+    "greetingNote": "Salaam works for everyone. Do not offer a handshake to someone of the opposite sex unless they extend first."
+  },
+  {
+    "iso2": "IS",
+    "name": "Iceland",
+    "language": "Icelandic",
+    "family": "germanic",
+    "langCode": "is-IS",
+    "hello": "Halló",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Þakka þér", "pron": "THAH-kah thyehr" },
+      { "en": "Goodbye", "local": "Bless", "pron": "bless" }
+    ]
+  },
+  {
+    "iso2": "IT",
+    "name": "Italy",
+    "language": "Italian",
+    "family": "romance",
+    "langCode": "it-IT",
+    "hello": "Ciao",
+    "pron": "chow",
+    "literal": "Hello / bye",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Grazie", "pron": "GRAH-tsyeh" },
+      { "en": "Goodbye", "local": "Arrivederci", "pron": "ah-ree-veh-DEHR-chee" }
+    ]
+  },
+  {
+    "iso2": "JE",
+    "name": "Jersey",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the British Crown"
+  },
+  {
+    "iso2": "JM",
+    "name": "Jamaica",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "JO",
+    "name": "Jordan",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-JO",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "JP",
+    "name": "Japan",
+    "language": "Japanese",
+    "family": "japonic",
+    "langCode": "ja-JP",
+    "hello": "こんにちは",
+    "pron": "Konnichiwa (kon-nee-chee-WAH)",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ありがとう", "pron": "ah-ree-gah-TOH" },
+      { "en": "Goodbye", "local": "さようなら", "pron": "sah-yoh-NAH-rah" }
+    ],
+    "greetingNote": "A small bow rather than a handshake; deeper bow, more respect."
+  },
+  {
+    "iso2": "JU",
+    "name": "Juan de Nova Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "KE",
+    "name": "Kenya",
+    "language": "Swahili",
+    "family": "niger-congo",
+    "langCode": "sw-KE",
+    "hello": "Jambo",
+    "pron": "JAHM-boh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Asante", "pron": "ah-SAHN-teh" },
+      { "en": "Goodbye", "local": "Kwaheri", "pron": "kwah-HEH-ree" }
+    ]
+  },
+  {
+    "iso2": "KG",
+    "name": "Kyrgyzstan",
+    "language": "Kyrgyz",
+    "family": "turkic",
+    "langCode": "ky-KG",
+    "hello": "Салам",
+    "pron": "Salam (sah-LAHM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Рахмат", "pron": "rakh-MAHT" },
+      { "en": "Goodbye", "local": "Кош болуңуз", "pron": "kohsh boh-loo-NOOZ" }
+    ]
+  },
+  {
+    "iso2": "KH",
+    "name": "Cambodia",
+    "language": "Khmer",
+    "family": "austroasiatic",
+    "langCode": "km-KH",
+    "hello": "សួស្ដី",
+    "pron": "Suosdei (soo-uhs-DAY)",
+    "literal": "Good fortune",
+    "alsoTry": [
+      { "en": "Thank you", "local": "អរគុណ", "pron": "aw-KOON" },
+      { "en": "Goodbye", "local": "លាហើយ", "pron": "lee-ah-HOY" }
+    ]
+  },
+  {
+    "iso2": "KI",
+    "name": "Kiribati",
+    "language": "Gilbertese",
+    "family": "austronesian",
+    "langCode": "gil-KI",
+    "hello": "Mauri",
+    "pron": "MOW-ree",
+    "literal": "Health to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ko rabwa", "pron": "koh RAH-bwah" },
+      { "en": "Goodbye", "local": "Ti a boo", "pron": "tee ah BOH" }
+    ]
+  },
+  {
+    "iso2": "KM",
+    "name": "Comoros",
+    "language": "Comorian",
+    "family": "niger-congo",
+    "langCode": "zdj-KM",
+    "hello": "Jeje",
+    "pron": "JEH-jeh",
+    "literal": "How are you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Marahaba", "pron": "mah-rah-HAH-bah" },
+      { "en": "Goodbye", "local": "Kwaheri", "pron": "kwah-HEH-ree" }
+    ]
+  },
+  {
+    "iso2": "KN",
+    "name": "Saint Kitts and Nevis",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "KP",
+    "name": "North Korea",
+    "language": "Korean",
+    "family": "koreanic",
+    "langCode": "ko-KP",
+    "hello": "안녕하세요",
+    "pron": "Annyeonghaseyo (ahn-nyung-hah-SEH-yoh)",
+    "literal": "Are you at peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "감사합니다", "pron": "gahm-sah-HAHM-nee-dah" },
+      { "en": "Goodbye", "local": "안녕히 가세요", "pron": "ahn-nyung-hee GAH-seh-yoh" }
+    ]
+  },
+  {
+    "iso2": "KR",
+    "name": "South Korea",
+    "language": "Korean",
+    "family": "koreanic",
+    "langCode": "ko-KR",
+    "hello": "안녕하세요",
+    "pron": "Annyeonghaseyo (ahn-nyung-hah-SEH-yoh)",
+    "literal": "Are you at peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "감사합니다", "pron": "gahm-sah-HAHM-nee-dah" },
+      { "en": "Goodbye", "local": "안녕히 가세요", "pron": "ahn-nyung-hee GAH-seh-yoh" }
+    ]
+  },
+  {
+    "iso2": "KW",
+    "name": "Kuwait",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "KY",
+    "name": "Cayman Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "KZ",
+    "name": "Kazakhstan",
+    "language": "Kazakh",
+    "family": "turkic",
+    "langCode": "kk-KZ",
+    "hello": "Сәлем",
+    "pron": "Salem (sah-LEM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Рахмет", "pron": "rakh-MET" },
+      { "en": "Goodbye", "local": "Сау болыңыз", "pron": "sow boh-luh-NUHZ" }
+    ]
+  },
+  {
+    "iso2": "LA",
+    "name": "Laos",
+    "language": "Lao",
+    "family": "kra-dai",
+    "langCode": "lo-LA",
+    "hello": "ສະບາຍດີ",
+    "pron": "Sabaidee (sah-bye-DEE)",
+    "literal": "Are you well",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ຂອບໃຈ", "pron": "kawp-JAI" },
+      { "en": "Goodbye", "local": "ລາກ່ອນ", "pron": "lah-GAWN" }
+    ]
+  },
+  {
+    "iso2": "LB",
+    "name": "Lebanon",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-LB",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "LC",
+    "name": "Saint Lucia",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "LI",
+    "name": "Liechtenstein",
+    "language": "German",
+    "family": "germanic",
+    "langCode": "de-DE",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Danke", "pron": "DAHN-kuh" },
+      { "en": "Goodbye", "local": "Auf Wiedersehen", "pron": "owf VEE-der-zayn" }
+    ]
+  },
+  {
+    "iso2": "LK",
+    "name": "Sri Lanka",
+    "language": "Sinhala",
+    "family": "indo-iranian",
+    "langCode": "si-LK",
+    "hello": "ආයුබෝවන්",
+    "pron": "Ayubowan (ah-yoo-BOH-wahn)",
+    "literal": "May you live long",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ස්තුතියි", "pron": "stoo-TEE-yih" },
+      { "en": "Goodbye", "local": "ගිහින් එන්නම්", "pron": "gih-HIN EN-nam" }
+    ]
+  },
+  {
+    "iso2": "LR",
+    "name": "Liberia",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "LS",
+    "name": "Lesotho",
+    "language": "Sesotho",
+    "family": "niger-congo",
+    "langCode": "st-LS",
+    "hello": "Lumela",
+    "pron": "doo-MEH-lah",
+    "literal": "Hello / agree",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Kea leboha", "pron": "KEH-ah leh-BOH-hah" },
+      { "en": "Goodbye", "local": "Sala hantle", "pron": "SAH-lah hahn-TLEH" }
+    ]
+  },
+  {
+    "iso2": "LT",
+    "name": "Lithuania",
+    "language": "Lithuanian",
+    "family": "other-indo-european",
+    "langCode": "lt-LT",
+    "hello": "Sveiki",
+    "pron": "SVAY-kee",
+    "literal": "Greetings",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Dėkoju", "pron": "dyeh-KOH-yoo" },
+      { "en": "Goodbye", "local": "Viso gero", "pron": "VEE-soh GEH-roh" }
+    ]
+  },
+  {
+    "iso2": "LU",
+    "name": "Luxembourg",
+    "language": "Luxembourgish",
+    "family": "germanic",
+    "langCode": "lb-LU",
+    "hello": "Moien",
+    "pron": "MOY-en",
+    "literal": "Morning",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Awuer", "pron": "ah-VOO-er" }
+    ]
+  },
+  {
+    "iso2": "LV",
+    "name": "Latvia",
+    "language": "Latvian",
+    "family": "other-indo-european",
+    "langCode": "lv-LV",
+    "hello": "Sveiki",
+    "pron": "SVAY-kee",
+    "literal": "Greetings",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Paldies", "pron": "PAHL-dyehs" },
+      { "en": "Goodbye", "local": "Atā", "pron": "ah-TAH" }
+    ]
+  },
+  {
+    "iso2": "LY",
+    "name": "Libya",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "MA",
+    "name": "Morocco",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-MA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "MC",
+    "name": "Monaco",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "MD",
+    "name": "Moldova",
+    "language": "Romanian",
+    "family": "romance",
+    "langCode": "ro-RO",
+    "hello": "Bună",
+    "pron": "BOO-nuh",
+    "literal": "Good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mulțumesc", "pron": "mool-tsoo-MESK" },
+      { "en": "Goodbye", "local": "La revedere", "pron": "lah reh-veh-DEH-reh" }
+    ]
+  },
+  {
+    "iso2": "ME",
+    "name": "Montenegro",
+    "language": "Montenegrin",
+    "family": "slavic",
+    "langCode": "sr-ME",
+    "hello": "Dobar dan",
+    "pron": "DOH-bar dahn",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Hvala", "pron": "HVAH-lah" },
+      { "en": "Goodbye", "local": "Doviđenja", "pron": "doh-vee-JEN-yah" }
+    ]
+  },
+  {
+    "iso2": "MF",
+    "name": "Saint Martin",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "MG",
+    "name": "Madagascar",
+    "language": "Malagasy",
+    "family": "austronesian",
+    "langCode": "mg-MG",
+    "hello": "Salama",
+    "pron": "sah-LAH-mah",
+    "literal": "Health / peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Misaotra", "pron": "mee-SOW-trah" },
+      { "en": "Goodbye", "local": "Veloma", "pron": "veh-LOO-mah" }
+    ]
+  },
+  {
+    "iso2": "MH",
+    "name": "Marshall Islands",
+    "language": "Marshallese",
+    "family": "austronesian",
+    "langCode": "mh-MH",
+    "hello": "Iọkwe",
+    "pron": "YAH-kway",
+    "literal": "Love to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Koṃṃool", "pron": "kohm-MOOL" },
+      { "en": "Goodbye", "local": "Bar lo eok", "pron": "bar loh yohk" }
+    ]
+  },
+  {
+    "iso2": "MK",
+    "name": "North Macedonia",
+    "language": "Macedonian",
+    "family": "slavic",
+    "langCode": "mk-MK",
+    "hello": "Здраво",
+    "pron": "Zdravo (ZDRAH-voh)",
+    "literal": "Health",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Благодарам", "pron": "blah-GOH-dah-rahm" },
+      { "en": "Goodbye", "local": "До гледање", "pron": "doh GLEH-dah-nyeh" }
+    ]
+  },
+  {
+    "iso2": "ML",
+    "name": "Mali",
+    "language": "Bambara",
+    "family": "niger-congo",
+    "langCode": "bm-ML",
+    "hello": "I ni ce",
+    "pron": "ee nee CHEH",
+    "literal": "Greetings to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "I ni ce", "pron": "ee nee CHEH" },
+      { "en": "Goodbye", "local": "K’an bɛn", "pron": "kahn BEN" }
+    ]
+  },
+  {
+    "iso2": "MM",
+    "name": "Myanmar",
+    "language": "Burmese",
+    "family": "sino-tibetan",
+    "langCode": "my-MM",
+    "hello": "မင်္ဂလာပါ",
+    "pron": "Mingalaba (min-gah-lah-BAH)",
+    "literal": "It is a blessing",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ကျေးဇူးတင်ပါတယ်", "pron": "chay-zoo-tin-bah-DEH" },
+      { "en": "Goodbye", "local": "သွားတော့မယ်", "pron": "thwah-DAW-meh" }
+    ]
+  },
+  {
+    "iso2": "MN",
+    "name": "Mongolia",
+    "language": "Mongolian",
+    "family": "other",
+    "langCode": "mn-MN",
+    "hello": "Сайн байна уу",
+    "pron": "Sain baina uu (sighn BY-nah oo)",
+    "literal": "Are you well",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Баярлалаа", "pron": "bah-yar-LAH-lah" },
+      { "en": "Goodbye", "local": "Баяртай", "pron": "bah-yar-TIE" }
+    ]
+  },
+  {
+    "iso2": "MO",
+    "name": "Macau",
+    "language": "Cantonese",
+    "family": "sino-tibetan",
+    "langCode": "yue-HK",
+    "hello": "你好",
+    "pron": "Nei hou (nay HOH)",
+    "literal": "You good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "多謝", "pron": "doh-JEH" },
+      { "en": "Goodbye", "local": "再見", "pron": "joy-GEEN" }
+    ],
+    "territoryOf": "China"
+  },
+  {
+    "iso2": "MP",
+    "name": "Northern Mariana Islands",
+    "language": "Chamorro",
+    "family": "austronesian",
+    "langCode": "ch-GU",
+    "hello": "Håfa adai",
+    "pron": "HAH-fah ah-DIE",
+    "literal": "What is happening",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Si Yu’us ma’åse", "pron": "see JOOS mah-AH-seh" },
+      { "en": "Goodbye", "local": "Adios", "pron": "ah-DYOHS" }
+    ],
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "MQ",
+    "name": "Martinique",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "MR",
+    "name": "Mauritania",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "MS",
+    "name": "Montserrat",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "MT",
+    "name": "Malta",
+    "language": "Maltese",
+    "family": "afro-asiatic",
+    "langCode": "mt-MT",
+    "hello": "Bonġu",
+    "pron": "BON-joo",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Grazzi", "pron": "GRAHT-tsee" },
+      { "en": "Goodbye", "local": "Saħħa", "pron": "SAH-hah" }
+    ]
+  },
+  {
+    "iso2": "MU",
+    "name": "Mauritius",
+    "language": "Mauritian Creole",
+    "family": "creole",
+    "langCode": "mfe-MU",
+    "hello": "Bonzour",
+    "pron": "bon-ZOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mersi", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Salam", "pron": "sah-LAHM" }
+    ]
+  },
+  {
+    "iso2": "MV",
+    "name": "Maldives",
+    "language": "Dhivehi",
+    "family": "indo-iranian",
+    "langCode": "dv-MV",
+    "hello": "އައްސަލާމް ޢަލައިކުމް",
+    "pron": "Assalaamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ޝުކުރިއްޔާ", "pron": "shoo-koo-REE-yah" },
+      { "en": "Goodbye", "local": "ދަނީ", "pron": "DHAH-nee" }
+    ]
+  },
+  {
+    "iso2": "MW",
+    "name": "Malawi",
+    "language": "Chichewa",
+    "family": "niger-congo",
+    "langCode": "ny-MW",
+    "hello": "Moni",
+    "pron": "MOH-nee",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Zikomo", "pron": "zee-KOH-moh" },
+      { "en": "Goodbye", "local": "Tsalani bwino", "pron": "tsah-LAH-nee BWEE-noh" }
+    ]
+  },
+  {
+    "iso2": "MX",
+    "name": "Mexico",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-MX",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ],
+    "greetingNote": "A handshake, then a one-armed hug once you know someone."
+  },
+  {
+    "iso2": "MY",
+    "name": "Malaysia",
+    "language": "Malay",
+    "family": "austronesian",
+    "langCode": "ms-MY",
+    "hello": "Selamat sejahtera",
+    "pron": "seh-LAH-maht seh-jah-TEH-rah",
+    "literal": "Peace and prosperity",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Terima kasih", "pron": "teh-REE-mah KAH-seh" },
+      { "en": "Goodbye", "local": "Selamat tinggal", "pron": "seh-LAH-maht TING-gahl" }
+    ]
+  },
+  {
+    "iso2": "MZ",
+    "name": "Mozambique",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "NA",
+    "name": "Namibia",
+    "language": "Oshiwambo",
+    "family": "niger-congo",
+    "langCode": "kj-NA",
+    "hello": "Wa lele po",
+    "pron": "wah LEH-leh poh",
+    "literal": "Did you sleep well",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tangi", "pron": "TAHN-gee" },
+      { "en": "Goodbye", "local": "Kala po nawa", "pron": "KAH-lah poh NAH-wah" }
+    ]
+  },
+  {
+    "iso2": "NC",
+    "name": "New Caledonia",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "NE",
+    "name": "Niger",
+    "language": "Hausa",
+    "family": "afro-asiatic",
+    "langCode": "ha-NE",
+    "hello": "Sannu",
+    "pron": "SAHN-noo",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Na gode", "pron": "nah GOH-deh" },
+      { "en": "Goodbye", "local": "Sai anjima", "pron": "sigh ahn-JEE-mah" }
+    ]
+  },
+  {
+    "iso2": "NF",
+    "name": "Norfolk Island",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "Australia"
+  },
+  {
+    "iso2": "NG",
+    "name": "Nigeria",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-NG",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "Greetings are unhurried — ask after family before getting to the point."
+  },
+  {
+    "iso2": "NI",
+    "name": "Nicaragua",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "NL",
+    "name": "Netherlands",
+    "language": "Dutch",
+    "family": "germanic",
+    "langCode": "nl-NL",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Dank je", "pron": "dahnk yuh" },
+      { "en": "Goodbye", "local": "Tot ziens", "pron": "tot ZEENS" }
+    ]
+  },
+  {
+    "iso2": "NO",
+    "name": "Norway",
+    "language": "Norwegian",
+    "family": "germanic",
+    "langCode": "nb-NO",
+    "hello": "Hei",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Takk", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Ha det", "pron": "hah deh" }
+    ]
+  },
+  {
+    "iso2": "NP",
+    "name": "Nepal",
+    "language": "Nepali",
+    "family": "indo-iranian",
+    "langCode": "ne-NP",
+    "hello": "नमस्ते",
+    "pron": "Namaste (nuh-muh-STAY)",
+    "literal": "I bow to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "धन्यवाद", "pron": "DHUN-yuh-baad" },
+      { "en": "Goodbye", "local": "फेरि भेटौंला", "pron": "FEH-ree beh-TOWN-lah" }
+    ]
+  },
+  {
+    "iso2": "NR",
+    "name": "Nauru",
+    "language": "Nauruan",
+    "family": "austronesian",
+    "langCode": "na-NR",
+    "hello": "Ekamowir omo",
+    "pron": "eh-kah-MOH-weer OH-moh",
+    "literal": "A proper welcome",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tubwa", "pron": "TOOB-wah" },
+      { "en": "Goodbye", "local": "Tarawong", "pron": "tah-rah-WONG" }
+    ]
+  },
+  {
+    "iso2": "NU",
+    "name": "Niue",
+    "language": "Niuean",
+    "family": "austronesian",
+    "langCode": "niu-NU",
+    "hello": "Fakalofa lahi atu",
+    "pron": "fah-kah-LOH-fah LAH-hee AH-too",
+    "literal": "Great love to you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Fakaaue", "pron": "fah-kah-OW-eh" },
+      { "en": "Goodbye", "local": "Koe kia", "pron": "koh-eh KEE-ah" }
+    ],
+    "territoryOf": "New Zealand"
+  },
+  {
+    "iso2": "NZ",
+    "name": "New Zealand",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-NZ",
+    "hello": "Kia ora",
+    "pron": "kee-ah OH-rah",
+    "literal": "Be well",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "Kia ora is Māori and used by nearly everyone, whatever their background."
+  },
+  {
+    "iso2": "OM",
+    "name": "Oman",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "PA",
+    "name": "Panama",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "PE",
+    "name": "Peru",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-PE",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "PF",
+    "name": "French Polynesia",
+    "language": "Tahitian",
+    "family": "austronesian",
+    "langCode": "ty-PF",
+    "hello": "Ia ora na",
+    "pron": "ee-ah OH-rah nah",
+    "literal": "May you live",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Māuruuru", "pron": "mah-oo-roo-ROO" },
+      { "en": "Goodbye", "local": "Nānā", "pron": "NAH-nah" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "PG",
+    "name": "Papua New Guinea",
+    "language": "Tok Pisin",
+    "family": "creole",
+    "langCode": "tpi-PG",
+    "hello": "Gude",
+    "pron": "GOO-day",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tenkyu", "pron": "TEN-kyoo" },
+      { "en": "Goodbye", "local": "Lukim yu", "pron": "LOO-kim yoo" }
+    ]
+  },
+  {
+    "iso2": "PH",
+    "name": "Philippines",
+    "language": "Filipino",
+    "family": "austronesian",
+    "langCode": "fil-PH",
+    "hello": "Kumusta",
+    "pron": "koo-MOOS-tah",
+    "literal": "How are you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Salamat", "pron": "sah-LAH-maht" },
+      { "en": "Goodbye", "local": "Paalam", "pron": "pah-AH-lahm" }
+    ]
+  },
+  {
+    "iso2": "PK",
+    "name": "Pakistan",
+    "language": "Urdu",
+    "family": "indo-iranian",
+    "langCode": "ur-PK",
+    "hello": "السلام علیکم",
+    "pron": "Assalam alaikum (uh-suh-LAAM uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شکریہ", "pron": "SHOOK-ree-yah" },
+      { "en": "Goodbye", "local": "خدا حافظ", "pron": "khoo-DAH HAH-fiz" }
+    ]
+  },
+  {
+    "iso2": "PL",
+    "name": "Poland",
+    "language": "Polish",
+    "family": "slavic",
+    "langCode": "pl-PL",
+    "hello": "Cześć",
+    "pron": "cheshch",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Dziękuję", "pron": "jen-KOO-yeh" },
+      { "en": "Goodbye", "local": "Do widzenia", "pron": "doh veed-ZEN-yah" }
+    ]
+  },
+  {
+    "iso2": "PM",
+    "name": "Saint Pierre and Miquelon",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "PN",
+    "name": "Pitcairn Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "PR",
+    "name": "Puerto Rico",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-PR",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ],
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "PS",
+    "name": "Palestine",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "PT",
+    "name": "Portugal",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ],
+    "greetingNote": "Say Bom dia before noon and Boa tarde after — Olá works any time."
+  },
+  {
+    "iso2": "PW",
+    "name": "Palau",
+    "language": "Palauan",
+    "family": "austronesian",
+    "langCode": "pau-PW",
+    "hello": "Alii",
+    "pron": "ah-LEE",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Sulang", "pron": "SOO-lahng" },
+      { "en": "Goodbye", "local": "Mechikung", "pron": "meh-chee-KOONG" }
+    ]
+  },
+  {
+    "iso2": "PY",
+    "name": "Paraguay",
+    "language": "Guarani",
+    "family": "other",
+    "langCode": "gn-PY",
+    "hello": "Mba’éichapa",
+    "pron": "mbah-EH-chah-pah",
+    "literal": "How are you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Aguyje", "pron": "ah-goo-JEH" },
+      { "en": "Goodbye", "local": "Jajotopata", "pron": "hah-hoh-toh-PAH-tah" }
+    ]
+  },
+  {
+    "iso2": "QA",
+    "name": "Qatar",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "RE",
+    "name": "Réunion",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "RO",
+    "name": "Romania",
+    "language": "Romanian",
+    "family": "romance",
+    "langCode": "ro-RO",
+    "hello": "Bună",
+    "pron": "BOO-nuh",
+    "literal": "Good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mulțumesc", "pron": "mool-tsoo-MESK" },
+      { "en": "Goodbye", "local": "La revedere", "pron": "lah reh-veh-DEH-reh" }
+    ]
+  },
+  {
+    "iso2": "RS",
+    "name": "Serbia",
+    "language": "Serbian",
+    "family": "slavic",
+    "langCode": "sr-RS",
+    "hello": "Здраво",
+    "pron": "Zdravo (ZDRAH-voh)",
+    "literal": "Health",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Хвала", "pron": "HVAH-lah" },
+      { "en": "Goodbye", "local": "Довиђења", "pron": "doh-vee-JEN-yah" }
+    ]
+  },
+  {
+    "iso2": "RU",
+    "name": "Russia",
+    "language": "Russian",
+    "family": "slavic",
+    "langCode": "ru-RU",
+    "hello": "Здравствуйте",
+    "pron": "Zdravstvuyte (ZDRAHST-vooy-tyeh)",
+    "literal": "Be healthy",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Спасибо", "pron": "spah-SEE-bah" },
+      { "en": "Goodbye", "local": "До свидания", "pron": "dah svee-DAH-nyah" }
+    ]
+  },
+  {
+    "iso2": "RW",
+    "name": "Rwanda",
+    "language": "Kinyarwanda",
+    "family": "niger-congo",
+    "langCode": "rw-RW",
+    "hello": "Muraho",
+    "pron": "moo-rah-HOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Murakoze", "pron": "moo-rah-KOH-zeh" },
+      { "en": "Goodbye", "local": "Murabeho", "pron": "moo-rah-BEH-hoh" }
+    ]
+  },
+  {
+    "iso2": "SA",
+    "name": "Saudi Arabia",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ],
+    "greetingNote": "Men often greet with a handshake and a nose-touch between friends; follow their lead."
+  },
+  {
+    "iso2": "SB",
+    "name": "Solomon Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "SC",
+    "name": "Seychelles",
+    "language": "Seychellois Creole",
+    "family": "creole",
+    "langCode": "crs-SC",
+    "hello": "Bonzour",
+    "pron": "bon-ZOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mersi", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Orevwar", "pron": "oh-rev-WAHR" }
+    ]
+  },
+  {
+    "iso2": "SD",
+    "name": "Sudan",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "SE",
+    "name": "Sweden",
+    "language": "Swedish",
+    "family": "germanic",
+    "langCode": "sv-SE",
+    "hello": "Hej",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tack", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Hej då", "pron": "hay doh" }
+    ]
+  },
+  {
+    "iso2": "SG",
+    "name": "Singapore",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "SH",
+    "name": "Saint Helena",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "SI",
+    "name": "Slovenia",
+    "language": "Slovenian",
+    "family": "slavic",
+    "langCode": "sl-SI",
+    "hello": "Zdravo",
+    "pron": "ZDRAH-voh",
+    "literal": "Health",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Hvala", "pron": "HVAH-lah" },
+      { "en": "Goodbye", "local": "Nasvidenje", "pron": "nahs-VEE-den-yeh" }
+    ]
+  },
+  {
+    "iso2": "SJ",
+    "name": "Svalbard and Jan Mayen",
+    "language": "Norwegian",
+    "family": "germanic",
+    "langCode": "nb-NO",
+    "hello": "Hei",
+    "pron": "hay",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Takk", "pron": "tahk" },
+      { "en": "Goodbye", "local": "Ha det", "pron": "hah deh" }
+    ],
+    "territoryOf": "Norway"
+  },
+  {
+    "iso2": "SK",
+    "name": "Slovakia",
+    "language": "Slovak",
+    "family": "slavic",
+    "langCode": "sk-SK",
+    "hello": "Ahoj",
+    "pron": "AH-hoy",
+    "literal": "Hi",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ďakujem", "pron": "DYAH-koo-yem" },
+      { "en": "Goodbye", "local": "Do videnia", "pron": "doh vee-DEN-yah" }
+    ]
+  },
+  {
+    "iso2": "SL",
+    "name": "Sierra Leone",
+    "language": "Krio",
+    "family": "creole",
+    "langCode": "kri-SL",
+    "hello": "Kushɛ",
+    "pron": "koo-SHEH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tenki", "pron": "TEN-kee" },
+      { "en": "Goodbye", "local": "Wi go si", "pron": "wee goh see" }
+    ]
+  },
+  {
+    "iso2": "SM",
+    "name": "San Marino",
+    "language": "Italian",
+    "family": "romance",
+    "langCode": "it-IT",
+    "hello": "Ciao",
+    "pron": "chow",
+    "literal": "Hello / bye",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Grazie", "pron": "GRAH-tsyeh" },
+      { "en": "Goodbye", "local": "Arrivederci", "pron": "ah-ree-veh-DEHR-chee" }
+    ]
+  },
+  {
+    "iso2": "SN",
+    "name": "Senegal",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "SO",
+    "name": "Somalia",
+    "language": "Somali",
+    "family": "afro-asiatic",
+    "langCode": "so-SO",
+    "hello": "Salaan",
+    "pron": "sah-LAAN",
+    "literal": "Peace / greeting",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mahadsanid", "pron": "mah-hahd-SAH-nid" },
+      { "en": "Goodbye", "local": "Nabadgelyo", "pron": "nah-bahd-GEL-yoh" }
+    ]
+  },
+  {
+    "iso2": "SR",
+    "name": "Suriname",
+    "language": "Sranan Tongo",
+    "family": "creole",
+    "langCode": "srn-SR",
+    "hello": "Fa waka",
+    "pron": "fah WAH-kah",
+    "literal": "How goes it",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Grantangi", "pron": "grahn-TAHN-gee" },
+      { "en": "Goodbye", "local": "Adyosi", "pron": "ah-DYOH-see" }
+    ]
+  },
+  {
+    "iso2": "SS",
+    "name": "South Sudan",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "ST",
+    "name": "São Tomé and Príncipe",
+    "language": "Portuguese",
+    "family": "romance",
+    "langCode": "pt-PT",
+    "hello": "Olá",
+    "pron": "oh-LAH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigado", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "SV",
+    "name": "El Salvador",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "SX",
+    "name": "Sint Maarten",
+    "language": "Dutch",
+    "family": "germanic",
+    "langCode": "nl-NL",
+    "hello": "Hallo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Dank je", "pron": "dahnk yuh" },
+      { "en": "Goodbye", "local": "Tot ziens", "pron": "tot ZEENS" }
+    ],
+    "territoryOf": "the Netherlands"
+  },
+  {
+    "iso2": "SY",
+    "name": "Syria",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "SZ",
+    "name": "Eswatini",
+    "language": "Swazi",
+    "family": "niger-congo",
+    "langCode": "ss-SZ",
+    "hello": "Sawubona",
+    "pron": "sah-woo-BOH-nah",
+    "literal": "I see you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ngiyabonga", "pron": "ngee-yah-BOHN-gah" },
+      { "en": "Goodbye", "local": "Sala kahle", "pron": "SAH-lah KAH-shleh" }
+    ]
+  },
+  {
+    "iso2": "TC",
+    "name": "Turks and Caicos Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "TD",
+    "name": "Chad",
+    "language": "Chadian Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-TD",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "TF",
+    "name": "French Southern and Antarctic Lands",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "TG",
+    "name": "Togo",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ]
+  },
+  {
+    "iso2": "TH",
+    "name": "Thailand",
+    "language": "Thai",
+    "family": "kra-dai",
+    "langCode": "th-TH",
+    "hello": "สวัสดี",
+    "pron": "Sawasdee (sah-waht-DEE)",
+    "literal": "Blessing / well-being",
+    "alsoTry": [
+      { "en": "Thank you", "local": "ขอบคุณ", "pron": "kawp-KOON" },
+      { "en": "Goodbye", "local": "ลาก่อน", "pron": "lah-GAWN" }
+    ],
+    "greetingNote": "Add the wai — palms together, a slight bow — and say it as Sawasdee krap (men) or ka (women)."
+  },
+  {
+    "iso2": "TJ",
+    "name": "Tajikistan",
+    "language": "Tajik",
+    "family": "indo-iranian",
+    "langCode": "tg-TJ",
+    "hello": "Салом",
+    "pron": "Salom (sah-LOM)",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ташаккур", "pron": "tah-shah-KOOR" },
+      { "en": "Goodbye", "local": "Хайр", "pron": "khayr" }
+    ]
+  },
+  {
+    "iso2": "TK",
+    "name": "Tokelau",
+    "language": "Tokelauan",
+    "family": "austronesian",
+    "langCode": "tkl-TK",
+    "hello": "Mālō ni",
+    "pron": "MAH-loh nee",
+    "literal": "Well done / hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Fakafetai", "pron": "fah-kah-feh-TIE" },
+      { "en": "Goodbye", "local": "Tōfā", "pron": "TOH-fah" }
+    ],
+    "territoryOf": "New Zealand"
+  },
+  {
+    "iso2": "TL",
+    "name": "Timor-Leste",
+    "language": "Tetum",
+    "family": "creole",
+    "langCode": "tet-TL",
+    "hello": "Bondia",
+    "pron": "bohn-DEE-ah",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Obrigadu", "pron": "oh-bree-GAH-doo" },
+      { "en": "Goodbye", "local": "Adeus", "pron": "ah-DEH-oosh" }
+    ]
+  },
+  {
+    "iso2": "TM",
+    "name": "Turkmenistan",
+    "language": "Turkmen",
+    "family": "turkic",
+    "langCode": "tk-TM",
+    "hello": "Salam",
+    "pron": "sah-LAHM",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Sag boluň", "pron": "sahg boh-LOON" },
+      { "en": "Goodbye", "local": "Hoş gal", "pron": "hohsh gahl" }
+    ]
+  },
+  {
+    "iso2": "TN",
+    "name": "Tunisia",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "TO",
+    "name": "Tonga",
+    "language": "Tongan",
+    "family": "austronesian",
+    "langCode": "to-TO",
+    "hello": "Mālō e lelei",
+    "pron": "MAH-loh eh leh-LAY",
+    "literal": "Thanks, it is good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Mālō", "pron": "MAH-loh" },
+      { "en": "Goodbye", "local": "Nofo ā", "pron": "NOH-foh ah" }
+    ]
+  },
+  {
+    "iso2": "TR",
+    "name": "Turkey",
+    "language": "Turkish",
+    "family": "turkic",
+    "langCode": "tr-TR",
+    "hello": "Merhaba",
+    "pron": "MEHR-hah-bah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Teşekkürler", "pron": "teh-shek-kur-LEHR" },
+      { "en": "Goodbye", "local": "Hoşça kal", "pron": "HOHSH-chah kahl" }
+    ],
+    "greetingNote": "A firm handshake; among older men, a kiss on both cheeks."
+  },
+  {
+    "iso2": "TT",
+    "name": "Trinidad and Tobago",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "TV",
+    "name": "Tuvalu",
+    "language": "Tuvaluan",
+    "family": "austronesian",
+    "langCode": "tvl-TV",
+    "hello": "Tālofa",
+    "pron": "tah-LOH-fah",
+    "literal": "Greetings with love",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Fakafetai", "pron": "fah-kah-feh-TIE" },
+      { "en": "Goodbye", "local": "Tofa", "pron": "TOH-fah" }
+    ]
+  },
+  {
+    "iso2": "TW",
+    "name": "Taiwan",
+    "language": "Mandarin Chinese",
+    "family": "sino-tibetan",
+    "langCode": "zh-TW",
+    "hello": "你好",
+    "pron": "Nǐ hǎo (nee HOW)",
+    "literal": "You good",
+    "alsoTry": [
+      { "en": "Thank you", "local": "谢谢", "pron": "SHYEH-shyeh" },
+      { "en": "Goodbye", "local": "再见", "pron": "dzai-JYEN" }
+    ]
+  },
+  {
+    "iso2": "TZ",
+    "name": "Tanzania",
+    "language": "Swahili",
+    "family": "niger-congo",
+    "langCode": "sw-KE",
+    "hello": "Jambo",
+    "pron": "JAHM-boh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Asante", "pron": "ah-SAHN-teh" },
+      { "en": "Goodbye", "local": "Kwaheri", "pron": "kwah-HEH-ree" }
+    ]
+  },
+  {
+    "iso2": "UA",
+    "name": "Ukraine",
+    "language": "Ukrainian",
+    "family": "slavic",
+    "langCode": "uk-UA",
+    "hello": "Привіт",
+    "pron": "Pryvit (pree-VEET)",
+    "literal": "Greetings",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Дякую", "pron": "DYAH-koo-yoo" },
+      { "en": "Goodbye", "local": "До побачення", "pron": "doh poh-BAH-chen-nyah" }
+    ]
+  },
+  {
+    "iso2": "UG",
+    "name": "Uganda",
+    "language": "Luganda",
+    "family": "niger-congo",
+    "langCode": "lg-UG",
+    "hello": "Ki kati",
+    "pron": "kee KAH-tee",
+    "literal": "What's up",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Weebale", "pron": "weh-BAH-leh" },
+      { "en": "Goodbye", "local": "Weeraba", "pron": "weh-RAH-bah" }
+    ]
+  },
+  {
+    "iso2": "um-dq",
+    "name": "Jarvis Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "um-fq",
+    "name": "Baker Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "um-hq",
+    "name": "Howland Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "um-jq",
+    "name": "Johnston Atoll",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "um-mq",
+    "name": "Midway Atoll",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "um-wq",
+    "name": "Wake Island",
+    "language": "—",
+    "family": "none",
+    "uninhabited": true,
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "US",
+    "name": "United States",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-US",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "greetingNote": "A handshake and first names, immediately."
+  },
+  {
+    "iso2": "UY",
+    "name": "Uruguay",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-ES",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "UZ",
+    "name": "Uzbekistan",
+    "language": "Uzbek",
+    "family": "turkic",
+    "langCode": "uz-UZ",
+    "hello": "Salom",
+    "pron": "sah-LOM",
+    "literal": "Peace",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Rahmat", "pron": "rakh-MAHT" },
+      { "en": "Goodbye", "local": "Xayr", "pron": "khayr" }
+    ]
+  },
+  {
+    "iso2": "VA",
+    "name": "Vatican City",
+    "language": "Italian",
+    "family": "romance",
+    "langCode": "it-IT",
+    "hello": "Ciao",
+    "pron": "chow",
+    "literal": "Hello / bye",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Grazie", "pron": "GRAH-tsyeh" },
+      { "en": "Goodbye", "local": "Arrivederci", "pron": "ah-ree-veh-DEHR-chee" }
+    ]
+  },
+  {
+    "iso2": "VC",
+    "name": "Saint Vincent and the Grenadines",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ]
+  },
+  {
+    "iso2": "VE",
+    "name": "Venezuela",
+    "language": "Spanish",
+    "family": "romance",
+    "langCode": "es-VE",
+    "hello": "Hola",
+    "pron": "OH-lah",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Gracias", "pron": "GRAH-syahs" },
+      { "en": "Goodbye", "local": "Adiós", "pron": "ah-DYOHS" }
+    ]
+  },
+  {
+    "iso2": "VG",
+    "name": "British Virgin Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United Kingdom"
+  },
+  {
+    "iso2": "VI",
+    "name": "United States Virgin Islands",
+    "language": "English",
+    "family": "germanic",
+    "langCode": "en-GB",
+    "hello": "Hello",
+    "pron": "heh-LOH",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Thank you", "pron": "thank yoo" },
+      { "en": "Goodbye", "local": "Goodbye", "pron": "good-BYE" }
+    ],
+    "territoryOf": "the United States"
+  },
+  {
+    "iso2": "VN",
+    "name": "Vietnam",
+    "language": "Vietnamese",
+    "family": "austroasiatic",
+    "langCode": "vi-VN",
+    "hello": "Xin chào",
+    "pron": "sin CHOW",
+    "literal": "Respectful greeting",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Cảm ơn", "pron": "kahm UHN" },
+      { "en": "Goodbye", "local": "Tạm biệt", "pron": "tahm BYET" }
+    ]
+  },
+  {
+    "iso2": "VU",
+    "name": "Vanuatu",
+    "language": "Bislama",
+    "family": "creole",
+    "langCode": "bi-VU",
+    "hello": "Halo",
+    "pron": "HAH-loh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Tankyu", "pron": "TAHN-kyoo" },
+      { "en": "Goodbye", "local": "Lukim yu", "pron": "LOO-kim yoo" }
+    ]
+  },
+  {
+    "iso2": "WF",
+    "name": "Wallis and Futuna",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "WS",
+    "name": "Samoa",
+    "language": "Samoan",
+    "family": "austronesian",
+    "langCode": "sm-WS",
+    "hello": "Talofa",
+    "pron": "tah-LOH-fah",
+    "literal": "Greetings with love",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Fa’afetai", "pron": "fah-ah-feh-TIE" },
+      { "en": "Goodbye", "local": "Tōfā", "pron": "TOH-fah" }
+    ]
+  },
+  {
+    "iso2": "XK",
+    "name": "Kosovo",
+    "language": "Albanian",
+    "family": "other-indo-european",
+    "langCode": "sq-AL",
+    "hello": "Përshëndetje",
+    "pron": "per-shen-DET-yeh",
+    "literal": "Greetings",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Faleminderit", "pron": "fah-leh-min-DEH-rit" },
+      { "en": "Goodbye", "local": "Mirupafshim", "pron": "mee-roo-PAHF-shim" }
+    ]
+  },
+  {
+    "iso2": "YE",
+    "name": "Yemen",
+    "language": "Arabic",
+    "family": "afro-asiatic",
+    "langCode": "ar-SA",
+    "hello": "السلام عليكم",
+    "pron": "Assalamu alaikum (uh-suh-LAA-moo uh-LAY-koom)",
+    "literal": "Peace be upon you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "شكراً", "pron": "SHOOK-ran" },
+      { "en": "Goodbye", "local": "مع السلامة", "pron": "MAH-ah sah-LAA-mah" }
+    ]
+  },
+  {
+    "iso2": "YT",
+    "name": "Mayotte",
+    "language": "French",
+    "family": "romance",
+    "langCode": "fr-FR",
+    "hello": "Bonjour",
+    "pron": "bon-ZHOOR",
+    "literal": "Good day",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Merci", "pron": "mehr-SEE" },
+      { "en": "Goodbye", "local": "Au revoir", "pron": "oh ruh-VWAHR" }
+    ],
+    "territoryOf": "France"
+  },
+  {
+    "iso2": "ZA",
+    "name": "South Africa",
+    "language": "Zulu",
+    "family": "niger-congo",
+    "langCode": "zu-ZA",
+    "hello": "Sawubona",
+    "pron": "sah-woo-BOH-nah",
+    "literal": "I see you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ngiyabonga", "pron": "ngee-yah-BOHN-gah" },
+      { "en": "Goodbye", "local": "Hamba kahle", "pron": "HAHM-bah KAH-shleh" }
+    ],
+    "greetingNote": "Eleven official languages. Sawubona is Zulu; Afrikaans speakers say Hallo, and English works everywhere."
+  },
+  {
+    "iso2": "ZM",
+    "name": "Zambia",
+    "language": "Bemba",
+    "family": "niger-congo",
+    "langCode": "bem-ZM",
+    "hello": "Muli shani",
+    "pron": "MOO-lee SHAH-nee",
+    "literal": "How are you",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Natotela", "pron": "nah-toh-TEH-lah" },
+      { "en": "Goodbye", "local": "Shalapo", "pron": "shah-LAH-poh" }
+    ]
+  },
+  {
+    "iso2": "ZW",
+    "name": "Zimbabwe",
+    "language": "Shona",
+    "family": "niger-congo",
+    "langCode": "sn-ZW",
+    "hello": "Mhoro",
+    "pron": "MHOH-roh",
+    "literal": "Hello",
+    "alsoTry": [
+      { "en": "Thank you", "local": "Ndatenda", "pron": "ndah-TEN-dah" },
+      { "en": "Goodbye", "local": "Chisarai", "pron": "chee-sah-RYE" }
+    ]
+  }
+]

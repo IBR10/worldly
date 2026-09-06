@@ -11,6 +11,7 @@ import { track, tag, loadAnalytics, analyticsOptedOut, setAnalyticsOptOut } from
 import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
+import { regionClassesFor, familyLegend, languageLegend } from './languages.js';
 import { pickWeighted, weakCount } from './srs.js';
 import { checkAchievements, achievementStatus, levelTitle } from './achievements.js';
 import { createRouter } from './router.js';
@@ -333,6 +334,8 @@ function showHome() {
   const journeyCards = [
     { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
     { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
+    { key: 'languages', emoji: '🗺️', title: 'Language Map', desc: 'The world coloured by what it speaks.' },
+    { key: 'hello', emoji: '👋', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
     { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
     { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
     { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
@@ -400,6 +403,7 @@ const GO_ROUTES = {
   mixed: '/quiz/mixed', challenge: '/quiz/challenge', daily: '/quiz/daily', review: '/quiz/review',
   religions: '/religions', map_regions: '/regions',
   phrases: '/phrases', flagkey: '/flags', music: '/music', crises: '/crises',
+  languages: '/languages', hello: '/hello',
   custom: '/custom', stats: '/stats', achievements: '/achievements', profile: '/profile', about: '/about',
 };
 
@@ -1611,6 +1615,226 @@ function renderMusicDetail(entry) {
 }
 
 // ============================================================================
+//  LANGUAGE MAP  (Explore -> /languages)
+// ============================================================================
+// Which colouring the map is showing. Module-level, like crisesTab, so the
+// choice survives navigating away and back.
+let languageMapMode = 'family';
+// The isolated bucket key, or null for "show everything". Isolating is the
+// relief the palette needs: several slots sit under 3:1 against the page, so
+// nobody should have to tell eleven hues apart at once.
+let languageMapIsolated = null;
+
+/** Load greetings + the world SVG, guarding against a stale slow fetch. */
+async function loadWorldGreetings() {
+  if (!(await ensureDataset('greetings'))) return null;
+  const myGen = ++sessionGen;
+  app.innerHTML = '<p class="screen-sub">Loading the map…</p>';
+  let map;
+  try {
+    map = await loadMap('world');
+  } catch (err) {
+    if (myGen !== sessionGen) return null;
+    toast('🗺️', "Couldn't load the map", err.message);
+    navigate('/', { replace: true });
+    return null;
+  }
+  // The SVG is ~400 KB gzipped; if the player left while it was in flight,
+  // rendering now would hijack whatever screen they are looking at.
+  if (myGen !== sessionGen) return null;
+  return { map, rows: getData().greetings || [] };
+}
+
+function legendMarkup(items) {
+  return `<ul class="map-legend">
+    ${items.map((it) => `<li><button type="button" class="legend-item" data-bucket="${esc(it.key)}"
+      aria-pressed="${it.key === languageMapIsolated}"
+      title="Show only ${esc(it.label)}"><span class="legend-swatch ${esc(it.className)}" aria-hidden="true"></span>
+      <span>${esc(it.label)}</span> <span class="legend-count">${it.count}</span></button></li>`).join('')}
+  </ul>`;
+}
+
+async function showLanguageMap() {
+  leaveSession();
+  const loaded = await loadWorldGreetings();
+  if (!loaded) return;
+  const { map, rows } = loaded;
+
+  const modes = [
+    { id: 'family', label: '🌳 By language family', blurb: 'Grouped into eleven families — the shape of who is related to whom.' },
+    { id: 'language', label: '🗣️ By language', blurb: 'The ten most widespread languages by number of countries, and everything else.' },
+  ];
+  if (!modes.some((m) => m.id === languageMapMode)) languageMapMode = 'family';
+  const mode = modes.find((m) => m.id === languageMapMode);
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Language Map 🗺️</h1>
+    <p class="screen-sub">What the world actually speaks. Tap a country for its greeting and culture, or tap a
+      key below to show only that group.</p>
+
+    <div class="tabs" id="langModeTabs" role="tablist" aria-label="Colour the map by">
+      ${modes.map((m) => `<button class="tab ${m.id === languageMapMode ? 'active' : ''}" role="tab" id="langmode-${m.id}" aria-selected="${m.id === languageMapMode}" tabindex="${m.id === languageMapMode ? 0 : -1}" data-tab="${m.id}">${m.label}</button>`).join('')}
+    </div>
+    <p class="screen-sub">${esc(mode.blurb)}</p>
+
+    <div id="mapMount" class="map-mount"></div>
+    <div id="legendMount"></div>
+    <p class="muted-note mt-10">One language per country — the one most widely spoken. Most countries speak many
+      more, and across much of Africa, the Americas and the Pacific the language shown is a colonial one layered
+      over indigenous languages that are still spoken at home.</p>
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="toHello">👋 Say Hello map</button>
+      <button class="btn ghost" id="backHome">← Back</button>
+    </div>`;
+  wireNav();
+
+  const view = createMapView({
+    svgText: map.svgText,
+    repeat: true,
+    regionClasses: regionClassesFor(rows, languageMapMode),
+    onPick: (id) => {
+      const row = rows.find((r) => r.iso2.toLowerCase() === id);
+      const country = getData().countries.find((c) => c.iso2.toLowerCase() === id);
+      // Territories have a greeting but no country page, so they announce in
+      // place rather than navigating to a dead end.
+      if (country) return navigate('/country/' + slugify(country.name));
+      if (row) toast('🌍', row.name, row.uninhabited ? 'No permanent population.' : `${row.language} — ${row.hello} (${row.pron})`);
+    },
+  });
+  app.querySelector('#mapMount').append(view.el);
+
+  const legendMount = app.querySelector('#legendMount');
+  const svg = view.el.querySelector('svg');
+
+  /** Repaint, rebuild the key, and re-apply whichever bucket is isolated. */
+  function refresh() {
+    const classes = regionClassesFor(rows, languageMapMode);
+    view.paint(classes);
+    const items = languageMapMode === 'family' ? familyLegend(rows) : languageLegend(rows);
+    if (!items.some((i) => i.key === languageMapIsolated)) languageMapIsolated = null;
+    legendMount.innerHTML = legendMarkup(items);
+    legendMount.querySelectorAll('[data-bucket]').forEach((b) => b.addEventListener('click', () => {
+      languageMapIsolated = languageMapIsolated === b.dataset.bucket ? null : b.dataset.bucket;
+      refresh();
+    }));
+    applyIsolate(items, classes);
+  }
+
+  /** Dim every region outside the isolated bucket. */
+  function applyIsolate(items, classes) {
+    const target = items.find((i) => i.key === languageMapIsolated);
+    for (const path of svg.querySelectorAll('path[id]')) {
+      path.classList.toggle('region-dim', !!target && classes[path.id] !== target.className);
+    }
+  }
+
+  refresh();
+  wireTabs((id) => { languageMapMode = id; refresh(); }, app.querySelector('#langModeTabs'));
+  app.querySelector('#toHello').addEventListener('click', () => navigate('/hello'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+}
+
+// ============================================================================
+//  SAY HELLO MAP  (Explore -> /hello)
+// ============================================================================
+/** The greeting card for one region. Shared by /hello and the country pages. */
+function greetingMarkup(row) {
+  if (!row) return '';
+  if (row.uninhabited) {
+    return `<div class="hello-panel"><div class="hello-body">
+      <h2 class="m-0">${esc(row.name)}</h2>
+      <p class="screen-sub m-tight">No permanent population — nobody to greet.</p>
+    </div></div>`;
+  }
+  const lang = row.langCode || '';
+  const also = (row.alsoTry || []).map((p) => `
+    <div class="phrase-row">
+      <span class="ph-en">${esc(p.en)}</span>
+      <span class="ph-local">${localText(p.local, lang)} ${speakBtn(p.local, lang, p.pron)}</span>
+      <span class="ph-pron">${esc(p.pron)}</span>
+    </div>`).join('');
+  return `
+    <div class="hello-panel">
+      <img decoding="async" class="hello-flag" alt="" src="${flagUrl(row.iso2, 'w160')}">
+      <div class="hello-body">
+        <h2 class="m-0">${esc(row.name)}</h2>
+        <p class="screen-sub m-tight">${esc(row.language)}${row.territoryOf ? ' · part of ' + esc(row.territoryOf) : ''}</p>
+        <p class="hello-word">${localText(row.hello, lang)} ${speakBtn(row.hello, lang, phoneticOf(row.pron))}</p>
+        <p class="hello-pron m-0">${esc(row.pron)}${row.literal ? ' · literally “' + esc(row.literal) + '”' : ''}</p>
+        ${row.greetingNote ? `<p class="callout mt-10">${esc(row.greetingNote)}</p>` : ''}
+        ${also ? `<div class="section-h">Two more worth knowing</div><div class="phrase-list">${also}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+async function showHelloMap() {
+  leaveSession();
+  const loaded = await loadWorldGreetings();
+  if (!loaded) return;
+  const { map, rows } = loaded;
+  const byId = new Map(rows.map((r) => [r.iso2.toLowerCase(), r]));
+  const sorted = [...rows].filter((r) => !r.uninhabited).sort((a, b) => a.name.localeCompare(b.name));
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Say Hello 👋</h1>
+    <p class="screen-sub">Tap any country to learn how to greet someone from it — then tap 🔊 to hear it.</p>
+
+    <div class="form-block">
+      <label for="helloPick" class="muted-note">Or pick from the list</label>
+      <select class="select mt-10" id="helloPick">
+        <option value="">Choose a country…</option>
+        ${sorted.map((r) => `<option value="${esc(r.iso2.toLowerCase())}">${esc(r.name)}</option>`).join('')}
+      </select>
+    </div>
+
+    <div id="mapMount" class="map-mount"></div>
+    <div id="helloPanel" aria-live="polite"><p class="hello-empty">No country picked yet.</p></div>
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="toLanguages">🗺️ Language map</button>
+      <button class="btn ghost" id="backHome">← Back</button>
+    </div>`;
+  wireNav();
+
+  const panel = app.querySelector('#helloPanel');
+  const picker = app.querySelector('#helloPick');
+
+  /** Render into the panel only — re-rendering the screen would remount the
+   *  1.2 MB SVG and throw away the player's pan/zoom. */
+  const svg = () => app.querySelector('.map-svg');
+
+  function show(id) {
+    const row = byId.get(id);
+    if (!row) return;
+    // Keep the chosen country marked, so the map and the panel agree about
+    // what you are looking at after you scroll or pan.
+    svg().querySelectorAll('path.region-highlight').forEach((p) => p.classList.remove('region-highlight'));
+    svg().querySelector(`#${CSS.escape(id)}`)?.classList.add('region-highlight');
+    panel.innerHTML = greetingMarkup(row) + (getData().countries.some((c) => c.iso2.toLowerCase() === id)
+      ? `<div class="btn-row mt-14"><button class="btn ghost" data-country-page="${esc(id)}">Read about ${esc(row.name)} →</button></div>`
+      : '');
+    panel.querySelectorAll('[data-speak]').forEach((b) =>
+      b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang, b.dataset.fallback)));
+    const go = panel.querySelector('[data-country-page]');
+    if (go) go.addEventListener('click', () => {
+      const c = getData().countries.find((x) => x.iso2.toLowerCase() === go.dataset.countryPage);
+      if (c) navigate('/country/' + slugify(c.name));
+    });
+    if (picker.value !== id) picker.value = id;
+  }
+
+  const view = createMapView({ svgText: map.svgText, repeat: true, onPick: (id) => show(id) });
+  view.el.querySelector('svg').classList.add('map-picker');
+  app.querySelector('#mapMount').append(view.el);
+  picker.addEventListener('change', () => { if (picker.value) show(picker.value); });
+  app.querySelector('#toLanguages').addEventListener('click', () => navigate('/languages'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+}
+
+// ============================================================================
 //  CRISES & CURRENT EVENTS  (curated background + live-source links)
 // ============================================================================
 async function showCrises() {
@@ -2053,6 +2277,8 @@ async function boot() {
       { path: '/phrases/:slug', render: (p) => routePhraseDetail(p.slug) },
       { path: '/music', title: 'Music — Worldly', render: showMusic },
       { path: '/music/:slug', render: (p) => routeMusicDetail(p.slug) },
+      { path: '/languages', title: 'Language Map — Worldly', render: showLanguageMap },
+      { path: '/hello', title: 'Say Hello — Worldly', render: showHelloMap },
       { path: '/crises', title: 'Crises & Events — Worldly', render: showCrises },
       { path: '/crises/:slug', render: (p) => routeCrisisDetail(p.slug) },
       { path: '/leaderboard', title: 'Leaderboard — Worldly', render: showLeaderboard },
