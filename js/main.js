@@ -1741,8 +1741,12 @@ async function showLanguageMap() {
 // ============================================================================
 //  SAY HELLO MAP  (Explore -> /hello)
 // ============================================================================
-/** The greeting card for one region. Shared by /hello and the country pages. */
-function greetingMarkup(row) {
+/**
+ * The greeting card for one region. Shared by /hello and the country pages.
+ * `heading` is false on a country page, which already has the flag and the
+ * name in its own header — repeating both reads as a rendering bug.
+ */
+function greetingMarkup(row, { heading = true } = {}) {
   if (!row) return '';
   if (row.uninhabited) {
     return `<div class="hello-panel"><div class="hello-body">
@@ -1759,10 +1763,11 @@ function greetingMarkup(row) {
     </div>`).join('');
   return `
     <div class="hello-panel">
-      <img decoding="async" class="hello-flag" alt="" src="${flagUrl(row.iso2, 'w160')}">
+      ${heading ? `<img decoding="async" class="hello-flag" alt="" src="${flagUrl(row.iso2, 'w160')}">` : ''}
       <div class="hello-body">
-        <h2 class="m-0">${esc(row.name)}</h2>
-        <p class="screen-sub m-tight">${esc(row.language)}${row.territoryOf ? ' · part of ' + esc(row.territoryOf) : ''}</p>
+        ${heading ? `<h2 class="m-0">${esc(row.name)}</h2>
+        <p class="screen-sub m-tight">${esc(row.language)}${row.territoryOf ? ' · part of ' + esc(row.territoryOf) : ''}</p>`
+        : `<p class="screen-sub m-0">How to greet someone in ${esc(row.language)}</p>`}
         <p class="hello-word">${localText(row.hello, lang)} ${speakBtn(row.hello, lang, phoneticOf(row.pron))}</p>
         <p class="hello-pron m-0">${esc(row.pron)}${row.literal ? ' · literally “' + esc(row.literal) + '”' : ''}</p>
         ${row.greetingNote ? `<p class="callout mt-10">${esc(row.greetingNote)}</p>` : ''}
@@ -2007,7 +2012,7 @@ function renderCountryDetail(country, greeting, culture) {
       </div>
     </div>
 
-    ${greeting ? greetingMarkup(greeting) : ''}
+    ${greeting ? greetingMarkup(greeting, { heading: false }) : ''}
     ${stub}
 
     <div class="section-h">Fast facts</div>
