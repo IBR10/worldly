@@ -12,6 +12,7 @@ import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challen
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
 import { regionClassesFor, familyLegend, languageLegend } from './languages.js';
+import { datasetKeyForRegion, cultureFor, cultureSections, initialsFor } from './culture.js';
 import { pickWeighted, weakCount } from './srs.js';
 import { checkAchievements, achievementStatus, levelTitle } from './achievements.js';
 import { createRouter } from './router.js';
@@ -336,6 +337,7 @@ function showHome() {
     { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
     { key: 'languages', emoji: '🗺️', title: 'Language Map', desc: 'The world coloured by what it speaks.' },
     { key: 'hello', emoji: '👋', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
+    { key: 'countries', emoji: '🌐', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
     { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
     { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
     { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
@@ -403,7 +405,7 @@ const GO_ROUTES = {
   mixed: '/quiz/mixed', challenge: '/quiz/challenge', daily: '/quiz/daily', review: '/quiz/review',
   religions: '/religions', map_regions: '/regions',
   phrases: '/phrases', flagkey: '/flags', music: '/music', crises: '/crises',
-  languages: '/languages', hello: '/hello',
+  languages: '/languages', hello: '/hello', countries: '/country',
   custom: '/custom', stats: '/stats', achievements: '/achievements', profile: '/profile', about: '/about',
 };
 
@@ -1835,6 +1837,223 @@ async function showHelloMap() {
 }
 
 // ============================================================================
+//  COUNTRY GUIDES  (Explore -> /country, /country/:slug)
+// ============================================================================
+const countrySearch = { term: '', region: '' };
+
+/** The culture deep dive for one country, or null. Regions are authored one at
+ *  a time, so "not written yet" is a normal state, never an error. */
+async function ensureCulture(country) {
+  const key = datasetKeyForRegion(country.region);
+  if (!key) return null;
+  if (!getData()[key]?.length) {
+    try {
+      await loadDataset(key);
+    } catch {
+      return null; // the page still renders; it just has no deep dive
+    }
+  }
+  return cultureFor(getData()[key] || [], country.iso2);
+}
+
+async function showCountryIndex() {
+  leaveSession();
+  if (!(await ensureDataset('greetings'))) return;
+  const countries = getData().countries;
+  const greetings = new Map((getData().greetings || []).map((g) => [g.iso2.toLowerCase(), g]));
+  const regions = getRegions(countries);
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Country Guides 🌐</h1>
+    <p class="screen-sub">Every country: how to greet someone from it, five people it is known for, the events that
+      shaped it, and what its culture is actually like.</p>
+
+    <div class="form-block">
+      <input type="text" class="type-input" id="countrySearch" placeholder="Search countries…" value="${esc(countrySearch.term)}">
+      <select class="select mt-10" id="countryRegion">
+        <option value="">All regions</option>
+        ${regions.map((r) => `<option value="${esc(r)}"${r === countrySearch.region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
+      </select>
+    </div>
+
+    <div class="grid" id="countryGrid"></div>
+    <p class="screen-sub hidden" id="countryEmpty">No matches.</p>
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="toHello">👋 Say Hello map</button>
+      <button class="btn ghost" id="backHome">← Back</button>
+    </div>`;
+  wireNav();
+
+  const grid = app.querySelector('#countryGrid');
+  const empty = app.querySelector('#countryEmpty');
+
+  // Built once. Filtering then toggles .hidden on existing cards rather than
+  // regenerating markup — rebuilding ~200 <img> per keystroke is the exact
+  // regression the Flag Key screen exists to document.
+  grid.innerHTML = countries.map((c) => {
+    const g = greetings.get(c.iso2.toLowerCase());
+    return `<button class="card" data-slug="${esc(slugify(c.name))}"
+      data-name="${esc(c.name.toLowerCase())}" data-region="${esc(c.region)}">
+      <img class="emoji-flag" alt="" loading="lazy" decoding="async" src="${flagUrl(c.iso2, 'w80')}">
+      <span class="card-title">${esc(c.name)}</span>
+      <span class="card-desc">${g ? esc(g.hello) + ' · ' + esc(c.language) : esc(c.language)}</span>
+    </button>`;
+  }).join('');
+  // No inline onerror — the CSP has no unsafe-inline, so it would never run.
+  grid.querySelectorAll('img').forEach((img) =>
+    img.addEventListener('error', () => img.classList.add('hidden')));
+
+  function applyFilter() {
+    const term = countrySearch.term.trim().toLowerCase();
+    let shown = 0;
+    grid.querySelectorAll('.card').forEach((card) => {
+      const match = (!term || card.dataset.name.includes(term))
+        && (!countrySearch.region || card.dataset.region === countrySearch.region);
+      card.classList.toggle('hidden', !match);
+      if (match) shown++;
+    });
+    empty.classList.toggle('hidden', shown > 0);
+  }
+  applyFilter();
+
+  app.querySelector('#countrySearch').addEventListener('input', (e) => {
+    countrySearch.term = e.target.value;
+    applyFilter();
+  });
+  app.querySelector('#countryRegion').addEventListener('change', (e) => {
+    countrySearch.region = e.target.value;
+    applyFilter();
+  });
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-slug]');
+    if (card) navigate('/country/' + card.dataset.slug);
+  });
+  app.querySelector('#toHello').addEventListener('click', () => navigate('/hello'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+}
+
+async function routeCountryDetail(slug) {
+  leaveSession();
+  if (!(await ensureDataset('greetings'))) return;
+  const country = getData().countries.find((c) => slugify(c.name) === slug);
+  if (!country) return navigate('/country', { replace: true });
+  document.title = `${country.name} — Worldly`;
+  // A country whose region has no culture file yet still gets a real page.
+  const culture = await ensureCulture(country);
+  const greeting = (getData().greetings || []).find((g) => g.iso2 === country.iso2);
+  renderCountryDetail(country, greeting, culture);
+}
+
+function renderCountryDetail(country, greeting, culture) {
+  const { people, events, culture: rows, talkAbout, avoid, note } = cultureSections(culture);
+  const hasPhrases = (getData().phrases || []).some((p) => p.iso2 === country.iso2);
+
+  const peopleBlock = people.length ? `
+    <div class="section-h">Five people it is known for</div>
+    <div class="people-list">
+      ${people.map((p) => `
+        <div class="person">
+          <span class="person-initials" aria-hidden="true">${esc(initialsFor(p.name))}</span>
+          <div class="person-body">
+            <div class="person-name">${esc(p.name)}${p.native ? ` <span class="person-native">${esc(p.native)}</span>` : ''}</div>
+            <div class="person-meta">${esc(p.field || '')}${p.years ? ' · ' + esc(p.years) : ''}</div>
+            <div class="person-why">${esc(p.why)}</div>
+            ${p.wiki ? `<a class="person-link" href="${safeUrl(p.wiki)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ''}
+          </div>
+        </div>`).join('')}
+    </div>` : '';
+
+  const eventsBlock = events.length ? `
+    <div class="section-h">Moments that shaped it</div>
+    <div class="event-list">
+      ${events.map((e) => `
+        <div class="event">
+          <span class="event-year">${esc(e.year)}</span>
+          <div>
+            <div class="event-title">${esc(e.title)}</div>
+            <div class="event-what">${esc(e.what)}</div>
+          </div>
+          ${e.wiki ? `<a class="event-link" href="${safeUrl(e.wiki)}" target="_blank" rel="noopener" aria-label="${esc(e.title)} on Wikipedia">↗</a>` : ''}
+        </div>`).join('')}
+    </div>` : '';
+
+  const cultureBlock = rows.length ? `
+    <div class="section-h">Its culture, briefly</div>
+    <div class="culture-grid">
+      ${rows.map((r) => `
+        <div class="culture-cell">
+          <span class="culture-icon" aria-hidden="true">${esc(r.icon || '•')}</span>
+          <div><div class="culture-label">${esc(r.label)}</div><div>${esc(r.text)}</div></div>
+        </div>`).join('')}
+    </div>` : '';
+
+  const talkBlock = talkAbout.length ? `
+    <div class="section-h">Worth bringing up</div>
+    <ul class="talk-list">${talkAbout.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : '';
+
+  const stub = (!people.length && !events.length && !rows.length)
+    ? `<p class="callout mt-14">The deep dive for ${esc(country.name)} is still being written. The greeting above is
+        complete, and the facts below come from the main dataset.</p>` : '';
+
+  app.innerHTML = `
+    ${topNav({ id: 'backCountriesTop', label: '← All countries' })}
+    <div class="phrase-head">
+      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(country.iso2, 'w160')}">
+      <div>
+        <h1 class="screen-title m-0">${esc(country.name)}</h1>
+        <p class="screen-sub m-tight">${esc(country.subregion)} · ${esc(country.region)}</p>
+      </div>
+    </div>
+
+    ${greeting ? greetingMarkup(greeting) : ''}
+    ${stub}
+
+    <div class="section-h">Fast facts</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="big">${esc(country.capital)}</div><div class="lbl">Capital</div></div>
+      <div class="stat"><div class="big">${Number(country.population).toLocaleString()}</div><div class="lbl">Population</div></div>
+      <div class="stat"><div class="big">${esc(country.currency)}</div><div class="lbl">Currency</div></div>
+      <div class="stat"><div class="big">${esc(country.religion)}</div><div class="lbl">Largest faith</div></div>
+    </div>
+
+    ${peopleBlock}
+    ${eventsBlock}
+    ${cultureBlock}
+    ${talkBlock}
+    ${avoid ? `<div class="section-h">Tread carefully</div><p class="callout callout-warn">${esc(avoid)}</p>` : ''}
+
+    <div class="section-h">Also worth knowing</div>
+    <div class="crisis-body">
+      <p>${esc(country.funFact)}</p>
+      <p>${esc(country.history)}</p>
+      ${country.note ? `<p class="muted-note">${esc(country.note)}</p>` : ''}
+      ${note ? `<p class="muted-note">${esc(note)}</p>` : ''}
+      <div><span class="muted-note">Learn more:</span>
+        <div class="learn-more">
+          <a href="${safeUrl(country.wiki)}" target="_blank" rel="noopener">Wikipedia ↗</a>
+          ${hasPhrases ? `<a href="/phrases/${esc(slugify(country.name))}" data-link>More phrases →</a>` : ''}
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="backCountries">← All countries</button>
+      <button class="btn ghost" id="toHelloFromCountry">👋 Say Hello map</button>
+      <button class="btn ghost" id="backHome">🏠 Home</button>
+    </div>`;
+  wireNav();
+  app.querySelectorAll('[data-speak]').forEach((b) =>
+    b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang, b.dataset.fallback)));
+  const top = app.querySelector('#backCountriesTop');
+  if (top) top.addEventListener('click', () => navigate('/country'));
+  app.querySelector('#backCountries').addEventListener('click', () => navigate('/country'));
+  app.querySelector('#toHelloFromCountry').addEventListener('click', () => navigate('/hello'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+}
+
+// ============================================================================
 //  CRISES & CURRENT EVENTS  (curated background + live-source links)
 // ============================================================================
 async function showCrises() {
@@ -2279,6 +2498,8 @@ async function boot() {
       { path: '/music/:slug', render: (p) => routeMusicDetail(p.slug) },
       { path: '/languages', title: 'Language Map — Worldly', render: showLanguageMap },
       { path: '/hello', title: 'Say Hello — Worldly', render: showHelloMap },
+      { path: '/country', title: 'Country Guides — Worldly', render: showCountryIndex },
+      { path: '/country/:slug', render: (p) => routeCountryDetail(p.slug) },
       { path: '/crises', title: 'Crises & Events — Worldly', render: showCrises },
       { path: '/crises/:slug', render: (p) => routeCrisisDetail(p.slug) },
       { path: '/leaderboard', title: 'Leaderboard — Worldly', render: showLeaderboard },

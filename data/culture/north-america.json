@@ -1,0 +1,670 @@
+[
+  {
+    "iso2": "US",
+    "people": [
+      { "name": "Abraham Lincoln", "years": "1809–1865", "field": "President", "why": "Held the country together through civil war and ended slavery; assassinated five days after it ended.", "wiki": "https://en.wikipedia.org/wiki/Abraham_Lincoln" },
+      { "name": "Martin Luther King Jr.", "years": "1929–1968", "field": "Civil rights leader", "why": "Led the movement that dismantled legal segregation, and made non-violent protest a global template.", "wiki": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr." },
+      { "name": "Louis Armstrong", "years": "1901–1971", "field": "Musician", "why": "Turned jazz from ensemble music into an art of the individual soloist, and changed all popular music after him.", "wiki": "https://en.wikipedia.org/wiki/Louis_Armstrong" },
+      { "name": "Toni Morrison", "years": "1931–2019", "field": "Novelist", "why": "Nobel laureate whose work put Black American interior life at the centre of the literature.", "wiki": "https://en.wikipedia.org/wiki/Toni_Morrison" },
+      { "name": "Thomas Edison", "years": "1847–1931", "field": "Inventor", "why": "1,093 patents, and the industrial research lab itself may have been his most consequential invention.", "wiki": "https://en.wikipedia.org/wiki/Thomas_Edison" }
+    ],
+    "events": [
+      { "year": "1776", "title": "Declaration of Independence", "what": "Thirteen colonies broke from Britain on a claim of universal rights that the country has been arguing over ever since.", "wiki": "https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence" },
+      { "year": "1861–1865", "title": "The Civil War", "what": "Around 700,000 died over slavery and secession — still the deadliest war in American history.", "wiki": "https://en.wikipedia.org/wiki/American_Civil_War" },
+      { "year": "1929–1939", "title": "The Great Depression", "what": "Economic collapse reshaped the role of government through the New Deal.", "wiki": "https://en.wikipedia.org/wiki/Great_Depression_in_the_United_States" },
+      { "year": "1964–65", "title": "The Civil Rights and Voting Rights Acts", "what": "Ended legal segregation and disenfranchisement after a decade of mass protest.", "wiki": "https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964" },
+      { "year": "1969", "title": "Apollo 11", "what": "Humans walked on the moon, watched live by roughly a fifth of the people alive.", "wiki": "https://en.wikipedia.org/wiki/Apollo_11" }
+    ],
+    "culture": [
+      { "icon": "🗺️", "label": "Regionalism", "text": "The South, New England, the Midwest, Texas and California are as different as separate countries in food, speech and politics." },
+      { "icon": "🏈", "label": "Sport", "text": "American football on Sundays in autumn, baseball in summer, basketball everywhere. College sport is close to professional in scale." },
+      { "icon": "🦃", "label": "Thanksgiving", "text": "The biggest travel weekend of the year, and for many families more important than Christmas." },
+      { "icon": "🗣️", "label": "Manner", "text": "Friendly and informal fast — first names immediately, and small talk with strangers is normal, not intrusive." },
+      { "icon": "🍔", "label": "Food", "text": "Barbecue, Tex-Mex, soul food, Cajun, New York pizza: the regional cuisines are the real ones." }
+    ],
+    "talkAbout": [
+      "Where they're from — the state and city matter enormously.",
+      "Sport, especially their college or hometown team.",
+      "Road trips and national parks, which almost everyone has opinions about."
+    ],
+    "avoid": "Politics, guns, religion and healthcare are all live and polarised. Race is discussed but not casually with strangers."
+  },
+  {
+    "iso2": "CA",
+    "people": [
+      { "name": "Terry Fox", "years": "1958–1981", "field": "Athlete and activist", "why": "Ran across Canada on one leg to raise money for cancer research; the annual run is now global.", "wiki": "https://en.wikipedia.org/wiki/Terry_Fox" },
+      { "name": "Frederick Banting", "years": "1891–1941", "field": "Scientist", "why": "Co-discovered insulin and sold the patent for a dollar so it would stay cheap.", "wiki": "https://en.wikipedia.org/wiki/Frederick_Banting" },
+      { "name": "Leonard Cohen", "years": "1934–2016", "field": "Songwriter and poet", "why": "'Hallelujah' alone has been recorded hundreds of times; he was a serious poet first.", "wiki": "https://en.wikipedia.org/wiki/Leonard_Cohen" },
+      { "name": "Wayne Gretzky", "years": "b. 1961", "field": "Ice hockey player", "why": "Holds so many records that his assists alone would make him the highest scorer in NHL history.", "wiki": "https://en.wikipedia.org/wiki/Wayne_Gretzky" },
+      { "name": "Viola Desmond", "years": "1914–1965", "field": "Civil rights figure", "why": "Refused to leave a whites-only cinema seat in 1946; she is now on the ten-dollar note.", "wiki": "https://en.wikipedia.org/wiki/Viola_Desmond" }
+    ],
+    "events": [
+      { "year": "1867", "title": "Confederation", "what": "Four colonies joined to form the Dominion of Canada, adding provinces over the next 82 years.", "wiki": "https://en.wikipedia.org/wiki/Canadian_Confederation" },
+      { "year": "1917", "title": "Vimy Ridge", "what": "Canadian divisions took a position that had defeated others; often described as the country's coming of age.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Vimy_Ridge" },
+      { "year": "1982", "title": "Patriation and the Charter", "what": "Canada took full control of its constitution and adopted the Charter of Rights and Freedoms.", "wiki": "https://en.wikipedia.org/wiki/Patriation" },
+      { "year": "2015", "title": "Truth and Reconciliation", "what": "The commission on residential schools documented what was done to Indigenous children and called it cultural genocide.", "wiki": "https://en.wikipedia.org/wiki/Truth_and_Reconciliation_Commission_of_Canada" }
+    ],
+    "culture": [
+      { "icon": "🏒", "label": "Hockey", "text": "Ice hockey is the shared reference point, from frozen ponds to Saturday night broadcasts." },
+      { "icon": "🍁", "label": "Bilingualism", "text": "English and French are both official; Quebec's distinctiveness shapes federal politics constantly." },
+      { "icon": "🥞", "label": "Food", "text": "Poutine from Quebec, butter tarts, Nanaimo bars, and maple syrup taken seriously enough to have a strategic reserve." },
+      { "icon": "🪶", "label": "First Nations", "text": "More than 600 First Nations, plus Inuit and Métis peoples, with land and treaty rights central to current politics." },
+      { "icon": "🙂", "label": "Manner", "text": "The politeness is real but is also a running joke Canadians make about themselves." }
+    ],
+    "talkAbout": [
+      "Which province they're from, and the rivalry with the one next door.",
+      "Hockey, and how their team is doing.",
+      "Winter, and their strategies for surviving it."
+    ],
+    "avoid": "Don't assume Canada is a version of the United States — it's the fastest way to annoy someone. Residential schools and Quebec sovereignty are serious subjects."
+  },
+  {
+    "iso2": "MX",
+    "people": [
+      { "name": "Frida Kahlo", "years": "1907–1954", "field": "Painter", "why": "Turned her own pain and identity into the most recognisable body of self-portraits in modern art.", "wiki": "https://en.wikipedia.org/wiki/Frida_Kahlo" },
+      { "name": "Benito Juárez", "years": "1806–1872", "field": "President", "why": "A Zapotec shepherd who became president, separated church and state, and defeated a French emperor.", "wiki": "https://en.wikipedia.org/wiki/Benito_Ju%C3%A1rez" },
+      { "name": "Octavio Paz", "years": "1914–1998", "field": "Poet and essayist", "why": "The Labyrinth of Solitude is still the book Mexicans argue with about their own identity; Nobel 1990.", "wiki": "https://en.wikipedia.org/wiki/Octavio_Paz" },
+      { "name": "Diego Rivera", "years": "1886–1957", "field": "Muralist", "why": "Put Mexican history on public walls at enormous scale and made muralism a political movement.", "wiki": "https://en.wikipedia.org/wiki/Diego_Rivera" },
+      { "name": "Sor Juana Inés de la Cruz", "years": "1648–1695", "field": "Poet and scholar", "why": "A nun who out-argued the bishops on women's right to learn, three centuries early.", "wiki": "https://en.wikipedia.org/wiki/Juana_In%C3%A9s_de_la_Cruz" }
+    ],
+    "events": [
+      { "year": "1325", "title": "Tenochtitlan founded", "what": "The Mexica built a city on a lake island that became one of the largest in the world; Mexico City sits on it.", "wiki": "https://en.wikipedia.org/wiki/Tenochtitlan" },
+      { "year": "1521", "title": "The fall of Tenochtitlan", "what": "Cortés and his Indigenous allies took the Aztec capital, beginning three centuries of colonial rule.", "wiki": "https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan" },
+      { "year": "1810", "title": "El Grito de Dolores", "what": "Father Hidalgo's call to arms began the independence war; it's re-enacted every 15 September.", "wiki": "https://en.wikipedia.org/wiki/Cry_of_Dolores" },
+      { "year": "1910–1920", "title": "The Revolution", "what": "Zapata, Villa and a decade of civil war produced land reform and the 1917 constitution.", "wiki": "https://en.wikipedia.org/wiki/Mexican_Revolution" }
+    ],
+    "culture": [
+      { "icon": "💀", "label": "Día de Muertos", "text": "Families build altars and spend the night at graves — a celebration of the dead, not a mourning of them." },
+      { "icon": "🌽", "label": "Food", "text": "Corn, chilli and beans across thirty regional cuisines; Mexican cooking is UNESCO-listed." },
+      { "icon": "👨‍👩‍👧", "label": "Family", "text": "Extended family is the default social unit, and Sunday lunch is close to obligatory." },
+      { "icon": "🎺", "label": "Music", "text": "Mariachi from Jalisco, banda from Sinaloa, son jarocho from Veracruz — regional and fiercely defended." },
+      { "icon": "🗣️", "label": "Language", "text": "68 Indigenous languages are recognised; Nahuatl gave English chocolate, tomato and avocado." }
+    ],
+    "talkAbout": [
+      "Food, and which region does which dish properly.",
+      "Día de Muertos and how their family observes it.",
+      "Football, and the Liga MX club they support."
+    ],
+    "avoid": "Cartel violence and migration are exhausting subjects for many. Don't mistake Día de Muertos for Halloween, and don't do the sombrero-and-siesta routine."
+  },
+  {
+    "iso2": "CU",
+    "people": [
+      { "name": "José Martí", "years": "1853–1895", "field": "Poet and independence leader", "why": "Cuba's national hero, claimed by every faction; 'Guantanamera' uses his verses.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mart%C3%AD" },
+      { "name": "Fidel Castro", "years": "1926–2016", "field": "Revolutionary and head of state", "why": "Led the 1959 revolution and ruled for nearly half a century.", "wiki": "https://en.wikipedia.org/wiki/Fidel_Castro" },
+      { "name": "Celia Cruz", "years": "1925–2003", "field": "Singer", "why": "The Queen of Salsa, whose voice defined Cuban music abroad after she left in 1960.", "wiki": "https://en.wikipedia.org/wiki/Celia_Cruz" },
+      { "name": "Alicia Alonso", "years": "1920–2019", "field": "Ballerina", "why": "Danced Giselle while nearly blind and built one of the world's great ballet companies in Havana.", "wiki": "https://en.wikipedia.org/wiki/Alicia_Alonso" },
+      { "name": "Compay Segundo", "years": "1907–2003", "field": "Musician", "why": "Buena Vista Social Club made him famous worldwide at 90.", "wiki": "https://en.wikipedia.org/wiki/Compay_Segundo" }
+    ],
+    "events": [
+      { "year": "1898", "title": "The Spanish-American War", "what": "Spain lost Cuba; the United States occupied it and kept a base at Guantánamo.", "wiki": "https://en.wikipedia.org/wiki/Spanish%E2%80%93American_War" },
+      { "year": "1959", "title": "The Revolution", "what": "Castro's forces overthrew Batista, and Cuba became the first socialist state in the Americas.", "wiki": "https://en.wikipedia.org/wiki/Cuban_Revolution" },
+      { "year": "1962", "title": "The Missile Crisis", "what": "Thirteen days that took the world closer to nuclear war than at any other point.", "wiki": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis" },
+      { "year": "1991", "title": "The Special Period", "what": "The Soviet collapse cut Cuba's economy by a third; the improvisation of those years still marks daily life.", "wiki": "https://en.wikipedia.org/wiki/Special_Period" }
+    ],
+    "culture": [
+      { "icon": "🎶", "label": "Music", "text": "Son, rumba, mambo, cha-cha-chá and salsa all come from here; music is everywhere and mostly live." },
+      { "icon": "⚾", "label": "Sport", "text": "Baseball, argued about daily in Havana's Parque Central by an informal debating club called la esquina caliente." },
+      { "icon": "🚗", "label": "Improvisation", "text": "1950s American cars kept running with Soviet parts — resolver, making do, is a national skill and a national joke." },
+      { "icon": "🩺", "label": "Medicine", "text": "Cuba trains more doctors per head than almost anywhere and sends medical brigades abroad." },
+      { "icon": "🍹", "label": "Food and drink", "text": "Ropa vieja, moros y cristianos, and rum in a daiquiri or mojito." }
+    ],
+    "talkAbout": [
+      "Music and dance — the fastest way into any conversation.",
+      "Baseball, and the Havana teams — it is argued about daily in the street.",
+      "Family abroad; almost everyone has relatives in Miami or Madrid."
+    ],
+    "avoid": "Politics is risky for Cubans to discuss openly with strangers, and the embargo and the diaspora split opinion sharply. Let them steer."
+  },
+  {
+    "iso2": "GT",
+    "people": [
+      { "name": "Rigoberta Menchú", "years": "b. 1959", "field": "Activist", "why": "K'iche' Maya campaigner who won the Nobel Peace Prize in 1992 for indigenous rights.", "wiki": "https://en.wikipedia.org/wiki/Rigoberta_Mench%C3%BA" },
+      { "name": "Miguel Ángel Asturias", "years": "1899–1974", "field": "Novelist", "why": "Nobel laureate whose Mr President is the archetypal Latin American dictator novel.", "wiki": "https://en.wikipedia.org/wiki/Miguel_%C3%81ngel_Asturias" },
+      { "name": "Jacobo Árbenz", "years": "1913–1971", "field": "President", "why": "His land reform was ended by a CIA-backed coup in 1954, which set off decades of war.", "wiki": "https://en.wikipedia.org/wiki/Jacobo_%C3%81rbenz" },
+      { "name": "Carlos Mérida", "years": "1891–1984", "field": "Artist", "why": "Fused Maya motifs with European modernism across murals in Guatemala and Mexico.", "wiki": "https://en.wikipedia.org/wiki/Carlos_M%C3%A9rida" },
+      { "name": "Ricardo Arjona", "years": "b. 1964", "field": "Singer-songwriter", "why": "One of the best-selling Latin American artists of the last thirty years.", "wiki": "https://en.wikipedia.org/wiki/Ricardo_Arjona" }
+    ],
+    "events": [
+      { "year": "250–900", "title": "The Maya classic period", "what": "Tikal and its rivals built cities, astronomy and a full writing system in the Petén rainforest.", "wiki": "https://en.wikipedia.org/wiki/Maya_civilization" },
+      { "year": "1954", "title": "The coup", "what": "A CIA-backed operation removed the elected president after his land reform threatened United Fruit.", "wiki": "https://en.wikipedia.org/wiki/1954_Guatemalan_coup_d%27%C3%A9tat" },
+      { "year": "1960–1996", "title": "The civil war", "what": "200,000 killed, mostly Maya civilians; a UN commission found the state committed genocide.", "wiki": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War" },
+      { "year": "1996", "title": "The peace accords", "what": "Ended the longest civil war in Central America.", "wiki": "https://en.wikipedia.org/wiki/Guatemalan_Civil_War" }
+    ],
+    "culture": [
+      { "icon": "🧵", "label": "Textiles", "text": "Each Maya town has its own huipil pattern — you can read where a woman is from in what she wears." },
+      { "icon": "🌋", "label": "Volcanoes", "text": "Thirty-seven volcanoes; Fuego erupts almost continuously and Antigua sits in their shadow." },
+      { "icon": "🫓", "label": "Food", "text": "Pepián, a thick spiced stew, and tortillas made fresh at every meal." },
+      { "icon": "🕯️", "label": "Semana Santa", "text": "Antigua's Holy Week processions walk over vast carpets of dyed sawdust made overnight." },
+      { "icon": "🗣️", "label": "Language", "text": "22 Maya languages plus Xinka and Garífuna; roughly 40% of the country is Indigenous." }
+    ],
+    "talkAbout": [
+      "Textiles, and how to read the patterns.",
+      "Lake Atitlán and the volcanoes.",
+      "Coffee, which is among the best in the region."
+    ],
+    "avoid": "The civil war and the genocide against Maya communities are recent and unresolved. Don't romanticise 'Maya ruins' to people whose living culture they are."
+  },
+  {
+    "iso2": "CR",
+    "people": [
+      { "name": "Óscar Arias", "years": "b. 1940", "field": "President", "why": "Won the Nobel Peace Prize in 1987 for the plan that ended Central America's wars.", "wiki": "https://en.wikipedia.org/wiki/%C3%93scar_Arias" },
+      { "name": "José Figueres Ferrer", "years": "1906–1990", "field": "President", "why": "Abolished the army in 1948 and put the money into schools and health.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Figueres_Ferrer" },
+      { "name": "Franklin Chang Díaz", "years": "b. 1950", "field": "Astronaut and physicist", "why": "Flew seven Space Shuttle missions, a joint record, and develops plasma rockets.", "wiki": "https://en.wikipedia.org/wiki/Franklin_Chang_D%C3%ADaz" },
+      { "name": "Carmen Lyra", "years": "1887–1949", "field": "Writer", "why": "Her Stories of My Aunt Panchita are the country's best-loved folk tales.", "wiki": "https://en.wikipedia.org/wiki/Carmen_Lyra" },
+      { "name": "Keylor Navas", "years": "b. 1986", "field": "Footballer", "why": "Won three consecutive Champions League titles in goal for Real Madrid.", "wiki": "https://en.wikipedia.org/wiki/Keylor_Navas" }
+    ],
+    "events": [
+      { "year": "1821", "title": "Independence", "what": "Central America broke from Spain; news reportedly took a month to reach Costa Rica.", "wiki": "https://en.wikipedia.org/wiki/Independence_of_Central_America" },
+      { "year": "1948", "title": "Abolishing the army", "what": "After a short civil war, Figueres dissolved the military — Costa Rica has had none since.", "wiki": "https://en.wikipedia.org/wiki/Costa_Rican_Civil_War" },
+      { "year": "1987", "title": "The Arias peace plan", "what": "Brought the region's civil wars to the negotiating table and won the Nobel Peace Prize.", "wiki": "https://en.wikipedia.org/wiki/Esquipulas_Peace_Agreement" },
+      { "year": "2019", "title": "Running on renewables", "what": "Costa Rica generated over 98% of its electricity from renewable sources for a fifth straight year.", "wiki": "https://en.wikipedia.org/wiki/Renewable_energy_in_Costa_Rica" }
+    ],
+    "culture": [
+      { "icon": "🌿", "label": "Pura vida", "text": "Greeting, farewell, thanks and outlook all in two words. It is used constantly and meant sincerely." },
+      { "icon": "🦥", "label": "Nature", "text": "About 5% of the world's known species on 0.03% of its land, with a quarter of the country protected." },
+      { "icon": "☕", "label": "Coffee", "text": "Coffee built the country's middle class in the nineteenth century and is still a matter of pride." },
+      { "icon": "🍚", "label": "Food", "text": "Gallo pinto — rice and beans — for breakfast, and a casado plate at lunch." },
+      { "icon": "🕊️", "label": "No army", "text": "No military for over 75 years; the anniversary is a public holiday." }
+    ],
+    "talkAbout": [
+      "Pura vida, and what it actually means to them.",
+      "Wildlife and national parks.",
+      "Coffee, and the region it comes from."
+    ],
+    "avoid": "Ticos dislike being lumped in with their neighbours' conflicts. Nicaraguan immigration is a touchy domestic subject."
+  },
+  {
+    "iso2": "PA",
+    "people": [
+      { "name": "Rubén Blades", "years": "b. 1948", "field": "Musician and politician", "why": "Made salsa political with 'Pedro Navaja', then ran for president and served as a minister.", "wiki": "https://en.wikipedia.org/wiki/Rub%C3%A9n_Blades" },
+      { "name": "Omar Torrijos", "years": "1929–1981", "field": "General and leader", "why": "Negotiated the treaty that returned the Canal to Panama.", "wiki": "https://en.wikipedia.org/wiki/Omar_Torrijos" },
+      { "name": "Roberto Durán", "years": "b. 1951", "field": "Boxer", "why": "World champion at four weights and one of the greatest lightweights in the sport's history.", "wiki": "https://en.wikipedia.org/wiki/Roberto_Dur%C3%A1n" },
+      { "name": "Mariano Rivera", "years": "b. 1969", "field": "Baseball player", "why": "The first player unanimously elected to the Baseball Hall of Fame.", "wiki": "https://en.wikipedia.org/wiki/Mariano_Rivera" },
+      { "name": "Rosa Guerrero de Chiari", "years": "1893–1974", "field": "Educator", "why": "A pioneer of women's education and civic participation in Panama.", "wiki": "https://en.wikipedia.org/wiki/Panama" }
+    ],
+    "events": [
+      { "year": "1903", "title": "Separation from Colombia", "what": "Panama became independent with United States backing, and immediately granted canal rights.", "wiki": "https://en.wikipedia.org/wiki/Separation_of_Panama_from_Colombia" },
+      { "year": "1914", "title": "The Canal opens", "what": "One of the largest engineering projects ever attempted, at the cost of tens of thousands of workers' lives.", "wiki": "https://en.wikipedia.org/wiki/Panama_Canal" },
+      { "year": "1964", "title": "Martyrs' Day", "what": "Students were killed protesting over the flag in the Canal Zone; it became the turning point toward handover.", "wiki": "https://en.wikipedia.org/wiki/Martyr%27s_Day_(Panama)" },
+      { "year": "1999", "title": "The handover", "what": "Panama took full control of the Canal at noon on the last day of the century.", "wiki": "https://en.wikipedia.org/wiki/Torrijos%E2%80%93Carter_Treaties" }
+    ],
+    "culture": [
+      { "icon": "🚢", "label": "The Canal", "text": "About 3% of world trade passes through; the handover is a defining point of national pride." },
+      { "icon": "🧵", "label": "Molas", "text": "The Guna people's reverse-appliqué panels are among the most striking textile art in the Americas." },
+      { "icon": "🎺", "label": "Music", "text": "Salsa, típico accordion music, and a strong Caribbean reggae en español scene." },
+      { "icon": "🏙️", "label": "Panama City", "text": "A skyline of towers next to a 17th-century old town, both on the Pacific." },
+      { "icon": "🌎", "label": "Crossroads", "text": "Canal workers came from the Caribbean, China, India and Europe, and the country reflects all of it." }
+    ],
+    "talkAbout": [
+      "The Canal, the expansion, and what the handover meant.",
+      "Baseball and boxing.",
+      "The Guna Yala islands and mola textiles."
+    ],
+    "avoid": "The 1989 US invasion and the Noriega years are sensitive. 'Panama Papers' jokes are wearing thin."
+  },
+  {
+    "iso2": "JM",
+    "people": [
+      { "name": "Bob Marley", "years": "1945–1981", "field": "Musician", "why": "Made reggae a global language and remains one of the most recognised figures on earth.", "wiki": "https://en.wikipedia.org/wiki/Bob_Marley" },
+      { "name": "Marcus Garvey", "years": "1887–1940", "field": "Activist", "why": "Built the largest Black mass movement in history and shaped Pan-Africanism and Rastafari.", "wiki": "https://en.wikipedia.org/wiki/Marcus_Garvey" },
+      { "name": "Usain Bolt", "years": "b. 1986", "field": "Sprinter", "why": "Eight Olympic golds and world records that still stand — the fastest human ever timed.", "wiki": "https://en.wikipedia.org/wiki/Usain_Bolt" },
+      { "name": "Nanny of the Maroons", "years": "c. 1686–1733", "field": "Maroon leader", "why": "Led escaped enslaved people against the British and is Jamaica's only national heroine.", "wiki": "https://en.wikipedia.org/wiki/Nanny_of_the_Maroons" },
+      { "name": "Louise Bennett-Coverley", "native": "Miss Lou", "years": "1919–2006", "field": "Poet and broadcaster", "why": "Made Jamaican Patois respectable as a literary language.", "wiki": "https://en.wikipedia.org/wiki/Louise_Bennett-Coverley" }
+    ],
+    "events": [
+      { "year": "1655", "title": "England takes Jamaica", "what": "Spain lost the island; enslaved people who escaped into the mountains became the Maroons.", "wiki": "https://en.wikipedia.org/wiki/History_of_Jamaica" },
+      { "year": "1831", "title": "The Baptist War", "what": "Sam Sharpe's rebellion of 60,000 enslaved people hastened Britain's abolition of slavery three years later.", "wiki": "https://en.wikipedia.org/wiki/Baptist_War" },
+      { "year": "1962", "title": "Independence", "what": "Jamaica left British rule and immediately became a cultural power far beyond its size.", "wiki": "https://en.wikipedia.org/wiki/Jamaica" },
+      { "year": "1978", "title": "The One Love Peace Concert", "what": "Marley brought the leaders of two warring parties on stage and joined their hands.", "wiki": "https://en.wikipedia.org/wiki/One_Love_Peace_Concert" }
+    ],
+    "culture": [
+      { "icon": "🎵", "label": "Music", "text": "Ska, rocksteady, reggae, dub and dancehall all came from one island in about twenty years." },
+      { "icon": "🏃", "label": "Sprinting", "text": "A country of under three million dominates world sprinting; Champs, the school athletics meet, fills a stadium." },
+      { "icon": "🔥", "label": "Food", "text": "Jerk seasoning was developed by the Maroons; ackee and saltfish is the national dish." },
+      { "icon": "🗣️", "label": "Patois", "text": "Jamaican Patois is a language in its own right, and its rhythm has travelled worldwide." },
+      { "icon": "🦁", "label": "Rastafari", "text": "A faith and movement born in 1930s Jamaica, with real theology behind the imagery." }
+    ],
+    "talkAbout": [
+      "Music, and which era of it they rate.",
+      "Athletics, especially around Champs and the Olympics.",
+      "Food, and where to get the best jerk."
+    ],
+    "avoid": "Rastafari isn't a lifestyle accessory, and weed clichés get old. Crime statistics and colonial nostalgia both land badly."
+  },
+  {
+    "iso2": "HN",
+    "people": [
+      { "name": "Francisco Morazán", "years": "1792–1842", "field": "Statesman", "why": "The last president of the Federal Republic of Central America and the great champion of regional union.", "wiki": "https://en.wikipedia.org/wiki/Francisco_Moraz%C3%A1n" },
+      { "name": "Berta Cáceres", "years": "1971–2016", "field": "Environmental activist", "why": "Lenca leader who stopped a major dam and won the Goldman Prize; murdered a year later.", "wiki": "https://en.wikipedia.org/wiki/Berta_C%C3%A1ceres" },
+      { "name": "Ramón Amaya Amador", "years": "1916–1966", "field": "Novelist", "why": "Prison Green exposed conditions on the banana plantations and became the national novel.", "wiki": "https://en.wikipedia.org/wiki/Ram%C3%B3n_Amaya_Amador" },
+      { "name": "Lempira", "years": "d. 1537", "field": "Lenca chief", "why": "Led resistance to the Spanish; the currency is named after him.", "wiki": "https://en.wikipedia.org/wiki/Lempira" },
+      { "name": "David Suazo", "years": "b. 1979", "field": "Footballer", "why": "Honduras's most successful export to European football, at Cagliari and Inter Milan.", "wiki": "https://en.wikipedia.org/wiki/David_Suazo" }
+    ],
+    "events": [
+      { "year": "426–800", "title": "Copán", "what": "A Maya city whose hieroglyphic stairway is the longest Maya text known.", "wiki": "https://en.wikipedia.org/wiki/Cop%C3%A1n" },
+      { "year": "1899–1930s", "title": "The banana republic", "what": "United Fruit and its rivals came to control land, railways and governments — the phrase was coined here.", "wiki": "https://en.wikipedia.org/wiki/Banana_republic" },
+      { "year": "1998", "title": "Hurricane Mitch", "what": "Killed around 7,000 people and set the country's development back by decades.", "wiki": "https://en.wikipedia.org/wiki/Hurricane_Mitch" },
+      { "year": "2009", "title": "The coup", "what": "President Zelaya was removed by the military, beginning a long political crisis.", "wiki": "https://en.wikipedia.org/wiki/2009_Honduran_coup_d%27%C3%A9tat" }
+    ],
+    "culture": [
+      { "icon": "🏛️", "label": "Copán", "text": "The finest Maya sculpture anywhere, in a valley near the Guatemalan border." },
+      { "icon": "🥁", "label": "Garífuna", "text": "The Caribbean coast's Garífuna people have their own language, punta music and UNESCO-listed culture." },
+      { "icon": "🫓", "label": "Food", "text": "Baleadas — a thick flour tortilla with beans, cream and cheese — are eaten at any hour." },
+      { "icon": "⚽", "label": "Sport", "text": "Football, and a 1969 World Cup qualifier with El Salvador that helped trigger a short war." },
+      { "icon": "🐠", "label": "Reef", "text": "Roatán sits on the second-largest barrier reef in the world." }
+    ],
+    "talkAbout": [
+      "Copán and the Maya past.",
+      "Baleadas, and where the best ones are.",
+      "The Bay Islands and diving."
+    ],
+    "avoid": "Migration, gangs and the 2009 coup are all politically charged. 'Banana republic' as a joke is not funny here."
+  },
+  {
+    "iso2": "NI",
+    "people": [
+      { "name": "Rubén Darío", "years": "1867–1916", "field": "Poet", "why": "Founded modernismo and reshaped poetry in Spanish; Nicaragua calls itself his country.", "wiki": "https://en.wikipedia.org/wiki/Rub%C3%A9n_Dar%C3%ADo" },
+      { "name": "Augusto César Sandino", "years": "1895–1934", "field": "Rebel leader", "why": "Fought the US occupation for six years; the Sandinistas took his name.", "wiki": "https://en.wikipedia.org/wiki/Augusto_C%C3%A9sar_Sandino" },
+      { "name": "Ernesto Cardenal", "years": "1925–2020", "field": "Poet and priest", "why": "Liberation theologian, revolutionary minister of culture, and one of the great Latin American poets.", "wiki": "https://en.wikipedia.org/wiki/Ernesto_Cardenal" },
+      { "name": "Gioconda Belli", "years": "b. 1948", "field": "Writer", "why": "Her poetry and memoirs of the revolution are read across the Spanish-speaking world.", "wiki": "https://en.wikipedia.org/wiki/Gioconda_Belli" },
+      { "name": "Alexis Argüello", "years": "1952–2009", "field": "Boxer", "why": "World champion at three weights and one of the finest technicians the sport has seen.", "wiki": "https://en.wikipedia.org/wiki/Alexis_Arg%C3%BCello" }
+    ],
+    "events": [
+      { "year": "1855", "title": "William Walker", "what": "An American filibuster seized the country and made himself president before being driven out.", "wiki": "https://en.wikipedia.org/wiki/William_Walker_(filibuster)" },
+      { "year": "1912–1933", "title": "US occupation", "what": "American marines occupied Nicaragua for two decades, opposed throughout by Sandino.", "wiki": "https://en.wikipedia.org/wiki/United_States_occupation_of_Nicaragua" },
+      { "year": "1979", "title": "The Sandinista revolution", "what": "The Somoza dynasty fell after 43 years; a literacy campaign followed within a year.", "wiki": "https://en.wikipedia.org/wiki/Nicaraguan_Revolution" },
+      { "year": "1980s", "title": "The Contra war", "what": "A US-backed insurgency fought the Sandinista government through the decade.", "wiki": "https://en.wikipedia.org/wiki/Contras" }
+    ],
+    "culture": [
+      { "icon": "🌋", "label": "Volcanoes", "text": "Nineteen of them; Cerro Negro is young enough that people sledge down it." },
+      { "icon": "📖", "label": "Poetry", "text": "Nicaragua genuinely calls itself a nation of poets, and means it." },
+      { "icon": "🍲", "label": "Food", "text": "Gallo pinto, nacatamal wrapped in banana leaf, and vigorón on a plantain leaf." },
+      { "icon": "🦈", "label": "Lake Nicaragua", "text": "The largest lake in Central America, with its own population of freshwater bull sharks." },
+      { "icon": "🎭", "label": "Güegüense", "text": "A satirical colonial-era dance-drama, UNESCO-listed, that mocks the Spanish authorities." }
+    ],
+    "talkAbout": [
+      "Rubén Darío and poetry.",
+      "Volcano hiking and Ometepe island.",
+      "Baseball, which is more popular here than football."
+    ],
+    "avoid": "Current politics is genuinely dangerous to discuss for many Nicaraguans, and the 2018 protests and their repression are raw."
+  },
+  {
+    "iso2": "SV",
+    "people": [
+      { "name": "Óscar Romero", "years": "1917–1980", "field": "Archbishop", "why": "Shot at the altar for denouncing state killings; canonised in 2018.", "wiki": "https://en.wikipedia.org/wiki/%C3%93scar_Romero" },
+      { "name": "Roque Dalton", "years": "1935–1975", "field": "Poet", "why": "The country's greatest poet, killed by his own guerrilla faction at 39.", "wiki": "https://en.wikipedia.org/wiki/Roque_Dalton" },
+      { "name": "Claudia Lars", "years": "1899–1974", "field": "Poet", "why": "One of Central America's most admired lyric poets.", "wiki": "https://en.wikipedia.org/wiki/Claudia_Lars" },
+      { "name": "Salvador Salazar Arrué", "native": "Salarrué", "years": "1899–1975", "field": "Writer and painter", "why": "Cuentos de Barro captured rural Salvadoran speech and life as nothing had before.", "wiki": "https://en.wikipedia.org/wiki/Salarru%C3%A9" },
+      { "name": "Prudencia Ayala", "years": "1885–1936", "field": "Writer and activist", "why": "Ran for president in 1930, before women could even vote, and forced the question into the open.", "wiki": "https://en.wikipedia.org/wiki/Prudencia_Ayala" }
+    ],
+    "events": [
+      { "year": "1932", "title": "La Matanza", "what": "A peasant uprising was crushed with the killing of tens of thousands, most of them Indigenous Pipil.", "wiki": "https://en.wikipedia.org/wiki/1932_Salvadoran_peasant_massacre" },
+      { "year": "1980", "title": "Romero assassinated", "what": "The archbishop was shot saying mass the day after appealing to soldiers to stop killing.", "wiki": "https://en.wikipedia.org/wiki/%C3%93scar_Romero" },
+      { "year": "1980–1992", "title": "The civil war", "what": "Around 75,000 killed; a fifth of the population left, most to the United States.", "wiki": "https://en.wikipedia.org/wiki/Salvadoran_Civil_War" },
+      { "year": "1992", "title": "The Chapultepec Accords", "what": "Ended the war and turned the FMLN guerrillas into a political party.", "wiki": "https://en.wikipedia.org/wiki/Chapultepec_Peace_Accords" }
+    ],
+    "culture": [
+      { "icon": "🫓", "label": "Pupusas", "text": "Stuffed corn flatbreads with curtido — the national dish, with its own national day." },
+      { "icon": "🏄", "label": "Surfing", "text": "El Tunco and Punta Roca have some of the best right-hand point breaks in the Americas." },
+      { "icon": "🌋", "label": "Landscape", "text": "The Land of Volcanoes: over twenty of them in a country the size of Wales." },
+      { "icon": "🎨", "label": "La Palma", "text": "Fernando Llort's naïf style turned a whole town into an artisan centre." },
+      { "icon": "🌎", "label": "Diaspora", "text": "Roughly a quarter of Salvadorans live abroad, and remittances are a fifth of the economy." }
+    ],
+    "talkAbout": [
+      "Pupusas — and whether rice or corn dough is better.",
+      "Surfing and the Pacific coast.",
+      "Family in the United States; nearly everyone has some."
+    ],
+    "avoid": "The civil war and its massacres are within living memory. Gangs and the current security crackdown divide people sharply."
+  },
+  {
+    "iso2": "BZ",
+    "people": [
+      { "name": "George Cadle Price", "years": "1919–2011", "field": "Prime minister", "why": "Led Belize to independence in 1981 and is called the father of the nation.", "wiki": "https://en.wikipedia.org/wiki/George_Price" },
+      { "name": "Andy Palacio", "years": "1960–2008", "field": "Musician", "why": "His album Wátina brought Garífuna music to the world just before he died at 47.", "wiki": "https://en.wikipedia.org/wiki/Andy_Palacio" },
+      { "name": "Zee Edgell", "years": "1940–2020", "field": "Novelist", "why": "Beka Lamb was the first widely read Belizean novel and is taught across the Caribbean.", "wiki": "https://en.wikipedia.org/wiki/Zee_Edgell" },
+      { "name": "Antonio Soberanis Gómez", "years": "1897–1975", "field": "Labour leader", "why": "Led the 1930s workers' movement that began the road to self-government.", "wiki": "https://en.wikipedia.org/wiki/Antonio_Soberanis_G%C3%B3mez" },
+      { "name": "Marion Jones", "years": "1884–1965", "field": "Politician", "why": "An early campaigner for Belizean self-rule and constitutional reform.", "wiki": "https://en.wikipedia.org/wiki/Belize" }
+    ],
+    "events": [
+      { "year": "1638", "title": "The Baymen", "what": "English logwood cutters settled the coast, in territory Spain claimed but never controlled.", "wiki": "https://en.wikipedia.org/wiki/History_of_Belize" },
+      { "year": "1798", "title": "The Battle of St. George's Caye", "what": "Baymen and freed slaves repelled a Spanish fleet; the anniversary is a national holiday.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_St._George%27s_Caye" },
+      { "year": "1981", "title": "Independence", "what": "Belize left British rule, the last mainland American colony to do so.", "wiki": "https://en.wikipedia.org/wiki/Belize" },
+      { "year": "2021", "title": "The blue bond", "what": "Belize restructured its debt in exchange for protecting a large share of its ocean — a model since copied.", "wiki": "https://en.wikipedia.org/wiki/Belize" }
+    ],
+    "culture": [
+      { "icon": "🐠", "label": "Reef", "text": "The Belize Barrier Reef and the Great Blue Hole, both World Heritage-listed." },
+      { "icon": "🥁", "label": "Garífuna", "text": "Punta rock and Settlement Day on 19 November, when drums come out across the south." },
+      { "icon": "🗣️", "label": "Language", "text": "English is official, Kriol is the common tongue, and Spanish, Maya, Garifuna, Mandarin and Plautdietsch are all spoken." },
+      { "icon": "🍛", "label": "Food", "text": "Rice and beans with stewed chicken, and hudut — fish in coconut broth with mashed plantain." },
+      { "icon": "🌎", "label": "Both worlds", "text": "Central American by geography, Caribbean by culture, and a member of CARICOM." }
+    ],
+    "talkAbout": [
+      "The reef and the Blue Hole.",
+      "Garífuna music and Settlement Day.",
+      "How many languages get used in a single conversation."
+    ],
+    "avoid": "Guatemala's territorial claim to Belize is a serious national concern, now before the International Court of Justice."
+  },
+  {
+    "iso2": "DO",
+    "people": [
+      { "name": "Juan Pablo Duarte", "years": "1813–1876", "field": "Independence leader", "why": "Founded the secret society that won independence from Haiti in 1844.", "wiki": "https://en.wikipedia.org/wiki/Juan_Pablo_Duarte" },
+      { "name": "Oscar de la Renta", "years": "1932–2014", "field": "Fashion designer", "why": "Dressed first ladies and film stars for fifty years from a house he built himself.", "wiki": "https://en.wikipedia.org/wiki/Oscar_de_la_Renta" },
+      { "name": "The Mirabal sisters", "years": "d. 1960", "field": "Activists", "why": "Murdered by Trujillo's regime; the UN made the date of their deaths the day against violence towards women.", "wiki": "https://en.wikipedia.org/wiki/Mirabal_sisters" },
+      { "name": "Juan Luis Guerra", "years": "b. 1957", "field": "Musician", "why": "Took merengue and bachata worldwide and has won more than twenty Grammys.", "wiki": "https://en.wikipedia.org/wiki/Juan_Luis_Guerra" },
+      { "name": "Pedro Martínez", "years": "b. 1971", "field": "Baseball player", "why": "Three Cy Young Awards and one of the greatest pitching peaks in the sport's history.", "wiki": "https://en.wikipedia.org/wiki/Pedro_Mart%C3%ADnez" }
+    ],
+    "events": [
+      { "year": "1496", "title": "Santo Domingo founded", "what": "The oldest continuously inhabited European city in the Americas, and the base for the whole conquest.", "wiki": "https://en.wikipedia.org/wiki/Santo_Domingo" },
+      { "year": "1844", "title": "Independence", "what": "The Dominican Republic broke away from Haiti, which had ruled the whole island for 22 years.", "wiki": "https://en.wikipedia.org/wiki/Dominican_War_of_Independence" },
+      { "year": "1930–1961", "title": "The Trujillo dictatorship", "what": "Thirty-one years of one man's rule, including the 1937 massacre of Haitians at the border.", "wiki": "https://en.wikipedia.org/wiki/Rafael_Trujillo" },
+      { "year": "1961", "title": "Trujillo assassinated", "what": "His killing opened the way to democracy, via civil war and a US intervention in 1965.", "wiki": "https://en.wikipedia.org/wiki/Rafael_Trujillo" }
+    ],
+    "culture": [
+      { "icon": "💃", "label": "Music", "text": "Merengue and bachata both come from here, and both are danced socially by everyone." },
+      { "icon": "⚾", "label": "Baseball", "text": "More major leaguers per head than anywhere; San Pedro de Macorís alone has produced dozens." },
+      { "icon": "🍛", "label": "Food", "text": "La bandera — rice, beans and meat — every lunchtime; mangú for breakfast." },
+      { "icon": "🏖️", "label": "Geography", "text": "The Caribbean's highest peak and its lowest point are both in this one country." },
+      { "icon": "🎭", "label": "Carnival", "text": "February carnival, with the horned diablo cojuelo masks of La Vega." }
+    ],
+    "talkAbout": [
+      "Baseball, and which players come from their town.",
+      "Merengue and bachata.",
+      "Food, especially mangú and sancocho."
+    ],
+    "avoid": "Relations with Haiti, and the status of Dominicans of Haitian descent, are a difficult and often bitter subject."
+  },
+  {
+    "iso2": "HT",
+    "people": [
+      { "name": "Toussaint Louverture", "years": "1743–1803", "field": "Revolutionary leader", "why": "Led the only successful slave revolution in history; died in a French prison before it concluded.", "wiki": "https://en.wikipedia.org/wiki/Toussaint_Louverture" },
+      { "name": "Jean-Jacques Dessalines", "years": "1758–1806", "field": "Founder", "why": "Declared Haiti independent in 1804 and tore the white band from the French flag to make Haiti's.", "wiki": "https://en.wikipedia.org/wiki/Jean-Jacques_Dessalines" },
+      { "name": "Jacques Roumain", "years": "1907–1944", "field": "Novelist", "why": "Masters of the Dew is the great Haitian novel and has been translated worldwide.", "wiki": "https://en.wikipedia.org/wiki/Jacques_Roumain" },
+      { "name": "Hector Hyppolite", "years": "1894–1948", "field": "Painter", "why": "A Vodou priest whose paintings launched Haitian art onto the world stage.", "wiki": "https://en.wikipedia.org/wiki/Hector_Hyppolite" },
+      { "name": "Edwidge Danticat", "years": "b. 1969", "field": "Writer", "why": "The most widely read Haitian author in English, writing from and about the diaspora.", "wiki": "https://en.wikipedia.org/wiki/Edwidge_Danticat" }
+    ],
+    "events": [
+      { "year": "1791", "title": "Bois Caïman", "what": "A Vodou ceremony is remembered as the start of the uprising that became the revolution.", "wiki": "https://en.wikipedia.org/wiki/Bois_Ca%C3%AFman" },
+      { "year": "1804", "title": "Independence", "what": "Haiti became the first Black republic and the second independent country in the Americas.", "wiki": "https://en.wikipedia.org/wiki/Haitian_Revolution" },
+      { "year": "1825", "title": "The indemnity", "what": "France demanded payment for its lost 'property' at gunpoint; Haiti paid for 122 years.", "wiki": "https://en.wikipedia.org/wiki/Haiti_indemnity_controversy" },
+      { "year": "2010", "title": "The earthquake", "what": "A magnitude 7.0 quake near Port-au-Prince killed well over 200,000 people.", "wiki": "https://en.wikipedia.org/wiki/2010_Haiti_earthquake" }
+    ],
+    "culture": [
+      { "icon": "🎨", "label": "Art", "text": "Haitian painting and metal sculpture, especially from Croix-des-Bouquets, are collected worldwide." },
+      { "icon": "🥁", "label": "Music", "text": "Kompa is the national dance music; rara bands parade through the streets at Easter." },
+      { "icon": "🕯️", "label": "Vodou", "text": "An officially recognised religion with a full theology, not the horror-film version." },
+      { "icon": "🍲", "label": "Food", "text": "Griot with pikliz, and soup joumou — pumpkin soup eaten every 1 January to mark independence." },
+      { "icon": "🗣️", "label": "Kreyòl", "text": "Haitian Creole is spoken by everyone and is co-official with French." }
+    ],
+    "talkAbout": [
+      "The revolution — it is the founding pride of the country and rarely taught properly abroad.",
+      "Art and music.",
+      "Soup joumou and what it commemorates."
+    ],
+    "avoid": "'Poorest country in the hemisphere' framings are resented; the reasons are historical and external as much as internal. Vodou is a religion, not a curiosity."
+  },
+  {
+    "iso2": "BS",
+    "people": [
+      { "name": "Lynden Pindling", "years": "1930–2000", "field": "Prime minister", "why": "Led the Bahamas to majority rule and independence, and is called the father of the nation.", "wiki": "https://en.wikipedia.org/wiki/Lynden_Pindling" },
+      { "name": "Sidney Poitier", "years": "1927–2022", "field": "Actor", "why": "Bahamian-raised, and the first Black man to win the Academy Award for Best Actor.", "wiki": "https://en.wikipedia.org/wiki/Sidney_Poitier" },
+      { "name": "Pauline Davis-Thompson", "years": "b. 1966", "field": "Sprinter", "why": "Olympic champion and part of the 'Golden Girls' relay team of 2000.", "wiki": "https://en.wikipedia.org/wiki/Pauline_Davis-Thompson" },
+      { "name": "Amos Ferguson", "years": "1920–2009", "field": "Painter", "why": "A house painter whose religious folk art on cardboard hangs in major museums.", "wiki": "https://en.wikipedia.org/wiki/Amos_Ferguson" },
+      { "name": "Dame Doris Johnson", "years": "1921–1983", "field": "Politician", "why": "Led the campaign for women's suffrage and became the first woman in the Bahamian cabinet.", "wiki": "https://en.wikipedia.org/wiki/Doris_Johnson" }
+    ],
+    "events": [
+      { "year": "1492", "title": "First landfall", "what": "Columbus's first landing in the Americas was on a Bahamian island, probably San Salvador.", "wiki": "https://en.wikipedia.org/wiki/Guanahani" },
+      { "year": "1717–1718", "title": "The pirate republic", "what": "Nassau was a pirate base until the Crown reasserted control; Blackbeard operated from here.", "wiki": "https://en.wikipedia.org/wiki/Republic_of_Pirates" },
+      { "year": "1967", "title": "Majority rule", "what": "The Black majority won government for the first time, a date still marked as a public holiday.", "wiki": "https://en.wikipedia.org/wiki/Majority_Rule_Day" },
+      { "year": "1973", "title": "Independence", "what": "The Bahamas left British rule after 250 years as a colony.", "wiki": "https://en.wikipedia.org/wiki/The_Bahamas" }
+    ],
+    "culture": [
+      { "icon": "🥁", "label": "Junkanoo", "text": "A street parade at Boxing Day and New Year with costumes built over months and cowbell-driven rhythm." },
+      { "icon": "🐚", "label": "Food", "text": "Conch — cracked, in salad or in fritters — is the national food, plus rock lobster and guava duff." },
+      { "icon": "⛵", "label": "Sailing", "text": "The Bahamian sloop is the national boat, and regattas are serious island events." },
+      { "icon": "🏝️", "label": "Geography", "text": "Around 700 islands and 2,400 cays; roughly thirty are inhabited." },
+      { "icon": "🏀", "label": "Sport", "text": "Athletics and basketball produce a steady stream of internationals for a country of 400,000." }
+    ],
+    "talkAbout": [
+      "Junkanoo, and which shack they support.",
+      "Which island or 'Family Island' their people are from.",
+      "Sailing and regattas."
+    ],
+    "avoid": "The Bahamas is not Jamaica or the wider Caribbean lumped together. Hurricane Dorian in 2019 devastated Abaco and Grand Bahama and is still raw."
+  },
+  {
+    "iso2": "TT",
+    "people": [
+      { "name": "Eric Williams", "years": "1911–1981", "field": "Historian and prime minister", "why": "Capitalism and Slavery reshaped how the slave trade is understood; he then led the country for 25 years.", "wiki": "https://en.wikipedia.org/wiki/Eric_Williams" },
+      { "name": "V. S. Naipaul", "years": "1932–2018", "field": "Novelist", "why": "Nobel laureate in 2001, whose A House for Mr Biswas draws on Indo-Trinidadian life.", "wiki": "https://en.wikipedia.org/wiki/V._S._Naipaul" },
+      { "name": "C. L. R. James", "years": "1901–1989", "field": "Writer and historian", "why": "The Black Jacobins and Beyond a Boundary are landmarks in history and in sports writing.", "wiki": "https://en.wikipedia.org/wiki/C._L._R._James" },
+      { "name": "Brian Lara", "years": "b. 1969", "field": "Cricketer", "why": "Holds the highest individual score in both Test and first-class cricket.", "wiki": "https://en.wikipedia.org/wiki/Brian_Lara" },
+      { "name": "Mighty Sparrow", "native": "Slinger Francisco", "years": "b. 1935", "field": "Calypsonian", "why": "The Calypso King of the World, and the genre's most enduring voice.", "wiki": "https://en.wikipedia.org/wiki/Mighty_Sparrow" }
+    ],
+    "events": [
+      { "year": "1845", "title": "Indentured arrival", "what": "The Fatel Razack brought the first Indian indentured workers; their descendants are now the largest group.", "wiki": "https://en.wikipedia.org/wiki/Indo-Trinidadian_and_Tobagonian" },
+      { "year": "1930s", "title": "The steelpan invented", "what": "Musicians in Port of Spain hammered oil drums into tuned instruments — the only acoustic instrument invented in the twentieth century.", "wiki": "https://en.wikipedia.org/wiki/Steelpan" },
+      { "year": "1962", "title": "Independence", "what": "Trinidad and Tobago left British rule, becoming a republic in 1976.", "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago" },
+      { "year": "1970", "title": "The Black Power revolution", "what": "Mass protests and an army mutiny forced deep changes to the country's politics and economy.", "wiki": "https://en.wikipedia.org/wiki/1970_Black_Power_Revolution" }
+    ],
+    "culture": [
+      { "icon": "🥁", "label": "Steelpan", "text": "The national instrument, invented here; Panorama pits huge steel orchestras against each other at Carnival." },
+      { "icon": "🎭", "label": "Carnival", "text": "Two days of mas before Lent, starting with J'ouvert in mud and paint before dawn." },
+      { "icon": "🎶", "label": "Music", "text": "Calypso, soca and chutney soca, the last blending Indian and Caribbean traditions." },
+      { "icon": "🍛", "label": "Food", "text": "Doubles for breakfast, roti, bake and shark, and pelau — Indian, African and Creole on one island." },
+      { "icon": "🛢️", "label": "Economy", "text": "Oil and gas rather than tourism, which makes it unlike most of its neighbours." }
+    ],
+    "talkAbout": [
+      "Carnival, and whether they play mas.",
+      "Steelpan and Panorama.",
+      "Doubles, and where to get the best."
+    ],
+    "avoid": "Politics tends to split along African and Indian lines and is a sore subject. Don't call Tobago an afterthought — Tobagonians notice."
+  },
+  {
+    "iso2": "AG",
+    "people": [
+      { "name": "Vere Bird", "years": "1910–1999", "field": "Prime minister", "why": "Trade unionist who led Antigua to independence and dominated its politics for decades.", "wiki": "https://en.wikipedia.org/wiki/Vere_Bird" },
+      { "name": "Viv Richards", "years": "b. 1952", "field": "Cricketer", "why": "The most intimidating batsman of his era, who never wore a helmet.", "wiki": "https://en.wikipedia.org/wiki/Viv_Richards" },
+      { "name": "Jamaica Kincaid", "years": "b. 1949", "field": "Writer", "why": "A Small Place is a furious, brilliant essay on tourism and colonialism in her home island.", "wiki": "https://en.wikipedia.org/wiki/Jamaica_Kincaid" },
+      { "name": "Andy Roberts", "years": "b. 1951", "field": "Cricketer", "why": "The first Antiguan to play for the West Indies and the spearhead of its great fast-bowling era.", "wiki": "https://en.wikipedia.org/wiki/Andy_Roberts_(cricketer)" },
+      { "name": "King Short Shirt", "native": "McLean Emanuel", "years": "b. 1942", "field": "Calypsonian", "why": "'Nobody Go Run Me' became an anthem of Antiguan self-assertion.", "wiki": "https://en.wikipedia.org/wiki/King_Short_Shirt" }
+    ],
+    "events": [
+      { "year": "1632", "title": "English settlement", "what": "Antigua became a sugar colony worked by enslaved Africans, whose descendants are most of the population.", "wiki": "https://en.wikipedia.org/wiki/History_of_Antigua_and_Barbuda" },
+      { "year": "1784", "title": "Nelson's Dockyard", "what": "Horatio Nelson was based here; the dockyard is the only working Georgian naval yard left anywhere.", "wiki": "https://en.wikipedia.org/wiki/Nelson%27s_Dockyard" },
+      { "year": "1834", "title": "Immediate emancipation", "what": "Antigua freed its enslaved people outright, skipping the 'apprenticeship' most colonies imposed.", "wiki": "https://en.wikipedia.org/wiki/Slavery_Abolition_Act_1833" },
+      { "year": "1981", "title": "Independence", "what": "Antigua and Barbuda left British rule.", "wiki": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda" }
+    ],
+    "culture": [
+      { "icon": "🏖️", "label": "Beaches", "text": "365 of them, the tourist board insists — one for every day of the year." },
+      { "icon": "🏏", "label": "Cricket", "text": "The old Antigua Recreation Ground saw both of Brian Lara's world-record scores." },
+      { "icon": "⛵", "label": "Sailing", "text": "Antigua Sailing Week draws crews from across the Atlantic every spring." },
+      { "icon": "🎭", "label": "Carnival", "text": "Held in August to mark emancipation rather than before Lent." },
+      { "icon": "🌾", "label": "Barbuda", "text": "Land on Barbuda is held communally by its residents — unusual anywhere, and fiercely defended." }
+    ],
+    "talkAbout": [
+      "Cricket, and the West Indies.",
+      "Sailing week and the dockyard.",
+      "The difference between Antigua and Barbuda, which matters to Barbudans."
+    ],
+    "avoid": "Hurricane Irma made Barbuda uninhabitable in 2017 and the fight over its communal land since is bitter."
+  },
+  {
+    "iso2": "BB",
+    "people": [
+      { "name": "Errol Barrow", "years": "1920–1987", "field": "Prime minister", "why": "Led Barbados to independence in 1966 and built its free education system.", "wiki": "https://en.wikipedia.org/wiki/Errol_Barrow" },
+      { "name": "Rihanna", "years": "b. 1988", "field": "Musician and entrepreneur", "why": "One of the best-selling artists ever, and a Barbadian National Hero at 33.", "wiki": "https://en.wikipedia.org/wiki/Rihanna" },
+      { "name": "Garfield Sobers", "years": "b. 1936", "field": "Cricketer", "why": "Widely considered the greatest all-rounder the game has produced.", "wiki": "https://en.wikipedia.org/wiki/Garfield_Sobers" },
+      { "name": "Bussa", "years": "d. 1816", "field": "Rebel leader", "why": "Led the largest slave revolt in Barbadian history; his statue stands at a main roundabout.", "wiki": "https://en.wikipedia.org/wiki/Bussa%27s_rebellion" },
+      { "name": "George Lamming", "years": "1927–2022", "field": "Novelist", "why": "In the Castle of My Skin is a founding text of Caribbean literature.", "wiki": "https://en.wikipedia.org/wiki/George_Lamming" }
+    ],
+    "events": [
+      { "year": "1627", "title": "English settlement", "what": "Barbados became the model sugar colony, and its slave code was copied across the English Caribbean.", "wiki": "https://en.wikipedia.org/wiki/History_of_Barbados" },
+      { "year": "1816", "title": "Bussa's rebellion", "what": "Thousands rose against slavery; it was crushed but fed the abolition campaign in Britain.", "wiki": "https://en.wikipedia.org/wiki/Bussa%27s_rebellion" },
+      { "year": "1966", "title": "Independence", "what": "Barbados left British rule after 339 years.", "wiki": "https://en.wikipedia.org/wiki/Barbados" },
+      { "year": "2021", "title": "Becoming a republic", "what": "Barbados removed the British monarch as head of state and installed its own president.", "wiki": "https://en.wikipedia.org/wiki/Barbados" }
+    ],
+    "culture": [
+      { "icon": "🥃", "label": "Rum", "text": "Rum was invented here; Mount Gay has been distilling since 1703 and rum shops are the social centre of every village." },
+      { "icon": "🏏", "label": "Cricket", "text": "Kensington Oval is a place of pilgrimage, and Barbados has produced West Indies greats out of all proportion." },
+      { "icon": "🎭", "label": "Crop Over", "text": "A harvest festival turned into a summer carnival, ending in Grand Kadooment." },
+      { "icon": "🐟", "label": "Food", "text": "Flying fish and cou-cou is the national dish; Oistins on a Friday night is a fish fry the whole island attends." },
+      { "icon": "🗣️", "label": "Bajan", "text": "Bajan dialect is quick and dry, and the humour with it is a national characteristic." }
+    ],
+    "talkAbout": [
+      "Cricket, and the great West Indies teams.",
+      "Rum, and which distillery they prefer.",
+      "Crop Over and Oistins."
+    ],
+    "avoid": "'Little England' is an old nickname many now dislike. Slavery's legacy and reparations are actively debated here, seriously."
+  },
+  {
+    "iso2": "DM",
+    "people": [
+      { "name": "Eugenia Charles", "years": "1919–2005", "field": "Prime minister", "why": "The Caribbean's first woman prime minister, in office fifteen years and nicknamed the Iron Lady.", "wiki": "https://en.wikipedia.org/wiki/Eugenia_Charles" },
+      { "name": "Jean Rhys", "years": "1890–1979", "field": "Novelist", "why": "Wide Sargasso Sea reimagined Jane Eyre from the Creole wife's side; she was born in Roseau.", "wiki": "https://en.wikipedia.org/wiki/Jean_Rhys" },
+      { "name": "Ophelia Marie", "years": "b. 1951", "field": "Singer", "why": "The Lady of Song, who made cadence-lypso a Dominican export.", "wiki": "https://en.wikipedia.org/wiki/Ophelia_Marie" },
+      { "name": "Rosie Douglas", "years": "1941–2000", "field": "Prime minister", "why": "A Black Power activist deported from Canada who returned to lead his country.", "wiki": "https://en.wikipedia.org/wiki/Rosie_Douglas" },
+      { "name": "Chief Charles Williams", "years": "b. 1950s", "field": "Kalinago leader", "why": "Long-serving chief of the Kalinago Territory, and a defender of Indigenous land rights.", "wiki": "https://en.wikipedia.org/wiki/Kalinago_Territory" }
+    ],
+    "events": [
+      { "year": "1493–1763", "title": "Kalinago resistance", "what": "Kalinago defence kept Europeans off the island for 250 years longer than its neighbours.", "wiki": "https://en.wikipedia.org/wiki/Island_Caribs" },
+      { "year": "1903", "title": "The Carib Reserve", "what": "Britain set aside land that is now the Kalinago Territory, the last Indigenous Caribbean territory.", "wiki": "https://en.wikipedia.org/wiki/Kalinago_Territory" },
+      { "year": "1978", "title": "Independence", "what": "Dominica left British rule, then survived a hurricane and two coup attempts in its first years.", "wiki": "https://en.wikipedia.org/wiki/Dominica" },
+      { "year": "2017", "title": "Hurricane Maria", "what": "Destroyed most of the island's buildings and crops; Dominica set out to become the first climate-resilient nation.", "wiki": "https://en.wikipedia.org/wiki/Hurricane_Maria" }
+    ],
+    "culture": [
+      { "icon": "🌋", "label": "Nature Isle", "text": "Boiling Lake, 365 rivers and rainforest — the least developed and most mountainous of the Lesser Antilles." },
+      { "icon": "🪶", "label": "Kalinago", "text": "The only Caribbean island with a substantial surviving Indigenous population and territory." },
+      { "icon": "🎶", "label": "Music", "text": "Bouyon and cadence-lypso, both born here, plus a strong Creole music festival." },
+      { "icon": "🗣️", "label": "Kwéyòl", "text": "An Antillean Creole is widely spoken alongside English, a legacy of French settlement." },
+      { "icon": "🥘", "label": "Food", "text": "Callaloo soup, mountain chicken (a frog, now protected), and river crayfish." }
+    ],
+    "talkAbout": [
+      "Hiking, the Waitukubuli trail and the Boiling Lake.",
+      "Kalinago culture and the territory.",
+      "Creole language and the World Creole Music Festival."
+    ],
+    "avoid": "Don't confuse Dominica with the Dominican Republic — it happens constantly and irritates. Maria's damage is recent and personal."
+  },
+  {
+    "iso2": "GD",
+    "people": [
+      { "name": "Maurice Bishop", "years": "1944–1983", "field": "Prime minister", "why": "Led the 1979 revolution and was executed by his own comrades four years later.", "wiki": "https://en.wikipedia.org/wiki/Maurice_Bishop" },
+      { "name": "Kirani James", "years": "b. 1992", "field": "Sprinter", "why": "Won the 400 m at London 2012 — Grenada's first Olympic medal, and it was gold.", "wiki": "https://en.wikipedia.org/wiki/Kirani_James" },
+      { "name": "Eric Gairy", "years": "1922–1997", "field": "Prime minister", "why": "Led Grenada to independence, and was known at the UN for his campaign on unidentified flying objects.", "wiki": "https://en.wikipedia.org/wiki/Eric_Gairy" },
+      { "name": "Julien Fédon", "years": "d. c. 1796", "field": "Rebel leader", "why": "Led a near-successful revolt against British rule inspired by the French and Haitian revolutions.", "wiki": "https://en.wikipedia.org/wiki/Fedon%27s_rebellion" },
+      { "name": "Jean Augustine", "years": "b. 1937", "field": "Politician", "why": "Grenada-born, the first Black woman elected to Canada's parliament and to its cabinet.", "wiki": "https://en.wikipedia.org/wiki/Jean_Augustine" }
+    ],
+    "events": [
+      { "year": "1795", "title": "Fédon's rebellion", "what": "A revolt of free coloureds and enslaved people nearly took the island from Britain.", "wiki": "https://en.wikipedia.org/wiki/Fedon%27s_rebellion" },
+      { "year": "1974", "title": "Independence", "what": "Grenada left British rule, the smallest independent country in the western hemisphere at the time.", "wiki": "https://en.wikipedia.org/wiki/Grenada" },
+      { "year": "1979", "title": "The revolution", "what": "The New Jewel Movement took power bloodlessly and aligned with Cuba.", "wiki": "https://en.wikipedia.org/wiki/Grenadian_Revolution" },
+      { "year": "1983", "title": "The US invasion", "what": "After Bishop's execution, American forces invaded and removed the government.", "wiki": "https://en.wikipedia.org/wiki/United_States_invasion_of_Grenada" }
+    ],
+    "culture": [
+      { "icon": "🌰", "label": "Nutmeg", "text": "The Isle of Spice: nutmeg and mace appear on the flag, and Grenada was long the world's second producer." },
+      { "icon": "🎭", "label": "Carnival", "text": "Spicemas in August, with Jab Jab devils covered in oil and molasses at J'ouvert." },
+      { "icon": "🍲", "label": "Food", "text": "Oil down — breadfruit, salt meat and callaloo in coconut milk — cooked in one pot for a crowd." },
+      { "icon": "🗿", "label": "Underwater sculpture", "text": "The world's first underwater sculpture park sits in Molinere Bay." },
+      { "icon": "🏝️", "label": "Three islands", "text": "Grenada, Carriacou and Petite Martinique, each with distinct traditions." }
+    ],
+    "talkAbout": [
+      "Spices, and how nutmeg is processed.",
+      "Kirani James and the 2012 Olympics.",
+      "Spicemas and Jab Jab."
+    ],
+    "avoid": "The revolution, Bishop's killing and the 1983 invasion still divide families; his remains were never found."
+  },
+  {
+    "iso2": "KN",
+    "people": [
+      { "name": "Robert Bradshaw", "years": "1916–1978", "field": "Premier", "why": "Trade union leader and the dominant figure in the islands' move to self-government.", "wiki": "https://en.wikipedia.org/wiki/Robert_Llewellyn_Bradshaw" },
+      { "name": "Kim Collins", "years": "b. 1976", "field": "Sprinter", "why": "World 100 m champion in 2003, from a country of fewer than 50,000 people.", "wiki": "https://en.wikipedia.org/wiki/Kim_Collins" },
+      { "name": "Simeon Daniel", "years": "1934–2012", "field": "Premier of Nevis", "why": "Nevis's first premier and the architect of its autonomy within the federation.", "wiki": "https://en.wikipedia.org/wiki/Simeon_Daniel" },
+      { "name": "Caryl Phillips", "years": "b. 1958", "field": "Novelist", "why": "St Kitts-born, one of the leading novelists of the Caribbean diaspora in Britain.", "wiki": "https://en.wikipedia.org/wiki/Caryl_Phillips" },
+      { "name": "Alexander Hamilton", "years": "1755–1804", "field": "Statesman", "why": "Born on Nevis; built the American financial system and is now a musical.", "wiki": "https://en.wikipedia.org/wiki/Alexander_Hamilton" }
+    ],
+    "events": [
+      { "year": "1623", "title": "The mother colony", "what": "St Kitts was the first English Caribbean colony, and the base for settling several others.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts" },
+      { "year": "1690s", "title": "Brimstone Hill", "what": "Enslaved labourers built a fortress called the Gibraltar of the West Indies, now World Heritage-listed.", "wiki": "https://en.wikipedia.org/wiki/Brimstone_Hill_Fortress_National_Park" },
+      { "year": "1983", "title": "Independence", "what": "St Kitts and Nevis became the newest sovereign state in the Americas, and remains the smallest.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis" },
+      { "year": "2005", "title": "The end of sugar", "what": "After 350 years, the sugar industry closed, and the economy turned to tourism and citizenship sales.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis" }
+    ],
+    "culture": [
+      { "icon": "🚂", "label": "Sugar train", "text": "The old cane railway now circles the island as a scenic line." },
+      { "icon": "🎭", "label": "Carnival", "text": "Sugar Mas runs from Christmas into January, with masquerade troupes and Big Drum." },
+      { "icon": "🏰", "label": "Brimstone Hill", "text": "A hilltop fortress with a view of four other islands on a clear day." },
+      { "icon": "🐒", "label": "Monkeys", "text": "Green vervet monkeys, brought from Africa in the 1600s, now outnumber the people." },
+      { "icon": "🏝️", "label": "Two islands", "text": "Nevis has its own assembly and a standing right to secede, narrowly rejected in 1998." }
+    ],
+    "talkAbout": [
+      "Sugar Mas and masquerade traditions.",
+      "Brimstone Hill and the island's forts.",
+      "Kim Collins and athletics."
+    ],
+    "avoid": "The Nevis secession question is live politics. Citizenship-by-investment gets criticised abroad and locals are tired of it."
+  },
+  {
+    "iso2": "LC",
+    "people": [
+      { "name": "Derek Walcott", "years": "1930–2017", "field": "Poet", "why": "Nobel laureate in 1992, whose Omeros transplants Homer to a St Lucian fishing village.", "wiki": "https://en.wikipedia.org/wiki/Derek_Walcott" },
+      { "name": "Arthur Lewis", "years": "1915–1991", "field": "Economist", "why": "The first Black person to win a Nobel in a field other than peace, for development economics.", "wiki": "https://en.wikipedia.org/wiki/W._Arthur_Lewis" },
+      { "name": "John Compton", "years": "1925–2007", "field": "Prime minister", "why": "Led St Lucia to independence and served as prime minister across four decades.", "wiki": "https://en.wikipedia.org/wiki/John_Compton_(politician)" },
+      { "name": "Julien Alfred", "years": "b. 2001", "field": "Sprinter", "why": "Won the Olympic 100 m in 2024 — St Lucia's first Olympic medal of any colour.", "wiki": "https://en.wikipedia.org/wiki/Julien_Alfred" },
+      { "name": "Dunstan St Omer", "years": "1927–2015", "field": "Painter", "why": "Designed the national flag and painted the altarpieces in churches across the island.", "wiki": "https://en.wikipedia.org/wiki/Dunstan_St_Omer" }
+    ],
+    "events": [
+      { "year": "1660s–1814", "title": "Fourteen changes of hands", "what": "Britain and France fought over the island so often it was called the Helen of the West Indies.", "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia" },
+      { "year": "1979", "title": "Independence", "what": "St Lucia left British rule.", "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia" },
+      { "year": "1979 & 1992", "title": "Two Nobel Prizes", "what": "Lewis and Walcott gave the island more Nobel laureates per head than anywhere on earth.", "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia" },
+      { "year": "2007", "title": "The Pitons listed", "what": "The two volcanic spires above Soufrière became a World Heritage site.", "wiki": "https://en.wikipedia.org/wiki/Pitons" }
+    ],
+    "culture": [
+      { "icon": "⛰️", "label": "The Pitons", "text": "Gros and Petit Piton rise straight out of the sea and are on the flag, the beer and everything else." },
+      { "icon": "🗣️", "label": "Kwéyòl", "text": "French-based Creole is widely spoken; Jounen Kwéyòl in October celebrates it." },
+      { "icon": "🎺", "label": "Jazz", "text": "The St Lucia Jazz Festival has drawn international acts since 1992." },
+      { "icon": "🎉", "label": "Flower societies", "text": "La Rose and La Marguerite are rival festival societies that split villages good-naturedly." },
+      { "icon": "🍌", "label": "Bananas", "text": "Bananas were the backbone of the economy until EU trade rules changed in the 1990s." }
+    ],
+    "talkAbout": [
+      "Walcott and the two Nobel Prizes.",
+      "Creole language and Jounen Kwéyòl.",
+      "The Pitons and the drive-in volcano."
+    ],
+    "avoid": "St Lucians are proud of Kwéyòl; don't call it broken French. The loss of the banana trade caused real hardship."
+  },
+  {
+    "iso2": "VC",
+    "people": [
+      { "name": "Joseph Chatoyer", "years": "d. 1795", "field": "Garifuna chief", "why": "Led resistance to the British and is the country's only national hero.", "wiki": "https://en.wikipedia.org/wiki/Joseph_Chatoyer" },
+      { "name": "Ralph Gonsalves", "years": "b. 1946", "field": "Prime minister", "why": "In office since 2001 and one of the Caribbean's most prominent voices on reparations.", "wiki": "https://en.wikipedia.org/wiki/Ralph_Gonsalves" },
+      { "name": "Milton Cato", "years": "1915–1997", "field": "Prime minister", "why": "Led the country to independence in 1979.", "wiki": "https://en.wikipedia.org/wiki/Milton_Cato" },
+      { "name": "Kevin Lyttle", "years": "b. 1976", "field": "Musician", "why": "'Turn Me On' became an international soca hit and the country's best-known song.", "wiki": "https://en.wikipedia.org/wiki/Kevin_Lyttle" },
+      { "name": "Pamenos Ballantyne", "years": "b. 1973", "field": "Runner", "why": "Won the Trinidad marathon a record number of times and carried the flag at three Olympics.", "wiki": "https://en.wikipedia.org/wiki/Pamenos_Ballantyne" }
+    ],
+    "events": [
+      { "year": "1719–1797", "title": "The Garifuna", "what": "Shipwrecked Africans and Kalinago intermarried; the British deported the survivors to Central America.", "wiki": "https://en.wikipedia.org/wiki/Garifuna" },
+      { "year": "1902", "title": "La Soufrière erupts", "what": "An eruption killed around 1,600 people, hours before Mount Pelée destroyed Saint-Pierre on Martinique.", "wiki": "https://en.wikipedia.org/wiki/La_Soufri%C3%A8re_(volcano)" },
+      { "year": "1979", "title": "Independence", "what": "Saint Vincent and the Grenadines left British rule, weeks after a volcanic eruption.", "wiki": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines" },
+      { "year": "2021", "title": "La Soufrière again", "what": "Explosive eruptions covered the island in ash and forced 20,000 people from their homes.", "wiki": "https://en.wikipedia.org/wiki/2020%E2%80%932021_eruption_of_La_Soufri%C3%A8re" }
+    ],
+    "culture": [
+      { "icon": "⛵", "label": "Grenadines", "text": "Bequia, Mustique and Tobago Cays make this one of the great sailing grounds in the world." },
+      { "icon": "🥁", "label": "Vincy Mas", "text": "Carnival in late June and early July, ending with J'ouvert and Mardi Gras." },
+      { "icon": "🌋", "label": "La Soufrière", "text": "An active volcano at the north of the main island, climbed by visitors and watched by everyone." },
+      { "icon": "🍞", "label": "Breadfruit", "text": "Bligh brought breadfruit here on the Bounty's second voyage; the original tree's descendants still grow." },
+      { "icon": "🐋", "label": "Bequia", "text": "One of the few places still permitted a small traditional whale hunt under IWC rules." }
+    ],
+    "talkAbout": [
+      "Sailing the Grenadines.",
+      "Vincy Mas, and whether June carnival beats a pre-Lent one.",
+      "Breadfruit, and the Bounty story."
+    ],
+    "avoid": "The 2021 eruption displaced a fifth of the country. Traditional whaling on Bequia is contested and easily misread by outsiders."
+  }
+]

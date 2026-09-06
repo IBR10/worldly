@@ -827,3 +827,75 @@ h1, h2, h3 { line-height: 1.2; }
   .hello-panel { flex-direction: column; }
   .hello-panel .hello-flag { width: 56px; }
 }
+
+/* ---- country guides -------------------------------------------------------- */
+.people-list { display: grid; gap: 10px; }
+.person {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+/* Stands in for a portrait. Deliberately not a photo: real portraits would mean
+   a third-party image host in the CSP, attribution, and 200 more entries in the
+   service worker's capped image cache, for decoration. */
+.person-initials {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .5px;
+}
+.person-body { min-width: 0; }
+.person-name { font-weight: 700; }
+.person-native { font-weight: 400; color: var(--muted); }
+.person-meta { color: var(--muted); font-size: .82rem; margin-top: 1px; }
+.person-why { margin-top: 5px; line-height: 1.45; }
+.person-link { display: inline-block; margin-top: 5px; font-size: .82rem; color: var(--primary); }
+
+.event-list { display: grid; gap: 8px; }
+.event {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.event-year { font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
+.event-title { font-weight: 600; }
+.event-what { color: var(--muted); margin-top: 2px; line-height: 1.45; }
+.event-link { color: var(--primary); text-decoration: none; }
+
+.culture-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.culture-cell {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  line-height: 1.45;
+}
+.culture-icon { font-size: 1.3rem; line-height: 1; }
+.culture-label { font-weight: 600; margin-bottom: 2px; }
+
+.talk-list { margin: 0; padding-left: 20px; line-height: 1.6; }
+.talk-list li { margin-bottom: 4px; }
+.callout-warn { border-left-color: var(--bad); }
+
+@media (max-width: 560px) {
+  .event { grid-template-columns: auto 1fr; }
+  .event .event-link { grid-column: 2; justify-self: start; }
+}
