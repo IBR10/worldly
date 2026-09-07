@@ -1,0 +1,409 @@
+[
+  {
+    "iso2": "AU",
+    "people": [
+      { "name": "Cathy Freeman", "years": "b. 1973", "field": "Sprinter", "why": "Lit the Olympic flame and won the 400 m in Sydney in 2000, carrying both the Australian and Aboriginal flags.", "wiki": "https://en.wikipedia.org/wiki/Cathy_Freeman" },
+      { "name": "Howard Florey", "years": "1898–1968", "field": "Scientist", "why": "Turned penicillin from a curiosity into a usable drug, saving more lives than almost anyone in history.", "wiki": "https://en.wikipedia.org/wiki/Howard_Florey" },
+      { "name": "Sidney Nolan", "years": "1917–1992", "field": "Painter", "why": "His Ned Kelly series is the defining image of the Australian outback in art.", "wiki": "https://en.wikipedia.org/wiki/Sidney_Nolan" },
+      { "name": "Don Bradman", "years": "1908–2001", "field": "Cricketer", "why": "A career batting average of 99.94, a statistical outlier unmatched in any sport.", "wiki": "https://en.wikipedia.org/wiki/Don_Bradman" },
+      { "name": "Eddie Mabo", "years": "1936–1992", "field": "Land rights campaigner", "why": "His case overturned the legal fiction that Australia was empty land before 1788.", "wiki": "https://en.wikipedia.org/wiki/Eddie_Mabo" }
+    ],
+    "events": [
+      { "year": "c. 65,000 BCE", "title": "First peoples arrive", "what": "Aboriginal and Torres Strait Islander peoples have the longest continuous cultures on earth.", "wiki": "https://en.wikipedia.org/wiki/Aboriginal_Australians" },
+      { "year": "1788", "title": "The First Fleet", "what": "Britain founded a penal colony at Sydney Cove, beginning dispossession that is still being reckoned with.", "wiki": "https://en.wikipedia.org/wiki/First_Fleet" },
+      { "year": "1901", "title": "Federation", "what": "Six colonies became one country, with a constitution and a still-unresolved relationship to the Crown.", "wiki": "https://en.wikipedia.org/wiki/Federation_of_Australia" },
+      { "year": "1992", "title": "Mabo", "what": "The High Court recognised native title, ending terra nullius as a legal doctrine.", "wiki": "https://en.wikipedia.org/wiki/Mabo_v_Queensland_(No_2)" },
+      { "year": "2008", "title": "The Apology", "what": "Parliament apologised to the Stolen Generations of Aboriginal children removed from their families.", "wiki": "https://en.wikipedia.org/wiki/Apology_to_Australia%27s_Indigenous_peoples" }
+    ],
+    "culture": [
+      { "icon": "🏖️", "label": "Outdoors", "text": "Most Australians live within an hour of the coast, and the beach is a shared public space rather than a resort." },
+      { "icon": "🏉", "label": "Sport", "text": "Four football codes plus cricket. Which one dominates depends entirely on which state you're in." },
+      { "icon": "😏", "label": "Humour", "text": "Dry, self-deprecating and heavy on teasing. Being sent up is usually a sign you're accepted." },
+      { "icon": "☕", "label": "Coffee", "text": "The flat white is an Australian (or New Zealand) invention, and café standards are unreasonably high." },
+      { "icon": "🎨", "label": "Art", "text": "Aboriginal art from the Western Desert is the country's most significant contribution to world art." }
+    ],
+    "talkAbout": [
+      "Which city or state they're from — the rivalries are constant and cheerful.",
+      "Coffee, and their opinion of it wherever they've travelled.",
+      "The outdoors: surfing, bushwalking or whatever gets them out of the house."
+    ],
+    "avoid": "Aboriginal dispossession, deaths in custody and Australia Day are live political arguments, not conversation openers. Don't do the accent."
+  },
+  {
+    "iso2": "NZ",
+    "people": [
+      { "name": "Edmund Hillary", "years": "1919–2008", "field": "Mountaineer", "why": "With Tenzing Norgay, the first to summit Everest, in 1953 — and a beekeeper by trade.", "wiki": "https://en.wikipedia.org/wiki/Edmund_Hillary" },
+      { "name": "Kate Sheppard", "years": "1848–1934", "field": "Suffragist", "why": "Led the campaign that made New Zealand the first country to give women the vote, in 1893.", "wiki": "https://en.wikipedia.org/wiki/Kate_Sheppard" },
+      { "name": "Ernest Rutherford", "years": "1871–1937", "field": "Physicist", "why": "Split the atom and discovered the nucleus; the father of nuclear physics.", "wiki": "https://en.wikipedia.org/wiki/Ernest_Rutherford" },
+      { "name": "Whina Cooper", "years": "1895–1994", "field": "Māori leader", "why": "Led the 1975 land march the length of the North Island at the age of 79.", "wiki": "https://en.wikipedia.org/wiki/Whina_Cooper" },
+      { "name": "Jonah Lomu", "years": "1975–2015", "field": "Rugby player", "why": "Changed what a winger could be, and made rugby a global spectacle at the 1995 World Cup.", "wiki": "https://en.wikipedia.org/wiki/Jonah_Lomu" }
+    ],
+    "events": [
+      { "year": "c. 1300", "title": "Māori settlement", "what": "Polynesian voyagers navigated to Aotearoa by star, swell and bird, the last major landmass humans reached.", "wiki": "https://en.wikipedia.org/wiki/M%C4%81ori_people" },
+      { "year": "1840", "title": "Treaty of Waitangi", "what": "Signed between the Crown and Māori chiefs; its Māori and English texts differ, and that difference still shapes the country.", "wiki": "https://en.wikipedia.org/wiki/Treaty_of_Waitangi" },
+      { "year": "1893", "title": "Women's suffrage", "what": "The first self-governing country in the world where women could vote in national elections.", "wiki": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_New_Zealand" },
+      { "year": "1985", "title": "Nuclear-free", "what": "New Zealand banned nuclear ships, losing its US alliance and gaining an identity.", "wiki": "https://en.wikipedia.org/wiki/New_Zealand_nuclear-free_zone" }
+    ],
+    "culture": [
+      { "icon": "🤝", "label": "Greeting", "text": "The hongi presses noses and foreheads together, sharing breath. Kia ora is used by everyone." },
+      { "icon": "🏉", "label": "Rugby", "text": "The All Blacks are close to a national institution, and the haka before a match is not a gimmick." },
+      { "icon": "🍠", "label": "Food", "text": "A hāngī cooks food in an earth oven over hot stones — the centre of a Māori gathering." },
+      { "icon": "🗣️", "label": "Te reo", "text": "Māori is an official language, taught in schools and increasingly heard in everyday speech and broadcasting." },
+      { "icon": "🥾", "label": "Outdoors", "text": "'Tramping' is hiking, and the hut network makes multi-day walks genuinely accessible." }
+    ],
+    "talkAbout": [
+      "The outdoors, and which walks or islands they rate.",
+      "Rugby, but also netball and cricket.",
+      "Te reo Māori — asking how to pronounce a place name properly is welcome."
+    ],
+    "avoid": "Don't call them Australians, and don't assume Australia and New Zealand are interchangeable. Treaty settlements and Māori-Crown relations are political, so listen first."
+  },
+  {
+    "iso2": "FJ",
+    "people": [
+      { "name": "Ratu Sir Lala Sukuna", "years": "1888–1958", "field": "Statesman", "why": "Oxford-educated chief who shaped modern Fijian institutions and land law.", "wiki": "https://en.wikipedia.org/wiki/Lala_Sukuna" },
+      { "name": "Vijay Singh", "years": "b. 1963", "field": "Golfer", "why": "Three major championships and a spell as world number one, from Lautoka.", "wiki": "https://en.wikipedia.org/wiki/Vijay_Singh" },
+      { "name": "Seru Epenisa Cakobau", "years": "1815–1883", "field": "Paramount chief", "why": "Unified much of Fiji and ceded it to Britain in 1874 to escape debt and war.", "wiki": "https://en.wikipedia.org/wiki/Seru_Epenisa_Cakobau" },
+      { "name": "Waisale Serevi", "years": "b. 1968", "field": "Rugby sevens player", "why": "Widely regarded as the greatest sevens player who ever lived.", "wiki": "https://en.wikipedia.org/wiki/Waisale_Serevi" },
+      { "name": "Epeli Hau'ofa", "years": "1939–2009", "field": "Writer and anthropologist", "why": "His essay 'Our Sea of Islands' reframed the Pacific as vast and connected, not small and isolated.", "wiki": "https://en.wikipedia.org/wiki/Epeli_Hau%CA%BBofa" }
+    ],
+    "events": [
+      { "year": "1874", "title": "Cession to Britain", "what": "Fiji became a Crown colony after Cakobau ceded sovereignty.", "wiki": "https://en.wikipedia.org/wiki/Colony_of_Fiji" },
+      { "year": "1879–1916", "title": "Indentured labour", "what": "About 60,000 workers came from India to the sugar plantations; their descendants are now roughly a third of Fiji.", "wiki": "https://en.wikipedia.org/wiki/Indo-Fijians" },
+      { "year": "1970", "title": "Independence", "what": "Fiji became independent after 96 years of British rule.", "wiki": "https://en.wikipedia.org/wiki/Fiji" },
+      { "year": "2016", "title": "Olympic gold", "what": "Fiji won its first ever Olympic medal — gold, in rugby sevens — and the country stopped for a week.", "wiki": "https://en.wikipedia.org/wiki/Fiji_national_rugby_sevens_team" }
+    ],
+    "culture": [
+      { "icon": "🥥", "label": "Kava", "text": "Yaqona, made from pounded pepper root, is drunk in a formal circle; accepting a cup is how you join the group." },
+      { "icon": "🏉", "label": "Sport", "text": "Rugby sevens is the national obsession, and Fiji are perennial world champions at it." },
+      { "icon": "🏘️", "label": "Village life", "text": "Land is held communally by clans, and most Indigenous Fijians belong to a village even if they live in town." },
+      { "icon": "🙏", "label": "Sevusevu", "text": "Visitors present a gift of kava to the village chief before staying — a genuine protocol, not a show." },
+      { "icon": "🍲", "label": "Food", "text": "Lovo is an earth-oven feast; Indo-Fijian curries are equally part of everyday eating." }
+    ],
+    "talkAbout": [
+      "Rugby sevens, and the 2016 gold.",
+      "Which island or province their family is from.",
+      "Kava, and the etiquette of the circle."
+    ],
+    "avoid": "Relations between Indigenous Fijians and Indo-Fijians, and the coups of 1987, 2000 and 2006, are sensitive. Modest dress matters in villages."
+  },
+  {
+    "iso2": "PG",
+    "people": [
+      { "name": "Michael Somare", "years": "1936–2021", "field": "Prime minister", "why": "Led Papua New Guinea to independence in 1975 and is called the father of the nation.", "wiki": "https://en.wikipedia.org/wiki/Michael_Somare" },
+      { "name": "Mekere Morauta", "years": "1946–2020", "field": "Prime minister", "why": "Rebuilt state institutions and the central bank after a period of collapse.", "wiki": "https://en.wikipedia.org/wiki/Mekere_Morauta" },
+      { "name": "Dame Carol Kidu", "years": "b. 1948", "field": "Politician", "why": "For years the only woman in parliament, and the leading voice on women's and children's rights.", "wiki": "https://en.wikipedia.org/wiki/Carol_Kidu" },
+      { "name": "Ryan Pini", "years": "b. 1981", "field": "Swimmer", "why": "Commonwealth champion and the country's most successful swimmer, a five-time Olympian.", "wiki": "https://en.wikipedia.org/wiki/Ryan_Pini" },
+      { "name": "Mathias Kauage", "years": "1944–2003", "field": "Artist", "why": "Self-taught painter whose bold contemporary work brought Papua New Guinean art to the world.", "wiki": "https://en.wikipedia.org/wiki/Mathias_Kauage" }
+    ],
+    "events": [
+      { "year": "1930", "title": "The highlands 'discovered'", "what": "Australian prospectors found a million people living in valleys outsiders had assumed were empty.", "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea_Highlands" },
+      { "year": "1942–1945", "title": "The Kokoda campaign", "what": "Some of the Pacific War's hardest fighting, and the reason Kokoda means so much to Australians too.", "wiki": "https://en.wikipedia.org/wiki/Kokoda_Track_campaign" },
+      { "year": "1975", "title": "Independence", "what": "PNG became independent from Australian administration.", "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea" },
+      { "year": "1988–1998", "title": "The Bougainville conflict", "what": "A war over a copper mine killed thousands; Bougainville voted overwhelmingly for independence in 2019.", "wiki": "https://en.wikipedia.org/wiki/Bougainville_Civil_War" }
+    ],
+    "culture": [
+      { "icon": "🗣️", "label": "Language", "text": "Over 800 languages — more than any other country, roughly a tenth of all the languages on earth." },
+      { "icon": "🎭", "label": "Sing-sing", "text": "Clans gather in feathers, shells and paint to perform; the Goroka show draws a hundred groups." },
+      { "icon": "🐖", "label": "Pigs", "text": "Pigs are wealth, bride price and obligation, not just food." },
+      { "icon": "🏉", "label": "Sport", "text": "Rugby league is the national sport and the closest thing to a unifying passion." },
+      { "icon": "🤝", "label": "Wantok", "text": "The wantok system — obligation to those who speak your language — is the real social safety net." }
+    ],
+    "talkAbout": [
+      "Which province and language group they come from.",
+      "Rugby league, and the State of Origin series.",
+      "The sing-sing festivals and what each group's decoration means."
+    ],
+    "avoid": "Bougainville and 'tribal fighting' are complex and often sensationalised abroad; ask rather than assume. Sorcery accusations and violence against women are real problems, not curiosities."
+  },
+  {
+    "iso2": "VU",
+    "people": [
+      { "name": "Walter Lini", "years": "1942–1999", "field": "Prime minister", "why": "An Anglican priest who led Vanuatu to independence in 1980 and coined 'Melanesian socialism'.", "wiki": "https://en.wikipedia.org/wiki/Walter_Lini" },
+      { "name": "Grace Mera Molisa", "years": "1946–2002", "field": "Poet and activist", "why": "Vanuatu's best-known writer, whose poetry attacked the exclusion of women from public life.", "wiki": "https://en.wikipedia.org/wiki/Grace_Mera_Molisa" },
+      { "name": "Hilda Lini", "years": "b. 1951", "field": "Politician", "why": "One of the first women elected to parliament and a long-standing campaigner for a nuclear-free Pacific.", "wiki": "https://en.wikipedia.org/wiki/Hilda_Lini" },
+      { "name": "Chief Roi Mata", "years": "c. 1600", "field": "Paramount chief", "why": "His burial site is Vanuatu's only World Heritage listing, and his peace-making is still recounted.", "wiki": "https://en.wikipedia.org/wiki/Roi_Mata" },
+      { "name": "Marie-Noëlle Ferrieux Patterson", "years": "b. 1951", "field": "Ombudsman", "why": "As the country's first Ombudsman she published reports naming corruption at the top of government.", "wiki": "https://en.wikipedia.org/wiki/Vanuatu" }
+    ],
+    "events": [
+      { "year": "1906–1980", "title": "The Condominium", "what": "Britain and France governed jointly in an arrangement so absurd it was nicknamed the Pandemonium — two police forces, two legal systems.", "wiki": "https://en.wikipedia.org/wiki/New_Hebrides" },
+      { "year": "1940s", "title": "Cargo cults", "what": "Wartime American supply drops gave rise to movements like John Frum on Tanna, still observed today.", "wiki": "https://en.wikipedia.org/wiki/John_Frum" },
+      { "year": "1980", "title": "Independence", "what": "Vanuatu became independent, immediately putting down a secession attempt on Espiritu Santo.", "wiki": "https://en.wikipedia.org/wiki/Vanuatu" },
+      { "year": "2015", "title": "Cyclone Pam", "what": "A category five storm damaged or destroyed most buildings in the country and made Vanuatu a leading voice on climate loss and damage.", "wiki": "https://en.wikipedia.org/wiki/Cyclone_Pam" }
+    ],
+    "culture": [
+      { "icon": "🪢", "label": "Land diving", "text": "On Pentecost, men dive from wooden towers with vines tied to their ankles — the ritual that inspired bungee jumping." },
+      { "icon": "🥥", "label": "Kava", "text": "Vanuatu's kava is the strongest in the Pacific, drunk at dusk in a nakamal in near silence." },
+      { "icon": "🗣️", "label": "Language", "text": "More languages per head of population than anywhere on earth — over 100 for 300,000 people." },
+      { "icon": "🏝️", "label": "Kastom", "text": "Kastom means traditional law and practice, and it runs alongside the formal legal system." },
+      { "icon": "😊", "label": "Wellbeing", "text": "Vanuatu has repeatedly topped the Happy Planet Index, which locals enjoy pointing out." }
+    ],
+    "talkAbout": [
+      "Which island they're from — the differences are enormous.",
+      "Kava, and how Vanuatu's compares to Fiji's.",
+      "Climate change: they have been at the front of the international argument."
+    ],
+    "avoid": "Don't treat kastom or the John Frum movement as quaint. Cyclones and rising seas are lived experience, not a talking point."
+  },
+  {
+    "iso2": "SB",
+    "people": [
+      { "name": "Peter Kenilorea", "years": "1943–2016", "field": "Prime minister", "why": "The country's first prime minister at independence in 1978.", "wiki": "https://en.wikipedia.org/wiki/Peter_Kenilorea" },
+      { "name": "Jacob Vouza", "years": "1892–1984", "field": "Scout", "why": "Captured and bayoneted by Japanese troops on Guadalcanal, he escaped and delivered his warning; knighted for it.", "wiki": "https://en.wikipedia.org/wiki/Jacob_Vouza" },
+      { "name": "Sir Frank Kabui", "years": "b. 1946", "field": "Governor-General", "why": "Led the country's legal system and then the state through the post-conflict years.", "wiki": "https://en.wikipedia.org/wiki/Frank_Kabui" },
+      { "name": "Rennie Fugui", "years": "b. 1990", "field": "Footballer", "why": "A star of the Kurukuru, the national futsal side that has dominated Oceania.", "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands_national_futsal_team" },
+      { "name": "Celsus Talifilu", "years": "b. 1980", "field": "Political adviser", "why": "A prominent voice in the debate over the country's foreign alignments and provincial autonomy.", "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands" }
+    ],
+    "events": [
+      { "year": "1942–1943", "title": "Guadalcanal", "what": "The turning point of the Pacific War; wrecks still lie in Iron Bottom Sound.", "wiki": "https://en.wikipedia.org/wiki/Guadalcanal_campaign" },
+      { "year": "1978", "title": "Independence", "what": "The Solomon Islands left British protection.", "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands" },
+      { "year": "1998–2003", "title": "The Tensions", "what": "Ethnic conflict between Guale and Malaitan communities brought the state close to collapse.", "wiki": "https://en.wikipedia.org/wiki/Ethnic_tension_in_Solomon_Islands" },
+      { "year": "2003", "title": "RAMSI", "what": "An Australian-led regional mission restored order and stayed fourteen years.", "wiki": "https://en.wikipedia.org/wiki/Regional_Assistance_Mission_to_Solomon_Islands" }
+    ],
+    "culture": [
+      { "icon": "🐚", "label": "Shell money", "text": "Strings of polished shell discs are still made on Malaita and used for bride price and compensation." },
+      { "icon": "🛶", "label": "Sea", "text": "Almost a thousand islands; boats do the work roads do elsewhere." },
+      { "icon": "🎋", "label": "Panpipes", "text": "'Are'are bamboo panpipe ensembles are among the most distinctive music in the Pacific." },
+      { "icon": "🗣️", "label": "Language", "text": "Around 70 languages, with Solomon Islands Pijin as the shared tongue." },
+      { "icon": "🤝", "label": "Wantok", "text": "As in PNG, obligation to your language group organises much of daily life." }
+    ],
+    "talkAbout": [
+      "Which island and language group they belong to.",
+      "Diving and the wartime wrecks, which draw visitors from everywhere.",
+      "Futsal and football — the Kurukuru are a genuine source of pride."
+    ],
+    "avoid": "The Tensions are recent and unresolved for many families. The country's shifting relations with China and Taiwan are politically charged."
+  },
+  {
+    "iso2": "WS",
+    "people": [
+      { "name": "Albert Wendt", "years": "b. 1939", "field": "Novelist", "why": "The founding figure of modern Pacific literature in English.", "wiki": "https://en.wikipedia.org/wiki/Albert_Wendt" },
+      { "name": "Tupua Tamasese Lealofi III", "years": "1900–1929", "field": "Mau leader", "why": "Shot dead by New Zealand police during a peaceful independence march on Black Saturday.", "wiki": "https://en.wikipedia.org/wiki/Tupua_Tamasese_Lealofi_III" },
+      { "name": "Fiame Naomi Mata'afa", "years": "b. 1957", "field": "Prime minister", "why": "Samoa's first woman prime minister, who took office in 2021 after a constitutional standoff.", "wiki": "https://en.wikipedia.org/wiki/Fiam%C4%93_Naomi_Mata%CA%BBafa" },
+      { "name": "Manu Samoa's 1991 side", "years": "1991", "field": "Rugby team", "why": "Beat Wales in Cardiff at their first World Cup, and announced Pacific rugby to the world.", "wiki": "https://en.wikipedia.org/wiki/Samoa_national_rugby_union_team" },
+      { "name": "Robert Louis Stevenson", "years": "1850–1894", "field": "Writer", "why": "Spent his last years at Vailima, took the name Tusitala — teller of tales — and is buried on Mount Vaea.", "wiki": "https://en.wikipedia.org/wiki/Robert_Louis_Stevenson" }
+    ],
+    "events": [
+      { "year": "1899", "title": "Partition", "what": "Germany and the United States divided the archipelago, creating Samoa and American Samoa.", "wiki": "https://en.wikipedia.org/wiki/Tripartite_Convention_(1899)" },
+      { "year": "1918", "title": "The influenza catastrophe", "what": "A ship allowed to dock brought flu that killed about a fifth of the population in weeks.", "wiki": "https://en.wikipedia.org/wiki/1918_flu_pandemic" },
+      { "year": "1929", "title": "Black Saturday", "what": "New Zealand police fired on a peaceful Mau demonstration, killing eleven including Tamasese.", "wiki": "https://en.wikipedia.org/wiki/Mau_movement" },
+      { "year": "1962", "title": "Independence", "what": "Samoa became the first Pacific island nation to gain independence in the twentieth century.", "wiki": "https://en.wikipedia.org/wiki/Samoa" }
+    ],
+    "culture": [
+      { "icon": "🏛️", "label": "Fa'a Samoa", "text": "'The Samoan way' — the matai chief system, extended family and church organise nearly everything." },
+      { "icon": "🖋️", "label": "Tatau", "text": "The pe'a and malu are hand-tapped tattoos taking days to complete; tattoo itself is a Samoan word." },
+      { "icon": "🥥", "label": "Food", "text": "Umu cooking over hot stones above ground, and palusami — taro leaves baked in coconut cream." },
+      { "icon": "🏉", "label": "Sport", "text": "Samoa produces professional rugby players far out of proportion to its size." },
+      { "icon": "⛪", "label": "Sunday", "text": "Sunday is genuinely observed: church, a large lunch, and very little else." }
+    ],
+    "talkAbout": [
+      "Family and village — the first question a Samoan asks is usually where you're from.",
+      "Rugby, and Samoan players in overseas leagues.",
+      "Tatau, and what the designs mean."
+    ],
+    "avoid": "Don't confuse Samoa with American Samoa. Respect Sunday and village curfew for evening prayers; dress modestly away from resorts."
+  },
+  {
+    "iso2": "TO",
+    "people": [
+      { "name": "Queen Sālote Tupou III", "years": "1900–1965", "field": "Monarch", "why": "Reigned 47 years and won over Britain by riding through the 1953 coronation rain in an open carriage.", "wiki": "https://en.wikipedia.org/wiki/S%C4%81lote_Tupou_III" },
+      { "name": "Tāufa'āhau Tupou I", "years": "1797–1893", "field": "King", "why": "United the islands, abolished serfdom and gave Tonga a constitution in 1875.", "wiki": "https://en.wikipedia.org/wiki/George_Tupou_I" },
+      { "name": "Pita Taufatofua", "years": "b. 1983", "field": "Athlete", "why": "Competed at both summer and winter Olympics, and carried the flag oiled and bare-chested.", "wiki": "https://en.wikipedia.org/wiki/Pita_Taufatofua" },
+      { "name": "Epeli Hau'ofa", "years": "1939–2009", "field": "Writer", "why": "Tongan-raised thinker whose work reframed how the Pacific sees itself.", "wiki": "https://en.wikipedia.org/wiki/Epeli_Hau%CA%BBofa" },
+      { "name": "'Akilisi Pōhiva", "years": "1941–2019", "field": "Prime minister", "why": "Campaigned for decades for democratic reform and became the first commoner prime minister.", "wiki": "https://en.wikipedia.org/wiki/%CA%BBAkilisi_P%C5%8Dhiva" }
+    ],
+    "events": [
+      { "year": "1845", "title": "The kingdom united", "what": "Tāufa'āhau took the name George Tupou I and brought the islands under one crown.", "wiki": "https://en.wikipedia.org/wiki/George_Tupou_I" },
+      { "year": "1875", "title": "The constitution", "what": "Tonga's founding law helped it stay the only Pacific nation never formally colonised.", "wiki": "https://en.wikipedia.org/wiki/Constitution_of_Tonga" },
+      { "year": "2010", "title": "Democratic reform", "what": "The king gave up most executive power to an elected parliament.", "wiki": "https://en.wikipedia.org/wiki/Politics_of_Tonga" },
+      { "year": "2022", "title": "Hunga Tonga eruption", "what": "The largest volcanic explosion in over a century sent a tsunami across the Pacific and cut the country's only cable.", "wiki": "https://en.wikipedia.org/wiki/2022_Hunga_Tonga%E2%80%93Hunga_Ha%CA%BBapai_eruption" }
+    ],
+    "culture": [
+      { "icon": "👑", "label": "Monarchy", "text": "The last Polynesian kingdom, and never formally colonised — a point of considerable pride." },
+      { "icon": "👗", "label": "Ta'ovala", "text": "A woven mat worn around the waist for formal occasions, over Western clothes." },
+      { "icon": "🏉", "label": "Sport", "text": "Rugby is close to a national identity; the sipi tau is Tonga's pre-match challenge." },
+      { "icon": "🐋", "label": "Whales", "text": "Humpbacks calve in Tongan waters, and it is one of the few places you can legally swim with them." },
+      { "icon": "⛪", "label": "Sunday", "text": "The constitution makes Sunday sacred: trade and work are prohibited by law." }
+    ],
+    "talkAbout": [
+      "That Tonga was never colonised.",
+      "Rugby, and Tongan players abroad.",
+      "Whale season and the islands' geography."
+    ],
+    "avoid": "Criticism of the royal family lands badly. Sunday restrictions are law, not custom — plan around them."
+  },
+  {
+    "iso2": "TV",
+    "people": [
+      { "name": "Toaripi Lauti", "years": "1928–2014", "field": "Prime minister", "why": "Tuvalu's first prime minister after separating from the Gilbert Islands.", "wiki": "https://en.wikipedia.org/wiki/Toaripi_Lauti" },
+      { "name": "Simon Kofe", "years": "b. 1982", "field": "Foreign minister", "why": "Delivered a speech to COP26 standing knee-deep in the sea, an image that travelled the world.", "wiki": "https://en.wikipedia.org/wiki/Simon_Kofe" },
+      { "name": "Etimoni Timuani", "years": "b. 1994", "field": "Sprinter", "why": "Tuvalu's sole athlete at the 2016 Olympics, carrying the flag alone.", "wiki": "https://en.wikipedia.org/wiki/Etimoni_Timuani" },
+      { "name": "Sir Tomasi Puapua", "years": "1938–2020", "field": "Prime minister and governor-general", "why": "A doctor who led the country through the 1980s and later represented the Crown.", "wiki": "https://en.wikipedia.org/wiki/Tomasi_Puapua" },
+      { "name": "Kausea Natano", "years": "b. 1957", "field": "Prime minister", "why": "Led Tuvalu's push for a legal framework preserving statehood even if the land goes under.", "wiki": "https://en.wikipedia.org/wiki/Kausea_Natano" }
+    ],
+    "events": [
+      { "year": "1978", "title": "Independence", "what": "Tuvalu separated from the Gilbert Islands and left British rule.", "wiki": "https://en.wikipedia.org/wiki/Tuvalu" },
+      { "year": "2000", "title": "Selling .tv", "what": "Leasing its internet domain to broadcasters became a major share of national revenue.", "wiki": "https://en.wikipedia.org/wiki/.tv" },
+      { "year": "2021", "title": "The COP26 speech", "what": "Simon Kofe addressed the summit standing in the sea where there had been dry land.", "wiki": "https://en.wikipedia.org/wiki/Simon_Kofe" },
+      { "year": "2023", "title": "The Falepili Union", "what": "A treaty with Australia offering Tuvaluans residence as the sea rises — a first of its kind.", "wiki": "https://en.wikipedia.org/wiki/Falepili_Union" }
+    ],
+    "culture": [
+      { "icon": "🌊", "label": "Elevation", "text": "The highest point is about 4.6 m. Tuvalu is among the countries most exposed to sea-level rise anywhere." },
+      { "icon": "🏛️", "label": "Falekaupule", "text": "The island council of elders makes decisions collectively; central government works with it, not over it." },
+      { "icon": "🎶", "label": "Fatele", "text": "Sung and danced in rows on a mat, speeding up as it goes, at every celebration." },
+      { "icon": "🐟", "label": "Food", "text": "Fish, coconut and pulaka, a swamp taro grown in dug pits — increasingly threatened by salt water." },
+      { "icon": "🤝", "label": "Scale", "text": "About 11,000 people. Everyone is related to everyone, and reputation travels instantly." }
+    ],
+    "talkAbout": [
+      "The .tv domain, which they find funny and useful in equal measure.",
+      "Fatele dancing and island celebrations.",
+      "How a country of 11,000 punches above its weight at the UN."
+    ],
+    "avoid": "Don't treat Tuvalu as a doomed curiosity — 'the country that will disappear' is a framing many find dehumanising. Ask what they want the response to be."
+  },
+  {
+    "iso2": "KI",
+    "people": [
+      { "name": "Ieremia Tabai", "years": "b. 1950", "field": "President", "why": "Became Kiribati's first president at 29 and led it for twelve years.", "wiki": "https://en.wikipedia.org/wiki/Ieremia_Tabai" },
+      { "name": "Anote Tong", "years": "b. 1952", "field": "President", "why": "Made Kiribati the global face of climate displacement and bought land in Fiji as insurance.", "wiki": "https://en.wikipedia.org/wiki/Anote_Tong" },
+      { "name": "David Katoatau", "years": "b. 1984", "field": "Weightlifter", "why": "Danced after every lift at the Olympics to get the world's attention on rising seas.", "wiki": "https://en.wikipedia.org/wiki/David_Katoatau" },
+      { "name": "Teburoro Tito", "years": "b. 1953", "field": "President", "why": "Led the country for a decade and later served as its ambassador to the UN.", "wiki": "https://en.wikipedia.org/wiki/Teburoro_Tito" },
+      { "name": "Sister Alaima Talu", "years": "1950–2013", "field": "Historian", "why": "Wrote the first history of Kiribati by an I-Kiribati author.", "wiki": "https://en.wikipedia.org/wiki/Kiribati" }
+    ],
+    "events": [
+      { "year": "1900–1979", "title": "The phosphate years", "what": "Banaba was strip-mined for fertiliser until the island was ruined and its people resettled in Fiji.", "wiki": "https://en.wikipedia.org/wiki/Banaba_Island" },
+      { "year": "1943", "title": "The Battle of Tarawa", "what": "Seventy-six hours of fighting killed over 6,000 people on an atoll of a few square kilometres.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Tarawa" },
+      { "year": "1979", "title": "Independence", "what": "Kiribati left British rule; its 33 atolls straddle the equator and the date line.", "wiki": "https://en.wikipedia.org/wiki/Kiribati" },
+      { "year": "1995", "title": "Moving the date line", "what": "Kiribati shifted the line so the whole country shared one day — and gained the world's earliest sunrise.", "wiki": "https://en.wikipedia.org/wiki/International_Date_Line" }
+    ],
+    "culture": [
+      { "icon": "🗺️", "label": "Scale", "text": "Land the size of a small city, spread across an ocean area bigger than India." },
+      { "icon": "💃", "label": "Dance", "text": "Kiribati dance is famously still — the arms and eyes carry it, and the bird-like head movement is the signature." },
+      { "icon": "🏝️", "label": "Maneaba", "text": "The village meeting house, where seating position reflects clan and every decision is made." },
+      { "icon": "🐟", "label": "Food", "text": "Fish, coconut, breadfruit and babai — the pit-grown giant taro reserved for feasts." },
+      { "icon": "🌅", "label": "Time", "text": "Kiribati's Line Islands are the first place on earth to see each new day." }
+    ],
+    "talkAbout": [
+      "Being first into the new year, every year.",
+      "Traditional dance, and why the stillness is the difficult part.",
+      "Ocean and fisheries — Kiribati manages one of the world's biggest marine reserves."
+    ],
+    "avoid": "As with Tuvalu, the 'sinking nation' framing grates. Banaba's mining and resettlement remain a live grievance."
+  },
+  {
+    "iso2": "FM",
+    "people": [
+      { "name": "Tosiwo Nakayama", "years": "1931–2007", "field": "President", "why": "The first president of the Federated States, who held four very different island groups together.", "wiki": "https://en.wikipedia.org/wiki/Tosiwo_Nakayama" },
+      { "name": "Manny Mori", "years": "b. 1948", "field": "President", "why": "An accountant who led the country for eight years and pushed its climate diplomacy.", "wiki": "https://en.wikipedia.org/wiki/Manny_Mori" },
+      { "name": "Emelihter Kihleng", "years": "b. 1979", "field": "Poet", "why": "The first Pohnpeian to publish a collection of poetry in English.", "wiki": "https://en.wikipedia.org/wiki/Emelihter_Kihleng" },
+      { "name": "Isaac Figir", "years": "b. 1953", "field": "Speaker of Congress", "why": "A long-serving legislator central to the renegotiation of the Compact with the United States.", "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia" },
+      { "name": "Dr. Eliuel Pretrick", "years": "1938–2020", "field": "Public health official", "why": "Built the national health system almost from scratch over four decades.", "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia" }
+    ],
+    "events": [
+      { "year": "c. 1200", "title": "Nan Madol built", "what": "A city of 90 artificial islets built from basalt logs on a reef off Pohnpei — the Venice of the Pacific.", "wiki": "https://en.wikipedia.org/wiki/Nan_Madol" },
+      { "year": "1944", "title": "Operation Hailstone", "what": "The US attack on the Japanese fleet at Chuuk sank dozens of ships now famous among divers.", "wiki": "https://en.wikipedia.org/wiki/Operation_Hailstone" },
+      { "year": "1986", "title": "Independence", "what": "The Federated States became sovereign under a Compact of Free Association with the United States.", "wiki": "https://en.wikipedia.org/wiki/Compact_of_Free_Association" },
+      { "year": "2023", "title": "Compact renewed", "what": "The agreement covering funding, defence and free movement to the US was extended for twenty years.", "wiki": "https://en.wikipedia.org/wiki/Compact_of_Free_Association" }
+    ],
+    "culture": [
+      { "icon": "🪨", "label": "Yap stone money", "text": "Limestone discs up to four metres across, quarried in Palau; ownership changes without the stone moving." },
+      { "icon": "🏝️", "label": "Diversity", "text": "Four states — Yap, Chuuk, Pohnpei, Kosrae — with different languages and customs, across 2,700 km." },
+      { "icon": "🥥", "label": "Sakau", "text": "Pohnpei's kava, pounded on a stone and drunk from a coconut shell in near silence." },
+      { "icon": "🤿", "label": "Diving", "text": "Chuuk Lagoon holds the largest concentration of shipwrecks on earth." },
+      { "icon": "🎁", "label": "Reciprocity", "text": "Giving and returning food and goods is how status and obligation are managed." }
+    ],
+    "talkAbout": [
+      "Which of the four states they're from — they'll expect the distinction.",
+      "Nan Madol, and how it was built.",
+      "Diving, and the lagoon."
+    ],
+    "avoid": "Don't call it 'Micronesia' without care — that's the region, and Guam, Palau and the Marshalls are separate. The Compact and migration to the US are debated."
+  },
+  {
+    "iso2": "PW",
+    "people": [
+      { "name": "Haruo Remeliik", "years": "1933–1985", "field": "President", "why": "Palau's first president, assassinated in office during the nuclear-free constitution struggle.", "wiki": "https://en.wikipedia.org/wiki/Haruo_Remeliik" },
+      { "name": "Tommy Remengesau Jr.", "years": "b. 1956", "field": "President", "why": "Created one of the world's largest marine sanctuaries, closing 80% of Palau's waters to fishing.", "wiki": "https://en.wikipedia.org/wiki/Tommy_Remengesau" },
+      { "name": "Bilung Gloria Salii", "years": "b. 1940s", "field": "Traditional leader", "why": "One of the highest-ranking women in Palau's matrilineal chiefly system.", "wiki": "https://en.wikipedia.org/wiki/Palau" },
+      { "name": "Ibedul Yutaka Gibbons", "years": "1932–2012", "field": "Paramount chief", "why": "Led opposition to nuclear-armed ship visits over more than a decade of referendums.", "wiki": "https://en.wikipedia.org/wiki/Palau" },
+      { "name": "Surangel Whipps Jr.", "years": "b. 1968", "field": "President", "why": "A prominent international advocate for ocean protection and small-island climate action.", "wiki": "https://en.wikipedia.org/wiki/Surangel_Whipps_Jr." }
+    ],
+    "events": [
+      { "year": "1944", "title": "The Battle of Peleliu", "what": "Expected to take four days, it took over two months and cost around 12,000 lives.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Peleliu" },
+      { "year": "1981", "title": "The nuclear-free constitution", "what": "Palau adopted the world's first constitution banning nuclear weapons, then held eight referendums over it.", "wiki": "https://en.wikipedia.org/wiki/Constitution_of_Palau" },
+      { "year": "1994", "title": "Independence", "what": "The last UN trust territory became sovereign, in free association with the United States.", "wiki": "https://en.wikipedia.org/wiki/Palau" },
+      { "year": "2017", "title": "The Palau Pledge", "what": "Every visitor must sign a promise, stamped in their passport, to protect the islands.", "wiki": "https://en.wikipedia.org/wiki/Palau_Pledge" }
+    ],
+    "culture": [
+      { "icon": "🌊", "label": "Ocean", "text": "The Rock Islands are World Heritage-listed, and Jellyfish Lake holds millions of stingless jellyfish." },
+      { "icon": "👩", "label": "Matrilineal", "text": "Clan land and titles pass through women, and senior women choose the chiefs." },
+      { "icon": "🏠", "label": "Bai", "text": "The men's meeting house, its gables painted with the stories that hold community law." },
+      { "icon": "🐢", "label": "Bul", "text": "A traditional ban on fishing an area to let it recover — conservation practised for centuries." },
+      { "icon": "🤿", "label": "Diving", "text": "Consistently rated among the best dive destinations anywhere, and a large part of the economy." }
+    ],
+    "talkAbout": [
+      "The marine sanctuary and the Palau Pledge.",
+      "Diving and the Rock Islands.",
+      "The matrilineal system, which surprises most visitors."
+    ],
+    "avoid": "The Compact with the United States and the nuclear question have a long, contested history. Don't take Rock Island souvenirs — collection is restricted."
+  },
+  {
+    "iso2": "MH",
+    "people": [
+      { "name": "Amata Kabua", "years": "1928–1996", "field": "President", "why": "The Marshall Islands' first president and the architect of its independence.", "wiki": "https://en.wikipedia.org/wiki/Amata_Kabua" },
+      { "name": "Tony de Brum", "years": "1945–2017", "field": "Foreign minister", "why": "Watched the Bravo test as a child and went on to broker the Paris Agreement's 1.5 °C goal.", "wiki": "https://en.wikipedia.org/wiki/Tony_de_Brum" },
+      { "name": "Kathy Jetñil-Kijiner", "years": "b. 1987", "field": "Poet", "why": "Her poem to her daughter opened the 2014 UN climate summit and was heard worldwide.", "wiki": "https://en.wikipedia.org/wiki/Kathy_Jetnil-Kijiner" },
+      { "name": "Hilda Heine", "years": "b. 1951", "field": "President", "why": "The first woman elected head of state of any Pacific island country.", "wiki": "https://en.wikipedia.org/wiki/Hilda_Heine" },
+      { "name": "Darlene Keju", "years": "1951–1996", "field": "Health activist", "why": "Told the world about the radiation illnesses the testing programme had caused, and built the country's youth health service.", "wiki": "https://en.wikipedia.org/wiki/Darlene_Keju" }
+    ],
+    "events": [
+      { "year": "1946–1958", "title": "Nuclear testing", "what": "The US detonated 67 nuclear weapons at Bikini and Enewetak, displacing whole communities.", "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands#Nuclear_testing" },
+      { "year": "1954", "title": "Castle Bravo", "what": "A test a thousand times Hiroshima's yield showered Rongelap with fallout; its people have never fully returned.", "wiki": "https://en.wikipedia.org/wiki/Castle_Bravo" },
+      { "year": "1986", "title": "Independence", "what": "The Marshall Islands became sovereign under a Compact of Free Association.", "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands" },
+      { "year": "1980", "title": "The Runit Dome", "what": "A concrete lid was poured over radioactive debris on Enewetak; it is cracking as the sea rises.", "wiki": "https://en.wikipedia.org/wiki/Runit_Dome" }
+    ],
+    "culture": [
+      { "icon": "🛶", "label": "Navigation", "text": "Marshallese stick charts map ocean swells rather than land — a navigational science found nowhere else." },
+      { "icon": "🧵", "label": "Weaving", "text": "Pandanus mats and jaki-ed textiles are among the finest weaving in the Pacific." },
+      { "icon": "👩", "label": "Matrilineal", "text": "Land rights pass through the mother's line, and women hold considerable authority over it." },
+      { "icon": "🎂", "label": "Kemem", "text": "A child's first birthday is the biggest party a family will throw, with the whole community fed." },
+      { "icon": "🌊", "label": "Atolls", "text": "29 atolls averaging two metres above the sea, spread across nearly two million square kilometres." }
+    ],
+    "talkAbout": [
+      "Stick charts and traditional navigation.",
+      "Weaving, and the patterns particular to each atoll.",
+      "Their work at the UN on climate — they are used to being listened to there."
+    ],
+    "avoid": "Nuclear testing is not history here: compensation, displacement and illness are ongoing and were badly handled. Follow their lead on it."
+  },
+  {
+    "iso2": "NR",
+    "people": [
+      { "name": "Hammer DeRoburt", "years": "1922–1992", "field": "President", "why": "Led Nauru to independence and negotiated control of its phosphate wealth.", "wiki": "https://en.wikipedia.org/wiki/Hammer_DeRoburt" },
+      { "name": "Marcus Stephen", "years": "b. 1969", "field": "Weightlifter and president", "why": "Won seven Commonwealth Games golds, then led the country and took its climate case to the UN.", "wiki": "https://en.wikipedia.org/wiki/Marcus_Stephen" },
+      { "name": "Baron Waqa", "years": "b. 1959", "field": "President", "why": "A teacher and musician who led Nauru and later became Secretary-General of the Pacific Islands Forum.", "wiki": "https://en.wikipedia.org/wiki/Baron_Waqa" },
+      { "name": "Itubwa Amram", "years": "1922–1989", "field": "Pastor and politician", "why": "A leading figure in the independence movement and in the Nauruan church.", "wiki": "https://en.wikipedia.org/wiki/Nauru" },
+      { "name": "Ruben Kun", "years": "1942–2014", "field": "President", "why": "A lawyer who pressed Australia at the International Court of Justice over mining damage.", "wiki": "https://en.wikipedia.org/wiki/Ruben_Kun" }
+    ],
+    "events": [
+      { "year": "1907", "title": "Phosphate mining begins", "what": "Bird droppings compacted over millennia made Nauru extraordinarily valuable to fertiliser companies.", "wiki": "https://en.wikipedia.org/wiki/Nauru#Phosphate" },
+      { "year": "1968", "title": "Independence", "what": "Nauru became the world's smallest independent republic, at 21 km².", "wiki": "https://en.wikipedia.org/wiki/Nauru" },
+      { "year": "1980s", "title": "The richest country per head", "what": "Phosphate royalties briefly gave Nauru one of the highest incomes on earth — then the rock ran out.", "wiki": "https://en.wikipedia.org/wiki/Nauru" },
+      { "year": "2001", "title": "The Pacific Solution", "what": "Nauru began hosting an Australian offshore detention centre, which became a mainstay of its economy and a long-running human rights controversy.", "wiki": "https://en.wikipedia.org/wiki/Pacific_Solution" }
+    ],
+    "culture": [
+      { "icon": "🪨", "label": "Landscape", "text": "Four-fifths of the island is mined-out limestone pinnacles; almost everyone lives on the coastal strip." },
+      { "icon": "🕊️", "label": "Frigatebirds", "text": "Catching and keeping frigatebirds, then releasing them to return, is a Nauruan tradition." },
+      { "icon": "🏋️", "label": "Sport", "text": "Weightlifting and Australian rules football, both far above what a country of 12,000 should manage." },
+      { "icon": "🎣", "label": "Fishing", "text": "Noddy-bird catching and reef fishing remain everyday practice." },
+      { "icon": "🤝", "label": "Scale", "text": "Twelve tribes, one island, 12,000 people — the flag's star marks its position just south of the equator." }
+    ],
+    "talkAbout": [
+      "Weightlifting and Australian rules football.",
+      "The twelve tribes represented on the flag.",
+      "Frigatebird catching and other island traditions."
+    ],
+    "avoid": "The detention centre and the exhausted phosphate lands are painful and politically loaded. 'The country that spent it all' is a tired outsider narrative."
+  }
+]

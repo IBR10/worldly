@@ -1,0 +1,4582 @@
+[
+  {
+    "iso2": "GB",
+    "people": [
+      {
+        "name": "William Shakespeare",
+        "years": "1564–1616",
+        "field": "Playwright",
+        "why": "Wrote 37 plays that are still staged everywhere, and coined a startling amount of everyday English.",
+        "wiki": "https://en.wikipedia.org/wiki/William_Shakespeare"
+      },
+      {
+        "name": "Isaac Newton",
+        "years": "1643–1727",
+        "field": "Physicist",
+        "why": "Gravity, the laws of motion and calculus — arguably the single most productive mind in science.",
+        "wiki": "https://en.wikipedia.org/wiki/Isaac_Newton"
+      },
+      {
+        "name": "Winston Churchill",
+        "years": "1874–1965",
+        "field": "Prime minister",
+        "why": "Led Britain through the Second World War, and won a Nobel Prize for literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Winston_Churchill"
+      },
+      {
+        "name": "Alan Turing",
+        "years": "1912–1954",
+        "field": "Mathematician",
+        "why": "Broke the Enigma code and invented the theoretical basis of computing; prosecuted for being gay.",
+        "wiki": "https://en.wikipedia.org/wiki/Alan_Turing"
+      },
+      {
+        "name": "The Beatles",
+        "years": "1960–1970",
+        "field": "Band",
+        "why": "Four men from Liverpool who changed popular music more than anyone before or since.",
+        "wiki": "https://en.wikipedia.org/wiki/The_Beatles"
+      }
+    ],
+    "events": [
+      {
+        "year": "1215",
+        "title": "Magna Carta",
+        "what": "Barons forced the king to accept limits on his power — the seed of constitutional government.",
+        "wiki": "https://en.wikipedia.org/wiki/Magna_Carta"
+      },
+      {
+        "year": "1760–1840",
+        "title": "The Industrial Revolution",
+        "what": "Began in Britain's mills and coalfields and remade the world's economy.",
+        "wiki": "https://en.wikipedia.org/wiki/Industrial_Revolution"
+      },
+      {
+        "year": "1940",
+        "title": "The Blitz",
+        "what": "Eight months of bombing that London still measures itself against.",
+        "wiki": "https://en.wikipedia.org/wiki/The_Blitz"
+      },
+      {
+        "year": "1948",
+        "title": "The NHS and Windrush",
+        "what": "Free healthcare at the point of use began, and the Empire Windrush brought Caribbean migrants who helped staff it.",
+        "wiki": "https://en.wikipedia.org/wiki/National_Health_Service"
+      },
+      {
+        "year": "2020",
+        "title": "Brexit",
+        "what": "Britain left the European Union after a 2016 referendum, and the argument has not finished.",
+        "wiki": "https://en.wikipedia.org/wiki/Brexit"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "☕",
+        "label": "Tea",
+        "text": "Still a genuine daily ritual, and offering one is how hospitality starts."
+      },
+      {
+        "icon": "🍺",
+        "label": "The pub",
+        "text": "The social centre of most communities. You order at the bar, and rounds are taken in turn."
+      },
+      {
+        "icon": "😐",
+        "label": "Manner",
+        "text": "Understatement, apologising when someone else bumps into you, and queueing treated as a moral matter."
+      },
+      {
+        "icon": "⚽",
+        "label": "Sport",
+        "text": "Football above all, plus cricket, rugby and a national talent for losing gracefully."
+      },
+      {
+        "icon": "🏴",
+        "label": "Four nations",
+        "text": "England, Scotland, Wales and Northern Ireland are distinct countries with their own institutions and identities."
+      }
+    ],
+    "talkAbout": [
+      "The weather — genuinely, it is the standard opener and nobody minds.",
+      "Where they're from within the UK, which is rarely just 'Britain'.",
+      "Football, music or a good pub."
+    ],
+    "avoid": "Don't call a Scot, Welsh or Northern Irish person English. Brexit and the monarchy split rooms; Northern Ireland's history needs care."
+  },
+  {
+    "iso2": "FR",
+    "people": [
+      {
+        "name": "Marie Curie",
+        "years": "1867–1934",
+        "field": "Scientist",
+        "why": "The only person to win Nobel Prizes in two sciences; Polish-born, but her work was Parisian.",
+        "wiki": "https://en.wikipedia.org/wiki/Marie_Curie"
+      },
+      {
+        "name": "Charles de Gaulle",
+        "years": "1890–1970",
+        "field": "General and president",
+        "why": "Led Free France from London and founded the Fifth Republic.",
+        "wiki": "https://en.wikipedia.org/wiki/Charles_de_Gaulle"
+      },
+      {
+        "name": "Simone de Beauvoir",
+        "years": "1908–1986",
+        "field": "Philosopher",
+        "why": "The Second Sex is the founding text of modern feminism.",
+        "wiki": "https://en.wikipedia.org/wiki/Simone_de_Beauvoir"
+      },
+      {
+        "name": "Claude Monet",
+        "years": "1840–1926",
+        "field": "Painter",
+        "why": "Impression, Sunrise gave Impressionism its name and broke painting open.",
+        "wiki": "https://en.wikipedia.org/wiki/Claude_Monet"
+      },
+      {
+        "name": "Victor Hugo",
+        "years": "1802–1885",
+        "field": "Writer",
+        "why": "Les Misérables and Notre-Dame de Paris; two million people came to his funeral.",
+        "wiki": "https://en.wikipedia.org/wiki/Victor_Hugo"
+      }
+    ],
+    "events": [
+      {
+        "year": "1789",
+        "title": "The Revolution",
+        "what": "The storming of the Bastille began the end of absolute monarchy and exported liberté, égalité, fraternité.",
+        "wiki": "https://en.wikipedia.org/wiki/French_Revolution"
+      },
+      {
+        "year": "1804",
+        "title": "The Napoleonic Code",
+        "what": "A civil code that still underpins the law in dozens of countries.",
+        "wiki": "https://en.wikipedia.org/wiki/Napoleonic_Code"
+      },
+      {
+        "year": "1905",
+        "title": "Laïcité",
+        "what": "Church and state were separated by law, and French secularism still shapes fierce arguments.",
+        "wiki": "https://en.wikipedia.org/wiki/La%C3%AFcit%C3%A9"
+      },
+      {
+        "year": "1944",
+        "title": "The Liberation",
+        "what": "Allied landings in Normandy and the freeing of Paris ended four years of occupation.",
+        "wiki": "https://en.wikipedia.org/wiki/Liberation_of_Paris"
+      },
+      {
+        "year": "1968",
+        "title": "May 68",
+        "what": "Student protests and a general strike of ten million shook the state and changed French society.",
+        "wiki": "https://en.wikipedia.org/wiki/May_1968_in_France"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥖",
+        "label": "Food",
+        "text": "Meals are structured and unhurried; the gastronomic meal of the French is UNESCO-listed."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Bonjour",
+        "text": "Say it on entering any shop before anything else. Skipping it is the classic tourist mistake."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Laïcité",
+        "text": "Strict secularism in public institutions, defended across the political spectrum and contested at its edges."
+      },
+      {
+        "icon": "🚴",
+        "label": "Sport",
+        "text": "The Tour de France in July, football, and rugby in the south-west."
+      },
+      {
+        "icon": "💬",
+        "label": "Debate",
+        "text": "Disagreeing energetically is a form of respect, not rudeness."
+      }
+    ],
+    "talkAbout": [
+      "Food and wine, and the region each comes from.",
+      "Cinema and books — cultural conversation is normal, not pretentious.",
+      "Their region, which they will consider distinct from Paris."
+    ],
+    "avoid": "Assuming everyone speaks English, and starting a request without bonjour. Colonial history, especially Algeria, is difficult."
+  },
+  {
+    "iso2": "DE",
+    "people": [
+      {
+        "name": "Johann Sebastian Bach",
+        "years": "1685–1750",
+        "field": "Composer",
+        "why": "The foundation almost all later Western music is built on.",
+        "wiki": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach"
+      },
+      {
+        "name": "Albert Einstein",
+        "years": "1879–1955",
+        "field": "Physicist",
+        "why": "Relativity rewrote space and time; he fled Germany in 1933.",
+        "wiki": "https://en.wikipedia.org/wiki/Albert_Einstein"
+      },
+      {
+        "name": "Johannes Gutenberg",
+        "years": "c. 1400–1468",
+        "field": "Printer",
+        "why": "Movable-type printing in Europe made mass literacy, the Reformation and modern science possible.",
+        "wiki": "https://en.wikipedia.org/wiki/Johannes_Gutenberg"
+      },
+      {
+        "name": "Angela Merkel",
+        "years": "b. 1954",
+        "field": "Chancellor",
+        "why": "Led Germany for sixteen years and was for much of it the most powerful politician in Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Angela_Merkel"
+      },
+      {
+        "name": "Ludwig van Beethoven",
+        "years": "1770–1827",
+        "field": "Composer",
+        "why": "Wrote the Ninth Symphony after going deaf; its Ode to Joy is the European anthem.",
+        "wiki": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
+      }
+    ],
+    "events": [
+      {
+        "year": "1517",
+        "title": "The Reformation",
+        "what": "Luther's theses split Western Christianity and reshaped European politics for centuries.",
+        "wiki": "https://en.wikipedia.org/wiki/Reformation"
+      },
+      {
+        "year": "1871",
+        "title": "Unification",
+        "what": "Bismarck welded dozens of states into one empire, changing the balance of Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Unification_of_Germany"
+      },
+      {
+        "year": "1933–1945",
+        "title": "Nazism and the Holocaust",
+        "what": "The state murdered six million Jews and millions of others; confronting it is a founding duty of modern Germany.",
+        "wiki": "https://en.wikipedia.org/wiki/The_Holocaust"
+      },
+      {
+        "year": "1989",
+        "title": "The Wall falls",
+        "what": "East Germans crossed freely for the first time in 28 years; reunification followed within a year.",
+        "wiki": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍞",
+        "label": "Food",
+        "text": "Over 3,000 registered bread types, plus a bakery culture taken very seriously."
+      },
+      {
+        "icon": "🕰️",
+        "label": "Punctuality",
+        "text": "On time means five minutes early. Being late without warning is genuinely rude."
+      },
+      {
+        "icon": "♻️",
+        "label": "Order",
+        "text": "Recycling is elaborate and enforced socially; so is not crossing on a red light."
+      },
+      {
+        "icon": "🎪",
+        "label": "Festivals",
+        "text": "Oktoberfest is Bavarian, not national — Germans will point this out."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Directness",
+        "text": "Frankness is meant as honesty and respect, not aggression."
+      }
+    ],
+    "talkAbout": [
+      "Their region and its dialect — Germany was many states until recently.",
+      "Football, and their Bundesliga club.",
+      "Bread, beer and where to walk at the weekend."
+    ],
+    "avoid": "Nazi jokes and Hitler references are not funny here and can be illegal. Oktoberfest and lederhosen are not what most Germans are like."
+  },
+  {
+    "iso2": "IT",
+    "people": [
+      {
+        "name": "Leonardo da Vinci",
+        "years": "1452–1519",
+        "field": "Artist and inventor",
+        "why": "Painted the Mona Lisa and filled notebooks with machines centuries ahead of their time.",
+        "wiki": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+      },
+      {
+        "name": "Dante Alighieri",
+        "years": "1265–1321",
+        "field": "Poet",
+        "why": "The Divine Comedy effectively created the Italian language.",
+        "wiki": "https://en.wikipedia.org/wiki/Dante_Alighieri"
+      },
+      {
+        "name": "Galileo Galilei",
+        "years": "1564–1642",
+        "field": "Astronomer",
+        "why": "Pointed a telescope at the sky, confirmed Copernicus, and was tried for it.",
+        "wiki": "https://en.wikipedia.org/wiki/Galileo_Galilei"
+      },
+      {
+        "name": "Sophia Loren",
+        "years": "b. 1934",
+        "field": "Actress",
+        "why": "The first performer to win an Academy Award for a non-English-language role.",
+        "wiki": "https://en.wikipedia.org/wiki/Sophia_Loren"
+      },
+      {
+        "name": "Enzo Ferrari",
+        "years": "1898–1988",
+        "field": "Car maker",
+        "why": "Built the most recognisable name in motorsport out of a racing team in Modena.",
+        "wiki": "https://en.wikipedia.org/wiki/Enzo_Ferrari"
+      }
+    ],
+    "events": [
+      {
+        "year": "27 BCE–476 CE",
+        "title": "The Roman Empire",
+        "what": "Law, language, roads and cities that still structure Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Roman_Empire"
+      },
+      {
+        "year": "1300s–1600",
+        "title": "The Renaissance",
+        "what": "Florence, Venice and Rome produced an outpouring of art and thought that remade Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Italian_Renaissance"
+      },
+      {
+        "year": "1861",
+        "title": "Unification",
+        "what": "Garibaldi and Cavour turned a patchwork of kingdoms into one country.",
+        "wiki": "https://en.wikipedia.org/wiki/Italian_unification"
+      },
+      {
+        "year": "1946",
+        "title": "The Republic",
+        "what": "Italians voted out the monarchy after the fall of Fascism.",
+        "wiki": "https://en.wikipedia.org/wiki/1946_Italian_institutional_referendum"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍝",
+        "label": "Food",
+        "text": "Hyper-regional and rule-bound: pasta shapes belong to specific sauces and the rules are not negotiable."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "Espresso standing at the bar, and cappuccino only before about eleven in the morning."
+      },
+      {
+        "icon": "👨‍👩‍👧",
+        "label": "Family",
+        "text": "Sunday lunch with the extended family is the fixed point of the week."
+      },
+      {
+        "icon": "⚽",
+        "label": "Calcio",
+        "text": "Football is followed with intensity, and Serie A rivalries run through cities."
+      },
+      {
+        "icon": "🤌",
+        "label": "Gesture",
+        "text": "Hands are part of the grammar; the gestures carry real, specific meaning."
+      }
+    ],
+    "talkAbout": [
+      "Food — but ask about their region's, not 'Italian food'.",
+      "Their city and its rivalry with the next one along.",
+      "Football, art or where to eat."
+    ],
+    "avoid": "Don't add cream to carbonara or pineapple to pizza in conversation. North-south prejudice and the Mafia are not light topics."
+  },
+  {
+    "iso2": "ES",
+    "people": [
+      {
+        "name": "Pablo Picasso",
+        "years": "1881–1973",
+        "field": "Painter",
+        "why": "Co-invented Cubism, and Guernica remains the twentieth century's great anti-war painting.",
+        "wiki": "https://en.wikipedia.org/wiki/Pablo_Picasso"
+      },
+      {
+        "name": "Miguel de Cervantes",
+        "years": "1547–1616",
+        "field": "Novelist",
+        "why": "Don Quixote is often called the first modern novel.",
+        "wiki": "https://en.wikipedia.org/wiki/Miguel_de_Cervantes"
+      },
+      {
+        "name": "Antoni Gaudí",
+        "years": "1852–1926",
+        "field": "Architect",
+        "why": "The Sagrada Família is still being built a century after his death.",
+        "wiki": "https://en.wikipedia.org/wiki/Antoni_Gaud%C3%AD"
+      },
+      {
+        "name": "Federico García Lorca",
+        "years": "1898–1936",
+        "field": "Poet and playwright",
+        "why": "The great voice of Andalusia, murdered by Nationalists at the start of the civil war.",
+        "wiki": "https://en.wikipedia.org/wiki/Federico_Garc%C3%ADa_Lorca"
+      },
+      {
+        "name": "Rafael Nadal",
+        "years": "b. 1986",
+        "field": "Tennis player",
+        "why": "Fourteen French Open titles — the most dominant record on any surface in the sport.",
+        "wiki": "https://en.wikipedia.org/wiki/Rafael_Nadal"
+      }
+    ],
+    "events": [
+      {
+        "year": "711–1492",
+        "title": "Al-Andalus",
+        "what": "Nearly eight centuries of Muslim rule left the Alhambra, and a deep mark on the language and food.",
+        "wiki": "https://en.wikipedia.org/wiki/Al-Andalus"
+      },
+      {
+        "year": "1492",
+        "title": "A hinge year",
+        "what": "Granada fell, Jews were expelled, and Columbus sailed — all within months.",
+        "wiki": "https://en.wikipedia.org/wiki/1492"
+      },
+      {
+        "year": "1936–1939",
+        "title": "The Civil War",
+        "what": "A rehearsal for the Second World War that ended in Franco's dictatorship.",
+        "wiki": "https://en.wikipedia.org/wiki/Spanish_Civil_War"
+      },
+      {
+        "year": "1975–1978",
+        "title": "The transition",
+        "what": "After Franco's death Spain built a democracy and a constitution in three years.",
+        "wiki": "https://en.wikipedia.org/wiki/Spanish_transition_to_democracy"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍤",
+        "label": "Tapas",
+        "text": "Small plates shared standing up, moving from bar to bar rather than settling in one."
+      },
+      {
+        "icon": "🕙",
+        "label": "Timing",
+        "text": "Lunch at two or three, dinner at ten, and the evening starts when other countries are going to bed."
+      },
+      {
+        "icon": "💃",
+        "label": "Flamenco",
+        "text": "From Andalusia, and a serious art with its own canon — not a floor show."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Languages",
+        "text": "Catalan, Basque, Galician and Spanish are all co-official somewhere in the country."
+      },
+      {
+        "icon": "🎉",
+        "label": "Fiestas",
+        "text": "Every town has its patron saint's week, and they are genuinely for locals."
+      }
+    ],
+    "talkAbout": [
+      "Regional food and which region does it best.",
+      "Football, though be careful which club you praise.",
+      "Their town's fiesta."
+    ],
+    "avoid": "Catalan and Basque independence are live and divisive. Franco and the civil war's unmarked graves are still contested."
+  },
+  {
+    "iso2": "PT",
+    "people": [
+      {
+        "name": "Fernando Pessoa",
+        "years": "1888–1935",
+        "field": "Poet",
+        "why": "Wrote under dozens of invented identities, each with its own biography and style.",
+        "wiki": "https://en.wikipedia.org/wiki/Fernando_Pessoa"
+      },
+      {
+        "name": "Vasco da Gama",
+        "years": "c. 1460–1524",
+        "field": "Navigator",
+        "why": "First to sail from Europe to India, opening the sea route that reshaped world trade.",
+        "wiki": "https://en.wikipedia.org/wiki/Vasco_da_Gama"
+      },
+      {
+        "name": "Amália Rodrigues",
+        "years": "1920–1999",
+        "field": "Singer",
+        "why": "The queen of fado; three days of national mourning followed her death.",
+        "wiki": "https://en.wikipedia.org/wiki/Am%C3%A1lia_Rodrigues"
+      },
+      {
+        "name": "José Saramago",
+        "years": "1922–2010",
+        "field": "Novelist",
+        "why": "The only Portuguese-language writer to win the Nobel Prize in Literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Saramago"
+      },
+      {
+        "name": "Cristiano Ronaldo",
+        "years": "b. 1985",
+        "field": "Footballer",
+        "why": "Five Ballons d'Or and the most-followed person on the planet.",
+        "wiki": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+      }
+    ],
+    "events": [
+      {
+        "year": "1415–1500s",
+        "title": "The Age of Discovery",
+        "what": "Portuguese ships mapped the African coast and reached India, Brazil and Japan.",
+        "wiki": "https://en.wikipedia.org/wiki/Portuguese_discoveries"
+      },
+      {
+        "year": "1755",
+        "title": "The Lisbon earthquake",
+        "what": "A quake, fire and tsunami destroyed the city and shook Enlightenment Europe's ideas about providence.",
+        "wiki": "https://en.wikipedia.org/wiki/1755_Lisbon_earthquake"
+      },
+      {
+        "year": "1974",
+        "title": "The Carnation Revolution",
+        "what": "A near-bloodless military coup ended 48 years of dictatorship; soldiers carried carnations in their rifles.",
+        "wiki": "https://en.wikipedia.org/wiki/Carnation_Revolution"
+      },
+      {
+        "year": "1999",
+        "title": "Macau handed back",
+        "what": "The last European colony in Asia returned to China, closing the empire.",
+        "wiki": "https://en.wikipedia.org/wiki/Transfer_of_sovereignty_over_Macau"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🎶",
+        "label": "Fado",
+        "text": "Melancholy song built around saudade — a longing for something absent that has no English equivalent."
+      },
+      {
+        "icon": "🥧",
+        "label": "Food",
+        "text": "Bacalhau, said to have 365 preparations, and pastéis de nata eaten warm with cinnamon."
+      },
+      {
+        "icon": "🧿",
+        "label": "Azulejos",
+        "text": "Blue and white tiles cover churches, stations and ordinary houses."
+      },
+      {
+        "icon": "☕",
+        "label": "Café",
+        "text": "A bica standing at the counter, several times a day."
+      },
+      {
+        "icon": "🌊",
+        "label": "Atlantic",
+        "text": "Portugal faces the ocean rather than the Mediterranean, and its food and history follow."
+      }
+    ],
+    "talkAbout": [
+      "Fado, and the difference between Lisbon and Coimbra styles.",
+      "Food, especially cod and pastries.",
+      "The Discoveries, and the places Portuguese is still spoken."
+    ],
+    "avoid": "Don't treat Portugal as part of Spain, or speak Spanish at them by default. The colonial wars in Africa are difficult ground."
+  },
+  {
+    "iso2": "NL",
+    "people": [
+      {
+        "name": "Rembrandt van Rijn",
+        "years": "1606–1669",
+        "field": "Painter",
+        "why": "The Night Watch and a lifetime of self-portraits that track a face aging in public.",
+        "wiki": "https://en.wikipedia.org/wiki/Rembrandt"
+      },
+      {
+        "name": "Vincent van Gogh",
+        "years": "1853–1890",
+        "field": "Painter",
+        "why": "Sold almost nothing in his lifetime and became the most beloved painter in the world.",
+        "wiki": "https://en.wikipedia.org/wiki/Vincent_van_Gogh"
+      },
+      {
+        "name": "Anne Frank",
+        "years": "1929–1945",
+        "field": "Diarist",
+        "why": "Her diary from a hidden annexe in Amsterdam is read by schoolchildren everywhere.",
+        "wiki": "https://en.wikipedia.org/wiki/Anne_Frank"
+      },
+      {
+        "name": "Johan Cruyff",
+        "years": "1947–2016",
+        "field": "Footballer and coach",
+        "why": "Invented Total Football as a player and then rebuilt Barcelona around the idea.",
+        "wiki": "https://en.wikipedia.org/wiki/Johan_Cruyff"
+      },
+      {
+        "name": "Antonie van Leeuwenhoek",
+        "years": "1632–1723",
+        "field": "Microscopist",
+        "why": "A draper who ground his own lenses and became the first person to see bacteria.",
+        "wiki": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek"
+      }
+    ],
+    "events": [
+      {
+        "year": "1602",
+        "title": "The Dutch East India Company",
+        "what": "The first company to issue tradable shares, and the origin of the modern stock market — and of a brutal colonial system.",
+        "wiki": "https://en.wikipedia.org/wiki/Dutch_East_India_Company"
+      },
+      {
+        "year": "1600s",
+        "title": "The Golden Age",
+        "what": "A small republic became the richest state in Europe, with the art and science to match.",
+        "wiki": "https://en.wikipedia.org/wiki/Dutch_Golden_Age"
+      },
+      {
+        "year": "1953",
+        "title": "The North Sea flood",
+        "what": "1,836 people died; the Delta Works that followed are among the great engineering projects of the century.",
+        "wiki": "https://en.wikipedia.org/wiki/1953_North_Sea_flood"
+      },
+      {
+        "year": "2001",
+        "title": "First same-sex marriages",
+        "what": "The Netherlands was the first country in the world to open marriage to same-sex couples.",
+        "wiki": "https://en.wikipedia.org/wiki/Same-sex_marriage_in_the_Netherlands"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🚲",
+        "label": "Cycling",
+        "text": "More bikes than people, and cycling is transport rather than sport or leisure."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Directness",
+        "text": "Bluntness is a courtesy here: you are being told what someone actually thinks."
+      },
+      {
+        "icon": "💧",
+        "label": "Water",
+        "text": "A quarter of the country is below sea level; managing water shaped its politics and its habit of consensus."
+      },
+      {
+        "icon": "🧡",
+        "label": "King's Day",
+        "text": "On 27 April the whole country wears orange and sells its junk on the pavement."
+      },
+      {
+        "icon": "🧀",
+        "label": "Food",
+        "text": "Cheese, herring eaten from the tail, stroopwafels, and a fondness for plain food."
+      }
+    ],
+    "talkAbout": [
+      "Cycling infrastructure, which they are genuinely proud of.",
+      "Water management and how the land was made.",
+      "Football, and the Cruyff tradition."
+    ],
+    "avoid": "Amsterdam's coffee shops and red-light district are a tiny and tiresome part of the country. Colonial history, especially Indonesia and slavery, is being seriously reckoned with."
+  },
+  {
+    "iso2": "GR",
+    "people": [
+      {
+        "name": "Socrates",
+        "years": "c. 470–399 BCE",
+        "field": "Philosopher",
+        "why": "Left no writing but shaped Western philosophy through his questioning; executed by the state.",
+        "wiki": "https://en.wikipedia.org/wiki/Socrates"
+      },
+      {
+        "name": "Homer",
+        "years": "c. 8th c. BCE",
+        "field": "Poet",
+        "why": "The Iliad and the Odyssey stand at the head of European literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Homer"
+      },
+      {
+        "name": "Maria Callas",
+        "years": "1923–1977",
+        "field": "Soprano",
+        "why": "Reinvented opera as acting as much as singing, and remains its most famous voice.",
+        "wiki": "https://en.wikipedia.org/wiki/Maria_Callas"
+      },
+      {
+        "name": "Archimedes",
+        "years": "c. 287–212 BCE",
+        "field": "Mathematician",
+        "why": "Worked out buoyancy, levers and an approximation of pi two millennia early.",
+        "wiki": "https://en.wikipedia.org/wiki/Archimedes"
+      },
+      {
+        "name": "Mikis Theodorakis",
+        "years": "1925–2021",
+        "field": "Composer",
+        "why": "Wrote Zorba's dance and the music of Greek resistance; imprisoned by the junta.",
+        "wiki": "https://en.wikipedia.org/wiki/Mikis_Theodorakis"
+      }
+    ],
+    "events": [
+      {
+        "year": "508 BCE",
+        "title": "Athenian democracy",
+        "what": "Cleisthenes' reforms gave citizens direct rule — the origin of the word and the idea.",
+        "wiki": "https://en.wikipedia.org/wiki/Athenian_democracy"
+      },
+      {
+        "year": "1453",
+        "title": "The fall of Constantinople",
+        "what": "The Byzantine Empire ended, and four centuries of Ottoman rule over Greek lands began.",
+        "wiki": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+      },
+      {
+        "year": "1821",
+        "title": "The War of Independence",
+        "what": "A revolt against the Ottomans drew European volunteers, Byron among them, and created modern Greece.",
+        "wiki": "https://en.wikipedia.org/wiki/Greek_War_of_Independence"
+      },
+      {
+        "year": "1967–1974",
+        "title": "The colonels",
+        "what": "A military junta ruled for seven years, ending after the Polytechnic uprising and the Cyprus crisis.",
+        "wiki": "https://en.wikipedia.org/wiki/Greek_junta"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🫒",
+        "label": "Food",
+        "text": "Olive oil in everything, long shared meals, and mezedes rather than courses."
+      },
+      {
+        "icon": "⛪",
+        "label": "Orthodoxy",
+        "text": "Name days matter more than birthdays, and Easter is the biggest event of the year."
+      },
+      {
+        "icon": "👨‍👩‍👧",
+        "label": "Philoxenia",
+        "text": "Literally love of strangers — hospitality is close to an obligation."
+      },
+      {
+        "icon": "☕",
+        "label": "Kafeneio",
+        "text": "Hours spent over one frappé is normal and is the point."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Antiquity",
+        "text": "Classical ruins are everywhere and ordinary, sitting between apartment blocks."
+      }
+    ],
+    "talkAbout": [
+      "Food, and which island or region does it best.",
+      "Islands — everyone has one they defend.",
+      "History, ancient and Byzantine both."
+    ],
+    "avoid": "The name dispute with North Macedonia, relations with Turkey, and the Parthenon Marbles are all sensitive. The 2010s debt crisis was humiliating and is not a joke."
+  },
+  {
+    "iso2": "RU",
+    "people": [
+      {
+        "name": "Leo Tolstoy",
+        "years": "1828–1910",
+        "field": "Novelist",
+        "why": "War and Peace and Anna Karenina; he later renounced his own wealth and inspired Gandhi.",
+        "wiki": "https://en.wikipedia.org/wiki/Leo_Tolstoy"
+      },
+      {
+        "name": "Pyotr Tchaikovsky",
+        "years": "1840–1893",
+        "field": "Composer",
+        "why": "Swan Lake, The Nutcracker and the 1812 Overture — the most performed Russian composer.",
+        "wiki": "https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky"
+      },
+      {
+        "name": "Yuri Gagarin",
+        "years": "1934–1968",
+        "field": "Cosmonaut",
+        "why": "The first human in space, in 1961; his 108-minute flight changed what was thought possible.",
+        "wiki": "https://en.wikipedia.org/wiki/Yuri_Gagarin"
+      },
+      {
+        "name": "Anna Akhmatova",
+        "years": "1889–1966",
+        "field": "Poet",
+        "why": "Requiem, memorised by friends because writing it down was too dangerous, is the great poem of the Terror.",
+        "wiki": "https://en.wikipedia.org/wiki/Anna_Akhmatova"
+      },
+      {
+        "name": "Dmitri Mendeleev",
+        "years": "1834–1907",
+        "field": "Chemist",
+        "why": "Devised the periodic table and left gaps for elements not yet discovered.",
+        "wiki": "https://en.wikipedia.org/wiki/Dmitri_Mendeleev"
+      }
+    ],
+    "events": [
+      {
+        "year": "988",
+        "title": "The Christianisation of Rus",
+        "what": "Vladimir of Kyiv adopted Orthodox Christianity, shaping the culture of the region ever since.",
+        "wiki": "https://en.wikipedia.org/wiki/Christianization_of_Kievan_Rus%27"
+      },
+      {
+        "year": "1917",
+        "title": "The Revolution",
+        "what": "Two revolutions in a year ended the monarchy and created the first communist state.",
+        "wiki": "https://en.wikipedia.org/wiki/Russian_Revolution"
+      },
+      {
+        "year": "1941–1945",
+        "title": "The Great Patriotic War",
+        "what": "The Soviet Union lost around 27 million people defeating Nazi Germany; 9 May is still the biggest day of the year.",
+        "wiki": "https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)"
+      },
+      {
+        "year": "1991",
+        "title": "The Soviet collapse",
+        "what": "The USSR dissolved into fifteen states, and the 1990s brought hardship most Russians remember sharply.",
+        "wiki": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍵",
+        "label": "Hospitality",
+        "text": "A guest is fed whatever the household has, insistently. Refusing food outright is awkward."
+      },
+      {
+        "icon": "📚",
+        "label": "Literature",
+        "text": "Poetry is memorised and quoted in ordinary conversation far more than in most countries."
+      },
+      {
+        "icon": "🛁",
+        "label": "Banya",
+        "text": "The steam bath is a social institution — birch branches, cold plunge, and long conversation."
+      },
+      {
+        "icon": "😐",
+        "label": "Manner",
+        "text": "Strangers aren't smiled at; a smile is reserved for people you actually mean it towards."
+      },
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Pelmeni, borscht, black bread and pickles, and long toasts at the table."
+      }
+    ],
+    "talkAbout": [
+      "Literature and film, which are common ground almost anywhere.",
+      "Food, and family recipes — everyone has a dacha story.",
+      "The banya, if you get the chance to be invited."
+    ],
+    "avoid": "The war in Ukraine is dangerous and divisive to discuss; many Russians abroad are exiles. Don't assume anyone's politics from their nationality."
+  },
+  {
+    "iso2": "PL",
+    "people": [
+      {
+        "name": "Nicolaus Copernicus",
+        "years": "1473–1543",
+        "field": "Astronomer",
+        "why": "Put the sun at the centre of the solar system and started the scientific revolution.",
+        "wiki": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus"
+      },
+      {
+        "name": "Marie Skłodowska-Curie",
+        "years": "1867–1934",
+        "field": "Scientist",
+        "why": "Two Nobel Prizes; she named polonium after the country that did not exist on the map at the time.",
+        "wiki": "https://en.wikipedia.org/wiki/Marie_Curie"
+      },
+      {
+        "name": "Frédéric Chopin",
+        "years": "1810–1849",
+        "field": "Composer",
+        "why": "Wrote almost entirely for the piano, and carried Polish soil with him into exile.",
+        "wiki": "https://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin"
+      },
+      {
+        "name": "John Paul II",
+        "native": "Karol Wojtyła",
+        "years": "1920–2005",
+        "field": "Pope",
+        "why": "The first non-Italian pope in 455 years, and a decisive figure in the fall of communism.",
+        "wiki": "https://en.wikipedia.org/wiki/Pope_John_Paul_II"
+      },
+      {
+        "name": "Lech Wałęsa",
+        "years": "b. 1943",
+        "field": "Union leader and president",
+        "why": "An electrician who led Solidarity, won the Nobel Peace Prize, and became president.",
+        "wiki": "https://en.wikipedia.org/wiki/Lech_Wa%C5%82%C4%99sa"
+      }
+    ],
+    "events": [
+      {
+        "year": "1569",
+        "title": "The Commonwealth",
+        "what": "Poland and Lithuania united into one of Europe's largest states, with an elected king.",
+        "wiki": "https://en.wikipedia.org/wiki/Polish%E2%80%93Lithuanian_Commonwealth"
+      },
+      {
+        "year": "1795–1918",
+        "title": "The partitions",
+        "what": "Poland was erased from the map for 123 years, divided between three empires.",
+        "wiki": "https://en.wikipedia.org/wiki/Partitions_of_Poland"
+      },
+      {
+        "year": "1939–1945",
+        "title": "Occupation",
+        "what": "Invaded from both sides, Poland lost about a fifth of its population, including nearly all its Jews.",
+        "wiki": "https://en.wikipedia.org/wiki/Occupation_of_Poland_(1939%E2%80%931945)"
+      },
+      {
+        "year": "1980",
+        "title": "Solidarity",
+        "what": "A strike in the Gdańsk shipyard produced the Eastern bloc's first free trade union and, in time, its end.",
+        "wiki": "https://en.wikipedia.org/wiki/Solidarity_(Polish_trade_union)"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Pierogi, bigos and żurek; a Christmas Eve supper of twelve meatless dishes with an empty place set."
+      },
+      {
+        "icon": "⛪",
+        "label": "Catholicism",
+        "text": "Deeply woven into national identity and history, though observance among the young is falling fast."
+      },
+      {
+        "icon": "🕯️",
+        "label": "All Saints",
+        "text": "On 1 November whole cemeteries are lit with candles, and everyone travels to visit family graves."
+      },
+      {
+        "icon": "🍸",
+        "label": "Vodka",
+        "text": "Drunk neat and cold, with food, and toasts that expect eye contact."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "'A guest in the home is God in the home' is an actual proverb, and it is meant."
+      }
+    ],
+    "talkAbout": [
+      "Food, and their family's Christmas Eve traditions.",
+      "History — Poles know theirs in detail and will explain it well.",
+      "Mountains, lakes and where they go in summer."
+    ],
+    "avoid": "Never say 'Polish death camps' — the camps were German, built in occupied Poland, and the phrasing causes real offence. Politics is deeply polarised."
+  },
+  {
+    "iso2": "SE",
+    "people": [
+      {
+        "name": "Alfred Nobel",
+        "years": "1833–1896",
+        "field": "Inventor",
+        "why": "Invented dynamite, then left his fortune to fund the prizes that bear his name.",
+        "wiki": "https://en.wikipedia.org/wiki/Alfred_Nobel"
+      },
+      {
+        "name": "Carl Linnaeus",
+        "years": "1707–1778",
+        "field": "Botanist",
+        "why": "Devised the system of two-part Latin names still used for every living species.",
+        "wiki": "https://en.wikipedia.org/wiki/Carl_Linnaeus"
+      },
+      {
+        "name": "Astrid Lindgren",
+        "years": "1907–2002",
+        "field": "Author",
+        "why": "Pippi Longstocking, translated into a hundred languages, and a campaigner for children's and animal rights.",
+        "wiki": "https://en.wikipedia.org/wiki/Astrid_Lindgren"
+      },
+      {
+        "name": "Greta Thunberg",
+        "years": "b. 2003",
+        "field": "Climate activist",
+        "why": "A one-person school strike in 2018 became a worldwide movement within a year.",
+        "wiki": "https://en.wikipedia.org/wiki/Greta_Thunberg"
+      },
+      {
+        "name": "Ingmar Bergman",
+        "years": "1918–2007",
+        "field": "Film director",
+        "why": "The Seventh Seal and Persona made him one of cinema's most influential figures.",
+        "wiki": "https://en.wikipedia.org/wiki/Ingmar_Bergman"
+      }
+    ],
+    "events": [
+      {
+        "year": "1611–1721",
+        "title": "The Swedish Empire",
+        "what": "Sweden was a great power controlling much of the Baltic before Russia displaced it.",
+        "wiki": "https://en.wikipedia.org/wiki/Swedish_Empire"
+      },
+      {
+        "year": "1814",
+        "title": "Two centuries of peace",
+        "what": "Sweden's last war ended; it has not fought one since, and stayed neutral through both world wars.",
+        "wiki": "https://en.wikipedia.org/wiki/Sweden"
+      },
+      {
+        "year": "1932–1976",
+        "title": "The folkhem",
+        "what": "Social democrats built the 'people's home' — the welfare state that defines modern Sweden.",
+        "wiki": "https://en.wikipedia.org/wiki/Folkhemmet"
+      },
+      {
+        "year": "2024",
+        "title": "Joining NATO",
+        "what": "Sweden abandoned two centuries of non-alignment after Russia's invasion of Ukraine.",
+        "wiki": "https://en.wikipedia.org/wiki/Sweden%E2%80%93NATO_relations"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "☕",
+        "label": "Fika",
+        "text": "A coffee-and-cake break taken seriously enough to be scheduled into the working day."
+      },
+      {
+        "icon": "⚖️",
+        "label": "Lagom",
+        "text": "'Just the right amount' — an aesthetic and a social value against excess in either direction."
+      },
+      {
+        "icon": "🌲",
+        "label": "Allemansrätten",
+        "text": "The right to roam: you may walk, camp and forage on almost any land."
+      },
+      {
+        "icon": "🌸",
+        "label": "Midsummer",
+        "text": "The biggest celebration of the year — flower crowns, pickled herring and dancing round a pole."
+      },
+      {
+        "icon": "🤝",
+        "label": "Consensus",
+        "text": "Decisions are talked through until everyone can live with them; interrupting is rude."
+      }
+    ],
+    "talkAbout": [
+      "Fika, and whether they bake.",
+      "Nature and the right to roam.",
+      "Music — Sweden exports an improbable amount of it."
+    ],
+    "avoid": "Don't conflate the Nordic countries; each is distinct. Immigration and integration are heated political topics."
+  },
+  {
+    "iso2": "NO",
+    "people": [
+      {
+        "name": "Roald Amundsen",
+        "years": "1872–1928",
+        "field": "Explorer",
+        "why": "First to the South Pole, first through the Northwest Passage; vanished on a rescue flight.",
+        "wiki": "https://en.wikipedia.org/wiki/Roald_Amundsen"
+      },
+      {
+        "name": "Henrik Ibsen",
+        "years": "1828–1906",
+        "field": "Playwright",
+        "why": "A Doll's House and Hedda Gabler invented modern realist drama.",
+        "wiki": "https://en.wikipedia.org/wiki/Henrik_Ibsen"
+      },
+      {
+        "name": "Edvard Munch",
+        "years": "1863–1944",
+        "field": "Painter",
+        "why": "The Scream is one of the few paintings everyone on earth recognises.",
+        "wiki": "https://en.wikipedia.org/wiki/Edvard_Munch"
+      },
+      {
+        "name": "Fridtjof Nansen",
+        "years": "1861–1930",
+        "field": "Explorer and diplomat",
+        "why": "Crossed Greenland on skis, then won the Nobel Peace Prize for refugee work.",
+        "wiki": "https://en.wikipedia.org/wiki/Fridtjof_Nansen"
+      },
+      {
+        "name": "Edvard Grieg",
+        "years": "1843–1907",
+        "field": "Composer",
+        "why": "The Peer Gynt suites made Norwegian folk melody part of the world's concert repertoire.",
+        "wiki": "https://en.wikipedia.org/wiki/Edvard_Grieg"
+      }
+    ],
+    "events": [
+      {
+        "year": "793–1066",
+        "title": "The Viking Age",
+        "what": "Norse seafarers raided, traded and settled from Newfoundland to Baghdad.",
+        "wiki": "https://en.wikipedia.org/wiki/Viking_Age"
+      },
+      {
+        "year": "1905",
+        "title": "Independence",
+        "what": "Norway dissolved its union with Sweden peacefully and chose a king by referendum.",
+        "wiki": "https://en.wikipedia.org/wiki/Dissolution_of_the_union_between_Norway_and_Sweden"
+      },
+      {
+        "year": "1940–1945",
+        "title": "Occupation and resistance",
+        "what": "German occupation, and the heavy-water sabotage at Vemork that set back the Nazi nuclear programme.",
+        "wiki": "https://en.wikipedia.org/wiki/Norwegian_heavy_water_sabotage"
+      },
+      {
+        "year": "1969",
+        "title": "Oil in the North Sea",
+        "what": "The Ekofisk find funded a sovereign wealth fund now worth over a trillion dollars.",
+        "wiki": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Norway"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🎿",
+        "label": "Friluftsliv",
+        "text": "Open-air life. Norwegians say they are born with skis on, and the cabin weekend is close to compulsory."
+      },
+      {
+        "icon": "🇳🇴",
+        "label": "17 May",
+        "text": "Constitution Day: children's parades, national dress and no military display at all."
+      },
+      {
+        "icon": "🐟",
+        "label": "Food",
+        "text": "Salmon, cod and brown cheese; the coastal cuisine is built on preservation."
+      },
+      {
+        "icon": "🤫",
+        "label": "Manner",
+        "text": "Reserved with strangers, warm once known; small talk is not a habit."
+      },
+      {
+        "icon": "🌄",
+        "label": "Landscape",
+        "text": "Fjords, midnight sun in summer and polar night in winter above the Arctic Circle."
+      }
+    ],
+    "talkAbout": [
+      "Skiing, hiking and their cabin.",
+      "17 May and how families celebrate it.",
+      "The fjords, and which part of the coast they come from."
+    ],
+    "avoid": "Whaling and the oil fund draw criticism abroad that Norwegians find simplistic. Don't lump Norway in with Sweden."
+  },
+  {
+    "iso2": "CH",
+    "people": [
+      {
+        "name": "Henri Dunant",
+        "years": "1828–1910",
+        "field": "Humanitarian",
+        "why": "Founded the Red Cross after witnessing the aftermath of Solferino; first Nobel Peace Prize.",
+        "wiki": "https://en.wikipedia.org/wiki/Henry_Dunant"
+      },
+      {
+        "name": "Carl Jung",
+        "years": "1875–1961",
+        "field": "Psychiatrist",
+        "why": "Introversion, archetypes and the collective unconscious all come from his work.",
+        "wiki": "https://en.wikipedia.org/wiki/Carl_Jung"
+      },
+      {
+        "name": "Roger Federer",
+        "years": "b. 1981",
+        "field": "Tennis player",
+        "why": "Twenty Grand Slam titles and a style that made him the sport's most admired player.",
+        "wiki": "https://en.wikipedia.org/wiki/Roger_Federer"
+      },
+      {
+        "name": "Le Corbusier",
+        "years": "1887–1965",
+        "field": "Architect",
+        "why": "Swiss-born, and the most influential and most argued-about architect of the twentieth century.",
+        "wiki": "https://en.wikipedia.org/wiki/Le_Corbusier"
+      },
+      {
+        "name": "Jean-Jacques Rousseau",
+        "years": "1712–1778",
+        "field": "Philosopher",
+        "why": "The Social Contract shaped the French Revolution and modern democratic theory.",
+        "wiki": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau"
+      }
+    ],
+    "events": [
+      {
+        "year": "1291",
+        "title": "The founding pact",
+        "what": "Three cantons swore an alliance; Swiss National Day on 1 August marks it.",
+        "wiki": "https://en.wikipedia.org/wiki/Federal_Charter_of_1291"
+      },
+      {
+        "year": "1515",
+        "title": "Marignano",
+        "what": "A crushing defeat that turned Switzerland towards the neutrality it has kept ever since.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Marignano"
+      },
+      {
+        "year": "1863",
+        "title": "The Red Cross",
+        "what": "Founded in Geneva, and the origin of the Geneva Conventions.",
+        "wiki": "https://en.wikipedia.org/wiki/International_Committee_of_the_Red_Cross"
+      },
+      {
+        "year": "1971",
+        "title": "Women get the vote",
+        "what": "Federal suffrage came remarkably late; one canton held out until a court order in 1990.",
+        "wiki": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Switzerland"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗳️",
+        "label": "Direct democracy",
+        "text": "Referendums four times a year on everything from pensions to cow horns."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Four languages",
+        "text": "German, French, Italian and Romansh, with real cultural differences between the regions."
+      },
+      {
+        "icon": "🚆",
+        "label": "Punctuality",
+        "text": "The trains genuinely run to the minute, and lateness is a small moral failing."
+      },
+      {
+        "icon": "🧀",
+        "label": "Food",
+        "text": "Fondue and raclette in winter, rösti, and chocolate taken very seriously."
+      },
+      {
+        "icon": "🏔️",
+        "label": "Mountains",
+        "text": "Hiking and skiing are national habits, not tourist activities."
+      }
+    ],
+    "talkAbout": [
+      "Hiking, skiing and which canton they're from.",
+      "Direct democracy and what is being voted on next.",
+      "Cheese and chocolate, both with strong regional loyalties."
+    ],
+    "avoid": "Banking secrecy and the country's wartime record are sensitive. Don't assume all Swiss speak German."
+  },
+  {
+    "iso2": "IE",
+    "people": [
+      {
+        "name": "James Joyce",
+        "years": "1882–1941",
+        "field": "Novelist",
+        "why": "Ulysses reinvented the novel; Bloomsday on 16 June is celebrated in the streets of Dublin.",
+        "wiki": "https://en.wikipedia.org/wiki/James_Joyce"
+      },
+      {
+        "name": "Michael Collins",
+        "years": "1890–1922",
+        "field": "Revolutionary",
+        "why": "Led the IRA in the War of Independence, negotiated the Treaty, and was killed in the civil war it caused.",
+        "wiki": "https://en.wikipedia.org/wiki/Michael_Collins_(Irish_leader)"
+      },
+      {
+        "name": "Mary Robinson",
+        "years": "b. 1944",
+        "field": "President",
+        "why": "Ireland's first woman president, then UN High Commissioner for Human Rights.",
+        "wiki": "https://en.wikipedia.org/wiki/Mary_Robinson"
+      },
+      {
+        "name": "Seamus Heaney",
+        "years": "1939–2013",
+        "field": "Poet",
+        "why": "Nobel laureate who found the whole of Ireland in a farm in County Derry.",
+        "wiki": "https://en.wikipedia.org/wiki/Seamus_Heaney"
+      },
+      {
+        "name": "Oscar Wilde",
+        "years": "1854–1900",
+        "field": "Writer",
+        "why": "The wittiest man of his age, imprisoned for being gay and dead at 46.",
+        "wiki": "https://en.wikipedia.org/wiki/Oscar_Wilde"
+      }
+    ],
+    "events": [
+      {
+        "year": "1845–1852",
+        "title": "The Great Famine",
+        "what": "A million died and a million emigrated; the population has still not returned to its 1841 level.",
+        "wiki": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)"
+      },
+      {
+        "year": "1916",
+        "title": "The Easter Rising",
+        "what": "A failed rebellion whose executions turned public opinion towards independence.",
+        "wiki": "https://en.wikipedia.org/wiki/Easter_Rising"
+      },
+      {
+        "year": "1922",
+        "title": "Independence and partition",
+        "what": "The Free State was created and the island divided, immediately followed by civil war.",
+        "wiki": "https://en.wikipedia.org/wiki/Irish_Free_State"
+      },
+      {
+        "year": "1998",
+        "title": "The Good Friday Agreement",
+        "what": "Ended thirty years of conflict in Northern Ireland.",
+        "wiki": "https://en.wikipedia.org/wiki/Good_Friday_Agreement"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🎻",
+        "label": "Music",
+        "text": "Traditional sessions in pubs are informal and unpaid — musicians simply turn up and play."
+      },
+      {
+        "icon": "🗣️",
+        "label": "The craic",
+        "text": "Good conversation and company, valued above almost anything; slagging is affectionate."
+      },
+      {
+        "icon": "☘️",
+        "label": "Gaeilge",
+        "text": "Irish is the first official language, taught in every school and spoken daily in the Gaeltacht."
+      },
+      {
+        "icon": "🏑",
+        "label": "GAA",
+        "text": "Hurling and Gaelic football are amateur, county-based, and enormous."
+      },
+      {
+        "icon": "☕",
+        "label": "Tea",
+        "text": "Made strong, offered constantly, and refused only with difficulty."
+      }
+    ],
+    "talkAbout": [
+      "Music, and whether they play.",
+      "Their county, and the GAA.",
+      "Writers — Ireland has an unreasonable number for its size."
+    ],
+    "avoid": "Don't call Ireland part of Britain. The Troubles and the border need care, and 'Paddy' and leprechaun jokes wear thin fast."
+  },
+  {
+    "iso2": "IS",
+    "people": [
+      {
+        "name": "Björk",
+        "years": "b. 1965",
+        "field": "Musician",
+        "why": "One of the most original artists of the last forty years, and Iceland's best-known face.",
+        "wiki": "https://en.wikipedia.org/wiki/Bj%C3%B6rk"
+      },
+      {
+        "name": "Snorri Sturluson",
+        "years": "1179–1241",
+        "field": "Historian and poet",
+        "why": "Wrote down the Norse myths; nearly everything known about them comes through him.",
+        "wiki": "https://en.wikipedia.org/wiki/Snorri_Sturluson"
+      },
+      {
+        "name": "Halldór Laxness",
+        "years": "1902–1998",
+        "field": "Novelist",
+        "why": "Nobel laureate in 1955; Independent People is the great Icelandic novel.",
+        "wiki": "https://en.wikipedia.org/wiki/Halld%C3%B3r_Laxness"
+      },
+      {
+        "name": "Vigdís Finnbogadóttir",
+        "years": "b. 1930",
+        "field": "President",
+        "why": "The world's first democratically elected woman head of state, in 1980.",
+        "wiki": "https://en.wikipedia.org/wiki/Vigd%C3%ADs_Finnbogad%C3%B3ttir"
+      },
+      {
+        "name": "Leif Erikson",
+        "years": "c. 970–1020",
+        "field": "Explorer",
+        "why": "Reached North America around 1000, five centuries before Columbus.",
+        "wiki": "https://en.wikipedia.org/wiki/Leif_Erikson"
+      }
+    ],
+    "events": [
+      {
+        "year": "930",
+        "title": "The Alþingi founded",
+        "what": "At Þingvellir, the oldest surviving parliament in the world began meeting.",
+        "wiki": "https://en.wikipedia.org/wiki/Althing"
+      },
+      {
+        "year": "1783",
+        "title": "The Laki eruption",
+        "what": "An eight-month eruption killed a fifth of Icelanders and caused famine as far away as Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Laki"
+      },
+      {
+        "year": "1944",
+        "title": "The Republic",
+        "what": "Iceland declared independence from Denmark while Denmark was under German occupation.",
+        "wiki": "https://en.wikipedia.org/wiki/Iceland"
+      },
+      {
+        "year": "2008",
+        "title": "The banking collapse",
+        "what": "All three major banks failed within days; the Pots and Pans revolution and prosecutions followed.",
+        "wiki": "https://en.wikipedia.org/wiki/2008%E2%80%932011_Icelandic_financial_crisis"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "📚",
+        "label": "Books",
+        "text": "Jólabókaflóð — the Christmas book flood — means books are given on Christmas Eve and read that night."
+      },
+      {
+        "icon": "♨️",
+        "label": "Pools",
+        "text": "Every town has a geothermal pool, and the hot tub is where the community actually talks."
+      },
+      {
+        "icon": "👨‍👦",
+        "label": "Names",
+        "text": "Patronymics, not surnames: Jón's daughter is Jónsdóttir. The phone book is alphabetised by first name."
+      },
+      {
+        "icon": "🌋",
+        "label": "Volcanoes",
+        "text": "Sitting on the mid-Atlantic ridge, Iceland erupts regularly and heats itself with the results."
+      },
+      {
+        "icon": "🧝",
+        "label": "Folklore",
+        "text": "Roads have occasionally been rerouted around rocks said to be elf dwellings — sincerity levels vary."
+      }
+    ],
+    "talkAbout": [
+      "The pools, and the etiquette of showering before you get in.",
+      "Books and the Christmas book flood.",
+      "Volcanoes and the last eruption."
+    ],
+    "avoid": "Elf questions are a tired joke. Whaling divides Icelanders and is not a good opener."
+  },
+  {
+    "iso2": "FI",
+    "people": [
+      {
+        "name": "Jean Sibelius",
+        "years": "1865–1957",
+        "field": "Composer",
+        "why": "Finlandia became a rallying point for independence under Russian rule.",
+        "wiki": "https://en.wikipedia.org/wiki/Jean_Sibelius"
+      },
+      {
+        "name": "Tove Jansson",
+        "years": "1914–2001",
+        "field": "Author and artist",
+        "why": "Created the Moomins, and wrote sharp adult fiction alongside them.",
+        "wiki": "https://en.wikipedia.org/wiki/Tove_Jansson"
+      },
+      {
+        "name": "Alvar Aalto",
+        "years": "1898–1976",
+        "field": "Architect and designer",
+        "why": "Shaped modernism with wood and curves, and designed the furniture to go inside.",
+        "wiki": "https://en.wikipedia.org/wiki/Alvar_Aalto"
+      },
+      {
+        "name": "Carl Gustaf Mannerheim",
+        "years": "1867–1951",
+        "field": "Marshal and president",
+        "why": "Commanded Finland's defence in the Winter War and became president.",
+        "wiki": "https://en.wikipedia.org/wiki/Carl_Gustaf_Emil_Mannerheim"
+      },
+      {
+        "name": "Linus Torvalds",
+        "years": "b. 1969",
+        "field": "Programmer",
+        "why": "Wrote the Linux kernel and Git; both now run much of the world's computing.",
+        "wiki": "https://en.wikipedia.org/wiki/Linus_Torvalds"
+      }
+    ],
+    "events": [
+      {
+        "year": "1835",
+        "title": "The Kalevala",
+        "what": "Elias Lönnrot's compiled folk epic gave Finland a national literature and identity.",
+        "wiki": "https://en.wikipedia.org/wiki/Kalevala"
+      },
+      {
+        "year": "1917",
+        "title": "Independence",
+        "what": "Finland broke from Russia during the revolution, then fought a bitter civil war.",
+        "wiki": "https://en.wikipedia.org/wiki/Finnish_Declaration_of_Independence"
+      },
+      {
+        "year": "1939–1940",
+        "title": "The Winter War",
+        "what": "Finland held off a Soviet invasion for 105 days against overwhelming odds.",
+        "wiki": "https://en.wikipedia.org/wiki/Winter_War"
+      },
+      {
+        "year": "2023",
+        "title": "Joining NATO",
+        "what": "Ended decades of non-alignment, doubling NATO's border with Russia.",
+        "wiki": "https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🧖",
+        "label": "Sauna",
+        "text": "Over three million saunas for 5.5 million people. Business and family life both happen in them."
+      },
+      {
+        "icon": "💪",
+        "label": "Sisu",
+        "text": "Stubborn endurance in the face of difficulty — the closest thing to a national creed."
+      },
+      {
+        "icon": "🤫",
+        "label": "Silence",
+        "text": "Comfortable silence is normal; filling it with chatter is what seems odd."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "The highest consumption per head in the world, by a clear margin."
+      },
+      {
+        "icon": "🌲",
+        "label": "Nature",
+        "text": "188,000 lakes, everyman's right to roam, and long summer nights that never go dark."
+      }
+    ],
+    "talkAbout": [
+      "Sauna, and the correct way to do it.",
+      "Nature, berry picking and the summer cottage.",
+      "Ice hockey, especially against Sweden."
+    ],
+    "avoid": "Finland is Nordic but not Scandinavian, and Finnish is not related to Swedish — both are worth getting right. Don't push for constant conversation."
+  },
+  {
+    "iso2": "AT",
+    "people": [
+      {
+        "name": "Wolfgang Amadeus Mozart",
+        "years": "1756–1791",
+        "field": "Composer",
+        "why": "Over 600 works before dying at 35; arguably the most naturally gifted musician who ever lived.",
+        "wiki": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart"
+      },
+      {
+        "name": "Sigmund Freud",
+        "years": "1856–1939",
+        "field": "Psychoanalyst",
+        "why": "Invented psychoanalysis in Vienna and changed how the West thinks about the mind.",
+        "wiki": "https://en.wikipedia.org/wiki/Sigmund_Freud"
+      },
+      {
+        "name": "Gustav Klimt",
+        "years": "1862–1918",
+        "field": "Painter",
+        "why": "The Kiss is among the most reproduced paintings in the world.",
+        "wiki": "https://en.wikipedia.org/wiki/Gustav_Klimt"
+      },
+      {
+        "name": "Maria Theresa",
+        "years": "1717–1780",
+        "field": "Empress",
+        "why": "Ruled the Habsburg lands for forty years, introduced compulsory schooling, and had sixteen children.",
+        "wiki": "https://en.wikipedia.org/wiki/Maria_Theresa"
+      },
+      {
+        "name": "Bertha von Suttner",
+        "years": "1843–1914",
+        "field": "Writer and pacifist",
+        "why": "Lay Down Your Arms persuaded Nobel to create a peace prize, which she then won.",
+        "wiki": "https://en.wikipedia.org/wiki/Bertha_von_Suttner"
+      }
+    ],
+    "events": [
+      {
+        "year": "1683",
+        "title": "The siege of Vienna",
+        "what": "The Ottoman advance into Europe was turned back at the city walls.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Vienna"
+      },
+      {
+        "year": "1867–1918",
+        "title": "Austria-Hungary",
+        "what": "A multinational empire of a dozen peoples that dissolved at the end of the First World War.",
+        "wiki": "https://en.wikipedia.org/wiki/Austria-Hungary"
+      },
+      {
+        "year": "1938",
+        "title": "The Anschluss",
+        "what": "Nazi Germany annexed Austria; the country's role as perpetrator as well as victim took decades to admit.",
+        "wiki": "https://en.wikipedia.org/wiki/Anschluss"
+      },
+      {
+        "year": "1955",
+        "title": "The State Treaty",
+        "what": "Austria regained full sovereignty and declared permanent neutrality.",
+        "wiki": "https://en.wikipedia.org/wiki/Austrian_State_Treaty"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "☕",
+        "label": "Kaffeehaus",
+        "text": "Vienna's coffee houses are UNESCO-listed; one coffee buys you a table for the afternoon."
+      },
+      {
+        "icon": "🎼",
+        "label": "Music",
+        "text": "Mozart, Haydn, Schubert, Mahler and Strauss all worked here; the New Year concert is broadcast worldwide."
+      },
+      {
+        "icon": "🎿",
+        "label": "Skiing",
+        "text": "Alpine skiing is close to a national sport and Austrian racers dominate it."
+      },
+      {
+        "icon": "🍰",
+        "label": "Food",
+        "text": "Schnitzel, Tafelspitz and Sachertorte, with an entire vocabulary for cake."
+      },
+      {
+        "icon": "🎩",
+        "label": "Formality",
+        "text": "Titles are used in address, and greetings are more formal than in Germany."
+      }
+    ],
+    "talkAbout": [
+      "Coffee houses, and which one they favour.",
+      "Music and opera.",
+      "Skiing and mountain huts."
+    ],
+    "avoid": "Don't treat Austria as part of Germany. The Anschluss and Austria's Nazi past are sensitive, and Sound of Music references are met with blank looks."
+  },
+  {
+    "iso2": "BE",
+    "people": [
+      {
+        "name": "René Magritte",
+        "years": "1898–1967",
+        "field": "Painter",
+        "why": "'This is not a pipe' and the bowler-hatted men made surrealism into everyday visual language.",
+        "wiki": "https://en.wikipedia.org/wiki/Ren%C3%A9_Magritte"
+      },
+      {
+        "name": "Hergé",
+        "native": "Georges Remi",
+        "years": "1907–1983",
+        "field": "Cartoonist",
+        "why": "Created Tintin and, with him, the European comic album as an art form.",
+        "wiki": "https://en.wikipedia.org/wiki/Herg%C3%A9"
+      },
+      {
+        "name": "Adolphe Sax",
+        "years": "1814–1894",
+        "field": "Instrument maker",
+        "why": "Invented the saxophone, without which jazz would sound entirely different.",
+        "wiki": "https://en.wikipedia.org/wiki/Adolphe_Sax"
+      },
+      {
+        "name": "Eddy Merckx",
+        "years": "b. 1945",
+        "field": "Cyclist",
+        "why": "Five Tours de France and 525 career wins; nicknamed The Cannibal for good reason.",
+        "wiki": "https://en.wikipedia.org/wiki/Eddy_Merckx"
+      },
+      {
+        "name": "Georges Lemaître",
+        "years": "1894–1966",
+        "field": "Priest and physicist",
+        "why": "Proposed the expanding universe and what became the Big Bang theory.",
+        "wiki": "https://en.wikipedia.org/wiki/Georges_Lema%C3%AEtre"
+      }
+    ],
+    "events": [
+      {
+        "year": "1830",
+        "title": "Independence",
+        "what": "Belgium broke from the Netherlands after a revolt that started at the opera.",
+        "wiki": "https://en.wikipedia.org/wiki/Belgian_Revolution"
+      },
+      {
+        "year": "1885–1908",
+        "title": "The Congo Free State",
+        "what": "Leopold II ran the Congo as private property; millions died, and Belgium is still reckoning with it.",
+        "wiki": "https://en.wikipedia.org/wiki/Congo_Free_State"
+      },
+      {
+        "year": "1914",
+        "title": "The invasion",
+        "what": "Germany's march through neutral Belgium brought Britain into the First World War; Flanders became its graveyard.",
+        "wiki": "https://en.wikipedia.org/wiki/German_invasion_of_Belgium_(1914)"
+      },
+      {
+        "year": "1958",
+        "title": "Brussels becomes Europe's capital",
+        "what": "The EEC set up in Brussels, and the city became the administrative centre of the European project.",
+        "wiki": "https://en.wikipedia.org/wiki/Brussels_and_the_European_Union"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍟",
+        "label": "Food",
+        "text": "Chips were invented here and are served from a friterie with mayonnaise; also waffles, chocolate and mussels."
+      },
+      {
+        "icon": "🍺",
+        "label": "Beer",
+        "text": "Belgian beer culture is UNESCO-listed — Trappist ales, lambics and a specific glass for every one."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Two communities",
+        "text": "Dutch-speaking Flanders and French-speaking Wallonia, with separate media, parties and schools."
+      },
+      {
+        "icon": "📚",
+        "label": "Comics",
+        "text": "Comics are a mainstream adult medium here, with murals across Brussels."
+      },
+      {
+        "icon": "🙂",
+        "label": "Manner",
+        "text": "Self-deprecating and surreal humour, and a deep suspicion of anyone taking themselves too seriously."
+      }
+    ],
+    "talkAbout": [
+      "Beer and food, both endlessly.",
+      "Comics, and which series they grew up on.",
+      "Cycling, especially the spring classics."
+    ],
+    "avoid": "The Flemish–Walloon divide is genuinely delicate; guessing wrong about someone's language is awkward. Congo colonial history is serious ground."
+  },
+  {
+    "iso2": "UA",
+    "people": [
+      {
+        "name": "Taras Shevchenko",
+        "years": "1814–1861",
+        "field": "Poet and painter",
+        "why": "Born a serf, he made Ukrainian a literary language and is the country's national symbol.",
+        "wiki": "https://en.wikipedia.org/wiki/Taras_Shevchenko"
+      },
+      {
+        "name": "Lesya Ukrainka",
+        "years": "1871–1913",
+        "field": "Poet and playwright",
+        "why": "Wrote major drama in Ukrainian while chronically ill, and shaped the modern literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Lesya_Ukrainka"
+      },
+      {
+        "name": "Serhiy Zhadan",
+        "years": "b. 1974",
+        "field": "Writer and musician",
+        "why": "The leading voice of the Donbas in fiction and poetry, and a wartime volunteer.",
+        "wiki": "https://en.wikipedia.org/wiki/Serhiy_Zhadan"
+      },
+      {
+        "name": "Volodymyr Zelenskyy",
+        "years": "b. 1978",
+        "field": "President",
+        "why": "A comedian who played a president on television, then became one, and stayed in Kyiv in 2022.",
+        "wiki": "https://en.wikipedia.org/wiki/Volodymyr_Zelenskyy"
+      },
+      {
+        "name": "Kazimir Malevich",
+        "years": "1879–1935",
+        "field": "Painter",
+        "why": "Born in Kyiv; Black Square pushed abstraction as far as it could go.",
+        "wiki": "https://en.wikipedia.org/wiki/Kazimir_Malevich"
+      }
+    ],
+    "events": [
+      {
+        "year": "882–1240",
+        "title": "Kyivan Rus",
+        "what": "A powerful medieval state centred on Kyiv, claimed as ancestor by several modern countries.",
+        "wiki": "https://en.wikipedia.org/wiki/Kievan_Rus%27"
+      },
+      {
+        "year": "1932–1933",
+        "title": "The Holodomor",
+        "what": "A Soviet-engineered famine killed millions; many countries now recognise it as genocide.",
+        "wiki": "https://en.wikipedia.org/wiki/Holodomor"
+      },
+      {
+        "year": "1986",
+        "title": "Chernobyl",
+        "what": "The world's worst nuclear accident, and a major blow to Soviet credibility.",
+        "wiki": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+      },
+      {
+        "year": "2013–2014",
+        "title": "The Maidan revolution",
+        "what": "Mass protests removed a president; Russia then annexed Crimea and war began in the Donbas.",
+        "wiki": "https://en.wikipedia.org/wiki/Revolution_of_Dignity"
+      },
+      {
+        "year": "2022",
+        "title": "The full-scale invasion",
+        "what": "Russia invaded on 24 February; Ukraine's defence of Kyiv reshaped European security.",
+        "wiki": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Borscht — Ukrainian borscht is UNESCO-listed — plus varenyky and salo."
+      },
+      {
+        "icon": "🪺",
+        "label": "Pysanky",
+        "text": "Wax-resist decorated eggs, with regional patterns going back to pre-Christian symbolism."
+      },
+      {
+        "icon": "👕",
+        "label": "Vyshyvanka",
+        "text": "The embroidered shirt is worn with pride and has its own national day in May."
+      },
+      {
+        "icon": "🌻",
+        "label": "Sunflowers",
+        "text": "The national flower, and a wartime symbol; Ukraine is among the world's largest producers."
+      },
+      {
+        "icon": "🎶",
+        "label": "Music",
+        "text": "From polyphonic village singing to Kalush Orchestra winning Eurovision in 2022."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially borscht and who makes it best.",
+      "Music and literature — there is a great deal outsiders don't know.",
+      "Their home city, and what it was like before."
+    ],
+    "avoid": "Don't call it 'the Ukraine', don't treat Ukrainian culture as a branch of Russian, and don't ask people to relive what they've been through."
+  },
+  {
+    "iso2": "CZ",
+    "people": [
+      {
+        "name": "Franz Kafka",
+        "years": "1883–1924",
+        "field": "Writer",
+        "why": "The Trial and Metamorphosis gave a word to bureaucratic nightmare; he wrote in German, in Prague.",
+        "wiki": "https://en.wikipedia.org/wiki/Franz_Kafka"
+      },
+      {
+        "name": "Václav Havel",
+        "years": "1936–2011",
+        "field": "Playwright and president",
+        "why": "Dissident, imprisoned, then president of a free country within months.",
+        "wiki": "https://en.wikipedia.org/wiki/V%C3%A1clav_Havel"
+      },
+      {
+        "name": "Antonín Dvořák",
+        "years": "1841–1904",
+        "field": "Composer",
+        "why": "The New World Symphony, written in America but soaked in Bohemian melody.",
+        "wiki": "https://en.wikipedia.org/wiki/Anton%C3%ADn_Dvo%C5%99%C3%A1k"
+      },
+      {
+        "name": "Alphonse Mucha",
+        "years": "1860–1939",
+        "field": "Artist",
+        "why": "Defined Art Nouveau posters, then spent twenty years on the Slav Epic.",
+        "wiki": "https://en.wikipedia.org/wiki/Alphonse_Mucha"
+      },
+      {
+        "name": "Milada Horáková",
+        "years": "1901–1950",
+        "field": "Politician",
+        "why": "Survived the Nazis and was executed by the communists in a show trial; a symbol of resistance to both.",
+        "wiki": "https://en.wikipedia.org/wiki/Milada_Hor%C3%A1kov%C3%A1"
+      }
+    ],
+    "events": [
+      {
+        "year": "1415",
+        "title": "Jan Hus burned",
+        "what": "A church reformer executed a century before Luther, sparking the Hussite wars.",
+        "wiki": "https://en.wikipedia.org/wiki/Jan_Hus"
+      },
+      {
+        "year": "1618",
+        "title": "The Defenestration of Prague",
+        "what": "Officials thrown from a castle window began the Thirty Years' War.",
+        "wiki": "https://en.wikipedia.org/wiki/Defenestrations_of_Prague"
+      },
+      {
+        "year": "1968",
+        "title": "The Prague Spring",
+        "what": "Reforms toward 'socialism with a human face' were crushed by Warsaw Pact tanks.",
+        "wiki": "https://en.wikipedia.org/wiki/Prague_Spring"
+      },
+      {
+        "year": "1989",
+        "title": "The Velvet Revolution",
+        "what": "Communism ended in six weeks without bloodshed; the country split peacefully in 1993.",
+        "wiki": "https://en.wikipedia.org/wiki/Velvet_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍺",
+        "label": "Beer",
+        "text": "The highest consumption per head in the world, and Pilsner was invented in Plzeň in 1842."
+      },
+      {
+        "icon": "🥾",
+        "label": "Hiking",
+        "text": "A national network of colour-marked trails, walked by families every weekend."
+      },
+      {
+        "icon": "😏",
+        "label": "Humour",
+        "text": "Dry, absurd and sceptical of authority — the Good Soldier Švejk is the national character."
+      },
+      {
+        "icon": "🎭",
+        "label": "Puppets",
+        "text": "Marionette theatre kept the Czech language alive under Habsburg rule and is still performed."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Svíčková, goulash and knedlíky — bread dumplings that come with almost everything."
+      }
+    ],
+    "talkAbout": [
+      "Beer, and which brewery they prefer.",
+      "Hiking and weekend cottages.",
+      "1989 and how quickly everything changed."
+    ],
+    "avoid": "It's Czechia or the Czech Republic, not Czechoslovakia — that ended in 1993. Don't assume Prague is the whole country."
+  },
+  {
+    "iso2": "HU",
+    "people": [
+      {
+        "name": "Franz Liszt",
+        "years": "1811–1886",
+        "field": "Composer and pianist",
+        "why": "Invented the modern piano recital and was the first true musical celebrity.",
+        "wiki": "https://en.wikipedia.org/wiki/Franz_Liszt"
+      },
+      {
+        "name": "Ernő Rubik",
+        "years": "b. 1944",
+        "field": "Architect and inventor",
+        "why": "Made the Cube as a teaching aid; it became the best-selling puzzle ever.",
+        "wiki": "https://en.wikipedia.org/wiki/Ern%C5%91_Rubik"
+      },
+      {
+        "name": "John von Neumann",
+        "native": "Neumann János",
+        "years": "1903–1957",
+        "field": "Mathematician",
+        "why": "Game theory, quantum mechanics and the architecture behind nearly every computer.",
+        "wiki": "https://en.wikipedia.org/wiki/John_von_Neumann"
+      },
+      {
+        "name": "Béla Bartók",
+        "years": "1881–1945",
+        "field": "Composer",
+        "why": "Recorded peasant music across the Balkans and built a modernist language from it.",
+        "wiki": "https://en.wikipedia.org/wiki/B%C3%A9la_Bart%C3%B3k"
+      },
+      {
+        "name": "Ignaz Semmelweis",
+        "years": "1818–1865",
+        "field": "Physician",
+        "why": "Worked out that doctors should wash their hands; was ridiculed and died in an asylum.",
+        "wiki": "https://en.wikipedia.org/wiki/Ignaz_Semmelweis"
+      }
+    ],
+    "events": [
+      {
+        "year": "896",
+        "title": "The Magyar conquest",
+        "what": "Seven tribes settled the Carpathian Basin, bringing a language unrelated to any neighbour's.",
+        "wiki": "https://en.wikipedia.org/wiki/Hungarian_conquest_of_the_Carpathian_Basin"
+      },
+      {
+        "year": "1848",
+        "title": "The revolution",
+        "what": "A revolt against Habsburg rule, defeated with Russian help; 15 March is still a national day.",
+        "wiki": "https://en.wikipedia.org/wiki/Hungarian_Revolution_of_1848"
+      },
+      {
+        "year": "1920",
+        "title": "Trianon",
+        "what": "Hungary lost two-thirds of its territory and a third of its Hungarian speakers; the grievance persists.",
+        "wiki": "https://en.wikipedia.org/wiki/Treaty_of_Trianon"
+      },
+      {
+        "year": "1956",
+        "title": "The uprising",
+        "what": "Hungarians rose against Soviet rule and were crushed in twelve days; 200,000 fled.",
+        "wiki": "https://en.wikipedia.org/wiki/Hungarian_Revolution_of_1956"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌶️",
+        "label": "Paprika",
+        "text": "In everything from goulash to fish soup, sweet or hot, and grown around Szeged and Kalocsa."
+      },
+      {
+        "icon": "♨️",
+        "label": "Thermal baths",
+        "text": "Budapest sits on hot springs; Széchenyi and Gellért are civic institutions with chess boards in the water."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Hungarian is Uralic — related to Finnish and Estonian, and to nothing else nearby."
+      },
+      {
+        "icon": "🍷",
+        "label": "Wine",
+        "text": "Tokaji was the first classified wine region in the world, in 1737."
+      },
+      {
+        "icon": "🥂",
+        "label": "Toasting",
+        "text": "Traditionally no clinking of beer glasses, a habit dating from 1849."
+      }
+    ],
+    "talkAbout": [
+      "Thermal baths and which one to go to.",
+      "Food, especially the arguments over goulash.",
+      "The language, and how nothing else sounds like it."
+    ],
+    "avoid": "Trianon and the Hungarian minorities in neighbouring states are emotive. Domestic politics is bitterly polarised."
+  },
+  {
+    "iso2": "DK",
+    "people": [
+      {
+        "name": "Hans Christian Andersen",
+        "years": "1805–1875",
+        "field": "Author",
+        "why": "The Little Mermaid and The Ugly Duckling are told in nearly every language on earth.",
+        "wiki": "https://en.wikipedia.org/wiki/Hans_Christian_Andersen"
+      },
+      {
+        "name": "Niels Bohr",
+        "years": "1885–1962",
+        "field": "Physicist",
+        "why": "Worked out the structure of the atom and led the Copenhagen school of quantum mechanics.",
+        "wiki": "https://en.wikipedia.org/wiki/Niels_Bohr"
+      },
+      {
+        "name": "Søren Kierkegaard",
+        "years": "1813–1855",
+        "field": "Philosopher",
+        "why": "The father of existentialism, writing from a small city under a stack of pseudonyms.",
+        "wiki": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard"
+      },
+      {
+        "name": "Karen Blixen",
+        "native": "Isak Dinesen",
+        "years": "1885–1962",
+        "field": "Writer",
+        "why": "Out of Africa and Babette's Feast, written in English and Danish both.",
+        "wiki": "https://en.wikipedia.org/wiki/Karen_Blixen"
+      },
+      {
+        "name": "Ole Kirk Christiansen",
+        "years": "1891–1958",
+        "field": "Toymaker",
+        "why": "A carpenter who founded LEGO; the interlocking brick came from his workshop in Billund.",
+        "wiki": "https://en.wikipedia.org/wiki/Ole_Kirk_Christiansen"
+      }
+    ],
+    "events": [
+      {
+        "year": "965",
+        "title": "Harald Bluetooth converts",
+        "what": "The Jelling stones record Denmark's Christianisation; Bluetooth technology is named after him.",
+        "wiki": "https://en.wikipedia.org/wiki/Harald_Bluetooth"
+      },
+      {
+        "year": "1849",
+        "title": "The constitution",
+        "what": "Denmark moved from absolute monarchy to constitutional rule without a revolution.",
+        "wiki": "https://en.wikipedia.org/wiki/Constitution_of_Denmark"
+      },
+      {
+        "year": "1943",
+        "title": "The rescue of the Danish Jews",
+        "what": "Some 7,000 people were ferried to Sweden in fishing boats, ahead of the planned round-up.",
+        "wiki": "https://en.wikipedia.org/wiki/Rescue_of_the_Danish_Jews"
+      },
+      {
+        "year": "1989",
+        "title": "First registered partnerships",
+        "what": "Denmark became the first country in the world to legally recognise same-sex couples.",
+        "wiki": "https://en.wikipedia.org/wiki/Recognition_of_same-sex_unions_in_Denmark"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🕯️",
+        "label": "Hygge",
+        "text": "Candles, close company and low light through a long winter. It is a real practice, not a marketing idea."
+      },
+      {
+        "icon": "🚲",
+        "label": "Cycling",
+        "text": "More bikes than cars in Copenhagen, and cycling in ordinary clothes at all ages."
+      },
+      {
+        "icon": "🥪",
+        "label": "Food",
+        "text": "Smørrebrød open sandwiches with a strict order of eating, and the New Nordic movement that came out of Noma."
+      },
+      {
+        "icon": "⚖️",
+        "label": "Jantelov",
+        "text": "An unwritten rule against thinking yourself better than others; it shapes how people talk about success."
+      },
+      {
+        "icon": "🍺",
+        "label": "Sociability",
+        "text": "Reserved with strangers, very warm within a group, and drinks do much of the work."
+      }
+    ],
+    "talkAbout": [
+      "Cycling and city design.",
+      "Food, and the Nordic restaurant scene.",
+      "Hygge — though ask what it actually means to them."
+    ],
+    "avoid": "Don't call a Dane Swedish. Immigration policy is contentious, and Greenland's relationship with Denmark is a serious subject."
+  },
+  {
+    "iso2": "HR",
+    "people": [
+      {
+        "name": "Nikola Tesla",
+        "years": "1856–1943",
+        "field": "Inventor",
+        "why": "Alternating current and the induction motor; born in Croatia to a Serb family.",
+        "wiki": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+      },
+      {
+        "name": "Marco Polo",
+        "years": "c. 1254–1324",
+        "field": "Merchant traveller",
+        "why": "Croatia and Venice both claim him; Korčula insists he was born there.",
+        "wiki": "https://en.wikipedia.org/wiki/Marco_Polo"
+      },
+      {
+        "name": "Luka Modrić",
+        "years": "b. 1985",
+        "field": "Footballer",
+        "why": "Won the Ballon d'Or in 2018 and took Croatia to a World Cup final.",
+        "wiki": "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
+      },
+      {
+        "name": "Ivan Meštrović",
+        "years": "1883–1962",
+        "field": "Sculptor",
+        "why": "The first living artist to be given a solo show at the Metropolitan Museum in New York.",
+        "wiki": "https://en.wikipedia.org/wiki/Ivan_Me%C5%A1trovi%C4%87"
+      },
+      {
+        "name": "Slavenka Drakulić",
+        "years": "b. 1949",
+        "field": "Writer",
+        "why": "Her essays on life under and after communism are read across Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Slavenka_Drakuli%C4%87"
+      }
+    ],
+    "events": [
+      {
+        "year": "1358–1808",
+        "title": "The Republic of Ragusa",
+        "what": "Dubrovnik was an independent maritime republic that abolished slavery in 1416.",
+        "wiki": "https://en.wikipedia.org/wiki/Republic_of_Ragusa"
+      },
+      {
+        "year": "1918",
+        "title": "Into Yugoslavia",
+        "what": "Croatia joined the new South Slav kingdom after the Habsburg empire dissolved.",
+        "wiki": "https://en.wikipedia.org/wiki/Kingdom_of_Yugoslavia"
+      },
+      {
+        "year": "1991–1995",
+        "title": "The war of independence",
+        "what": "Croatia broke from Yugoslavia; Vukovar was destroyed and Dubrovnik shelled.",
+        "wiki": "https://en.wikipedia.org/wiki/Croatian_War_of_Independence"
+      },
+      {
+        "year": "2013",
+        "title": "Joining the EU",
+        "what": "Croatia became the 28th member, and adopted the euro a decade later.",
+        "wiki": "https://en.wikipedia.org/wiki/Croatia_and_the_European_Union"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏝️",
+        "label": "Coast",
+        "text": "Over a thousand islands along the Adriatic, and the coast is the summer centre of national life."
+      },
+      {
+        "icon": "👔",
+        "label": "The necktie",
+        "text": "The cravat comes from Croatian mercenaries in seventeenth-century France — hence 'cravate'."
+      },
+      {
+        "icon": "🎶",
+        "label": "Klapa",
+        "text": "Unaccompanied male harmony singing from Dalmatia, UNESCO-listed."
+      },
+      {
+        "icon": "⚽",
+        "label": "Sport",
+        "text": "A country of under four million reaching a World Cup final, plus water polo and handball."
+      },
+      {
+        "icon": "🍽️",
+        "label": "Food",
+        "text": "Adriatic seafood and olive oil on the coast, paprika and meat inland — two different cuisines."
+      }
+    ],
+    "talkAbout": [
+      "The islands and the coast.",
+      "Football, and the 2018 World Cup.",
+      "Food, and the difference between coastal and continental cooking."
+    ],
+    "avoid": "The 1990s wars, and Croatia's Second World War Ustaše past, are both raw. Don't lump Croatia in with 'the Balkans' casually."
+  },
+  {
+    "iso2": "RS",
+    "people": [
+      {
+        "name": "Nikola Tesla",
+        "years": "1856–1943",
+        "field": "Inventor",
+        "why": "Ethnic Serb whose alternating-current system powers the world; Belgrade's airport and museum carry his name.",
+        "wiki": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+      },
+      {
+        "name": "Novak Djokovic",
+        "years": "b. 1987",
+        "field": "Tennis player",
+        "why": "The most Grand Slam singles titles in the history of men's tennis.",
+        "wiki": "https://en.wikipedia.org/wiki/Novak_Djokovic"
+      },
+      {
+        "name": "Ivo Andrić",
+        "years": "1892–1975",
+        "field": "Novelist",
+        "why": "The Bridge on the Drina won the Nobel Prize and explains the region better than most histories.",
+        "wiki": "https://en.wikipedia.org/wiki/Ivo_Andri%C4%87"
+      },
+      {
+        "name": "Mihajlo Pupin",
+        "years": "1854–1935",
+        "field": "Physicist",
+        "why": "His inductance coils made long-distance telephony possible.",
+        "wiki": "https://en.wikipedia.org/wiki/Michael_I._Pupin"
+      },
+      {
+        "name": "Marina Abramović",
+        "years": "b. 1946",
+        "field": "Performance artist",
+        "why": "The most famous performance artist alive, and the person who defined the form.",
+        "wiki": "https://en.wikipedia.org/wiki/Marina_Abramovi%C4%87"
+      }
+    ],
+    "events": [
+      {
+        "year": "1389",
+        "title": "The Battle of Kosovo",
+        "what": "A defeat by the Ottomans that became the central story of Serbian national identity.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Kosovo"
+      },
+      {
+        "year": "1914",
+        "title": "Sarajevo",
+        "what": "The assassination of Franz Ferdinand by a Bosnian Serb triggered the First World War.",
+        "wiki": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand"
+      },
+      {
+        "year": "1991–1999",
+        "title": "The Yugoslav wars",
+        "what": "Yugoslavia broke apart in a decade of wars, ending with NATO's bombing of Serbia over Kosovo.",
+        "wiki": "https://en.wikipedia.org/wiki/Yugoslav_Wars"
+      },
+      {
+        "year": "2000",
+        "title": "The Bulldozer Revolution",
+        "what": "Mass protests removed Slobodan Milošević after he refused to accept an election result.",
+        "wiki": "https://en.wikipedia.org/wiki/Overthrow_of_Slobodan_Milo%C5%A1evi%C4%87"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥂",
+        "label": "Rakija",
+        "text": "Homemade fruit brandy, offered on arrival, and every family thinks theirs is best."
+      },
+      {
+        "icon": "☕",
+        "label": "Kafana",
+        "text": "Part tavern, part living room — hours of talk, food and live music."
+      },
+      {
+        "icon": "🎺",
+        "label": "Brass",
+        "text": "The Guča trumpet festival draws hundreds of thousands for several days of relentless brass."
+      },
+      {
+        "icon": "🕯️",
+        "label": "Slava",
+        "text": "Each family celebrates its own patron saint's day, and the house is open to anyone who calls."
+      },
+      {
+        "icon": "🍖",
+        "label": "Food",
+        "text": "Ćevapi, pljeskavica and ajvar, with portions sized for farm work."
+      }
+    ],
+    "talkAbout": [
+      "Food and rakija, and their family's slava.",
+      "Sport — tennis, basketball and water polo are all national strengths.",
+      "Music, from brass bands to the Belgrade club scene."
+    ],
+    "avoid": "Kosovo, the 1990s wars and the NATO bombing are all deeply contested. Don't assume a shared narrative with their neighbours."
+  },
+  {
+    "iso2": "SI",
+    "people": [
+      {
+        "name": "France Prešeren",
+        "years": "1800–1849",
+        "field": "Poet",
+        "why": "The national poet; a verse of his Zdravljica is the national anthem.",
+        "wiki": "https://en.wikipedia.org/wiki/France_Pre%C5%A1eren"
+      },
+      {
+        "name": "Jože Plečnik",
+        "years": "1872–1957",
+        "field": "Architect",
+        "why": "Redesigned Ljubljana almost single-handedly; his work there is World Heritage-listed.",
+        "wiki": "https://en.wikipedia.org/wiki/Jo%C5%BEe_Ple%C4%8Dnik"
+      },
+      {
+        "name": "Luka Dončić",
+        "years": "b. 1999",
+        "field": "Basketball player",
+        "why": "One of the NBA's biggest stars, from a country of two million.",
+        "wiki": "https://en.wikipedia.org/wiki/Luka_Don%C4%8Di%C4%87"
+      },
+      {
+        "name": "Primož Trubar",
+        "years": "1508–1586",
+        "field": "Reformer",
+        "why": "Printed the first books in Slovene and effectively founded the written language.",
+        "wiki": "https://en.wikipedia.org/wiki/Primo%C5%BE_Trubar"
+      },
+      {
+        "name": "Slavoj Žižek",
+        "years": "b. 1949",
+        "field": "Philosopher",
+        "why": "The most widely read living philosopher, and among the most argued about.",
+        "wiki": "https://en.wikipedia.org/wiki/Slavoj_%C5%BDi%C5%BEek"
+      }
+    ],
+    "events": [
+      {
+        "year": "1550",
+        "title": "The first Slovene books",
+        "what": "Trubar's catechism and primer began Slovene as a written language.",
+        "wiki": "https://en.wikipedia.org/wiki/Primo%C5%BE_Trubar"
+      },
+      {
+        "year": "1918",
+        "title": "Into Yugoslavia",
+        "what": "Slovene lands left Austria-Hungary and joined the new South Slav state.",
+        "wiki": "https://en.wikipedia.org/wiki/Kingdom_of_Yugoslavia"
+      },
+      {
+        "year": "1991",
+        "title": "The Ten-Day War",
+        "what": "Slovenia's independence war lasted ten days with under a hundred deaths — by far the shortest of the Yugoslav wars.",
+        "wiki": "https://en.wikipedia.org/wiki/Ten-Day_War"
+      },
+      {
+        "year": "2004",
+        "title": "Joining the EU and NATO",
+        "what": "Slovenia joined both, and adopted the euro three years later.",
+        "wiki": "https://en.wikipedia.org/wiki/Slovenia"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🐝",
+        "label": "Beekeeping",
+        "text": "A national passion with painted hive panels; Slovenia proposed World Bee Day and got it."
+      },
+      {
+        "icon": "⛰️",
+        "label": "Outdoors",
+        "text": "Over half the country is forest, and Triglav's summit is treated as a rite of passage."
+      },
+      {
+        "icon": "🏀",
+        "label": "Sport",
+        "text": "Basketball, ski jumping and cycling all well beyond what the population would suggest."
+      },
+      {
+        "icon": "🍰",
+        "label": "Food",
+        "text": "Potica, a rolled nut cake, and štruklji; Alpine, Mediterranean and Pannonian cooking in one small country."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Slovene keeps the dual number — a separate grammatical form for exactly two."
+      }
+    ],
+    "talkAbout": [
+      "Mountains, hiking and Lake Bled.",
+      "Beekeeping and honey.",
+      "Basketball, and Dončić."
+    ],
+    "avoid": "Slovenia is not Slovakia, and mixing them up is a standing irritation. Don't lump it in with the Balkans — Slovenes look to central Europe."
+  },
+  {
+    "iso2": "AL",
+    "people": [
+      {
+        "name": "Mother Teresa",
+        "native": "Anjezë Gonxhe Bojaxhiu",
+        "years": "1910–1997",
+        "field": "Missionary",
+        "why": "Ethnic Albanian, Nobel Peace Prize winner, and the country's most famous name abroad.",
+        "wiki": "https://en.wikipedia.org/wiki/Mother_Teresa"
+      },
+      {
+        "name": "Skanderbeg",
+        "native": "Gjergj Kastrioti",
+        "years": "1405–1468",
+        "field": "Military leader",
+        "why": "Held off the Ottoman Empire for 25 years; the national hero and the flag's eagle.",
+        "wiki": "https://en.wikipedia.org/wiki/Skanderbeg"
+      },
+      {
+        "name": "Ismail Kadare",
+        "years": "1936–2024",
+        "field": "Novelist",
+        "why": "Wrote allegorical novels under a dictatorship and became Albania's international literary voice.",
+        "wiki": "https://en.wikipedia.org/wiki/Ismail_Kadare"
+      },
+      {
+        "name": "Dua Lipa",
+        "years": "b. 1995",
+        "field": "Musician",
+        "why": "Kosovo-Albanian, and one of the biggest pop stars in the world.",
+        "wiki": "https://en.wikipedia.org/wiki/Dua_Lipa"
+      },
+      {
+        "name": "Inva Mula",
+        "years": "b. 1963",
+        "field": "Soprano",
+        "why": "Sang the Diva Dance in The Fifth Element and performs at the world's major opera houses.",
+        "wiki": "https://en.wikipedia.org/wiki/Inva_Mula"
+      }
+    ],
+    "events": [
+      {
+        "year": "1443–1468",
+        "title": "Skanderbeg's revolt",
+        "what": "A quarter-century of resistance that delayed Ottoman expansion into Italy.",
+        "wiki": "https://en.wikipedia.org/wiki/Skanderbeg"
+      },
+      {
+        "year": "1912",
+        "title": "Independence",
+        "what": "Albania declared independence from the Ottoman Empire at Vlorë.",
+        "wiki": "https://en.wikipedia.org/wiki/Albanian_Declaration_of_Independence"
+      },
+      {
+        "year": "1944–1985",
+        "title": "Hoxha's Albania",
+        "what": "One of the most isolated regimes on earth, which banned religion and built 170,000 concrete bunkers.",
+        "wiki": "https://en.wikipedia.org/wiki/Enver_Hoxha"
+      },
+      {
+        "year": "1997",
+        "title": "The pyramid scheme collapse",
+        "what": "Investment schemes holding much of the country's savings failed, and the state briefly collapsed.",
+        "wiki": "https://en.wikipedia.org/wiki/Albanian_civil_war_of_1997"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🤝",
+        "label": "Besa",
+        "text": "A code of honour requiring you to keep your word and protect a guest — Albanians sheltered Jews on this basis in the 1940s."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "Albania has more cafés per head than anywhere in Europe, and they are where everything happens."
+      },
+      {
+        "icon": "🛡️",
+        "label": "Bunkers",
+        "text": "Concrete bunkers still dot the countryside; some are now bars and museums."
+      },
+      {
+        "icon": "🎶",
+        "label": "Iso-polyphony",
+        "text": "Southern Albanian multi-part singing, UNESCO-listed, unlike anything else in Europe."
+      },
+      {
+        "icon": "🤔",
+        "label": "Gestures",
+        "text": "A head shake can mean yes and a nod no — worth knowing before you agree to something."
+      }
+    ],
+    "talkAbout": [
+      "Besa and traditional hospitality.",
+      "The coast and mountains, which few visitors expect.",
+      "Coffee culture."
+    ],
+    "avoid": "Organised crime clichés are resented. Kosovo, and relations with Serbia and Greece, need care."
+  },
+  {
+    "iso2": "MK",
+    "people": [
+      {
+        "name": "Saints Cyril and Methodius",
+        "years": "9th century",
+        "field": "Missionaries",
+        "why": "Created the first Slavic alphabet; their disciples worked at Ohrid, which became a centre of Slavic literacy.",
+        "wiki": "https://en.wikipedia.org/wiki/Saints_Cyril_and_Methodius"
+      },
+      {
+        "name": "Goce Delčev",
+        "years": "1872–1903",
+        "field": "Revolutionary",
+        "why": "Led the movement against Ottoman rule; claimed as a national hero by both North Macedonia and Bulgaria.",
+        "wiki": "https://en.wikipedia.org/wiki/Gotse_Delchev"
+      },
+      {
+        "name": "Kiro Gligorov",
+        "years": "1917–2012",
+        "field": "President",
+        "why": "Steered the country out of Yugoslavia without a war.",
+        "wiki": "https://en.wikipedia.org/wiki/Kiro_Gligorov"
+      },
+      {
+        "name": "Toše Proeski",
+        "years": "1981–2007",
+        "field": "Singer",
+        "why": "The Balkans' biggest pop star of his generation; his death at 26 brought a national day of mourning.",
+        "wiki": "https://en.wikipedia.org/wiki/To%C5%A1e_Proeski"
+      },
+      {
+        "name": "Blaže Koneski",
+        "years": "1921–1993",
+        "field": "Linguist and poet",
+        "why": "Codified the modern Macedonian literary language.",
+        "wiki": "https://en.wikipedia.org/wiki/Bla%C5%BEe_Koneski"
+      }
+    ],
+    "events": [
+      {
+        "year": "1903",
+        "title": "The Ilinden uprising",
+        "what": "A revolt against the Ottomans that briefly declared a republic at Kruševo; 2 August is the national day.",
+        "wiki": "https://en.wikipedia.org/wiki/Ilinden%E2%80%93Preobrazhenie_Uprising"
+      },
+      {
+        "year": "1963",
+        "title": "The Skopje earthquake",
+        "what": "Destroyed 80% of the capital; the world sent help and the city was rebuilt in modernist style.",
+        "wiki": "https://en.wikipedia.org/wiki/1963_Skopje_earthquake"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "The only Yugoslav republic to leave without fighting.",
+        "wiki": "https://en.wikipedia.org/wiki/North_Macedonia"
+      },
+      {
+        "year": "2018",
+        "title": "The Prespa Agreement",
+        "what": "The country renamed itself North Macedonia, settling a 27-year dispute with Greece and opening NATO membership.",
+        "wiki": "https://en.wikipedia.org/wiki/Prespa_agreement"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏞️",
+        "label": "Ohrid",
+        "text": "One of Europe's oldest and deepest lakes, with 365 churches said to line its shore."
+      },
+      {
+        "icon": "🎺",
+        "label": "Music",
+        "text": "Complex asymmetric rhythms — 7/8 and 11/8 are ordinary dance meters here."
+      },
+      {
+        "icon": "🥗",
+        "label": "Food",
+        "text": "Ajvar made in bulk each autumn, tavče gravče beans, and shopska salad."
+      },
+      {
+        "icon": "☕",
+        "label": "Sociability",
+        "text": "Long coffees and unhurried conversation; nobody is in a hurry to leave a table."
+      },
+      {
+        "icon": "🕌",
+        "label": "Mix",
+        "text": "Orthodox and Muslim communities, Macedonian and Albanian, in one small country."
+      }
+    ],
+    "talkAbout": [
+      "Lake Ohrid and the churches.",
+      "Food, especially ajvar season.",
+      "Music and dance rhythms."
+    ],
+    "avoid": "The name dispute with Greece and identity questions with Bulgaria are exhausting and delicate. Ethnic Macedonian–Albanian relations need care."
+  },
+  {
+    "iso2": "RO",
+    "people": [
+      {
+        "name": "Constantin Brâncuși",
+        "years": "1876–1957",
+        "field": "Sculptor",
+        "why": "Stripped sculpture back to essential form and became one of modernism's founders.",
+        "wiki": "https://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i"
+      },
+      {
+        "name": "Nadia Comăneci",
+        "years": "b. 1961",
+        "field": "Gymnast",
+        "why": "The first perfect 10 in Olympic gymnastics, at fourteen, in Montreal.",
+        "wiki": "https://en.wikipedia.org/wiki/Nadia_Com%C4%83neci"
+      },
+      {
+        "name": "Vlad the Impaler",
+        "years": "1431–1476",
+        "field": "Prince",
+        "why": "A ruthless defender against the Ottomans, and the loose inspiration for Dracula.",
+        "wiki": "https://en.wikipedia.org/wiki/Vlad_the_Impaler"
+      },
+      {
+        "name": "Eugène Ionesco",
+        "years": "1909–1994",
+        "field": "Playwright",
+        "why": "Rhinoceros and The Bald Soprano founded the theatre of the absurd.",
+        "wiki": "https://en.wikipedia.org/wiki/Eug%C3%A8ne_Ionesco"
+      },
+      {
+        "name": "George Enescu",
+        "years": "1881–1955",
+        "field": "Composer and violinist",
+        "why": "Romania's greatest musician; the national festival and concert hall carry his name.",
+        "wiki": "https://en.wikipedia.org/wiki/George_Enescu"
+      }
+    ],
+    "events": [
+      {
+        "year": "106–271",
+        "title": "Roman Dacia",
+        "what": "Rome's occupation left a Latin language surrounded by Slavic and Hungarian neighbours.",
+        "wiki": "https://en.wikipedia.org/wiki/Roman_Dacia"
+      },
+      {
+        "year": "1859–1918",
+        "title": "Unification",
+        "what": "The principalities united and Greater Romania was completed after the First World War.",
+        "wiki": "https://en.wikipedia.org/wiki/United_Principalities"
+      },
+      {
+        "year": "1965–1989",
+        "title": "Ceaușescu",
+        "what": "A personality cult, crushing austerity to repay foreign debt, and demolition of much of old Bucharest.",
+        "wiki": "https://en.wikipedia.org/wiki/Nicolae_Ceau%C8%99escu"
+      },
+      {
+        "year": "1989",
+        "title": "The revolution",
+        "what": "The only violent overthrow of communism in Europe; over a thousand died and Ceaușescu was executed.",
+        "wiki": "https://en.wikipedia.org/wiki/Romanian_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "A Romance language, closer to Italian than to any neighbour, which surprises most visitors."
+      },
+      {
+        "icon": "⛪",
+        "label": "Painted monasteries",
+        "text": "The Bucovina monasteries have their entire exteriors frescoed, and are World Heritage-listed."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Sarmale, mămăligă and mici, with țuică plum brandy before the meal."
+      },
+      {
+        "icon": "🌲",
+        "label": "Carpathians",
+        "text": "Europe's largest populations of brown bears, wolves and lynx, and vast old-growth forest."
+      },
+      {
+        "icon": "🎻",
+        "label": "Music",
+        "text": "Doina laments and fast lăutari fiddle bands, plus the panpipe tradition."
+      }
+    ],
+    "talkAbout": [
+      "The Carpathians, wildlife and hiking.",
+      "Food, and homemade țuică.",
+      "The language, and its Latin roots."
+    ],
+    "avoid": "Dracula gets old quickly. Don't confuse Romanians with Roma — the conflation is common abroad and resented, and Roma face real discrimination."
+  },
+  {
+    "iso2": "BG",
+    "people": [
+      {
+        "name": "Vasil Levski",
+        "years": "1837–1873",
+        "field": "Revolutionary",
+        "why": "Organised the independence movement and was hanged by the Ottomans; the national hero.",
+        "wiki": "https://en.wikipedia.org/wiki/Vasil_Levski"
+      },
+      {
+        "name": "Christo",
+        "native": "Christo Javacheff",
+        "years": "1935–2020",
+        "field": "Artist",
+        "why": "Wrapped the Reichstag and the Pont Neuf, making landscape-scale art out of fabric.",
+        "wiki": "https://en.wikipedia.org/wiki/Christo_and_Jeanne-Claude"
+      },
+      {
+        "name": "John Atanasoff",
+        "years": "1903–1995",
+        "field": "Physicist",
+        "why": "Of Bulgarian descent, he built what a US court ruled the first electronic digital computer.",
+        "wiki": "https://en.wikipedia.org/wiki/John_Vincent_Atanasoff"
+      },
+      {
+        "name": "Grigor Dimitrov",
+        "years": "b. 1991",
+        "field": "Tennis player",
+        "why": "Bulgaria's most successful tennis player, a former world number three.",
+        "wiki": "https://en.wikipedia.org/wiki/Grigor_Dimitrov"
+      },
+      {
+        "name": "Elisaveta Bagryana",
+        "years": "1893–1991",
+        "field": "Poet",
+        "why": "Brought a modern woman's voice into Bulgarian poetry and was nominated for the Nobel Prize.",
+        "wiki": "https://en.wikipedia.org/wiki/Elisaveta_Bagryana"
+      }
+    ],
+    "events": [
+      {
+        "year": "681",
+        "title": "The First Bulgarian Empire",
+        "what": "One of the oldest states in Europe to keep its name unchanged since foundation.",
+        "wiki": "https://en.wikipedia.org/wiki/First_Bulgarian_Empire"
+      },
+      {
+        "year": "886",
+        "title": "The Cyrillic alphabet",
+        "what": "Developed at the Preslav school in Bulgaria and now used by some 250 million people.",
+        "wiki": "https://en.wikipedia.org/wiki/Cyrillic_script"
+      },
+      {
+        "year": "1878",
+        "title": "Liberation",
+        "what": "The Russo-Turkish war ended five centuries of Ottoman rule; 3 March is the national day.",
+        "wiki": "https://en.wikipedia.org/wiki/Liberation_of_Bulgaria"
+      },
+      {
+        "year": "1943",
+        "title": "Saving the Bulgarian Jews",
+        "what": "Public and parliamentary pressure stopped the deportation of 48,000 Jews to the camps.",
+        "wiki": "https://en.wikipedia.org/wiki/Rescue_of_the_Bulgarian_Jews"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌹",
+        "label": "Roses",
+        "text": "The Valley of Roses produces much of the world's rose oil, harvested by hand before dawn."
+      },
+      {
+        "icon": "🥛",
+        "label": "Yoghurt",
+        "text": "Lactobacillus bulgaricus is named after the country, and yoghurt is eaten daily."
+      },
+      {
+        "icon": "🙃",
+        "label": "Gestures",
+        "text": "A nod means no and a shake means yes — a reliable source of confusion."
+      },
+      {
+        "icon": "🧧",
+        "label": "Martenitsa",
+        "text": "Red and white threads worn from 1 March until you see a stork, then tied to a tree."
+      },
+      {
+        "icon": "🎶",
+        "label": "Voices",
+        "text": "Bulgarian women's choral singing was sent into space on the Voyager golden record."
+      }
+    ],
+    "talkAbout": [
+      "Cyrillic, which Bulgarians will tell you started here.",
+      "Martenitsa and spring traditions.",
+      "Mountains and hiking — Bulgaria is very mountainous."
+    ],
+    "avoid": "Identity questions with North Macedonia are contentious. The communist period divides generations."
+  },
+  {
+    "iso2": "SK",
+    "people": [
+      {
+        "name": "Milan Rastislav Štefánik",
+        "years": "1880–1919",
+        "field": "Astronomer and general",
+        "why": "Co-founded Czechoslovakia and died in a plane crash returning home to it.",
+        "wiki": "https://en.wikipedia.org/wiki/Milan_Rastislav_%C5%A0tef%C3%A1nik"
+      },
+      {
+        "name": "Ľudovít Štúr",
+        "years": "1815–1856",
+        "field": "Linguist and politician",
+        "why": "Codified written Slovak, which is why the language exists in its modern form.",
+        "wiki": "https://en.wikipedia.org/wiki/%C4%BDudov%C3%ADt_%C5%A0t%C3%BAr"
+      },
+      {
+        "name": "Peter Sagan",
+        "years": "b. 1990",
+        "field": "Cyclist",
+        "why": "Three consecutive world road race titles, a feat nobody else has managed.",
+        "wiki": "https://en.wikipedia.org/wiki/Peter_Sagan"
+      },
+      {
+        "name": "Zuzana Čaputová",
+        "years": "b. 1973",
+        "field": "President",
+        "why": "An environmental lawyer who became Slovakia's first woman president after anti-corruption protests.",
+        "wiki": "https://en.wikipedia.org/wiki/Zuzana_%C4%8Caputov%C3%A1"
+      },
+      {
+        "name": "Jozef Murgaš",
+        "years": "1864–1929",
+        "field": "Priest and inventor",
+        "why": "A pioneer of wireless telegraphy whose patents fed into early radio.",
+        "wiki": "https://en.wikipedia.org/wiki/Jozef_Murga%C5%A1"
+      }
+    ],
+    "events": [
+      {
+        "year": "833–907",
+        "title": "Great Moravia",
+        "what": "The first major Slavic state in the region, and where Cyril and Methodius did their work.",
+        "wiki": "https://en.wikipedia.org/wiki/Great_Moravia"
+      },
+      {
+        "year": "1918",
+        "title": "Czechoslovakia founded",
+        "what": "Slovaks and Czechs formed one state out of the collapsing Habsburg empire.",
+        "wiki": "https://en.wikipedia.org/wiki/Czechoslovakia"
+      },
+      {
+        "year": "1944",
+        "title": "The Slovak National Uprising",
+        "what": "A large partisan revolt against the German-aligned wartime state, commemorated every August.",
+        "wiki": "https://en.wikipedia.org/wiki/Slovak_National_Uprising"
+      },
+      {
+        "year": "1993",
+        "title": "The Velvet Divorce",
+        "what": "Czechoslovakia split into two countries peacefully, by agreement, on New Year's Day.",
+        "wiki": "https://en.wikipedia.org/wiki/Dissolution_of_Czechoslovakia"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "⛰️",
+        "label": "Tatras",
+        "text": "The High Tatras are the smallest alpine range in the world and the centre of Slovak outdoor life."
+      },
+      {
+        "icon": "🏰",
+        "label": "Castles",
+        "text": "Around 180 castles and ruins — more per head than almost anywhere."
+      },
+      {
+        "icon": "🧀",
+        "label": "Food",
+        "text": "Bryndzové halušky — potato dumplings with sheep's cheese and bacon — is the national dish."
+      },
+      {
+        "icon": "🎻",
+        "label": "Fujara",
+        "text": "A three-metre shepherd's flute played over the shoulder, UNESCO-listed."
+      },
+      {
+        "icon": "💦",
+        "label": "Easter",
+        "text": "In villages, men still douse women with water and switch them lightly for luck."
+      }
+    ],
+    "talkAbout": [
+      "The Tatras and hiking.",
+      "Castles and folk traditions.",
+      "Ice hockey, which is followed intensely."
+    ],
+    "avoid": "Slovakia is not Slovenia, and not a lesser Czech Republic. Roma exclusion is a serious domestic issue."
+  },
+  {
+    "iso2": "LT",
+    "people": [
+      {
+        "name": "Mikalojus Konstantinas Čiurlionis",
+        "years": "1875–1911",
+        "field": "Painter and composer",
+        "why": "Did both at the highest level and anticipated abstraction; died at 35.",
+        "wiki": "https://en.wikipedia.org/wiki/Mikalojus_Konstantinas_%C4%8Ciurlionis"
+      },
+      {
+        "name": "Vytautas the Great",
+        "years": "c. 1350–1430",
+        "field": "Grand Duke",
+        "why": "Ruled Lithuania at its height, when it stretched from the Baltic to the Black Sea.",
+        "wiki": "https://en.wikipedia.org/wiki/Vytautas"
+      },
+      {
+        "name": "Czesław Miłosz",
+        "years": "1911–2004",
+        "field": "Poet",
+        "why": "Nobel laureate born in Lithuania, whose work belongs to the whole region.",
+        "wiki": "https://en.wikipedia.org/wiki/Czes%C5%82aw_Mi%C5%82osz"
+      },
+      {
+        "name": "Jonas Mekas",
+        "years": "1922–2019",
+        "field": "Filmmaker",
+        "why": "The godfather of American avant-garde cinema, and a refugee from Lithuania.",
+        "wiki": "https://en.wikipedia.org/wiki/Jonas_Mekas"
+      },
+      {
+        "name": "Rūta Meilutytė",
+        "years": "b. 1997",
+        "field": "Swimmer",
+        "why": "Won Olympic gold at fifteen and set world records in the breaststroke.",
+        "wiki": "https://en.wikipedia.org/wiki/R%C5%ABta_Meilutyt%C4%97"
+      }
+    ],
+    "events": [
+      {
+        "year": "1385–1795",
+        "title": "The Grand Duchy",
+        "what": "United with Poland, it was for a time the largest state in Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Grand_Duchy_of_Lithuania"
+      },
+      {
+        "year": "1918",
+        "title": "Independence",
+        "what": "Lithuania re-established itself after over a century of Russian rule.",
+        "wiki": "https://en.wikipedia.org/wiki/Act_of_Independence_of_Lithuania"
+      },
+      {
+        "year": "1989",
+        "title": "The Baltic Way",
+        "what": "Two million people held hands in a 675 km chain across the three Baltic states.",
+        "wiki": "https://en.wikipedia.org/wiki/Baltic_Way"
+      },
+      {
+        "year": "1990",
+        "title": "First to break away",
+        "what": "Lithuania was the first Soviet republic to declare independence, a year and a half before the USSR fell.",
+        "wiki": "https://en.wikipedia.org/wiki/Act_of_the_Re-Establishment_of_the_State_of_Lithuania"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Lithuanian is among the most archaic living Indo-European languages, and closest to Sanskrit in structure."
+      },
+      {
+        "icon": "✝️",
+        "label": "Hill of Crosses",
+        "text": "Over 100,000 crosses on a mound near Šiauliai, repeatedly bulldozed by the Soviets and always replaced."
+      },
+      {
+        "icon": "🏀",
+        "label": "Basketball",
+        "text": "Often called the second religion; Lithuania punches enormously above its weight at it."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Cepelinai potato dumplings, cold beetroot soup that is startlingly pink, and dark rye bread."
+      },
+      {
+        "icon": "🌾",
+        "label": "Amber",
+        "text": "Baltic amber has been traded from this coast for four thousand years."
+      }
+    ],
+    "talkAbout": [
+      "Basketball, without fail.",
+      "The Baltic Way and 1990.",
+      "The language and how old it is."
+    ],
+    "avoid": "Don't call the Baltic states interchangeable, or describe them as ex-Soviet as if that were their identity. Wartime collaboration is a difficult subject."
+  },
+  {
+    "iso2": "LV",
+    "people": [
+      {
+        "name": "Mikhail Baryshnikov",
+        "years": "b. 1948",
+        "field": "Dancer",
+        "why": "Born in Riga; among the greatest ballet dancers of the twentieth century.",
+        "wiki": "https://en.wikipedia.org/wiki/Mikhail_Baryshnikov"
+      },
+      {
+        "name": "Vaira Vīķe-Freiberga",
+        "years": "b. 1937",
+        "field": "President",
+        "why": "A refugee who returned to lead Latvia into the EU and NATO.",
+        "wiki": "https://en.wikipedia.org/wiki/Vaira_V%C4%AB%C4%B7e-Freiberga"
+      },
+      {
+        "name": "Krišjānis Barons",
+        "years": "1835–1923",
+        "field": "Folklorist",
+        "why": "Collected around 218,000 dainas — the folk songs that carried Latvian identity through occupation.",
+        "wiki": "https://en.wikipedia.org/wiki/Kri%C5%A1j%C4%81nis_Barons"
+      },
+      {
+        "name": "Mark Rothko",
+        "years": "1903–1970",
+        "field": "Painter",
+        "why": "Born in Daugavpils; his colour fields are among the most recognisable images in modern art.",
+        "wiki": "https://en.wikipedia.org/wiki/Mark_Rothko"
+      },
+      {
+        "name": "Kristaps Porziņģis",
+        "years": "b. 1995",
+        "field": "Basketball player",
+        "why": "An NBA champion and Latvia's biggest sporting name.",
+        "wiki": "https://en.wikipedia.org/wiki/Kristaps_Porzi%C5%86%C4%A3is"
+      }
+    ],
+    "events": [
+      {
+        "year": "1201",
+        "title": "Riga founded",
+        "what": "A Hanseatic trading city whose Art Nouveau centre is World Heritage-listed.",
+        "wiki": "https://en.wikipedia.org/wiki/Riga"
+      },
+      {
+        "year": "1918",
+        "title": "Independence",
+        "what": "Latvia declared independence and then fought for two more years to keep it.",
+        "wiki": "https://en.wikipedia.org/wiki/Latvian_War_of_Independence"
+      },
+      {
+        "year": "1940–1991",
+        "title": "Occupation",
+        "what": "Soviet, then Nazi, then Soviet again; mass deportations to Siberia in 1941 and 1949.",
+        "wiki": "https://en.wikipedia.org/wiki/Occupation_of_the_Baltic_states"
+      },
+      {
+        "year": "1987–1991",
+        "title": "The Singing Revolution",
+        "what": "Mass singing demonstrations across the Baltics helped bring down Soviet rule without violence.",
+        "wiki": "https://en.wikipedia.org/wiki/Singing_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🎵",
+        "label": "Song festival",
+        "text": "Every five years tens of thousands sing together in Riga — UNESCO-listed and central to national identity."
+      },
+      {
+        "icon": "🌲",
+        "label": "Forest",
+        "text": "More than half the country is forest, and mushroom and berry picking is a national pastime."
+      },
+      {
+        "icon": "🌞",
+        "label": "Jāņi",
+        "text": "Midsummer, with oak wreaths, cheese, beer and staying up all night."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Art Nouveau",
+        "text": "Riga has the greatest concentration of Art Nouveau architecture of any city in the world."
+      },
+      {
+        "icon": "🖤",
+        "label": "Rye bread",
+        "text": "Dark sourdough rye is a serious matter, and emigrants have it posted to them."
+      }
+    ],
+    "talkAbout": [
+      "The song festival and choral singing.",
+      "Forests, mushrooms and Jāņi.",
+      "Riga's architecture."
+    ],
+    "avoid": "The Soviet occupation and the status of the Russian-speaking minority are both sensitive. Don't merge the three Baltic states."
+  },
+  {
+    "iso2": "EE",
+    "people": [
+      {
+        "name": "Arvo Pärt",
+        "years": "b. 1935",
+        "field": "Composer",
+        "why": "For years the most performed living composer in the world, in his own tintinnabuli style.",
+        "wiki": "https://en.wikipedia.org/wiki/Arvo_P%C3%A4rt"
+      },
+      {
+        "name": "Lennart Meri",
+        "years": "1929–2006",
+        "field": "President and writer",
+        "why": "Deported to Siberia as a child, he became the president who anchored Estonia in Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Lennart_Meri"
+      },
+      {
+        "name": "Jaan Tallinn",
+        "years": "b. 1972",
+        "field": "Programmer",
+        "why": "Co-wrote Skype and Kazaa, and now funds work on existential risk.",
+        "wiki": "https://en.wikipedia.org/wiki/Jaan_Tallinn"
+      },
+      {
+        "name": "Kristjan Raud",
+        "years": "1865–1943",
+        "field": "Artist",
+        "why": "His illustrations of the Kalevipoeg epic shaped Estonia's visual self-image.",
+        "wiki": "https://en.wikipedia.org/wiki/Kristjan_Raud"
+      },
+      {
+        "name": "Kelly Sildaru",
+        "years": "b. 2002",
+        "field": "Freestyle skier",
+        "why": "Won X Games gold at thirteen, the youngest ever to do so.",
+        "wiki": "https://en.wikipedia.org/wiki/Kelly_Sildaru"
+      }
+    ],
+    "events": [
+      {
+        "year": "1869",
+        "title": "The first song festival",
+        "what": "The beginning of the national awakening, and of the tradition that still defines Estonia.",
+        "wiki": "https://en.wikipedia.org/wiki/Estonian_Song_Festival"
+      },
+      {
+        "year": "1918",
+        "title": "Independence",
+        "what": "Declared amid the collapse of the Russian empire and defended in a two-year war.",
+        "wiki": "https://en.wikipedia.org/wiki/Estonian_War_of_Independence"
+      },
+      {
+        "year": "1991",
+        "title": "Restored independence",
+        "what": "Estonia broke free during the Soviet collapse after years of singing protest.",
+        "wiki": "https://en.wikipedia.org/wiki/Estonia"
+      },
+      {
+        "year": "2005",
+        "title": "Voting online",
+        "what": "Estonia became the first country in the world to hold legally binding national elections over the internet.",
+        "wiki": "https://en.wikipedia.org/wiki/Electronic_voting_in_Estonia"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "💻",
+        "label": "e-Estonia",
+        "text": "Almost all government services run online; digital identity is ordinary infrastructure here."
+      },
+      {
+        "icon": "🎵",
+        "label": "Laulupidu",
+        "text": "The song festival gathers tens of thousands of singers; it was the engine of the Singing Revolution."
+      },
+      {
+        "icon": "🧖",
+        "label": "Sauna",
+        "text": "As central as in Finland; the smoke sauna tradition of Võromaa is UNESCO-listed."
+      },
+      {
+        "icon": "🌲",
+        "label": "Forest and bogs",
+        "text": "Half forest, with boardwalks across the bogs and the right to roam."
+      },
+      {
+        "icon": "🤫",
+        "label": "Manner",
+        "text": "Quiet and understated. Estonians joke about it themselves."
+      }
+    ],
+    "talkAbout": [
+      "Digital government, which they will happily explain.",
+      "The song festival and 1991.",
+      "Sauna, bogs and forest walks."
+    ],
+    "avoid": "Estonians are Finnic, not Slavic, and being called Russian is genuinely irritating. The Soviet period and minority-language politics are sensitive."
+  },
+  {
+    "iso2": "LU",
+    "people": [
+      {
+        "name": "Robert Schuman",
+        "years": "1886–1963",
+        "field": "Statesman",
+        "why": "Luxembourg-born, his 1950 declaration launched what became the European Union.",
+        "wiki": "https://en.wikipedia.org/wiki/Robert_Schuman"
+      },
+      {
+        "name": "Edward Steichen",
+        "years": "1879–1973",
+        "field": "Photographer",
+        "why": "Curated The Family of Man, the most visited photography exhibition ever, now permanently in Luxembourg.",
+        "wiki": "https://en.wikipedia.org/wiki/Edward_Steichen"
+      },
+      {
+        "name": "Grand Duchess Charlotte",
+        "years": "1896–1985",
+        "field": "Monarch",
+        "why": "Led the government in exile during the war and became the symbol of Luxembourg's survival.",
+        "wiki": "https://en.wikipedia.org/wiki/Charlotte,_Grand_Duchess_of_Luxembourg"
+      },
+      {
+        "name": "Jean-Claude Juncker",
+        "years": "b. 1954",
+        "field": "Politician",
+        "why": "Prime minister for eighteen years, then President of the European Commission.",
+        "wiki": "https://en.wikipedia.org/wiki/Jean-Claude_Juncker"
+      },
+      {
+        "name": "Andy Schleck",
+        "years": "b. 1985",
+        "field": "Cyclist",
+        "why": "Won the Tour de France in 2010, continuing a long Luxembourgish cycling tradition.",
+        "wiki": "https://en.wikipedia.org/wiki/Andy_Schleck"
+      }
+    ],
+    "events": [
+      {
+        "year": "963",
+        "title": "The castle on the Bock",
+        "what": "Count Siegfried's fortress founded the city; the casemates beneath it are World Heritage-listed.",
+        "wiki": "https://en.wikipedia.org/wiki/Luxembourg_City"
+      },
+      {
+        "year": "1867",
+        "title": "The Treaty of London",
+        "what": "Guaranteed Luxembourg's independence and neutrality, and required its great fortress to be dismantled.",
+        "wiki": "https://en.wikipedia.org/wiki/Treaty_of_London_(1867)"
+      },
+      {
+        "year": "1944–1945",
+        "title": "The Battle of the Bulge",
+        "what": "The Ardennes offensive tore through the north; Patton is buried at Hamm.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_the_Bulge"
+      },
+      {
+        "year": "1952",
+        "title": "A European capital",
+        "what": "The Coal and Steel Community set up here, making Luxembourg one of the EU's three seats.",
+        "wiki": "https://en.wikipedia.org/wiki/European_Coal_and_Steel_Community"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Three languages",
+        "text": "Luxembourgish at home, French in law, German in the press — often in one conversation."
+      },
+      {
+        "icon": "🚋",
+        "label": "Free transport",
+        "text": "In 2020 Luxembourg became the first country to make all public transport free."
+      },
+      {
+        "icon": "🌍",
+        "label": "Diversity",
+        "text": "Nearly half the residents are foreign nationals, and more still commute in daily."
+      },
+      {
+        "icon": "💃",
+        "label": "Echternach",
+        "text": "The dancing procession at Echternach has been held for centuries and is UNESCO-listed."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Judd mat Gaardebounen — smoked collar of pork with broad beans — plus a Moselle wine tradition."
+      }
+    ],
+    "talkAbout": [
+      "Languages, and how they switch between them.",
+      "Hiking the Mullerthal and the Ardennes.",
+      "How a country this small became a European capital."
+    ],
+    "avoid": "Tax-haven jokes land poorly. Don't assume everyone is a banker or that the country is only its financial sector."
+  },
+  {
+    "iso2": "AD",
+    "people": [
+      {
+        "name": "Antoni Fiter i Rossell",
+        "years": "1706–1748",
+        "field": "Jurist",
+        "why": "Wrote the Manual Digest, the compilation of Andorran law and custom still cited today.",
+        "wiki": "https://en.wikipedia.org/wiki/Antoni_Fiter_i_Rossell"
+      },
+      {
+        "name": "Guillem d'Areny-Plandolit",
+        "years": "1822–1876",
+        "field": "Reformer",
+        "why": "Led the New Reform of 1866, which broadened the vote and modernised the co-principality.",
+        "wiki": "https://en.wikipedia.org/wiki/Guillem_d%27Areny-Plandolit"
+      },
+      {
+        "name": "Boris Skossyreff",
+        "years": "1896–1989",
+        "field": "Adventurer",
+        "why": "Declared himself King Boris I of Andorra in 1934 and was removed after eleven days.",
+        "wiki": "https://en.wikipedia.org/wiki/Boris_Skossyreff"
+      },
+      {
+        "name": "Albert Salvadó",
+        "years": "1951–2021",
+        "field": "Novelist",
+        "why": "Andorra's best-known writer, widely translated in Catalan and Spanish.",
+        "wiki": "https://en.wikipedia.org/wiki/Albert_Salvad%C3%B3"
+      },
+      {
+        "name": "Marc Bernaus",
+        "years": "b. 1977",
+        "field": "Footballer",
+        "why": "Long-serving captain of the national team and the country's most capped player of his era.",
+        "wiki": "https://en.wikipedia.org/wiki/Marc_Bernaus"
+      }
+    ],
+    "events": [
+      {
+        "year": "1278",
+        "title": "The paréages",
+        "what": "An agreement between a French count and a Spanish bishop created the shared sovereignty that still governs Andorra.",
+        "wiki": "https://en.wikipedia.org/wiki/Andorra"
+      },
+      {
+        "year": "1934",
+        "title": "The eleven-day king",
+        "what": "Boris Skossyreff proclaimed himself monarch before Spanish police escorted him out.",
+        "wiki": "https://en.wikipedia.org/wiki/Boris_Skossyreff"
+      },
+      {
+        "year": "1958",
+        "title": "Peace with Germany",
+        "what": "Left out of the Versailles treaty, Andorra formally ended its First World War state of war forty years late.",
+        "wiki": "https://en.wikipedia.org/wiki/Andorra"
+      },
+      {
+        "year": "1993",
+        "title": "The constitution",
+        "what": "Andorra adopted a written constitution and joined the United Nations.",
+        "wiki": "https://en.wikipedia.org/wiki/Constitution_of_Andorra"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "👑",
+        "label": "Co-princes",
+        "text": "The heads of state are the President of France and the Bishop of Urgell — a 750-year-old arrangement."
+      },
+      {
+        "icon": "⛷️",
+        "label": "Skiing",
+        "text": "Grandvalira is the largest ski area in the Pyrenees and the backbone of the economy."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Catalan",
+        "text": "The only country where Catalan is the sole official language."
+      },
+      {
+        "icon": "💃",
+        "label": "Contrapàs",
+        "text": "Traditional dances performed at village festivals, especially in Sant Julià and Andorra la Vella."
+      },
+      {
+        "icon": "🏔️",
+        "label": "Mountains",
+        "text": "Nothing below 800 m, and the Madriu valley is a World Heritage cultural landscape."
+      }
+    ],
+    "talkAbout": [
+      "Skiing and mountain walking.",
+      "The co-principality, which visitors always find strange.",
+      "Catalan language and culture."
+    ],
+    "avoid": "Andorra is not part of Spain or France. Duty-free shopping jokes and tax questions get tiresome."
+  },
+  {
+    "iso2": "BY",
+    "people": [
+      {
+        "name": "Svetlana Alexievich",
+        "years": "b. 1948",
+        "field": "Writer",
+        "why": "Won the Nobel Prize in 2015 for oral histories built from thousands of interviews.",
+        "wiki": "https://en.wikipedia.org/wiki/Svetlana_Alexievich"
+      },
+      {
+        "name": "Marc Chagall",
+        "years": "1887–1985",
+        "field": "Painter",
+        "why": "Born in Vitebsk, and its wooden houses and floating figures never left his work.",
+        "wiki": "https://en.wikipedia.org/wiki/Marc_Chagall"
+      },
+      {
+        "name": "Francysk Skaryna",
+        "years": "c. 1470–1551",
+        "field": "Printer",
+        "why": "Printed the first book in an East Slavic language, decades before Moscow had a press.",
+        "wiki": "https://en.wikipedia.org/wiki/Francysk_Skaryna"
+      },
+      {
+        "name": "Maria Kalesnikava",
+        "years": "b. 1982",
+        "field": "Activist",
+        "why": "Tore up her passport rather than be deported during the 2020 protests; imprisoned since.",
+        "wiki": "https://en.wikipedia.org/wiki/Maria_Kalesnikava"
+      },
+      {
+        "name": "Yanka Kupala",
+        "years": "1882–1942",
+        "field": "Poet",
+        "why": "The national poet, who made Belarusian a modern literary language.",
+        "wiki": "https://en.wikipedia.org/wiki/Yanka_Kupala"
+      }
+    ],
+    "events": [
+      {
+        "year": "1569–1795",
+        "title": "The Commonwealth",
+        "what": "Belarusian lands were the heart of the Grand Duchy of Lithuania and its union with Poland.",
+        "wiki": "https://en.wikipedia.org/wiki/Polish%E2%80%93Lithuanian_Commonwealth"
+      },
+      {
+        "year": "1941–1944",
+        "title": "Occupation",
+        "what": "Belarus lost around a quarter of its population — proportionally more than any other country in the war.",
+        "wiki": "https://en.wikipedia.org/wiki/World_War_II_in_Belarus"
+      },
+      {
+        "year": "1986",
+        "title": "Chernobyl fallout",
+        "what": "About 70% of the fallout landed on Belarus, contaminating a fifth of its farmland.",
+        "wiki": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+      },
+      {
+        "year": "2020",
+        "title": "The protests",
+        "what": "Hundreds of thousands marched against a disputed election; the crackdown drove many into exile.",
+        "wiki": "https://en.wikipedia.org/wiki/2020%E2%80%932021_Belarusian_protests"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌲",
+        "label": "Forest",
+        "text": "Białowieża, Europe's last primeval lowland forest, with wild bison; and vast marshes in Polesia."
+      },
+      {
+        "icon": "🥔",
+        "label": "Food",
+        "text": "Draniki potato pancakes above all, plus machanka and dark bread."
+      },
+      {
+        "icon": "🧵",
+        "label": "Rushnik",
+        "text": "Woven ritual towels with red geometric patterns, used at weddings and funerals."
+      },
+      {
+        "icon": "🕯️",
+        "label": "Memory",
+        "text": "Khatyn and other war memorials are central to public life; almost every family lost someone."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Belarusian and Russian are both official; using Belarusian has become a political statement."
+      }
+    ],
+    "talkAbout": [
+      "Literature and Alexievich's oral histories.",
+      "Forests, bison and the countryside.",
+      "Food, especially the many uses of potato."
+    ],
+    "avoid": "Politics is genuinely dangerous for Belarusians to discuss. Many abroad are exiles — don't assume anything about their views or their safety."
+  },
+  {
+    "iso2": "BA",
+    "people": [
+      {
+        "name": "Ivo Andrić",
+        "years": "1892–1975",
+        "field": "Novelist",
+        "why": "The Bridge on the Drina, set in Višegrad, won the Nobel Prize in 1961.",
+        "wiki": "https://en.wikipedia.org/wiki/Ivo_Andri%C4%87"
+      },
+      {
+        "name": "Emir Kusturica",
+        "years": "b. 1954",
+        "field": "Film director",
+        "why": "Twice won the Palme d'Or at Cannes, a feat only a handful of directors have managed.",
+        "wiki": "https://en.wikipedia.org/wiki/Emir_Kusturica"
+      },
+      {
+        "name": "Mak Dizdar",
+        "years": "1917–1971",
+        "field": "Poet",
+        "why": "Stone Sleeper drew on medieval Bosnian tombstones to make a distinctly Bosnian poetry.",
+        "wiki": "https://en.wikipedia.org/wiki/Mak_Dizdar"
+      },
+      {
+        "name": "Jasmila Žbanić",
+        "years": "b. 1974",
+        "field": "Film director",
+        "why": "Quo Vadis, Aida? brought Srebrenica to a worldwide audience and was nominated for an Oscar.",
+        "wiki": "https://en.wikipedia.org/wiki/Jasmila_%C5%BDbani%C4%87"
+      },
+      {
+        "name": "Edin Džeko",
+        "years": "b. 1986",
+        "field": "Footballer",
+        "why": "Bosnia's record scorer and its most recognisable sportsman.",
+        "wiki": "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
+      }
+    ],
+    "events": [
+      {
+        "year": "1463",
+        "title": "Ottoman conquest",
+        "what": "Four centuries of Ottoman rule gave Bosnia its mosques, its bridges and much of its cuisine.",
+        "wiki": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
+      },
+      {
+        "year": "1914",
+        "title": "Sarajevo",
+        "what": "Gavrilo Princip's shots on the Latin Bridge began the First World War.",
+        "wiki": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand"
+      },
+      {
+        "year": "1984",
+        "title": "The Winter Olympics",
+        "what": "Sarajevo hosted the Games; eight years later the bobsleigh track was a firing position.",
+        "wiki": "https://en.wikipedia.org/wiki/1984_Winter_Olympics"
+      },
+      {
+        "year": "1992–1995",
+        "title": "The war",
+        "what": "Around 100,000 killed, Sarajevo besieged for 1,425 days, and genocide at Srebrenica.",
+        "wiki": "https://en.wikipedia.org/wiki/Bosnian_War"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "Bosanska kafa served in a džezva with rahat lokum, and drunk slowly over a long conversation."
+      },
+      {
+        "icon": "🕌",
+        "label": "Sarajevo",
+        "text": "A mosque, an Orthodox church, a Catholic cathedral and a synagogue within a few hundred metres."
+      },
+      {
+        "icon": "🍖",
+        "label": "Food",
+        "text": "Ćevapi in somun bread, burek by the metre, and a strong pastry tradition."
+      },
+      {
+        "icon": "🎶",
+        "label": "Sevdalinka",
+        "text": "Melancholy love songs, the Bosnian equivalent of fado or blues."
+      },
+      {
+        "icon": "🌉",
+        "label": "Mostar",
+        "text": "The rebuilt Stari Most, whose divers leap 24 m into the Neretva."
+      }
+    ],
+    "talkAbout": [
+      "Coffee and its ritual.",
+      "Food, and where the best ćevapi are.",
+      "Music, especially sevdah."
+    ],
+    "avoid": "The war, Srebrenica and the ethnic division of the state are heavy and contested. Let people volunteer their own story."
+  },
+  {
+    "iso2": "CY",
+    "people": [
+      {
+        "name": "Zeno of Citium",
+        "years": "c. 334–262 BCE",
+        "field": "Philosopher",
+        "why": "Founded Stoicism in Athens; he came from Kition, modern Larnaca.",
+        "wiki": "https://en.wikipedia.org/wiki/Zeno_of_Citium"
+      },
+      {
+        "name": "Makarios III",
+        "years": "1913–1977",
+        "field": "Archbishop and president",
+        "why": "Led Cyprus to independence and served as its first president.",
+        "wiki": "https://en.wikipedia.org/wiki/Makarios_III"
+      },
+      {
+        "name": "Marcos Baghdatis",
+        "years": "b. 1985",
+        "field": "Tennis player",
+        "why": "Reached the Australian Open final in 2006 and made Cyprus a tennis nation for a season.",
+        "wiki": "https://en.wikipedia.org/wiki/Marcos_Baghdatis"
+      },
+      {
+        "name": "Christoforos Savva",
+        "years": "1924–1968",
+        "field": "Painter",
+        "why": "The father of Cypriot modern art, who opened the island's first contemporary gallery.",
+        "wiki": "https://en.wikipedia.org/wiki/Christoforos_Savva"
+      },
+      {
+        "name": "Anna Vissi",
+        "years": "b. 1957",
+        "field": "Singer",
+        "why": "One of the biggest-selling Greek-language artists of all time.",
+        "wiki": "https://en.wikipedia.org/wiki/Anna_Vissi"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 1200 BCE",
+        "title": "Copper and the Mycenaeans",
+        "what": "Cyprus gave its name to copper and traded it across the Bronze Age Mediterranean.",
+        "wiki": "https://en.wikipedia.org/wiki/Cyprus"
+      },
+      {
+        "year": "1960",
+        "title": "Independence",
+        "what": "Cyprus left British rule with a constitution shared between Greek and Turkish Cypriots.",
+        "wiki": "https://en.wikipedia.org/wiki/Cyprus"
+      },
+      {
+        "year": "1974",
+        "title": "The division",
+        "what": "A Greek-backed coup was followed by Turkish invasion; the island has been divided since.",
+        "wiki": "https://en.wikipedia.org/wiki/Turkish_invasion_of_Cyprus"
+      },
+      {
+        "year": "2004",
+        "title": "Joining the EU",
+        "what": "Cyprus joined, though EU law is suspended in the north.",
+        "wiki": "https://en.wikipedia.org/wiki/Cyprus_and_the_European_Union"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍽️",
+        "label": "Meze",
+        "text": "A Cypriot meze can run to thirty small dishes and take an entire evening."
+      },
+      {
+        "icon": "🧀",
+        "label": "Halloumi",
+        "text": "Invented here, grilled rather than melted, and now protected by EU designation."
+      },
+      {
+        "icon": "☕",
+        "label": "Kafenio",
+        "text": "The village coffee house, where the same men have sat at the same tables for decades."
+      },
+      {
+        "icon": "☀️",
+        "label": "Climate",
+        "text": "Around 320 sunny days a year, and Troodos ski slopes an hour from the beach."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Layers",
+        "text": "Greek, Roman, Byzantine, Crusader, Venetian, Ottoman and British remains, all on one island."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially meze and halloumi.",
+      "Archaeology and the painted churches of Troodos.",
+      "Village life and the kafenio."
+    ],
+    "avoid": "The division of the island, the buffer zone and relations with Turkey are the central national grievance. Follow their lead."
+  },
+  {
+    "iso2": "XK",
+    "people": [
+      {
+        "name": "Ibrahim Rugova",
+        "years": "1944–2006",
+        "field": "President",
+        "why": "Led a decade of non-violent resistance and became independent Kosovo's first president.",
+        "wiki": "https://en.wikipedia.org/wiki/Ibrahim_Rugova"
+      },
+      {
+        "name": "Dua Lipa",
+        "years": "b. 1995",
+        "field": "Musician",
+        "why": "Kosovo-Albanian, a global pop star, and the founder of the Sunny Hill festival in Pristina.",
+        "wiki": "https://en.wikipedia.org/wiki/Dua_Lipa"
+      },
+      {
+        "name": "Majlinda Kelmendi",
+        "years": "b. 1991",
+        "field": "Judoka",
+        "why": "Won Kosovo's first Olympic medal — gold — at its first Games in 2016.",
+        "wiki": "https://en.wikipedia.org/wiki/Majlinda_Kelmendi"
+      },
+      {
+        "name": "Rita Ora",
+        "years": "b. 1990",
+        "field": "Musician",
+        "why": "Born in Pristina, and one of Britain's most successful chart artists.",
+        "wiki": "https://en.wikipedia.org/wiki/Rita_Ora"
+      },
+      {
+        "name": "Xherdan Shaqiri",
+        "years": "b. 1991",
+        "field": "Footballer",
+        "why": "Kosovo-born, a Champions League winner, and a figure of pride across the diaspora.",
+        "wiki": "https://en.wikipedia.org/wiki/Xherdan_Shaqiri"
+      }
+    ],
+    "events": [
+      {
+        "year": "1389",
+        "title": "The Battle of Kosovo",
+        "what": "The Ottoman victory on the Field of Blackbirds that became central to Serbian identity.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Kosovo"
+      },
+      {
+        "year": "1998–1999",
+        "title": "The war",
+        "what": "Serbian forces expelled around a million Kosovo Albanians; NATO intervened by air.",
+        "wiki": "https://en.wikipedia.org/wiki/Kosovo_War"
+      },
+      {
+        "year": "2008",
+        "title": "Independence",
+        "what": "Kosovo declared independence; about half of UN members recognise it, and Serbia does not.",
+        "wiki": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence"
+      },
+      {
+        "year": "2016",
+        "title": "First Olympics",
+        "what": "Kosovo competed under its own flag for the first time, and won gold.",
+        "wiki": "https://en.wikipedia.org/wiki/Kosovo_at_the_2016_Summer_Olympics"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "👶",
+        "label": "Youth",
+        "text": "The youngest population in Europe, with a median age around thirty."
+      },
+      {
+        "icon": "☕",
+        "label": "Macchiato",
+        "text": "Pristina's café culture is relentless, and the local macchiato is a point of pride."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Monasteries",
+        "text": "The medieval Serbian Orthodox monasteries at Deçan and Peja are World Heritage sites."
+      },
+      {
+        "icon": "🌍",
+        "label": "Diaspora",
+        "text": "Huge communities in Switzerland and Germany; summer brings them home in convoys."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Flija, cooked in layers over embers over several hours, and served to a crowd."
+      }
+    ],
+    "talkAbout": [
+      "Music, and how many international artists have Kosovar roots.",
+      "Café culture in Pristina.",
+      "The diaspora and summer homecomings."
+    ],
+    "avoid": "Recognition, relations with Serbia and the status of Serb communities are the defining political questions and are unresolved."
+  },
+  {
+    "iso2": "LI",
+    "people": [
+      {
+        "name": "Prince Franz Joseph II",
+        "years": "1906–1989",
+        "field": "Monarch",
+        "why": "The first prince to actually live in Liechtenstein, and the one who oversaw its rise to wealth.",
+        "wiki": "https://en.wikipedia.org/wiki/Franz_Joseph_II,_Prince_of_Liechtenstein"
+      },
+      {
+        "name": "Hans-Adam II",
+        "years": "b. 1945",
+        "field": "Prince",
+        "why": "Won a referendum granting the monarch unusually strong powers for a modern European state.",
+        "wiki": "https://en.wikipedia.org/wiki/Hans-Adam_II,_Prince_of_Liechtenstein"
+      },
+      {
+        "name": "Hanni Wenzel",
+        "years": "b. 1956",
+        "field": "Alpine skier",
+        "why": "Won two golds at the 1980 Olympics, making Liechtenstein the smallest country ever to top a Winter Games event.",
+        "wiki": "https://en.wikipedia.org/wiki/Hanni_Wenzel"
+      },
+      {
+        "name": "Tina Weirather",
+        "years": "b. 1989",
+        "field": "Alpine skier",
+        "why": "World Cup winner and Olympic medallist, from a family of ski champions.",
+        "wiki": "https://en.wikipedia.org/wiki/Tina_Weirather"
+      },
+      {
+        "name": "Josef Gabriel Rheinberger",
+        "years": "1839–1901",
+        "field": "Composer",
+        "why": "A celebrated organ composer and teacher in Munich; Liechtenstein's most significant musician.",
+        "wiki": "https://en.wikipedia.org/wiki/Josef_Rheinberger"
+      }
+    ],
+    "events": [
+      {
+        "year": "1719",
+        "title": "The principality created",
+        "what": "Two lordships were combined and raised to a principality of the Holy Roman Empire.",
+        "wiki": "https://en.wikipedia.org/wiki/Liechtenstein"
+      },
+      {
+        "year": "1868",
+        "title": "The army disbanded",
+        "what": "Liechtenstein dissolved its 80-man army; it has had none since.",
+        "wiki": "https://en.wikipedia.org/wiki/Military_of_Liechtenstein"
+      },
+      {
+        "year": "1923",
+        "title": "Customs union with Switzerland",
+        "what": "Liechtenstein adopted the Swiss franc and an open border, which underpins its economy.",
+        "wiki": "https://en.wikipedia.org/wiki/Liechtenstein"
+      },
+      {
+        "year": "1984",
+        "title": "Women get the vote",
+        "what": "The last country in Europe to grant women the national franchise, by a men-only referendum.",
+        "wiki": "https://en.wikipedia.org/wiki/Women%27s_suffrage_in_Liechtenstein"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏔️",
+        "label": "Doubly landlocked",
+        "text": "One of only two countries you must cross two others to reach the sea from."
+      },
+      {
+        "icon": "🎉",
+        "label": "National Day",
+        "text": "On 15 August the prince invites the entire country to the castle garden for a drink."
+      },
+      {
+        "icon": "🦷",
+        "label": "Industry",
+        "text": "Highly specialised manufacturing — including being the world's largest producer of false teeth."
+      },
+      {
+        "icon": "⛷️",
+        "label": "Skiing",
+        "text": "Malbun is the only ski resort, and it has produced an improbable number of Olympic medallists."
+      },
+      {
+        "icon": "🖼️",
+        "label": "Art",
+        "text": "The princely collections are among the largest private art holdings in the world."
+      }
+    ],
+    "talkAbout": [
+      "Skiing and the mountains.",
+      "National Day at the castle.",
+      "How a country of 40,000 organises itself."
+    ],
+    "avoid": "Tax-haven and 'you could walk across it' jokes are well worn. Liechtenstein is not part of Switzerland or Austria."
+  },
+  {
+    "iso2": "MT",
+    "people": [
+      {
+        "name": "Dun Karm Psaila",
+        "years": "1871–1961",
+        "field": "Poet",
+        "why": "The national poet, who wrote the words of the Maltese anthem.",
+        "wiki": "https://en.wikipedia.org/wiki/Dun_Karm_Psaila"
+      },
+      {
+        "name": "Jean Parisot de Valette",
+        "years": "1495–1568",
+        "field": "Grand Master",
+        "why": "Held Malta through the Great Siege of 1565 and founded the capital that bears his name.",
+        "wiki": "https://en.wikipedia.org/wiki/Jean_Parisot_de_Valette"
+      },
+      {
+        "name": "Daphne Caruana Galizia",
+        "years": "1964–2017",
+        "field": "Journalist",
+        "why": "Investigated corruption at the highest levels and was killed by a car bomb.",
+        "wiki": "https://en.wikipedia.org/wiki/Daphne_Caruana_Galizia"
+      },
+      {
+        "name": "Dom Mintoff",
+        "years": "1916–2012",
+        "field": "Prime minister",
+        "why": "Ended the British military presence and reshaped Malta as a non-aligned state.",
+        "wiki": "https://en.wikipedia.org/wiki/Dom_Mintoff"
+      },
+      {
+        "name": "Joseph Calleia",
+        "years": "1897–1975",
+        "field": "Actor",
+        "why": "A Hollywood character actor of the 1930s and 40s, and Malta's first international star.",
+        "wiki": "https://en.wikipedia.org/wiki/Joseph_Calleia"
+      }
+    ],
+    "events": [
+      {
+        "year": "3600 BCE",
+        "title": "The megalithic temples",
+        "what": "Ġgantija and its siblings are older than Stonehenge or the pyramids.",
+        "wiki": "https://en.wikipedia.org/wiki/Megalithic_Temples_of_Malta"
+      },
+      {
+        "year": "1565",
+        "title": "The Great Siege",
+        "what": "The Knights of St John held off a far larger Ottoman force in one of history's famous sieges.",
+        "wiki": "https://en.wikipedia.org/wiki/Great_Siege_of_Malta"
+      },
+      {
+        "year": "1940–1942",
+        "title": "The wartime siege",
+        "what": "Among the most heavily bombed places on earth; the whole island was awarded the George Cross.",
+        "wiki": "https://en.wikipedia.org/wiki/Siege_of_Malta_(World_War_II)"
+      },
+      {
+        "year": "1964",
+        "title": "Independence",
+        "what": "Malta left British rule, becoming a republic ten years later.",
+        "wiki": "https://en.wikipedia.org/wiki/Malta"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Maltese is Semitic, descended from Arabic, written in Latin script, and full of Italian and English."
+      },
+      {
+        "icon": "🎆",
+        "label": "Festa",
+        "text": "Every village holds a summer patron-saint festa with brass bands and enormous fireworks."
+      },
+      {
+        "icon": "🛶",
+        "label": "Luzzu",
+        "text": "Brightly painted fishing boats with the Eye of Osiris on the prow, a habit going back to the Phoenicians."
+      },
+      {
+        "icon": "🥧",
+        "label": "Food",
+        "text": "Pastizzi, rabbit stew, and ftira bread; a mix of Sicilian, Arab and British influences."
+      },
+      {
+        "icon": "⛪",
+        "label": "Catholicism",
+        "text": "Deeply Catholic, though divorce was only legalised in 2011."
+      }
+    ],
+    "talkAbout": [
+      "The temples and how old they are.",
+      "Village festas and the rivalry between neighbouring bands.",
+      "The language and how it works."
+    ],
+    "avoid": "Caruana Galizia's murder and the corruption it exposed are still live and painful. Don't call Maltese a dialect of Italian."
+  },
+  {
+    "iso2": "MD",
+    "people": [
+      {
+        "name": "Stephen the Great",
+        "native": "Ștefan cel Mare",
+        "years": "1433–1504",
+        "field": "Prince",
+        "why": "Ruled Moldavia for 47 years and fought off Ottoman, Polish and Hungarian armies.",
+        "wiki": "https://en.wikipedia.org/wiki/Stephen_III_of_Moldavia"
+      },
+      {
+        "name": "Maria Bieșu",
+        "years": "1935–2012",
+        "field": "Soprano",
+        "why": "One of the Soviet Union's great opera singers, and Moldova's most celebrated musician.",
+        "wiki": "https://en.wikipedia.org/wiki/Maria_Bie%C8%99u"
+      },
+      {
+        "name": "Eugen Doga",
+        "years": "b. 1937",
+        "field": "Composer",
+        "why": "His waltz from Gypsies Are Found Near Heaven is played at weddings across the former USSR.",
+        "wiki": "https://en.wikipedia.org/wiki/Eugen_Doga"
+      },
+      {
+        "name": "Maia Sandu",
+        "years": "b. 1972",
+        "field": "President",
+        "why": "An economist who became Moldova's first woman president on an anti-corruption platform.",
+        "wiki": "https://en.wikipedia.org/wiki/Maia_Sandu"
+      },
+      {
+        "name": "Zdob și Zdub",
+        "years": "formed 1994",
+        "field": "Band",
+        "why": "Moldova's best-known musical export, mixing folk with rock at three Eurovisions.",
+        "wiki": "https://en.wikipedia.org/wiki/Zdob_%C8%99i_Zdub"
+      }
+    ],
+    "events": [
+      {
+        "year": "1359",
+        "title": "The Principality of Moldavia",
+        "what": "A state that at its height covered much of today's Moldova and eastern Romania.",
+        "wiki": "https://en.wikipedia.org/wiki/Principality_of_Moldavia"
+      },
+      {
+        "year": "1812",
+        "title": "Bessarabia annexed",
+        "what": "The Russian Empire took the land between the Prut and the Dniester, setting the modern borders.",
+        "wiki": "https://en.wikipedia.org/wiki/Bessarabia"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Moldova left the Soviet Union as it dissolved.",
+        "wiki": "https://en.wikipedia.org/wiki/Moldova"
+      },
+      {
+        "year": "1992",
+        "title": "The Transnistria war",
+        "what": "A short war left a Russian-backed breakaway region on the Dniester, unresolved to this day.",
+        "wiki": "https://en.wikipedia.org/wiki/Transnistria_War"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍷",
+        "label": "Wine",
+        "text": "Cricova and Mileștii Mici have hundreds of kilometres of cellars; the latter holds the largest collection in the world."
+      },
+      {
+        "icon": "🎻",
+        "label": "Music",
+        "text": "Fiddle, cimbalom and pan flute, with a wedding tradition that runs for days."
+      },
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Plăcinte pastries, mămăligă, and sarmale wrapped in vine leaves."
+      },
+      {
+        "icon": "🌻",
+        "label": "Countryside",
+        "text": "One of the most agricultural countries in Europe, with black soil among the richest anywhere."
+      },
+      {
+        "icon": "⛪",
+        "label": "Cave monasteries",
+        "text": "Orheiul Vechi has monks' cells carved into a limestone cliff above the Răut."
+      }
+    ],
+    "talkAbout": [
+      "Wine, and the underground cellars.",
+      "Food and family celebrations.",
+      "Music, especially at weddings."
+    ],
+    "avoid": "Transnistria, relations with Russia and Romania, and whether the language is Moldovan or Romanian are all contested."
+  },
+  {
+    "iso2": "MC",
+    "people": [
+      {
+        "name": "Grace Kelly",
+        "years": "1929–1982",
+        "field": "Actress and princess",
+        "why": "An Oscar winner who became Princess of Monaco and remains its most famous figure.",
+        "wiki": "https://en.wikipedia.org/wiki/Grace_Kelly"
+      },
+      {
+        "name": "Rainier III",
+        "years": "1923–2005",
+        "field": "Prince",
+        "why": "Ruled for 56 years and turned Monaco from a fading casino town into a financial centre.",
+        "wiki": "https://en.wikipedia.org/wiki/Rainier_III,_Prince_of_Monaco"
+      },
+      {
+        "name": "Charles Leclerc",
+        "years": "b. 1997",
+        "field": "Racing driver",
+        "why": "A Monegasque Formula One driver for Ferrari who won his home Grand Prix in 2024.",
+        "wiki": "https://en.wikipedia.org/wiki/Charles_Leclerc"
+      },
+      {
+        "name": "Albert I",
+        "years": "1848–1922",
+        "field": "Prince and oceanographer",
+        "why": "A serious marine scientist who founded the Oceanographic Museum.",
+        "wiki": "https://en.wikipedia.org/wiki/Albert_I,_Prince_of_Monaco"
+      },
+      {
+        "name": "Louis Notari",
+        "years": "1879–1961",
+        "field": "Writer and engineer",
+        "why": "Wrote the first literary work in Monégasque and helped save the language.",
+        "wiki": "https://en.wikipedia.org/wiki/Louis_Notari"
+      }
+    ],
+    "events": [
+      {
+        "year": "1297",
+        "title": "The Grimaldis take the rock",
+        "what": "François Grimaldi entered the fortress disguised as a monk — hence the monks on the coat of arms.",
+        "wiki": "https://en.wikipedia.org/wiki/House_of_Grimaldi"
+      },
+      {
+        "year": "1863",
+        "title": "The casino opens",
+        "what": "Monte Carlo's casino rescued the principality's finances and created its image.",
+        "wiki": "https://en.wikipedia.org/wiki/Monte_Carlo_Casino"
+      },
+      {
+        "year": "1929",
+        "title": "The first Grand Prix",
+        "what": "The street race through the town became the most famous circuit in motorsport.",
+        "wiki": "https://en.wikipedia.org/wiki/Monaco_Grand_Prix"
+      },
+      {
+        "year": "1993",
+        "title": "Joining the UN",
+        "what": "Monaco became a full member of the United Nations.",
+        "wiki": "https://en.wikipedia.org/wiki/Monaco"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏎️",
+        "label": "Grand Prix",
+        "text": "Barriers go up in the streets each May and the whole country becomes a racetrack."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Monégasque",
+        "text": "A Ligurian dialect, now taught in schools to keep it alive; French is the official language."
+      },
+      {
+        "icon": "🌊",
+        "label": "Oceanography",
+        "text": "The Oceanographic Museum, founded by a prince, was directed for years by Jacques Cousteau."
+      },
+      {
+        "icon": "🏙️",
+        "label": "Density",
+        "text": "The most densely populated country in the world, on two square kilometres."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Barbagiuan and socca — the cooking is Ligurian and Niçois rather than French."
+      }
+    ],
+    "talkAbout": [
+      "The Grand Prix and how the circuit is built.",
+      "The Oceanographic Museum.",
+      "Monégasque, and efforts to keep it spoken."
+    ],
+    "avoid": "Tax-exile jokes get tiresome. Only about a quarter of residents are actually Monegasque citizens, which complicates assumptions."
+  },
+  {
+    "iso2": "ME",
+    "people": [
+      {
+        "name": "Petar II Petrović-Njegoš",
+        "years": "1813–1851",
+        "field": "Prince-bishop and poet",
+        "why": "The Mountain Wreath is the central work of Montenegrin and Serbian literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Petar_II_Petrovi%C4%87-Njego%C5%A1"
+      },
+      {
+        "name": "Nikola I",
+        "years": "1841–1921",
+        "field": "King",
+        "why": "Ruled for 58 years, married his daughters into half of Europe's courts, and made Montenegro a kingdom.",
+        "wiki": "https://en.wikipedia.org/wiki/Nicholas_I_of_Montenegro"
+      },
+      {
+        "name": "Milo Đukanović",
+        "years": "b. 1962",
+        "field": "Politician",
+        "why": "Dominated Montenegrin politics for three decades and led it to independence in 2006.",
+        "wiki": "https://en.wikipedia.org/wiki/Milo_%C4%90ukanovi%C4%87"
+      },
+      {
+        "name": "Marina Abramović",
+        "years": "b. 1946",
+        "field": "Performance artist",
+        "why": "Of Montenegrin heritage, and the defining figure of performance art.",
+        "wiki": "https://en.wikipedia.org/wiki/Marina_Abramovi%C4%87"
+      },
+      {
+        "name": "Nikola Mirotić",
+        "years": "b. 1991",
+        "field": "Basketball player",
+        "why": "Born in Podgorica, a EuroLeague MVP and one of the region's finest players.",
+        "wiki": "https://en.wikipedia.org/wiki/Nikola_Miroti%C4%87"
+      }
+    ],
+    "events": [
+      {
+        "year": "1516–1852",
+        "title": "The prince-bishopric",
+        "what": "Montenegro was ruled by Orthodox bishops who were also war leaders.",
+        "wiki": "https://en.wikipedia.org/wiki/Prince-Bishopric_of_Montenegro"
+      },
+      {
+        "year": "1878",
+        "title": "Recognised independence",
+        "what": "The Congress of Berlin recognised Montenegro as a sovereign state.",
+        "wiki": "https://en.wikipedia.org/wiki/Montenegro"
+      },
+      {
+        "year": "1918",
+        "title": "Absorbed into Yugoslavia",
+        "what": "The kingdom was merged into the new South Slav state, a decision still argued about.",
+        "wiki": "https://en.wikipedia.org/wiki/Podgorica_Assembly"
+      },
+      {
+        "year": "2006",
+        "title": "Independence",
+        "what": "A referendum ended the union with Serbia by a margin of just over half a percent above the threshold.",
+        "wiki": "https://en.wikipedia.org/wiki/2006_Montenegrin_independence_referendum"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "⛰️",
+        "label": "Black mountain",
+        "text": "The name means black mountain; Durmitor and the Tara canyon are among Europe's deepest."
+      },
+      {
+        "icon": "⛵",
+        "label": "Kotor",
+        "text": "A walled Venetian town at the head of a fjord-like bay, World Heritage-listed."
+      },
+      {
+        "icon": "☕",
+        "label": "Leisure",
+        "text": "Montenegrins joke about their own famous laziness, with a set of mock commandments about resting."
+      },
+      {
+        "icon": "🥩",
+        "label": "Food",
+        "text": "Njeguški pršut ham and cheese from the mountains, seafood on the coast."
+      },
+      {
+        "icon": "🤝",
+        "label": "Čojstvo",
+        "text": "Humanity and bravery — a traditional code about treating even an enemy honourably."
+      }
+    ],
+    "talkAbout": [
+      "Mountains, the Tara canyon and hiking.",
+      "Kotor and the coast.",
+      "Food, especially the mountain ham."
+    ],
+    "avoid": "Montenegrin versus Serbian identity, and the status of the Orthodox church, split the country. The 1990s wars are close by."
+  },
+  {
+    "iso2": "SM",
+    "people": [
+      {
+        "name": "Saint Marinus",
+        "years": "3rd–4th century",
+        "field": "Founder",
+        "why": "A stonemason who by tradition founded the republic on Monte Titano in 301.",
+        "wiki": "https://en.wikipedia.org/wiki/Marinus_of_Rimini"
+      },
+      {
+        "name": "Giuseppe Garibaldi",
+        "years": "1807–1882",
+        "field": "Revolutionary",
+        "why": "Given refuge here in 1849; the republic's protection of him is a founding point of pride.",
+        "wiki": "https://en.wikipedia.org/wiki/Giuseppe_Garibaldi"
+      },
+      {
+        "name": "Alessandro Bonci",
+        "years": "1870–1940",
+        "field": "Tenor",
+        "why": "A rival of Caruso at the Met, and one of San Marino's best-known figures abroad.",
+        "wiki": "https://en.wikipedia.org/wiki/Alessandro_Bonci"
+      },
+      {
+        "name": "Alessandra Perilli",
+        "years": "b. 1988",
+        "field": "Shooter",
+        "why": "Won San Marino's first Olympic medal in 2021, making it the smallest country ever to medal.",
+        "wiki": "https://en.wikipedia.org/wiki/Alessandra_Perilli"
+      },
+      {
+        "name": "Marino Moretti",
+        "years": "1885–1979",
+        "field": "Writer",
+        "why": "A leading Italian-language poet and novelist closely associated with the republic.",
+        "wiki": "https://en.wikipedia.org/wiki/Marino_Moretti"
+      }
+    ],
+    "events": [
+      {
+        "year": "301",
+        "title": "Foundation",
+        "what": "By tradition, the world's oldest surviving republic began as a refuge from persecution.",
+        "wiki": "https://en.wikipedia.org/wiki/San_Marino"
+      },
+      {
+        "year": "1600",
+        "title": "The statutes",
+        "what": "San Marino's written constitution is the oldest still in force anywhere.",
+        "wiki": "https://en.wikipedia.org/wiki/Constitution_of_San_Marino"
+      },
+      {
+        "year": "1944",
+        "title": "Sheltering refugees",
+        "what": "The neutral republic took in more than 100,000 refugees — four times its own population.",
+        "wiki": "https://en.wikipedia.org/wiki/San_Marino"
+      },
+      {
+        "year": "1945–1957",
+        "title": "The first elected communist government",
+        "what": "San Marino elected a communist-led government, the first anywhere to come to power by ballot.",
+        "wiki": "https://en.wikipedia.org/wiki/San_Marino"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "👥",
+        "label": "Two captains",
+        "text": "Two Captains Regent serve as joint heads of state for six months, twice a year, since the 1200s."
+      },
+      {
+        "icon": "🏰",
+        "label": "Three towers",
+        "text": "The fortresses on Monte Titano are on the flag and on every hilltop view."
+      },
+      {
+        "icon": "🏹",
+        "label": "Crossbow",
+        "text": "The Palio delle Balestre is shot with medieval crossbows in the main square each September."
+      },
+      {
+        "icon": "🍰",
+        "label": "Food",
+        "text": "Torta tre monti, a layered wafer cake named for the three peaks."
+      },
+      {
+        "icon": "🇮🇹",
+        "label": "Italian, not Italy",
+        "text": "Culturally Romagnol and Italian-speaking, but a separate state for seventeen centuries."
+      }
+    ],
+    "talkAbout": [
+      "The two Captains Regent and how the system works.",
+      "Being the oldest republic in the world.",
+      "The crossbow palio and medieval festival."
+    ],
+    "avoid": "Don't call it part of Italy. Jokes about how small it is or how the football team never wins wear thin."
+  },
+  {
+    "iso2": "VA",
+    "people": [
+      {
+        "name": "Michelangelo",
+        "years": "1475–1564",
+        "field": "Artist",
+        "why": "Painted the Sistine Chapel ceiling and designed St Peter's dome.",
+        "wiki": "https://en.wikipedia.org/wiki/Michelangelo"
+      },
+      {
+        "name": "Pope John Paul II",
+        "years": "1920–2005",
+        "field": "Pope",
+        "why": "Travelled more than any pope in history and helped bring down communism in Europe.",
+        "wiki": "https://en.wikipedia.org/wiki/Pope_John_Paul_II"
+      },
+      {
+        "name": "Gian Lorenzo Bernini",
+        "years": "1598–1680",
+        "field": "Sculptor and architect",
+        "why": "Designed St Peter's Square and much of the Baroque Rome around it.",
+        "wiki": "https://en.wikipedia.org/wiki/Gian_Lorenzo_Bernini"
+      },
+      {
+        "name": "Pope Francis",
+        "years": "1936–2025",
+        "field": "Pope",
+        "why": "The first pope from the Americas, who lived in a guesthouse rather than the papal apartments.",
+        "wiki": "https://en.wikipedia.org/wiki/Pope_Francis"
+      },
+      {
+        "name": "Raphael",
+        "years": "1483–1520",
+        "field": "Painter",
+        "why": "The Raphael Rooms in the Apostolic Palace are among the high points of the Renaissance.",
+        "wiki": "https://en.wikipedia.org/wiki/Raphael"
+      }
+    ],
+    "events": [
+      {
+        "year": "326",
+        "title": "The first St Peter's",
+        "what": "Constantine built a basilica over what was believed to be the apostle's grave.",
+        "wiki": "https://en.wikipedia.org/wiki/Old_St._Peter%27s_Basilica"
+      },
+      {
+        "year": "756–1870",
+        "title": "The Papal States",
+        "what": "The popes ruled much of central Italy as temporal monarchs for over a millennium.",
+        "wiki": "https://en.wikipedia.org/wiki/Papal_States"
+      },
+      {
+        "year": "1929",
+        "title": "The Lateran Treaty",
+        "what": "Created Vatican City as a sovereign state, ending sixty years of dispute with Italy.",
+        "wiki": "https://en.wikipedia.org/wiki/Lateran_Treaty"
+      },
+      {
+        "year": "1962–1965",
+        "title": "The Second Vatican Council",
+        "what": "Reformed Catholic worship and its relations with other faiths, including a repudiation of antisemitism.",
+        "wiki": "https://en.wikipedia.org/wiki/Second_Vatican_Council"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "📏",
+        "label": "Scale",
+        "text": "0.49 km² and around 800 residents — the smallest country in the world by both measures."
+      },
+      {
+        "icon": "🎨",
+        "label": "Museums",
+        "text": "The Vatican Museums hold one of the greatest art collections anywhere, and the Sistine Chapel."
+      },
+      {
+        "icon": "🛡️",
+        "label": "Swiss Guard",
+        "text": "Recruited from Switzerland since 1506, in a uniform often wrongly credited to Michelangelo."
+      },
+      {
+        "icon": "📚",
+        "label": "Archives",
+        "text": "The Vatican Apostolic Archive holds 85 km of shelving going back twelve centuries."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Latin",
+        "text": "The official language of the Holy See; Italian is what is actually spoken day to day."
+      }
+    ],
+    "talkAbout": [
+      "The art, and how long the ceiling took.",
+      "The Swiss Guard and how one joins.",
+      "The archives and the library."
+    ],
+    "avoid": "It is a sovereign state and the seat of a global church; treating it purely as a tourist attraction misses the point. Church controversies deserve care."
+  }
+]

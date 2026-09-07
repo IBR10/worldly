@@ -3,6 +3,7 @@
 // is enough. We keep the loaded data on a module-level singleton.
 
 import { parseSvgRegions } from './maps.js';
+import { CULTURE_DATASETS } from './culture.js';
 
 const DATA = {
   countries: [],
@@ -15,6 +16,7 @@ const DATA = {
   phrases: [],
   music: [],
   crises: [],
+  greetings: [],
   achievements: [],
   loaded: false,
 };
@@ -64,12 +66,23 @@ const LAZY_FILES = {
   phrases: '/data/phrases.json',
   music: '/data/music.json',
   crises: '/data/crises.json',
+  // Every world.svg region, with its main language and how to say hello there.
+  // ~100 KB, so it stays out of the startup path and loads with the map screens.
+  greetings: '/data/greetings.json',
 };
+
+// Culture deep dives are split one file per region — ~200 countries at full
+// depth is far too much to send someone reading about one of them. Derived from
+// CULTURE_DATASETS so the region -> key mapping lives in exactly one place.
+for (const [region, key] of Object.entries(CULTURE_DATASETS)) {
+  DATA[key] = [];
+  LAZY_FILES[key] = `/data/culture/${region.toLowerCase().replace(/\s+/g, '-')}.json`;
+}
 
 /**
  * Fetch one Explore dataset, populating DATA[name]. Repeat calls share the
  * in-flight promise, and a failure never poisons the cache for retries.
- * @param {'phrases'|'music'|'crises'} name
+ * @param {string} name a key of LAZY_FILES ('phrases', 'greetings', 'cultureAsia'…)
  */
 export function loadDataset(name) {
   if (LAZY[name]) return LAZY[name];

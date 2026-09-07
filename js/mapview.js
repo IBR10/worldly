@@ -14,9 +14,17 @@
  *   interactive  when false, the map is display-only (no picking) — reverse mode
  *   focusIds     optional list of region ids to zoom the initial view to (e.g.
  *                every country in one continent) instead of showing the whole map
- * @returns {{ el: HTMLElement, reveal: (clickedId, targetId) => void }}
+ *   regionClasses optional { svgId: cssClass } to paint many regions at once —
+ *                a choropleth rather than the single-region highlight above
+ *   repeat       when true, picking does not latch, so a browsing (non-quiz) map
+ *                can be clicked country after country
+ * @returns {{ el: HTMLElement, reveal: (clickedId, targetId) => void,
+ *             paint: (regionClasses) => void }}
  */
-export function createMapView({ svgText, onPick, highlightId = null, interactive = true, focusIds = null }) {
+export function createMapView({
+  svgText, onPick, highlightId = null, interactive = true, focusIds = null,
+  regionClasses = null, repeat = false,
+}) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
 
@@ -56,6 +64,16 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
       hl.classList.add('region-highlight');
       srAnnounce.textContent = `Highlighted on the map: ${hl.getAttribute('aria-label') || hl.id}`;
     }
+  }
+
+  // Choropleth painting. Colours live in css/styles.css as .lf-* / .lg-* rules
+  // and are applied as classes, not inline fills: the CSP has no unsafe-inline,
+  // and a class keeps both themes working with no JS colour table to sync.
+  // map-choropleth also restores hover feedback, which a painted fill would
+  // otherwise swallow (see the note beside those rules in the stylesheet).
+  if (regionClasses) {
+    svg.classList.add('map-choropleth');
+    paint(regionClasses);
   }
 
   // --- pan / zoom state -------------------------------------------------------
@@ -177,7 +195,7 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     // A genuine click: hit-test the region under the pointer.
     const path = regionAt(e.clientX, e.clientY);
     if (!path) return;
-    answered = true;
+    if (!repeat) answered = true;
     onPick(path.id, path.getAttribute('aria-label') || path.id);
   });
   holder.addEventListener('pointercancel', (e) => {
@@ -254,7 +272,7 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
       // document-level handler, which would see the now-updated phase and
       // immediately auto-advance past the feedback screen on this one keypress.
       e.stopPropagation();
-      answered = true;
+      if (!repeat) answered = true;
       onPick(path.id, path.getAttribute('aria-label') || path.id);
     });
   }
@@ -283,5 +301,18 @@ export function createMapView({ svgText, onPick, highlightId = null, interactive
     svg.classList.add('map-answered');
   }
 
-  return { el: wrap, reveal };
+  /**
+   * Apply a { svgId: cssClass } map to the regions, replacing any previous
+   * paint. Lets the Language Map switch between colouring by family and by
+   * language without re-injecting a 1.2 MB SVG.
+   */
+  function paint(classes) {
+    for (const el of svg.querySelectorAll('path[id]')) {
+      for (const c of [...el.classList]) if (c.startsWith('lf-') || c.startsWith('lg-')) el.classList.remove(c);
+      const cls = classes[el.id];
+      if (cls) el.classList.add(cls);
+    }
+  }
+
+  return { el: wrap, reveal, paint };
 }
