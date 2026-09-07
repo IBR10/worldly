@@ -9,6 +9,9 @@
   <url><loc>https://playworldly.pages.dev/flags</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/phrases</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/music</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playworldly.pages.dev/languages</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/hello</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/country</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/crises</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/leaderboard</loc><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://playworldly.pages.dev/about</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>

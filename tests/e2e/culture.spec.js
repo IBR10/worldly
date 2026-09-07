@@ -122,3 +122,80 @@ test.describe('say hello map', () => {
     await expect(page.locator('[data-country-page]')).toHaveCount(0);
   });
 });
+
+test.describe('country guides', () => {
+  test('the index lists every country and filters without rebuilding', async ({ page }) => {
+    await page.goto('/country');
+    await page.waitForSelector('.card[data-slug]');
+    const total = await page.locator('.card[data-slug]').count();
+    expect(total).toBeGreaterThan(190);
+
+    // Tag one card's DOM node. Filtering must toggle .hidden on the existing
+    // cards; regenerating the markup would discard and recreate ~200 <img>
+    // elements per keystroke, which is the regression the Flag Key screen
+    // exists to document. Checking node identity tests that directly —
+    // counting image requests does not, because lazy images legitimately load
+    // as the grid reflows.
+    await page.evaluate(() => {
+      document.querySelector('.card[data-slug="japan"]').dataset.probe = 'kept';
+    });
+
+    const started = Date.now();
+    await page.locator('#countrySearch').type('jap');
+    await page.waitForTimeout(50);
+    const elapsed = Date.now() - started;
+
+    expect(elapsed, 'typing three characters').toBeLessThan(1200);
+    await expect(page.locator('.card[data-slug="japan"][data-probe="kept"]')).toHaveCount(1);
+    expect(await page.locator('.card[data-slug]').count(), 'cards are hidden, not removed').toBe(total);
+    await expect(page.locator('.card[data-slug]:visible')).toHaveCount(1);
+  });
+
+  test('the region filter narrows the list', async ({ page }) => {
+    await page.goto('/country');
+    await page.waitForSelector('.card[data-slug]');
+    await page.selectOption('#countryRegion', 'South America');
+    await expect(page.locator('.card[data-slug]:visible')).toHaveCount(12);
+  });
+
+  test('a country page renders every section', async ({ page }) => {
+    await page.goto('/country/japan');
+    await page.waitForSelector('.person');
+
+    await expect(page.locator('h1.screen-title')).toHaveText('Japan');
+    await expect(page.locator('.hello-word')).toContainText('こんにちは');
+    await expect(page.locator('.person')).toHaveCount(5);
+    expect(await page.locator('.event').count()).toBeGreaterThanOrEqual(3);
+    expect(await page.locator('.culture-cell').count()).toBeGreaterThanOrEqual(4);
+    await expect(page.locator('.talk-list li')).toHaveCount(3);
+    await expect(page.locator('.callout-warn')).toBeVisible();
+    await expect(page.locator('.stat')).toHaveCount(4);
+  });
+
+  test('the greeting is spoken from the country page too', async ({ page }) => {
+    await page.goto('/country/france');
+    await page.waitForSelector('.hello-word');
+    await expect(page.locator('.hello-word [data-speak]')).toBeVisible();
+  });
+
+  test('the country name and flag are not repeated inside the greeting card', async ({ page }) => {
+    await page.goto('/country/portugal');
+    await page.waitForSelector('.hello-panel');
+    await expect(page.locator('.hello-panel h2')).toHaveCount(0);
+    await expect(page.locator('.hello-panel .hello-flag')).toHaveCount(0);
+  });
+
+  test('an unknown country slug redirects to the index', async ({ page }) => {
+    await page.goto('/country/atlantis');
+    await page.waitForSelector('.card[data-slug]');
+    expect(new URL(page.url()).pathname).toBe('/country');
+  });
+
+  test('a country with an accented name is reachable by its slug', async ({ page }) => {
+    // slugify() strips diacritics, so Côte d'Ivoire lives at /country/ivory-coast
+    // and São Tomé at /country/sao-tome-and-principe.
+    await page.goto('/country/sao-tome-and-principe');
+    await page.waitForSelector('.person');
+    await expect(page.locator('h1.screen-title')).toContainText('Tom');
+  });
+});

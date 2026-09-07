@@ -14,6 +14,9 @@ Living checklist of what's done and what's planned. Tick items as they ship.
 - [x] Explore: Phrases (16 countries + TTS), Music (17 countries, 46 songs with
       "why this song" notes), Crises & Events (two tiers: Underreported and
       Major Conflicts, dated summaries).
+- [x] **Greet anyone, anywhere**: `data/greetings.json` covers all 256 regions
+      on the world map — language, family, BCP-47 code, hello, pronunciation and
+      how the greeting is actually performed.
 - [x] Desktop launcher (`Worldly.bat`) + custom globe icon and Desktop shortcut.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,
       youtube-nocookie embeds, `_headers` (CSP/caching), 404/robots/manifest,
@@ -50,12 +53,19 @@ Flag → country already exists. Planned extensions:
       distance.
 - [x] Reusable `MapMode` component (`js/mapview.js`) — all maps share
       pan/zoom + native SVG hit-testing; pure logic lives in `js/maps.js`.
+- [x] **Language Map** (`/languages`) — the world coloured by language family or
+      by the ten most widespread languages, with a key that isolates one group.
+- [x] **Say Hello map** (`/hello`) — tap any country for its greeting in the
+      local script, with pronunciation and text-to-speech.
 
 ## Content & data
-- [x] Expand country set from 76 → 155 (biggest gaps in Africa/Oceania filled; full ~195 coverage remains a future stretch goal).
+- [x] Expand country set from 76 → 155 → **198** (every region drawn on the world map now has a dataset entry).
 - [ ] Famous-landmark mode (image → country).
 - [ ] Cultural-quiz mode (food / festivals / traditions) with its own data file.
-- [ ] Per-country deep-dive study pages (population, currency, neighbors…).
+- [x] **Per-country deep-dive study pages** — `/country/:slug` for all 198: how to
+      greet someone, five people the country is known for, the events that shaped
+      it, a short read on its culture, three things worth bringing up and one to
+      tread carefully around (`data/culture/*.json`).
 
 ## Platform / polish
 - [x] Web app manifest + service worker (offline app shell; flags cached after first sight).

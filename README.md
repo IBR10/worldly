@@ -28,7 +28,8 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 80 Node tests over the quiz, SRS, map and router logic
+npm test        # Node tests over the quiz, SRS, map, router and language logic,
+                # plus integrity checks on the real data/ files
 ```
 
 ## What's inside
@@ -58,6 +59,16 @@ and smallest-region hit-testing so nested regions (DC, Andorra…) are always
 selectable.
 
 ### Explore
+- **Language Map** — the whole world coloured by what it actually speaks, either
+  by language family or by the ten most widespread languages. Tap a key entry to
+  show only that group; tap a country to open its page.
+- **Say Hello** — tap any country and get its greeting in the local script, with
+  a pronunciation guide, a literal gloss, two more phrases and a note on how the
+  greeting is actually done (bow, handshake, cheek kisses).
+- **Country Guides** — a page for every one of the 198 countries: the greeting,
+  fast facts, five people it is known for, the events that shaped it, a short
+  read on its culture, three things worth bringing up and one to tread carefully
+  around.
 - **Phrases** — common phrases & local sayings for 16 countries, with
   text-to-speech pronunciation (Web Speech API, on-device).
 - **Music** — 17 countries, 46 songs that represent them, each with a short
@@ -94,11 +105,15 @@ Worldly/
 │   ├── srs.js              # pure Leitner spaced-repetition picker
 │   ├── quiz.js             # pure question-generation engine (all MCQ/typed modes)
 │   ├── maps.js             # pure question engine for click-the-map modes
+│   ├── languages.js        # pure bucketing/paint logic for the language choropleth
+│   ├── culture.js          # pure lookup helpers for the country guide pages
 │   ├── mapview.js          # the one DOM-coupled map widget (pan/zoom/hit-test)
 │   ├── achievements.js     # achievement evaluation against the profile
 │   ├── router.js           # tiny History-API router (screen-agnostic; matchPath is unit-tested)
 │   └── main.js             # controller: route table, rendering, quiz session
-├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
+├── data/*.json             # countries, states, flags, religions, phrases, music, crises,
+│                           # greetings (all 256 map regions)
+├── data/culture/*.json     # per-country deep dives, one file per region
 ├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, CC BY / CC BY-NC)
 ├── tests/*.test.mjs        # 80 Node tests for quiz.js, srs.js, maps.js, router.js
 ├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
