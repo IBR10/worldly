@@ -15,6 +15,10 @@ Living checklist of what's done and what's planned. Tick items as they ship.
       "why this song" notes), Crises & Events (two tiers: Underreported and
       Major Conflicts, dated summaries).
 - [x] Desktop launcher (`Worldly.bat`) + custom globe icon and Desktop shortcut.
+- [x] **Pokédex** (fun corner): all 1025 species bundled offline, browsable by
+      generation with search/type filters, seven practice modes, and a
+      registration/mastery track to *Pokémon Master* — stored separately so it
+      never affects Worldly XP, streaks or the leaderboard.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,
       youtube-nocookie embeds, `_headers` (CSP/caching), 404/robots/manifest,
       OG meta, flag-load fallback UI, challenge-timer & review-missed bugfixes.

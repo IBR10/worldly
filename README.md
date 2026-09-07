@@ -28,7 +28,7 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # 80 Node tests over the quiz, SRS, map and router logic
+npm test        # 107 Node tests over the quiz, SRS, map, router and Pokédex logic
 ```
 
 ## What's inside
@@ -69,6 +69,19 @@ selectable.
   state, and Mexican state by flag and name, with live search and a region
   filter on each tab.
 
+### Pokédex (a fun corner)
+All 1025 Pokémon, browsable by generation with search and a type filter, plus
+seven practice modes (*Who's That Pokémon?*, typing, dex entries, generation,
+evolution, base stats, type matchups). Identify one correctly and it is
+**registered** to your dex; get it right three times running and it is
+**mastered**. Dex completion drives a trainer rank that tops out at *Pokémon
+Master*, so it is earned only by actually knowing them.
+
+It is deliberately a **separate sandbox**: progress lives under its own
+`worldly_pokedex_v1` key and never touches your Worldly XP, level, streak,
+achievements or the leaderboard. Data and sprites are bundled locally, so it
+needs no network and adds nothing to the CSP.
+
 ### Learning design
 - **Every answer teaches something**: fun fact + *Learn More* links (Wikipedia,
   CIA World Factbook, culture guide) on every question.
@@ -96,11 +109,16 @@ Worldly/
 │   ├── maps.js             # pure question engine for click-the-map modes
 │   ├── mapview.js          # the one DOM-coupled map widget (pan/zoom/hit-test)
 │   ├── achievements.js     # achievement evaluation against the profile
+│   ├── pokedex.js          # pure question engine for the Pokédex practice modes
+│   ├── pokestate.js        # Pokédex progress (its own localStorage key)
+│   ├── pokedexview.js      # the Pokédex screens (helpers injected by main.js)
 │   ├── router.js           # tiny History-API router (screen-agnostic; matchPath is unit-tested)
 │   └── main.js             # controller: route table, rendering, quiz session
-├── data/*.json             # countries, states, flags, religions, phrases, music, crises…
+├── data/*.json             # countries, states, flags, religions, phrases, music, crises, pokemon…
 ├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, CC BY / CC BY-NC)
-├── tests/*.test.mjs        # 80 Node tests for quiz.js, srs.js, maps.js, router.js
+├── assets/pokemon/*.png    # 1025 bundled sprites (~1.1 MB) — generated, see scripts/
+├── scripts/build-pokedex.mjs  # dev-only: regenerates the dex data + sprites from PokéAPI
+├── tests/*.test.mjs        # 107 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js
 ├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
 ├── _headers                # Cloudflare Pages security + caching headers
 └── robots.txt, sitemap.xml, site.webmanifest, LICENSE
@@ -175,6 +193,10 @@ changes to extend.
   need one case in `progressFor()` (`js/achievements.js`).
 - **Add a quiz mode:** an entry in `MODES` + a `case` in `makeQuestion()`
   (`js/quiz.js`), then a card in `MODE_CARDS` (`js/main.js`).
+- **Regenerate the Pokédex:** `node scripts/build-pokedex.mjs` rewrites
+  `data/pokemon.json`, `data/pokemon_types.json` and `assets/pokemon/*.png`
+  from PokéAPI. It caches responses under `scripts/.cache/`, so a re-run is
+  cheap and an interrupted run resumes.
 
 ## Credits
 
@@ -183,7 +205,10 @@ Map SVGs adapted from [@svg-maps](https://github.com/VictorCazanave/svg-maps)
 [flagcdn.com](https://flagcdn.com) · historic flag images from
 [Wikimedia Commons](https://commons.wikimedia.org) · facts from Wikipedia & the
 CIA World Factbook · music via embedded YouTube (all rights remain with the
-artists and labels).
+artists and labels) · Pokédex data and sprites from [PokéAPI](https://pokeapi.co).
+Pokémon and Pokémon character names are trademarks of Nintendo, Creatures Inc.
+and GAME FREAK Inc.; the Pokédex is an unofficial, non-commercial fan feature,
+not affiliated with or endorsed by them.
 
 ## License
 
