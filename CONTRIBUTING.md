@@ -25,8 +25,8 @@ npm run preview           # wrangler pages dev .
 
 ```bash
 npm run lint              # eslint + stylelint
-npm run test:ci           # 72 engine tests, plain node --test
-npm run test:e2e          # 37 browser tests (needs: npx playwright install chromium)
+npm run test:ci           # engine + data-integrity tests, plain node --test
+npm run test:e2e          # browser tests (needs: npx playwright install chromium)
 ```
 
 All three run in CI on every pull request. Merging to `main` deploys.
@@ -61,6 +61,11 @@ please don't route around it.
 ## Adding things
 
 - **A country / state / song / crisis** — append to the relevant JSON file.
+  `tests/data-integrity.test.mjs` reads the real files and will tell you what a
+  new record is missing: a country needs a `world.svg` region, a unique slug and
+  a `greetings.json` entry; a culture entry needs exactly five people, three to
+  five events, four to six culture rows, three conversation starters and an
+  `avoid` note.
 - **An achievement** — add a definition to `data/achievements.json`; a new
   `type` needs one case in `progressFor()` (`js/achievements.js`).
 - **A quiz mode** — an entry in `MODES` plus a `case` in `makeQuestion()`

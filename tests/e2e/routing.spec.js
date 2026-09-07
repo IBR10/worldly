@@ -87,3 +87,21 @@ test('Forward re-enters a screen after Back', async ({ page }) => {
   await page.goForward();
   await expect(page).toHaveURL(/\/about$/);
 });
+
+test('the culture screens are deep-linkable and Back works', async ({ page }) => {
+  for (const path of ['/languages', '/hello', '/country', '/country/japan']) {
+    await page.goto(path);
+    await page.waitForSelector('h1');
+    expect(new URL(page.url()).pathname, `${path} kept its URL`).toBe(path);
+  }
+
+  // Index -> detail -> Back returns to the index, not to the home screen.
+  await page.goto('/country');
+  await page.waitForSelector('.card[data-slug="japan"]');
+  await page.locator('.card[data-slug="japan"]').click();
+  await page.waitForSelector('.person');
+  expect(new URL(page.url()).pathname).toBe('/country/japan');
+  await page.goBack();
+  await page.waitForSelector('.card[data-slug]');
+  expect(new URL(page.url()).pathname).toBe('/country');
+});

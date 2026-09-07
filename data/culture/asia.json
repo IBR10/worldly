@@ -1,0 +1,4788 @@
+[
+  {
+    "iso2": "JP",
+    "people": [
+      {
+        "name": "Katsushika Hokusai",
+        "native": "葛飾北斎",
+        "years": "1760–1849",
+        "field": "Artist",
+        "why": "The Great Wave off Kanagawa is probably the most reproduced image in Japanese art.",
+        "wiki": "https://en.wikipedia.org/wiki/Hokusai"
+      },
+      {
+        "name": "Murasaki Shikibu",
+        "native": "紫式部",
+        "years": "c. 973–1014",
+        "field": "Writer",
+        "why": "The Tale of Genji, written by a court lady a thousand years ago, is often called the first novel.",
+        "wiki": "https://en.wikipedia.org/wiki/Murasaki_Shikibu"
+      },
+      {
+        "name": "Akira Kurosawa",
+        "native": "黒澤明",
+        "years": "1910–1998",
+        "field": "Film director",
+        "why": "Seven Samurai and Rashomon reshaped world cinema; Hollywood remade both.",
+        "wiki": "https://en.wikipedia.org/wiki/Akira_Kurosawa"
+      },
+      {
+        "name": "Hayao Miyazaki",
+        "native": "宮崎駿",
+        "years": "b. 1941",
+        "field": "Animator",
+        "why": "Spirited Away won an Oscar and made Studio Ghibli a household name worldwide.",
+        "wiki": "https://en.wikipedia.org/wiki/Hayao_Miyazaki"
+      },
+      {
+        "name": "Shigeru Miyamoto",
+        "native": "宮本茂",
+        "years": "b. 1952",
+        "field": "Game designer",
+        "why": "Created Mario and Zelda, and much of the grammar of modern video games.",
+        "wiki": "https://en.wikipedia.org/wiki/Shigeru_Miyamoto"
+      }
+    ],
+    "events": [
+      {
+        "year": "1603–1868",
+        "title": "The Edo period",
+        "what": "Two and a half centuries of near-total isolation under the Tokugawa shoguns, and of extraordinary urban culture.",
+        "wiki": "https://en.wikipedia.org/wiki/Edo_period"
+      },
+      {
+        "year": "1868",
+        "title": "The Meiji Restoration",
+        "what": "Ended shogun rule and industrialised Japan at a speed nobody thought possible.",
+        "wiki": "https://en.wikipedia.org/wiki/Meiji_Restoration"
+      },
+      {
+        "year": "1945",
+        "title": "Hiroshima and Nagasaki",
+        "what": "The only use of nuclear weapons in war; Japan's postwar constitution renounces war outright.",
+        "wiki": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki"
+      },
+      {
+        "year": "1964",
+        "title": "The Tokyo Olympics",
+        "what": "The bullet train opened days before, and Japan announced its postwar recovery to the world.",
+        "wiki": "https://en.wikipedia.org/wiki/1964_Summer_Olympics"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🙇",
+        "label": "Greeting",
+        "text": "A bow rather than a handshake; the deeper and longer, the more respect."
+      },
+      {
+        "icon": "🍣",
+        "label": "Food",
+        "text": "Washoku is UNESCO-listed. Regional specialities matter enormously, and slurping noodles is correct."
+      },
+      {
+        "icon": "♨️",
+        "label": "Onsen",
+        "text": "Hot-spring bathing, naked, after washing thoroughly first — a national pastime with strict etiquette."
+      },
+      {
+        "icon": "🌸",
+        "label": "Seasons",
+        "text": "Cherry blossom, autumn leaves and seasonal food are followed closely and forecast on the news."
+      },
+      {
+        "icon": "🤫",
+        "label": "Manner",
+        "text": "Quiet in public, no eating while walking, and a strong preference for not imposing on others."
+      }
+    ],
+    "talkAbout": [
+      "Food, and the speciality of their home region.",
+      "Where they're from — Tokyo, Kansai and Kyushu are genuinely different.",
+      "Seasonal festivals and where to see blossom."
+    ],
+    "avoid": "The Second World War, especially Japan's actions in Asia, is difficult ground. Don't stick chopsticks upright in rice — it echoes a funeral rite."
+  },
+  {
+    "iso2": "CN",
+    "people": [
+      {
+        "name": "Confucius",
+        "native": "孔子",
+        "years": "551–479 BCE",
+        "field": "Philosopher",
+        "why": "His ethics of family, duty and learning shaped East Asian society for two millennia.",
+        "wiki": "https://en.wikipedia.org/wiki/Confucius"
+      },
+      {
+        "name": "Qin Shi Huang",
+        "native": "秦始皇",
+        "years": "259–210 BCE",
+        "field": "Emperor",
+        "why": "Unified China, standardised its script, and was buried with the Terracotta Army.",
+        "wiki": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+      },
+      {
+        "name": "Tu Youyou",
+        "native": "屠呦呦",
+        "years": "b. 1930",
+        "field": "Scientist",
+        "why": "Found artemisinin in a fourth-century text and saved millions of lives from malaria; Nobel, 2015.",
+        "wiki": "https://en.wikipedia.org/wiki/Tu_Youyou"
+      },
+      {
+        "name": "Li Bai",
+        "native": "李白",
+        "years": "701–762",
+        "field": "Poet",
+        "why": "The most beloved poet in the language; Chinese schoolchildren still memorise his verses.",
+        "wiki": "https://en.wikipedia.org/wiki/Li_Bai"
+      },
+      {
+        "name": "Zheng He",
+        "native": "郑和",
+        "years": "1371–1433",
+        "field": "Admiral",
+        "why": "Led treasure fleets to Africa decades before Columbus, in ships several times larger.",
+        "wiki": "https://en.wikipedia.org/wiki/Zheng_He"
+      }
+    ],
+    "events": [
+      {
+        "year": "221 BCE",
+        "title": "Unification",
+        "what": "The Qin state unified the warring kingdoms and created the idea of a single China.",
+        "wiki": "https://en.wikipedia.org/wiki/Qin_dynasty"
+      },
+      {
+        "year": "618–907",
+        "title": "The Tang dynasty",
+        "what": "A cosmopolitan golden age of poetry, trade along the Silk Road, and the world's largest city at Chang'an.",
+        "wiki": "https://en.wikipedia.org/wiki/Tang_dynasty"
+      },
+      {
+        "year": "1839–1949",
+        "title": "The century of humiliation",
+        "what": "The Opium Wars, foreign concessions and invasion — the framing through which much of modern policy is explained.",
+        "wiki": "https://en.wikipedia.org/wiki/Century_of_humiliation"
+      },
+      {
+        "year": "1978",
+        "title": "Reform and opening",
+        "what": "Deng Xiaoping's reforms began the fastest lift out of poverty in human history.",
+        "wiki": "https://en.wikipedia.org/wiki/Chinese_economic_reform"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Eight great regional cuisines; Sichuan and Cantonese cooking have almost nothing in common."
+      },
+      {
+        "icon": "🧧",
+        "label": "Spring Festival",
+        "text": "Lunar New Year produces the largest annual human migration on earth."
+      },
+      {
+        "icon": "👨‍👩‍👧",
+        "label": "Family",
+        "text": "Filial duty is a live obligation, and elders are addressed by relationship terms rather than names."
+      },
+      {
+        "icon": "🍵",
+        "label": "Tea",
+        "text": "Tea culture is regional and ritualised; pouring for others before yourself is basic courtesy."
+      },
+      {
+        "icon": "🎁",
+        "label": "Face",
+        "text": "Mianzi — social standing — shapes how disagreement, refusal and praise are expressed."
+      }
+    ],
+    "talkAbout": [
+      "Food, and their province's cuisine.",
+      "Family and where they go for Spring Festival.",
+      "History, poetry and calligraphy."
+    ],
+    "avoid": "Taiwan, Tibet, Xinjiang, Hong Kong and 1989 are politically dangerous subjects. Don't assume anyone's views from their nationality."
+  },
+  {
+    "iso2": "IN",
+    "people": [
+      {
+        "name": "Mahatma Gandhi",
+        "native": "मोहनदास करमचंद गांधी",
+        "years": "1869–1948",
+        "field": "Independence leader",
+        "why": "Made non-violent resistance a tool that ended an empire, and a model copied worldwide.",
+        "wiki": "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+      },
+      {
+        "name": "B. R. Ambedkar",
+        "years": "1891–1956",
+        "field": "Jurist",
+        "why": "Born Dalit, he wrote India's constitution and led the fight against caste discrimination.",
+        "wiki": "https://en.wikipedia.org/wiki/B._R._Ambedkar"
+      },
+      {
+        "name": "Rabindranath Tagore",
+        "native": "রবীন্দ্রনাথ ঠাকুর",
+        "years": "1861–1941",
+        "field": "Poet",
+        "why": "The first non-European to win the Nobel in Literature; wrote two national anthems.",
+        "wiki": "https://en.wikipedia.org/wiki/Rabindranath_Tagore"
+      },
+      {
+        "name": "Srinivasa Ramanujan",
+        "years": "1887–1920",
+        "field": "Mathematician",
+        "why": "Largely self-taught, he produced results mathematicians are still working through.",
+        "wiki": "https://en.wikipedia.org/wiki/Srinivasa_Ramanujan"
+      },
+      {
+        "name": "Lata Mangeshkar",
+        "native": "लता मंगेशकर",
+        "years": "1929–2022",
+        "field": "Singer",
+        "why": "Recorded for Hindi cinema across seven decades and was its defining voice.",
+        "wiki": "https://en.wikipedia.org/wiki/Lata_Mangeshkar"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 2600 BCE",
+        "title": "The Indus Valley civilisation",
+        "what": "Cities with drainage and standardised bricks, and a script still undeciphered.",
+        "wiki": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
+      },
+      {
+        "year": "1526–1857",
+        "title": "The Mughal Empire",
+        "what": "Built the Taj Mahal and much of north India's architecture, cuisine and court culture.",
+        "wiki": "https://en.wikipedia.org/wiki/Mughal_Empire"
+      },
+      {
+        "year": "1947",
+        "title": "Independence and Partition",
+        "what": "Freedom from Britain came with a division that displaced 15 million people and killed perhaps a million.",
+        "wiki": "https://en.wikipedia.org/wiki/Partition_of_India"
+      },
+      {
+        "year": "1991",
+        "title": "Liberalisation",
+        "what": "Economic reforms opened the economy and set off three decades of growth.",
+        "wiki": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🙏",
+        "label": "Namaste",
+        "text": "Palms together at chest height. A handshake is fine, but not always between men and women."
+      },
+      {
+        "icon": "🍛",
+        "label": "Food",
+        "text": "Utterly regional — a Kerala meal and a Punjabi one share almost nothing. Eating with the right hand is normal."
+      },
+      {
+        "icon": "🪔",
+        "label": "Festivals",
+        "text": "Diwali, Holi, Eid, Christmas, Pongal and many more; the calendar is crowded."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Languages",
+        "text": "22 scheduled languages and hundreds more; many Indians speak three or four."
+      },
+      {
+        "icon": "🎬",
+        "label": "Cinema",
+        "text": "The world's largest film industry by output, and 'Bollywood' is only the Hindi part of it."
+      }
+    ],
+    "talkAbout": [
+      "Which state they're from, and its food and language.",
+      "Cricket — it is closer to a national religion than a sport.",
+      "Films and music, regional as much as Hindi."
+    ],
+    "avoid": "Caste, religion and Pakistan are all sensitive. Don't treat India as culturally uniform, and don't assume everyone is vegetarian or Hindu."
+  },
+  {
+    "iso2": "ID",
+    "people": [
+      {
+        "name": "Sukarno",
+        "years": "1901–1970",
+        "field": "President",
+        "why": "Declared independence in 1945 and led the Non-Aligned Movement from Bandung.",
+        "wiki": "https://en.wikipedia.org/wiki/Sukarno"
+      },
+      {
+        "name": "Raden Ajeng Kartini",
+        "years": "1879–1904",
+        "field": "Educator",
+        "why": "Her letters on women's education became the founding text of Indonesian feminism; her birthday is a national day.",
+        "wiki": "https://en.wikipedia.org/wiki/Kartini"
+      },
+      {
+        "name": "Pramoedya Ananta Toer",
+        "years": "1925–2006",
+        "field": "Novelist",
+        "why": "Wrote the Buru Quartet in a prison camp, dictating it to fellow inmates before he had paper.",
+        "wiki": "https://en.wikipedia.org/wiki/Pramoedya_Ananta_Toer"
+      },
+      {
+        "name": "Susi Susanti",
+        "years": "b. 1971",
+        "field": "Badminton player",
+        "why": "Won Indonesia's first Olympic gold in 1992 and is a national icon.",
+        "wiki": "https://en.wikipedia.org/wiki/Susi_Susanti"
+      },
+      {
+        "name": "B. J. Habibie",
+        "years": "1936–2019",
+        "field": "Engineer and president",
+        "why": "An aeronautical engineer with patents to his name who oversaw the transition to democracy.",
+        "wiki": "https://en.wikipedia.org/wiki/B._J._Habibie"
+      }
+    ],
+    "events": [
+      {
+        "year": "800s",
+        "title": "Borobudur built",
+        "what": "The largest Buddhist temple in the world, on Java, later abandoned and reclaimed by jungle.",
+        "wiki": "https://en.wikipedia.org/wiki/Borobudur"
+      },
+      {
+        "year": "1602–1949",
+        "title": "Dutch rule",
+        "what": "Three and a half centuries of colonial control, first by a company and then by the state.",
+        "wiki": "https://en.wikipedia.org/wiki/Dutch_East_Indies"
+      },
+      {
+        "year": "1945",
+        "title": "Independence declared",
+        "what": "Sukarno proclaimed independence days after Japan's surrender; four years of war followed.",
+        "wiki": "https://en.wikipedia.org/wiki/Proclamation_of_Indonesian_Independence"
+      },
+      {
+        "year": "1998",
+        "title": "Reformasi",
+        "what": "Suharto resigned after 31 years, opening Indonesia's democratic era.",
+        "wiki": "https://en.wikipedia.org/wiki/Post-Suharto_era"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏝️",
+        "label": "Scale",
+        "text": "Over 17,000 islands, 1,300 ethnic groups and 700 languages, held together by one national language."
+      },
+      {
+        "icon": "🎭",
+        "label": "Wayang",
+        "text": "Shadow puppetry with all-night performances of the Ramayana, UNESCO-listed."
+      },
+      {
+        "icon": "🧵",
+        "label": "Batik",
+        "text": "Wax-resist cloth with regional patterns, worn to work and to weddings alike."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Nasi goreng, rendang, satay and sambal; heat and sweetness together."
+      },
+      {
+        "icon": "🤝",
+        "label": "Gotong royong",
+        "text": "Mutual help — communities still turn out together for building, cleaning and ceremonies."
+      }
+    ],
+    "talkAbout": [
+      "Which island they're from and what makes it different.",
+      "Food, especially rendang and regional sambals.",
+      "Badminton, which Indonesia dominates."
+    ],
+    "avoid": "Papua, the 1965–66 killings and religious politics are sensitive. Use the right hand for giving and eating."
+  },
+  {
+    "iso2": "KR",
+    "people": [
+      {
+        "name": "King Sejong",
+        "native": "세종대왕",
+        "years": "1397–1450",
+        "field": "Monarch",
+        "why": "Invented Hangul so ordinary people could read; it is now considered a model writing system.",
+        "wiki": "https://en.wikipedia.org/wiki/Sejong_the_Great"
+      },
+      {
+        "name": "Yi Sun-sin",
+        "native": "이순신",
+        "years": "1545–1598",
+        "field": "Admiral",
+        "why": "Won 23 naval battles without losing one, including against odds of 13 ships to over 100.",
+        "wiki": "https://en.wikipedia.org/wiki/Yi_Sun-sin"
+      },
+      {
+        "name": "Bong Joon-ho",
+        "native": "봉준호",
+        "years": "b. 1969",
+        "field": "Film director",
+        "why": "Parasite was the first non-English film to win Best Picture at the Oscars.",
+        "wiki": "https://en.wikipedia.org/wiki/Bong_Joon-ho"
+      },
+      {
+        "name": "Kim Dae-jung",
+        "years": "1924–2009",
+        "field": "President",
+        "why": "Survived a kidnapping and a death sentence as a dissident, then won the Nobel Peace Prize.",
+        "wiki": "https://en.wikipedia.org/wiki/Kim_Dae-jung"
+      },
+      {
+        "name": "Nam June Paik",
+        "native": "백남준",
+        "years": "1932–2006",
+        "field": "Artist",
+        "why": "Invented video art, and predicted the 'electronic superhighway' in 1974.",
+        "wiki": "https://en.wikipedia.org/wiki/Nam_June_Paik"
+      }
+    ],
+    "events": [
+      {
+        "year": "1443",
+        "title": "Hangul created",
+        "what": "A phonetic alphabet designed so that 'a wise man can learn it in a morning'.",
+        "wiki": "https://en.wikipedia.org/wiki/Hangul"
+      },
+      {
+        "year": "1910–1945",
+        "title": "Japanese occupation",
+        "what": "Thirty-five years of colonial rule that suppressed the language and remains a live diplomatic issue.",
+        "wiki": "https://en.wikipedia.org/wiki/Korea_under_Japanese_rule"
+      },
+      {
+        "year": "1950–1953",
+        "title": "The Korean War",
+        "what": "Millions died and the peninsula was divided by an armistice — not a peace treaty — still in force.",
+        "wiki": "https://en.wikipedia.org/wiki/Korean_War"
+      },
+      {
+        "year": "1987",
+        "title": "Democratisation",
+        "what": "Mass protests forced direct presidential elections and ended military rule.",
+        "wiki": "https://en.wikipedia.org/wiki/June_Struggle"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥬",
+        "label": "Food",
+        "text": "Kimchi at every meal, banchan side dishes covering the table, and barbecue cooked at it."
+      },
+      {
+        "icon": "🙇",
+        "label": "Hierarchy",
+        "text": "Age determines speech level and seating; people ask your age early for exactly this reason."
+      },
+      {
+        "icon": "🎤",
+        "label": "Hallyu",
+        "text": "K-pop, K-drama and Korean film went from national to global in about twenty years."
+      },
+      {
+        "icon": "🍶",
+        "label": "Drinking",
+        "text": "Pour for others, never yourself; turn away from elders when you drink."
+      },
+      {
+        "icon": "⛰️",
+        "label": "Hiking",
+        "text": "Mountains cover most of the country and hiking, fully kitted out, is a national habit."
+      }
+    ],
+    "talkAbout": [
+      "Food, and whether they make their own kimchi.",
+      "Film and music.",
+      "Hiking and which mountain they climbed last."
+    ],
+    "avoid": "Japan's colonial period, North Korea and regional politics are sensitive. Don't write someone's name in red ink."
+  },
+  {
+    "iso2": "TH",
+    "people": [
+      {
+        "name": "King Bhumibol Adulyadej",
+        "native": "ภูมิพลอดุลยเดช",
+        "years": "1927–2016",
+        "field": "Monarch",
+        "why": "Reigned 70 years, the longest of any Thai king, and is deeply revered.",
+        "wiki": "https://en.wikipedia.org/wiki/Bhumibol_Adulyadej"
+      },
+      {
+        "name": "King Chulalongkorn",
+        "native": "จุฬาลงกรณ์",
+        "years": "1853–1910",
+        "field": "Monarch",
+        "why": "Abolished slavery and modernised Siam, keeping it the only Southeast Asian state never colonised.",
+        "wiki": "https://en.wikipedia.org/wiki/Chulalongkorn"
+      },
+      {
+        "name": "Apichatpong Weerasethakul",
+        "years": "b. 1970",
+        "field": "Film director",
+        "why": "Won the Palme d'Or at Cannes in 2010 with Uncle Boonmee.",
+        "wiki": "https://en.wikipedia.org/wiki/Apichatpong_Weerasethakul"
+      },
+      {
+        "name": "Buakaw Banchamek",
+        "years": "b. 1982",
+        "field": "Muay Thai fighter",
+        "why": "The sport's best-known international name and a major reason for its global spread.",
+        "wiki": "https://en.wikipedia.org/wiki/Buakaw_Banchamek"
+      },
+      {
+        "name": "Sunthorn Phu",
+        "years": "1786–1855",
+        "field": "Poet",
+        "why": "Thailand's greatest poet, whose Phra Aphai Mani is a national epic.",
+        "wiki": "https://en.wikipedia.org/wiki/Sunthorn_Phu"
+      }
+    ],
+    "events": [
+      {
+        "year": "1238–1438",
+        "title": "Sukhothai",
+        "what": "The first Thai kingdom, and the source of the Thai script and much of its Buddhist art.",
+        "wiki": "https://en.wikipedia.org/wiki/Sukhothai_Kingdom"
+      },
+      {
+        "year": "1782",
+        "title": "Bangkok founded",
+        "what": "The Chakri dynasty moved the capital across the river and began the present line of kings.",
+        "wiki": "https://en.wikipedia.org/wiki/Rattanakosin_Kingdom"
+      },
+      {
+        "year": "1855–1910",
+        "title": "Staying independent",
+        "what": "Skilful diplomacy between Britain and France kept Siam the only uncolonised state in the region.",
+        "wiki": "https://en.wikipedia.org/wiki/Thailand"
+      },
+      {
+        "year": "1932",
+        "title": "The end of absolute monarchy",
+        "what": "A bloodless coup made Siam a constitutional monarchy.",
+        "wiki": "https://en.wikipedia.org/wiki/Siamese_revolution_of_1932"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🙏",
+        "label": "The wai",
+        "text": "Palms together with a slight bow; the height of the hands signals the level of respect."
+      },
+      {
+        "icon": "🌶️",
+        "label": "Food",
+        "text": "Sour, sweet, salty and hot in every dish, and street food is where the best of it is."
+      },
+      {
+        "icon": "💦",
+        "label": "Songkran",
+        "text": "Thai New Year in April, which has become a three-day nationwide water fight."
+      },
+      {
+        "icon": "😊",
+        "label": "Sanuk & jai yen",
+        "text": "Enjoyment in whatever you do, and a 'cool heart' — losing your temper loses you respect."
+      },
+      {
+        "icon": "🥊",
+        "label": "Muay Thai",
+        "text": "The national sport, with a pre-fight dance honouring teachers and family."
+      }
+    ],
+    "talkAbout": [
+      "Food, and which region's cooking they prefer.",
+      "Songkran and Loy Krathong.",
+      "Muay Thai and football."
+    ],
+    "avoid": "Criticism of the monarchy is a criminal offence with long sentences. Never touch someone's head or point your feet at people or Buddha images."
+  },
+  {
+    "iso2": "VN",
+    "people": [
+      {
+        "name": "Hồ Chí Minh",
+        "years": "1890–1969",
+        "field": "Revolutionary leader",
+        "why": "Led the independence struggle against France and then the United States.",
+        "wiki": "https://en.wikipedia.org/wiki/H%E1%BB%93_Ch%C3%AD_Minh"
+      },
+      {
+        "name": "Võ Nguyên Giáp",
+        "years": "1911–2013",
+        "field": "General",
+        "why": "A history teacher who defeated the French at Điện Biên Phủ and became one of the century's great commanders.",
+        "wiki": "https://en.wikipedia.org/wiki/V%C3%B5_Nguy%C3%AAn_Gi%C3%A1p"
+      },
+      {
+        "name": "The Trưng Sisters",
+        "native": "Hai Bà Trưng",
+        "years": "d. 43 CE",
+        "field": "Rebel leaders",
+        "why": "Drove out Chinese rule and ruled for three years; still the emblem of Vietnamese resistance.",
+        "wiki": "https://en.wikipedia.org/wiki/Tr%C6%B0ng_sisters"
+      },
+      {
+        "name": "Nguyễn Du",
+        "years": "1766–1820",
+        "field": "Poet",
+        "why": "The Tale of Kiều is the national poem, and many Vietnamese can quote long passages.",
+        "wiki": "https://en.wikipedia.org/wiki/Nguy%E1%BB%85n_Du"
+      },
+      {
+        "name": "Đặng Thái Sơn",
+        "years": "b. 1958",
+        "field": "Pianist",
+        "why": "The first Asian to win the International Chopin Competition, having practised on a piano in a jungle shelter.",
+        "wiki": "https://en.wikipedia.org/wiki/%C4%90%E1%BA%B7ng_Th%C3%A1i_S%C6%A1n"
+      }
+    ],
+    "events": [
+      {
+        "year": "111 BCE–938 CE",
+        "title": "A thousand years of Chinese rule",
+        "what": "A millennium of domination that Vietnam's identity was partly forged in resisting.",
+        "wiki": "https://en.wikipedia.org/wiki/Chinese_domination_of_Vietnam"
+      },
+      {
+        "year": "1954",
+        "title": "Điện Biên Phủ",
+        "what": "The defeat that ended French colonial rule in Indochina.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Dien_Bien_Phu"
+      },
+      {
+        "year": "1955–1975",
+        "title": "The war",
+        "what": "Known in Vietnam as the American War; it ended with the fall of Saigon and reunification.",
+        "wiki": "https://en.wikipedia.org/wiki/Vietnam_War"
+      },
+      {
+        "year": "1986",
+        "title": "Đổi Mới",
+        "what": "Market reforms turned one of the world's poorest countries into one of its fastest-growing.",
+        "wiki": "https://en.wikipedia.org/wiki/%C4%90%E1%BB%95i_M%E1%BB%9Bi"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍜",
+        "label": "Food",
+        "text": "Phở for breakfast, bánh mì from a cart, and herbs by the plateful with everything."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "The world's second-largest producer; drip-filtered over condensed milk, or with egg in Hanoi."
+      },
+      {
+        "icon": "🛵",
+        "label": "Motorbikes",
+        "text": "Tens of millions of them, and crossing the road means walking slowly and steadily."
+      },
+      {
+        "icon": "🎎",
+        "label": "Tết",
+        "text": "Lunar New Year, when the whole country goes home and everything closes for days."
+      },
+      {
+        "icon": "🙏",
+        "label": "Ancestors",
+        "text": "Almost every home has an ancestral altar, tended with incense and offerings."
+      }
+    ],
+    "talkAbout": [
+      "Food and coffee — endlessly rewarding subjects here.",
+      "Family and Tết traditions.",
+      "The north–south differences in accent and cooking."
+    ],
+    "avoid": "The war is remembered very differently here than in the West. Politics and the party are not open topics with strangers."
+  },
+  {
+    "iso2": "PH",
+    "people": [
+      {
+        "name": "José Rizal",
+        "years": "1861–1896",
+        "field": "Writer and reformer",
+        "why": "His novels exposed Spanish colonial abuses; his execution triggered the revolution.",
+        "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Rizal"
+      },
+      {
+        "name": "Corazon Aquino",
+        "years": "1933–2009",
+        "field": "President",
+        "why": "A housewife turned leader of the People Power revolution, and Asia's first woman president.",
+        "wiki": "https://en.wikipedia.org/wiki/Corazon_Aquino"
+      },
+      {
+        "name": "Manny Pacquiao",
+        "years": "b. 1978",
+        "field": "Boxer",
+        "why": "The only boxer to win world titles in eight weight divisions.",
+        "wiki": "https://en.wikipedia.org/wiki/Manny_Pacquiao"
+      },
+      {
+        "name": "Lapulapu",
+        "years": "c. 1491–1542",
+        "field": "Chieftain",
+        "why": "Defeated Magellan at Mactan — the first recorded resistance to European colonisation in the islands.",
+        "wiki": "https://en.wikipedia.org/wiki/Lapulapu"
+      },
+      {
+        "name": "Lea Salonga",
+        "years": "b. 1971",
+        "field": "Singer",
+        "why": "Won a Tony for Miss Saigon and was the singing voice of two Disney princesses.",
+        "wiki": "https://en.wikipedia.org/wiki/Lea_Salonga"
+      }
+    ],
+    "events": [
+      {
+        "year": "1521",
+        "title": "Magellan arrives",
+        "what": "The first European contact; Magellan was killed at Mactan weeks later.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Mactan"
+      },
+      {
+        "year": "1565–1898",
+        "title": "Spanish rule",
+        "what": "Three centuries that made the Philippines Asia's largest Catholic country.",
+        "wiki": "https://en.wikipedia.org/wiki/Spanish_East_Indies"
+      },
+      {
+        "year": "1898–1946",
+        "title": "American rule",
+        "what": "Followed a brutal war; it left English, a school system and close ties to the United States.",
+        "wiki": "https://en.wikipedia.org/wiki/Philippine%E2%80%93American_War"
+      },
+      {
+        "year": "1986",
+        "title": "People Power",
+        "what": "Millions filled EDSA and removed Marcos without a shot; the template for peaceful revolutions since.",
+        "wiki": "https://en.wikipedia.org/wiki/People_Power_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "👨‍👩‍👧‍👦",
+        "label": "Family",
+        "text": "Extended and central; adult children often live at home and support parents as a matter of course."
+      },
+      {
+        "icon": "🎤",
+        "label": "Karaoke",
+        "text": "A national pastime, in homes, streets and buses, and taken more seriously than you'd expect."
+      },
+      {
+        "icon": "🍖",
+        "label": "Food",
+        "text": "Adobo, sinigang and lechon; Spanish, Chinese, Malay and American influences on one plate."
+      },
+      {
+        "icon": "🎄",
+        "label": "Christmas",
+        "text": "Decorations go up in September; it is the longest Christmas season in the world."
+      },
+      {
+        "icon": "🙏",
+        "label": "Po and opo",
+        "text": "Respect particles added when speaking to elders, plus mano — touching an elder's hand to your forehead."
+      }
+    ],
+    "talkAbout": [
+      "Family, and which province they're from.",
+      "Food and karaoke.",
+      "Basketball, which is the national obsession."
+    ],
+    "avoid": "The Marcos era and the drug war are deeply divisive. Overseas workers' separation from families is a real hardship, not a light topic."
+  },
+  {
+    "iso2": "SA",
+    "people": [
+      {
+        "name": "Ibn Saud",
+        "years": "1875–1953",
+        "field": "King",
+        "why": "United the Arabian peninsula by conquest and founded the modern kingdom in 1932.",
+        "wiki": "https://en.wikipedia.org/wiki/Ibn_Saud"
+      },
+      {
+        "name": "Haifaa al-Mansour",
+        "years": "b. 1974",
+        "field": "Film director",
+        "why": "Directed Wadjda, the first feature film shot entirely in Saudi Arabia, and by a woman.",
+        "wiki": "https://en.wikipedia.org/wiki/Haifaa_al-Mansour"
+      },
+      {
+        "name": "Abdul Rahman Al-Sudais",
+        "years": "b. 1960",
+        "field": "Imam",
+        "why": "Imam of the Grand Mosque in Mecca, whose recitation is known to Muslims worldwide.",
+        "wiki": "https://en.wikipedia.org/wiki/Abdul_Rahman_Al-Sudais"
+      },
+      {
+        "name": "Ghazi Al-Gosaibi",
+        "years": "1940–2010",
+        "field": "Poet and minister",
+        "why": "A cabinet minister and ambassador who was also one of the Gulf's leading poets and novelists.",
+        "wiki": "https://en.wikipedia.org/wiki/Ghazi_A._Algosaibi"
+      },
+      {
+        "name": "Hayat Sindi",
+        "years": "b. 1967",
+        "field": "Scientist",
+        "why": "A biotechnologist who developed low-cost diagnostics for use without laboratories.",
+        "wiki": "https://en.wikipedia.org/wiki/Hayat_Sindi"
+      }
+    ],
+    "events": [
+      {
+        "year": "610–632",
+        "title": "The life of Muhammad",
+        "what": "Islam began in Mecca and Medina; both cities are in Saudi Arabia and are its defining fact.",
+        "wiki": "https://en.wikipedia.org/wiki/Muhammad"
+      },
+      {
+        "year": "1932",
+        "title": "The kingdom founded",
+        "what": "Ibn Saud proclaimed the Kingdom of Saudi Arabia after three decades of campaigning.",
+        "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
+      },
+      {
+        "year": "1938",
+        "title": "Oil at Dammam",
+        "what": "The discovery that transformed the kingdom and the world's energy economy.",
+        "wiki": "https://en.wikipedia.org/wiki/Petroleum_industry_in_Saudi_Arabia"
+      },
+      {
+        "year": "2016",
+        "title": "Vision 2030",
+        "what": "A programme to move the economy off oil, alongside rapid social change including women driving.",
+        "wiki": "https://en.wikipedia.org/wiki/Saudi_Vision_2030"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🕋",
+        "label": "The Hajj",
+        "text": "Millions travel to Mecca each year for the pilgrimage every able Muslim is expected to make once."
+      },
+      {
+        "icon": "☕",
+        "label": "Qahwa",
+        "text": "Cardamom-spiced coffee with dates, poured by the host; shake the cup gently to signal you've had enough."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Guests are honoured seriously, and refusing food or coffee outright is difficult."
+      },
+      {
+        "icon": "🐫",
+        "label": "Bedouin heritage",
+        "text": "Camel racing, falconry and poetry competitions remain genuinely popular."
+      },
+      {
+        "icon": "🍽️",
+        "label": "Kabsa",
+        "text": "Spiced rice with lamb or chicken, eaten from a shared platter with the right hand."
+      }
+    ],
+    "talkAbout": [
+      "Coffee and dates, and the etiquette around them.",
+      "Family and tribe, which people are proud of.",
+      "Football, which is followed intensely."
+    ],
+    "avoid": "Religion, the royal family and human rights are not safe conversational ground. Alcohol is illegal, and public behaviour rules are enforced."
+  },
+  {
+    "iso2": "TR",
+    "people": [
+      {
+        "name": "Mustafa Kemal Atatürk",
+        "years": "1881–1938",
+        "field": "Founder",
+        "why": "Built a secular republic from the Ottoman collapse and changed the alphabet, calendar and law.",
+        "wiki": "https://en.wikipedia.org/wiki/Mustafa_Kemal_Atat%C3%BCrk"
+      },
+      {
+        "name": "Mimar Sinan",
+        "years": "1489–1588",
+        "field": "Architect",
+        "why": "Built over 300 structures for the Ottoman sultans, including the Süleymaniye and Selimiye mosques.",
+        "wiki": "https://en.wikipedia.org/wiki/Mimar_Sinan"
+      },
+      {
+        "name": "Orhan Pamuk",
+        "years": "b. 1952",
+        "field": "Novelist",
+        "why": "Nobel laureate in 2006, whose novels are built around Istanbul's melancholy.",
+        "wiki": "https://en.wikipedia.org/wiki/Orhan_Pamuk"
+      },
+      {
+        "name": "Rumi",
+        "native": "Mevlânâ Celâleddîn-i Rûmî",
+        "years": "1207–1273",
+        "field": "Poet and mystic",
+        "why": "Lived and died in Konya; his poetry is among the best-selling in the world today.",
+        "wiki": "https://en.wikipedia.org/wiki/Rumi"
+      },
+      {
+        "name": "Aziz Sancar",
+        "years": "b. 1946",
+        "field": "Biochemist",
+        "why": "Won the Nobel Prize in Chemistry in 2015 for mapping how cells repair DNA.",
+        "wiki": "https://en.wikipedia.org/wiki/Aziz_Sancar"
+      }
+    ],
+    "events": [
+      {
+        "year": "1453",
+        "title": "The conquest of Constantinople",
+        "what": "Mehmed II took the city, ending the Byzantine Empire and making Istanbul an Ottoman capital.",
+        "wiki": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+      },
+      {
+        "year": "1520–1566",
+        "title": "Süleyman the Magnificent",
+        "what": "The Ottoman Empire at its height, stretching from Hungary to Yemen.",
+        "wiki": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent"
+      },
+      {
+        "year": "1923",
+        "title": "The Republic",
+        "what": "Atatürk founded a secular republic on the empire's ruins and moved the capital to Ankara.",
+        "wiki": "https://en.wikipedia.org/wiki/Republic_of_T%C3%BCrkiye"
+      },
+      {
+        "year": "2023",
+        "title": "The earthquakes",
+        "what": "Two enormous quakes in the south-east killed more than 50,000 people.",
+        "wiki": "https://en.wikipedia.org/wiki/2023_Turkey%E2%80%93Syria_earthquakes"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍵",
+        "label": "Çay",
+        "text": "Black tea in tulip glasses, offered constantly, everywhere, all day."
+      },
+      {
+        "icon": "🥘",
+        "label": "Food",
+        "text": "Kebabs are only the start: mezes, breakfast spreads and a vast pastry tradition."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Guests are fed and refused permission to pay; arguing over the bill is a genuine contest."
+      },
+      {
+        "icon": "🧿",
+        "label": "Nazar",
+        "text": "The blue evil-eye bead hangs in homes, cars and on babies' clothes."
+      },
+      {
+        "icon": "🛁",
+        "label": "Hamam",
+        "text": "The Turkish bath, with scrubbing and foam, is an old and still-living institution."
+      }
+    ],
+    "talkAbout": [
+      "Food and tea, both inexhaustible.",
+      "Football, and the Istanbul club rivalries.",
+      "History — Roman, Byzantine, Ottoman, all in the same streets."
+    ],
+    "avoid": "The Armenian genocide, the Kurdish question and Atatürk's legacy are all sensitive; insulting Atatürk is illegal."
+  },
+  {
+    "iso2": "IL",
+    "people": [
+      {
+        "name": "David Ben-Gurion",
+        "years": "1886–1973",
+        "field": "Prime minister",
+        "why": "Declared Israel's independence in 1948 and led it through its first years.",
+        "wiki": "https://en.wikipedia.org/wiki/David_Ben-Gurion"
+      },
+      {
+        "name": "Golda Meir",
+        "years": "1898–1978",
+        "field": "Prime minister",
+        "why": "One of the first women in the world to lead a country, in office during the 1973 war.",
+        "wiki": "https://en.wikipedia.org/wiki/Golda_Meir"
+      },
+      {
+        "name": "Amos Oz",
+        "years": "1939–2018",
+        "field": "Novelist",
+        "why": "One of Hebrew literature's major figures and a lifelong advocate of a two-state solution.",
+        "wiki": "https://en.wikipedia.org/wiki/Amos_Oz"
+      },
+      {
+        "name": "Daniel Kahneman",
+        "years": "1934–2024",
+        "field": "Psychologist",
+        "why": "Won the Nobel in economics for work on how people actually make decisions.",
+        "wiki": "https://en.wikipedia.org/wiki/Daniel_Kahneman"
+      },
+      {
+        "name": "Ada Yonath",
+        "years": "b. 1939",
+        "field": "Crystallographer",
+        "why": "Nobel laureate in chemistry for mapping the structure of the ribosome.",
+        "wiki": "https://en.wikipedia.org/wiki/Ada_Yonath"
+      }
+    ],
+    "events": [
+      {
+        "year": "1897–1948",
+        "title": "Zionism and the Mandate",
+        "what": "A movement for a Jewish state, British rule over Palestine, and rising conflict between communities.",
+        "wiki": "https://en.wikipedia.org/wiki/Mandatory_Palestine"
+      },
+      {
+        "year": "1948",
+        "title": "Independence and the Nakba",
+        "what": "Israel declared statehood; war followed, and around 700,000 Palestinians fled or were expelled.",
+        "wiki": "https://en.wikipedia.org/wiki/1948_Arab%E2%80%93Israeli_War"
+      },
+      {
+        "year": "1967",
+        "title": "The Six-Day War",
+        "what": "Israel captured the West Bank, Gaza, Sinai and the Golan, beginning an occupation that continues.",
+        "wiki": "https://en.wikipedia.org/wiki/Six-Day_War"
+      },
+      {
+        "year": "1993–1995",
+        "title": "The Oslo Accords",
+        "what": "Created the Palestinian Authority but left the hardest questions unresolved.",
+        "wiki": "https://en.wikipedia.org/wiki/Oslo_Accords"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🕯️",
+        "label": "Shabbat",
+        "text": "From Friday sunset to Saturday night much of the country stops; buses and shops close."
+      },
+      {
+        "icon": "🥙",
+        "label": "Food",
+        "text": "Hummus, falafel and shakshuka, drawn from Levantine, North African and Eastern European kitchens."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Directness",
+        "text": "Blunt to the point of abruptness, and not meant unkindly; dugri means talking straight."
+      },
+      {
+        "icon": "🎖️",
+        "label": "Conscription",
+        "text": "Military service is compulsory for most Jewish Israelis, and shapes social life and networks."
+      },
+      {
+        "icon": "🌍",
+        "label": "Diversity",
+        "text": "Jews from a hundred countries, plus a fifth of citizens who are Arab, with their own communities."
+      }
+    ],
+    "talkAbout": [
+      "Food, and the arguments about who invented what.",
+      "Hiking and the desert.",
+      "Technology and startups, a major part of the economy."
+    ],
+    "avoid": "The conflict with the Palestinians is the most contested subject in the world and divides Israelis sharply among themselves. Listen rather than assert."
+  },
+  {
+    "iso2": "PS",
+    "people": [
+      {
+        "name": "Mahmoud Darwish",
+        "years": "1941–2008",
+        "field": "Poet",
+        "why": "The Palestinian national poet, whose verses are recited across the Arab world.",
+        "wiki": "https://en.wikipedia.org/wiki/Mahmoud_Darwish"
+      },
+      {
+        "name": "Edward Said",
+        "years": "1935–2003",
+        "field": "Scholar",
+        "why": "Orientalism changed how the West studies the East, and how it sees itself doing so.",
+        "wiki": "https://en.wikipedia.org/wiki/Edward_Said"
+      },
+      {
+        "name": "Ghassan Kanafani",
+        "years": "1936–1972",
+        "field": "Writer",
+        "why": "Men in the Sun is the central novella of Palestinian exile; he was assassinated at 36.",
+        "wiki": "https://en.wikipedia.org/wiki/Ghassan_Kanafani"
+      },
+      {
+        "name": "Hanan Ashrawi",
+        "years": "b. 1946",
+        "field": "Politician and academic",
+        "why": "The first woman to hold a seat on the Palestinian National Council's executive, and a leading negotiator.",
+        "wiki": "https://en.wikipedia.org/wiki/Hanan_Ashrawi"
+      },
+      {
+        "name": "Elia Suleiman",
+        "years": "b. 1960",
+        "field": "Film director",
+        "why": "His deadpan, near-silent films have won prizes at Cannes and defined Palestinian cinema.",
+        "wiki": "https://en.wikipedia.org/wiki/Elia_Suleiman"
+      }
+    ],
+    "events": [
+      {
+        "year": "1948",
+        "title": "The Nakba",
+        "what": "Around 700,000 Palestinians fled or were expelled during the war; most were never allowed to return.",
+        "wiki": "https://en.wikipedia.org/wiki/Nakba"
+      },
+      {
+        "year": "1967",
+        "title": "The occupation begins",
+        "what": "Israel took the West Bank, East Jerusalem and Gaza; military occupation of the West Bank continues.",
+        "wiki": "https://en.wikipedia.org/wiki/Israeli-occupied_territories"
+      },
+      {
+        "year": "1987–1993",
+        "title": "The First Intifada",
+        "what": "A mass uprising of strikes, boycotts and stone-throwing that brought Palestinians to the negotiating table.",
+        "wiki": "https://en.wikipedia.org/wiki/First_Intifada"
+      },
+      {
+        "year": "2012",
+        "title": "UN observer state",
+        "what": "The General Assembly recognised Palestine as a non-member observer state.",
+        "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🪡",
+        "label": "Tatreez",
+        "text": "Cross-stitch embroidery whose patterns identify a woman's village; UNESCO-listed."
+      },
+      {
+        "icon": "🫒",
+        "label": "Olives",
+        "text": "The olive harvest each autumn is a family and community event, and the tree is a national symbol."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Musakhan, maqluba served upside down onto the plate, and knafeh from Nablus."
+      },
+      {
+        "icon": "🧣",
+        "label": "Keffiyeh",
+        "text": "The black-and-white checked scarf is worn as everyday clothing and as a symbol."
+      },
+      {
+        "icon": "💃",
+        "label": "Dabke",
+        "text": "A line dance with stamping footwork, performed at every wedding across the Levant."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially the regional differences between Nablus, Gaza and Jerusalem.",
+      "Poetry and literature — Darwish is known by heart.",
+      "Family and where their village or town is."
+    ],
+    "avoid": "Almost every family has been displaced or bereaved. Don't ask people to justify their existence or debate their history with them."
+  },
+  {
+    "iso2": "IR",
+    "people": [
+      {
+        "name": "Cyrus the Great",
+        "years": "c. 600–530 BCE",
+        "field": "Emperor",
+        "why": "Founded the Achaemenid empire; the Cyrus Cylinder is sometimes called an early charter of rights.",
+        "wiki": "https://en.wikipedia.org/wiki/Cyrus_the_Great"
+      },
+      {
+        "name": "Hafez",
+        "native": "حافظ",
+        "years": "c. 1325–1390",
+        "field": "Poet",
+        "why": "Most Iranian homes have a copy of his poems, opened at random for guidance.",
+        "wiki": "https://en.wikipedia.org/wiki/Hafez"
+      },
+      {
+        "name": "Ferdowsi",
+        "years": "c. 940–1020",
+        "field": "Poet",
+        "why": "The Shahnameh saved Persian as a literary language after the Arab conquest.",
+        "wiki": "https://en.wikipedia.org/wiki/Ferdowsi"
+      },
+      {
+        "name": "Maryam Mirzakhani",
+        "years": "1977–2017",
+        "field": "Mathematician",
+        "why": "The first woman to win the Fields Medal; she died at 40.",
+        "wiki": "https://en.wikipedia.org/wiki/Maryam_Mirzakhani"
+      },
+      {
+        "name": "Abbas Kiarostami",
+        "years": "1940–2016",
+        "field": "Film director",
+        "why": "Won the Palme d'Or and made Iranian cinema one of the most admired in the world.",
+        "wiki": "https://en.wikipedia.org/wiki/Abbas_Kiarostami"
+      }
+    ],
+    "events": [
+      {
+        "year": "550–330 BCE",
+        "title": "The Persian Empire",
+        "what": "The largest empire the world had yet seen, stretching from Egypt to the Indus.",
+        "wiki": "https://en.wikipedia.org/wiki/Achaemenid_Empire"
+      },
+      {
+        "year": "1501",
+        "title": "The Safavids",
+        "what": "Made Shia Islam the state religion, setting Iran apart from its Sunni neighbours ever since.",
+        "wiki": "https://en.wikipedia.org/wiki/Safavid_Iran"
+      },
+      {
+        "year": "1953",
+        "title": "The coup",
+        "what": "A British and American operation removed the elected prime minister Mosaddegh after he nationalised oil.",
+        "wiki": "https://en.wikipedia.org/wiki/1953_Iranian_coup_d%27%C3%A9tat"
+      },
+      {
+        "year": "1979",
+        "title": "The Revolution",
+        "what": "The Shah was overthrown and an Islamic Republic established, reshaping regional politics.",
+        "wiki": "https://en.wikipedia.org/wiki/Iranian_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌱",
+        "label": "Nowruz",
+        "text": "Persian New Year at the spring equinox, with a haft-sin table and thirteen days of visiting."
+      },
+      {
+        "icon": "🤲",
+        "label": "Taarof",
+        "text": "An elaborate politeness where offers are refused several times before being accepted. Expect it everywhere."
+      },
+      {
+        "icon": "📖",
+        "label": "Poetry",
+        "text": "Hafez and Rumi are quoted in ordinary conversation, and their tombs are visited like shrines."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Saffron rice with a crisp tahdig crust, fesenjan with walnut and pomegranate, and herbs at every meal."
+      },
+      {
+        "icon": "🧶",
+        "label": "Carpets",
+        "text": "Persian carpet weaving is a centuries-old art with regional designs and enormous prestige."
+      }
+    ],
+    "talkAbout": [
+      "Poetry, food and Nowruz.",
+      "Ancient history, Persepolis and the empires.",
+      "Family and hospitality."
+    ],
+    "avoid": "Domestic politics is risky for Iranians to discuss. Don't call them Arabs — Iranians are Persian and the distinction matters."
+  },
+  {
+    "iso2": "PK",
+    "people": [
+      {
+        "name": "Muhammad Ali Jinnah",
+        "years": "1876–1948",
+        "field": "Founder",
+        "why": "Led the movement that created Pakistan in 1947 and became its first governor-general.",
+        "wiki": "https://en.wikipedia.org/wiki/Muhammad_Ali_Jinnah"
+      },
+      {
+        "name": "Malala Yousafzai",
+        "years": "b. 1997",
+        "field": "Activist",
+        "why": "Shot for going to school, she became the youngest Nobel laureate in history.",
+        "wiki": "https://en.wikipedia.org/wiki/Malala_Yousafzai"
+      },
+      {
+        "name": "Abdus Salam",
+        "years": "1926–1996",
+        "field": "Physicist",
+        "why": "The first Muslim Nobel laureate in science, for unifying two of the fundamental forces.",
+        "wiki": "https://en.wikipedia.org/wiki/Abdus_Salam"
+      },
+      {
+        "name": "Nusrat Fateh Ali Khan",
+        "years": "1948–1997",
+        "field": "Singer",
+        "why": "Took qawwali devotional music to global audiences and is regarded as one of the great voices.",
+        "wiki": "https://en.wikipedia.org/wiki/Nusrat_Fateh_Ali_Khan"
+      },
+      {
+        "name": "Benazir Bhutto",
+        "years": "1953–2007",
+        "field": "Prime minister",
+        "why": "The first woman to lead a Muslim-majority country in modern times; assassinated while campaigning.",
+        "wiki": "https://en.wikipedia.org/wiki/Benazir_Bhutto"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 2500 BCE",
+        "title": "Mohenjo-daro",
+        "what": "One of the Indus Valley's great cities, with grid streets and drainage, in modern Sindh.",
+        "wiki": "https://en.wikipedia.org/wiki/Mohenjo-daro"
+      },
+      {
+        "year": "1947",
+        "title": "Partition",
+        "what": "Pakistan was created from British India; millions crossed the new border and enormous violence followed.",
+        "wiki": "https://en.wikipedia.org/wiki/Partition_of_India"
+      },
+      {
+        "year": "1971",
+        "title": "Bangladesh secedes",
+        "what": "East Pakistan became Bangladesh after a war of independence.",
+        "wiki": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War"
+      },
+      {
+        "year": "1998",
+        "title": "Nuclear tests",
+        "what": "Pakistan tested nuclear weapons weeks after India, making South Asia a nuclear region.",
+        "wiki": "https://en.wikipedia.org/wiki/Chagai-I"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏏",
+        "label": "Cricket",
+        "text": "The national obsession; the 1992 World Cup win is a shared cultural memory."
+      },
+      {
+        "icon": "🍛",
+        "label": "Food",
+        "text": "Biryani, nihari and chapli kebab, with regional cooking that changes every few hundred kilometres."
+      },
+      {
+        "icon": "🎶",
+        "label": "Qawwali",
+        "text": "Sufi devotional singing performed at shrines, building over half an hour to something ecstatic."
+      },
+      {
+        "icon": "🏔️",
+        "label": "Mountains",
+        "text": "Five of the world's fourteen 8,000-metre peaks, including K2."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Guests are treated as a blessing; expect to be fed far beyond what you can eat."
+      }
+    ],
+    "talkAbout": [
+      "Cricket, always.",
+      "Food, and which city does which dish best.",
+      "The northern mountains, which few outsiders know about."
+    ],
+    "avoid": "India, Kashmir, blasphemy law and the military's role in politics are all delicate. Don't reduce the country to security news."
+  },
+  {
+    "iso2": "BD",
+    "people": [
+      {
+        "name": "Sheikh Mujibur Rahman",
+        "years": "1920–1975",
+        "field": "Founding leader",
+        "why": "Led the independence movement and is called Bangabandhu, friend of Bengal.",
+        "wiki": "https://en.wikipedia.org/wiki/Sheikh_Mujibur_Rahman"
+      },
+      {
+        "name": "Muhammad Yunus",
+        "years": "b. 1940",
+        "field": "Economist",
+        "why": "Invented microcredit at Grameen Bank and won the Nobel Peace Prize in 2006.",
+        "wiki": "https://en.wikipedia.org/wiki/Muhammad_Yunus"
+      },
+      {
+        "name": "Kazi Nazrul Islam",
+        "years": "1899–1976",
+        "field": "Poet",
+        "why": "The rebel poet, whose work fed the independence movement; the national poet of Bangladesh.",
+        "wiki": "https://en.wikipedia.org/wiki/Kazi_Nazrul_Islam"
+      },
+      {
+        "name": "Fazlur Rahman Khan",
+        "years": "1929–1982",
+        "field": "Engineer",
+        "why": "Devised the structural systems that made modern supertall skyscrapers possible.",
+        "wiki": "https://en.wikipedia.org/wiki/Fazlur_Rahman_Khan"
+      },
+      {
+        "name": "Shakib Al Hasan",
+        "years": "b. 1987",
+        "field": "Cricketer",
+        "why": "For years the world's top-ranked all-rounder, and Bangladesh's biggest sporting name.",
+        "wiki": "https://en.wikipedia.org/wiki/Shakib_Al_Hasan"
+      }
+    ],
+    "events": [
+      {
+        "year": "1952",
+        "title": "The Language Movement",
+        "what": "Students were killed demanding Bengali be an official language; 21 February is now International Mother Language Day.",
+        "wiki": "https://en.wikipedia.org/wiki/Bengali_language_movement"
+      },
+      {
+        "year": "1971",
+        "title": "The Liberation War",
+        "what": "Nine months of war and mass atrocities ended with independence from Pakistan.",
+        "wiki": "https://en.wikipedia.org/wiki/Bangladesh_Liberation_War"
+      },
+      {
+        "year": "1970 & 1991",
+        "title": "The cyclones",
+        "what": "Two of the deadliest storms ever recorded; the disaster-preparedness system built since has saved enormous numbers of lives.",
+        "wiki": "https://en.wikipedia.org/wiki/1970_Bhola_cyclone"
+      },
+      {
+        "year": "2017",
+        "title": "The Rohingya influx",
+        "what": "Around a million refugees crossed from Myanmar into Cox's Bazar in weeks.",
+        "wiki": "https://en.wikipedia.org/wiki/Rohingya_genocide"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Bengali",
+        "text": "The language people died for in 1952, and the pride in it is real and constant."
+      },
+      {
+        "icon": "🐟",
+        "label": "Food",
+        "text": "Fish and rice above all, especially hilsa, and mustard oil in everything."
+      },
+      {
+        "icon": "🎨",
+        "label": "Pohela Boishakh",
+        "text": "Bengali New Year in April, with a UNESCO-listed procession of giant masks in Dhaka."
+      },
+      {
+        "icon": "🐅",
+        "label": "Sundarbans",
+        "text": "The world's largest mangrove forest, and home to the Bengal tiger."
+      },
+      {
+        "icon": "🚲",
+        "label": "Dhaka",
+        "text": "One of the most densely populated cities on earth, and a rickshaw capital."
+      }
+    ],
+    "talkAbout": [
+      "Language and poetry — Tagore and Nazrul are both loved here.",
+      "Cricket — it is closer to a national religion than a sport.",
+      "Food, especially fish and sweets."
+    ],
+    "avoid": "The 1971 war and its atrocities are painful; relations with Pakistan and domestic politics are polarised. Garment-factory disasters are a sore point."
+  },
+  {
+    "iso2": "AE",
+    "people": [
+      {
+        "name": "Sheikh Zayed",
+        "years": "1918–2004",
+        "field": "Founding president",
+        "why": "United seven emirates in 1971 and is regarded as the father of the country.",
+        "wiki": "https://en.wikipedia.org/wiki/Zayed_bin_Sultan_Al_Nahyan"
+      },
+      {
+        "name": "Sheikha Lubna Al Qasimi",
+        "years": "b. 1962",
+        "field": "Minister",
+        "why": "The first woman to hold a cabinet post in the UAE.",
+        "wiki": "https://en.wikipedia.org/wiki/Lubna_Al_Qasimi"
+      },
+      {
+        "name": "Hazza Al Mansouri",
+        "years": "b. 1983",
+        "field": "Astronaut",
+        "why": "The first Emirati in space, in 2019.",
+        "wiki": "https://en.wikipedia.org/wiki/Hazza_Al_Mansouri"
+      },
+      {
+        "name": "Sarah Al Amiri",
+        "years": "b. 1987",
+        "field": "Scientist and minister",
+        "why": "Led the science team behind the Hope probe that reached Mars orbit in 2021.",
+        "wiki": "https://en.wikipedia.org/wiki/Sarah_Al_Amiri"
+      },
+      {
+        "name": "Ahmed Rashid Thani",
+        "years": "1962–2012",
+        "field": "Poet",
+        "why": "A leading voice in modern Emirati poetry and theatre.",
+        "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+      }
+    ],
+    "events": [
+      {
+        "year": "1820–1971",
+        "title": "The Trucial States",
+        "what": "British-protected sheikhdoms along the coast, known for pearling before oil.",
+        "wiki": "https://en.wikipedia.org/wiki/Trucial_States"
+      },
+      {
+        "year": "1958",
+        "title": "Oil found in Abu Dhabi",
+        "what": "The discovery that funded the transformation of the entire coast.",
+        "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+      },
+      {
+        "year": "1971",
+        "title": "The federation",
+        "what": "Six emirates federated on independence, with Ras Al Khaimah joining the following year.",
+        "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+      },
+      {
+        "year": "2021",
+        "title": "Hope reaches Mars",
+        "what": "The UAE became the fifth space agency to reach Mars orbit, on its first attempt.",
+        "wiki": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌍",
+        "label": "Diversity",
+        "text": "Around 88% of residents are foreign nationals; you will meet people from everywhere."
+      },
+      {
+        "icon": "☕",
+        "label": "Majlis",
+        "text": "The sitting room where guests are received and matters discussed; UNESCO-listed as a social practice."
+      },
+      {
+        "icon": "🦅",
+        "label": "Falconry",
+        "text": "Falcons have their own passports and travel in aircraft cabins."
+      },
+      {
+        "icon": "🕌",
+        "label": "Ramadan",
+        "text": "Public eating and drinking are avoided in daylight; iftar after sunset is a large social occasion."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Machboos, harees and luqaimat dumplings in date syrup."
+      }
+    ],
+    "talkAbout": [
+      "Falconry and desert traditions.",
+      "The space programme, which Emiratis are genuinely proud of.",
+      "Food, and where to find good Emirati cooking, which is harder than it sounds."
+    ],
+    "avoid": "Criticism of the rulers, and questions about migrant labour conditions, are risky. Public displays of affection and drinking outside licensed venues are offences."
+  },
+  {
+    "iso2": "SG",
+    "people": [
+      {
+        "name": "Lee Kuan Yew",
+        "years": "1923–2015",
+        "field": "Prime minister",
+        "why": "Led Singapore from independence to first-world status in a single generation.",
+        "wiki": "https://en.wikipedia.org/wiki/Lee_Kuan_Yew"
+      },
+      {
+        "name": "Joseph Schooling",
+        "years": "b. 1995",
+        "field": "Swimmer",
+        "why": "Beat Michael Phelps to win Singapore's first Olympic gold in 2016.",
+        "wiki": "https://en.wikipedia.org/wiki/Joseph_Schooling"
+      },
+      {
+        "name": "Sonny Liew",
+        "years": "b. 1974",
+        "field": "Cartoonist",
+        "why": "The Art of Charlie Chan Hock Chye won three Eisner Awards and retells Singapore's history sideways.",
+        "wiki": "https://en.wikipedia.org/wiki/Sonny_Liew"
+      },
+      {
+        "name": "Yusof bin Ishak",
+        "years": "1910–1970",
+        "field": "President",
+        "why": "Singapore's first head of state, whose face is on every banknote.",
+        "wiki": "https://en.wikipedia.org/wiki/Yusof_bin_Ishak"
+      },
+      {
+        "name": "Violet Oon",
+        "years": "b. 1949",
+        "field": "Chef and writer",
+        "why": "Spent decades documenting and defending Peranakan cooking.",
+        "wiki": "https://en.wikipedia.org/wiki/Violet_Oon"
+      }
+    ],
+    "events": [
+      {
+        "year": "1819",
+        "title": "Raffles arrives",
+        "what": "The British East India Company founded a free port that grew into a trading hub.",
+        "wiki": "https://en.wikipedia.org/wiki/Founding_of_modern_Singapore"
+      },
+      {
+        "year": "1942",
+        "title": "The fall of Singapore",
+        "what": "Britain's largest surrender ever, followed by a brutal Japanese occupation.",
+        "wiki": "https://en.wikipedia.org/wiki/Fall_of_Singapore"
+      },
+      {
+        "year": "1965",
+        "title": "Independence",
+        "what": "Expelled from Malaysia, Singapore became a country against its own wishes.",
+        "wiki": "https://en.wikipedia.org/wiki/Singapore_in_Malaysia"
+      },
+      {
+        "year": "1965–2015",
+        "title": "The transformation",
+        "what": "From GDP per head near Mexico's to among the highest in the world in fifty years.",
+        "wiki": "https://en.wikipedia.org/wiki/Economy_of_Singapore"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍜",
+        "label": "Hawker centres",
+        "text": "Cheap, excellent food courts that are UNESCO-listed; a packet of tissues on a table reserves it."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Singlish",
+        "text": "English with Malay, Hokkien and Tamil grammar and particles — lah, leh, lor."
+      },
+      {
+        "icon": "🕌",
+        "label": "Four communities",
+        "text": "Chinese, Malay, Indian and 'Others', with four official languages and everyone's holidays public."
+      },
+      {
+        "icon": "🌳",
+        "label": "City in a garden",
+        "text": "Deliberate greening since the 1960s; the tree canopy is planned infrastructure."
+      },
+      {
+        "icon": "📏",
+        "label": "Rules",
+        "text": "Fines for many things, chewing gum sales restricted, and a general expectation of order."
+      }
+    ],
+    "talkAbout": [
+      "Food, and which hawker stall is best — this can go on for hours.",
+      "Singlish and its particles.",
+      "How much the city has changed in a generation."
+    ],
+    "avoid": "Race, religion and free speech are legally sensitive here. 'Fine city' jokes are extremely well worn."
+  },
+  {
+    "iso2": "MY",
+    "people": [
+      {
+        "name": "Tunku Abdul Rahman",
+        "years": "1903–1990",
+        "field": "Prime minister",
+        "why": "Led Malaya to independence in 1957 and is called the father of the nation.",
+        "wiki": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman"
+      },
+      {
+        "name": "Nicol David",
+        "years": "b. 1983",
+        "field": "Squash player",
+        "why": "World number one for a record 108 months and eight-time world champion.",
+        "wiki": "https://en.wikipedia.org/wiki/Nicol_David"
+      },
+      {
+        "name": "P. Ramlee",
+        "years": "1929–1973",
+        "field": "Actor and director",
+        "why": "Made 66 films and wrote hundreds of songs; the defining figure of Malay popular culture.",
+        "wiki": "https://en.wikipedia.org/wiki/P._Ramlee"
+      },
+      {
+        "name": "Yuna",
+        "years": "b. 1986",
+        "field": "Musician",
+        "why": "A singer-songwriter who broke internationally while keeping her Malaysian identity front and centre.",
+        "wiki": "https://en.wikipedia.org/wiki/Yuna_(singer)"
+      },
+      {
+        "name": "Lee Chong Wei",
+        "years": "b. 1982",
+        "field": "Badminton player",
+        "why": "World number one for 349 weeks and three-time Olympic silver medallist.",
+        "wiki": "https://en.wikipedia.org/wiki/Lee_Chong_Wei"
+      }
+    ],
+    "events": [
+      {
+        "year": "1400s",
+        "title": "The Malacca Sultanate",
+        "what": "A trading port that made Malay the lingua franca of maritime Southeast Asia.",
+        "wiki": "https://en.wikipedia.org/wiki/Malacca_Sultanate"
+      },
+      {
+        "year": "1957",
+        "title": "Merdeka",
+        "what": "Independence from Britain, declared at the Merdeka Stadium in Kuala Lumpur.",
+        "wiki": "https://en.wikipedia.org/wiki/Independence_of_Malaya"
+      },
+      {
+        "year": "1963",
+        "title": "Malaysia formed",
+        "what": "Malaya, Sabah, Sarawak and Singapore federated; Singapore left two years later.",
+        "wiki": "https://en.wikipedia.org/wiki/Malaysia"
+      },
+      {
+        "year": "2018",
+        "title": "The first change of government",
+        "what": "Sixty-one years of one coalition's rule ended at the ballot box.",
+        "wiki": "https://en.wikipedia.org/wiki/2018_Malaysian_general_election"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍛",
+        "label": "Food",
+        "text": "Nasi lemak, laksa and roti canai; mamak stalls stay open all night and everyone goes."
+      },
+      {
+        "icon": "🕌",
+        "label": "Plural society",
+        "text": "Malay, Chinese and Indian communities with an 'open house' custom at each other's festivals."
+      },
+      {
+        "icon": "🌴",
+        "label": "Two halves",
+        "text": "Peninsular Malaysia and Borneo, the latter with its own indigenous peoples and rainforest."
+      },
+      {
+        "icon": "🏸",
+        "label": "Badminton",
+        "text": "The national sport, and the source of most of Malaysia's Olympic medals."
+      },
+      {
+        "icon": "🤝",
+        "label": "Manner",
+        "text": "Indirect and polite; use the right hand, and take off shoes entering a home."
+      }
+    ],
+    "talkAbout": [
+      "Food, endlessly, and which state does it best.",
+      "Badminton, which Malaysia follows more closely than football.",
+      "Borneo, and the difference between the two halves of the country."
+    ],
+    "avoid": "Race-based policy, religion and royalty are legally and socially sensitive. Don't confuse Malaysia with Singapore or Indonesia."
+  },
+  {
+    "iso2": "NP",
+    "people": [
+      {
+        "name": "Tenzing Norgay",
+        "years": "1914–1986",
+        "field": "Mountaineer",
+        "why": "With Edmund Hillary, the first to reach the summit of Everest, in 1953.",
+        "wiki": "https://en.wikipedia.org/wiki/Tenzing_Norgay"
+      },
+      {
+        "name": "Siddhartha Gautama",
+        "years": "c. 563–483 BCE",
+        "field": "Founder of Buddhism",
+        "why": "Born at Lumbini in what is now Nepal, and the source of a religion followed by half a billion people.",
+        "wiki": "https://en.wikipedia.org/wiki/Gautama_Buddha"
+      },
+      {
+        "name": "Bhanubhakta Acharya",
+        "years": "1814–1868",
+        "field": "Poet",
+        "why": "Translated the Ramayana into Nepali and effectively created its literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Bhanubhakta_Acharya"
+      },
+      {
+        "name": "Pasang Lhamu Sherpa",
+        "years": "1961–1993",
+        "field": "Mountaineer",
+        "why": "The first Nepali woman to summit Everest; she died on the descent.",
+        "wiki": "https://en.wikipedia.org/wiki/Pasang_Lhamu_Sherpa"
+      },
+      {
+        "name": "Kami Rita Sherpa",
+        "years": "b. 1970",
+        "field": "Mountaineer",
+        "why": "Has summited Everest more times than anyone in history.",
+        "wiki": "https://en.wikipedia.org/wiki/Kami_Rita"
+      }
+    ],
+    "events": [
+      {
+        "year": "1768",
+        "title": "Unification",
+        "what": "Prithvi Narayan Shah conquered the Kathmandu Valley and built the Nepali state.",
+        "wiki": "https://en.wikipedia.org/wiki/Prithvi_Narayan_Shah"
+      },
+      {
+        "year": "1814–1816",
+        "title": "The Anglo-Nepalese War",
+        "what": "Nepal held Britain to a costly draw; the Gurkha regiments date from the peace that followed.",
+        "wiki": "https://en.wikipedia.org/wiki/Anglo-Nepalese_War"
+      },
+      {
+        "year": "1996–2006",
+        "title": "The civil war",
+        "what": "A Maoist insurgency killed around 17,000 people and ended with the abolition of the monarchy.",
+        "wiki": "https://en.wikipedia.org/wiki/Nepalese_Civil_War"
+      },
+      {
+        "year": "2015",
+        "title": "The earthquake",
+        "what": "Nearly 9,000 people died and much of the Kathmandu Valley's heritage was destroyed.",
+        "wiki": "https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏔️",
+        "label": "Himalaya",
+        "text": "Eight of the world's ten highest peaks, and a whole economy built around them."
+      },
+      {
+        "icon": "🙏",
+        "label": "Namaste",
+        "text": "Palms together, and a strong sense of respect for elders and teachers."
+      },
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Dal bhat twice a day, and momo dumplings that came down from Tibet."
+      },
+      {
+        "icon": "🎉",
+        "label": "Dashain & Tihar",
+        "text": "Two long autumn festivals; Tihar includes a day of honouring dogs."
+      },
+      {
+        "icon": "🛕",
+        "label": "Coexistence",
+        "text": "Hindu and Buddhist practice overlap here in ways that are hard to separate."
+      }
+    ],
+    "talkAbout": [
+      "Trekking, and which routes they'd recommend.",
+      "Festivals, especially Dashain and Tihar.",
+      "Food, and the difference between hill and Newari cooking."
+    ],
+    "avoid": "Sherpas are an ethnic group, not a job title. The civil war and caste discrimination are difficult subjects."
+  },
+  {
+    "iso2": "MN",
+    "people": [
+      {
+        "name": "Genghis Khan",
+        "native": "Чингис хаан",
+        "years": "c. 1162–1227",
+        "field": "Emperor",
+        "why": "Built the largest contiguous land empire in history; he is on the banknotes and the airport.",
+        "wiki": "https://en.wikipedia.org/wiki/Genghis_Khan"
+      },
+      {
+        "name": "Kublai Khan",
+        "years": "1215–1294",
+        "field": "Emperor",
+        "why": "Founded the Yuan dynasty in China and received Marco Polo at his court.",
+        "wiki": "https://en.wikipedia.org/wiki/Kublai_Khan"
+      },
+      {
+        "name": "Zanabazar",
+        "years": "1635–1723",
+        "field": "Sculptor and religious leader",
+        "why": "The first Bogd Gegeen, and the greatest artist in Mongolian Buddhist sculpture.",
+        "wiki": "https://en.wikipedia.org/wiki/Zanabazar"
+      },
+      {
+        "name": "Damdin Sükhbaatar",
+        "years": "1893–1923",
+        "field": "Revolutionary",
+        "why": "Led the 1921 revolution; the main square in Ulaanbaatar carries his name.",
+        "wiki": "https://en.wikipedia.org/wiki/Damdin_S%C3%BCkhbaatar"
+      },
+      {
+        "name": "Naidangiin Tüvshinbayar",
+        "years": "b. 1984",
+        "field": "Judoka",
+        "why": "Won Mongolia's first Olympic gold medal in 2008.",
+        "wiki": "https://en.wikipedia.org/wiki/Naidangiin_T%C3%BCvshinbayar"
+      }
+    ],
+    "events": [
+      {
+        "year": "1206",
+        "title": "The Mongol Empire",
+        "what": "Temüjin was proclaimed Genghis Khan and united the steppe tribes.",
+        "wiki": "https://en.wikipedia.org/wiki/Mongol_Empire"
+      },
+      {
+        "year": "1911",
+        "title": "Independence from the Qing",
+        "what": "Mongolia broke away as the Chinese empire collapsed.",
+        "wiki": "https://en.wikipedia.org/wiki/Mongolian_Revolution_of_1911"
+      },
+      {
+        "year": "1921–1990",
+        "title": "The socialist period",
+        "what": "The world's second communist state; monasteries were destroyed and monks killed in the 1930s.",
+        "wiki": "https://en.wikipedia.org/wiki/Mongolian_People%27s_Republic"
+      },
+      {
+        "year": "1990",
+        "title": "Democratic revolution",
+        "what": "Peaceful hunger strikes and protests brought multiparty democracy without bloodshed.",
+        "wiki": "https://en.wikipedia.org/wiki/1990_Mongolian_revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏇",
+        "label": "Naadam",
+        "text": "The summer festival of wrestling, horse racing and archery — the 'three manly games', UNESCO-listed."
+      },
+      {
+        "icon": "⛺",
+        "label": "Ger",
+        "text": "The round felt tent, still lived in by many families and pitched in city suburbs too."
+      },
+      {
+        "icon": "🥛",
+        "label": "Food",
+        "text": "Mutton, dairy and airag — fermented mare's milk, offered to guests and not easily refused."
+      },
+      {
+        "icon": "🎤",
+        "label": "Khöömei",
+        "text": "Throat singing, producing two notes at once; UNESCO-listed."
+      },
+      {
+        "icon": "🐎",
+        "label": "Horses",
+        "text": "Roughly as many horses as people, and children learn to ride before they can properly walk."
+      }
+    ],
+    "talkAbout": [
+      "Naadam and the three sports.",
+      "Horses and the countryside.",
+      "Throat singing and traditional music."
+    ],
+    "avoid": "Genghis Khan is a national hero here, whatever the view elsewhere. Mining's environmental effects and the socialist purges are difficult topics."
+  },
+  {
+    "iso2": "KZ",
+    "people": [
+      {
+        "name": "Abai Qunanbaiuly",
+        "years": "1845–1904",
+        "field": "Poet",
+        "why": "The founder of modern Kazakh literature and the country's central intellectual figure.",
+        "wiki": "https://en.wikipedia.org/wiki/Abai_Qunanbaiuly"
+      },
+      {
+        "name": "Al-Farabi",
+        "years": "c. 872–950",
+        "field": "Philosopher",
+        "why": "Called the Second Teacher after Aristotle; born in Farab, in present-day Kazakhstan.",
+        "wiki": "https://en.wikipedia.org/wiki/Al-Farabi"
+      },
+      {
+        "name": "Gennady Golovkin",
+        "years": "b. 1982",
+        "field": "Boxer",
+        "why": "A long-reigning middleweight world champion and Kazakhstan's biggest sporting name.",
+        "wiki": "https://en.wikipedia.org/wiki/Gennady_Golovkin"
+      },
+      {
+        "name": "Dinmukhamed Kunaev",
+        "years": "1912–1993",
+        "field": "Politician",
+        "why": "Led Soviet Kazakhstan for 25 years; his dismissal triggered the 1986 protests.",
+        "wiki": "https://en.wikipedia.org/wiki/Dinmukhamed_Kunaev"
+      },
+      {
+        "name": "Dimash Qudaibergen",
+        "years": "b. 1994",
+        "field": "Singer",
+        "why": "A six-octave range that made him a star across Asia and beyond.",
+        "wiki": "https://en.wikipedia.org/wiki/Dimash_Qudaibergen"
+      }
+    ],
+    "events": [
+      {
+        "year": "1465",
+        "title": "The Kazakh Khanate",
+        "what": "The founding state of the Kazakh people on the steppe.",
+        "wiki": "https://en.wikipedia.org/wiki/Kazakh_Khanate"
+      },
+      {
+        "year": "1930s",
+        "title": "The Asharshylyk famine",
+        "what": "Forced collectivisation killed roughly 1.5 million Kazakhs, close to 40% of the population.",
+        "wiki": "https://en.wikipedia.org/wiki/Kazakh_famine_of_1930%E2%80%931933"
+      },
+      {
+        "year": "1949–1989",
+        "title": "Semipalatinsk",
+        "what": "456 Soviet nuclear tests were carried out on Kazakh soil, with lasting health consequences.",
+        "wiki": "https://en.wikipedia.org/wiki/Semipalatinsk_Test_Site"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "The last Soviet republic to declare independence, and it gave up the world's fourth-largest nuclear arsenal.",
+        "wiki": "https://en.wikipedia.org/wiki/Kazakhstan"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🐎",
+        "label": "Steppe",
+        "text": "The ninth-largest country in the world, most of it open grassland."
+      },
+      {
+        "icon": "🥛",
+        "label": "Food",
+        "text": "Beshbarmak — 'five fingers' — eaten by hand from a shared platter, plus kumis and shubat."
+      },
+      {
+        "icon": "🚀",
+        "label": "Baikonur",
+        "text": "Every crewed Soviet and Russian space launch since 1961 has gone from Kazakh soil."
+      },
+      {
+        "icon": "🎵",
+        "label": "Dombra",
+        "text": "A two-stringed lute; kuy instrumental pieces are the heart of Kazakh music."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Guests are seated in the place of honour and served the best cut, traditionally the sheep's head."
+      }
+    ],
+    "talkAbout": [
+      "Horses, the steppe and traditional sports.",
+      "Baikonur and the space programme.",
+      "Food, and the etiquette of beshbarmak."
+    ],
+    "avoid": "Borat references are genuinely irritating. The famine, the nuclear tests and the 2022 unrest are serious subjects."
+  },
+  {
+    "iso2": "QA",
+    "people": [
+      {
+        "name": "Sheikh Hamad bin Khalifa Al Thani",
+        "years": "b. 1952",
+        "field": "Emir",
+        "why": "Founded Al Jazeera and turned Qatar into a diplomatic and media power.",
+        "wiki": "https://en.wikipedia.org/wiki/Hamad_bin_Khalifa_Al_Thani"
+      },
+      {
+        "name": "Sheikha Al Mayassa",
+        "years": "b. 1983",
+        "field": "Arts patron",
+        "why": "Widely described as the most powerful person in the art world through Qatar Museums.",
+        "wiki": "https://en.wikipedia.org/wiki/Al-Mayassa_bint_Hamad_bin_Khalifa_Al_Thani"
+      },
+      {
+        "name": "Mutaz Barshim",
+        "years": "b. 1991",
+        "field": "High jumper",
+        "why": "Olympic champion who famously agreed to share the 2020 gold rather than jump off for it.",
+        "wiki": "https://en.wikipedia.org/wiki/Mutaz_Essa_Barshim"
+      },
+      {
+        "name": "Sheikha Moza bint Nasser",
+        "years": "b. 1959",
+        "field": "Education campaigner",
+        "why": "Drove the creation of Education City, which hosts branches of several world universities.",
+        "wiki": "https://en.wikipedia.org/wiki/Moza_bint_Nasser"
+      },
+      {
+        "name": "Ali Bin Ali",
+        "years": "b. 1950s",
+        "field": "Businessman",
+        "why": "Built one of the Gulf's largest trading groups from a family retail business.",
+        "wiki": "https://en.wikipedia.org/wiki/Qatar"
+      }
+    ],
+    "events": [
+      {
+        "year": "1868",
+        "title": "British recognition",
+        "what": "An agreement with Britain recognised the Al Thani as rulers, separating Qatar from Bahrain.",
+        "wiki": "https://en.wikipedia.org/wiki/History_of_Qatar"
+      },
+      {
+        "year": "1971",
+        "title": "Independence",
+        "what": "Qatar declined to join the UAE and became independent on its own.",
+        "wiki": "https://en.wikipedia.org/wiki/Qatar"
+      },
+      {
+        "year": "1996",
+        "title": "Al Jazeera launches",
+        "what": "The channel changed Arab media and made Qatar diplomatically consequential.",
+        "wiki": "https://en.wikipedia.org/wiki/Al_Jazeera"
+      },
+      {
+        "year": "2022",
+        "title": "The World Cup",
+        "what": "The first World Cup in the Arab world, and the most scrutinised in the tournament's history.",
+        "wiki": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🦪",
+        "label": "Pearling",
+        "text": "Before gas, Qatar lived on pearl diving; the Museum of Islamic Art sits on the old harbour."
+      },
+      {
+        "icon": "☕",
+        "label": "Majlis",
+        "text": "Guests are received with coffee and dates; conversation before business is expected."
+      },
+      {
+        "icon": "🦅",
+        "label": "Falconry",
+        "text": "The Souq Waqif falcon market and hospital are working institutions, not attractions."
+      },
+      {
+        "icon": "🎨",
+        "label": "Museums",
+        "text": "Enormous investment in art; the National Museum was designed by Jean Nouvel as a desert rose."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Machboos and thareed; Ramadan iftar tents are a major social occasion."
+      }
+    ],
+    "talkAbout": [
+      "Falconry and pearling history.",
+      "Museums and architecture.",
+      "Football, which Qataris follow closely."
+    ],
+    "avoid": "Migrant worker conditions and the World Cup bid are contentious. Politics and the ruling family are not open subjects."
+  },
+  {
+    "iso2": "KH",
+    "people": [
+      {
+        "name": "Jayavarman VII",
+        "years": "c. 1122–1218",
+        "field": "King",
+        "why": "Built the Bayon and much of Angkor Thom, and hospitals across the empire.",
+        "wiki": "https://en.wikipedia.org/wiki/Jayavarman_VII"
+      },
+      {
+        "name": "Norodom Sihanouk",
+        "years": "1922–2012",
+        "field": "King",
+        "why": "Won independence from France and dominated Cambodian politics for six decades.",
+        "wiki": "https://en.wikipedia.org/wiki/Norodom_Sihanouk"
+      },
+      {
+        "name": "Dith Pran",
+        "years": "1942–2008",
+        "field": "Journalist",
+        "why": "Survived the Khmer Rouge and coined 'the killing fields'; The Killing Fields tells his story.",
+        "wiki": "https://en.wikipedia.org/wiki/Dith_Pran"
+      },
+      {
+        "name": "Sinn Sisamouth",
+        "years": "1932–1976",
+        "field": "Singer",
+        "why": "The king of Khmer music, whose 1960s recordings were nearly lost with him under the Khmer Rouge.",
+        "wiki": "https://en.wikipedia.org/wiki/Sinn_Sisamouth"
+      },
+      {
+        "name": "Rithy Panh",
+        "years": "b. 1964",
+        "field": "Film director",
+        "why": "His documentaries on the genocide he survived are among the most important films about it.",
+        "wiki": "https://en.wikipedia.org/wiki/Rithy_Panh"
+      }
+    ],
+    "events": [
+      {
+        "year": "802–1431",
+        "title": "The Khmer Empire",
+        "what": "Angkor was the largest pre-industrial city in the world, with a million people.",
+        "wiki": "https://en.wikipedia.org/wiki/Khmer_Empire"
+      },
+      {
+        "year": "1863–1953",
+        "title": "French protectorate",
+        "what": "Nine decades of colonial rule, ending with independence under Sihanouk.",
+        "wiki": "https://en.wikipedia.org/wiki/French_protectorate_of_Cambodia"
+      },
+      {
+        "year": "1975–1979",
+        "title": "The Khmer Rouge",
+        "what": "Around 1.7 to 2 million people — a quarter of the population — died from execution, starvation and overwork.",
+        "wiki": "https://en.wikipedia.org/wiki/Khmer_Rouge"
+      },
+      {
+        "year": "1992–1993",
+        "title": "The UN transition",
+        "what": "One of the UN's largest ever missions organised elections and a new constitution.",
+        "wiki": "https://en.wikipedia.org/wiki/United_Nations_Transitional_Authority_in_Cambodia"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🛕",
+        "label": "Angkor Wat",
+        "text": "The largest religious monument in the world, and the only building on any national flag."
+      },
+      {
+        "icon": "💃",
+        "label": "Apsara dance",
+        "text": "Classical Khmer dance was nearly wiped out with its teachers, and was rebuilt from survivors' memories."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Fish amok steamed in banana leaf, kuy teav noodle soup, and prahok fermented fish paste."
+      },
+      {
+        "icon": "🙏",
+        "label": "Sampeah",
+        "text": "Palms together with the height set by the other person's status, as in Thailand."
+      },
+      {
+        "icon": "💦",
+        "label": "Water Festival",
+        "text": "Bon Om Touk, with dragon-boat races on the Tonlé Sap when the river reverses direction."
+      }
+    ],
+    "talkAbout": [
+      "Angkor and the empire.",
+      "Food and the Mekong.",
+      "Classical dance and music."
+    ],
+    "avoid": "Nearly every Cambodian family lost people to the Khmer Rouge; let them raise it. Politics is not a safe topic."
+  },
+  {
+    "iso2": "LK",
+    "people": [
+      {
+        "name": "Sirimavo Bandaranaike",
+        "years": "1916–2000",
+        "field": "Prime minister",
+        "why": "The world's first woman prime minister, in 1960.",
+        "wiki": "https://en.wikipedia.org/wiki/Sirimavo_Bandaranaike"
+      },
+      {
+        "name": "Muttiah Muralitharan",
+        "years": "b. 1972",
+        "field": "Cricketer",
+        "why": "Took more Test wickets than anyone in history.",
+        "wiki": "https://en.wikipedia.org/wiki/Muttiah_Muralitharan"
+      },
+      {
+        "name": "Geoffrey Bawa",
+        "years": "1919–2003",
+        "field": "Architect",
+        "why": "Created tropical modernism, and his buildings shaped how the region builds.",
+        "wiki": "https://en.wikipedia.org/wiki/Geoffrey_Bawa"
+      },
+      {
+        "name": "Michael Ondaatje",
+        "years": "b. 1943",
+        "field": "Novelist",
+        "why": "Colombo-born, and author of The English Patient.",
+        "wiki": "https://en.wikipedia.org/wiki/Michael_Ondaatje"
+      },
+      {
+        "name": "Ananda Coomaraswamy",
+        "years": "1877–1947",
+        "field": "Art historian",
+        "why": "Introduced Indian and Sri Lankan art to the West on its own terms.",
+        "wiki": "https://en.wikipedia.org/wiki/Ananda_Coomaraswamy"
+      }
+    ],
+    "events": [
+      {
+        "year": "3rd c. BCE",
+        "title": "Buddhism arrives",
+        "what": "Mahinda brought Buddhism from India; the Sri Maha Bodhi tree at Anuradhapura dates from then.",
+        "wiki": "https://en.wikipedia.org/wiki/Buddhism_in_Sri_Lanka"
+      },
+      {
+        "year": "1948",
+        "title": "Independence",
+        "what": "Ceylon left British rule, becoming the republic of Sri Lanka in 1972.",
+        "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka"
+      },
+      {
+        "year": "1983–2009",
+        "title": "The civil war",
+        "what": "Twenty-six years of war between the state and the Tamil Tigers, with heavy civilian losses.",
+        "wiki": "https://en.wikipedia.org/wiki/Sri_Lankan_Civil_War"
+      },
+      {
+        "year": "2004",
+        "title": "The tsunami",
+        "what": "The Indian Ocean tsunami killed over 35,000 people along the coast.",
+        "wiki": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍛",
+        "label": "Food",
+        "text": "Rice and curry with a dozen small dishes, hoppers for breakfast, and startling amounts of chilli."
+      },
+      {
+        "icon": "🍃",
+        "label": "Tea",
+        "text": "Ceylon tea grown in the hill country is one of the world's great tea traditions."
+      },
+      {
+        "icon": "🐘",
+        "label": "Perahera",
+        "text": "The Kandy Esala Perahera parades the Buddha's tooth relic with decorated elephants and dancers."
+      },
+      {
+        "icon": "🏏",
+        "label": "Cricket",
+        "text": "The 1996 World Cup win is a shared national memory."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Two languages",
+        "text": "Sinhala and Tamil are both official, reflecting the island's two main communities."
+      }
+    ],
+    "talkAbout": [
+      "Food and tea.",
+      "Cricket, especially 1996.",
+      "Ancient sites — Sigiriya, Anuradhapura and Polonnaruwa."
+    ],
+    "avoid": "The civil war and Sinhala–Tamil relations are unresolved and painful. The 2022 economic collapse hit people hard."
+  },
+  {
+    "iso2": "AF",
+    "people": [
+      {
+        "name": "Rumi",
+        "years": "1207–1273",
+        "field": "Poet",
+        "why": "Born in Balkh, in northern Afghanistan; among the most-read poets in the world today.",
+        "wiki": "https://en.wikipedia.org/wiki/Rumi"
+      },
+      {
+        "name": "Ahmad Shah Durrani",
+        "years": "1722–1772",
+        "field": "King",
+        "why": "Founded the Durrani Empire in 1747 and is regarded as the father of modern Afghanistan.",
+        "wiki": "https://en.wikipedia.org/wiki/Ahmad_Shah_Durrani"
+      },
+      {
+        "name": "Khaled Hosseini",
+        "years": "b. 1965",
+        "field": "Novelist",
+        "why": "The Kite Runner introduced millions of readers to Afghanistan beyond the news.",
+        "wiki": "https://en.wikipedia.org/wiki/Khaled_Hosseini"
+      },
+      {
+        "name": "Nadia Anjuman",
+        "years": "1980–2005",
+        "field": "Poet",
+        "why": "Wrote in secret under the first Taliban government; killed at 25.",
+        "wiki": "https://en.wikipedia.org/wiki/Nadia_Anjuman"
+      },
+      {
+        "name": "Abdul Ghaffar Khan",
+        "years": "1890–1988",
+        "field": "Activist",
+        "why": "Built a non-violent Pashtun movement of 100,000 against British rule; called the Frontier Gandhi.",
+        "wiki": "https://en.wikipedia.org/wiki/Abdul_Ghaffar_Khan"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 500 BCE–1220",
+        "title": "Crossroads of empires",
+        "what": "Persian, Greek, Buddhist and Islamic civilisations all passed through; the Bamiyan Buddhas stood for 1,400 years.",
+        "wiki": "https://en.wikipedia.org/wiki/History_of_Afghanistan"
+      },
+      {
+        "year": "1839–1919",
+        "title": "The Anglo-Afghan wars",
+        "what": "Three wars with Britain, which failed to hold the country and recognised its independence in 1919.",
+        "wiki": "https://en.wikipedia.org/wiki/Anglo-Afghan_Wars"
+      },
+      {
+        "year": "1979–1989",
+        "title": "The Soviet war",
+        "what": "A decade of occupation and resistance that killed around a million people and displaced millions more.",
+        "wiki": "https://en.wikipedia.org/wiki/Soviet%E2%80%93Afghan_War"
+      },
+      {
+        "year": "2001–2021",
+        "title": "The American war and withdrawal",
+        "what": "Twenty years of intervention ended with the Taliban's return within days of the final withdrawal.",
+        "wiki": "https://en.wikipedia.org/wiki/War_in_Afghanistan_(2001%E2%80%932021)"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🫖",
+        "label": "Hospitality",
+        "text": "Pashtunwali makes protecting a guest an absolute obligation; tea is served immediately and repeatedly."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Kabuli pulao with lamb, raisins and carrot is the national dish, served from a communal platter."
+      },
+      {
+        "icon": "🧶",
+        "label": "Carpets",
+        "text": "Afghan rugs, especially Turkmen and Baluchi designs, are among the finest hand-knotted work anywhere."
+      },
+      {
+        "icon": "🪁",
+        "label": "Kite flying",
+        "text": "Gudiparan bazi, with glass-coated string, is a serious and skilful contest."
+      },
+      {
+        "icon": "🎶",
+        "label": "Poetry",
+        "text": "Persian and Pashto poetry are recited widely; Thursday nights at Herat's poetry gatherings are a tradition."
+      }
+    ],
+    "talkAbout": [
+      "Poetry, which is deeply embedded in everyday speech.",
+      "Food and hospitality customs.",
+      "Landscape — the Wakhan and Band-e-Amir lakes are extraordinary."
+    ],
+    "avoid": "Politics, the Taliban and women's rights are dangerous subjects for Afghans at home. Many abroad are refugees who have lost a great deal."
+  },
+  {
+    "iso2": "MM",
+    "people": [
+      {
+        "name": "Aung San",
+        "years": "1915–1947",
+        "field": "Independence leader",
+        "why": "Negotiated independence from Britain and was assassinated six months before it arrived.",
+        "wiki": "https://en.wikipedia.org/wiki/Aung_San"
+      },
+      {
+        "name": "Aung San Suu Kyi",
+        "years": "b. 1945",
+        "field": "Politician",
+        "why": "Nobel Peace Prize winner after fifteen years of house arrest; her later record is heavily contested.",
+        "wiki": "https://en.wikipedia.org/wiki/Aung_San_Suu_Kyi"
+      },
+      {
+        "name": "U Thant",
+        "years": "1909–1974",
+        "field": "UN Secretary-General",
+        "why": "The first non-European to lead the United Nations, through the Cuban missile crisis.",
+        "wiki": "https://en.wikipedia.org/wiki/U_Thant"
+      },
+      {
+        "name": "Anawrahta",
+        "years": "1014–1077",
+        "field": "King",
+        "why": "Founded the Pagan Empire and made Theravada Buddhism the country's faith.",
+        "wiki": "https://en.wikipedia.org/wiki/Anawrahta"
+      },
+      {
+        "name": "Ma Thida",
+        "years": "b. 1966",
+        "field": "Writer and doctor",
+        "why": "A surgeon jailed as a political prisoner who became a leading writer and free-speech advocate.",
+        "wiki": "https://en.wikipedia.org/wiki/Ma_Thida"
+      }
+    ],
+    "events": [
+      {
+        "year": "1044–1287",
+        "title": "The Pagan Empire",
+        "what": "Over 10,000 temples were built on the plain at Bagan; more than 2,000 still stand.",
+        "wiki": "https://en.wikipedia.org/wiki/Pagan_Kingdom"
+      },
+      {
+        "year": "1948",
+        "title": "Independence",
+        "what": "Burma left British rule, and civil conflict with ethnic armies began almost immediately.",
+        "wiki": "https://en.wikipedia.org/wiki/Myanmar"
+      },
+      {
+        "year": "1962–2011",
+        "title": "Military rule",
+        "what": "Half a century of army government, isolation and economic decline.",
+        "wiki": "https://en.wikipedia.org/wiki/State_Peace_and_Development_Council"
+      },
+      {
+        "year": "2021",
+        "title": "The coup",
+        "what": "The military seized power again after an election it lost, triggering a nationwide armed resistance.",
+        "wiki": "https://en.wikipedia.org/wiki/2021_Myanmar_coup_d%27%C3%A9tat"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🛕",
+        "label": "Buddhism",
+        "text": "Most young men spend time as novice monks, and the dawn alms round is part of daily life."
+      },
+      {
+        "icon": "🧴",
+        "label": "Thanaka",
+        "text": "A yellow paste from ground bark worn on the face as sunscreen and decoration."
+      },
+      {
+        "icon": "🍜",
+        "label": "Food",
+        "text": "Mohinga fish noodle soup for breakfast, and laphet — fermented tea leaf eaten as a salad."
+      },
+      {
+        "icon": "👖",
+        "label": "Longyi",
+        "text": "A wrapped sarong worn by men and women alike, in offices as well as villages."
+      },
+      {
+        "icon": "💦",
+        "label": "Thingyan",
+        "text": "New Year in April, marked with days of water throwing."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially mohinga and tea leaf salad.",
+      "Bagan and the temple plain.",
+      "Family and where their township is."
+    ],
+    "avoid": "The coup, the resistance and the Rohingya are all dangerous or painful subjects. Many people abroad are in exile."
+  },
+  {
+    "iso2": "LA",
+    "people": [
+      {
+        "name": "Fa Ngum",
+        "years": "1316–1393",
+        "field": "King",
+        "why": "Founded Lan Xang, the kingdom of a million elephants, and unified the Lao lands.",
+        "wiki": "https://en.wikipedia.org/wiki/Fa_Ngum"
+      },
+      {
+        "name": "Kaysone Phomvihane",
+        "years": "1920–1992",
+        "field": "Leader",
+        "why": "Led the Pathet Lao and then the country; his face is on the banknotes.",
+        "wiki": "https://en.wikipedia.org/wiki/Kaysone_Phomvihane"
+      },
+      {
+        "name": "Souvanna Phouma",
+        "years": "1901–1984",
+        "field": "Prime minister",
+        "why": "Repeatedly tried to hold a neutral course through the Indochina wars.",
+        "wiki": "https://en.wikipedia.org/wiki/Souvanna_Phouma"
+      },
+      {
+        "name": "Anousone Phommachanh",
+        "years": "b. 1988",
+        "field": "Musician",
+        "why": "Part of the generation making Lao pop and hip-hop for a domestic audience.",
+        "wiki": "https://en.wikipedia.org/wiki/Music_of_Laos"
+      },
+      {
+        "name": "Mattie Do",
+        "years": "b. 1981",
+        "field": "Film director",
+        "why": "Laos's first woman feature director, whose horror films have travelled the festival circuit.",
+        "wiki": "https://en.wikipedia.org/wiki/Mattie_Do"
+      }
+    ],
+    "events": [
+      {
+        "year": "1353",
+        "title": "Lan Xang founded",
+        "what": "The kingdom of a million elephants ruled much of the Mekong for three and a half centuries.",
+        "wiki": "https://en.wikipedia.org/wiki/Lan_Xang"
+      },
+      {
+        "year": "1893–1953",
+        "title": "French Indochina",
+        "what": "Laos became a French protectorate, leaving colonial architecture in Luang Prabang and Vientiane.",
+        "wiki": "https://en.wikipedia.org/wiki/French_protectorate_of_Laos"
+      },
+      {
+        "year": "1964–1973",
+        "title": "The secret war",
+        "what": "The US dropped more than two million tonnes of bombs — the most heavily bombed country per head in history.",
+        "wiki": "https://en.wikipedia.org/wiki/Laotian_Civil_War"
+      },
+      {
+        "year": "1975",
+        "title": "The Lao PDR",
+        "what": "The Pathet Lao took power and abolished the monarchy.",
+        "wiki": "https://en.wikipedia.org/wiki/Laos"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍚",
+        "label": "Sticky rice",
+        "text": "Eaten by hand from a woven basket at nearly every meal; Lao people call themselves luk khao niaow, children of sticky rice."
+      },
+      {
+        "icon": "🙏",
+        "label": "Baci",
+        "text": "A ceremony tying white cotton threads around the wrists to call the soul back and wish well."
+      },
+      {
+        "icon": "🛕",
+        "label": "Luang Prabang",
+        "text": "A World Heritage town of temples where monks collect alms at sunrise."
+      },
+      {
+        "icon": "🥗",
+        "label": "Food",
+        "text": "Laap, the national dish, and green papaya salad hotter than its Thai cousin."
+      },
+      {
+        "icon": "😌",
+        "label": "Bo pen nyang",
+        "text": "'Never mind, no problem' — an outlook that shapes the pace of everything."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially laap and sticky rice.",
+      "The Mekong and river life.",
+      "Festivals like That Luang and the boat races."
+    ],
+    "avoid": "Unexploded bombs still kill people; it is a serious subject, not a curiosity. Politics is not openly discussed."
+  },
+  {
+    "iso2": "KP",
+    "people": [
+      {
+        "name": "Kim Il-sung",
+        "years": "1912–1994",
+        "field": "Founder",
+        "why": "Founded the state in 1948 and remains its 'Eternal President' more than thirty years after his death.",
+        "wiki": "https://en.wikipedia.org/wiki/Kim_Il_Sung"
+      },
+      {
+        "name": "Kim Jong-il",
+        "years": "1941–2011",
+        "field": "Leader",
+        "why": "Ruled through the famine of the 1990s and built the nuclear programme.",
+        "wiki": "https://en.wikipedia.org/wiki/Kim_Jong_Il"
+      },
+      {
+        "name": "Han Sorya",
+        "years": "1900–1976",
+        "field": "Writer",
+        "why": "The dominant figure in North Korean literature and its socialist realist style.",
+        "wiki": "https://en.wikipedia.org/wiki/Han_Sorya"
+      },
+      {
+        "name": "Jong Song-ok",
+        "years": "b. 1974",
+        "field": "Marathon runner",
+        "why": "Won the 1999 world championship marathon, one of the country's few global sporting titles.",
+        "wiki": "https://en.wikipedia.org/wiki/Jong_Song-ok"
+      },
+      {
+        "name": "Rim Kum-suk",
+        "years": "b. 1953",
+        "field": "Traffic officer",
+        "why": "Pyongyang's traffic officers became one of the few internationally recognised images of daily life there.",
+        "wiki": "https://en.wikipedia.org/wiki/Pyongyang"
+      }
+    ],
+    "events": [
+      {
+        "year": "1945",
+        "title": "Division",
+        "what": "Korea was split at the 38th parallel by the US and USSR, intended as a temporary arrangement.",
+        "wiki": "https://en.wikipedia.org/wiki/Division_of_Korea"
+      },
+      {
+        "year": "1950–1953",
+        "title": "The Korean War",
+        "what": "Millions died; the armistice has never been replaced by a peace treaty.",
+        "wiki": "https://en.wikipedia.org/wiki/Korean_War"
+      },
+      {
+        "year": "1994–1998",
+        "title": "The Arduous March",
+        "what": "A famine after the Soviet collapse killed several hundred thousand to a million people.",
+        "wiki": "https://en.wikipedia.org/wiki/North_Korean_famine"
+      },
+      {
+        "year": "2006",
+        "title": "The first nuclear test",
+        "what": "North Korea became a nuclear-armed state, reshaping regional security.",
+        "wiki": "https://en.wikipedia.org/wiki/North_Korean_nuclear_weapons_tests"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Korean, with a northern standard that has diverged from the South in vocabulary and loanwords."
+      },
+      {
+        "icon": "🍜",
+        "label": "Food",
+        "text": "Pyongyang naengmyeon — cold buckwheat noodles — is famous across the whole peninsula."
+      },
+      {
+        "icon": "🎭",
+        "label": "Mass Games",
+        "text": "Tens of thousands of performers producing images with flip-cards in stadium displays."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Juche",
+        "text": "The state ideology of self-reliance, taught in schools and built into public architecture."
+      },
+      {
+        "icon": "👨‍👩‍👧",
+        "label": "Divided families",
+        "text": "Millions of Koreans on both sides have relatives they have never been able to meet."
+      }
+    ],
+    "talkAbout": [
+      "Korean food and language, which are shared across the peninsula.",
+      "The history of the division, which predates either state.",
+      "Naengmyeon, which the North is genuinely famous for."
+    ],
+    "avoid": "North Koreans abroad are usually defectors with families still at risk. Never treat the country as a joke or a novelty destination."
+  },
+  {
+    "iso2": "YE",
+    "people": [
+      {
+        "name": "Tawakkol Karman",
+        "years": "b. 1979",
+        "field": "Activist",
+        "why": "Won the Nobel Peace Prize in 2011 for leading Yemen's protest movement; the first Arab woman to win it.",
+        "wiki": "https://en.wikipedia.org/wiki/Tawakkol_Karman"
+      },
+      {
+        "name": "The Queen of Sheba",
+        "native": "Bilqis",
+        "years": "c. 10th c. BCE",
+        "field": "Monarch",
+        "why": "Traditionally associated with the Sabaean kingdom in Yemen, and named in both Bible and Quran.",
+        "wiki": "https://en.wikipedia.org/wiki/Queen_of_Sheba"
+      },
+      {
+        "name": "Abdullah al-Baradouni",
+        "years": "1929–1999",
+        "field": "Poet",
+        "why": "Blind from childhood, he became Yemen's greatest modern poet and a critic of every government he lived under.",
+        "wiki": "https://en.wikipedia.org/wiki/Abdullah_al-Baradouni"
+      },
+      {
+        "name": "Nadia Al-Sakkaf",
+        "years": "b. 1977",
+        "field": "Journalist",
+        "why": "The first woman to edit a Yemeni newspaper, and later information minister.",
+        "wiki": "https://en.wikipedia.org/wiki/Nadia_Al-Sakkaf"
+      },
+      {
+        "name": "Ali Abdul Aziz Al-Ansi",
+        "years": "b. 1950s",
+        "field": "Painter",
+        "why": "One of Yemen's leading contemporary artists, documenting Sanaa's old city.",
+        "wiki": "https://en.wikipedia.org/wiki/Yemen"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 800 BCE",
+        "title": "The incense kingdoms",
+        "what": "Saba and its neighbours grew rich on frankincense and myrrh, and built the Marib dam.",
+        "wiki": "https://en.wikipedia.org/wiki/Sabaeans"
+      },
+      {
+        "year": "1962–1970",
+        "title": "The North Yemen civil war",
+        "what": "The imamate fell and a republic was declared after eight years of fighting.",
+        "wiki": "https://en.wikipedia.org/wiki/North_Yemen_Civil_War"
+      },
+      {
+        "year": "1990",
+        "title": "Unification",
+        "what": "North and South Yemen merged into one republic.",
+        "wiki": "https://en.wikipedia.org/wiki/Yemeni_unification"
+      },
+      {
+        "year": "2014–present",
+        "title": "The war",
+        "what": "Houthi forces took Sanaa; the war that followed created one of the world's worst humanitarian crises.",
+        "wiki": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏛️",
+        "label": "Sanaa",
+        "text": "The old city's tower houses, decorated with white gypsum, have been inhabited for over 2,500 years."
+      },
+      {
+        "icon": "🌿",
+        "label": "Qat",
+        "text": "Afternoon qat chews are the main social institution, where business and politics are discussed."
+      },
+      {
+        "icon": "🗡️",
+        "label": "Jambiya",
+        "text": "The curved dagger worn at the belt signals a man's tribe and standing."
+      },
+      {
+        "icon": "🍲",
+        "label": "Food",
+        "text": "Saltah with fenugreek froth, and mandi lamb slow-cooked in an underground oven."
+      },
+      {
+        "icon": "🌳",
+        "label": "Socotra",
+        "text": "An island of dragon's blood trees and species found nowhere else on earth."
+      }
+    ],
+    "talkAbout": [
+      "Sanaa's architecture and Socotra's wildlife.",
+      "Coffee — the word mocha comes from the Yemeni port of Mokha.",
+      "Poetry, which is a living popular art here."
+    ],
+    "avoid": "The war has devastated the country and divides Yemenis sharply. Almost everyone has lost someone or been displaced."
+  },
+  {
+    "iso2": "JO",
+    "people": [
+      {
+        "name": "King Hussein",
+        "years": "1935–1999",
+        "field": "King",
+        "why": "Reigned 46 years through wars and coup attempts, and made peace with Israel in 1994.",
+        "wiki": "https://en.wikipedia.org/wiki/Hussein_of_Jordan"
+      },
+      {
+        "name": "Queen Rania",
+        "years": "b. 1970",
+        "field": "Queen",
+        "why": "An internationally prominent advocate for education and for a more accurate picture of the Arab world.",
+        "wiki": "https://en.wikipedia.org/wiki/Rania_of_Jordan"
+      },
+      {
+        "name": "Mustafa Wahbi Al-Tal",
+        "native": "Arar",
+        "years": "1899–1949",
+        "field": "Poet",
+        "why": "Jordan's national poet, who wrote about ordinary people and was repeatedly jailed for it.",
+        "wiki": "https://en.wikipedia.org/wiki/Mustafa_Wahbi_Al-Tal"
+      },
+      {
+        "name": "Ahmad Abughaush",
+        "years": "b. 1996",
+        "field": "Taekwondo athlete",
+        "why": "Won Jordan's first Olympic medal — gold — in 2016.",
+        "wiki": "https://en.wikipedia.org/wiki/Ahmad_Abughaush"
+      },
+      {
+        "name": "Widad Kawar",
+        "years": "b. 1931",
+        "field": "Collector",
+        "why": "Preserved thousands of Palestinian and Jordanian traditional garments that would otherwise be lost.",
+        "wiki": "https://en.wikipedia.org/wiki/Widad_Kawar"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 300 BCE",
+        "title": "Petra",
+        "what": "The Nabataeans carved a trading capital into rose-red sandstone and controlled the incense routes.",
+        "wiki": "https://en.wikipedia.org/wiki/Petra"
+      },
+      {
+        "year": "1916–1918",
+        "title": "The Arab Revolt",
+        "what": "The revolt against Ottoman rule, in which T. E. Lawrence took part, ran through this territory.",
+        "wiki": "https://en.wikipedia.org/wiki/Arab_Revolt"
+      },
+      {
+        "year": "1946",
+        "title": "Independence",
+        "what": "Transjordan became independent from Britain under the Hashemite monarchy.",
+        "wiki": "https://en.wikipedia.org/wiki/Jordan"
+      },
+      {
+        "year": "1948–present",
+        "title": "Refuge",
+        "what": "Jordan has absorbed successive waves of Palestinian, Iraqi and Syrian refugees; a large share of the population.",
+        "wiki": "https://en.wikipedia.org/wiki/Refugees_of_Jordan"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍛",
+        "label": "Mansaf",
+        "text": "Lamb cooked in fermented dried yoghurt over rice, eaten from a shared tray with the right hand."
+      },
+      {
+        "icon": "🏜️",
+        "label": "Wadi Rum",
+        "text": "A desert of sandstone towers, home to Bedouin communities and a favourite of film crews."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "Bitter cardamom coffee poured from a dallah; the host keeps pouring until you shake the cup."
+      },
+      {
+        "icon": "🌊",
+        "label": "Dead Sea",
+        "text": "The lowest land on earth, and shrinking by about a metre a year."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Bedouin custom obliges a host to shelter and feed a guest for three days without asking their business."
+      }
+    ],
+    "talkAbout": [
+      "Petra and Wadi Rum.",
+      "Mansaf and coffee etiquette.",
+      "Family origins — many Jordanians have Palestinian roots."
+    ],
+    "avoid": "The monarchy, and the balance between Jordanians of Palestinian and East Bank origin, are sensitive. Regional politics is heavy going."
+  },
+  {
+    "iso2": "LB",
+    "people": [
+      {
+        "name": "Fairuz",
+        "years": "b. 1934",
+        "field": "Singer",
+        "why": "The voice of the Arab world's mornings for seventy years, and a symbol of Lebanon itself.",
+        "wiki": "https://en.wikipedia.org/wiki/Fairuz"
+      },
+      {
+        "name": "Khalil Gibran",
+        "years": "1883–1931",
+        "field": "Poet",
+        "why": "The Prophet is one of the best-selling books of all time, in over a hundred languages.",
+        "wiki": "https://en.wikipedia.org/wiki/Kahlil_Gibran"
+      },
+      {
+        "name": "May Ziadeh",
+        "years": "1886–1941",
+        "field": "Writer",
+        "why": "Ran a Cairo literary salon that shaped Arabic letters, and was a pioneering feminist voice.",
+        "wiki": "https://en.wikipedia.org/wiki/May_Ziadeh"
+      },
+      {
+        "name": "Nadine Labaki",
+        "years": "b. 1974",
+        "field": "Film director",
+        "why": "Capernaum was nominated for an Oscar and made her the Arab world's best-known woman director.",
+        "wiki": "https://en.wikipedia.org/wiki/Nadine_Labaki"
+      },
+      {
+        "name": "Amin Maalouf",
+        "years": "b. 1949",
+        "field": "Novelist",
+        "why": "Won the Prix Goncourt and sits in the Académie française.",
+        "wiki": "https://en.wikipedia.org/wiki/Amin_Maalouf"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 1500 BCE",
+        "title": "The Phoenicians",
+        "what": "Tyre, Sidon and Byblos traded across the Mediterranean and spread the alphabet.",
+        "wiki": "https://en.wikipedia.org/wiki/Phoenicia"
+      },
+      {
+        "year": "1943",
+        "title": "Independence",
+        "what": "Lebanon left French mandate rule with a confessional system dividing power between sects.",
+        "wiki": "https://en.wikipedia.org/wiki/Lebanon"
+      },
+      {
+        "year": "1975–1990",
+        "title": "The civil war",
+        "what": "Fifteen years of war killed around 150,000 people and scarred Beirut.",
+        "wiki": "https://en.wikipedia.org/wiki/Lebanese_Civil_War"
+      },
+      {
+        "year": "2020",
+        "title": "The port explosion",
+        "what": "One of the largest non-nuclear explosions ever recorded destroyed much of Beirut and killed over 200 people.",
+        "wiki": "https://en.wikipedia.org/wiki/2020_Beirut_explosion"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🥗",
+        "label": "Food",
+        "text": "Mezze in profusion, tabbouleh that is mostly parsley, and manakish for breakfast."
+      },
+      {
+        "icon": "🎶",
+        "label": "Music",
+        "text": "Fairuz in the morning is close to a national ritual; the pop and indie scenes are strong too."
+      },
+      {
+        "icon": "⛰️",
+        "label": "Landscape",
+        "text": "You can ski and swim in the same day; the cedar is on the flag."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Trilingual",
+        "text": "Arabic, French and English mixed within single sentences."
+      },
+      {
+        "icon": "🌍",
+        "label": "Diaspora",
+        "text": "Far more people of Lebanese descent live abroad than in Lebanon itself."
+      }
+    ],
+    "talkAbout": [
+      "Food, which Lebanese will argue about with real conviction.",
+      "Music, film and nightlife.",
+      "The diaspora and family abroad."
+    ],
+    "avoid": "Sectarian politics, Hezbollah, Syria and Israel are all charged. The 2020 explosion and the economic collapse are raw."
+  },
+  {
+    "iso2": "IQ",
+    "people": [
+      {
+        "name": "Hammurabi",
+        "years": "c. 1810–1750 BCE",
+        "field": "King",
+        "why": "His law code, carved on a stele, is among the earliest written legal systems.",
+        "wiki": "https://en.wikipedia.org/wiki/Hammurabi"
+      },
+      {
+        "name": "Zaha Hadid",
+        "years": "1950–2016",
+        "field": "Architect",
+        "why": "Baghdad-born, the first woman to win the Pritzker Prize, and one of the century's defining architects.",
+        "wiki": "https://en.wikipedia.org/wiki/Zaha_Hadid"
+      },
+      {
+        "name": "Al-Mutanabbi",
+        "years": "915–965",
+        "field": "Poet",
+        "why": "Often called the greatest poet in the Arabic language; Baghdad's book street is named for him.",
+        "wiki": "https://en.wikipedia.org/wiki/Al-Mutanabbi"
+      },
+      {
+        "name": "Nazik Al-Malaika",
+        "years": "1923–2007",
+        "field": "Poet",
+        "why": "Broke Arabic poetry out of its classical metres and started the free verse movement.",
+        "wiki": "https://en.wikipedia.org/wiki/Nazik_Al-Malaika"
+      },
+      {
+        "name": "Nadia Murad",
+        "years": "b. 1993",
+        "field": "Activist",
+        "why": "A Yazidi survivor of ISIS captivity who won the Nobel Peace Prize in 2018.",
+        "wiki": "https://en.wikipedia.org/wiki/Nadia_Murad"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 3200 BCE",
+        "title": "Writing invented",
+        "what": "Cuneiform appeared in Sumer, in southern Iraq — the beginning of recorded history.",
+        "wiki": "https://en.wikipedia.org/wiki/Cuneiform"
+      },
+      {
+        "year": "762–1258",
+        "title": "Baghdad and the House of Wisdom",
+        "what": "The Abbasid capital was the largest city on earth and the centre of world scholarship.",
+        "wiki": "https://en.wikipedia.org/wiki/House_of_Wisdom"
+      },
+      {
+        "year": "1979–2003",
+        "title": "Saddam Hussein",
+        "what": "Two wars, the gassing of Halabja, and a sanctions decade that hollowed out the country.",
+        "wiki": "https://en.wikipedia.org/wiki/Saddam_Hussein"
+      },
+      {
+        "year": "2003",
+        "title": "The invasion",
+        "what": "The US-led invasion removed Saddam and set off years of insurgency and sectarian war.",
+        "wiki": "https://en.wikipedia.org/wiki/2003_invasion_of_Iraq"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "📜",
+        "label": "Mesopotamia",
+        "text": "Writing, the wheel, the city and the law all have their earliest known forms here."
+      },
+      {
+        "icon": "🍛",
+        "label": "Food",
+        "text": "Masgouf grilled river fish, dolma, and biryani unlike the South Asian version."
+      },
+      {
+        "icon": "📚",
+        "label": "Books",
+        "text": "'Cairo writes, Beirut publishes, Baghdad reads' is an old saying Iraqis still quote."
+      },
+      {
+        "icon": "☕",
+        "label": "Chaikhana",
+        "text": "Tea houses where men sit for hours over small glasses and backgammon."
+      },
+      {
+        "icon": "🕌",
+        "label": "Diversity",
+        "text": "Shia and Sunni Arabs, Kurds, Turkmen, Assyrian Christians, Yazidis and Mandaeans."
+      }
+    ],
+    "talkAbout": [
+      "Ancient history — Iraqis are proud of Mesopotamia and tired of being defined by recent war.",
+      "Poetry and books.",
+      "Food, especially masgouf."
+    ],
+    "avoid": "Sectarian politics, the invasion and ISIS are all difficult. Nearly every family has been displaced or bereaved."
+  },
+  {
+    "iso2": "OM",
+    "people": [
+      {
+        "name": "Sultan Qaboos bin Said",
+        "years": "1940–2020",
+        "field": "Sultan",
+        "why": "Transformed Oman from near-medieval isolation into a modern state over fifty years.",
+        "wiki": "https://en.wikipedia.org/wiki/Qaboos_bin_Said_al_Said"
+      },
+      {
+        "name": "Ahmad bin Majid",
+        "years": "c. 1432–1500",
+        "field": "Navigator",
+        "why": "The Lion of the Sea, whose navigation manuals guided Indian Ocean sailing for centuries.",
+        "wiki": "https://en.wikipedia.org/wiki/Ahmad_ibn_Majid"
+      },
+      {
+        "name": "Yusuf Al Sirani",
+        "years": "b. 1990",
+        "field": "Footballer",
+        "why": "Part of the generation that made Oman a competitive side in Gulf football.",
+        "wiki": "https://en.wikipedia.org/wiki/Oman_national_football_team"
+      },
+      {
+        "name": "Jokha Alharthi",
+        "years": "b. 1978",
+        "field": "Novelist",
+        "why": "Celestial Bodies won the International Booker Prize in 2019, the first Arabic novel to do so.",
+        "wiki": "https://en.wikipedia.org/wiki/Jokha_Alharthi"
+      },
+      {
+        "name": "Said bin Sultan",
+        "years": "1791–1856",
+        "field": "Sultan",
+        "why": "Ruled an empire from Zanzibar, making Oman a major Indian Ocean power.",
+        "wiki": "https://en.wikipedia.org/wiki/Said_bin_Sultan"
+      }
+    ],
+    "events": [
+      {
+        "year": "1650",
+        "title": "Expelling the Portuguese",
+        "what": "Oman drove Portugal from Muscat and built a maritime empire reaching to East Africa.",
+        "wiki": "https://en.wikipedia.org/wiki/Omani_Empire"
+      },
+      {
+        "year": "1840",
+        "title": "The capital moves to Zanzibar",
+        "what": "For a time the sultan governed his empire from an island off Africa.",
+        "wiki": "https://en.wikipedia.org/wiki/Sultanate_of_Zanzibar"
+      },
+      {
+        "year": "1970",
+        "title": "The Renaissance",
+        "what": "Qaboos deposed his father and began building schools, hospitals and roads where there were almost none.",
+        "wiki": "https://en.wikipedia.org/wiki/Qaboos_bin_Said_al_Said"
+      },
+      {
+        "year": "2015",
+        "title": "Quiet diplomacy",
+        "what": "Oman's neutrality made it the venue for the secret talks behind the Iran nuclear deal.",
+        "wiki": "https://en.wikipedia.org/wiki/Foreign_relations_of_Oman"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌊",
+        "label": "Seafaring",
+        "text": "A long Indian Ocean tradition, with dhow building still practised at Sur."
+      },
+      {
+        "icon": "💧",
+        "label": "Aflaj",
+        "text": "Ancient gravity-fed irrigation channels, some 2,000 years old and still in use; UNESCO-listed."
+      },
+      {
+        "icon": "🧴",
+        "label": "Frankincense",
+        "text": "The Dhofar region produces some of the finest frankincense in the world."
+      },
+      {
+        "icon": "👳",
+        "label": "Dress",
+        "text": "The dishdasha with a tassel, and either a kuma cap or a wrapped massar turban."
+      },
+      {
+        "icon": "🕌",
+        "label": "Ibadi Islam",
+        "text": "Oman is the only Ibadi-majority country, a school known for tolerance and moderation."
+      }
+    ],
+    "talkAbout": [
+      "Frankincense and the Dhofar mountains.",
+      "Seafaring history and the Zanzibar connection.",
+      "Wadis, forts and the mountains — Oman has around 500 forts."
+    ],
+    "avoid": "Politics and the ruling family are not discussed. Don't lump Oman in with its Gulf neighbours; Omanis see themselves as distinct."
+  },
+  {
+    "iso2": "KW",
+    "people": [
+      {
+        "name": "Sheikh Mubarak Al-Sabah",
+        "years": "1837–1915",
+        "field": "Emir",
+        "why": "Called Mubarak the Great, he secured Kuwait's autonomy and founded the modern state.",
+        "wiki": "https://en.wikipedia.org/wiki/Mubarak_Al-Sabah"
+      },
+      {
+        "name": "Abdullah Al-Salem",
+        "years": "1895–1965",
+        "field": "Emir",
+        "why": "Oversaw independence and the 1962 constitution, one of the Gulf's most liberal.",
+        "wiki": "https://en.wikipedia.org/wiki/Abdullah_III_Al-Salim_Al-Sabah"
+      },
+      {
+        "name": "Suad Al-Sabah",
+        "years": "b. 1942",
+        "field": "Poet and economist",
+        "why": "A member of the ruling family who became a leading Arabic poet and publisher.",
+        "wiki": "https://en.wikipedia.org/wiki/Souad_Al-Sabah"
+      },
+      {
+        "name": "Laila Al-Othman",
+        "years": "b. 1945",
+        "field": "Novelist",
+        "why": "One of the Gulf's most prominent women writers, prosecuted for her work and undeterred.",
+        "wiki": "https://en.wikipedia.org/wiki/Laila_al-Othman"
+      },
+      {
+        "name": "Fahad Al-Ahmad Al-Sabah",
+        "years": "1945–1990",
+        "field": "Prince and footballer",
+        "why": "Played for the national team and was killed defending Dasman Palace during the invasion.",
+        "wiki": "https://en.wikipedia.org/wiki/Fahad_Al-Ahmed_Al-Jaber_Al-Sabah"
+      }
+    ],
+    "events": [
+      {
+        "year": "1613",
+        "title": "Kuwait founded",
+        "what": "A small settlement grew into a pearling and trading port at the head of the Gulf.",
+        "wiki": "https://en.wikipedia.org/wiki/History_of_Kuwait"
+      },
+      {
+        "year": "1938",
+        "title": "Oil at Burgan",
+        "what": "One of the largest oil fields ever found transformed the country within a generation.",
+        "wiki": "https://en.wikipedia.org/wiki/Burgan_Field"
+      },
+      {
+        "year": "1961",
+        "title": "Independence",
+        "what": "Kuwait ended its treaty with Britain and adopted a constitution and elected parliament.",
+        "wiki": "https://en.wikipedia.org/wiki/Kuwait"
+      },
+      {
+        "year": "1990–1991",
+        "title": "The Iraqi invasion",
+        "what": "Seven months of occupation, then liberation; retreating troops set 700 oil wells alight.",
+        "wiki": "https://en.wikipedia.org/wiki/Invasion_of_Kuwait"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏛️",
+        "label": "Diwaniya",
+        "text": "Evening gatherings in a dedicated room where men discuss politics and business; central to Kuwaiti public life."
+      },
+      {
+        "icon": "🗳️",
+        "label": "Parliament",
+        "text": "The Gulf's most assertive elected assembly, which regularly forces ministers out."
+      },
+      {
+        "icon": "🦪",
+        "label": "Pearling",
+        "text": "Before oil, Kuwait's dhows dived for pearls; the sea and boat-building remain central to identity."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Machboos with dried lime, and gers ogaily saffron cake."
+      },
+      {
+        "icon": "🌆",
+        "label": "Kuwait Towers",
+        "text": "The 1979 water towers are the city's emblem and were shelled in the occupation."
+      }
+    ],
+    "talkAbout": [
+      "The diwaniya tradition and how it works.",
+      "Pearling and maritime history.",
+      "Food and family gatherings."
+    ],
+    "avoid": "The 1990 invasion is a national trauma. Stateless bidoon residents and migrant labour conditions are politically sensitive."
+  },
+  {
+    "iso2": "UZ",
+    "people": [
+      {
+        "name": "Timur",
+        "native": "Amir Temur",
+        "years": "1336–1405",
+        "field": "Conqueror",
+        "why": "Built an empire from Samarkand and is the central figure of modern Uzbek national identity.",
+        "wiki": "https://en.wikipedia.org/wiki/Timur"
+      },
+      {
+        "name": "Ulugh Beg",
+        "years": "1394–1449",
+        "field": "Astronomer",
+        "why": "Timur's grandson built an observatory at Samarkand and produced star tables of remarkable accuracy.",
+        "wiki": "https://en.wikipedia.org/wiki/Ulugh_Beg"
+      },
+      {
+        "name": "Al-Khwarizmi",
+        "years": "c. 780–850",
+        "field": "Mathematician",
+        "why": "Gave us algebra and, through the Latin form of his name, the word algorithm.",
+        "wiki": "https://en.wikipedia.org/wiki/Al-Khwarizmi"
+      },
+      {
+        "name": "Avicenna",
+        "native": "Ibn Sina",
+        "years": "980–1037",
+        "field": "Physician and philosopher",
+        "why": "The Canon of Medicine was Europe's standard medical text for six centuries.",
+        "wiki": "https://en.wikipedia.org/wiki/Avicenna"
+      },
+      {
+        "name": "Alisher Navoi",
+        "years": "1441–1501",
+        "field": "Poet",
+        "why": "Proved Turkic could be a literary language equal to Persian, and founded Uzbek literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Ali-Shir_Nava%27i"
+      }
+    ],
+    "events": [
+      {
+        "year": "100 BCE–1400s",
+        "title": "The Silk Road",
+        "what": "Samarkand, Bukhara and Khiva were the great caravan cities between China and the Mediterranean.",
+        "wiki": "https://en.wikipedia.org/wiki/Silk_Road"
+      },
+      {
+        "year": "1370–1507",
+        "title": "The Timurid Renaissance",
+        "what": "Samarkand became a centre of astronomy, architecture and miniature painting.",
+        "wiki": "https://en.wikipedia.org/wiki/Timurid_Empire"
+      },
+      {
+        "year": "1960s–1990s",
+        "title": "The Aral Sea",
+        "what": "Soviet cotton irrigation drained what had been the world's fourth-largest lake.",
+        "wiki": "https://en.wikipedia.org/wiki/Aral_Sea"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Uzbekistan left the Soviet Union, and has opened up considerably since 2016.",
+        "wiki": "https://en.wikipedia.org/wiki/Uzbekistan"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍚",
+        "label": "Plov",
+        "text": "Rice with lamb, carrot and cumin, cooked in a kazan; there is a national plov centre in Tashkent."
+      },
+      {
+        "icon": "🕌",
+        "label": "Registan",
+        "text": "Three madrasas facing a square in Samarkand, covered in blue tilework."
+      },
+      {
+        "icon": "🍞",
+        "label": "Non",
+        "text": "Stamped round bread, never placed upside down, and torn rather than cut."
+      },
+      {
+        "icon": "🍵",
+        "label": "Chaikhana",
+        "text": "Tea houses where the first cup is poured back into the pot three times before serving."
+      },
+      {
+        "icon": "🧵",
+        "label": "Suzani",
+        "text": "Large embroidered hangings, traditionally made for a bride by her family."
+      }
+    ],
+    "talkAbout": [
+      "Plov, and how each region makes it differently.",
+      "The Silk Road cities.",
+      "Bread and tea customs."
+    ],
+    "avoid": "The Karimov years, forced cotton labour and the Aral Sea disaster are difficult. Politics remains sensitive."
+  },
+  {
+    "iso2": "TM",
+    "people": [
+      {
+        "name": "Magtymguly Pyragy",
+        "years": "1724–1807",
+        "field": "Poet",
+        "why": "The national poet, who helped forge a Turkmen literary language and identity.",
+        "wiki": "https://en.wikipedia.org/wiki/Magtymguly_Pyragy"
+      },
+      {
+        "name": "Saparmurat Niyazov",
+        "years": "1940–2006",
+        "field": "President",
+        "why": "Ruled as Türkmenbaşy with an extreme personality cult, renaming months after his family.",
+        "wiki": "https://en.wikipedia.org/wiki/Saparmurat_Niyazov"
+      },
+      {
+        "name": "Gurbansoltan Eje",
+        "years": "1915–1948",
+        "field": "National figure",
+        "why": "Niyazov's mother, killed in the Ashgabat earthquake and later made a national symbol.",
+        "wiki": "https://en.wikipedia.org/wiki/Saparmurat_Niyazov"
+      },
+      {
+        "name": "Berdi Kerbabaev",
+        "years": "1894–1974",
+        "field": "Writer",
+        "why": "The founder of modern Turkmen prose and a major figure in Soviet Central Asian literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Berdi_Kerbabayev"
+      },
+      {
+        "name": "Nury Halmammedov",
+        "years": "1938–1983",
+        "field": "Composer",
+        "why": "Blended Turkmen folk music with classical form; his film scores are still widely loved.",
+        "wiki": "https://en.wikipedia.org/wiki/Nury_Halmammedov"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 250 BCE",
+        "title": "Nisa and the Parthians",
+        "what": "The Parthian Empire's early capital, now a World Heritage site outside Ashgabat.",
+        "wiki": "https://en.wikipedia.org/wiki/Nisa,_Turkmenistan"
+      },
+      {
+        "year": "1881",
+        "title": "Geok Tepe",
+        "what": "Russian forces stormed the Turkmen fortress; the date is now a day of remembrance.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Geok_Tepe"
+      },
+      {
+        "year": "1948",
+        "title": "The Ashgabat earthquake",
+        "what": "Destroyed the city and killed a large share of its population.",
+        "wiki": "https://en.wikipedia.org/wiki/1948_Ashgabat_earthquake"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Turkmenistan left the USSR and declared permanent neutrality, recognised by the UN in 1995.",
+        "wiki": "https://en.wikipedia.org/wiki/Turkmenistan"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🧶",
+        "label": "Carpets",
+        "text": "Turkmen carpet designs are on the national flag, and each tribe has its own gul motif."
+      },
+      {
+        "icon": "🐎",
+        "label": "Akhal-Teke",
+        "text": "The 'golden horse', with a metallic sheen to its coat; one appears on the national emblem."
+      },
+      {
+        "icon": "🔥",
+        "label": "Darvaza",
+        "text": "The Door to Hell — a gas crater that has been burning since the 1970s."
+      },
+      {
+        "icon": "🍞",
+        "label": "Food",
+        "text": "Çorba soup, plov, and bread baked in a tamdyr clay oven."
+      },
+      {
+        "icon": "🏛️",
+        "label": "Ashgabat",
+        "text": "Rebuilt in white marble, and holder of a Guinness record for the most marble-clad buildings."
+      }
+    ],
+    "talkAbout": [
+      "Carpets and their tribal patterns.",
+      "Akhal-Teke horses.",
+      "The Silk Road cities of Merv and Konye-Urgench."
+    ],
+    "avoid": "Turkmenistan is one of the most closed countries in the world; politics is genuinely dangerous to discuss. Personality-cult jokes are unwise."
+  },
+  {
+    "iso2": "KG",
+    "people": [
+      {
+        "name": "Chinghiz Aitmatov",
+        "years": "1928–2008",
+        "field": "Novelist",
+        "why": "The most widely translated Central Asian writer, and a national figure in his lifetime.",
+        "wiki": "https://en.wikipedia.org/wiki/Chinghiz_Aitmatov"
+      },
+      {
+        "name": "Kurmanjan Datka",
+        "years": "1811–1907",
+        "field": "Ruler",
+        "why": "The 'Queen of the South', who negotiated with the Russian Empire to protect her people.",
+        "wiki": "https://en.wikipedia.org/wiki/Kurmanjan_Datka"
+      },
+      {
+        "name": "Roza Otunbayeva",
+        "years": "b. 1950",
+        "field": "President",
+        "why": "Central Asia's first woman head of state, who handed over power voluntarily.",
+        "wiki": "https://en.wikipedia.org/wiki/Roza_Otunbayeva"
+      },
+      {
+        "name": "Sayakbay Karalaev",
+        "years": "1894–1971",
+        "field": "Manaschi",
+        "why": "Could recite the half-million-line Manas epic from memory; the greatest of its bards.",
+        "wiki": "https://en.wikipedia.org/wiki/Sayakbay_Karalaev"
+      },
+      {
+        "name": "Aisuluu Tynybekova",
+        "years": "b. 1993",
+        "field": "Wrestler",
+        "why": "World champion and Olympic medallist, and one of Kyrgyzstan's biggest sporting names.",
+        "wiki": "https://en.wikipedia.org/wiki/Aisuluu_Tynybekova"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 1000",
+        "title": "The Epic of Manas",
+        "what": "An oral epic twenty times longer than the Odyssey, still performed by trained bards.",
+        "wiki": "https://en.wikipedia.org/wiki/Epic_of_Manas"
+      },
+      {
+        "year": "1916",
+        "title": "The Urkun",
+        "what": "A revolt against Russian conscription was crushed; tens of thousands died fleeing to China.",
+        "wiki": "https://en.wikipedia.org/wiki/Central_Asian_revolt_of_1916"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Kyrgyzstan left the Soviet Union and became the region's most politically open state.",
+        "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan"
+      },
+      {
+        "year": "2005 & 2010",
+        "title": "Two revolutions",
+        "what": "Popular uprisings removed two presidents, earning the country a reputation for turbulent democracy.",
+        "wiki": "https://en.wikipedia.org/wiki/Tulip_Revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "⛺",
+        "label": "Yurt",
+        "text": "The shanyrak roof-ring is on the national flag, and yurts are still used in summer pastures."
+      },
+      {
+        "icon": "🏔️",
+        "label": "Mountains",
+        "text": "Over 90% of the country is mountainous; Lake Issyk-Kul is the second-largest alpine lake in the world."
+      },
+      {
+        "icon": "🐎",
+        "label": "Kok-boru",
+        "text": "Horseback game played with a goat carcass; the national sport and fiercely contested."
+      },
+      {
+        "icon": "🥛",
+        "label": "Kymyz",
+        "text": "Fermented mare's milk, drunk in summer at the high pastures."
+      },
+      {
+        "icon": "🦅",
+        "label": "Eagle hunting",
+        "text": "Berkutchi hunt with golden eagles, a tradition shared with Kazakh and Mongol herders."
+      }
+    ],
+    "talkAbout": [
+      "The Manas epic and its bards.",
+      "Mountains, jailoo pastures and trekking.",
+      "Eagle hunting and horse games."
+    ],
+    "avoid": "Bride kidnapping is a real and criminalised problem, not folklore. Ethnic tension in the south around Osh is sensitive."
+  },
+  {
+    "iso2": "GE",
+    "people": [
+      {
+        "name": "Shota Rustaveli",
+        "years": "c. 1160–1220",
+        "field": "Poet",
+        "why": "The Knight in the Panther's Skin is the national epic, once part of every bride's dowry.",
+        "wiki": "https://en.wikipedia.org/wiki/Shota_Rustaveli"
+      },
+      {
+        "name": "Queen Tamar",
+        "years": "c. 1160–1213",
+        "field": "Monarch",
+        "why": "Ruled Georgia's golden age and is still called 'King' Tamar in Georgian.",
+        "wiki": "https://en.wikipedia.org/wiki/Tamar_of_Georgia"
+      },
+      {
+        "name": "Niko Pirosmani",
+        "years": "1862–1918",
+        "field": "Painter",
+        "why": "A self-taught sign painter who died in poverty and is now Georgia's most loved artist.",
+        "wiki": "https://en.wikipedia.org/wiki/Niko_Pirosmani"
+      },
+      {
+        "name": "Katie Melua",
+        "years": "b. 1984",
+        "field": "Singer",
+        "why": "Georgian-born, and one of Britain's best-selling artists of the 2000s.",
+        "wiki": "https://en.wikipedia.org/wiki/Katie_Melua"
+      },
+      {
+        "name": "Lasha Talakhadze",
+        "years": "b. 1993",
+        "field": "Weightlifter",
+        "why": "Holds every super-heavyweight world record and is the strongest lifter in history.",
+        "wiki": "https://en.wikipedia.org/wiki/Lasha_Talakhadze"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 6000 BCE",
+        "title": "The birth of wine",
+        "what": "The oldest known winemaking, in clay qvevri buried in the ground — still done that way.",
+        "wiki": "https://en.wikipedia.org/wiki/Georgian_wine"
+      },
+      {
+        "year": "337",
+        "title": "Christianity adopted",
+        "what": "Georgia became one of the first states in the world to make Christianity its religion.",
+        "wiki": "https://en.wikipedia.org/wiki/Georgian_Orthodox_Church"
+      },
+      {
+        "year": "1121",
+        "title": "Didgori",
+        "what": "David the Builder's victory over a far larger Seljuk army opened Georgia's golden age.",
+        "wiki": "https://en.wikipedia.org/wiki/Battle_of_Didgori"
+      },
+      {
+        "year": "2008",
+        "title": "The war with Russia",
+        "what": "A five-day war left South Ossetia and Abkhazia outside Georgian control.",
+        "wiki": "https://en.wikipedia.org/wiki/Russo-Georgian_War"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍷",
+        "label": "Wine",
+        "text": "Eight thousand years of it, fermented in buried clay vessels; UNESCO-listed."
+      },
+      {
+        "icon": "🍽️",
+        "label": "Supra",
+        "text": "A feast led by a tamada who gives long, structured toasts; refusing to drink to them is difficult."
+      },
+      {
+        "icon": "🎶",
+        "label": "Polyphony",
+        "text": "Three-part singing found nowhere else in quite this form; UNESCO-listed."
+      },
+      {
+        "icon": "🥟",
+        "label": "Food",
+        "text": "Khinkali dumplings held by the twisted top, and khachapuri bread filled with cheese and egg."
+      },
+      {
+        "icon": "🔤",
+        "label": "Alphabet",
+        "text": "Georgian has its own script, unrelated to any other, in three historical forms."
+      }
+    ],
+    "talkAbout": [
+      "Wine and the supra.",
+      "Polyphonic singing.",
+      "Mountains — Svaneti and Kazbegi are extraordinary."
+    ],
+    "avoid": "Russia, and the status of Abkhazia and South Ossetia, are raw. Don't confuse Georgia with the US state."
+  },
+  {
+    "iso2": "AM",
+    "people": [
+      {
+        "name": "Mesrop Mashtots",
+        "years": "c. 362–440",
+        "field": "Monk and linguist",
+        "why": "Created the Armenian alphabet in 405, which preserved the language through centuries without a state.",
+        "wiki": "https://en.wikipedia.org/wiki/Mesrop_Mashtots"
+      },
+      {
+        "name": "Aram Khachaturian",
+        "years": "1903–1978",
+        "field": "Composer",
+        "why": "The Sabre Dance and the Spartacus ballet made him one of the Soviet Union's great composers.",
+        "wiki": "https://en.wikipedia.org/wiki/Aram_Khachaturian"
+      },
+      {
+        "name": "Charles Aznavour",
+        "years": "1924–2018",
+        "field": "Singer",
+        "why": "Sold over 180 million records and was France's most famous Armenian.",
+        "wiki": "https://en.wikipedia.org/wiki/Charles_Aznavour"
+      },
+      {
+        "name": "Komitas",
+        "years": "1869–1935",
+        "field": "Composer and priest",
+        "why": "Collected thousands of Armenian folk songs; the genocide broke him and he never composed again.",
+        "wiki": "https://en.wikipedia.org/wiki/Komitas"
+      },
+      {
+        "name": "Viktor Hambardzumyan",
+        "years": "1908–1996",
+        "field": "Astrophysicist",
+        "why": "A founder of theoretical astrophysics who built the Byurakan Observatory.",
+        "wiki": "https://en.wikipedia.org/wiki/Viktor_Ambartsumian"
+      }
+    ],
+    "events": [
+      {
+        "year": "301",
+        "title": "The first Christian state",
+        "what": "Armenia adopted Christianity as its state religion before anyone else.",
+        "wiki": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church"
+      },
+      {
+        "year": "405",
+        "title": "The alphabet",
+        "what": "Mashtots's script let Armenian survive centuries of foreign rule.",
+        "wiki": "https://en.wikipedia.org/wiki/Armenian_alphabet"
+      },
+      {
+        "year": "1915–1917",
+        "title": "The genocide",
+        "what": "Around 1.5 million Armenians were killed by the Ottoman state; recognition is still contested.",
+        "wiki": "https://en.wikipedia.org/wiki/Armenian_genocide"
+      },
+      {
+        "year": "2018",
+        "title": "The Velvet Revolution",
+        "what": "Weeks of peaceful protest brought down the government without a shot.",
+        "wiki": "https://en.wikipedia.org/wiki/2018_Armenian_revolution"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🪨",
+        "label": "Khachkars",
+        "text": "Intricately carved stone crosses, no two alike; UNESCO-listed."
+      },
+      {
+        "icon": "🥖",
+        "label": "Lavash",
+        "text": "Thin bread baked on the wall of a tonir oven; also UNESCO-listed."
+      },
+      {
+        "icon": "🎺",
+        "label": "Duduk",
+        "text": "An apricot-wood double reed with a sound heard in film scores worldwide."
+      },
+      {
+        "icon": "🍑",
+        "label": "Apricots",
+        "text": "The scientific name for the apricot means 'Armenian plum', and the flag's orange band is said to reflect it."
+      },
+      {
+        "icon": "🌍",
+        "label": "Diaspora",
+        "text": "Far more Armenians live abroad than in Armenia, in Russia, the US, France and the Middle East."
+      }
+    ],
+    "talkAbout": [
+      "The alphabet and language.",
+      "Music, especially the duduk.",
+      "Food, brandy and family connections abroad."
+    ],
+    "avoid": "The genocide, and its denial, are central. Nagorno-Karabakh and relations with Azerbaijan and Turkey are acutely painful."
+  },
+  {
+    "iso2": "BT",
+    "people": [
+      {
+        "name": "Jigme Singye Wangchuck",
+        "years": "b. 1955",
+        "field": "King",
+        "why": "Coined Gross National Happiness and then voluntarily handed power to a democracy.",
+        "wiki": "https://en.wikipedia.org/wiki/Jigme_Singye_Wangchuck"
+      },
+      {
+        "name": "Ngawang Namgyal",
+        "native": "Zhabdrung",
+        "years": "1594–1651",
+        "field": "Lama and unifier",
+        "why": "Unified Bhutan, built its dzong fortresses and gave it its legal code.",
+        "wiki": "https://en.wikipedia.org/wiki/Ngawang_Namgyal"
+      },
+      {
+        "name": "Jigme Khesar Namgyel Wangchuck",
+        "years": "b. 1980",
+        "field": "King",
+        "why": "The Dragon King, who has overseen Bhutan's democratic and environmental commitments.",
+        "wiki": "https://en.wikipedia.org/wiki/Jigme_Khesar_Namgyel_Wangchuck"
+      },
+      {
+        "name": "Kunzang Choden",
+        "years": "b. 1952",
+        "field": "Writer",
+        "why": "The first Bhutanese woman to publish a novel in English.",
+        "wiki": "https://en.wikipedia.org/wiki/Kunzang_Choden"
+      },
+      {
+        "name": "Karma Ura",
+        "years": "b. 1961",
+        "field": "Scholar",
+        "why": "Built the Gross National Happiness index into something that could actually be measured.",
+        "wiki": "https://en.wikipedia.org/wiki/Karma_Ura"
+      }
+    ],
+    "events": [
+      {
+        "year": "1616–1651",
+        "title": "Unification",
+        "what": "The Zhabdrung unified the valleys and built the dzongs that still serve as administrative centres.",
+        "wiki": "https://en.wikipedia.org/wiki/Ngawang_Namgyal"
+      },
+      {
+        "year": "1907",
+        "title": "The monarchy founded",
+        "what": "Ugyen Wangchuck became the first Druk Gyalpo, ending centuries of internal conflict.",
+        "wiki": "https://en.wikipedia.org/wiki/Ugyen_Wangchuck"
+      },
+      {
+        "year": "1972",
+        "title": "Gross National Happiness",
+        "what": "Bhutan declared it would measure development by wellbeing rather than output.",
+        "wiki": "https://en.wikipedia.org/wiki/Gross_National_Happiness"
+      },
+      {
+        "year": "2008",
+        "title": "Democracy",
+        "what": "The king gave up absolute power and Bhutan held its first parliamentary elections.",
+        "wiki": "https://en.wikipedia.org/wiki/2008_Bhutanese_National_Assembly_election"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌲",
+        "label": "Carbon negative",
+        "text": "The constitution requires 60% forest cover; Bhutan absorbs more carbon than it emits."
+      },
+      {
+        "icon": "🏹",
+        "label": "Archery",
+        "text": "The national sport, played at long range with singing, dancing and heavy teasing of opponents."
+      },
+      {
+        "icon": "🧥",
+        "label": "Dress",
+        "text": "The gho and kira are worn to work, school and official business by law."
+      },
+      {
+        "icon": "🌶️",
+        "label": "Ema datshi",
+        "text": "Chillies and cheese — the national dish treats chilli as a vegetable, not a spice."
+      },
+      {
+        "icon": "🛕",
+        "label": "Tiger's Nest",
+        "text": "Paro Taktsang clings to a cliff 900 m above the valley floor."
+      }
+    ],
+    "talkAbout": [
+      "Gross National Happiness and how it is measured.",
+      "Archery matches and festivals.",
+      "The forests and carbon commitment."
+    ],
+    "avoid": "The expulsion of Lhotshampa (Nepali-speaking) Bhutanese in the 1990s is a serious and largely unacknowledged issue."
+  },
+  {
+    "iso2": "AZ",
+    "people": [
+      {
+        "name": "Nizami Ganjavi",
+        "years": "1141–1209",
+        "field": "Poet",
+        "why": "His Khamsa of five epic poems is among the greatest works in Persian literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Nizami_Ganjavi"
+      },
+      {
+        "name": "Uzeyir Hajibeyov",
+        "years": "1885–1948",
+        "field": "Composer",
+        "why": "Wrote the first opera in the Islamic world, fusing mugham with Western form.",
+        "wiki": "https://en.wikipedia.org/wiki/Uzeyir_Hajibeyov"
+      },
+      {
+        "name": "Garry Kasparov",
+        "years": "b. 1963",
+        "field": "Chess grandmaster",
+        "why": "Baku-born, world champion for fifteen years and the man who played Deep Blue.",
+        "wiki": "https://en.wikipedia.org/wiki/Garry_Kasparov"
+      },
+      {
+        "name": "Lev Landau",
+        "years": "1908–1968",
+        "field": "Physicist",
+        "why": "Baku-born Nobel laureate whose textbooks trained generations of physicists.",
+        "wiki": "https://en.wikipedia.org/wiki/Lev_Landau"
+      },
+      {
+        "name": "Zeynalabdin Taghiyev",
+        "years": "1823–1924",
+        "field": "Oil magnate and philanthropist",
+        "why": "Funded the Muslim world's first secular school for girls, in 1901.",
+        "wiki": "https://en.wikipedia.org/wiki/Zeynalabdin_Taghiyev"
+      }
+    ],
+    "events": [
+      {
+        "year": "1846",
+        "title": "The first oil well",
+        "what": "Baku drilled what is often called the world's first industrial oil well, decades before Pennsylvania.",
+        "wiki": "https://en.wikipedia.org/wiki/Baku"
+      },
+      {
+        "year": "1918",
+        "title": "The first secular Muslim republic",
+        "what": "The Azerbaijan Democratic Republic gave women the vote before Britain or the United States did.",
+        "wiki": "https://en.wikipedia.org/wiki/Azerbaijan_Democratic_Republic"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Azerbaijan left the Soviet Union as the Karabakh conflict was already under way.",
+        "wiki": "https://en.wikipedia.org/wiki/Azerbaijan"
+      },
+      {
+        "year": "2020 & 2023",
+        "title": "Nagorno-Karabakh",
+        "what": "Azerbaijan retook the territory; the Armenian population left almost entirely in 2023.",
+        "wiki": "https://en.wikipedia.org/wiki/2020_Nagorno-Karabakh_war"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🔥",
+        "label": "Land of Fire",
+        "text": "Natural gas seeps burn at Yanar Dag, and Zoroastrian fire temples predate Islam here."
+      },
+      {
+        "icon": "🍵",
+        "label": "Tea",
+        "text": "Served in armudu pear-shaped glasses with jam rather than sugar."
+      },
+      {
+        "icon": "🎶",
+        "label": "Mugham",
+        "text": "Improvised modal music with poetry, UNESCO-listed and taken very seriously."
+      },
+      {
+        "icon": "🍚",
+        "label": "Plov",
+        "text": "Dozens of varieties, often served with a saffron crust and dried fruit."
+      },
+      {
+        "icon": "🧶",
+        "label": "Carpets",
+        "text": "Azerbaijani weaving has distinct regional schools and its own museum shaped like a rolled rug."
+      }
+    ],
+    "talkAbout": [
+      "Tea culture and mugham music.",
+      "Baku's old city and its oil-boom architecture.",
+      "Food, especially plov and dolma."
+    ],
+    "avoid": "Nagorno-Karabakh and Armenia are the defining national conflict. Domestic politics and press freedom are sensitive."
+  },
+  {
+    "iso2": "BH",
+    "people": [
+      {
+        "name": "Isa bin Salman Al Khalifa",
+        "years": "1933–1999",
+        "field": "Emir",
+        "why": "Led Bahrain to independence in 1971 and through its first decades as a state.",
+        "wiki": "https://en.wikipedia.org/wiki/Isa_bin_Salman_Al_Khalifa"
+      },
+      {
+        "name": "Ebrahim Al-Arrayedh",
+        "years": "1908–2002",
+        "field": "Poet",
+        "why": "A founding figure of modern Bahraini and Gulf poetry.",
+        "wiki": "https://en.wikipedia.org/wiki/Ebrahim_Al-Arrayedh"
+      },
+      {
+        "name": "Ruqaya Al Ghasra",
+        "years": "b. 1982",
+        "field": "Sprinter",
+        "why": "Competed at the Olympics in a hijab and full body suit, and won her heat in 2008.",
+        "wiki": "https://en.wikipedia.org/wiki/Ruqaya_Al-Ghasra"
+      },
+      {
+        "name": "Nancy Khedouri",
+        "years": "b. 1959",
+        "field": "Politician and author",
+        "why": "A member of Bahrain's small Jewish community appointed to its parliament's upper house.",
+        "wiki": "https://en.wikipedia.org/wiki/Nancy_Khedouri"
+      },
+      {
+        "name": "Mohammed bin Mubarak Al Khalifa",
+        "years": "b. 1935",
+        "field": "Diplomat",
+        "why": "Bahrain's first foreign minister and a long-serving deputy prime minister.",
+        "wiki": "https://en.wikipedia.org/wiki/Mohammed_bin_Mubarak_Al_Khalifa"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 2000 BCE",
+        "title": "Dilmun",
+        "what": "A trading civilisation the Sumerians described as a paradise; its burial mounds are World Heritage-listed.",
+        "wiki": "https://en.wikipedia.org/wiki/Dilmun"
+      },
+      {
+        "year": "1783",
+        "title": "The Al Khalifa arrive",
+        "what": "The family that still rules Bahrain took the islands from Persian control.",
+        "wiki": "https://en.wikipedia.org/wiki/History_of_Bahrain"
+      },
+      {
+        "year": "1932",
+        "title": "First oil in the Gulf",
+        "what": "Bahrain struck oil before any of its neighbours, and ran out first too.",
+        "wiki": "https://en.wikipedia.org/wiki/Bahrain"
+      },
+      {
+        "year": "1971",
+        "title": "Independence",
+        "what": "Bahrain became independent from Britain rather than joining the UAE.",
+        "wiki": "https://en.wikipedia.org/wiki/Bahrain"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🦪",
+        "label": "Pearls",
+        "text": "Bahraini natural pearls were the finest in the world; cultured pearls are banned to protect them."
+      },
+      {
+        "icon": "🌴",
+        "label": "Date palms",
+        "text": "The Tree of Life stands alone in the desert, fed by an unknown water source."
+      },
+      {
+        "icon": "🏎️",
+        "label": "Formula One",
+        "text": "Bahrain hosted the first Grand Prix in the Middle East, in 2004."
+      },
+      {
+        "icon": "🍚",
+        "label": "Food",
+        "text": "Machboos and muhammar sweet rice, plus a strong fish tradition."
+      },
+      {
+        "icon": "🕌",
+        "label": "Mixed society",
+        "text": "Shia and Sunni Muslims, plus long-established Christian, Jewish and Hindu communities."
+      }
+    ],
+    "talkAbout": [
+      "Pearl diving history and the Dilmun mounds.",
+      "Formula One.",
+      "Food and the fish markets."
+    ],
+    "avoid": "The 2011 protests, sectarian politics and the ruling family are all sensitive subjects."
+  },
+  {
+    "iso2": "BN",
+    "people": [
+      {
+        "name": "Hassanal Bolkiah",
+        "years": "b. 1946",
+        "field": "Sultan",
+        "why": "One of the longest-reigning monarchs in the world, on the throne since 1967.",
+        "wiki": "https://en.wikipedia.org/wiki/Hassanal_Bolkiah"
+      },
+      {
+        "name": "Bolkiah",
+        "years": "c. 1485–1524",
+        "field": "Sultan",
+        "why": "The fifth sultan, under whom Brunei's empire reached across Borneo and into the Philippines.",
+        "wiki": "https://en.wikipedia.org/wiki/Bolkiah"
+      },
+      {
+        "name": "Omar Ali Saifuddien III",
+        "years": "1914–1986",
+        "field": "Sultan",
+        "why": "The architect of modern Brunei, who negotiated independence from Britain.",
+        "wiki": "https://en.wikipedia.org/wiki/Omar_Ali_Saifuddien_III"
+      },
+      {
+        "name": "Yura Halim",
+        "years": "1923–2016",
+        "field": "Poet and politician",
+        "why": "Wrote the national anthem and served as a senior minister.",
+        "wiki": "https://en.wikipedia.org/wiki/Brunei"
+      },
+      {
+        "name": "Faiq Bolkiah",
+        "years": "b. 1998",
+        "field": "Footballer",
+        "why": "A member of the royal family who has played professional football abroad.",
+        "wiki": "https://en.wikipedia.org/wiki/Faiq_Bolkiah"
+      }
+    ],
+    "events": [
+      {
+        "year": "1400s–1500s",
+        "title": "The Bruneian Empire",
+        "what": "Brunei controlled much of Borneo and parts of the Philippines from its river capital.",
+        "wiki": "https://en.wikipedia.org/wiki/Bruneian_Empire"
+      },
+      {
+        "year": "1888",
+        "title": "British protectorate",
+        "what": "Brunei accepted British protection after losing territory to Sarawak's white rajahs.",
+        "wiki": "https://en.wikipedia.org/wiki/Brunei"
+      },
+      {
+        "year": "1929",
+        "title": "Oil at Seria",
+        "what": "The discovery that made Brunei one of the wealthiest states in Asia.",
+        "wiki": "https://en.wikipedia.org/wiki/Seria,_Brunei"
+      },
+      {
+        "year": "1984",
+        "title": "Independence",
+        "what": "Brunei became fully independent, retaining an absolute monarchy.",
+        "wiki": "https://en.wikipedia.org/wiki/Brunei"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏘️",
+        "label": "Kampong Ayer",
+        "text": "A water village on stilts inhabited for over 1,300 years, with schools, mosques and a fire station."
+      },
+      {
+        "icon": "🕌",
+        "label": "Islam",
+        "text": "Malay Islamic Monarchy is the state philosophy; Friday prayers close businesses."
+      },
+      {
+        "icon": "🌳",
+        "label": "Rainforest",
+        "text": "Around 70% primary rainforest — the best-preserved in Borneo."
+      },
+      {
+        "icon": "🍚",
+        "label": "Ambuyat",
+        "text": "A sago starch eaten with bamboo forks, dipped in sour sauce and swallowed without chewing."
+      },
+      {
+        "icon": "🚫",
+        "label": "No alcohol",
+        "text": "Sales are banned; non-Muslims may import a limited personal quantity."
+      }
+    ],
+    "talkAbout": [
+      "Kampong Ayer and its history.",
+      "The rainforest and Ulu Temburong.",
+      "Ambuyat and how to eat it."
+    ],
+    "avoid": "Criticism of the sultan is prohibited. The sharia penal code has drawn international objection and is not casual conversation."
+  },
+  {
+    "iso2": "MV",
+    "people": [
+      {
+        "name": "Mohamed Thakurufaanu",
+        "years": "d. 1585",
+        "field": "Sultan",
+        "why": "Drove out the Portuguese after fifteen years of occupation; the national hero.",
+        "wiki": "https://en.wikipedia.org/wiki/Muhammad_Thakurufaanu_Al_Auzam"
+      },
+      {
+        "name": "Mohamed Nasheed",
+        "years": "b. 1967",
+        "field": "President",
+        "why": "The Maldives' first democratically elected president; held a cabinet meeting underwater to publicise sea-level rise.",
+        "wiki": "https://en.wikipedia.org/wiki/Mohamed_Nasheed"
+      },
+      {
+        "name": "Ibrahim Nasir",
+        "years": "1926–2008",
+        "field": "President",
+        "why": "Led the country to independence in 1965 and started its tourism industry.",
+        "wiki": "https://en.wikipedia.org/wiki/Ibrahim_Nasir"
+      },
+      {
+        "name": "Hussain Salaahuddin",
+        "years": "1881–1948",
+        "field": "Poet and scholar",
+        "why": "A major figure in Dhivehi literature and education.",
+        "wiki": "https://en.wikipedia.org/wiki/Maldives"
+      },
+      {
+        "name": "Mariyam Waheeda",
+        "years": "b. 1970s",
+        "field": "Athlete",
+        "why": "One of the first Maldivian women to compete internationally in athletics.",
+        "wiki": "https://en.wikipedia.org/wiki/Maldives_at_the_Olympics"
+      }
+    ],
+    "events": [
+      {
+        "year": "1153",
+        "title": "Conversion to Islam",
+        "what": "The Buddhist kingdom converted, and the Maldives has been Muslim ever since.",
+        "wiki": "https://en.wikipedia.org/wiki/Islam_in_the_Maldives"
+      },
+      {
+        "year": "1965",
+        "title": "Independence",
+        "what": "The Maldives left British protection after 78 years.",
+        "wiki": "https://en.wikipedia.org/wiki/Maldives"
+      },
+      {
+        "year": "2004",
+        "title": "The tsunami",
+        "what": "Waves washed over most of the country; a third of the population was directly affected.",
+        "wiki": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami"
+      },
+      {
+        "year": "2009",
+        "title": "The underwater cabinet",
+        "what": "Ministers in scuba gear signed a climate declaration on the seabed to make a point the world would notice.",
+        "wiki": "https://en.wikipedia.org/wiki/Mohamed_Nasheed"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🌊",
+        "label": "Elevation",
+        "text": "The lowest country on earth, averaging about 1.5 m above sea level across 1,190 islands."
+      },
+      {
+        "icon": "🐟",
+        "label": "Food",
+        "text": "Tuna in everything: mas huni for breakfast, garudhiya broth, and fish curry."
+      },
+      {
+        "icon": "🥁",
+        "label": "Bodu beru",
+        "text": "'Big drum' music and dance, performed by a group with a lead singer and building tempo."
+      },
+      {
+        "icon": "🛶",
+        "label": "Dhoni",
+        "text": "The traditional wooden boat, still the main way between islands."
+      },
+      {
+        "icon": "🏝️",
+        "label": "One island, one resort",
+        "text": "Tourism is deliberately separated from local islands, which most visitors never see."
+      }
+    ],
+    "talkAbout": [
+      "Island life away from the resorts.",
+      "Bodu beru drumming.",
+      "Fishing, which is the traditional backbone of the economy."
+    ],
+    "avoid": "It is a conservative Muslim country; alcohol and public dress rules apply outside resorts. Politics has been turbulent and is sensitive."
+  },
+  {
+    "iso2": "SY",
+    "people": [
+      {
+        "name": "Zenobia",
+        "years": "c. 240–274",
+        "field": "Queen",
+        "why": "Ruled Palmyra and challenged Rome across the eastern Mediterranean before being captured.",
+        "wiki": "https://en.wikipedia.org/wiki/Zenobia"
+      },
+      {
+        "name": "Adonis",
+        "native": "Ali Ahmad Said Esber",
+        "years": "b. 1930",
+        "field": "Poet",
+        "why": "The most influential living Arabic poet, and a perennial Nobel candidate.",
+        "wiki": "https://en.wikipedia.org/wiki/Adonis_(poet)"
+      },
+      {
+        "name": "Nizar Qabbani",
+        "years": "1923–1998",
+        "field": "Poet",
+        "why": "A diplomat whose love poems and political verse are known by heart across the Arab world.",
+        "wiki": "https://en.wikipedia.org/wiki/Nizar_Qabbani"
+      },
+      {
+        "name": "Fateh Al-Moudarres",
+        "years": "1922–1999",
+        "field": "Painter",
+        "why": "The founder of modern Syrian art, drawing on Mesopotamian and Byzantine imagery.",
+        "wiki": "https://en.wikipedia.org/wiki/Fateh_Moudarres"
+      },
+      {
+        "name": "Ghiath Matar",
+        "years": "1985–2011",
+        "field": "Activist",
+        "why": "Handed roses and water to soldiers during the early protests; tortured to death at 26.",
+        "wiki": "https://en.wikipedia.org/wiki/Ghiath_Matar"
+      }
+    ],
+    "events": [
+      {
+        "year": "c. 1800 BCE",
+        "title": "Ugarit and the alphabet",
+        "what": "One of the earliest alphabets was written in cuneiform on the Syrian coast.",
+        "wiki": "https://en.wikipedia.org/wiki/Ugarit"
+      },
+      {
+        "year": "661–750",
+        "title": "The Umayyad Caliphate",
+        "what": "Damascus ruled an empire from Spain to India; the Umayyad Mosque still stands.",
+        "wiki": "https://en.wikipedia.org/wiki/Umayyad_Caliphate"
+      },
+      {
+        "year": "1946",
+        "title": "Independence",
+        "what": "Syria became independent from France after twenty-six years of mandate rule.",
+        "wiki": "https://en.wikipedia.org/wiki/Syria"
+      },
+      {
+        "year": "2011–2024",
+        "title": "The war and the fall of Assad",
+        "what": "Protests became a war that killed hundreds of thousands and displaced half the country; Assad fell in December 2024.",
+        "wiki": "https://en.wikipedia.org/wiki/Syrian_civil_war"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏛️",
+        "label": "Damascus",
+        "text": "Among the oldest continuously inhabited cities on earth, and once the centre of an empire."
+      },
+      {
+        "icon": "🥙",
+        "label": "Food",
+        "text": "Aleppo's cooking is legendary — kibbeh in dozens of forms, muhammara, and cherry kebab."
+      },
+      {
+        "icon": "🧼",
+        "label": "Aleppo soap",
+        "text": "Olive oil and laurel soap, aged for months, made the same way for centuries."
+      },
+      {
+        "icon": "🕌",
+        "label": "Diversity",
+        "text": "Sunni and Alawite Muslims, Christians of several churches, Druze, Kurds, Armenians and Assyrians."
+      },
+      {
+        "icon": "🤝",
+        "label": "Hospitality",
+        "text": "Famous even by regional standards; refusing food takes real persistence."
+      }
+    ],
+    "talkAbout": [
+      "Food, especially Aleppo's, which Syrians are proud of.",
+      "Poetry and music.",
+      "Ancient history — Palmyra, Bosra and the Damascus old city."
+    ],
+    "avoid": "Almost every Syrian has lost people or their home. Politics is dangerous and divisive; let them lead."
+  },
+  {
+    "iso2": "TW",
+    "people": [
+      {
+        "name": "Ang Lee",
+        "native": "李安",
+        "years": "b. 1954",
+        "field": "Film director",
+        "why": "The first non-white director to win the Academy Award for Best Director, twice.",
+        "wiki": "https://en.wikipedia.org/wiki/Ang_Lee"
+      },
+      {
+        "name": "Tsai Ing-wen",
+        "native": "蔡英文",
+        "years": "b. 1956",
+        "field": "President",
+        "why": "Taiwan's first woman president, in office 2016–2024.",
+        "wiki": "https://en.wikipedia.org/wiki/Tsai_Ing-wen"
+      },
+      {
+        "name": "Morris Chang",
+        "native": "張忠謀",
+        "years": "b. 1931",
+        "field": "Businessman",
+        "why": "Founded TSMC, which makes most of the world's most advanced chips.",
+        "wiki": "https://en.wikipedia.org/wiki/Morris_Chang"
+      },
+      {
+        "name": "Audrey Tang",
+        "native": "唐鳳",
+        "years": "b. 1981",
+        "field": "Digital minister",
+        "why": "A civic hacker who became a minister and reshaped how Taiwan does open government.",
+        "wiki": "https://en.wikipedia.org/wiki/Audrey_Tang"
+      },
+      {
+        "name": "Teresa Teng",
+        "native": "鄧麗君",
+        "years": "1953–1995",
+        "field": "Singer",
+        "why": "Her voice was so popular across Chinese-speaking Asia that a saying went 'Deng rules by day, Teng by night'.",
+        "wiki": "https://en.wikipedia.org/wiki/Teresa_Teng"
+      }
+    ],
+    "events": [
+      {
+        "year": "1624–1662",
+        "title": "Dutch Formosa",
+        "what": "The Dutch East India Company ruled the south before being expelled by Koxinga.",
+        "wiki": "https://en.wikipedia.org/wiki/Dutch_Formosa"
+      },
+      {
+        "year": "1895–1945",
+        "title": "Japanese rule",
+        "what": "Fifty years that built railways, schools and much of the island's infrastructure.",
+        "wiki": "https://en.wikipedia.org/wiki/Taiwan_under_Japanese_rule"
+      },
+      {
+        "year": "1947",
+        "title": "The 228 Incident",
+        "what": "A crackdown killing thousands, followed by 38 years of martial law — the longest in the world at the time.",
+        "wiki": "https://en.wikipedia.org/wiki/February_28_incident"
+      },
+      {
+        "year": "1996",
+        "title": "The first direct election",
+        "what": "Taiwan completed its transition to democracy with a directly elected president.",
+        "wiki": "https://en.wikipedia.org/wiki/1996_Taiwanese_presidential_election"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🍢",
+        "label": "Night markets",
+        "text": "The centre of social life: stinky tofu, oyster omelettes, beef noodle soup and games."
+      },
+      {
+        "icon": "🧋",
+        "label": "Bubble tea",
+        "text": "Invented in Taiwan in the 1980s and now sold on every continent."
+      },
+      {
+        "icon": "🛕",
+        "label": "Temples",
+        "text": "Folk religion is vivid and everywhere; the Mazu pilgrimage draws millions over nine days."
+      },
+      {
+        "icon": "🪶",
+        "label": "Indigenous peoples",
+        "text": "Sixteen recognised Austronesian peoples, whose ancestors' languages spread across the Pacific."
+      },
+      {
+        "icon": "🏳️‍🌈",
+        "label": "First in Asia",
+        "text": "Taiwan legalised same-sex marriage in 2019, the first place in Asia to do so."
+      }
+    ],
+    "talkAbout": [
+      "Night markets and food, which Taiwanese take enormous pride in.",
+      "Hiking — the island is very mountainous.",
+      "Film, music and the democratic transition."
+    ],
+    "avoid": "Taiwan's status is the most sensitive question in East Asian politics, and Taiwanese views on it differ widely. Ask rather than assume."
+  },
+  {
+    "iso2": "TJ",
+    "people": [
+      {
+        "name": "Rudaki",
+        "years": "c. 858–941",
+        "field": "Poet",
+        "why": "The father of Persian poetry, born in what is now Tajikistan.",
+        "wiki": "https://en.wikipedia.org/wiki/Rudaki"
+      },
+      {
+        "name": "Ismail Samani",
+        "years": "849–907",
+        "field": "Emir",
+        "why": "Founder of the Samanid empire, claimed as the founder of the Tajik nation; the currency is named for him.",
+        "wiki": "https://en.wikipedia.org/wiki/Ismail_Samani"
+      },
+      {
+        "name": "Sadriddin Ayni",
+        "years": "1878–1954",
+        "field": "Writer",
+        "why": "The founder of modern Tajik literature.",
+        "wiki": "https://en.wikipedia.org/wiki/Sadriddin_Ayni"
+      },
+      {
+        "name": "Bobojon Ghafurov",
+        "years": "1908–1977",
+        "field": "Historian",
+        "why": "His history The Tajiks shaped how the nation understands its own origins.",
+        "wiki": "https://en.wikipedia.org/wiki/Bobojon_Ghafurov"
+      },
+      {
+        "name": "Manizha",
+        "years": "b. 1991",
+        "field": "Singer",
+        "why": "Tajik-born, she performed at Eurovision with a song about Russian women's lives.",
+        "wiki": "https://en.wikipedia.org/wiki/Manizha"
+      }
+    ],
+    "events": [
+      {
+        "year": "819–999",
+        "title": "The Samanid Empire",
+        "what": "A Persian revival centred on Bukhara and Samarkand that Tajiks trace their identity to.",
+        "wiki": "https://en.wikipedia.org/wiki/Samanid_Empire"
+      },
+      {
+        "year": "1929",
+        "title": "A Soviet republic",
+        "what": "Tajikistan was separated from Uzbekistan and made a full Soviet republic, without Samarkand or Bukhara.",
+        "wiki": "https://en.wikipedia.org/wiki/Tajik_Soviet_Socialist_Republic"
+      },
+      {
+        "year": "1991",
+        "title": "Independence",
+        "what": "Tajikistan left the USSR and slid into civil war within months.",
+        "wiki": "https://en.wikipedia.org/wiki/Tajikistan"
+      },
+      {
+        "year": "1992–1997",
+        "title": "The civil war",
+        "what": "A regional and ideological war killed tens of thousands and displaced over a million.",
+        "wiki": "https://en.wikipedia.org/wiki/Tajikistani_Civil_War"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🏔️",
+        "label": "The Pamirs",
+        "text": "The Roof of the World; over 90% of the country is mountainous and half is above 3,000 m."
+      },
+      {
+        "icon": "🍽️",
+        "label": "Osh",
+        "text": "The Tajik plov, eaten from a shared dish; the national dish and the centre of every gathering."
+      },
+      {
+        "icon": "🌱",
+        "label": "Navruz",
+        "text": "The Persian new year is the biggest holiday of the year, with sumalak cooked overnight."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Language",
+        "text": "Tajik is Persian written in Cyrillic — mutually intelligible with Iranian and Afghan Persian."
+      },
+      {
+        "icon": "🧵",
+        "label": "Atlas silk",
+        "text": "Bright ikat-dyed fabric worn as everyday dress by women."
+      }
+    ],
+    "talkAbout": [
+      "The Pamir highway and mountain travel.",
+      "Persian poetry, which Tajiks share with Iran and Afghanistan.",
+      "Navruz and its foods."
+    ],
+    "avoid": "The civil war and current politics are sensitive. Many Tajik men work in Russia and the separation is a hardship."
+  },
+  {
+    "iso2": "TL",
+    "people": [
+      {
+        "name": "Xanana Gusmão",
+        "years": "b. 1946",
+        "field": "Resistance leader and president",
+        "why": "Led the guerrilla resistance, was imprisoned in Jakarta, and became the country's first president.",
+        "wiki": "https://en.wikipedia.org/wiki/Xanana_Gusm%C3%A3o"
+      },
+      {
+        "name": "José Ramos-Horta",
+        "years": "b. 1949",
+        "field": "President",
+        "why": "Won the Nobel Peace Prize in 1996 for two decades of campaigning in exile.",
+        "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Ramos-Horta"
+      },
+      {
+        "name": "Carlos Filipe Ximenes Belo",
+        "years": "b. 1948",
+        "field": "Bishop",
+        "why": "Shared the 1996 Nobel Peace Prize for defending Timorese civilians under occupation.",
+        "wiki": "https://en.wikipedia.org/wiki/Carlos_Filipe_Ximenes_Belo"
+      },
+      {
+        "name": "Nicolau Lobato",
+        "years": "1946–1978",
+        "field": "Resistance leader",
+        "why": "The first commander of the armed resistance, killed by Indonesian forces; the airport carries his name.",
+        "wiki": "https://en.wikipedia.org/wiki/Nicolau_Lobato"
+      },
+      {
+        "name": "Maria Madeira",
+        "years": "b. 1968",
+        "field": "Artist",
+        "why": "The first Timorese artist to exhibit at the Venice Biennale.",
+        "wiki": "https://en.wikipedia.org/wiki/East_Timor"
+      }
+    ],
+    "events": [
+      {
+        "year": "1515–1975",
+        "title": "Portuguese Timor",
+        "what": "Four and a half centuries of Portuguese rule left Catholicism and the Portuguese language.",
+        "wiki": "https://en.wikipedia.org/wiki/Portuguese_Timor"
+      },
+      {
+        "year": "1975",
+        "title": "The invasion",
+        "what": "Nine days after independence was declared, Indonesia invaded.",
+        "wiki": "https://en.wikipedia.org/wiki/Indonesian_invasion_of_East_Timor"
+      },
+      {
+        "year": "1991",
+        "title": "The Santa Cruz massacre",
+        "what": "Soldiers fired on a funeral procession in Dili; footage smuggled out changed international opinion.",
+        "wiki": "https://en.wikipedia.org/wiki/Santa_Cruz_massacre"
+      },
+      {
+        "year": "2002",
+        "title": "Independence",
+        "what": "After a UN-run referendum and transition, Timor-Leste became the first new country of the 21st century.",
+        "wiki": "https://en.wikipedia.org/wiki/East_Timor"
+      }
+    ],
+    "culture": [
+      {
+        "icon": "🧵",
+        "label": "Tais",
+        "text": "Handwoven cloth given at ceremonies and worn as a marker of region and family."
+      },
+      {
+        "icon": "🏠",
+        "label": "Uma lulik",
+        "text": "Sacred houses that hold a clan's heirlooms and organise its ritual life."
+      },
+      {
+        "icon": "⛪",
+        "label": "Catholicism",
+        "text": "Among the most Catholic countries in the world; the church sheltered people during the occupation."
+      },
+      {
+        "icon": "☕",
+        "label": "Coffee",
+        "text": "Organic arabica grown in the highlands is the main non-oil export."
+      },
+      {
+        "icon": "🗣️",
+        "label": "Languages",
+        "text": "Tetum and Portuguese are official, Indonesian and English are working languages, and there are around 30 more."
+      }
+    ],
+    "talkAbout": [
+      "Coffee and the highlands.",
+      "Tais weaving and its meanings.",
+      "Diving — the reefs off Atauro are among the richest recorded."
+    ],
+    "avoid": "The occupation killed perhaps a quarter of the population; almost every family lost someone. Relations with Indonesia are complicated."
+  }
+]

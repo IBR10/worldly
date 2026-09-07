@@ -28,6 +28,24 @@
   --bad-bg: rgba(248, 114, 114, 0.12);
   --border: #2a375d;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  /* Categorical palette for the Language Map. Eleven slots, searched with the
+     data-viz validator over OKLCH (L, C, hue) and scored on the worst
+     ALL-PAIRS separation -- the right pairlist for a choropleth, where any
+     two regions can end up adjacent. Do not hand-tweak a value without
+     re-validating the set; the margins are thin. */
+  --cat-1: #2740f2;   /* Romance */
+  --cat-2: #5da068;   /* Germanic */
+  --cat-3: #806dfc;   /* Slavic */
+  --cat-4: #9a10c2;   /* Indo-Iranian */
+  --cat-5: #d47519;   /* Afro-Asiatic */
+  --cat-6: #3d721a;   /* Niger-Congo */
+  --cat-7: #dc0418;   /* Turkic */
+  --cat-8: #9a3e67;   /* East & SE Asian */
+  --cat-9: #239cd6;   /* Austronesian */
+  --cat-10: #b475a4;   /* Creole */
+  --cat-11: #006b91;   /* Other */
+  --cat-none: #333e5f;   /* no permanent population */
 }
 
 /* ---- light ---- */
@@ -47,6 +65,24 @@
   --bad-bg: rgba(217, 58, 58, 0.10);
   --border: #d6deee;
   --shadow: 0 10px 30px rgba(40, 60, 120, 0.12);
+
+  /* Categorical palette for the Language Map. Eleven slots, searched with the
+     data-viz validator over OKLCH (L, C, hue) and scored on the worst
+     ALL-PAIRS separation -- the right pairlist for a choropleth, where any
+     two regions can end up adjacent. Do not hand-tweak a value without
+     re-validating the set; the margins are thin. */
+  --cat-1: #125594;   /* Romance */
+  --cat-2: #259878;   /* Germanic */
+  --cat-3: #907bff;   /* Slavic */
+  --cat-4: #e338c6;   /* Indo-Iranian */
+  --cat-5: #ba6a1a;   /* Afro-Asiatic */
+  --cat-6: #b4b64f;   /* Niger-Congo */
+  --cat-7: #8b2462;   /* Turkic */
+  --cat-8: #7c00d4;   /* East & SE Asian */
+  --cat-9: #10bffa;   /* Austronesian */
+  --cat-10: #e094ba;   /* Creole */
+  --cat-11: #495d10;   /* Other */
+  --cat-none: #b9c1d3;   /* no permanent population */
 }
 
 * { box-sizing: border-box; }
@@ -637,6 +673,235 @@ h1, h2, h3 { line-height: 1.2; }
 .name-input { min-width: 200px; }
 .hidden { display: none; }
 .btn.danger { border-color: var(--bad); color: var(--bad); }
+
+/* ---- language choropleth ---------------------------------------------------
+   These .lf-* / .lg-* rules MUST stay below `.map-svg path:hover` above: they
+   have equal specificity, so the later rule wins and a painted fill survives
+   hover. Hover feedback is then given back by .map-choropleth, which brightens
+   and outlines instead of recolouring.
+
+   Colour is never the only encoding here. The validator flags several slots
+   below 3:1 against the page, which obliges relief: the legend carries a count
+   per bucket, clicking a legend entry isolates that bucket, and clicking any
+   country names its language outright. */
+.map-svg.map-choropleth path { transition: none; }
+
+/* A picker map has no prompt telling you where to aim, so unlike a quiz map it
+   cannot afford to be surface-on-surface — at light-theme defaults the whole
+   world rendered as white on white. Tint the land and firm up the borders. */
+.map-svg.map-picker path { fill: var(--surface-2); stroke: var(--muted); stroke-width: 0.6; }
+.map-svg.map-picker path:hover { fill: var(--accent); }
+.map-svg.map-picker path.region-highlight { fill: var(--primary); stroke: var(--primary); }
+
+.map-svg.map-choropleth path:hover {
+  fill: inherit;
+  filter: brightness(1.25) saturate(1.1);
+  stroke: var(--text);
+  stroke-width: 1.2;
+}
+.map-svg path.lf-romance { fill: var(--cat-1); stroke: var(--cat-1); }
+.map-svg path.lf-germanic { fill: var(--cat-2); stroke: var(--cat-2); }
+.map-svg path.lf-slavic { fill: var(--cat-3); stroke: var(--cat-3); }
+.map-svg path.lf-indo-iranian { fill: var(--cat-4); stroke: var(--cat-4); }
+.map-svg path.lf-afro-asiatic { fill: var(--cat-5); stroke: var(--cat-5); }
+.map-svg path.lf-niger-congo { fill: var(--cat-6); stroke: var(--cat-6); }
+.map-svg path.lf-turkic { fill: var(--cat-7); stroke: var(--cat-7); }
+.map-svg path.lf-east-asian { fill: var(--cat-8); stroke: var(--cat-8); }
+.map-svg path.lf-austronesian { fill: var(--cat-9); stroke: var(--cat-9); }
+.map-svg path.lf-creole { fill: var(--cat-10); stroke: var(--cat-10); }
+.map-svg path.lf-other { fill: var(--cat-11); stroke: var(--cat-11); }
+.map-svg path.lg-1 { fill: var(--cat-1); stroke: var(--cat-1); }
+.map-svg path.lg-2 { fill: var(--cat-2); stroke: var(--cat-2); }
+.map-svg path.lg-3 { fill: var(--cat-3); stroke: var(--cat-3); }
+.map-svg path.lg-4 { fill: var(--cat-4); stroke: var(--cat-4); }
+.map-svg path.lg-5 { fill: var(--cat-5); stroke: var(--cat-5); }
+.map-svg path.lg-6 { fill: var(--cat-6); stroke: var(--cat-6); }
+.map-svg path.lg-7 { fill: var(--cat-7); stroke: var(--cat-7); }
+.map-svg path.lg-8 { fill: var(--cat-8); stroke: var(--cat-8); }
+.map-svg path.lg-9 { fill: var(--cat-9); stroke: var(--cat-9); }
+.map-svg path.lg-10 { fill: var(--cat-10); stroke: var(--cat-10); }
+.map-svg path.lf-nodata,
+.map-svg path.lg-other { fill: var(--cat-none); stroke: var(--cat-none); }
+
+/* Isolate mode: one bucket keeps its colour, everything else drops back to the
+   plain map fill, so no one has to tell eleven hues apart at once. */
+.map-svg.map-choropleth path.region-dim {
+  fill: var(--surface);
+  stroke: var(--border);
+  opacity: .55;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+.legend-item:hover { border-color: var(--primary); }
+.legend-item[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--surface-2);
+  font-weight: 600;
+}
+.legend-swatch {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+  background: var(--cat-none);
+}
+.legend-swatch.lf-nodata,
+.legend-swatch.lg-other { background: var(--cat-none); }
+.legend-swatch.lf-romance { background: var(--cat-1); }
+.legend-swatch.lf-germanic { background: var(--cat-2); }
+.legend-swatch.lf-slavic { background: var(--cat-3); }
+.legend-swatch.lf-indo-iranian { background: var(--cat-4); }
+.legend-swatch.lf-afro-asiatic { background: var(--cat-5); }
+.legend-swatch.lf-niger-congo { background: var(--cat-6); }
+.legend-swatch.lf-turkic { background: var(--cat-7); }
+.legend-swatch.lf-east-asian { background: var(--cat-8); }
+.legend-swatch.lf-austronesian { background: var(--cat-9); }
+.legend-swatch.lf-creole { background: var(--cat-10); }
+.legend-swatch.lf-other { background: var(--cat-11); }
+.legend-swatch.lg-1 { background: var(--cat-1); }
+.legend-swatch.lg-2 { background: var(--cat-2); }
+.legend-swatch.lg-3 { background: var(--cat-3); }
+.legend-swatch.lg-4 { background: var(--cat-4); }
+.legend-swatch.lg-5 { background: var(--cat-5); }
+.legend-swatch.lg-6 { background: var(--cat-6); }
+.legend-swatch.lg-7 { background: var(--cat-7); }
+.legend-swatch.lg-8 { background: var(--cat-8); }
+.legend-swatch.lg-9 { background: var(--cat-9); }
+.legend-swatch.lg-10 { background: var(--cat-10); }
+.legend-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ---- greeting panel (Say Hello map, and the country pages) ----------------- */
+.hello-panel {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+/* A border, because flags that are mostly white (Japan, Poland…) otherwise
+   dissolve into the panel and read as a stray coloured dot. */
+.hello-panel .hello-flag {
+  width: 72px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  flex: 0 0 auto;
+}
+.hello-body { min-width: 0; flex: 1 1 auto; }
+.hello-word {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 4px 0 2px;
+}
+.hello-pron { color: var(--muted); font-size: .9rem; }
+.hello-empty { color: var(--muted); margin-top: 16px; }
+
+@media (max-width: 560px) {
+  .hello-panel { flex-direction: column; }
+  .hello-panel .hello-flag { width: 56px; }
+}
+
+/* ---- country guides -------------------------------------------------------- */
+.people-list { display: grid; gap: 10px; }
+.person {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+/* Stands in for a portrait. Deliberately not a photo: real portraits would mean
+   a third-party image host in the CSP, attribution, and 200 more entries in the
+   service worker's capped image cache, for decoration. */
+.person-initials {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .5px;
+}
+.person-body { min-width: 0; }
+.person-name { font-weight: 700; }
+.person-native { font-weight: 400; color: var(--muted); }
+.person-meta { color: var(--muted); font-size: .82rem; margin-top: 1px; }
+.person-why { margin-top: 5px; line-height: 1.45; }
+.person-link { display: inline-block; margin-top: 5px; font-size: .82rem; color: var(--primary); }
+
+.event-list { display: grid; gap: 8px; }
+.event {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.event-year { font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
+.event-title { font-weight: 600; }
+.event-what { color: var(--muted); margin-top: 2px; line-height: 1.45; }
+.event-link { color: var(--primary); text-decoration: none; }
+
+.culture-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.culture-cell {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  line-height: 1.45;
+}
+.culture-icon { font-size: 1.3rem; line-height: 1; }
+.culture-label { font-weight: 600; margin-bottom: 2px; }
+
+.talk-list { margin: 0; padding-left: 20px; line-height: 1.6; }
+.talk-list li { margin-bottom: 4px; }
+.callout-warn { border-left-color: var(--bad); }
+
+@media (max-width: 560px) {
+  .event { grid-template-columns: auto 1fr; }
+  .event .event-link { grid-column: 2; justify-self: start; }
+}
+
 /* ---- Pokédex ---------------------------------------------------------------
    Everything here uses the existing theme tokens (--surface, --border, --muted,
    --text, --accent, --good, --shadow) so both themes work without a second

@@ -1,0 +1,352 @@
+[
+  {
+    "iso2": "BR",
+    "people": [
+      { "name": "Pelé", "native": "Edson Arantes do Nascimento", "years": "1940–2022", "field": "Footballer", "why": "The only player to win three World Cups, and for decades the most famous person on earth.", "wiki": "https://en.wikipedia.org/wiki/Pel%C3%A9" },
+      { "name": "Tom Jobim", "native": "Antônio Carlos Jobim", "years": "1927–1994", "field": "Composer", "why": "Co-wrote 'The Girl from Ipanema' and effectively invented bossa nova.", "wiki": "https://en.wikipedia.org/wiki/Antonio_Carlos_Jobim" },
+      { "name": "Oscar Niemeyer", "years": "1907–2012", "field": "Architect", "why": "Designed Brasília's curving white monuments and kept working past his hundredth birthday.", "wiki": "https://en.wikipedia.org/wiki/Oscar_Niemeyer" },
+      { "name": "Machado de Assis", "years": "1839–1908", "field": "Novelist", "why": "A mixed-race grandson of freed slaves who became Brazil's greatest writer, and its most quietly savage ironist.", "wiki": "https://en.wikipedia.org/wiki/Machado_de_Assis" },
+      { "name": "Ayrton Senna", "years": "1960–1994", "field": "Racing driver", "why": "Three-time Formula One champion whose death in 1994 brought Brazil to a standstill.", "wiki": "https://en.wikipedia.org/wiki/Ayrton_Senna" }
+    ],
+    "events": [
+      { "year": "1500", "title": "Cabral lands in Bahia", "what": "Portugal claimed the coast, beginning three centuries of colonial rule built on sugar and enslaved labour.", "wiki": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral" },
+      { "year": "1822", "title": "Independence", "what": "The Portuguese king's own son declared Brazil independent and crowned himself emperor — a monarchy in the Americas that lasted until 1889.", "wiki": "https://en.wikipedia.org/wiki/Independence_of_Brazil" },
+      { "year": "1888", "title": "The Golden Law", "what": "Brazil abolished slavery — the last country in the Americas to do so, after importing more enslaved Africans than anywhere else.", "wiki": "https://en.wikipedia.org/wiki/Lei_%C3%81urea" },
+      { "year": "1960", "title": "Brasília opens", "what": "A capital built from nothing in 41 months, in the empty centre of the country, to pull development inland.", "wiki": "https://en.wikipedia.org/wiki/Bras%C3%ADlia" },
+      { "year": "1985", "title": "Return to democracy", "what": "Twenty-one years of military dictatorship ended; the 1988 constitution is still called the Citizen's Constitution.", "wiki": "https://en.wikipedia.org/wiki/Brazilian_military_dictatorship" }
+    ],
+    "culture": [
+      { "icon": "🍛", "label": "Food", "text": "Feijoada — black beans slow-cooked with pork — is the Saturday lunch that takes the whole afternoon." },
+      { "icon": "🎭", "label": "Festival", "text": "Carnival is a national shutdown. Rio's samba schools compete in a purpose-built stadium; Salvador's street party is bigger still." },
+      { "icon": "⚽", "label": "Sport", "text": "Football is close to a national religion. Ask someone their club before you ask their politics." },
+      { "icon": "🤗", "label": "Greeting", "text": "Personal space is small and warmth is immediate. Hugs, cheek kisses and touching your arm mid-sentence are all normal." },
+      { "icon": "🎶", "label": "Music", "text": "Samba, bossa nova, forró, funk carioca and sertanejo all coexist; regional identity runs through what people listen to." }
+    ],
+    "talkAbout": [
+      "Which regional cuisine they think is best — the north-east and the south will give you very different answers.",
+      "Their football club, and how the season is going.",
+      "Music: almost everyone has strong opinions about sertanejo versus everything else."
+    ],
+    "avoid": "Don't assume Brazil is 'Latin American like the rest' — Brazilians speak Portuguese, not Spanish, and the distinction matters. Racial inequality and the Amazon are discussed openly but are not light small talk."
+  },
+  {
+    "iso2": "AR",
+    "people": [
+      { "name": "Jorge Luis Borges", "years": "1899–1986", "field": "Writer", "why": "His labyrinth stories reshaped world literature; he ran the national library after going blind.", "wiki": "https://en.wikipedia.org/wiki/Jorge_Luis_Borges" },
+      { "name": "Eva Perón", "native": "Evita", "years": "1919–1952", "field": "Political figure", "why": "Rose from rural poverty to become the most adored and most hated woman in Argentine history.", "wiki": "https://en.wikipedia.org/wiki/Eva_Per%C3%B3n" },
+      { "name": "Diego Maradona", "years": "1960–2020", "field": "Footballer", "why": "Won the 1986 World Cup almost single-handedly, and is mourned as a folk saint.", "wiki": "https://en.wikipedia.org/wiki/Diego_Maradona" },
+      { "name": "Lionel Messi", "years": "b. 1987", "field": "Footballer", "why": "Eight Ballons d'Or, and the 2022 World Cup that finally settled the argument.", "wiki": "https://en.wikipedia.org/wiki/Lionel_Messi" },
+      { "name": "Pope Francis", "native": "Jorge Mario Bergoglio", "years": "1936–2025", "field": "Religious leader", "why": "The first Latin American pope, and a Buenos Aires priest to the end.", "wiki": "https://en.wikipedia.org/wiki/Pope_Francis" }
+    ],
+    "events": [
+      { "year": "1816", "title": "Independence declared", "what": "The United Provinces broke from Spain at Tucumán, six years into a war led by José de San Martín.", "wiki": "https://en.wikipedia.org/wiki/Argentine_Declaration_of_Independence" },
+      { "year": "1880s–1930", "title": "The great immigration", "what": "Millions of Italians and Spaniards arrived; by 1914 a third of the country was foreign-born, which is why Argentine Spanish sounds Italian.", "wiki": "https://en.wikipedia.org/wiki/Immigration_to_Argentina" },
+      { "year": "1946", "title": "Perón elected", "what": "Peronism reshaped Argentine politics around the unions and the poor, and still defines the country's political fault line.", "wiki": "https://en.wikipedia.org/wiki/Juan_Per%C3%B3n" },
+      { "year": "1976–1983", "title": "The Dirty War", "what": "A military junta disappeared an estimated 30,000 people; the Mothers of the Plaza de Mayo still march every Thursday.", "wiki": "https://en.wikipedia.org/wiki/Dirty_War" },
+      { "year": "2001", "title": "The economic collapse", "what": "Default, frozen bank accounts and five presidents in two weeks — the reference point for every crisis since.", "wiki": "https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression" }
+    ],
+    "culture": [
+      { "icon": "🧉", "label": "Mate", "text": "A shared gourd of bitter tea passed around a group. Being offered it is an invitation; refusing outright is odd." },
+      { "icon": "🥩", "label": "Food", "text": "The asado is a slow weekend barbecue run by one designated griller, and it is a social institution, not a meal." },
+      { "icon": "💃", "label": "Dance", "text": "Tango was born in the port slums of Buenos Aires and is danced seriously in milongas to this day." },
+      { "icon": "⚽", "label": "Sport", "text": "The Boca–River rivalry is one of the fiercest in world sport." },
+      { "icon": "🕙", "label": "Timing", "text": "Dinner starts at ten, and an invitation for nine means arriving at half past." }
+    ],
+    "talkAbout": [
+      "Football — but ask which club, not whether they follow it.",
+      "Whether Argentine beef really is better, and why they think so.",
+      "Buenos Aires versus the provinces; everyone has a view on the capital."
+    ],
+    "avoid": "The Falklands/Malvinas are a national wound, not a debating point. The 1976–83 dictatorship is discussed but carefully — most families were touched by it."
+  },
+  {
+    "iso2": "CO",
+    "people": [
+      { "name": "Gabriel García Márquez", "native": "Gabo", "years": "1927–2014", "field": "Novelist", "why": "One Hundred Years of Solitude made magical realism the world's shorthand for Latin American writing; Nobel Prize, 1982.", "wiki": "https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez" },
+      { "name": "Shakira", "years": "b. 1977", "field": "Musician", "why": "The best-selling Latin artist of all time, from Barranquilla on the Caribbean coast.", "wiki": "https://en.wikipedia.org/wiki/Shakira" },
+      { "name": "Fernando Botero", "years": "1932–2023", "field": "Artist", "why": "His inflated, rounded figures are instantly recognisable and fill public squares in Medellín.", "wiki": "https://en.wikipedia.org/wiki/Fernando_Botero" },
+      { "name": "Simón Bolívar", "years": "1783–1830", "field": "Liberator", "why": "Venezuelan-born, but Colombia was the heart of his Gran Colombia; he died near Santa Marta.", "wiki": "https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar" },
+      { "name": "Juan Manuel Santos", "years": "b. 1951", "field": "Politician", "why": "Won the Nobel Peace Prize in 2016 for the deal that ended a fifty-year war with the FARC.", "wiki": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos" }
+    ],
+    "events": [
+      { "year": "1819", "title": "Battle of Boyacá", "what": "Bolívar's victory sealed independence from Spain and created Gran Colombia.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Boyac%C3%A1" },
+      { "year": "1948", "title": "El Bogotazo", "what": "The assassination of Jorge Eliécer Gaitán set off riots and a decade of civil war known simply as La Violencia.", "wiki": "https://en.wikipedia.org/wiki/Bogotazo" },
+      { "year": "1993", "title": "Escobar killed", "what": "The end of the Medellín cartel's most violent chapter, though not of the drug war.", "wiki": "https://en.wikipedia.org/wiki/Pablo_Escobar" },
+      { "year": "2016", "title": "The FARC peace accord", "what": "Ended the longest-running armed conflict in the Americas, narrowly rejected in a referendum and then revised and signed.", "wiki": "https://en.wikipedia.org/wiki/Colombian_peace_process" }
+    ],
+    "culture": [
+      { "icon": "☕", "label": "Coffee", "text": "The coffee-growing landscape is UNESCO-listed. A tinto is a small black coffee offered all day, everywhere." },
+      { "icon": "💃", "label": "Music", "text": "Cumbia and vallenato are the roots; salsa belongs to Cali, which claims to be its world capital." },
+      { "icon": "🍲", "label": "Food", "text": "Bandeja paisa is an enormous plate of beans, rice, pork, egg and plantain. Arepas are eaten everywhere, differently in every region." },
+      { "icon": "🌺", "label": "Festival", "text": "Medellín's Feria de las Flores fills the city with flower displays carried on growers' backs." },
+      { "icon": "🗣️", "label": "Manner", "text": "Formality and warmth together — usted is common even among friends, alongside a lot of affection." }
+    ],
+    "talkAbout": [
+      "Regional identity: paisa, costeño, rolo and caleño are real and strongly felt distinctions.",
+      "Coffee, and why they think Colombian coffee is different.",
+      "How much the country has changed in the last twenty years — most people are keen to say so."
+    ],
+    "avoid": "Drug-cartel jokes and Escobar references land badly; that era killed a great many ordinary people and Colombians are tired of being defined by it."
+  },
+  {
+    "iso2": "PE",
+    "people": [
+      { "name": "Mario Vargas Llosa", "years": "1936–2025", "field": "Novelist", "why": "Nobel laureate in 2010, and once a presidential candidate.", "wiki": "https://en.wikipedia.org/wiki/Mario_Vargas_Llosa" },
+      { "name": "Túpac Amaru II", "years": "1738–1781", "field": "Rebel leader", "why": "Led the largest indigenous uprising against Spanish rule; his execution became a founding story of Andean resistance.", "wiki": "https://en.wikipedia.org/wiki/T%C3%BApac_Amaru_II" },
+      { "name": "Gastón Acurio", "years": "b. 1967", "field": "Chef", "why": "Turned Peruvian cooking into a global cuisine and a source of national pride.", "wiki": "https://en.wikipedia.org/wiki/Gast%C3%B3n_Acurio" },
+      { "name": "César Vallejo", "years": "1892–1938", "field": "Poet", "why": "The most radical Spanish-language poet of the twentieth century, who died poor in Paris.", "wiki": "https://en.wikipedia.org/wiki/C%C3%A9sar_Vallejo" },
+      { "name": "Pachacuti", "years": "c. 1418–1472", "field": "Inca emperor", "why": "Turned a small kingdom into the largest empire in the pre-Columbian Americas, and probably built Machu Picchu.", "wiki": "https://en.wikipedia.org/wiki/Pachacuti" }
+    ],
+    "events": [
+      { "year": "1438–1533", "title": "The Inca Empire", "what": "Ruled 12 million people from Cusco across the Andes, with roads and record-keeping but no writing or wheel.", "wiki": "https://en.wikipedia.org/wiki/Inca_Empire" },
+      { "year": "1532", "title": "Pizarro at Cajamarca", "what": "168 Spaniards captured the Inca emperor Atahualpa and brought down the empire within a year.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Cajamarca" },
+      { "year": "1911", "title": "Machu Picchu revealed", "what": "Hiram Bingham brought the Inca citadel to world attention; local farmers had known it was there all along.", "wiki": "https://en.wikipedia.org/wiki/Machu_Picchu" },
+      { "year": "1980–2000", "title": "The Shining Path conflict", "what": "A Maoist insurgency and the state's response killed nearly 70,000 people, most of them rural and Quechua-speaking.", "wiki": "https://en.wikipedia.org/wiki/Internal_conflict_in_Peru" }
+    ],
+    "culture": [
+      { "icon": "🐟", "label": "Food", "text": "Ceviche — raw fish cured in lime — is eaten at lunchtime, never dinner. Peru has around 4,000 varieties of potato." },
+      { "icon": "🏔️", "label": "Geography", "text": "Coast, Andes and Amazon are three different countries in one, and people identify strongly with theirs." },
+      { "icon": "🧣", "label": "Textiles", "text": "Andean weaving encodes community and status in its patterns, and is still worn rather than performed." },
+      { "icon": "🍹", "label": "Drink", "text": "Pisco sour is the national cocktail, and its origin is a genuine and unresolved argument with Chile." },
+      { "icon": "🗣️", "label": "Language", "text": "Quechua and Aymara are official alongside Spanish, and millions speak them at home." }
+    ],
+    "talkAbout": [
+      "Food — Peruvians will happily talk about it for an hour, and Lima's restaurants are a point of pride.",
+      "Whether Machu Picchu or Choquequirao is the better ruin.",
+      "The three regions, and which one they are from."
+    ],
+    "avoid": "Don't tell a Peruvian that pisco is Chilean. The Shining Path years and the Fujimori era remain politically raw."
+  },
+  {
+    "iso2": "CL",
+    "people": [
+      { "name": "Pablo Neruda", "years": "1904–1973", "field": "Poet", "why": "Nobel laureate whose love poems are recited across the Spanish-speaking world; also a diplomat and senator.", "wiki": "https://en.wikipedia.org/wiki/Pablo_Neruda" },
+      { "name": "Gabriela Mistral", "years": "1889–1957", "field": "Poet", "why": "The first Latin American writer to win the Nobel Prize in Literature, in 1945.", "wiki": "https://en.wikipedia.org/wiki/Gabriela_Mistral" },
+      { "name": "Violeta Parra", "years": "1917–1967", "field": "Musician", "why": "Collected Chile's folk music and wrote 'Gracias a la Vida', one of the most covered songs in Spanish.", "wiki": "https://en.wikipedia.org/wiki/Violeta_Parra" },
+      { "name": "Salvador Allende", "years": "1908–1973", "field": "President", "why": "The world's first freely elected Marxist head of state; died in the 1973 coup.", "wiki": "https://en.wikipedia.org/wiki/Salvador_Allende" },
+      { "name": "Isabel Allende", "years": "b. 1942", "field": "Novelist", "why": "The most widely read Spanish-language woman novelist alive.", "wiki": "https://en.wikipedia.org/wiki/Isabel_Allende" }
+    ],
+    "events": [
+      { "year": "1818", "title": "Independence", "what": "Bernardo O'Higgins and San Martín's army secured Chile's break from Spain at Maipú.", "wiki": "https://en.wikipedia.org/wiki/Chilean_War_of_Independence" },
+      { "year": "1879–1883", "title": "War of the Pacific", "what": "Chile took the nitrate coast from Peru and Bolivia, leaving Bolivia landlocked — still a live grievance.", "wiki": "https://en.wikipedia.org/wiki/War_of_the_Pacific" },
+      { "year": "1973", "title": "The coup", "what": "Pinochet's forces bombed the presidential palace on 11 September; seventeen years of dictatorship followed.", "wiki": "https://en.wikipedia.org/wiki/1973_Chilean_coup_d%27%C3%A9tat" },
+      { "year": "2010", "title": "The 33 miners", "what": "Trapped 700 m down for 69 days and brought up alive, watched live by about a billion people.", "wiki": "https://en.wikipedia.org/wiki/2010_Copiap%C3%B3_mining_accident" }
+    ],
+    "culture": [
+      { "icon": "🍷", "label": "Wine", "text": "Carmenère was thought extinct until it was found growing in Chile, mislabelled as merlot." },
+      { "icon": "🏜️", "label": "Geography", "text": "4,300 km long and rarely 200 km wide, from the driest desert on earth to Patagonian ice." },
+      { "icon": "🥟", "label": "Food", "text": "Empanadas de pino at Independence Day, completos (loaded hot dogs) the rest of the year." },
+      { "icon": "💃", "label": "Dance", "text": "The cueca, danced with a handkerchief, is the national dance and compulsory at every September fiesta." },
+      { "icon": "🗣️", "label": "Speech", "text": "Chilean Spanish is famously fast and full of local slang — even other Spanish speakers struggle." }
+    ],
+    "talkAbout": [
+      "Wine, and which valley they rate.",
+      "Poetry — Neruda and Mistral are genuinely popular, not just school reading.",
+      "The landscape, and which end of the country they prefer."
+    ],
+    "avoid": "The Pinochet years still split families; 11 September means 1973 here. The Mapuche land conflict in the south is contested and heated."
+  },
+  {
+    "iso2": "VE",
+    "people": [
+      { "name": "Simón Bolívar", "years": "1783–1830", "field": "Liberator", "why": "Born in Caracas, he freed six countries from Spanish rule and is invoked by every side of Venezuelan politics.", "wiki": "https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar" },
+      { "name": "Teresa Carreño", "years": "1853–1917", "field": "Pianist", "why": "A child prodigy who played for Lincoln at the White House and toured the world for fifty years.", "wiki": "https://en.wikipedia.org/wiki/Teresa_Carre%C3%B1o" },
+      { "name": "Gustavo Dudamel", "years": "b. 1981", "field": "Conductor", "why": "Product of El Sistema, the free youth-orchestra programme, and now one of the world's leading conductors.", "wiki": "https://en.wikipedia.org/wiki/Gustavo_Dudamel" },
+      { "name": "Rómulo Gallegos", "years": "1884–1969", "field": "Novelist and president", "why": "Wrote Doña Bárbara, the great novel of the Venezuelan plains, and briefly led the country.", "wiki": "https://en.wikipedia.org/wiki/R%C3%B3mulo_Gallegos" },
+      { "name": "Hugo Chávez", "years": "1954–2013", "field": "President", "why": "Reshaped Venezuela and much of Latin American politics for a generation; still fiercely argued over.", "wiki": "https://en.wikipedia.org/wiki/Hugo_Ch%C3%A1vez" }
+    ],
+    "events": [
+      { "year": "1811", "title": "Independence declared", "what": "The first Spanish American colony to declare independence outright, though the war ran another decade.", "wiki": "https://en.wikipedia.org/wiki/Venezuelan_Declaration_of_Independence" },
+      { "year": "1922", "title": "Oil at Barroso", "what": "A gusher near Lake Maracaibo turned an agricultural country into an oil state within a decade.", "wiki": "https://en.wikipedia.org/wiki/Venezuela#Oil" },
+      { "year": "1989", "title": "The Caracazo", "what": "Riots against austerity were put down with hundreds, perhaps thousands, of deaths — the beginning of the old order's collapse.", "wiki": "https://en.wikipedia.org/wiki/Caracazo" },
+      { "year": "2014–present", "title": "The exodus", "what": "Economic collapse has driven more than seven million people out of the country, the largest displacement in the Americas.", "wiki": "https://en.wikipedia.org/wiki/Venezuelan_refugee_crisis" }
+    ],
+    "culture": [
+      { "icon": "🫓", "label": "Food", "text": "Arepas at any hour, and hallacas — banana-leaf parcels made by the whole family — at Christmas." },
+      { "icon": "🎻", "label": "Music", "text": "El Sistema has put instruments in the hands of hundreds of thousands of children since 1975." },
+      { "icon": "⚾", "label": "Sport", "text": "Baseball, not football, is the national game, and Venezuelan players fill Major League rosters." },
+      { "icon": "🏞️", "label": "Landscape", "text": "Angel Falls drops nearly a kilometre off a flat-topped tepui in the Gran Sabana." },
+      { "icon": "🤝", "label": "Manner", "text": "Loud, funny and quick to include a stranger; humour under pressure is a point of pride." }
+    ],
+    "talkAbout": [
+      "Baseball, and which Venezuelan players they follow.",
+      "Food, especially arepas and how the fillings differ from Colombian ones.",
+      "Music, from El Sistema to gaita at Christmas."
+    ],
+    "avoid": "Venezuelan politics divides families and much of the diaspora. Let them raise it, and don't assume which side they are on."
+  },
+  {
+    "iso2": "EC",
+    "people": [
+      { "name": "Oswaldo Guayasamín", "years": "1919–1999", "field": "Painter", "why": "His anguished portraits of Latin America's poor are the country's best-known art.", "wiki": "https://en.wikipedia.org/wiki/Oswaldo_Guayasam%C3%ADn" },
+      { "name": "Eugenio Espejo", "years": "1747–1795", "field": "Doctor and writer", "why": "Indigenous and Black by birth, he became a physician and the intellectual father of Ecuadorian independence.", "wiki": "https://en.wikipedia.org/wiki/Eugenio_Espejo" },
+      { "name": "Jefferson Pérez", "years": "b. 1974", "field": "Race walker", "why": "Won Ecuador's first Olympic gold in 1996 and is a national hero for it.", "wiki": "https://en.wikipedia.org/wiki/Jefferson_P%C3%A9rez" },
+      { "name": "Manuela Sáenz", "years": "1797–1856", "field": "Revolutionary", "why": "Bolívar's partner and a fighter in her own right, who saved his life in 1828.", "wiki": "https://en.wikipedia.org/wiki/Manuela_S%C3%A1enz" },
+      { "name": "Juan Montalvo", "years": "1832–1889", "field": "Essayist", "why": "His pen was so feared that he claimed it had killed a dictator.", "wiki": "https://en.wikipedia.org/wiki/Juan_Montalvo" }
+    ],
+    "events": [
+      { "year": "1736", "title": "The French Geodesic Mission", "what": "Scientists came to measure the shape of the earth at the equator — and gave the country its name.", "wiki": "https://en.wikipedia.org/wiki/French_Geodesic_Mission_to_the_Equator" },
+      { "year": "1822", "title": "Battle of Pichincha", "what": "Sucre's victory on the slopes above Quito secured independence from Spain.", "wiki": "https://en.wikipedia.org/wiki/Battle_of_Pichincha" },
+      { "year": "1835", "title": "Darwin in the Galápagos", "what": "Five weeks among the islands' finches and tortoises fed directly into On the Origin of Species.", "wiki": "https://en.wikipedia.org/wiki/Second_voyage_of_HMS_Beagle" },
+      { "year": "2008", "title": "Rights of nature", "what": "Ecuador became the first country to write the rights of nature into its constitution.", "wiki": "https://en.wikipedia.org/wiki/Rights_of_nature" }
+    ],
+    "culture": [
+      { "icon": "🐢", "label": "Nature", "text": "The Galápagos sit 900 km offshore and are the reason half the world knows the country's name." },
+      { "icon": "🍲", "label": "Food", "text": "Encebollado, a tuna and cassava soup, is the coastal cure for a hangover. Ceviche here comes with popcorn." },
+      { "icon": "🎩", "label": "Craft", "text": "The 'Panama' hat is Ecuadorian — woven in Montecristi and Cuenca, and named after where it was sold." },
+      { "icon": "🏔️", "label": "Geography", "text": "Quito sits at 2,850 m; the summit of Chimborazo is the furthest point on the surface from the earth's centre." },
+      { "icon": "🧵", "label": "Otavalo", "text": "The Otavaleño people run one of the Americas' great textile markets and have kept their dress and language." }
+    ],
+    "talkAbout": [
+      "The Galápagos, and whether they have been.",
+      "Coast versus highlands — the rivalry between Guayaquil and Quito is good-natured and constant.",
+      "That the Panama hat is actually theirs."
+    ],
+    "avoid": "Ecuador has had a lot of political turbulence and recent problems with organised crime; ask rather than assert. Don't call the hat Panamanian without expecting a correction."
+  },
+  {
+    "iso2": "BO",
+    "people": [
+      { "name": "Evo Morales", "years": "b. 1959", "field": "President", "why": "Bolivia's first indigenous president, a former coca growers' union leader, in office 2006–2019.", "wiki": "https://en.wikipedia.org/wiki/Evo_Morales" },
+      { "name": "Túpac Katari", "years": "1750–1781", "field": "Rebel leader", "why": "Besieged La Paz for six months in an Aymara uprising; his name still stands for indigenous resistance.", "wiki": "https://en.wikipedia.org/wiki/T%C3%BApac_Katari" },
+      { "name": "Jaime Escalante", "years": "1930–2010", "field": "Teacher", "why": "The Bolivian maths teacher whose Los Angeles classroom became the film Stand and Deliver.", "wiki": "https://en.wikipedia.org/wiki/Jaime_Escalante" },
+      { "name": "Adela Zamudio", "years": "1854–1928", "field": "Poet", "why": "Bolivia's first feminist writer; her birthday is the national Day of Women.", "wiki": "https://en.wikipedia.org/wiki/Adela_Zamudio" },
+      { "name": "Marina Núñez del Prado", "years": "1908–1995", "field": "Sculptor", "why": "Carved Andean women out of native stone and wood, and is Bolivia's best-known artist abroad.", "wiki": "https://en.wikipedia.org/wiki/Marina_N%C3%BA%C3%B1ez_del_Prado" }
+    ],
+    "events": [
+      { "year": "1545", "title": "Silver at Potosí", "what": "The Cerro Rico became the richest silver mine on earth and bankrolled the Spanish empire, at an enormous human cost.", "wiki": "https://en.wikipedia.org/wiki/Potos%C3%AD" },
+      { "year": "1825", "title": "Independence", "what": "Named after Bolívar, with Sucre as its first president.", "wiki": "https://en.wikipedia.org/wiki/Bolivia#Independence" },
+      { "year": "1879", "title": "Losing the sea", "what": "The War of the Pacific cost Bolivia its coastline; the navy still exists and Sea Day is marked every March.", "wiki": "https://en.wikipedia.org/wiki/War_of_the_Pacific" },
+      { "year": "2000", "title": "The Water War", "what": "Cochabamba forced the reversal of a water privatisation, an early landmark in global anti-privatisation politics.", "wiki": "https://en.wikipedia.org/wiki/Cochabamba_Water_War" }
+    ],
+    "culture": [
+      { "icon": "🧂", "label": "Landscape", "text": "The Salar de Uyuni is the largest salt flat on earth and turns into a mirror in the rainy season." },
+      { "icon": "🎭", "label": "Festival", "text": "Oruro's Carnaval is a UNESCO-listed diablada — thousands of dancers in devil masks, over three days." },
+      { "icon": "👗", "label": "Dress", "text": "The cholita's bowler hat and layered skirts are everyday clothing and a statement of Aymara identity." },
+      { "icon": "🍵", "label": "Coca", "text": "Coca leaf is chewed and brewed for altitude and is legal and ordinary here — quite separate from cocaine." },
+      { "icon": "🗣️", "label": "Language", "text": "Thirty-six languages are official; Quechua and Aymara are spoken by millions." }
+    ],
+    "talkAbout": [
+      "Altitude, and how to handle it — everyone has advice.",
+      "The salt flats, and the best time of year to see them.",
+      "Food: salteñas are a morning institution worth asking about."
+    ],
+    "avoid": "Don't conflate coca with cocaine — it's a sore point. The loss of the coastline to Chile is a real national grievance, not a curiosity."
+  },
+  {
+    "iso2": "UY",
+    "people": [
+      { "name": "José Artigas", "years": "1764–1850", "field": "National hero", "why": "Led the fight for independence and for a federal, land-reforming republic; every town has his statue.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Gervasio_Artigas" },
+      { "name": "José Mujica", "native": "Pepe", "years": "1935–2025", "field": "President", "why": "A former guerrilla who gave away most of his salary and drove a 1987 Beetle while in office.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mujica" },
+      { "name": "Luis Suárez", "years": "b. 1987", "field": "Footballer", "why": "Uruguay's record scorer, and the country's most argued-about sporting figure.", "wiki": "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez" },
+      { "name": "Eduardo Galeano", "years": "1940–2015", "field": "Writer", "why": "Open Veins of Latin America became the continent's most-read political book.", "wiki": "https://en.wikipedia.org/wiki/Eduardo_Galeano" },
+      { "name": "Juana de Ibarbourou", "years": "1892–1979", "field": "Poet", "why": "Called 'Juana of America' in her own lifetime, and read across the continent.", "wiki": "https://en.wikipedia.org/wiki/Juana_de_Ibarbourou" }
+    ],
+    "events": [
+      { "year": "1828", "title": "Independence", "what": "Britain brokered a settlement creating a buffer state between Argentina and Brazil.", "wiki": "https://en.wikipedia.org/wiki/Uruguay#Independence" },
+      { "year": "1930", "title": "The first World Cup", "what": "Uruguay hosted and won the first football World Cup, in a stadium built for it in six months.", "wiki": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup" },
+      { "year": "1950", "title": "The Maracanazo", "what": "Beating Brazil in front of 200,000 people in Rio — probably the most famous upset in football history.", "wiki": "https://en.wikipedia.org/wiki/Maracanazo" },
+      { "year": "2013", "title": "First to legalise cannabis", "what": "Uruguay became the first country in the world to regulate the whole cannabis market by law.", "wiki": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay" }
+    ],
+    "culture": [
+      { "icon": "🧉", "label": "Mate", "text": "Uruguayans carry a thermos under one arm all day. Consumption per head is the highest anywhere." },
+      { "icon": "🥁", "label": "Candombe", "text": "Drumming brought by enslaved Africans, still played through Montevideo's streets on Sunday evenings." },
+      { "icon": "⚽", "label": "Sport", "text": "Two World Cups and two Olympic golds from a country of three and a half million." },
+      { "icon": "🏛️", "label": "Politics", "text": "Secular since 1917 — Christmas is officially Family Day and Holy Week is Tourism Week." },
+      { "icon": "🥩", "label": "Food", "text": "The chivito is a steak sandwich of alarming ambition, and asado is taken as seriously as in Argentina." }
+    ],
+    "talkAbout": [
+      "Mate: how they take it, and the etiquette of the shared gourd.",
+      "Football, and 1950 in particular.",
+      "How a country this small keeps ending up ahead on social policy."
+    ],
+    "avoid": "Don't treat Uruguay as a smaller Argentina — the comparison gets old fast. Tango, mate and dulce de leche all have contested origins."
+  },
+  {
+    "iso2": "PY",
+    "people": [
+      { "name": "Augusto Roa Bastos", "years": "1917–2005", "field": "Novelist", "why": "I, the Supreme is one of the great Latin American dictator novels; he wrote most of it in exile.", "wiki": "https://en.wikipedia.org/wiki/Augusto_Roa_Bastos" },
+      { "name": "José Gaspar Rodríguez de Francia", "years": "1766–1840", "field": "Dictator", "why": "Sealed Paraguay off from the world for a quarter-century and built a self-sufficient state.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Gaspar_Rodr%C3%ADguez_de_Francia" },
+      { "name": "Josefina Plá", "years": "1903–1999", "field": "Writer and artist", "why": "Shaped modern Paraguayan letters and ceramics across seventy years of work.", "wiki": "https://en.wikipedia.org/wiki/Josefina_Pl%C3%A1" },
+      { "name": "Agustín Barrios", "native": "Mangoré", "years": "1885–1944", "field": "Guitarist and composer", "why": "One of the greatest classical guitar composers, and the first to record on the instrument.", "wiki": "https://en.wikipedia.org/wiki/Agust%C3%ADn_Barrios" },
+      { "name": "José Luis Chilavert", "years": "b. 1965", "field": "Footballer", "why": "A goalkeeper who took free kicks and scored 67 goals — an international curiosity and a national favourite.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" }
+    ],
+    "events": [
+      { "year": "1609–1767", "title": "The Jesuit reductions", "what": "Mission towns where Guaraní people kept their language and built an economy, until Spain expelled the Jesuits.", "wiki": "https://en.wikipedia.org/wiki/Jesuit_reductions" },
+      { "year": "1864–1870", "title": "The War of the Triple Alliance", "what": "Paraguay fought Brazil, Argentina and Uruguay at once and lost perhaps 60% of its population — proportionally the deadliest war in modern history.", "wiki": "https://en.wikipedia.org/wiki/Paraguayan_War" },
+      { "year": "1954–1989", "title": "The Stroessner dictatorship", "what": "Thirty-five years of one-party rule, the longest in twentieth-century South America.", "wiki": "https://en.wikipedia.org/wiki/Alfredo_Stroessner" },
+      { "year": "1984", "title": "Itaipú dam completed", "what": "For decades the largest hydroelectric plant on earth; Paraguay still generates far more power than it uses.", "wiki": "https://en.wikipedia.org/wiki/Itaipu_Dam" }
+    ],
+    "culture": [
+      { "icon": "🗣️", "label": "Language", "text": "Guaraní is spoken by most of the population and is co-official — unique in the Americas for an indigenous language." },
+      { "icon": "🧊", "label": "Tereré", "text": "Mate served ice-cold with herbs, drunk all day in the heat and shared from one gourd." },
+      { "icon": "🪡", "label": "Craft", "text": "Ñandutí lace, named after a spider's web, is woven in radiating circles in Itauguá." },
+      { "icon": "🎸", "label": "Music", "text": "The Paraguayan harp is the national instrument, played with a lightness nothing else quite matches." },
+      { "icon": "🌽", "label": "Food", "text": "Sopa paraguaya is not a soup — it's a dense corn and cheese bread, and the confusion is the point of the joke." }
+    ],
+    "talkAbout": [
+      "Guaraní — ask them to teach you a phrase; they will be pleased you asked.",
+      "Tereré, and the herbs they add to it.",
+      "The harp, and the music that goes with it."
+    ],
+    "avoid": "The Triple Alliance war is a national trauma, not a piece of trivia. The Stroessner years still divide opinion."
+  },
+  {
+    "iso2": "GY",
+    "people": [
+      { "name": "Cheddi Jagan", "years": "1918–1997", "field": "President", "why": "Dentist turned independence leader, and a central figure in Cold War politics in the Caribbean.", "wiki": "https://en.wikipedia.org/wiki/Cheddi_Jagan" },
+      { "name": "Walter Rodney", "years": "1942–1980", "field": "Historian", "why": "How Europe Underdeveloped Africa reshaped the study of colonialism; he was assassinated at 38.", "wiki": "https://en.wikipedia.org/wiki/Walter_Rodney" },
+      { "name": "Clive Lloyd", "years": "b. 1944", "field": "Cricketer", "why": "Captained the West Indies through their era of total dominance, winning the first two World Cups.", "wiki": "https://en.wikipedia.org/wiki/Clive_Lloyd" },
+      { "name": "Wilson Harris", "years": "1921–2018", "field": "Novelist", "why": "A land surveyor in the interior before becoming one of the Caribbean's most demanding writers.", "wiki": "https://en.wikipedia.org/wiki/Wilson_Harris" },
+      { "name": "Aubrey Williams", "years": "1926–1990", "field": "Painter", "why": "Fused Warrau imagery with modernist abstraction and helped found the Caribbean Artists Movement.", "wiki": "https://en.wikipedia.org/wiki/Aubrey_Williams" }
+    ],
+    "events": [
+      { "year": "1763", "title": "The Berbice slave uprising", "what": "Enslaved people held the colony for almost a year; its leader Cuffy is now a national hero.", "wiki": "https://en.wikipedia.org/wiki/Berbice_slave_uprising" },
+      { "year": "1838", "title": "Indentured labour begins", "what": "After abolition, planters brought in workers from India — which is why Guyana is roughly 40% Indo-Guyanese today.", "wiki": "https://en.wikipedia.org/wiki/Indo-Guyanese" },
+      { "year": "1966", "title": "Independence", "what": "Guyana left British rule as the only English-speaking country in South America.", "wiki": "https://en.wikipedia.org/wiki/Guyana" },
+      { "year": "2015", "title": "Oil offshore", "what": "An enormous find off the coast has made Guyana one of the fastest-growing economies on earth.", "wiki": "https://en.wikipedia.org/wiki/Stabroek_Block" }
+    ],
+    "culture": [
+      { "icon": "🏏", "label": "Sport", "text": "Cricket, not football — Guyana plays as part of the West Indies team." },
+      { "icon": "🍛", "label": "Food", "text": "Curry, roti and pepperpot side by side: Indian, African, Portuguese, Chinese and Indigenous cooking in one kitchen." },
+      { "icon": "🌊", "label": "Kaieteur", "text": "A single drop of 226 m in untouched rainforest, five times the height of Niagara and almost never crowded." },
+      { "icon": "🗣️", "label": "Language", "text": "English is official; Guyanese Creole is what people actually speak, and nine Amerindian languages survive." },
+      { "icon": "🌴", "label": "Orientation", "text": "Geographically South American, culturally Caribbean — it belongs to CARICOM, not Mercosur." }
+    ],
+    "talkAbout": [
+      "Cricket, and the West Indies sides of the 1970s and 80s.",
+      "Food, and how the Indian and African traditions meet on one plate.",
+      "Kaieteur Falls, and the interior most visitors never see."
+    ],
+    "avoid": "Politics splits along Indo- and Afro-Guyanese lines and is genuinely tense. The border dispute with Venezuela over the Essequibo is serious, not academic."
+  },
+  {
+    "iso2": "SR",
+    "people": [
+      { "name": "Anton de Kom", "years": "1898–1945", "field": "Writer and activist", "why": "His book We Slaves of Suriname told the colony's history from the enslaved side; he died in a Nazi camp.", "wiki": "https://en.wikipedia.org/wiki/Anton_de_Kom" },
+      { "name": "Clarence Seedorf", "years": "b. 1976", "field": "Footballer", "why": "Suriname-born, the only player to win the Champions League with three different clubs.", "wiki": "https://en.wikipedia.org/wiki/Clarence_Seedorf" },
+      { "name": "Boni", "years": "d. 1793", "field": "Maroon leader", "why": "Led escaped enslaved people in a guerrilla war against the Dutch; the Aluku Maroons carry his name.", "wiki": "https://en.wikipedia.org/wiki/Boni_(Maroon_leader)" },
+      { "name": "Maria Sibylla Merian", "years": "1647–1717", "field": "Naturalist", "why": "Sailed to Suriname at 52 to study insects and produced one of the great works of scientific illustration.", "wiki": "https://en.wikipedia.org/wiki/Maria_Sibylla_Merian" },
+      { "name": "Ruth Wijdenbosch", "years": "b. 1950", "field": "Politician", "why": "A long-serving parliamentarian and a leading voice for women's rights in Surinamese public life.", "wiki": "https://en.wikipedia.org/wiki/Ruth_Wijdenbosch" }
+    ],
+    "events": [
+      { "year": "1667", "title": "Traded for New York", "what": "The Dutch took Suriname from England and gave up New Amsterdam — now Manhattan — in exchange.", "wiki": "https://en.wikipedia.org/wiki/Treaty_of_Breda_(1667)" },
+      { "year": "1760", "title": "The Maroon treaties", "what": "The Dutch were forced to recognise the independence of escaped-slave communities in the interior, a century before abolition.", "wiki": "https://en.wikipedia.org/wiki/Surinamese_Maroons" },
+      { "year": "1863", "title": "Abolition", "what": "Slavery ended, followed by indentured workers from India and Java — the origin of today's mix.", "wiki": "https://en.wikipedia.org/wiki/Slavery_in_Suriname" },
+      { "year": "1975", "title": "Independence", "what": "Suriname left the Netherlands, and about a third of the population moved to the Dutch mainland.", "wiki": "https://en.wikipedia.org/wiki/Suriname" }
+    ],
+    "culture": [
+      { "icon": "🕌", "label": "Coexistence", "text": "A mosque and a synagogue stand side by side in Paramaribo and share a car park." },
+      { "icon": "🗣️", "label": "Language", "text": "Dutch is official, but Sranan Tongo is the street lingua franca, alongside Sarnami, Javanese and Maroon languages." },
+      { "icon": "🍜", "label": "Food", "text": "Javanese saoto soup, Indian roti and Creole pom on the same street, often in the same meal." },
+      { "icon": "🌳", "label": "Forest", "text": "More than 90% forest cover — proportionally the most forested country on earth." },
+      { "icon": "🥁", "label": "Music", "text": "Kaseko blends Maroon drumming with brass and jazz, and is what a Surinamese party sounds like." }
+    ],
+    "talkAbout": [
+      "How so many communities live together in a country of barely 600,000.",
+      "Food — every group has a dish and they will want you to try all of them.",
+      "The interior, the Maroon villages and the rainforest."
+    ],
+    "avoid": "The 1982 December murders and the Bouterse years remain unresolved and painful. Ethnic politics is a delicate subject."
+  }
+]
