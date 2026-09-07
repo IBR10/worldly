@@ -15,6 +15,8 @@ const DATA = {
   phrases: [],
   music: [],
   crises: [],
+  pokemon: [],
+  pokemonTypes: null,
   achievements: [],
   loaded: false,
 };
@@ -64,12 +66,14 @@ const LAZY_FILES = {
   phrases: '/data/phrases.json',
   music: '/data/music.json',
   crises: '/data/crises.json',
+  pokemon: '/data/pokemon.json',
+  pokemonTypes: '/data/pokemon_types.json',
 };
 
 /**
  * Fetch one Explore dataset, populating DATA[name]. Repeat calls share the
  * in-flight promise, and a failure never poisons the cache for retries.
- * @param {'phrases'|'music'|'crises'} name
+ * @param {'phrases'|'music'|'crises'|'pokemon'|'pokemonTypes'} name
  */
 export function loadDataset(name) {
   if (LAZY[name]) return LAZY[name];

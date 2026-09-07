@@ -92,6 +92,8 @@
 .map-btn:focus-visible,
 .spk:focus-visible,
 .chip-name:focus-visible,
+.dex-card:focus-visible,
+.gen-tab:focus-visible,
 .skip-link:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
@@ -149,7 +151,7 @@ body {
    and audited. */
 .icon-btn, .map-btn { min-width: 44px; min-height: 44px; }
 .quiz-top .btn.ghost { min-height: 44px; }
-.tab, .seg button, .check { min-height: 44px; }
+.tab, .seg button, .check, .gen-tab { min-height: 44px; }
 .spk { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 
 h1, h2, h3 { line-height: 1.2; }
@@ -635,3 +637,203 @@ h1, h2, h3 { line-height: 1.2; }
 .name-input { min-width: 200px; }
 .hidden { display: none; }
 .btn.danger { border-color: var(--bad); color: var(--bad); }
+/* ---- Pokédex ---------------------------------------------------------------
+   Everything here uses the existing theme tokens (--surface, --border, --muted,
+   --text, --accent, --good, --shadow) so both themes work without a second
+   palette. The one exception is the type colours: a Pokémon type's colour is
+   part of its identity, not a themeable surface, so those are literals — but
+   they are declared once here and referenced by class, never inlined.
+
+   Theme-scoped rules below are written as descendant selectors
+   ([data-theme="dark"] .foo) rather than re-opening :root or [data-theme="dark"],
+   because stylelint's no-duplicate-selectors would (correctly) flag redefining a
+   selector the file already declares further up. */
+
+.dex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(122px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.dex-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 6px 12px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dex-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.dex-sprite {
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;   /* the sprites are 96px pixel art; keep it crisp */
+  display: block;
+}
+
+.dex-num {
+  color: var(--muted);
+  font-size: .72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.dex-name {
+  font-weight: 700;
+  font-size: .88rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.dex-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 3px;
+}
+
+/* An unregistered entry is a black cut-out of the real sprite, so revealing it
+   later costs no second request. Pure brightness(0) would vanish against the
+   dark theme's surface, so that theme lifts it to a mid grey instead. */
+.dex-card.unseen .dex-sprite { filter: brightness(0) opacity(.65); }
+.dex-card.unseen .dex-name { color: var(--muted); letter-spacing: .12em; }
+
+[data-theme="dark"] .dex-card.unseen .dex-sprite { filter: brightness(0) invert(.42); }
+
+.dex-card.mastered {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.dex-star { color: var(--accent); }
+
+.dex-card .dex-star {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: .8rem;
+}
+
+/* The nine generation tabs deliberately do NOT carry the .tab class.
+   wireTabs() (main.js) claims every .tab inside the screen it wires and drives
+   them from data-tab, so reusing .tab here would make the generation buttons
+   hijack the Dex/Practice/Progress tab group. They therefore restate .tab's
+   appearance, and .gen-tab is added to the shared :focus-visible list and the
+   44px touch-target block alongside .tab. */
+.gen-tabs { flex-wrap: wrap; margin-bottom: 14px; }
+
+.gen-tab {
+  font: inherit;
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gen-tab:hover { background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
+.gen-tab.active { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
+
+/* ---- detail page ---- */
+
+.dex-detail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dex-hero {
+  width: 160px;
+  height: 160px;
+  image-rendering: pixelated;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex: none;
+}
+
+.dex-num-big {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+/* ---- practice ---- */
+
+.quiz-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dex-quiz-sprite {
+  width: 180px;
+  height: 180px;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+/* "Who's That Pokémon?" — the silhouette is the question, so it must read as a
+   solid shape on both themes. */
+.dex-quiz-sprite.silhouette { filter: brightness(0) opacity(.85); }
+[data-theme="dark"] .dex-quiz-sprite.silhouette { filter: brightness(0) invert(.3); }
+
+/* ---- type chips ---- */
+
+.type-chip {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.type-chip.t-normal { background: #9fa19f; }
+.type-chip.t-fire { background: #e62829; }
+.type-chip.t-water { background: #2980ef; }
+.type-chip.t-electric { background: #b8a038; }
+.type-chip.t-grass { background: #3fa129; }
+.type-chip.t-ice { background: #3dcef3; color: #0b2027; }
+.type-chip.t-fighting { background: #ff8000; }
+.type-chip.t-poison { background: #9141cb; }
+.type-chip.t-ground { background: #915121; }
+.type-chip.t-flying { background: #81b9ef; color: #0b2027; }
+.type-chip.t-psychic { background: #ef4179; }
+.type-chip.t-bug { background: #91a119; }
+.type-chip.t-rock { background: #afa981; }
+.type-chip.t-ghost { background: #704170; }
+.type-chip.t-dragon { background: #5060e1; }
+.type-chip.t-dark { background: #50413f; }
+.type-chip.t-steel { background: #60a1b8; }
+.type-chip.t-fairy { background: #ef70ef; }
+
+@media (max-width: 560px) {
+  .dex-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+  .dex-sprite { width: 60px; height: 60px; }
+  .dex-hero { width: 120px; height: 120px; }
+  .dex-quiz-sprite { width: 140px; height: 140px; }
+}
