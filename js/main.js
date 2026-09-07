@@ -16,6 +16,7 @@ import { datasetKeyForRegion, cultureFor, cultureSections, initialsFor } from '.
 import { pickWeighted, weakCount } from './srs.js';
 import { checkAchievements, achievementStatus, levelTitle } from './achievements.js';
 import { createRouter } from './router.js';
+import { initPokedex, showPokedex, showPokemonDetail, startPokeQuizByKey } from './pokedexview.js';
 
 // Combined category label lookup (quiz modes + map modes) for HUD/stats.
 const catLabel = (k) => MODES[k]?.label || MAP_MODES[k]?.label || k;
@@ -344,6 +345,7 @@ function showHome() {
     { key: 'stats', emoji: '📊', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
     { key: 'achievements', emoji: '🏆', title: 'Achievements', desc: 'Badges & milestones.' },
     { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name & reset.' },
+    { key: 'pokedex', emoji: '⚡', title: 'Pokédex', desc: 'All 1025 Pokémon, plus practice modes. A fun corner — kept separate from your Worldly progress.' },
     { key: 'about', emoji: 'ℹ️', title: 'About', desc: 'Credits, data sources & privacy.' },
   ];
   // Each category is its own tab instead of one long scrolling page.
@@ -407,6 +409,7 @@ const GO_ROUTES = {
   phrases: '/phrases', flagkey: '/flags', music: '/music', crises: '/crises',
   languages: '/languages', hello: '/hello', countries: '/country',
   custom: '/custom', stats: '/stats', achievements: '/achievements', profile: '/profile', about: '/about',
+  pokedex: '/pokedex',
 };
 
 // Start a quiz from a `/quiz/:mode` URL. Both a Home card and a direct deep link
@@ -499,6 +502,10 @@ function showAbout() {
         <li>Historic flag images from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.</li>
         <li>Facts curated from public reference sources, including <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a> and the <a href="https://www.cia.gov/the-world-factbook/" target="_blank" rel="noopener">CIA World Factbook</a>.</li>
         <li>Music plays via embedded YouTube; all rights remain with the artists and labels.</li>
+        <li>Pokédex data and sprites from <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a> and its
+        <a href="https://github.com/PokeAPI/sprites" target="_blank" rel="noopener">sprite collection</a>.
+        Pokémon and Pokémon character names are trademarks of Nintendo, Creatures Inc. and GAME FREAK Inc.
+        The Pokédex here is an unofficial, non-commercial fan feature and is not affiliated with or endorsed by them.</li>
       </ul>
     </div>
 
@@ -967,7 +974,12 @@ function wireFlagFallback(selector = '.q-flag') {
  * @returns {Promise<boolean>} false when the caller should stop rendering.
  */
 async function ensureDataset(name) {
-  if (getData()[name]?.length) return true;
+  // Most datasets are arrays, but pokemon_types.json is a keyed object (the
+  // type-effectiveness chart), and `?.length` on an object is undefined — which
+  // reads as "not loaded", so the Loading… placeholder reappeared and
+  // sessionGen was bumped on every single visit to the screen.
+  const loaded = getData()[name];
+  if (Array.isArray(loaded) ? loaded.length > 0 : !!loaded) return true;
   const myGen = ++sessionGen;
   app.innerHTML = '<p class="screen-sub">Loading…</p>';
   try {
@@ -2489,6 +2501,15 @@ async function boot() {
   }
   renderHUD();
 
+  // The Pokédex screens live in their own module so this file does not grow by
+  // another 500 lines. They need the same UI helpers every screen here uses, and
+  // those are module-private — so hand them over once instead of exporting them,
+  // which would make pokedexview.js and main.js import each other.
+  initPokedex({
+    app, esc, safeUrl, topNav, wireNav, wireTabs, toast,
+    navigate, focusTitle, leaveSession, ensureDataset, getData,
+  });
+
   // The route table: URL → screen. Titles are set here for the static screens
   // (detail routes set their own from the entry). Order matters only in that the
   // first match wins; the patterns here are mutually exclusive, so it doesn't.
@@ -2516,6 +2537,9 @@ async function boot() {
       { path: '/regions', title: 'Regions & Continents — Worldly', render: showMapRegions },
       { path: '/quiz/:mode', render: (p) => startQuizByKey(p.mode) },
       { path: '/map/:mode', render: (p) => startMapByKey(p.mode) },
+      { path: '/pokedex', title: 'Pokédex — Worldly', render: showPokedex },
+      { path: '/pokedex/quiz/:mode', render: (p) => startPokeQuizByKey(p.mode) },
+      { path: '/pokedex/:slug', render: (p) => showPokemonDetail(p.slug) },
     ],
     fallback: { title: 'Page not found — Worldly', noindex: true, render: showNotFound },
     onError: (err) => {

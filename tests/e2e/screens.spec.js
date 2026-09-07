@@ -36,6 +36,7 @@ const SCREENS = [
   { label: 'profile', tab: /Explore/, card: /🧭\s*Profile/ },
   { label: 'about', tab: /Explore/, card: /ℹ️\s*About/ },
   { label: 'custom study', tab: /Explore/, card: /Custom Study/ },
+  { label: 'pokédex', tab: /Explore/, card: /⚡\s*Pokédex/ },
 ];
 
 test.describe('rendered markup is structurally sound', () => {

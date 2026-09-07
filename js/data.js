@@ -17,6 +17,8 @@ const DATA = {
   music: [],
   crises: [],
   greetings: [],
+  pokemon: [],
+  pokemonTypes: null,
   achievements: [],
   loaded: false,
 };
@@ -69,6 +71,10 @@ const LAZY_FILES = {
   // Every world.svg region, with its main language and how to say hello there.
   // ~100 KB, so it stays out of the startup path and loads with the map screens.
   greetings: '/data/greetings.json',
+  // The Pokedex: 447 KB of species data plus the type chart. Lazy so a player
+  // who never opens that screen never pays for it.
+  pokemon: '/data/pokemon.json',
+  pokemonTypes: '/data/pokemon_types.json',
 };
 
 // Culture deep dives are split one file per region — ~200 countries at full
@@ -82,7 +88,7 @@ for (const [region, key] of Object.entries(CULTURE_DATASETS)) {
 /**
  * Fetch one Explore dataset, populating DATA[name]. Repeat calls share the
  * in-flight promise, and a failure never poisons the cache for retries.
- * @param {string} name a key of LAZY_FILES ('phrases', 'greetings', 'cultureAsia'…)
+ * @param {string} name a key of LAZY_FILES ('phrases', 'greetings', 'pokemon'…)
  */
 export function loadDataset(name) {
   if (LAZY[name]) return LAZY[name];

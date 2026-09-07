@@ -17,5 +17,9 @@ Thumbs.db
 .env*
 !.env.example
 
+# PokeAPI response cache written by scripts/build-pokedex.mjs. The generated
+# data/ and assets/ output IS committed; the raw upstream responses are not.
+scripts/.cache/
+
 # superpowers scratch (task briefs, review packages, progress ledger)
 .superpowers/
