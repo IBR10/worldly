@@ -11,6 +11,7 @@
 // Widths go through the data-w + CSSOM pattern used elsewhere in the app, and
 // every handler is addEventListener.
 
+import { icon } from './icons.js';
 import {
   POKE_MODES, ALL_POKE_MODES, GENERATIONS, GEN_REGION, STAT_LABELS,
   createPokeQuiz, typingOf, typeLabel,
@@ -68,15 +69,15 @@ function renderHub() {
   const prog = dexProgress(store, dex);
 
   const tabs = [
-    { id: 'dex', label: '📕 Dex' },
-    { id: 'practice', label: '🎯 Practice' },
-    { id: 'progress', label: '📈 Progress' },
+    { id: 'dex', label: 'Dex' },
+    { id: 'practice', label: 'Practice' },
+    { id: 'progress', label: 'Progress' },
   ];
   if (!tabs.some((t) => t.id === dexTab)) dexTab = 'dex';
 
   app.innerHTML = `
     ${ctx.topNav()}
-    <h1 class="screen-title">Pokédex ⚡</h1>
+    <h1 class="screen-title">Pokédex</h1>
     <p class="screen-sub">All ${dex.length} Pokémon, and practice modes to learn them.
       Identify one correctly and it is registered to your dex — ${esc(prog.registered)} of
       ${esc(prog.total)} so far (${esc(prog.pct)}%), rank <strong>${esc(trainerRank(prog.pct))}</strong>.</p>
@@ -93,7 +94,7 @@ function renderHub() {
     </div>`).join('')}
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" data-topnav="home">← Back</button>
+      <button class="btn ghost" data-topnav="home">${icon('back')}Back</button>
     </div>`;
 
   ctx.wireNav();
@@ -127,14 +128,14 @@ function dexPanel() {
   const { esc } = ctx;
   const store = getPoke();
   return `
-    <div class="form-block">
+    <div class="form-block filter-bar">
       <input type="text" class="type-input" id="dexSearch" placeholder="Search all Pokémon by name…"
         value="${esc(dexSearch)}" aria-label="Search Pokémon by name">
-      <select class="select mt-10" id="dexType" aria-label="Filter by type">
+      <select class="select" id="dexType" aria-label="Filter by type">
         <option value="">All types</option>
         ${TYPES.map((t) => `<option value="${t}"${t === dexType ? ' selected' : ''}>${esc(typeLabel(t))}</option>`).join('')}
       </select>
-      <label class="check mt-10">
+      <label class="check">
         <input type="checkbox" id="dexReveal"${store.reveal ? ' checked' : ''}>
         <span>Reveal Pokémon I haven't registered yet</span>
       </label>
@@ -418,7 +419,7 @@ export async function showPokemonDetail(slug) {
       </p>` : ''}
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" data-topnav="home">← Home</button>
+      <button class="btn ghost" data-topnav="home">${icon('back')}Home</button>
       <button class="btn primary" id="toDex">Back to the Pokédex</button>
     </div>`;
 

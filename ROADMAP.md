@@ -25,6 +25,15 @@ Living checklist of what's done and what's planned. Tick items as they ship.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,
       youtube-nocookie embeds, `_headers` (CSP/caching), 404/robots/manifest,
       OG meta, flag-load fallback UI, challenge-timer & review-missed bugfixes.
+- [x] **Visual redesign** ("deep chart & brass"): a self-hosted variable
+      typeface used at three widths, a three-accent palette with a six-hue
+      continent key, the graticule as the structural motif, real navigation
+      (header rail + mobile tab bar), a home hero that paints the world map
+      with the countries you actually know, the Statistics screen rebuilt as an
+      explorer's console, country pages as travel-guide spreads, achievements as
+      a stamp wall, drawn SVG icons in place of emoji chrome, and three
+      breakpoints where there was one. See
+      `docs/superpowers/specs/2026-09-08-visual-redesign-design.md`.
 - [x] **Audit remediation**: first-visit onboarding + ❓ help, focus management
       & aria-live answer announcements, arrow-key tabs, 44px touch targets,
       map pinch-zoom, local-midnight daily, storage-failure toast, service

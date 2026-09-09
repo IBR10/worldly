@@ -28,8 +28,8 @@ python3 -m http.server 8000     # or:  npm start
 Run the engine tests (no dependencies — plain `node --test`):
 
 ```bash
-npm test        # Node tests over the quiz, SRS, map, router, language and Pokédex
-                # logic, plus integrity checks on the real data/ files
+npm test        # Node tests over the quiz, SRS, map, router, language, progress-map
+                # and Pokédex logic, plus integrity checks on the real data/ files
 ```
 
 ## What's inside
@@ -110,8 +110,11 @@ functions, testable in plain Node, independent of the DOM.
 
 ```
 Worldly/
-├── index.html              # shell: top bar, #app mount, toasts
-├── css/styles.css          # themeable design system (dark + light)
+├── index.html              # shell: app bar, nav, #app mount, toasts, bottom tab bar
+├── css/
+│   ├── styles.css          # design tokens, @font-face, base type, utilities, themes
+│   ├── components.css      # the kit: buttons, cards, chips, meters, map widget
+│   └── screens.css         # per-screen composition
 ├── js/
 │   ├── data.js             # loads JSON datasets; flag URLs; lazy map loading
 │   ├── state.js            # localStorage profile: XP, streaks, stats, SRS, achievements
@@ -120,11 +123,13 @@ Worldly/
 │   ├── maps.js             # pure question engine for click-the-map modes
 │   ├── languages.js        # pure bucketing/paint logic for the language choropleth
 │   ├── culture.js          # pure lookup helpers for the country guide pages
+│   ├── progressmap.js      # pure: which countries you know, derived from the SRS boxes
 │   ├── mapview.js          # the one DOM-coupled map widget (pan/zoom/hit-test)
 │   ├── achievements.js     # achievement evaluation against the profile
 │   ├── pokedex.js          # pure question engine for the Pokédex practice modes
 │   ├── pokestate.js        # Pokédex progress (its own localStorage key)
 │   ├── pokedexview.js      # the Pokédex screens (helpers injected by main.js)
+│   ├── icons.js            # the drawn SVG icon set used by the chrome
 │   ├── router.js           # tiny History-API router (screen-agnostic; matchPath is unit-tested)
 │   └── main.js             # controller: route table, rendering, quiz session
 ├── data/*.json             # countries, states, flags, religions, phrases, music, crises,
@@ -132,8 +137,9 @@ Worldly/
 ├── data/culture/*.json     # per-country deep dives, one file per region
 ├── assets/maps/*.svg       # bundled world/US/Mexico/Canada maps (@svg-maps, CC BY / CC BY-NC)
 ├── assets/pokemon/*.png    # 1025 bundled sprites (~1.1 MB) — generated, see scripts/
+├── assets/fonts/*.woff2    # Archivo variable (OFL) — self-hosted; the CSP allows no font CDN
 ├── scripts/build-pokedex.mjs  # dev-only: regenerates the dex data + sprites from PokéAPI
-├── tests/*.test.mjs        # 147 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
+├── tests/*.test.mjs        # 159 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
 ├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
 ├── _headers                # Cloudflare Pages security + caching headers
 └── robots.txt, sitemap.xml, site.webmanifest, LICENSE
@@ -148,6 +154,36 @@ assets still matched first. Unknown paths render an in-app 404 tagged `noindex`.
 Because asset URLs must resolve from multi-segment routes, all asset/`fetch`
 paths are root-absolute (a `<base>` tag would collide with the CSP's
 `base-uri 'none'`).
+
+### Design system
+
+The look is "deep chart & brass" — the vernacular of a bathymetric survey chart
+and the brass instruments you would read one with. Deep water is the ground,
+land and progress are struck in brass, and the latitude/longitude graticule is
+the structural device: it draws the section rules, the ticks on every progress
+bar, and the faint grid the cards sit on.
+
+- **One typeface.** Archivo, as a variable font carrying both `wght` (100–900)
+  and `wdth` (62–125). Width is the expressive axis: headlines run wide,
+  reading text sits at 100%, dense data labels compress to ~78%. Self-hosted in
+  `assets/fonts/` because the CSP is `default-src 'self'` — a font CDN is
+  blocked outright. Non-Latin scripts (the greetings screens) fall through to
+  the OS stack by `unicode-range`, so no webfont ships for them.
+- **Three accents, and no more.** Brass acts (buttons, XP, progress), jade means
+  correct, coral means wrong, and a separate ice-cyan is reserved for focus
+  rings so they stay visible on brass controls. Everything else is a neutral —
+  which is what leaves room for 198 flags and an eleven-hue language map.
+- **Colour that carries information.** A six-hue continent key runs across
+  region badges, the dashboard's continent bars and the country pages, so the
+  same continent is the same colour wherever it appears. The Language Map's
+  eleven-slot categorical palette is separate and unchanged.
+- **Progress you can see.** The home hero and the Statistics screen paint the
+  world map with the countries you actually know, derived in `progressmap.js`
+  from the Leitner boxes the profile already stores — no new tracking, and true
+  of every profile that has ever existed.
+- **Motion once.** One orchestrated moment (the hero map's wash-in); everything
+  else moves only in answer to something you did. All of it is dropped under
+  `prefers-reduced-motion`.
 
 **Why vanilla / no-build?** Longevity and portability — nothing to `npm
 install`, no transpiler to age out, deploys anywhere static. The separation of

@@ -29,9 +29,11 @@ test('opening Flag Key does not request every flag at once', async ({ page }) =>
 
   // Baseline was 251 (all four tabs built, nothing lazy). Now only the active
   // tab is built and its images are lazy, so the count is whatever Chromium
-  // decides is near the viewport -- measured 40-76 depending on timing. The
-  // budget guards the regression, not an exact number.
-  expect(imageRequests, 'flag images requested on open').toBeLessThan(110);
+  // decides is near the viewport -- measured 40-76 depending on timing, and
+  // ~113 since the redesign put this reference screen on the wide measure
+  // (1320px, denser cards), which genuinely puts more flags above the fold.
+  // The budget guards the regression back towards 251, not an exact number.
+  expect(imageRequests, 'flag images requested on open').toBeLessThan(150);
 });
 
 test('only the active tab panel is rendered', async ({ page }) => {

@@ -1,0 +1,922 @@
+/* Worldly — per-screen composition.
+   ---------------------------------------------------------------------------
+   The kit lives in components.css; this file arranges it. Order roughly follows
+   the player's path: home, quiz, results, dashboard, explore, country guides,
+   Pokédex. */
+
+/* ---- home: the cartouche over the chart -------------------------------------
+   A printed chart puts its title in an inset panel over open water. That is
+   what the hero is: the world map is the hero, painted with the countries this
+   player actually knows, and the title sits in a cartouche over the South
+   Pacific where there is nothing to hide.
+
+   The map is real content, not a backdrop — every country in it is clickable
+   and opens that country's guide. */
+.hero {
+  position: relative;
+  margin: 0 0 var(--s6);
+}
+.hero-map {
+  border-radius: var(--r-plate);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--ocean);
+}
+/* The hero map is display-only chrome for the map widget: no zoom buttons, no
+   pan hint, and a shorter frame than a quiz map so the cartouche has somewhere
+   to sit. */
+.hero-map .map-holder {
+  border: 0;
+  border-radius: 0;
+  height: clamp(280px, 44vh, 480px);
+  cursor: default;
+}
+.hero-map .map-controls, .hero-map .map-hint { display: none; }
+.hero-map .map-svg path { stroke-width: 0.35; }
+/* Countries you have answered correctly are struck in brass, and the more
+   securely you know one the more solid it gets. Three steps, from the SRS box:
+   seen, learned, mastered. */
+.hero-map .map-svg path.known-1 { fill: var(--known-1); stroke: var(--known-1); }
+.hero-map .map-svg path.known-2 { fill: var(--known-2); stroke: var(--known-2); }
+.hero-map .map-svg path.known-3 { fill: var(--known-3); stroke: var(--known-3); }
+
+/* The single orchestrated moment on the site: on first paint the landmasses
+   wash in from the prime meridian outward, ~600ms, once. Everything else in
+   Worldly only moves in answer to something the player did. */
+.hero-map .map-svg { animation: sweep-in 620ms var(--ease-out) both; }
+
+.hero-cartouche {
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-plate);
+  padding: var(--s5);
+}
+.hero-title { margin: 0 0 var(--s2); font-size: var(--t-hero); line-height: 1.02; }
+.hero-sub {
+  color: var(--muted);
+  margin: 0 0 var(--s4);
+  max-width: 44ch;
+  font-size: var(--t-sm);
+  line-height: 1.55;
+}
+.hero-actions { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.hero-actions .btn { padding: 12px 20px; font-size: 0.95rem; }
+
+/* The readout strip: level and explorer title, streak, and how much of the
+   world is coloured in. Numbers wide, labels compressed — the same contrast the
+   whole type system runs on. */
+.hero-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s5);
+  margin: var(--s4) 0 0;
+  padding: var(--s4) 0 0;
+  border-top: 1px solid var(--border);
+}
+.readout { margin: 0; }
+.readout dt {
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.readout dd {
+  margin: 2px 0 0;
+  font-size: 1.15rem;
+  font-weight: 750;
+  font-stretch: var(--wd-wide);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.readout .readout-note { color: var(--muted); font-size: var(--t-xs); font-weight: 400; font-stretch: var(--wd-text); }
+
+@media (min-width: 900px) {
+  .hero-cartouche {
+    position: absolute;
+    left: var(--s5);
+    bottom: var(--s5);
+    width: min(480px, 52%);
+    box-shadow: var(--shadow);
+  }
+  .hero-map .map-holder { height: clamp(420px, 56vh, 600px); }
+}
+@media (max-width: 899px) {
+  .hero-cartouche { border-top: 0; border-radius: 0 0 var(--r-plate) var(--r-plate); }
+  .hero-map { border-radius: var(--r-plate) var(--r-plate) 0 0; border-bottom: 0; }
+}
+@media (max-width: 560px) {
+  .hero-cartouche { padding: var(--s4); }
+  .hero-readout { gap: var(--s4); }
+  /* Thumb-sized targets, and one decision per line. */
+  .hero-actions { display: grid; grid-template-columns: 1fr; }
+  .hero-actions .btn { width: 100%; }
+}
+
+/* ---- quiz ------------------------------------------------------------------- */
+.quiz-top {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin: 0 auto var(--s5);
+  max-width: 760px;
+  flex-wrap: wrap;
+}
+.quiz-head { display: flex; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s4); }
+
+.question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s6);
+  box-shadow: var(--shadow);
+  max-width: 760px;
+  margin: 0 auto;
+}
+/* Centred card body — used by the client-rendered 404 screen. */
+.center-block { text-align: center; }
+.center-block .btn-row { justify-content: center; }
+.center-block .score { font-size: 3rem; font-weight: 800; font-stretch: var(--wd-display); }
+
+.q-cat {
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.q-prompt {
+  font-size: clamp(1.45rem, 1.1rem + 1.5vw, 2rem);
+  font-weight: 750;
+  font-stretch: var(--wd-display);
+  letter-spacing: -0.02em;
+  margin: var(--s2) 0 var(--s5);
+  line-height: 1.14;
+}
+/* aspect-ratio + contain reserves the box before the image arrives, so a flag
+   question no longer shifts its layout on load. contain rather than a hard
+   ratio because flags run from 1:1 (Switzerland, Vatican) to 28:11 (Qatar) --
+   a single ratio would stretch them. */
+.q-flag {
+  display: block;
+  max-width: 300px;
+  width: 72%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  object-position: left center;
+  margin: var(--s2) 0 var(--s5);
+  border-radius: var(--r-plate);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: var(--s2);
+}
+/* Flag-image answer options (Map → Flag mode). */
+.choice-flag { justify-content: flex-start; }
+.choice-flag img {
+  width: 100px;
+  max-width: 60%;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* Religious-symbol reveal image (many Commons symbol SVGs are dark line art,
+   so a white backing keeps them visible against the dark theme). */
+.symbol-img-wrap {
+  display: inline-block;
+  background: #fff;
+  padding: 10px;
+  border-radius: var(--r-plate);
+  border: 1px solid var(--border);
+  margin: var(--s2) 0;
+}
+.symbol-img-wrap img { display: block; width: 96px; max-width: 100%; height: auto; }
+
+.q-flag-missing {
+  margin: var(--s2) 0 var(--s5);
+  padding: var(--s4);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-plate);
+  color: var(--muted);
+  font-size: var(--t-sm);
+}
+
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  text-align: left;
+  padding: 15px var(--s4);
+  font-size: 1rem;
+  font-weight: 650;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+.choice:hover:not(:disabled) { border-color: var(--brass); background: var(--brass-soft); }
+/* The number key is a real key: pressing 1–4 answers, so it is drawn as one. */
+.choice .key {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  font-size: var(--t-micro);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.choice.correct { border-color: var(--good); background: var(--good-bg); color: var(--good); }
+.choice.wrong { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
+.choice.correct .key, .choice.wrong .key { border-color: currentcolor; color: currentcolor; }
+.choice:disabled { cursor: default; }
+
+/* feedback — a field note on the answer, not a coloured slab. The verdict is
+   carried by one rule down the left edge and the heading's colour. */
+.feedback {
+  margin-top: var(--s5);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: var(--s4) var(--s5);
+  background: var(--surface-2);
+}
+.feedback.ok { border-color: var(--border); border-left-color: var(--good); background: var(--good-bg); }
+.feedback.no { border-color: var(--border); border-left-color: var(--bad); background: var(--bad-bg); }
+/* h2 under the question's h1; kept at its previous visual size. */
+.feedback h2 { margin: 0 0 var(--s2); font-size: var(--t-h3); font-stretch: var(--wd-wide); }
+.feedback.ok h2 { color: var(--good); }
+.feedback.no h2 { color: var(--bad); }
+.feedback .fact { margin: var(--s2) 0; line-height: 1.55; font-size: var(--t-sm); }
+.learn-more { display: flex; gap: var(--s2); flex-wrap: wrap; margin-top: var(--s3); }
+.learn-more a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 650;
+  font-size: var(--t-xs);
+  border: 1px solid var(--border);
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.learn-more a:hover { background: var(--surface); color: var(--brass); border-color: var(--brass); }
+
+/* ---- results ----------------------------------------------------------------- */
+.result-hero { text-align: center; padding: var(--s7) var(--s5); }
+.result-hero .score {
+  display: block;
+  font-size: clamp(3rem, 2rem + 5vw, 4.6rem);
+  font-weight: 800;
+  font-stretch: var(--wd-display);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.result-hero .sub { color: var(--muted); margin-top: var(--s3); }
+
+/* ---- dashboard ---------------------------------------------------------------
+   The Progress screen, read like an instrument panel: one large gauge for the
+   level, the world coloured by what you know beside the continents you have
+   worked through, then the detail. */
+.console {
+  display: grid;
+  gap: var(--s4);
+  grid-template-columns: 1fr;
+  margin-bottom: var(--s5);
+}
+.console-card {
+  display: flex;
+  align-items: center;
+  gap: var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s5);
+}
+.ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 108px;
+  height: 108px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(var(--brass) calc(var(--arc, 0) * 1%), var(--surface-2) 0);
+}
+.ring::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+.ring-n {
+  position: relative;
+  z-index: 1;
+  font-size: 2.1rem;
+  font-weight: 800;
+  font-stretch: var(--wd-wide);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.ring-lbl {
+  position: relative;
+  z-index: 1;
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.console-body { min-width: 0; flex: 1 1 auto; }
+.console-body .bar-track { margin-top: var(--s2); }
+/* On the discovery gauge the label is the per-cent sign, set inside the number
+   rather than under it. */
+.ring-n .ring-lbl {
+  position: static;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-left: 1px;
+}
+.console-title {
+  margin: 0;
+  font-size: var(--t-h2);
+  font-stretch: var(--wd-display);
+  font-weight: 750;
+}
+.console-note { color: var(--muted); font-size: var(--t-sm); margin: var(--s1) 0 var(--s3); }
+
+/* The discovery map: the same picture as the home hero, at reference size, with
+   the continent bars beside it in the continent key so the colour on the bar
+   and the colour of the badge always agree. */
+.discovery { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
+.discovery .map-holder { height: clamp(220px, 34vh, 340px); cursor: default; }
+.discovery .map-controls, .discovery .map-hint { display: none; }
+.discovery .map-svg path.known-1 { fill: var(--known-1); stroke: var(--known-1); }
+.discovery .map-svg path.known-2 { fill: var(--known-2); stroke: var(--known-2); }
+.discovery .map-svg path.known-3 { fill: var(--known-3); stroke: var(--known-3); }
+
+.continent-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); align-content: start; }
+.continent {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px var(--s3);
+  align-items: baseline;
+}
+.continent .c-name { font-size: var(--t-sm); font-weight: 650; }
+.continent .c-count {
+  color: var(--muted);
+  font-size: var(--t-xs);
+  font-variant-numeric: tabular-nums;
+  font-stretch: var(--wd-data);
+}
+.continent .c-track {
+  grid-column: 1 / -1;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.continent .c-track > span { display: block; height: 100%; background: var(--con, var(--brass)); }
+
+@media (min-width: 900px) {
+  .console { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .discovery { grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr); }
+}
+
+/* ---- achievements: the stamp wall --------------------------------------------
+   Earned achievements are inked stamps — struck slightly off-square, the way a
+   real one lands — and locked ones are the faint outline of a stamp not yet
+   given, with its progress arc around the edge. */
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+  gap: var(--s3);
+}
+.ach {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s4) var(--s3);
+  text-align: center;
+}
+.ach .ic {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto var(--s2);
+  font-size: 1.7rem;
+  line-height: 1;
+  border-radius: 50%;
+  border: 2px dashed var(--border);
+  color: var(--muted);
+}
+.ach .nm { font-weight: 750; font-stretch: var(--wd-wide); font-size: var(--t-sm); line-height: 1.25; }
+.ach .ds { color: var(--muted); font-size: var(--t-xs); margin: var(--s1) 0 var(--s2); line-height: 1.4; }
+.ach .mini { height: 5px; }
+.ach .mini > span { display: block; height: 100%; background: var(--brass); }
+.ach .ach-lbl {
+  display: block;
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.06em;
+  margin-top: var(--s1);
+}
+/* Unlocked: the stamp lands. Rotation varies by position so a wall of them
+   reads as struck by hand rather than laid out on a grid. */
+.ach:not(.locked) { border-color: var(--brass); background: var(--brass-soft); }
+.ach:not(.locked) .ic {
+  border-style: solid;
+  border-color: var(--brass);
+  color: var(--brass);
+  transform: rotate(-4deg);
+}
+.ach:not(.locked):nth-child(even) .ic { transform: rotate(3deg); }
+.ach:not(.locked):nth-child(3n) .ic { transform: rotate(-2deg); }
+.ach.locked { opacity: 0.62; }
+.ach.locked .ic { filter: grayscale(1); }
+
+/* ---- explore: phrases -------------------------------------------------------- */
+.phrase-head {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  margin-bottom: var(--s3);
+}
+.phrase-flag {
+  width: 76px;
+  height: auto;
+  border-radius: var(--r-plate);
+  border: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+.phrase-list { display: flex; flex-direction: column; gap: 6px; }
+.phrase-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: baseline;
+  gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+.phrase-row .ph-en { color: var(--muted); font-size: var(--t-sm); }
+.phrase-row .ph-local { color: var(--text); font-weight: 700; font-size: 1.05rem; }
+.phrase-row .ph-pron { color: var(--brass); font-style: italic; font-size: var(--t-sm); }
+
+.saying-list { display: flex; flex-direction: column; gap: var(--s2); }
+.saying {
+  padding: var(--s3) var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brass);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+.saying .say-local { color: var(--text); font-weight: 700; font-size: 1.05rem; }
+.saying .say-pron { color: var(--brass); font-style: italic; font-weight: 400; font-size: var(--t-sm); margin-left: 6px; }
+.saying .say-meaning { color: var(--muted); font-size: var(--t-sm); margin-top: var(--s1); }
+.native-name { margin-top: 6px; font-size: 1.05rem; }
+.native-name .say-pron { color: var(--muted); font-size: var(--t-xs); margin-left: 4px; }
+
+/* ---- explore: music ----------------------------------------------------------- */
+.yt-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-plate);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+}
+.yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.track-list { display: flex; flex-direction: column; gap: 5px; }
+.track {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s3);
+  text-align: left;
+  padding: 11px var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.track:hover { border-color: var(--brass); }
+.track.active { border-color: var(--brass); background: var(--brass-soft); }
+.track .tk-num {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-stretch: var(--wd-data);
+  width: 1.6em;
+  text-align: right;
+}
+.track .tk-title { font-weight: 700; }
+.track .tk-artist { color: var(--muted); font-size: var(--t-sm); }
+/* Why this song represents the country — spans under title/artist. */
+.track .tk-why { grid-column: 2 / -1; color: var(--muted); font-size: var(--t-xs); line-height: 1.5; }
+
+/* ---- explore: greeting panel (Say Hello map, and the country pages) ----------- */
+.hello-panel {
+  display: flex;
+  gap: var(--s4);
+  align-items: flex-start;
+  margin-top: var(--s4);
+  padding: var(--s5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+}
+/* A border, because flags that are mostly white (Japan, Poland…) otherwise
+   dissolve into the panel and read as a stray coloured dot. */
+.hello-panel .hello-flag {
+  width: 84px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-plate);
+  flex: 0 0 auto;
+}
+.hello-body { min-width: 0; flex: 1 1 auto; }
+.hello-word {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-wrap: wrap;
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.1rem);
+  font-weight: 750;
+  line-height: 1.2;
+  margin: var(--s1) 0 var(--s1);
+}
+.hello-pron { color: var(--muted); font-size: var(--t-sm); }
+.hello-empty { color: var(--muted); margin-top: var(--s4); }
+
+/* ---- country guides ----------------------------------------------------------
+   A guide spread: the flag as a masthead plate with the country's name struck
+   across it, then greeting, facts, people, the events that shaped it, and what
+   to say (or not say) about it. */
+.country-masthead {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 168px;
+  padding: var(--s5);
+  margin-bottom: var(--s5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-plate);
+  overflow: hidden;
+  background: var(--surface);
+}
+/* The flag fills the plate, dimmed under a scrim so the name stays legible on
+   a white flag (Japan) and a black one (Jamaica) alike. */
+.country-flagfill {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  object-fit: cover;
+  opacity: 0.5;
+  filter: saturate(1.25) blur(22px);
+}
+.country-flag-plate {
+  position: relative;
+  z-index: 1;
+  width: clamp(120px, 18vw, 190px);
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: auto;
+  border-radius: var(--r-plate);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.country-masthead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--bg) 4%, color-mix(in srgb, var(--bg) 72%, transparent) 70%, color-mix(in srgb, var(--bg) 45%, transparent));
+}
+.country-mast-body { position: relative; z-index: 1; min-width: 0; }
+.country-mast-body .screen-title { margin: var(--s2) 0 var(--s1); }
+.country-mast-body .badge { background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.country-mast-meta { color: var(--muted); font-size: var(--t-sm); margin: 0; }
+
+/* Extra facts that do not fit the four stat tiles: religion, subregion, and any
+   contested-fact note. A definition list, because that is what it is. */
+.facts-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s2) var(--s4);
+  margin: 0 0 var(--s5);
+  padding: var(--s4) var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  font-size: var(--t-sm);
+}
+.facts-list dt {
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.facts-list dd { margin: 0; }
+
+.people-list { display: grid; gap: var(--s2); grid-template-columns: 1fr; }
+.person {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  padding: var(--s4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+}
+/* Stands in for a portrait. Deliberately not a photo: real portraits would mean
+   a third-party image host in the CSP, attribution, and 200 more entries in the
+   service worker's capped image cache, for decoration. */
+.person-initials {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--brass);
+  font-weight: 800;
+  font-size: var(--t-xs);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.5px;
+}
+.person-body { min-width: 0; }
+.person-name { font-weight: 750; font-stretch: var(--wd-wide); }
+.person-native { font-weight: 400; color: var(--muted); font-stretch: var(--wd-text); }
+.person-meta {
+  color: var(--muted);
+  font-size: var(--t-xs);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+.person-why { margin-top: var(--s1); line-height: 1.5; font-size: var(--t-sm); }
+.person-link { display: inline-block; margin-top: var(--s1); font-size: var(--t-xs); color: var(--brass); }
+
+/* Events run down a meridian: a single hairline with the year sitting on it. */
+.event-list {
+  display: grid;
+  gap: 0;
+  position: relative;
+  padding-left: var(--s5);
+  border-left: 1px solid var(--border);
+  margin-left: var(--s2);
+}
+.event {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--s2) var(--s4);
+  align-items: baseline;
+  padding: var(--s3) 0 var(--s4);
+  position: relative;
+}
+.event::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--s5) * -1 - 4px);
+  top: 20px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brass);
+}
+.event-year {
+  font-weight: 800;
+  font-stretch: var(--wd-data);
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.event-title { font-weight: 700; }
+.event-what { color: var(--muted); margin-top: 2px; line-height: 1.5; font-size: var(--t-sm); }
+.event-link { color: var(--muted); text-decoration: none; font-size: var(--t-xs); }
+.event-link:hover { color: var(--brass); }
+
+.culture-grid { display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); }
+.culture-cell {
+  display: flex;
+  gap: var(--s3);
+  padding: var(--s4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  line-height: 1.5;
+  font-size: var(--t-sm);
+}
+.culture-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  line-height: 1;
+  border-radius: var(--r-plate);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.culture-label { font-weight: 700; font-stretch: var(--wd-wide); margin-bottom: 2px; }
+
+.talk-list { margin: 0; padding-left: var(--s5); line-height: 1.65; font-size: var(--t-sm); }
+.talk-list li { margin-bottom: var(--s1); }
+
+/* ---- crises ------------------------------------------------------------------- */
+.crisis-body { line-height: 1.7; max-width: var(--w-prose); }
+.crisis-body p { margin: 0 0 var(--s4); }
+
+/* ---- Pokédex -----------------------------------------------------------------
+   Everything here uses the shared theme tokens so both themes work without a
+   second palette. The one exception is the type colours: a Pokémon type's
+   colour is part of its identity, not a themeable surface, so those are
+   literals — declared once here and referenced by class, never inlined.
+
+   Theme-scoped rules below are written as descendant selectors
+   ([data-theme="dark"] .foo) rather than re-opening :root or [data-theme="dark"],
+   because stylelint's no-duplicate-selectors would (correctly) flag redefining a
+   selector another file already declares. */
+.dex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+  gap: 10px;
+  margin-top: var(--s1);
+}
+.dex-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 11px 6px var(--s3);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.dex-card:hover { border-color: var(--brass); transform: translateY(-2px); }
+.dex-sprite {
+  width: 74px;
+  height: 74px;
+  image-rendering: pixelated;   /* the sprites are 96px pixel art; keep it crisp */
+  display: block;
+}
+.dex-num {
+  color: var(--muted);
+  font-size: var(--t-micro);
+  font-stretch: var(--wd-data);
+  font-variant-numeric: tabular-nums;
+}
+.dex-name { font-weight: 700; font-size: var(--t-sm); text-align: center; line-height: 1.2; }
+.dex-types { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; margin-top: 3px; }
+
+/* An unregistered entry is a black cut-out of the real sprite, so revealing it
+   later costs no second request. Pure brightness(0) would vanish against the
+   dark theme's surface, so that theme lifts it to a mid grey instead. */
+.dex-card.unseen .dex-sprite { filter: brightness(0) opacity(0.65); }
+.dex-card.unseen .dex-name { color: var(--muted); letter-spacing: 0.12em; }
+[data-theme="dark"] .dex-card.unseen .dex-sprite { filter: brightness(0) invert(0.42); }
+
+.dex-card.mastered { border-color: var(--brass); box-shadow: 0 0 0 1px var(--brass) inset; }
+.dex-star { color: var(--brass); }
+.dex-card .dex-star { position: absolute; top: 5px; right: 7px; font-size: var(--t-xs); }
+
+/* The nine generation tabs deliberately do NOT carry the .tab class.
+   wireTabs() (main.js) claims every .tab inside the screen it wires and drives
+   them from data-tab, so reusing .tab here would make the generation buttons
+   hijack the Dex/Practice/Progress tab group. They therefore restate .tab's
+   appearance, and .gen-tab is added to the shared :focus-visible list and the
+   44px touch-target block alongside .tab. */
+.gen-tabs { flex-wrap: wrap; margin-bottom: var(--s4); width: 100%; }
+.gen-tab {
+  font: inherit;
+  font-weight: 650;
+  font-size: var(--t-xs);
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.gen-tab:hover { background: var(--surface-2); color: var(--text); }
+.gen-tab.active { background: var(--brass); color: var(--primary-ink); }
+
+.dex-detail { display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap; }
+.dex-hero {
+  width: 168px;
+  height: 168px;
+  image-rendering: pixelated;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  flex: none;
+}
+.dex-num-big {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-stretch: var(--wd-data);
+  margin: 0;
+}
+.dex-quiz-sprite {
+  width: 184px;
+  height: 184px;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto var(--s2);
+}
+/* "Who's That Pokémon?" — the silhouette is the question, so it must read as a
+   solid shape on both themes. */
+.dex-quiz-sprite.silhouette { filter: brightness(0) opacity(0.85); }
+[data-theme="dark"] .dex-quiz-sprite.silhouette { filter: brightness(0) invert(0.3); }
+
+.type-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.type-chip.t-normal { background: #9fa19f; }
+.type-chip.t-fire { background: #e62829; }
+.type-chip.t-water { background: #2980ef; }
+.type-chip.t-electric { background: #b8a038; }
+.type-chip.t-grass { background: #3fa129; }
+.type-chip.t-ice { background: #3dcef3; color: #0b2027; }
+.type-chip.t-fighting { background: #ff8000; }
+.type-chip.t-poison { background: #9141cb; }
+.type-chip.t-ground { background: #915121; }
+.type-chip.t-flying { background: #81b9ef; color: #0b2027; }
+.type-chip.t-psychic { background: #ef4179; }
+.type-chip.t-bug { background: #91a119; }
+.type-chip.t-rock { background: #afa981; }
+.type-chip.t-ghost { background: #704170; }
+.type-chip.t-dragon { background: #5060e1; }
+.type-chip.t-dark { background: #50413f; }
+.type-chip.t-steel { background: #60a1b8; }
+.type-chip.t-fairy { background: #ef70ef; }
+
+/* ---- responsive ---------------------------------------------------------------- */
+@media (min-width: 900px) {
+  .people-list { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .question-card { padding: var(--s4); }
+  .choices { grid-template-columns: 1fr; }
+  .q-flag { width: 100%; max-width: 240px; }
+  .result-hero { padding: var(--s6) var(--s4); }
+  .console-card { gap: var(--s4); padding: var(--s4); }
+  .ring { width: 84px; height: 84px; }
+  .ring-n { font-size: 1.6rem; }
+  .phrase-row { grid-template-columns: 1fr; gap: 2px; }
+  .track { grid-template-columns: auto 1fr; }
+  .track .tk-artist { grid-column: 2; }
+  .hello-panel { flex-direction: column; padding: var(--s4); }
+  .hello-panel .hello-flag { width: 62px; }
+  .country-masthead { min-height: 132px; padding: var(--s4); }
+  .facts-list { grid-template-columns: 1fr; gap: 2px var(--s3); padding: var(--s4); }
+  .facts-list dd { margin-bottom: var(--s2); }
+  .event { grid-template-columns: auto 1fr; }
+  .event .event-link { grid-column: 2; justify-self: start; }
+  .event-list { padding-left: var(--s4); }
+  .event::before { left: calc(var(--s4) * -1 - 4px); }
+  .dex-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+  .dex-sprite { width: 60px; height: 60px; }
+  .dex-hero { width: 120px; height: 120px; }
+  .dex-quiz-sprite { width: 148px; height: 148px; }
+}

@@ -5,12 +5,12 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="Worldly — a free world-knowledge & cultural-awareness learning game. Capitals, languages, religions, flags, maps, music, phrases and current events, with spaced repetition and achievements." />
   <!-- Matches --bg in css/styles.css; these had drifted apart, showing a seam
        between the browser chrome and the page on installed PWAs. -->
-  <meta name="theme-color" content="#0f1525" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#eef2fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#06171c" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#edf2f0" media="(prefers-color-scheme: light)" />
   <title>Worldly — World Knowledge & Culture</title>
 
   <!-- Social sharing (og:url/og:image are absolute: update the domain after deploy). -->
@@ -32,6 +32,10 @@
        are different requests and the file is downloaded twice (verified). -->
   <link rel="preconnect" href="https://flagcdn.com" />
   <link rel="preload" href="/data/countries.json" as="fetch" crossorigin />
+  <!-- The Latin cut of Archivo sets every screen, so it is on the critical path;
+       the extended-Latin cut is left to the unicode-range in styles.css, which
+       only fetches it if a Kraków or a São Tomé actually appears. -->
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Root-absolute so they resolve identically on a deep-linked, multi-segment
        route (e.g. /crises/sudan). A relative href would resolve against the
@@ -41,7 +45,13 @@
   <link rel="icon" type="image/png" href="/assets/worldly-icon.png" />
   <link rel="apple-touch-icon" href="/assets/worldly-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <!-- Three sheets rather than one 2,000-line file: they load in parallel, share
+       the /css/* cache rules, and keep stylelint's per-file duplicate-selector
+       check meaningful. Order matters — tokens, then the kit, then the screens
+       that arrange it. -->
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/screens.css" />
 </head>
 <body>
   <a class="skip-link" href="#app">Skip to main content</a>
@@ -49,12 +59,17 @@
     <!-- A real button, rather than div[role=button] with hand-rolled key
          handling: Enter/Space, focus and AT semantics come for free. -->
     <button class="brand" id="brand" title="Home">
-      <span class="brand-globe" aria-hidden="true">🌍</span><span class="brand-name">Worldly</span>
+      <span class="brand-globe" id="brandMark" aria-hidden="true"></span><span class="brand-name">Worldly</span>
     </button>
+    <!-- Both navs carry the same four destinations and the same label. Only one
+         is ever displayed — `display: none` also removes the other from the
+         accessibility tree — so a screen reader is never offered two copies.
+         main.js fills them from js/icons.js so the drawings have one home. -->
+    <nav class="navrail" id="navrail" aria-label="Primary"></nav>
     <div class="hud" id="hud"><!-- level / xp / streak injected here --></div>
-    <button id="helpBtn" class="icon-btn" title="About & help" aria-label="About and help">❓</button>
-    <button id="leaderboardBtn" class="icon-btn" title="Leaderboard" aria-label="Leaderboard">🏆</button>
-    <button id="themeToggle" class="icon-btn" title="Toggle light / dark" aria-label="Toggle theme">🌙</button>
+    <button id="helpBtn" class="icon-btn" title="About & help" aria-label="About and help"></button>
+    <button id="leaderboardBtn" class="icon-btn" title="Leaderboard" aria-label="Leaderboard"></button>
+    <button id="themeToggle" class="icon-btn" title="Toggle light / dark" aria-label="Toggle theme"></button>
   </header>
 
   <main id="app" class="app">
@@ -77,9 +92,11 @@
 
   <footer class="footer">
     <span>Worldly · learn the world through active recall
-      · <a class="footer-link" href="https://github.com/IBR10/worldly/issues/new" target="_blank" rel="noopener">💬 Feedback &amp; requests</a>
+      · <a class="footer-link" href="https://github.com/IBR10/worldly/issues/new" target="_blank" rel="noopener">Feedback &amp; requests</a>
       · <a class="footer-link" href="https://github.com/IBR10/worldly" target="_blank" rel="noopener">GitHub</a></span>
   </footer>
+
+  <nav class="tabbar" id="tabbar" aria-label="Primary"></nav>
 
   <script type="module" src="/js/main.js"></script>
 </body>
