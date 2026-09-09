@@ -1543,6 +1543,22 @@ function showCustom() {
 let flagKeyTab = 'countries';
 const flagKeySearch = { countries: '', us: '', mx: '', ca: '' };
 const flagKeyRegion = { countries: '', us: '', mx: '', ca: '' };
+const flagKeySort = { countries: 'name', us: 'name', mx: 'name', ca: 'name' };
+
+// The Flag Key's four tabs hold countries and three sets of states, so its
+// sorts have to work on both. Population is deliberately not offered here even
+// though the country index has it: only one of the four tabs has the field, and
+// an option that does nothing on three of them is worse than no option.
+// Declared standalone rather than reusing COUNTRY_SORTS, which is defined
+// further down the file and would be in the temporal dead zone from here.
+const FLAG_KEY_SORTS = {
+  name: { label: 'A – Z', cmp: (a, b) => a.name.localeCompare(b.name) },
+  nameDesc: { label: 'Z – A', cmp: (a, b) => b.name.localeCompare(a.name) },
+  region: {
+    label: 'Region',
+    cmp: (a, b) => String(a.region || '').localeCompare(String(b.region || '')) || a.name.localeCompare(b.name),
+  },
+};
 
 function showFlagKey() {
   leaveSession();
@@ -1567,6 +1583,10 @@ function showFlagKey() {
         <select class="select flagkey-region" data-group="${g.id}" aria-label="Filter by region">
           <option value="">All regions</option>
           ${regions.map((r) => `<option value="${esc(r)}"${r === region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
+        </select>
+        <select class="select flagkey-sort" data-group="${g.id}" aria-label="Sort ${esc(g.label.toLowerCase())}">
+          ${Object.entries(FLAG_KEY_SORTS).map(([k, v]) =>
+            `<option value="${esc(k)}"${k === flagKeySort[g.id] ? ' selected' : ''}>${esc(v.label)}</option>`).join('')}
         </select>
       </div>
       <div class="grid flagkey-grid" data-group="${g.id}"></div>
@@ -1611,13 +1631,29 @@ function showFlagKey() {
     const grid = panelOf(id).querySelector('.flagkey-grid');
     if (grid.childElementCount) return;
     const g = groups.find((x) => x.id === id);
-    grid.innerHTML = g.list.map((x) => cardFor(g, x)).join('');
+    grid.innerHTML = sortedList(g).map((x) => cardFor(g, x)).join('');
     // A flag Commons/flagcdn cannot serve would otherwise render as a broken
     // image icon. This replaces an inline onerror= handler, which never ran:
     // the CSP has no unsafe-inline, so inline handlers are dead on arrival.
     grid.querySelectorAll('img').forEach((img) =>
       img.addEventListener('error', () => img.classList.add('hidden')));
     applyFilter(id);
+  }
+
+  const sortedList = (g) => [...g.list].sort(FLAG_KEY_SORTS[flagKeySort[g.id]].cmp);
+
+  /**
+   * Re-order a tab's cards. Like the country index, this moves the cards that
+   * are already there — append() on an element already in the document
+   * relocates it — so none of the 251 flag images is discarded or requested a
+   * second time. A tab that has not been opened yet has nothing to move.
+   */
+  function applySort(id) {
+    const g = groups.find((x) => x.id === id);
+    const grid = panelOf(id).querySelector('.flagkey-grid');
+    if (!grid.childElementCount) return;
+    const cards = new Map([...grid.children].map((el) => [el.dataset.name, el]));
+    grid.append(...sortedList(g).map((x) => cards.get(String(x.name).toLowerCase())).filter(Boolean));
   }
 
   /** Show/hide already-rendered cards. No markup is regenerated. */
@@ -1645,6 +1681,10 @@ function showFlagKey() {
     panel.querySelector('.flagkey-region').addEventListener('change', (e) => {
       flagKeyRegion[g.id] = e.target.value;
       applyFilter(g.id);
+    });
+    panel.querySelector('.flagkey-sort').addEventListener('change', (e) => {
+      flagKeySort[g.id] = FLAG_KEY_SORTS[e.target.value] ? e.target.value : 'name';
+      applySort(g.id);
     });
   });
 

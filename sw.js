@@ -25,7 +25,7 @@
 // account to restore them from. An unbounded image cache put the only copy of
 // a player's progress behind an eviction policy we did not control.
 
-const VERSION = 'v4'; // v4: redesign — three stylesheets and a self-hosted webfont
+const VERSION = 'v5'; // v5: networkFirst revalidates, so a deploy is never a day late
 const SHELL_CACHE = `worldly-shell-${VERSION}`;
 const IMAGE_CACHE = `worldly-images-${VERSION}`;
 const KEEP = [SHELL_CACHE, IMAGE_CACHE];
@@ -97,7 +97,20 @@ function maybeTrimImageCache() {
 async function networkFirst(req) {
   const cache = await caches.open(SHELL_CACHE);
   try {
-    const res = await fetch(req);
+    // `cache: 'no-cache'` means revalidate, not "skip the cache": the browser
+    // still sends If-None-Match and still takes a 304, so an unchanged file
+    // costs one conditional request and no bytes.
+    //
+    // It is here because _headers serves /css/*, /js/* and /data/* with
+    // `stale-while-revalidate=86400`. Without it, a plain fetch() is allowed to
+    // answer from the HTTP cache with a copy up to a day old -- and since the
+    // service worker is the one issuing that request, the player's own hard
+    // reload cannot bypass it. The symptom is a deploy that goes out, serves
+    // correctly to curl, and still shows the previous build to anyone who
+    // visited yesterday. Navigations are exempt: they carry
+    // `max-age=0, must-revalidate` already, and re-wrapping a navigate request
+    // would downgrade its mode.
+    const res = req.mode === 'navigate' ? await fetch(req) : await fetch(req, { cache: 'no-cache' });
     if (res.ok) cache.put(req, res.clone());
     return res;
   } catch {

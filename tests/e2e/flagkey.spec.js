@@ -88,6 +88,36 @@ test('search filters quickly and correctly', async ({ page }) => {
   expect(elapsed, 'typing three characters into the live search').toBeLessThan(1200);
 });
 
+test('each tab sorts on its own, reordering the cards it already has', async ({ page }) => {
+  await openFlagKey(page);
+  const firstThree = () => page.evaluate(() =>
+    [...document.querySelectorAll('.tab-panel.active .flagkey-card')].slice(0, 3).map((c) => c.dataset.name));
+
+  expect(await firstThree()).toEqual(['afghanistan', 'albania', 'algeria']);
+
+  // Sorting must MOVE cards, not rebuild them: a rebuild would throw away and
+  // re-request up to 251 flag images every time the dropdown changed.
+  await page.evaluate(() => {
+    window.__card = document.querySelector('.tab-panel.active .flagkey-card[data-name="japan"]');
+  });
+
+  await page.selectOption('.tab-panel.active .flagkey-sort', 'nameDesc');
+  expect(await firstThree()).toEqual(['zimbabwe', 'zambia', 'yemen']);
+
+  expect(await page.evaluate(() =>
+    window.__card === document.querySelector('.tab-panel.active .flagkey-card[data-name="japan"]'))).toBe(true);
+
+  // The search filters the same nodes the sort just moved.
+  await page.locator('.tab-panel.active .flagkey-search').fill('japan');
+  await expect(page.locator('.tab-panel.active .flagkey-card:visible')).toHaveCount(1);
+  await page.locator('.tab-panel.active .flagkey-search').fill('');
+
+  // Each tab keeps its own order, so sorting countries leaves the states alone.
+  await page.getByRole('tab', { name: /US States/ }).click();
+  await page.waitForSelector('.tab-panel.active .flagkey-card');
+  expect(await firstThree()).toEqual(['alabama', 'alaska', 'arizona']);
+});
+
 test('clearing the search restores the full list', async ({ page }) => {
   await openFlagKey(page);
   const box = page.locator('.tab-panel.active .flagkey-search');
