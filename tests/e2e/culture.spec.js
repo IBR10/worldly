@@ -158,6 +158,35 @@ test.describe('country guides', () => {
     await expect(page.locator('.card[data-slug]:visible')).toHaveCount(12);
   });
 
+  test('the index sorts, and reorders the cards it already has', async ({ page }) => {
+    // The file order is grouped by region and reads as random when you are
+    // looking for one country, so the index opens A-Z and offers the rest.
+    await page.goto('/country');
+    await page.waitForSelector('.card[data-slug]');
+    const firstThree = () => page.evaluate(() =>
+      [...document.querySelectorAll('.card[data-slug]')].slice(0, 3).map((c) => c.dataset.slug));
+
+    expect(await firstThree()).toEqual(['afghanistan', 'albania', 'algeria']);
+
+    // Hold on to one card, so we can prove sorting MOVES nodes rather than
+    // rebuilding them — a rebuild would discard and re-request 198 flag images
+    // on every change of the dropdown.
+    await page.evaluate(() => { window.__card = document.querySelector('.card[data-slug="japan"]'); });
+
+    await page.selectOption('#countrySort', 'nameDesc');
+    expect(await firstThree()).toEqual(['zimbabwe', 'zambia', 'yemen']);
+
+    await page.selectOption('#countrySort', 'population');
+    expect((await firstThree())[0]).toBe('india');
+
+    expect(await page.evaluate(() => window.__card === document.querySelector('.card[data-slug="japan"]')))
+      .toBe(true);
+
+    // Sorting must not disturb the filter, which works on the same nodes.
+    await page.fill('#countrySearch', 'japan');
+    await expect(page.locator('.card[data-slug]:visible')).toHaveCount(1);
+  });
+
   test('a country page renders every section', async ({ page }) => {
     await page.goto('/country/japan');
     await page.waitForSelector('.person');

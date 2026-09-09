@@ -32,18 +32,18 @@ async function gotoScreen(page, tab, cardName) {
 const SCREENS = [
   { label: 'home', tab: null, card: null },
   { label: 'flag key', tab: /Explore/, card: /Flag Key/ },
-  { label: 'phrases', tab: /Explore/, card: /🗣️\s*Phrases/ },
+  { label: 'phrases', tab: /Explore/, card: /Phrases/ },
   { label: 'language map', tab: /Explore/, card: /Language Map/ },
   { label: 'say hello', tab: /Explore/, card: /Say Hello/ },
   { label: 'country guides', tab: /Explore/, card: /Country Guides/ },
-  { label: 'music', tab: /Explore/, card: /🎵\s*Music/ },
+  { label: 'music', tab: /Explore/, card: /Music/ },
   { label: 'crises', tab: /Explore/, card: /Crises & Events/ },
   { label: 'statistics', tab: /Explore/, card: /Statistics/ },
-  { label: 'achievements', tab: /Explore/, card: /🏆\s*Achievements/ },
-  { label: 'profile', tab: /Explore/, card: /🧭\s*Profile/ },
-  { label: 'about', tab: /Explore/, card: /ℹ️\s*About/ },
+  { label: 'achievements', tab: /Explore/, card: /Achievements/ },
+  { label: 'profile', tab: /Explore/, card: /Profile/ },
+  { label: 'about', tab: /Explore/, card: /About Credits/ },
   { label: 'custom study', tab: /Explore/, card: /Custom Study/ },
-  { label: 'pokédex', tab: /Explore/, card: /⚡\s*Pokédex/ },
+  { label: 'pokédex', tab: /Explore/, card: /Pokédex/ },
 ];
 
 test.describe('rendered markup is structurally sound', () => {

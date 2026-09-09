@@ -12,11 +12,16 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { FAMILY_BUCKETS, NO_DATA } from '../js/languages.js';
 import { CULTURE_DATASETS } from '../js/culture.js';
+import { ICON_NAMES } from '../js/icons.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const read = (p) => JSON.parse(fs.readFileSync(`${root}${p}`, 'utf8'));
 
 const countries = read('data/countries.json');
+const achievements = read('data/achievements.json');
+const usStates = read('data/us_states.json');
+const mxStates = read('data/mexico_states.json');
+const caStates = read('data/canada_provinces.json');
 const greetings = read('data/greetings.json');
 const crises = read('data/crises.json');
 const worldSvg = fs.readFileSync(`${root}assets/maps/world.svg`, 'utf8');
@@ -188,4 +193,25 @@ test('every country has a culture entry', () => {
   const authored = new Set(cultureFiles.flatMap((f) => f.rows.map((r) => r.iso2)));
   const missing = countries.filter((c) => !authored.has(c.iso2)).map((c) => `${c.iso2} ${c.name}`);
   assert.deepEqual(missing, [], `countries with no culture entry (${missing.length})`);
+});
+
+test('every achievement names an icon the app can actually draw', () => {
+  // achievements.json used to carry an emoji per badge. It now carries a key
+  // into js/icons.js, and an unknown key draws nothing — a blank badge, with no
+  // error anywhere. This is the only thing that would catch a typo in it.
+  for (const a of achievements) {
+    assert.ok(ICON_NAMES.includes(a.icon), `${a.id} icon "${a.icon}" is a real icon`);
+  }
+});
+
+test('every state and province carries the flag its quiz question shows', () => {
+  // The three state/province capital modes render `flag` through the Wikimedia
+  // Commons FilePath endpoint. A missing or malformed filename is a broken image
+  // on a real question, which nothing else in the suite would notice.
+  for (const [label, rows] of [['US state', usStates], ['Mexican state', mxStates], ['Canadian province', caStates]]) {
+    for (const r of rows) {
+      assert.ok(typeof r.flag === 'string' && r.flag.trim(), `${label} ${r.name} has a flag filename`);
+      assert.match(r.flag, /\.(svg|png)$/i, `${label} ${r.name} flag "${r.flag}" is an image file`);
+    }
+  }
 });

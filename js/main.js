@@ -291,10 +291,15 @@ function dailySeed() {
   return dateSeed(localDateStr());
 }
 
-function toast(icon, title, sub) {
+/**
+ * A transient message. `name` is a key from js/icons.js, not a glyph — an
+ * unknown name simply draws nothing, which is a safer failure than the old
+ * signature's unescaped interpolation of whatever it was handed.
+ */
+function toast(name, title, sub) {
   const el = document.createElement('div');
   el.className = 'toast';
-  el.innerHTML = `<div class="ic">${icon}</div><div><div class="t-title">${esc(title)}</div>${sub ? `<div class="t-sub">${esc(sub)}</div>` : ''}</div>`;
+  el.innerHTML = `<div class="ic">${icon(name)}</div><div><div class="t-title">${esc(title)}</div>${sub ? `<div class="t-sub">${esc(sub)}</div>` : ''}</div>`;
   toastBox.appendChild(el);
   setTimeout(() => {
     el.style.opacity = '0';
@@ -352,33 +357,33 @@ function applyTheme(theme) {
 const RELIGION_MODES = ['religion_founder', 'religion_text', 'religion_holiday', 'religion_symbol', 'religion_place', 'religion_origin'];
 
 const MODE_CARDS = [
-  { key: 'capital', emoji: '🏙️', title: 'Country → Capital', desc: 'Name the capital city.' },
-  { key: 'country', emoji: '📍', title: 'Capital → Country', desc: 'Which country is this the capital of?' },
-  { key: 'religion', emoji: '🕊️', title: 'Largest Religion', desc: 'The most practiced faith.' },
-  { key: 'language', emoji: '🗣️', title: 'Primary Language', desc: 'The most widely spoken language.' },
-  { key: 'currency', emoji: '💱', title: 'Currency', desc: 'The official currency used.' },
-  { key: 'population', emoji: '👥', title: 'Population', desc: 'How many people live there.' },
+  { key: 'capital', icon: 'city', title: 'Country → Capital', desc: 'Name the capital city.' },
+  { key: 'country', icon: 'pin', title: 'Capital → Country', desc: 'Which country is this the capital of?' },
+  { key: 'religion', icon: 'dove', title: 'Largest Religion', desc: 'The most practiced faith.' },
+  { key: 'language', icon: 'speech', title: 'Primary Language', desc: 'The most widely spoken language.' },
+  { key: 'currency', icon: 'coin', title: 'Currency', desc: 'The official currency used.' },
+  { key: 'population', icon: 'people', title: 'Population', desc: 'How many people live there.' },
   // Windows has no flag-emoji font (🇺🇸 renders as "US"), so these two cards use
   // real flag images from flagcdn instead of a regional-indicator emoji.
   { key: 'us_capital', flagIso: 'US', title: 'US States → Capitals', desc: 'All 50 state capitals.' },
   { key: 'mx_capital', flagIso: 'MX', title: 'Mexico States → Capitals', desc: 'All 32 state capitals.' },
   { key: 'ca_capital', flagIso: 'CA', title: 'Canada Provinces → Capitals', desc: 'All 13 provinces & territories.' },
-  { key: 'flag', emoji: '🚩', title: 'Flag Mode', desc: 'Identify the country from its flag.' },
-  { key: 'historic_flag', emoji: '🏴', title: 'Historic Flags', desc: 'Identify the nation from a flag of the past.' },
-  { key: 'similar_flag', emoji: '🎌', title: 'Similar Flags', desc: 'Tell look-alike flags apart (France vs Netherlands…).' },
+  { key: 'flag', icon: 'flag', title: 'Flag Mode', desc: 'Identify the country from its flag.' },
+  { key: 'historic_flag', icon: 'banner', title: 'Historic Flags', desc: 'Identify the nation from a flag of the past.' },
+  { key: 'similar_flag', icon: 'flags', title: 'Similar Flags', desc: 'Tell look-alike flags apart (France vs Netherlands…).' },
 ];
 
 // Interactive click-the-map modes (each is its own SVG-backed session).
 const MAP_CARDS = [
   // Unlike the cards below (which start a specific MAP_MODES key directly),
   // this opens a chooser screen — so it overrides the tab's default attr.
-  { key: 'map_regions', attr: 'data-go', emoji: '🌍', title: 'Regions & Continents', desc: 'Pick a continent or region — the map zooms in so you only see that part of the world.' },
+  { key: 'map_regions', attr: 'data-go', icon: 'globe', title: 'Regions & Continents', desc: 'Pick a continent or region — the map zooms in so you only see that part of the world.' },
   // Grouped by entity (world, US, Mexico, Canada) so each pair of forward/
   // reverse modes for the same place sits next to each other.
-  { key: 'map_country', emoji: '🌍', title: 'Find the Country', desc: 'Click the country on a world map.' },
-  { key: 'map_country_reverse', emoji: '🔎', title: 'Name the Country', desc: 'A country is highlighted — name it.' },
-  { key: 'map_flag_country', emoji: '🚩', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
-  { key: 'map_country_flag', emoji: '🎏', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
+  { key: 'map_country', icon: 'crosshair', title: 'Find the Country', desc: 'Click the country on a world map.' },
+  { key: 'map_country_reverse', icon: 'search', title: 'Name the Country', desc: 'A country is highlighted — name it.' },
+  { key: 'map_flag_country', icon: 'flag', title: 'Flag → Map', desc: 'See a flag — click its country on the map.' },
+  { key: 'map_country_flag', icon: 'flags', title: 'Map → Flag', desc: 'A country is highlighted — pick its flag.' },
   { key: 'map_us', flagIso: 'US', title: 'Find the US State', desc: 'Click the state on a US map.' },
   { key: 'map_us_reverse', flagIso: 'US', title: 'Name the US State', desc: 'A state is highlighted — name it.' },
   { key: 'map_mx', flagIso: 'MX', title: 'Find the Mexican State', desc: 'Click the state on a Mexico map.' },
@@ -392,16 +397,18 @@ const MAP_CARDS = [
 // can override it with its own `m.attr` (e.g. a map card that opens a chooser
 // screen instead of starting a mode directly).
 function homeCard(attr, m) {
-  const icon = m.flagIso
+  // A real flag where the card is about one place, a drawn mark everywhere else.
+  // `mark` rather than `icon`, so it does not shadow the imported icon().
+  const mark = m.flagIso
     ? `<img decoding="async" class="emoji-flag" alt="" src="${flagUrl(m.flagIso, 'w80')}">`
-    : `<span class="emoji">${esc(m.emoji)}</span>`;
+    : `<span class="emoji">${icon(m.icon)}</span>`;
   // Every field is escaped even though the mode list is a static constant
   // today. The point isn't the current data — it's that the day someone makes
   // card titles data-driven, the unescaped version becomes an XSS, and nobody
   // reviewing *that* change would think to look in here.
   return `
     <button class="card" ${m.attr || attr}="${esc(m.key)}">
-      ${icon}
+      ${mark}
       <span class="card-title">${esc(m.title)}</span>
       <span class="card-desc">${esc(m.desc)}</span>
     </button>`;
@@ -512,26 +519,26 @@ function showHome() {
   const dailyDone = dailyDoneToday();
   const missedCount = reviewableMissedIds().length;
   const quickCards = [
-    { key: 'mixed', emoji: '🎲', title: 'Mixed Quiz', desc: 'A bit of everything.' },
-    { key: 'challenge', emoji: '⏱️', title: 'Challenge Mode', desc: 'Beat the clock for a high score.' },
-    { key: 'daily', emoji: '📅', title: `Daily Challenge${dailyDone ? ' ✓' : ''}`, desc: 'Same set for everyone, once a day.' },
-    { key: 'religions', emoji: '🕌', title: 'World Religions', desc: 'Founders, texts & holidays — pick a faith.' },
-    { key: 'review', emoji: '🔁', title: `Review Missed (${missedCount})`, desc: 'Practice what you got wrong.' },
+    { key: 'mixed', icon: 'dice', title: 'Mixed Quiz', desc: 'A bit of everything.' },
+    { key: 'challenge', icon: 'stopwatch', title: 'Challenge Mode', desc: 'Beat the clock for a high score.' },
+    { key: 'daily', icon: 'calendar', title: `Daily Challenge${dailyDone ? ' ✓' : ''}`, desc: 'Same set for everyone, once a day.' },
+    { key: 'religions', icon: 'temple', title: 'World Religions', desc: 'Founders, texts & holidays — pick a faith.' },
+    { key: 'review', icon: 'repeat', title: `Review Missed (${missedCount})`, desc: 'Practice what you got wrong.' },
   ];
   const journeyCards = [
-    { key: 'phrases', emoji: '🗣️', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
-    { key: 'flagkey', emoji: '🚩', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
-    { key: 'languages', emoji: '🗺️', title: 'Language Map', desc: 'The world coloured by what it speaks.' },
-    { key: 'hello', emoji: '👋', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
-    { key: 'countries', emoji: '🌐', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
-    { key: 'music', emoji: '🎵', title: 'Music', desc: 'Songs that represent each country.' },
-    { key: 'crises', emoji: '📰', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
-    { key: 'custom', emoji: '🛠️', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
-    { key: 'stats', emoji: '📊', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
-    { key: 'achievements', emoji: '🏆', title: 'Achievements', desc: 'Badges & milestones.' },
-    { key: 'profile', emoji: '🧭', title: 'Profile', desc: 'Name & reset.' },
-    { key: 'pokedex', emoji: '⚡', title: 'Pokédex', desc: 'All 1025 Pokémon, plus practice modes. A fun corner — kept separate from your Worldly progress.' },
-    { key: 'about', emoji: 'ℹ️', title: 'About', desc: 'Credits, data sources & privacy.' },
+    { key: 'phrases', icon: 'speech', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
+    { key: 'flagkey', icon: 'flag', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
+    { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world coloured by what it speaks.' },
+    { key: 'hello', icon: 'wave', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
+    { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
+    { key: 'music', icon: 'note', title: 'Music', desc: 'Songs that represent each country.' },
+    { key: 'crises', icon: 'news', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
+    { key: 'custom', icon: 'sliders', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
+    { key: 'stats', icon: 'gauge', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
+    { key: 'achievements', icon: 'trophy', title: 'Achievements', desc: 'Badges & milestones.' },
+    { key: 'profile', icon: 'compass', title: 'Profile', desc: 'Name & reset.' },
+    { key: 'pokedex', icon: 'bolt', title: 'Pokédex', desc: 'All 1025 Pokémon, plus practice modes. A fun corner — kept separate from your Worldly progress.' },
+    { key: 'about', icon: 'info', title: 'About', desc: 'Credits, data sources & privacy.' },
   ];
   // Each category is its own tab instead of one long scrolling page.
   const tabs = [
@@ -801,7 +808,7 @@ async function startQuiz(opts) {
   const engine = buildLocalEngine(opts);
 
   if (engine.size === 0) {
-    toast('🤷', 'Nothing to quiz', 'That selection has no questions yet.');
+    toast('warning', 'Nothing to quiz', 'That selection has no questions yet.');
     return;
   }
 
@@ -826,7 +833,7 @@ function startDaily() {
 function startReview() {
   const ids = reviewableMissedIds();
   if (ids.length === 0) {
-    toast('✅', 'No missed questions', 'Great — your review pile is empty!');
+    toast('check', 'No missed questions', 'Great — your review pile is empty!');
     return;
   }
   track('review_missed_used');
@@ -924,7 +931,7 @@ async function startMapQuiz(opts) {
     map = await loadMap(svgName);
   } catch (err) {
     if (myGen !== sessionGen) return; // player already navigated away
-    toast('🗺️', "Couldn't load the map", err.message);
+    toast('warning', "Couldn't load the map", err.message);
     return navigate('/', { replace: true });
   }
   if (myGen !== sessionGen) return; // player already navigated away
@@ -932,7 +939,7 @@ async function startMapQuiz(opts) {
   const data = getData();
   const pool = buildMapPool(data, { [svgName]: map.regions }, { modes: [mode], continent });
   if (pool.length === 0) {
-    toast('🤷', 'Nothing to quiz', 'That map has no questions yet.');
+    toast('warning', 'Nothing to quiz', 'That map has no questions yet.');
     return navigate('/', { replace: true });
   }
 
@@ -1039,7 +1046,7 @@ function mapAnswer(clickedId) {
   const newly = checkAchievements(getProfile());
   saveProfile();
   if (newly.length) track('achievement_unlocked');
-  if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
+  if (res.levelledUp) toast('levelUp', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
   renderFeedback(correct, q, res.xpGained);
@@ -1148,7 +1155,7 @@ function wireFlagFallback(selector = '.q-flag') {
     img.addEventListener('error', () => {
       const d = document.createElement('div');
       d.className = 'q-flag-missing';
-      d.textContent = "🚩 The flag image couldn't load — check your connection, then try the next question.";
+      d.textContent = "The flag image couldn't load — check your connection, then try the next question.";
       img.replaceWith(d);
     });
   });
@@ -1177,7 +1184,7 @@ async function ensureDataset(name) {
     await loadDataset(name);
   } catch (err) {
     if (myGen !== sessionGen) return false;
-    toast('⚠️', "Couldn't load that section", err.message);
+    toast('warning', "Couldn't load that section", err.message);
     navigate('/', { replace: true });
     return false;
   }
@@ -1230,7 +1237,7 @@ async function answer(value) {
       // must come from a fresh, genuinely-answerable local pool instead of
       // continuing to pull from that array.
       S.engine = buildLocalEngine(S.lastOpts);
-      toast('📡', 'Connection lost', "Switched to local scoring — this run won't count for the global board.");
+      toast('signalOff', 'Connection lost', "Switched to local scoring — this run won't count for the global board.");
     }
   } else {
     correct = value === q.answer;
@@ -1262,7 +1269,7 @@ async function answer(value) {
   const newly = checkAchievements(getProfile());
   saveProfile();
   if (newly.length) track('achievement_unlocked');
-  if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
+  if (res.levelledUp) toast('levelUp', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
   renderFeedback(correct, q, S.challenge ? xpGained : res.xpGained);
@@ -1326,7 +1333,7 @@ function answerTyped(value) {
   const newly = checkAchievements(getProfile());
   saveProfile();
   if (newly.length) track('achievement_unlocked');
-  if (res.levelledUp) toast('⬆️', `Level ${res.level}!`, levelTitle(getProfile().xp));
+  if (res.levelledUp) toast('levelUp', `Level ${res.level}!`, levelTitle(getProfile().xp));
   newly.forEach((a) => toast(a.icon, `Achievement: ${a.name}`, a.desc));
 
   renderFeedback(correct, q, res.xpGained);
@@ -1450,7 +1457,7 @@ async function submitToGlobalLeaderboard(sessionId) {
     if (myGen !== sessionGen) return; // player already left the results screen
     if (!res.ok) throw new Error('finish_failed');
     const result = await res.json();
-    if (note) note.textContent = `🌍 Synced — you're #${result.rank} of ${result.total} globally.`;
+    if (note) note.textContent = `Synced — you're #${result.rank} of ${result.total} globally.`;
   } catch {
     if (myGen === sessionGen && note) note.textContent = '';
   }
@@ -1524,7 +1531,7 @@ function showCustom() {
   app.querySelector('#startCustom').addEventListener('click', () => {
     const modes = [...app.querySelectorAll('#modeChecks input:checked')].map((i) => i.value);
     const conts = [...app.querySelectorAll('#contChecks input:checked')].map((i) => i.value);
-    if (modes.length === 0) return toast('⚠️', 'Pick at least one question type');
+    if (modes.length === 0) return toast('warning', 'Pick at least one question type');
     startQuiz({ title: 'Custom Study', modes, continents: conts.length ? conts : 'all', difficulty, total: length, input });
   });
 }
@@ -1655,7 +1662,7 @@ async function showPhrases() {
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Phrases</h1>
-    <p class="screen-sub">Pick a country to learn a few common phrases — and the sayings locals actually use. Tap 🔊 to hear them.</p>
+    <p class="screen-sub">Pick a country to learn a few common phrases — and the sayings locals actually use. Tap the speaker to hear them.</p>
     <div class="grid">
       ${entries.map((e) => `
         <button class="card" data-country="${esc(e.country)}">
@@ -1673,7 +1680,7 @@ async function showPhrases() {
     b.addEventListener('click', () => navigate('/phrases/' + slugify(b.dataset.country))));
 }
 
-// A small 🔊 button that speaks `text` in the entry's language (hidden when the
+// A small speaker button that speaks `text` in the entry's language (hidden when the
 // Web Speech API is unavailable). `fallback` is the romanized pronunciation,
 // used when no voice for `lang` is installed (see speak() above). Wired via
 // [data-speak] after render.
@@ -1841,7 +1848,7 @@ async function loadWorldGreetings() {
     map = await loadMap('world');
   } catch (err) {
     if (myGen !== sessionGen) return null;
-    toast('🗺️', "Couldn't load the map", err.message);
+    toast('warning', "Couldn't load the map", err.message);
     navigate('/', { replace: true });
     return null;
   }
@@ -1906,7 +1913,7 @@ async function showLanguageMap() {
       // Territories have a greeting but no country page, so they announce in
       // place rather than navigating to a dead end.
       if (country) return navigate('/country/' + slugify(country.name));
-      if (row) toast('🌍', row.name, row.uninhabited ? 'No permanent population.' : `${row.language} — ${row.hello} (${row.pron})`);
+      if (row) toast('globe', row.name, row.uninhabited ? 'No permanent population.' : `${row.language} — ${row.hello} (${row.pron})`);
     },
   });
   app.querySelector('#mapMount').append(view.el);
@@ -2048,7 +2055,27 @@ async function showHelloMap() {
 // ============================================================================
 //  COUNTRY GUIDES  (Explore -> /country, /country/:slug)
 // ============================================================================
-const countrySearch = { term: '', region: '' };
+const countrySearch = { term: '', region: '', sort: 'name' };
+
+// Ways to order the country index. The file order is grouped by region and then
+// by nothing in particular, which reads as random the moment you are looking for
+// a specific country -- so A-Z is the default and the rest are opt-in.
+// Each comparator is total (every tie falls through to the name) so the order is
+// stable no matter how the browser sorts.
+const COUNTRY_SORTS = {
+  name: { label: 'A – Z', cmp: (a, b) => a.name.localeCompare(b.name) },
+  nameDesc: { label: 'Z – A', cmp: (a, b) => b.name.localeCompare(a.name) },
+  population: {
+    label: 'Population',
+    cmp: (a, b) => (Number(b.population) || 0) - (Number(a.population) || 0) || a.name.localeCompare(b.name),
+  },
+  region: {
+    label: 'Region',
+    cmp: (a, b) => String(a.region).localeCompare(String(b.region))
+      || String(a.subregion).localeCompare(String(b.subregion))
+      || a.name.localeCompare(b.name),
+  },
+};
 
 /** The culture deep dive for one country, or null. Regions are authored one at
  *  a time, so "not written yet" is a normal state, never an error. */
@@ -2084,6 +2111,10 @@ async function showCountryIndex() {
         <option value="">All regions</option>
         ${regions.map((r) => `<option value="${esc(r)}"${r === countrySearch.region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
       </select>
+      <select class="select" id="countrySort" aria-label="Sort countries">
+        ${Object.entries(COUNTRY_SORTS).map(([k, v]) =>
+          `<option value="${esc(k)}"${k === countrySearch.sort ? ' selected' : ''}>${esc(v.label)}</option>`).join('')}
+      </select>
     </div>
 
     <div class="grid" id="countryGrid"></div>
@@ -2101,7 +2132,8 @@ async function showCountryIndex() {
   // Built once. Filtering then toggles .hidden on existing cards rather than
   // regenerating markup — rebuilding ~200 <img> per keystroke is the exact
   // regression the Flag Key screen exists to document.
-  grid.innerHTML = countries.map((c) => {
+  const sorted = [...countries].sort(COUNTRY_SORTS[countrySearch.sort].cmp);
+  grid.innerHTML = sorted.map((c) => {
     const g = greetings.get(c.iso2.toLowerCase());
     return `<button class="card" data-slug="${esc(slugify(c.name))}"
       data-name="${esc(c.name.toLowerCase())}" data-region="${esc(c.region)}">
@@ -2113,6 +2145,18 @@ async function showCountryIndex() {
   // No inline onerror — the CSP has no unsafe-inline, so it would never run.
   grid.querySelectorAll('img').forEach((img) =>
     img.addEventListener('error', () => img.classList.add('hidden')));
+
+  // Re-ordering moves the cards that already exist rather than rebuilding them:
+  // append() on an element already in the document relocates it, so no <img> is
+  // discarded and none is requested a second time.
+  function applySort() {
+    const cards = new Map([...grid.children].map((el) => [el.dataset.slug, el]));
+    grid.append(...countries
+      .slice()
+      .sort(COUNTRY_SORTS[countrySearch.sort].cmp)
+      .map((c) => cards.get(slugify(c.name)))
+      .filter(Boolean));
+  }
 
   function applyFilter() {
     const term = countrySearch.term.trim().toLowerCase();
@@ -2135,6 +2179,10 @@ async function showCountryIndex() {
   app.querySelector('#countryRegion').addEventListener('change', (e) => {
     countrySearch.region = e.target.value;
     applyFilter();
+  });
+  app.querySelector('#countrySort').addEventListener('change', (e) => {
+    countrySearch.sort = COUNTRY_SORTS[e.target.value] ? e.target.value : 'name';
+    applySort();
   });
   grid.addEventListener('click', (e) => {
     const card = e.target.closest('[data-slug]');
@@ -2194,8 +2242,8 @@ function renderCountryDetail(country, greeting, culture) {
     <div class="culture-grid">
       ${rows.map((r) => `
         <div class="culture-cell">
-          <span class="culture-icon" aria-hidden="true">${esc(r.icon || '•')}</span>
-          <div><div class="culture-label">${esc(r.label)}</div><div>${esc(r.text)}</div></div>
+          <div class="culture-label">${esc(r.label)}</div>
+          <div>${esc(r.text)}</div>
         </div>`).join('')}
     </div>` : '';
 
@@ -2509,8 +2557,8 @@ function showAchievements() {
       in the book — the outlines are the ones still to collect.</p>
     <div class="ach-grid">
       ${list.map((a) => `
-        <div class="ach ${a.unlocked ? '' : 'locked'}">
-          <div class="ic">${a.icon}</div>
+        <div class="ach ${a.unlocked ? '' : 'locked'} ${a.region ? continentClass(a.region) : ''}">
+          <div class="ic">${icon(a.icon)}</div>
           <div class="nm">${esc(a.name)}</div>
           <div class="ds">${esc(a.desc)}</div>
           <div class="mini"><span data-w="${a.pct}"></span></div>
@@ -2645,7 +2693,7 @@ function showProfile() {
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#saveName').addEventListener('click', () => {
     setName(app.querySelector('#nameInput').value);
-    toast('✅', 'Name saved', getProfile().name);
+    toast('check', 'Name saved', getProfile().name);
   });
   app.querySelector('#exportBtn').addEventListener('click', () => {
     const blob = new Blob([JSON.stringify(getProfile(), null, 2)], { type: 'application/json' });
@@ -2654,7 +2702,7 @@ function showProfile() {
     a.download = `worldly-profile-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
-    toast('⬇️', 'Progress exported', 'Keep the file safe — import it anywhere.');
+    toast('download', 'Progress exported', 'Keep the file safe — import it anywhere.');
   });
   const importFile = app.querySelector('#importFile');
   app.querySelector('#importBtn').addEventListener('click', () => importFile.click());
@@ -2665,10 +2713,10 @@ function showProfile() {
       const p = importProfile(JSON.parse(await file.text()));
       applyTheme(p.theme);
       renderHUD();
-      toast('✅', 'Progress imported', `Welcome back, ${p.name} — level ${levelProgress(p.xp).level}!`);
+      toast('check', 'Progress imported', `Welcome back, ${p.name} — level ${levelProgress(p.xp).level}!`);
       showProfile();
     } catch (e) {
-      toast('⚠️', "Couldn't import that file", e.message);
+      toast('warning', "Couldn't import that file", e.message);
     }
   });
   const optOutBox = app.querySelector('#analyticsOptOut');
@@ -2682,15 +2730,15 @@ function showProfile() {
   }
   optOutBox.addEventListener('change', () => {
     setAnalyticsOptOut(optOutBox.checked);
-    if (optOutBox.checked) toast('🔕', 'Analytics off', 'Nothing further will be sent from this browser.');
-    else { loadAnalytics(); toast('📊', 'Analytics on', 'Thanks — it helps show which modes get used.'); }
+    if (optOutBox.checked) toast('bellOff', 'Analytics off', 'Nothing further will be sent from this browser.');
+    else { loadAnalytics(); toast('gauge', 'Analytics on', 'Thanks — it helps show which modes get used.'); }
   });
 
   app.querySelector('#resetBtn').addEventListener('click', () => {
     if (confirm('Really reset ALL progress? This cannot be undone.')) {
       resetProfile();
       renderHUD();
-      toast('🧹', 'Progress reset', 'A fresh start!');
+      toast('reset', 'Progress reset', 'A fresh start!');
       navigate('/');
     }
   });
@@ -2751,7 +2799,7 @@ async function boot() {
   window.addEventListener('worldly:save-failed', () => {
     if (warnedSave) return;
     warnedSave = true;
-    toast('⚠️', "Progress can't be saved", 'Browser storage may be full or blocked (private mode).');
+    toast('warning', "Progress can't be saved", 'Browser storage may be full or blocked (private mode).');
   });
 
   app.innerHTML = '<p class="screen-sub">Loading the world…</p>';

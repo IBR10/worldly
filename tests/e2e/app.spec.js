@@ -51,7 +51,7 @@ test('profile export round-trips through import', async ({ page }) => {
   await page.goto('/');
   await page.waitForSelector('.card');
   await page.getByRole('tab', { name: /Explore/ }).click();
-  await page.getByRole('button', { name: /🧭\s*Profile/ }).click();
+  await page.getByRole('button', { name: /Profile/ }).click();
   // The file input is deliberately hidden and driven by the Import button, so
   // wait for it to exist rather than to be visible.
   await page.waitForSelector('#importFile', { state: 'attached' });

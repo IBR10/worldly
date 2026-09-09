@@ -369,22 +369,30 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       distractorValues = histPool.map((x) => x.name);
       break;
     }
+    // The three state/province modes carry their region's own flag. Every record
+    // in us_states/mexico_states/canada_provinces already has a `flag` filename
+    // (the Flag Key has always used it), and it costs the answer nothing: the
+    // question names the state outright, so the flag is something learned
+    // alongside the capital rather than a second way to guess it.
     case 'us_capital':
       prompt = `What is the capital of ${c.name}? (U.S. state)`;
       answer = c.capital;
       distractorValues = data.usStates.map((x) => x.capital);
+      flagImg = c.flag;
       isCountry = false;
       break;
     case 'mx_capital':
       prompt = `What is the capital of ${c.name}? (Mexican state)`;
       answer = c.capital;
       distractorValues = data.mxStates.map((x) => x.capital);
+      flagImg = c.flag;
       isCountry = false;
       break;
     case 'ca_capital':
       prompt = `What is the capital of ${c.name}? (Canadian province/territory)`;
       answer = c.capital;
       distractorValues = data.caStates.map((x) => x.capital);
+      flagImg = c.flag;
       isCountry = false;
       break;
     default:

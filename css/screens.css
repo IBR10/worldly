@@ -417,12 +417,11 @@
   width: 58px;
   height: 58px;
   margin: 0 auto var(--s2);
-  font-size: 1.7rem;
-  line-height: 1;
   border-radius: 50%;
   border: 2px dashed var(--border);
   color: var(--muted);
 }
+.ach .ic svg { width: 26px; height: 26px; }
 .ach .nm { font-weight: 750; font-stretch: var(--wd-wide); font-size: var(--t-sm); line-height: 1.25; }
 .ach .ds { color: var(--muted); font-size: var(--t-xs); margin: var(--s1) 0 var(--s2); line-height: 1.4; }
 .ach .mini { height: 5px; }
@@ -440,8 +439,8 @@
 .ach:not(.locked) { border-color: var(--brass); background: var(--brass-soft); }
 .ach:not(.locked) .ic {
   border-style: solid;
-  border-color: var(--brass);
-  color: var(--brass);
+  border-color: var(--con, var(--brass));
+  color: var(--con, var(--brass));
   transform: rotate(-4deg);
 }
 .ach:not(.locked):nth-child(even) .ic { transform: rotate(3deg); }
@@ -720,28 +719,23 @@
 
 .culture-grid { display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); }
 .culture-cell {
-  display: flex;
-  gap: var(--s3);
   padding: var(--s4);
   border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  border-left: 3px solid var(--brass);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
   background: var(--surface);
   line-height: 1.5;
   font-size: var(--t-sm);
 }
-.culture-icon {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  font-size: 1.2rem;
-  line-height: 1;
-  border-radius: var(--r-plate);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+.culture-label {
+  color: var(--brass);
+  font-weight: 750;
+  font-size: var(--t-xs);
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: var(--s1);
 }
-.culture-label { font-weight: 700; font-stretch: var(--wd-wide); margin-bottom: 2px; }
 
 .talk-list { margin: 0; padding-left: var(--s5); line-height: 1.65; font-size: var(--t-sm); }
 .talk-list li { margin-bottom: var(--s1); }
