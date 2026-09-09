@@ -56,14 +56,29 @@ test('img-src permits every host the app loads images from', () => {
   assert.ok(permits(img, 'thumb.wikimedia.org'), 'thumb.wikimedia.org (current thumbnail host)');
 });
 
+test('connect-src permits the same hosts, because the service worker re-fetches them', () => {
+  // Not a copy-paste of the img-src test. sw.js intercepts every request to a
+  // CACHE_FIRST_HOST and re-issues it with fetch(), and a fetch() made by a
+  // service worker is governed by connect-src -- under the very CSP this file
+  // serves to sw.js. Fixing img-src alone left the worker refused at the
+  // network, which surfaces as a bare net::ERR_FAILED with no CSP report to
+  // explain it. Whatever img-src allows for these hosts, connect-src must too.
+  const conn = directive('connect-src');
+  for (const host of ['flagcdn.com', 'commons.wikimedia.org', 'upload.wikimedia.org', 'thumb.wikimedia.org']) {
+    assert.ok(permits(conn, host), `connect-src permits ${host}`);
+  }
+});
+
 test('img-src covers Wikimedia by wildcard, so the next host move does not break it', () => {
   const img = directive('img-src');
-  assert.ok(
-    img.some((s) => s === 'https://*.wikimedia.org'),
-    'img-src should list https://*.wikimedia.org rather than naming hosts individually — '
-    + 'Special:FilePath redirects to whatever host Wikimedia is currently using, and CSP is '
-    + 'enforced against that target',
-  );
+  for (const [name, sources] of [['img-src', img], ['connect-src', directive('connect-src')]]) {
+    assert.ok(
+      sources.some((s) => s === 'https://*.wikimedia.org'),
+      `${name} should list https://*.wikimedia.org rather than naming hosts individually — `
+      + 'Special:FilePath redirects to whatever host Wikimedia is currently using, and CSP is '
+      + 'enforced against that target',
+    );
+  }
 });
 
 test('the policy still refuses inline script and style', () => {
