@@ -19,7 +19,7 @@ async function openPokedex(page) {
   await page.goto('/');
   await page.waitForSelector('.card');
   await page.getByRole('tab', { name: /Explore/ }).click();
-  await page.getByRole('button', { name: /⚡\s*Pokédex/ }).click();
+  await page.getByRole('button', { name: /Pokédex/ }).click();
   await page.waitForSelector('.dex-card');
 }
 

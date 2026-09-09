@@ -10,6 +10,7 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ICON_NAMES } from '../js/icons.js';
 import { readFileSync } from 'node:fs';
 
 import {
@@ -198,10 +199,13 @@ test('a session does not repeat a question before the pool is exhausted', () => 
   assert.equal(seen.size, 151);
 });
 
-test('every declared mode has a label, emoji and registration flag', () => {
+test('every declared mode has a label, a drawn icon and a registration flag', () => {
   for (const key of ALL_POKE_MODES) {
     const def = POKE_MODES[key];
-    assert.ok(def.label && def.desc && def.emoji, `${key} is presentable`);
+    assert.ok(def.label && def.desc && def.icon, `${key} is presentable`);
+    // The icon is a key into js/icons.js, not a glyph: an unknown name draws
+    // nothing at all, which is a silent blank card rather than a visible defect.
+    assert.ok(ICON_NAMES.includes(def.icon), `${key} icon "${def.icon}" is a real icon`);
     assert.equal(typeof def.registers, 'boolean', `${key} declares registration`);
   }
 });

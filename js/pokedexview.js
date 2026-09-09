@@ -286,7 +286,7 @@ function practicePanel() {
       ${ALL_POKE_MODES.map((key) => {
     const m = POKE_MODES[key];
     return `<button class="card" data-poke-mode="${esc(key)}">
-          <span class="emoji" aria-hidden="true">${esc(m.emoji)}</span>
+          <span class="emoji" aria-hidden="true">${icon(m.icon)}</span>
           <span class="card-title">${esc(m.label)}</span>
           <span class="card-desc">${esc(m.desc)}</span>
         </button>`;
@@ -351,7 +351,7 @@ function wireProgressPanel() {
   btn.addEventListener('click', () => {
     if (!window.confirm('Reset all Pokédex progress? Your Worldly profile is not affected.')) return;
     resetPokedex();
-    ctx.toast('⚡', 'Pokédex reset', 'Every entry is unregistered again.');
+    ctx.toast('reset', 'Pokédex reset', 'Every entry is unregistered again.');
     renderHub();
   });
   ctx.app.querySelectorAll('.dex-grid .dex-card').forEach((card) =>
@@ -517,7 +517,7 @@ function answer(choice) {
     <div class="callout mt-14">
       <p class="m-0"><strong>${correct ? 'Correct' : 'Not quite'}</strong> — the answer is ${esc(q.answer)}.</p>
       ${mon ? `<p class="mt-10 m-0">${esc(mon.name)} · ${esc(typingOf(mon))} · Gen ${esc(mon.gen)}${mon.dex ? ` — ${esc(mon.dex)}` : ''}</p>` : ''}
-      ${newlyRegistered ? '<p class="mt-10 m-0 ok">⚡ Registered to your Pokédex.</p>' : ''}
+      ${newlyRegistered ? '<p class="mt-10 m-0 ok">Registered to your Pokédex.</p>' : ''}
       ${newlyMastered ? '<p class="mt-10 m-0 ok">★ Mastered.</p>' : ''}
       ${q.learnMore.length ? `<p class="mt-10 m-0">${q.learnMore.map((l) => `<a href="${ctx.safeUrl(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join(' · ')}</p>` : ''}
     </div>

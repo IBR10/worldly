@@ -270,21 +270,9 @@
   grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
   gap: var(--s3);
 }
-/* The graticule corner is painted as two backgrounds on the card itself rather
-   than a masked ::before. It used to be the latter, and toggling `.hidden` on
-   250 Flag Key cards per keystroke made the browser re-rasterise 250 masked
-   layers — measured at 2.1s to type three characters, against a 1.2s budget the
-   Flag Key screen exists to defend. Plain repeating gradients cost nothing, and
-   a hard-edged corner block reads more like a chart's neatline anyway. */
 .card {
   position: relative;
   background-color: var(--surface);
-  background-image:
-    repeating-linear-gradient(90deg, var(--border-soft) 0 1px, transparent 1px 15px),
-    repeating-linear-gradient(0deg, var(--border-soft) 0 1px, transparent 1px 15px);
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 76px 76px;
   /* The cards are <button> elements: without these, browsers apply the UA
      button defaults (near-black `buttontext` color + a system font), which
      made the card titles unreadable on the dark surface in dark mode. */
@@ -308,12 +296,13 @@
   width: 46px;
   height: 46px;
   flex: 0 0 auto;
-  font-size: 1.45rem;
-  line-height: 1;
+  color: var(--brass);
   border-radius: var(--r-plate);
   background: var(--surface-2);
   border: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
 }
+.card .emoji svg { width: 23px; height: 23px; }
 .card:hover .emoji { border-color: var(--brass); background: var(--brass-soft); }
 /* Flag image used in place of an emoji on cards (Windows lacks flag emoji). */
 /* Fixed box + contain, rather than height:auto, so the card reserves its space
@@ -703,7 +692,8 @@
   max-width: 340px;
   transition: opacity 260ms ease;
 }
-.toast .ic { font-size: 1.5rem; line-height: 1; }
+.toast .ic { display: grid; place-items: center; color: var(--brass); }
+.toast .ic svg { width: 22px; height: 22px; }
 .toast .t-title { font-weight: 750; font-stretch: var(--wd-wide); }
 .toast .t-sub { color: var(--muted); font-size: var(--t-xs); }
 
@@ -990,6 +980,10 @@
   .tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
   .tab { padding: 8px 14px; }
   .form-block { padding: var(--s4); }
+  /* Search takes its own row; the two dropdowns share the next one rather than
+     stacking into three rows of chrome above the grid they filter. */
+  .filter-bar .type-input { flex: 1 1 100%; max-width: none; }
+  .filter-bar .select { flex: 1 1 0; min-width: 0; }
   .toasts { left: var(--s3); right: var(--s3); }
   .toast { max-width: none; }
 }
