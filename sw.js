@@ -25,7 +25,7 @@
 // account to restore them from. An unbounded image cache put the only copy of
 // a player's progress behind an eviction policy we did not control.
 
-const VERSION = 'v3'; // v3: split shell/image caches and capped the image cache
+const VERSION = 'v4'; // v4: redesign — three stylesheets and a self-hosted webfont
 const SHELL_CACHE = `worldly-shell-${VERSION}`;
 const IMAGE_CACHE = `worldly-images-${VERSION}`;
 const KEEP = [SHELL_CACHE, IMAGE_CACHE];
@@ -39,7 +39,19 @@ const CACHE_FIRST_HOSTS = ['flagcdn.com', 'commons.wikimedia.org', 'upload.wikim
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
-  e.waitUntil(caches.open(SHELL_CACHE).then((c) => c.addAll(['/', '/css/styles.css', '/js/main.js'])));
+  // The redesign's three stylesheets and the Latin cut of Archivo are all on
+  // the critical path for a styled first paint, so they are precached rather
+  // than left to the runtime networkFirst/cacheFirst rules below. The
+  // extended-Latin cut is not: its unicode-range means most visitors never
+  // request it at all.
+  e.waitUntil(caches.open(SHELL_CACHE).then((c) => c.addAll([
+    '/',
+    '/css/styles.css',
+    '/css/components.css',
+    '/css/screens.css',
+    '/js/main.js',
+    '/assets/fonts/archivo-latin.woff2',
+  ])));
 });
 
 self.addEventListener('activate', (e) => {

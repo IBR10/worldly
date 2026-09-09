@@ -1,33 +1,163 @@
-/* Worldly styles — themeable via [data-theme] on <html>.
-   Design goals: clean, modern, fast, responsive, keyboard-friendly,
-   with a dark and a light palette. */
+/* Worldly — tokens, type, base, utilities.
+   ---------------------------------------------------------------------------
+   The design is "deep chart & brass": the visual language of a bathymetric
+   survey chart and the brass instruments you'd read one with. Deep water is the
+   ground, land and progress are struck in brass, and the latitude/longitude
+   graticule is the structural device — it draws the section rules, the ticks on
+   every progress bar, and the faint grid the content sits on.
 
-:root {
-  --maxw: 920px;
-  --radius: 16px;
-  --radius-sm: 10px;
-  --gap: 16px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --transition: 160ms ease;
+   Loaded first of three sheets:
+     styles.css      tokens, @font-face, reset, type, shell, utilities  (this)
+     components.css  buttons, cards, chips, tabs, forms, bars, map widget
+     screens.css     per-screen composition
+
+   Split only for editing sanity — they are three <link>s, so they load in
+   parallel and share the /css/* cache rules in _headers. stylelint's
+   no-duplicate-selectors is per file, which is the other reason the split
+   helps: each selector is declared exactly once, in exactly one place.
+
+   Every colour is a token, and the two themes redefine the same token names, so
+   [data-theme] on <html> is the only switch. */
+
+/* ---- typeface -------------------------------------------------------------
+   One family, Archivo, as a variable font carrying both axes:
+
+     wght  100–900   weight
+     wdth   62–125   width
+
+   Width is the expressive axis. Headlines run wide (118–125%), reading text
+   sits at 100%, and dense data labels compress to 74–80% — the same letterforms
+   stretched and squeezed the way a projection stretches and squeezes a map.
+   That is the whole type system; there is no second family.
+
+   Self-hosted because the CSP is `default-src 'self'` with no font-src
+   exception — a font CDN would be blocked outright. Two files split by
+   unicode-range, so the extended-Latin file is only fetched by a visitor who
+   actually meets an extended-Latin glyph (Kraków, Türkiye, São Tomé).
+
+   Scripts beyond Latin are deliberately NOT covered: the greetings screens show
+   Japanese, Arabic, Devanagari, Thai, Cyrillic and more, and shipping webfonts
+   for those would cost megabytes. They fall through to the OS stack, which is
+   what the unicode-range descriptors below arrange. */
+@font-face {
+  font-family: Archivo;
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/assets/fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Archivo;
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/assets/fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* ---- dark (default) ---- */
+:root {
+  /* ---- measure ----
+     Three widths by role, rather than one column for everything. The old single
+     920px measure was too wide for prose and far too narrow for a world map. */
+  --w-prose: 68ch;      /* crisis write-ups, About, culture essays */
+  --w-content: 1120px;  /* the default screen column */
+  --w-wide: 1320px;     /* maps and dense grids */
+  --maxw: var(--w-content);
+
+  /* ---- radius by role ----
+     A map plate and a chip should not share a corner. Plates are nearly square
+     (a chart is printed, not rounded), cards are soft, chips are round. */
+  --r-plate: 5px;
+  --r-card: 14px;
+  --r-sm: 9px;
+  --r-pill: 999px;
+  --radius: var(--r-card);
+  --radius-sm: var(--r-sm);
+
+  /* ---- space ---- */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 72px;
+  --gap: var(--s4);
+
+  /* ---- type ----
+     A major-third scale (×1.25), fluid where the jump would otherwise be
+     jarring between phone and desktop. */
+  --font: Archivo, "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --t-hero: clamp(2.35rem, 1.5rem + 3.6vw, 4.1rem);
+  --t-h1: clamp(1.7rem, 1.32rem + 1.6vw, 2.45rem);
+  --t-h2: 1.32rem;
+  --t-h3: 1.08rem;
+  --t-body: 1rem;
+  --t-sm: 0.875rem;
+  --t-xs: 0.78rem;
+  --t-micro: 0.7rem;
+
+  /* The width axis, named by job so a rule reads as intent. */
+  --wd-display: 122%;
+  --wd-wide: 112%;
+  --wd-text: 100%;
+  --wd-data: 84%;
+  --wd-tight: 74%;
+
+  --transition: 160ms ease;
+  --ease-out: cubic-bezier(0.22, 0.85, 0.3, 1);
+}
+
+/* ---- dark (default) — a chart read at depth --------------------------------
+   The ground is deep water, not navy: teal-black, with surfaces that rise out
+   of it like a shelf. Brass is the only colour that acts; jade and coral only
+   ever mean right and wrong. Nothing else is allowed to be colourful, which is
+   what leaves room for 198 flags and an eleven-hue language map to be. */
 [data-theme="dark"] {
-  --bg: #0f1525;
-  --bg-grad: radial-gradient(1200px 600px at 50% -10%, #1c2950 0%, #0f1525 60%);
-  --surface: #18213a;
-  --surface-2: #202c4d;
-  --text: #eef2ff;
-  --muted: #9aa7c7;
-  --primary: #4f8cff;
-  --primary-ink: #ffffff;
-  --accent: #ffce54;
-  --good: #36d399;
-  --good-bg: rgba(54, 211, 153, 0.12);
-  --bad: #f87272;
-  --bad-bg: rgba(248, 114, 114, 0.12);
-  --border: #2a375d;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --bg: #06171c;
+  --bg-grad: radial-gradient(1400px 700px at 50% -12%, #0d3038 0%, #06171c 62%);
+  --surface: #0c2229;
+  --surface-2: #123039;
+  --surface-3: #173c47;
+  --text: #e6f1ee;
+  --muted: #8aa5a8;
+  --brass: #f0a93f;
+  --brass-soft: rgba(240, 169, 63, 0.14);
+  --primary: #f0a93f;
+  --primary-ink: #06171c;
+  --accent: #f0a93f;
+  --focus: #7ee8ff;
+  --good: #3fd69c;
+  --good-bg: rgba(63, 214, 156, 0.13);
+  --bad: #ff7a63;
+  --bad-bg: rgba(255, 122, 99, 0.13);
+  --border: #1c4450;
+  --border-soft: rgba(120, 190, 205, 0.14);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.3);
+  --ocean: #071c23;
+  --land: #23505c;
+  /* The three steps of "found". Explicit values rather than a mix with the
+     land: mixing brass into a teal lands in olive, which reads as a fourth,
+     unexplained colour rather than as a weaker brass. */
+  --known-1: #7a5f2a;
+  --known-2: #bd8a33;
+  --known-3: #f0a93f;
+
+  /* Continent key. Six hues, deliberately clear of brass's 40° so a region
+     badge is never mistaken for a progress fill. Used on region badges,
+     continent bars and the dashboard map — colour carrying information, not
+     decorating. */
+  --con-africa: #c775d8;
+  --con-asia: #e86a87;
+  --con-europe: #8090ea;
+  --con-namerica: #48bbdc;
+  --con-samerica: #45c795;
+  --con-oceania: #b8cc4a;
 
   /* Categorical palette for the Language Map. Eleven slots, searched with the
      data-viz validator over OKLCH (L, C, hue) and scored on the worst
@@ -45,26 +175,49 @@
   --cat-9: #239cd6;   /* Austronesian */
   --cat-10: #b475a4;   /* Creole */
   --cat-11: #006b91;   /* Other */
-  --cat-none: #333e5f;   /* no permanent population */
+  --cat-none: #1a3b45;   /* no permanent population */
 }
 
-/* ---- light ---- */
+/* ---- light — the same chart printed on paper ------------------------------ */
 [data-theme="light"] {
-  --bg: #eef2fb;
-  --bg-grad: radial-gradient(1200px 600px at 50% -10%, #dbe6ff 0%, #eef2fb 60%);
+  --bg: #edf2f0;
+  --bg-grad: radial-gradient(1400px 700px at 50% -12%, #ffffff 0%, #edf2f0 60%);
   --surface: #ffffff;
-  --surface-2: #f3f6ff;
-  --text: #142036;
-  --muted: #5b6783;
-  --primary: #2f6bff;
+  --surface-2: #e6eeeb;
+  --surface-3: #d9e4e1;
+  --text: #072229;
+  --muted: #4e6b70;
+  /* Darker than the dark theme's brass, and deliberately so: these are inks on
+     paper, not lights on water. Every one of them is used as text somewhere
+     (event years, pronunciation, "correct", link hovers), so each clears 4.5:1
+     against all three grounds — white surfaces, the page, and surface-2 —
+     rather than only against the lightest one. */
+  --brass: #965704;
+  --brass-soft: rgba(150, 87, 4, 0.12);
+  --primary: #965704;
   --primary-ink: #ffffff;
-  --accent: #e6a200;
-  --good: #1aa472;
-  --good-bg: rgba(26, 164, 114, 0.12);
-  --bad: #d93a3a;
-  --bad-bg: rgba(217, 58, 58, 0.10);
-  --border: #d6deee;
-  --shadow: 0 10px 30px rgba(40, 60, 120, 0.12);
+  --accent: #965704;
+  --focus: #0a7d94;
+  --good: #08704b;
+  --good-bg: rgba(8, 112, 75, 0.12);
+  --bad: #b93821;
+  --bad-bg: rgba(185, 56, 33, 0.1);
+  --border: #c9d8d5;
+  --border-soft: rgba(7, 34, 41, 0.1);
+  --shadow: 0 14px 40px rgba(12, 50, 60, 0.13);
+  --shadow-sm: 0 3px 12px rgba(12, 50, 60, 0.1);
+  --ocean: #dee9e7;
+  --land: #ffffff;
+  --known-1: #ecd6b2;
+  --known-2: #d09a48;
+  --known-3: #b26a08;
+
+  --con-africa: #8e3ba0;
+  --con-asia: #bd3352;
+  --con-europe: #4756b4;
+  --con-namerica: #0f7898;
+  --con-samerica: #128459;
+  --con-oceania: #6a7a17;
 
   /* Categorical palette for the Language Map. Eleven slots, searched with the
      data-viz validator over OKLCH (L, C, hue) and scored on the worst
@@ -82,7 +235,7 @@
   --cat-9: #10bffa;   /* Austronesian */
   --cat-10: #e094ba;   /* Creole */
   --cat-11: #495d10;   /* Other */
-  --cat-none: #b9c1d3;   /* no permanent population */
+  --cat-none: #c2cfcc;   /* no permanent population */
 }
 
 * { box-sizing: border-box; }
@@ -102,22 +255,24 @@
    header straight to the screen content. Visible only while focused. */
 .skip-link {
   position: absolute;
-  left: 8px;
+  left: var(--s2);
   top: -60px;
   z-index: 100;
   padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--primary);
+  border-radius: var(--r-sm);
+  background: var(--brass);
   color: var(--primary-ink);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: top var(--transition);
 }
-.skip-link:focus { top: 8px; }
+.skip-link:focus { top: var(--s2); }
 
-/* One focus ring for every interactive control. Previously these fell back to
-   the browser default, which differs per engine and reads as foreign to the
-   rest of the UI. :focus-visible so pointer users never see it. */
+/* One focus ring everywhere, in a colour used for nothing else.
+   It is deliberately not brass: brass is the colour of primary buttons and
+   active tabs, so a brass ring would disappear on exactly the controls people
+   tab to most. Ice-cyan sits opposite it and stays visible on every surface,
+   in both themes. :focus-visible, so pointer users never see it. */
 .btn:focus-visible,
 .card:focus-visible,
 .tab:focus-visible,
@@ -130,55 +285,122 @@
 .chip-name:focus-visible,
 .dex-card:focus-visible,
 .gen-tab:focus-visible,
-.skip-link:focus-visible {
-  outline: 3px solid var(--accent);
+.navlink:focus-visible,
+.tabbar-link:focus-visible,
+.legend-item:focus-visible,
+.stamp:focus-visible,
+.skip-link:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
 body {
   margin: 0;
   font-family: var(--font);
+  font-stretch: var(--wd-text);
+  font-size: var(--t-body);
+  line-height: 1.6;
   color: var(--text);
   background: var(--bg-grad), var(--bg);
   background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* ---- top bar ---- */
-.topbar {
+/* ---- headings -------------------------------------------------------------
+   Width does the work the scale used to do alone: as type grows it also widens,
+   so a heading reads as a plate title rather than as body text set large. */
+h1, h2, h3, h4 {
+  line-height: 1.14;
+  font-weight: 700;
+  letter-spacing: -0.011em;
+  text-wrap: balance;
+}
+h1 { font-stretch: var(--wd-display); }
+h2, h3 { font-stretch: var(--wd-wide); }
+
+.screen-title {
+  font-size: var(--t-h1);
+  font-weight: 750;
+  font-stretch: var(--wd-display);
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--s2);
+}
+.screen-sub {
+  color: var(--muted);
+  margin: 0 0 var(--s5);
+  max-width: 62ch;
+  font-size: 1.02rem;
+}
+/* focusTitle() (main.js) gives the title/prompt tabindex="-1" so screen readers
+   announce each new screen — it's never reachable by tabbing, so the visible
+   focus ring browsers draw for it serves no one and just looks like a stray
+   highlight box on every navigation. Suppress it; the a11y benefit doesn't
+   depend on any visible styling. */
+.screen-title:focus, .q-prompt:focus { outline: none; }
+
+/* ---- the graticule rule ---------------------------------------------------
+   Section headings sit on a meridian: a hairline that runs to the end of the
+   measure, carrying evenly-spaced ticks like the neatline of a chart. It is the
+   same device as the ticks under every progress bar, so a heading and a meter
+   are visibly part of one system. Drawn with gradients — no extra markup, and
+   nothing for a screen reader to trip over. */
+.section-h {
   display: flex;
   align-items: center;
-  gap: var(--gap);
-  padding: 12px 18px;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  gap: var(--s3);
+  margin: var(--s7) 0 var(--s4);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  font-stretch: var(--wd-data);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-/* A <button>, so the UA button defaults (background, border, system font)
-   have to be cleared for it to read as the wordmark it is. */
-.brand { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 800; font-size: 1.15rem; letter-spacing: .2px; background: none; border: none; padding: 0; color: var(--text); font-family: inherit; }
-.brand-globe { font-size: 1.4rem; }
-.brand-name { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hud { display: flex; align-items: center; gap: 14px; margin-left: auto; flex-wrap: wrap; }
-.hud .chip { display: flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); }
-.hud .chip strong { color: var(--text); }
-.hud .chip.chip-name { background: none; border: none; padding: 0; font: inherit; cursor: pointer; }
-.hud .chip.chip-name:hover strong, .hud .chip.chip-name:focus-visible strong { color: var(--accent); }
-.xpbar { width: 120px; height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; border: 1px solid var(--border); }
-.xpbar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width var(--transition); }
-.icon-btn { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 10px; width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer; transition: var(--transition); }
-.icon-btn:hover { background: var(--surface-2); }
+.section-h::after {
+  content: "";
+  flex: 1;
+  height: 7px;
+  background:
+    linear-gradient(var(--border), var(--border)) left center / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, var(--border) 0 1px, transparent 1px 24px);
+  opacity: 0.85;
+}
 
-/* ---- layout ---- */
-.app { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 22px 18px 60px; flex: 1; }
-.footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 16px; border-top: 1px solid var(--border); }
-.footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-.footer-link:hover { color: var(--accent); }
+/* ---- shell ---------------------------------------------------------------- */
+.app {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--s6) var(--s5) var(--s8);
+  flex: 1;
+}
+/* Screens that are mostly map or mostly grid get the wide measure. main.js sets
+   this on <main> per route. */
+.app.app-wide { max-width: var(--w-wide); }
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--t-xs);
+  font-stretch: var(--wd-data);
+  padding: var(--s5) var(--s4);
+  border-top: 1px solid var(--border);
+}
+.footer-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.footer-link:hover { color: var(--brass); }
 
 /* Comfortable touch targets (WCAG 2.5.8): icon buttons, map controls, quiz quit,
    home/crises tabs, segmented controls, checkbox labels, speaker buttons.
@@ -187,477 +409,8 @@ body {
    and audited. */
 .icon-btn, .map-btn { min-width: 44px; min-height: 44px; }
 .quiz-top .btn.ghost { min-height: 44px; }
-.tab, .seg button, .check, .gen-tab { min-height: 44px; }
+.tab, .seg button, .check, .gen-tab, .tabbar-link { min-height: 44px; }
 .spk { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
-
-h1, h2, h3 { line-height: 1.2; }
-.screen-title { font-size: 1.6rem; margin: 4px 0 2px; }
-.screen-sub { color: var(--muted); margin: 0 0 20px; }
-/* focusTitle() (main.js) gives the title/prompt tabindex="-1" so screen readers
-   announce each new screen — it's never reachable by tabbing, so the visible
-   focus ring browsers draw for it serves no one and just looks like a stray
-   highlight box on every navigation. Suppress it; the a11y benefit doesn't
-   depend on any visible styling. */
-.screen-title:focus, .q-prompt:focus { outline: none; }
-
-/* ---- buttons ---- */
-/* display/text-decoration are no-ops for <button> but let an <a class="btn">
-   (the 404 and error screens) render identically instead of as an underlined
-   inline link. */
-.btn { font-family: inherit; font-size: 1rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 11px 16px; cursor: pointer; transition: var(--transition); display: inline-block; text-decoration: none; text-align: center; }
-.btn:hover { background: var(--surface-2); transform: translateY(-1px); }
-.btn.primary { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
-.btn.primary:hover { filter: brightness(1.08); }
-.btn.ghost { background: transparent; }
-.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* ---- mode grid (home) ---- */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: var(--gap); }
-.card {
-  background: var(--surface);
-  /* The cards are <button> elements: without these, browsers apply the UA
-     button defaults (near-black `buttontext` color + a system font), which
-     made the card titles unreadable on the dark surface in dark mode. */
-  color: var(--text);
-  font: inherit;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  display: flex; flex-direction: column; gap: 6px;
-  text-align: left;
-}
-.card:hover { transform: translateY(-3px); border-color: var(--primary); }
-.flagkey-card { cursor: default; }
-.flagkey-card:hover { transform: none; border-color: var(--border); }
-.card .emoji { font-size: 1.8rem; }
-/* Flag image used in place of an emoji on cards (Windows lacks flag emoji). */
-/* Fixed box + contain, rather than height:auto, so the card reserves its space
-   before the image loads. Flags range from 1:1 (Switzerland) to 28:11 (Qatar),
-   so a single aspect-ratio would distort some; contain letterboxes instead. */
-.card .emoji-flag { width: 40px; height: 27px; object-fit: contain; border-radius: 4px; border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,.25); }
-.card .card-title { font-weight: 700; font-size: 1.05rem; color: var(--text); }
-.card .card-desc { color: var(--muted); font-size: .85rem; }
-.section-h { margin: 26px 0 12px; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-
-/* ---- quiz ---- */
-.quiz-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
-.progress { flex: 1; min-width: 140px; height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; border: 1px solid var(--border); }
-.progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width var(--transition); }
-.pill { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: .85rem; font-weight: 600; white-space: nowrap; }
-.pill .accent { color: var(--accent); }
-/* `fire` is a second class on .pill, not a descendant -- this was `.pill .fire`,
-   which never matched, so the streak pill was never actually coloured. */
-.pill.fire { color: var(--bad); }
-
-.question-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
-/* Centred card body — used by the client-rendered 404 screen. */
-.center-block { text-align: center; }
-.center-block .btn-row { justify-content: center; }
-.q-cat { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; }
-.q-prompt { font-size: 1.5rem; font-weight: 700; margin: 8px 0 18px; }
-/* aspect-ratio + contain reserves the box before the image arrives, so a flag
-   question no longer shifts its layout on load. contain rather than a hard
-   ratio because flags run from 1:1 (Switzerland, Vatican) to 28:11 (Qatar) --
-   a single ratio would stretch them. */
-.q-flag { display: block; max-width: 240px; width: 60%; aspect-ratio: 3 / 2; object-fit: contain; object-position: left center; margin: 6px 0 18px; border-radius: 8px; border: 1px solid var(--border); }
-/* Flag-image answer options (Map → Flag mode). */
-.choice-flag { justify-content: flex-start; }
-.choice-flag img {
-  width: 96px;
-  max-width: 60%;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  display: block;
-}
-
-/* Religious-symbol reveal image (many Commons symbol SVGs are dark line art,
-   so a white backing keeps them visible against the dark theme). */
-.symbol-img-wrap {
-  display: inline-block;
-  background: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  margin: 8px 0;
-}
-.symbol-img-wrap img { display: block; width: 96px; max-width: 100%; height: auto; }
-
-.q-flag-missing {
-  margin: 6px 0 18px;
-  padding: 14px 16px;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.timer { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-bottom: 16px; }
-/* width is the countdown's starting state; startTimer() then drives it via
-   CSSOM (an inline style, which always wins over this rule). */
-.timer > span { display: block; width: 100%; height: 100%; background: var(--good); transition: width 120ms linear; }
-.timer.low > span { background: var(--bad); }
-
-.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.choice {
-  display: flex; align-items: center; gap: 10px;
-  text-align: left; padding: 14px 16px; font-size: 1rem; font-weight: 600;
-  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-  background: var(--surface-2); color: var(--text); cursor: pointer; transition: var(--transition);
-}
-.choice:hover:not(:disabled) { border-color: var(--primary); transform: translateY(-1px); }
-.choice .key { font-size: .75rem; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; }
-.choice.correct { border-color: var(--good); background: var(--good-bg); color: var(--good); }
-.choice.wrong { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
-.choice:disabled { cursor: default; }
-
-/* feedback */
-.feedback { margin-top: 18px; border-radius: var(--radius-sm); padding: 16px; border: 1px solid var(--border); }
-.feedback.ok { background: var(--good-bg); border-color: var(--good); }
-.feedback.no { background: var(--bad-bg); border-color: var(--bad); }
-/* h2 under the question's h1; kept at its previous visual size. */
-.feedback h2 { margin: 0 0 6px; font-size: 1.17rem; }
-.feedback .fact { margin: 8px 0; }
-.learn-more { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-.learn-more a { color: var(--primary); text-decoration: none; font-weight: 600; font-size: .9rem; border: 1px solid var(--border); padding: 6px 10px; border-radius: 8px; }
-.learn-more a:hover { background: var(--surface-2); }
-
-/* ---- stats / tables ---- */
-.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--gap); margin-bottom: 22px; }
-.stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-.stat .big { font-size: 1.8rem; font-weight: 800; }
-.stat .lbl { color: var(--muted); font-size: .82rem; }
-.bar-row { display: grid; grid-template-columns: 130px 1fr 48px; align-items: center; gap: 10px; margin: 8px 0; }
-.bar-row .name { font-size: .9rem; }
-.bar-track { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; border: 1px solid var(--border); }
-.bar-track > span { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--good)); }
-.bar-row .pct { text-align: right; color: var(--muted); font-size: .85rem; }
-.weak-list { list-style: none; padding: 0; margin: 0; }
-.weak-list li { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; }
-.weak-list .ans { color: var(--good); font-weight: 600; }
-
-/* ---- achievements ---- */
-.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--gap); }
-.ach { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
-.ach.locked { opacity: .5; filter: grayscale(.6); }
-.ach .ic { font-size: 2rem; }
-.ach .nm { font-weight: 700; margin-top: 4px; }
-.ach .ds { color: var(--muted); font-size: .8rem; margin: 4px 0 8px; }
-.ach .mini { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-.ach .mini > span { display: block; height: 100%; background: var(--accent); }
-
-/* ---- forms (custom study) ---- */
-.form-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 16px; }
-/* These are h2 (they sit directly under the screen's h1); sized down to keep
-   the previous visual weight now that the level, not the size, carries the
-   document structure. */
-.form-block h2 { margin: 0 0 12px; font-size: 1.17rem; }
-.checks { display: flex; flex-wrap: wrap; gap: 10px; }
-.check { display: flex; align-items: center; gap: 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-size: .9rem; user-select: none; }
-.check input { accent-color: var(--primary); }
-.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
-.seg button { background: var(--surface-2); border: none; color: var(--text); padding: 8px 16px; cursor: pointer; font-weight: 600; }
-.seg button.active { background: var(--primary); color: var(--primary-ink); }
-
-/* ---- results ---- */
-.result-hero { text-align: center; padding: 24px; }
-.result-hero .score { font-size: 3rem; font-weight: 800; }
-.result-hero .sub { color: var(--muted); }
-
-/* ---- toasts ---- */
-.toasts { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 50; }
-.toast { background: var(--surface); border: 1px solid var(--primary); border-radius: var(--radius-sm); padding: 12px 16px; box-shadow: var(--shadow); display: flex; gap: 10px; align-items: center; animation: slidein 240ms ease; max-width: 320px; }
-.toast .ic { font-size: 1.5rem; }
-.toast .t-title { font-weight: 700; }
-.toast .t-sub { color: var(--muted); font-size: .82rem; }
-@keyframes slidein { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-@keyframes pop { 0% { transform: scale(.96); } 60% { transform: scale(1.02); } 100% { transform: scale(1); } }
-.pop { animation: pop 200ms ease; }
-
-/* ---- responsive ---- */
-@media (max-width: 560px) {
-  .choices { grid-template-columns: 1fr; }
-  .q-prompt { font-size: 1.25rem; }
-  .brand-name { display: none; }
-  .bar-row { grid-template-columns: 96px 1fr 40px; }
-  .hud .chip.hide-sm { display: none; }
-
-  /* At 390px the bar spent ~100px on padding and gaps alone (18px × 2 padding,
-     16px × 4 gaps) before the three 44px icon buttons, which cannot shrink —
-     they are the WCAG 2.5.8 touch-target floor. The hud absorbed the deficit
-     and pushed the last button 11px past the viewport, giving every screen on
-     the majority platform a horizontal scrollbar. Reclaiming spacing and
-     narrowing the decorative XP bar (a progress indicator, not a control)
-     clears it down to 320px without hiding a control or shrinking a target. */
-  .topbar { gap: 10px; padding: 12px 12px; }
-  .xpbar { width: 56px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-}
-
-/* ---- interactive maps (click-the-map modes) ------------------------------ */
-.map-mount { margin: 6px 0 4px; }
-.map-wrap { position: relative; }
-.map-holder {
-  touch-action: none; /* wrangle pinch/pan ourselves (pointer events) */
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  /* Fallback for the rare case mapview.js cannot read a viewBox; normally it
-     replaces this with the map's own aspect ratio so no frame area is wasted. */
-  height: clamp(300px, 52vh, 560px);
-  /* Keeps a tall map (Canada) from running off a short viewport. */
-  max-height: min(72vh, 620px);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  cursor: grab;
-}
-.map-holder:active { cursor: grabbing; }
-.map-svg {
-  width: 100%;
-  height: 100%;
-  transform-origin: 0 0;
-  display: block;
-}
-.map-svg path {
-  fill: var(--surface);
-  stroke: var(--border);
-  stroke-width: 0.4;
-  vector-effect: non-scaling-stroke;
-  cursor: pointer;
-  transition: fill .12s ease;
-}
-.map-svg path:hover { fill: var(--accent); }
-.map-svg path:focus-visible { outline: 3px solid var(--primary); outline-offset: 1px; }
-.map-svg.map-answered path { cursor: default; pointer-events: none; }
-.map-svg path.region-correct { fill: var(--good); stroke: var(--good); }
-.map-svg path.region-wrong { fill: var(--bad); stroke: var(--bad); }
-/* Reverse "name the region" mode: the map is display-only and the target glows. */
-.map-svg.map-static path { cursor: default; }
-.map-svg.map-static path:hover { fill: var(--surface); }
-.map-svg path.region-highlight,
-.map-svg.map-static path.region-highlight { fill: var(--accent); stroke: var(--accent); }
-
-.map-controls {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.map-btn {
-  width: 34px;
-  height: 34px;
-  font-size: 1.05rem;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-}
-.map-btn:hover { background: var(--accent); }
-
-.map-hint { margin: 8px 0 0; color: var(--muted); font-size: .8rem; line-height: 1.4; }
-
-/* ---- phrases section ---- */
-.phrase-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 8px;
-}
-.phrase-flag {
-  width: 64px;
-  height: auto;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-.phrase-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.phrase-row {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
-  align-items: baseline;
-  gap: 12px;
-  padding: 12px 14px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-}
-.phrase-row .ph-en { color: var(--muted); font-size: 0.92rem; }
-.phrase-row .ph-local { color: var(--text); font-weight: 600; font-size: 1.05rem; }
-.phrase-row .ph-pron { color: var(--accent); font-style: italic; font-size: 0.92rem; }
-
-.saying-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.saying {
-  padding: 12px 14px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-}
-.saying .say-local { color: var(--text); font-weight: 600; font-size: 1.05rem; }
-.saying .say-pron { color: var(--accent); font-style: italic; font-weight: 400; font-size: 0.9rem; margin-left: 6px; }
-.saying .say-meaning { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
-
-@media (max-width: 560px) {
-  .phrase-row { grid-template-columns: 1fr; gap: 2px; }
-}
-
-/* ---- home category tabs --------------------------------------------------- */
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin: 6px 0 20px;
-  flex-wrap: wrap;
-}
-.tab {
-  font: inherit;
-  font-weight: 600;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 9px 18px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.tab:hover { background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
-.tab.active { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; animation: tab-fade 160ms ease; }
-@keyframes tab-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-
-/* ---- top navigation (mirrors the bottom Back/Home row) --------------------- */
-.top-nav {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-
-/* ---- dropdown (World Religions faith picker) ------------------------------ */
-.select {
-  appearance: none;
-  width: 100%;
-  max-width: 340px;
-  padding: 10px 14px;
-  background: var(--surface);
-  color: inherit;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font: inherit;
-  cursor: pointer;
-}
-.select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-/* ---- typed-answer mode ---------------------------------------------------- */
-.type-form { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
-.type-input {
-  flex: 1 1 220px;
-  padding: 12px 14px;
-  background: var(--surface);
-  color: inherit;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font: inherit;
-}
-.type-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-.type-input.correct { border-color: var(--good); background: var(--good-bg); }
-.type-input.wrong { border-color: var(--bad); background: var(--bad-bg); }
-
-/* ---- speaker / pronunciation button --------------------------------------- */
-/* Appearance only. The 44px touch-target sizing is intentionally kept in the
-   WCAG 2.5.8 block near the top, so that block remains the one place the
-   minimum target size is declared and audited. */
-/* stylelint-disable-next-line no-duplicate-selectors */
-.spk {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 0.95em;
-  padding: 0 2px;
-  line-height: 1;
-  opacity: 0.75;
-  transition: opacity 0.12s ease, transform 0.12s ease;
-}
-.spk:hover { opacity: 1; transform: scale(1.15); }
-.native-name { margin-top: 6px; font-size: 1.05rem; }
-.native-name .say-pron { color: var(--muted); font-size: 0.85rem; margin-left: 4px; }
-
-/* ---- music: responsive YouTube embed + playlist --------------------------- */
-.yt-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #000;
-}
-.yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.track-list { display: flex; flex-direction: column; gap: 6px; }
-.track {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 10px;
-  text-align: left;
-  padding: 10px 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 0.12s ease, background 0.12s ease;
-}
-.track:hover { border-color: var(--accent); }
-.track.active { border-color: var(--accent); background: var(--surface-2); }
-.track .tk-num { color: var(--muted); font-variant-numeric: tabular-nums; width: 1.4em; text-align: right; }
-.track .tk-title { font-weight: 600; }
-.track .tk-artist { color: var(--muted); font-size: 0.9rem; }
-/* Why this song represents the country — spans under title/artist. */
-.track .tk-why { grid-column: 2 / -1; color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
-
-/* ---- onboarding callout ----------------------------------------------------- */
-.callout {
-  background: var(--surface);
-  border: 1px solid var(--accent);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 16px;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-/* ---- about ----------------------------------------------------------------- */
-.about-list { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.7; font-size: 0.92rem; }
-.about-list a { color: var(--accent); }
-
-/* ---- crises detail -------------------------------------------------------- */
-.crisis-body { line-height: 1.6; }
-.crisis-body p { margin: 0 0 16px; }
-
-@media (max-width: 560px) {
-  .track { grid-template-columns: auto 1fr; }
-  .track .tk-artist { grid-column: 2; }
-}
 
 /* ---- utility classes (replacing inline styles; keeps CSP free of unsafe-inline) */
 .mt-10 { margin-top: 10px; }
@@ -667,438 +420,35 @@ h1, h2, h3 { line-height: 1.2; }
 .mb-10 { margin-bottom: 10px; }
 .m-0 { margin: 0; }
 .m-tight { margin: 2px 0 0; }
-.muted-note { color: var(--muted); font-size: .85rem; font-weight: 400; }
+.muted-note {
+  color: var(--muted);
+  font-size: var(--t-sm);
+  font-weight: 400;
+}
 .fact.muted { color: var(--muted); }
-.ach .ach-lbl { color: var(--muted); font-size: .75rem; margin-top: 4px; }
-.name-input { min-width: 200px; }
-.hidden { display: none; }
-.btn.danger { border-color: var(--bad); color: var(--bad); }
+/* The display-name field wears .btn for its shape, which also centres its text —
+   fine on a button, wrong on something you type into. */
+.name-input { min-width: 200px; text-align: left; }
+/* !important, deliberately. This is the one utility whose whole job is to beat
+   whatever a component says, and it now sits in the FIRST of three stylesheets:
+   without it, any later rule of equal specificity (.tabs, .grid, .card) wins on
+   source order and the element stays on screen. That is not cosmetic — the Flag
+   Key, the country index and the Pokédex all filter by toggling this class, so
+   losing it means every filter silently stops working and every hidden flag is
+   still requested. */
+.hidden { display: none !important; }
+.prose { max-width: var(--w-prose); }
 
-/* ---- language choropleth ---------------------------------------------------
-   These .lf-* / .lg-* rules MUST stay below `.map-svg path:hover` above: they
-   have equal specificity, so the later rule wins and a painted fill survives
-   hover. Hover feedback is then given back by .map-choropleth, which brightens
-   and outlines instead of recolouring.
+/* ---- motion ---------------------------------------------------------------
+   One orchestrated moment in the whole site (the home map's west-to-east wash,
+   in screens.css). Everything else answers something the player did. */
+@keyframes slidein { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes pop { 0% { transform: scale(0.96); } 60% { transform: scale(1.02); } 100% { transform: scale(1); } }
+@keyframes tab-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes sweep-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes shimmer { from { background-position: -180% 0; } to { background-position: 180% 0; } }
+.pop { animation: pop 200ms var(--ease-out); }
 
-   Colour is never the only encoding here. The validator flags several slots
-   below 3:1 against the page, which obliges relief: the legend carries a count
-   per bucket, clicking a legend entry isolates that bucket, and clicking any
-   country names its language outright. */
-.map-svg.map-choropleth path { transition: none; }
-
-/* A picker map has no prompt telling you where to aim, so unlike a quiz map it
-   cannot afford to be surface-on-surface — at light-theme defaults the whole
-   world rendered as white on white. Tint the land and firm up the borders. */
-.map-svg.map-picker path { fill: var(--surface-2); stroke: var(--muted); stroke-width: 0.6; }
-.map-svg.map-picker path:hover { fill: var(--accent); }
-.map-svg.map-picker path.region-highlight { fill: var(--primary); stroke: var(--primary); }
-
-.map-svg.map-choropleth path:hover {
-  fill: inherit;
-  filter: brightness(1.25) saturate(1.1);
-  stroke: var(--text);
-  stroke-width: 1.2;
-}
-.map-svg path.lf-romance { fill: var(--cat-1); stroke: var(--cat-1); }
-.map-svg path.lf-germanic { fill: var(--cat-2); stroke: var(--cat-2); }
-.map-svg path.lf-slavic { fill: var(--cat-3); stroke: var(--cat-3); }
-.map-svg path.lf-indo-iranian { fill: var(--cat-4); stroke: var(--cat-4); }
-.map-svg path.lf-afro-asiatic { fill: var(--cat-5); stroke: var(--cat-5); }
-.map-svg path.lf-niger-congo { fill: var(--cat-6); stroke: var(--cat-6); }
-.map-svg path.lf-turkic { fill: var(--cat-7); stroke: var(--cat-7); }
-.map-svg path.lf-east-asian { fill: var(--cat-8); stroke: var(--cat-8); }
-.map-svg path.lf-austronesian { fill: var(--cat-9); stroke: var(--cat-9); }
-.map-svg path.lf-creole { fill: var(--cat-10); stroke: var(--cat-10); }
-.map-svg path.lf-other { fill: var(--cat-11); stroke: var(--cat-11); }
-.map-svg path.lg-1 { fill: var(--cat-1); stroke: var(--cat-1); }
-.map-svg path.lg-2 { fill: var(--cat-2); stroke: var(--cat-2); }
-.map-svg path.lg-3 { fill: var(--cat-3); stroke: var(--cat-3); }
-.map-svg path.lg-4 { fill: var(--cat-4); stroke: var(--cat-4); }
-.map-svg path.lg-5 { fill: var(--cat-5); stroke: var(--cat-5); }
-.map-svg path.lg-6 { fill: var(--cat-6); stroke: var(--cat-6); }
-.map-svg path.lg-7 { fill: var(--cat-7); stroke: var(--cat-7); }
-.map-svg path.lg-8 { fill: var(--cat-8); stroke: var(--cat-8); }
-.map-svg path.lg-9 { fill: var(--cat-9); stroke: var(--cat-9); }
-.map-svg path.lg-10 { fill: var(--cat-10); stroke: var(--cat-10); }
-.map-svg path.lf-nodata,
-.map-svg path.lg-other { fill: var(--cat-none); stroke: var(--cat-none); }
-
-/* Isolate mode: one bucket keeps its colour, everything else drops back to the
-   plain map fill, so no one has to tell eleven hues apart at once. */
-.map-svg.map-choropleth path.region-dim {
-  fill: var(--surface);
-  stroke: var(--border);
-  opacity: .55;
-}
-
-.map-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 32px;
-  padding: 5px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--text);
-  font: inherit;
-  font-size: .82rem;
-  cursor: pointer;
-  transition: border-color var(--transition), background var(--transition);
-}
-.legend-item:hover { border-color: var(--primary); }
-.legend-item[aria-pressed="true"] {
-  border-color: var(--primary);
-  background: var(--surface-2);
-  font-weight: 600;
-}
-.legend-swatch {
-  width: 13px;
-  height: 13px;
-  border-radius: 3px;
-  flex: 0 0 auto;
-  background: var(--cat-none);
-}
-.legend-swatch.lf-nodata,
-.legend-swatch.lg-other { background: var(--cat-none); }
-.legend-swatch.lf-romance { background: var(--cat-1); }
-.legend-swatch.lf-germanic { background: var(--cat-2); }
-.legend-swatch.lf-slavic { background: var(--cat-3); }
-.legend-swatch.lf-indo-iranian { background: var(--cat-4); }
-.legend-swatch.lf-afro-asiatic { background: var(--cat-5); }
-.legend-swatch.lf-niger-congo { background: var(--cat-6); }
-.legend-swatch.lf-turkic { background: var(--cat-7); }
-.legend-swatch.lf-east-asian { background: var(--cat-8); }
-.legend-swatch.lf-austronesian { background: var(--cat-9); }
-.legend-swatch.lf-creole { background: var(--cat-10); }
-.legend-swatch.lf-other { background: var(--cat-11); }
-.legend-swatch.lg-1 { background: var(--cat-1); }
-.legend-swatch.lg-2 { background: var(--cat-2); }
-.legend-swatch.lg-3 { background: var(--cat-3); }
-.legend-swatch.lg-4 { background: var(--cat-4); }
-.legend-swatch.lg-5 { background: var(--cat-5); }
-.legend-swatch.lg-6 { background: var(--cat-6); }
-.legend-swatch.lg-7 { background: var(--cat-7); }
-.legend-swatch.lg-8 { background: var(--cat-8); }
-.legend-swatch.lg-9 { background: var(--cat-9); }
-.legend-swatch.lg-10 { background: var(--cat-10); }
-.legend-count { color: var(--muted); font-variant-numeric: tabular-nums; }
-
-/* ---- greeting panel (Say Hello map, and the country pages) ----------------- */
-.hello-panel {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  margin-top: 16px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-/* A border, because flags that are mostly white (Japan, Poland…) otherwise
-   dissolve into the panel and read as a stray coloured dot. */
-.hello-panel .hello-flag {
-  width: 72px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  flex: 0 0 auto;
-}
-.hello-body { min-width: 0; flex: 1 1 auto; }
-.hello-word {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 4px 0 2px;
-}
-.hello-pron { color: var(--muted); font-size: .9rem; }
-.hello-empty { color: var(--muted); margin-top: 16px; }
-
-@media (max-width: 560px) {
-  .hello-panel { flex-direction: column; }
-  .hello-panel .hello-flag { width: 56px; }
-}
-
-/* ---- country guides -------------------------------------------------------- */
-.people-list { display: grid; gap: 10px; }
-.person {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-}
-/* Stands in for a portrait. Deliberately not a photo: real portraits would mean
-   a third-party image host in the CSP, attribution, and 200 more entries in the
-   service worker's capped image cache, for decoration. */
-.person-initials {
-  flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--surface-2);
-  color: var(--muted);
-  font-weight: 700;
-  font-size: .85rem;
-  letter-spacing: .5px;
-}
-.person-body { min-width: 0; }
-.person-name { font-weight: 700; }
-.person-native { font-weight: 400; color: var(--muted); }
-.person-meta { color: var(--muted); font-size: .82rem; margin-top: 1px; }
-.person-why { margin-top: 5px; line-height: 1.45; }
-.person-link { display: inline-block; margin-top: 5px; font-size: .82rem; color: var(--primary); }
-
-.event-list { display: grid; gap: 8px; }
-.event {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 12px;
-  align-items: baseline;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-}
-.event-year { font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
-.event-title { font-weight: 600; }
-.event-what { color: var(--muted); margin-top: 2px; line-height: 1.45; }
-.event-link { color: var(--primary); text-decoration: none; }
-
-.culture-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.culture-cell {
-  display: flex;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  line-height: 1.45;
-}
-.culture-icon { font-size: 1.3rem; line-height: 1; }
-.culture-label { font-weight: 600; margin-bottom: 2px; }
-
-.talk-list { margin: 0; padding-left: 20px; line-height: 1.6; }
-.talk-list li { margin-bottom: 4px; }
-.callout-warn { border-left-color: var(--bad); }
-
-@media (max-width: 560px) {
-  .event { grid-template-columns: auto 1fr; }
-  .event .event-link { grid-column: 2; justify-self: start; }
-}
-
-/* ---- Pokédex ---------------------------------------------------------------
-   Everything here uses the existing theme tokens (--surface, --border, --muted,
-   --text, --accent, --good, --shadow) so both themes work without a second
-   palette. The one exception is the type colours: a Pokémon type's colour is
-   part of its identity, not a themeable surface, so those are literals — but
-   they are declared once here and referenced by class, never inlined.
-
-   Theme-scoped rules below are written as descendant selectors
-   ([data-theme="dark"] .foo) rather than re-opening :root or [data-theme="dark"],
-   because stylelint's no-duplicate-selectors would (correctly) flag redefining a
-   selector the file already declares further up. */
-
-.dex-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(122px, 1fr));
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.dex-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 10px 6px 12px;
-  background: var(--surface);
-  color: var(--text);
-  font: inherit;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.dex-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-}
-
-.dex-sprite {
-  width: 72px;
-  height: 72px;
-  image-rendering: pixelated;   /* the sprites are 96px pixel art; keep it crisp */
-  display: block;
-}
-
-.dex-num {
-  color: var(--muted);
-  font-size: .72rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.dex-name {
-  font-weight: 700;
-  font-size: .88rem;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.dex-types {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  justify-content: center;
-  margin-top: 3px;
-}
-
-/* An unregistered entry is a black cut-out of the real sprite, so revealing it
-   later costs no second request. Pure brightness(0) would vanish against the
-   dark theme's surface, so that theme lifts it to a mid grey instead. */
-.dex-card.unseen .dex-sprite { filter: brightness(0) opacity(.65); }
-.dex-card.unseen .dex-name { color: var(--muted); letter-spacing: .12em; }
-
-[data-theme="dark"] .dex-card.unseen .dex-sprite { filter: brightness(0) invert(.42); }
-
-.dex-card.mastered {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent) inset;
-}
-
-.dex-star { color: var(--accent); }
-
-.dex-card .dex-star {
-  position: absolute;
-  top: 5px;
-  right: 7px;
-  font-size: .8rem;
-}
-
-/* The nine generation tabs deliberately do NOT carry the .tab class.
-   wireTabs() (main.js) claims every .tab inside the screen it wires and drives
-   them from data-tab, so reusing .tab here would make the generation buttons
-   hijack the Dex/Practice/Progress tab group. They therefore restate .tab's
-   appearance, and .gen-tab is added to the shared :focus-visible list and the
-   44px touch-target block alongside .tab. */
-.gen-tabs { flex-wrap: wrap; margin-bottom: 14px; }
-
-.gen-tab {
-  font: inherit;
-  font-weight: 600;
-  font-size: .85rem;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 8px 14px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.gen-tab:hover { background: var(--surface-2); color: var(--text); transform: translateY(-1px); }
-.gen-tab.active { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
-
-/* ---- detail page ---- */
-
-.dex-detail {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.dex-hero {
-  width: 160px;
-  height: 160px;
-  image-rendering: pixelated;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  flex: none;
-}
-
-.dex-num-big {
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  margin: 0;
-}
-
-/* ---- practice ---- */
-
-.quiz-head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.dex-quiz-sprite {
-  width: 180px;
-  height: 180px;
-  image-rendering: pixelated;
-  display: block;
-  margin: 0 auto 8px;
-}
-
-/* "Who's That Pokémon?" — the silhouette is the question, so it must read as a
-   solid shape on both themes. */
-.dex-quiz-sprite.silhouette { filter: brightness(0) opacity(.85); }
-[data-theme="dark"] .dex-quiz-sprite.silhouette { filter: brightness(0) invert(.3); }
-
-/* ---- type chips ---- */
-
-.type-chip {
-  display: inline-block;
-  padding: 1px 7px;
-  border-radius: 999px;
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .03em;
-  text-transform: uppercase;
-  color: #fff;
-  white-space: nowrap;
-}
-
-.type-chip.t-normal { background: #9fa19f; }
-.type-chip.t-fire { background: #e62829; }
-.type-chip.t-water { background: #2980ef; }
-.type-chip.t-electric { background: #b8a038; }
-.type-chip.t-grass { background: #3fa129; }
-.type-chip.t-ice { background: #3dcef3; color: #0b2027; }
-.type-chip.t-fighting { background: #ff8000; }
-.type-chip.t-poison { background: #9141cb; }
-.type-chip.t-ground { background: #915121; }
-.type-chip.t-flying { background: #81b9ef; color: #0b2027; }
-.type-chip.t-psychic { background: #ef4179; }
-.type-chip.t-bug { background: #91a119; }
-.type-chip.t-rock { background: #afa981; }
-.type-chip.t-ghost { background: #704170; }
-.type-chip.t-dragon { background: #5060e1; }
-.type-chip.t-dark { background: #50413f; }
-.type-chip.t-steel { background: #60a1b8; }
-.type-chip.t-fairy { background: #ef70ef; }
-
-@media (max-width: 560px) {
-  .dex-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
-  .dex-sprite { width: 60px; height: 60px; }
-  .dex-hero { width: 120px; height: 120px; }
-  .dex-quiz-sprite { width: 140px; height: 140px; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }

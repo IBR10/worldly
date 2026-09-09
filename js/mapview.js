@@ -5,6 +5,8 @@
 // "reusable MapMode component" from the roadmap. It is the only DOM-coupled part
 // of the map feature — all scoring/question logic lives in the pure maps.js.
 
+import { icon } from './icons.js';
+
 /**
  * Build an interactive map.
  * @param {object} opts
@@ -16,6 +18,12 @@
  *                every country in one continent) instead of showing the whole map
  *   regionClasses optional { svgId: cssClass } to paint many regions at once —
  *                a choropleth rather than the single-region highlight above
+ *   paintClass   the modifier put on the <svg> when regionClasses is used.
+ *                'map-choropleth' (the default) is the eleven-hue language map,
+ *                whose stylesheet rules suppress the fill transition and swap
+ *                hover recolouring for a brightness filter. The progress maps on
+ *                Home and the dashboard paint region classes too but are not
+ *                choropleths, so they pass null and keep the plain map styling.
  *   repeat       when true, picking does not latch, so a browsing (non-quiz) map
  *                can be clicked country after country
  * @returns {{ el: HTMLElement, reveal: (clickedId, targetId) => void,
@@ -23,7 +31,7 @@
  */
 export function createMapView({
   svgText, onPick, highlightId = null, interactive = true, focusIds = null,
-  regionClasses = null, repeat = false,
+  regionClasses = null, repeat = false, paintClass = 'map-choropleth',
 }) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
@@ -72,7 +80,7 @@ export function createMapView({
   // map-choropleth also restores hover feedback, which a painted fill would
   // otherwise swallow (see the note beside those rules in the stylesheet).
   if (regionClasses) {
-    svg.classList.add('map-choropleth');
+    if (paintClass) svg.classList.add(paintClass);
     paint(regionClasses);
   }
 
@@ -238,9 +246,14 @@ export function createMapView({
   // --- zoom controls ----------------------------------------------------------
   const controls = document.createElement('div');
   controls.className = 'map-controls';
-  const mkBtn = (label, title, fn) => {
+  // The glyphs are drawn (js/icons.js) rather than the fullwidth ＋ － ⟳
+  // characters these used to be: those render at wildly different sizes across
+  // platforms and cannot take the theme's colour. innerHTML is safe here — the
+  // markup is a constant from our own module, never data.
+  const mkBtn = (name, title, fn) => {
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'map-btn'; b.textContent = label; b.title = title;
+    b.type = 'button'; b.className = 'map-btn'; b.innerHTML = icon(name); b.title = title;
+    b.setAttribute('aria-label', title);
     b.addEventListener('click', fn);
     return b;
   };
@@ -249,9 +262,9 @@ export function createMapView({
     zoomAt(r.left + r.width / 2, r.top + r.height / 2, factor);
   };
   controls.append(
-    mkBtn('＋', 'Zoom in', () => zoomCenter(1.3)),
-    mkBtn('－', 'Zoom out', () => zoomCenter(1 / 1.3)),
-    mkBtn('⟳', 'Reset view', () => { scale = homeScale; tx = homeTx; ty = homeTy; apply(); }),
+    mkBtn('plus', 'Zoom in', () => zoomCenter(1.3)),
+    mkBtn('minus', 'Zoom out', () => zoomCenter(1 / 1.3)),
+    mkBtn('reset', 'Reset view', () => { scale = homeScale; tx = homeTx; ty = homeTy; apply(); }),
   );
 
   // Interactive (forward) modes: make every region keyboard-operable — Tab to
@@ -283,7 +296,7 @@ export function createMapView({
   if (interactive) {
     const hint = document.createElement('p');
     hint.className = 'map-hint';
-    hint.textContent = 'Tip: double-tap, pinch or use ＋ to zoom in on small regions. Drag to pan.';
+    hint.textContent = 'Tip: double-tap, pinch or use the zoom buttons to reach small regions. Drag to pan.';
     wrap.append(holder, controls, srAnnounce, hint);
   } else {
     wrap.append(holder, controls, srAnnounce);
@@ -308,7 +321,9 @@ export function createMapView({
    */
   function paint(classes) {
     for (const el of svg.querySelectorAll('path[id]')) {
-      for (const c of [...el.classList]) if (c.startsWith('lf-') || c.startsWith('lg-')) el.classList.remove(c);
+      for (const c of [...el.classList]) {
+        if (c.startsWith('lf-') || c.startsWith('lg-') || c.startsWith('known-')) el.classList.remove(c);
+      }
       const cls = classes[el.id];
       if (cls) el.classList.add(cls);
     }

@@ -18,7 +18,14 @@ async function gotoScreen(page, tab, cardName) {
   if (tab) await page.getByRole('tab', { name: tab }).click();
   if (cardName) {
     await page.getByRole('button', { name: cardName }).click();
-    await page.waitForTimeout(400);
+    // Wait for the destination's own heading rather than a fixed 400ms. Screens
+    // that fetch a dataset on open (the Pokédex pulls a 457 KB dex, the culture
+    // screens a 1.2 MB map) can miss a fixed deadline on a busy machine, and the
+    // failure then reads as "screen has no headings at all" — which is a lie
+    // about the markup, not a finding about it. The h1 belongs to the new
+    // screen: main.js replaces the whole #app subtree per route.
+    await page.waitForSelector('#app h1', { timeout: 15000 });
+    await page.waitForTimeout(150);
   }
 }
 

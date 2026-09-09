@@ -16,6 +16,8 @@ import { datasetKeyForRegion, cultureFor, cultureSections, initialsFor } from '.
 import { pickWeighted, weakCount } from './srs.js';
 import { checkAchievements, achievementStatus, levelTitle } from './achievements.js';
 import { createRouter } from './router.js';
+import { icon } from './icons.js';
+import { countryMastery, masteryClasses, discoveryStats, continentClass } from './progressmap.js';
 import { initPokedex, showPokedex, showPokemonDetail, startPokeQuizByKey } from './pokedexview.js';
 
 // Combined category label lookup (quiz modes + map modes) for HUD/stats.
@@ -28,6 +30,66 @@ const WORLD_MAP_MODES = ALL_MAP_MODES.filter((m) => MAP_MODES[m].svg === 'world'
 const app = document.getElementById('app');
 const hud = document.getElementById('hud');
 const toastBox = document.getElementById('toasts');
+const navrail = document.getElementById('navrail');
+const tabbar = document.getElementById('tabbar');
+
+// The primary destinations, rendered into both the header rail (wide viewports)
+// and the bottom bar (narrow ones). Only one of the two is ever displayed, and
+// `display: none` also takes the other out of the accessibility tree, so a
+// screen reader is never offered the same four links twice.
+//
+// These are the four things a player comes back for. Everything else — the quiz
+// and map modes, the leaderboard, the profile — is reachable from Home or the
+// header, which is where it belongs: a nav bar that lists twenty screens is a
+// sitemap, not navigation.
+const NAV = [
+  { href: '/', icon: 'home', label: 'Home' },
+  { href: '/country', icon: 'map', label: 'Countries' },
+  { href: '/flags', icon: 'flag', label: 'Flags' },
+  { href: '/stats', icon: 'gauge', label: 'Stats' },
+];
+
+/** Fill both navs once, at boot. Plain <a href="/…"> — router.js already
+ *  intercepts internal absolute links, so no click handler is needed here. */
+function renderNav() {
+  navrail.innerHTML = NAV.map((n) =>
+    `<a class="navlink" href="${n.href}">${icon(n.icon)}<span>${n.label}</span></a>`).join('');
+  tabbar.innerHTML = NAV.map((n) =>
+    `<a class="tabbar-link" href="${n.href}">${icon(n.icon)}<span>${n.label}</span></a>`).join('');
+  document.getElementById('brandMark').innerHTML = icon('globe');
+  document.getElementById('helpBtn').innerHTML = icon('help');
+  document.getElementById('leaderboardBtn').innerHTML = icon('trophy');
+}
+
+// Screens that are mostly map or mostly grid get the wide measure; everything
+// else keeps the reading column. Prefix matching, so /map/:mode and
+// /country/:slug inherit their section's width.
+// Exact paths, not prefixes: /country is a grid of 198 cards and wants the room,
+// while /country/:slug is a page you read and would be worse for it.
+const WIDE_ROUTES = ['/', '/flags', '/country', '/languages', '/hello', '/stats', '/achievements', '/pokedex'];
+// …with one prefix, because every map mode is a map.
+const WIDE_PREFIXES = ['/map/'];
+
+/** Nav state and column width for a path. Runs immediately BEFORE the screen
+ *  renders, so the measure is already correct when the content lands rather
+ *  than snapping a frame later. */
+function applyChrome(path) {
+  syncNav(path);
+  const wide = WIDE_ROUTES.includes(path) || WIDE_PREFIXES.some((r) => path.startsWith(r));
+  app.classList.toggle('app-wide', wide);
+}
+
+/** Mark the destination the current URL belongs to. Detail routes count as
+ *  their section (/country/japan lights Countries), so the bar never goes blank
+ *  three clicks deep. */
+function syncNav(path) {
+  for (const a of document.querySelectorAll('.navlink, .tabbar-link')) {
+    const href = a.getAttribute('href');
+    const on = href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+    if (on) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  }
+}
 
 // Active quiz session (null when not playing).
 let S = null;
@@ -146,7 +208,7 @@ function speak(text, lang, fallbackText) {
 function topNav(back = null) {
   return `<div class="top-nav">
     ${back ? `<button class="btn ghost" id="${back.id}">${esc(back.label)}</button>` : ''}
-    <button class="btn ghost" data-topnav="home">🏠 Home</button>
+    <button class="btn ghost" data-topnav="home">${icon('back')}Home</button>
   </div>`;
 }
 function wireNav() {
@@ -198,6 +260,23 @@ function wireTabs(onChange, root = app) {
     });
   });
 }
+/**
+ * Run `fn` once a burst of calls has stopped.
+ *
+ * Used by the live searches on the Flag Key and the country index, which filter
+ * several hundred already-rendered cards by toggling a class. Typing "uni" fired
+ * three full passes and three layouts over a 251-card grid; one pass after the
+ * burst is both faster and smoother, and 110ms is short enough that the list
+ * still feels like it is tracking the keystrokes.
+ */
+function debounce(fn, ms = 110) {
+  let t = 0;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), ms);
+  };
+}
+
 const fmtTime = (ms) => {
   const m = Math.floor(ms / 60000);
   const h = Math.floor(m / 60);
@@ -227,16 +306,20 @@ function toast(icon, title, sub) {
 function renderHUD() {
   const p = getProfile();
   const lp = levelProgress(p.xp);
+  // The level sits inside its own XP arc rather than beside a separate bar:
+  // one reading instead of two, which is what buys the room for the nav rail.
   hud.innerHTML = `
-    <button class="chip chip-name hide-sm" id="hudName" title="View profile">👤 <strong>${esc(p.name)}</strong></button>
-    <div class="chip" title="${esc(levelTitle(p.xp))}">Lvl <strong>${lp.level}</strong>
-      <span class="xpbar"><span></span></span></div>
-    <div class="chip hide-sm">XP <strong>${p.xp}</strong></div>
-    <div class="chip" title="Current streak">🔥 <strong>${p.currentStreak}</strong></div>
-    <div class="chip hide-sm" title="Overall accuracy">🎯 <strong>${accuracy()}%</strong></div>`;
-  // Widths are set via CSSOM (not inline style attributes) so the CSP can stay
-  // free of style-src 'unsafe-inline'.
+    <button class="chip chip-name hide-sm" id="hudName" title="View profile">${icon('person')}<strong>${esc(p.name)}</strong></button>
+    <div class="chip" title="${esc(levelTitle(p.xp))} — level ${lp.level}, ${lp.pct}% to the next">
+      <span class="gauge"><span class="gauge-n">${lp.level}</span></span>
+      <span class="xpbar hide-sm"><span></span></span></div>
+    <div class="chip hide-sm" title="Total XP">XP <strong>${p.xp}</strong></div>
+    <div class="chip" title="Current streak">${icon('flame')}<strong>${p.currentStreak}</strong></div>
+    <div class="chip hide-sm" title="Overall accuracy">${icon('target')}<strong>${accuracy()}%</strong></div>`;
+  // Widths and the gauge's arc are set via CSSOM (not inline style attributes)
+  // so the CSP can stay free of style-src 'unsafe-inline'.
   hud.querySelector('.xpbar > span').style.width = lp.pct + '%';
+  hud.querySelector('.gauge').style.setProperty('--arc', String(lp.pct));
   hud.querySelector('#hudName').addEventListener('click', () => navigate('/profile'));
 }
 
@@ -254,7 +337,11 @@ function systemTheme() {
 function applyTheme(theme) {
   const resolved = theme === 'light' || theme === 'dark' ? theme : systemTheme();
   document.documentElement.setAttribute('data-theme', resolved);
-  document.getElementById('themeToggle').textContent = resolved === 'dark' ? '🌙' : '☀️';
+  // The button offers the theme you would switch TO, which is why dark mode
+  // shows a sun. Drawn, so it takes the brass on hover like every other control.
+  const btn = document.getElementById('themeToggle');
+  btn.innerHTML = icon(resolved === 'dark' ? 'sun' : 'moon');
+  btn.title = resolved === 'dark' ? 'Switch to light' : 'Switch to dark';
   return resolved;
 }
 
@@ -320,6 +407,104 @@ function homeCard(attr, m) {
     </button>`;
 }
 
+/**
+ * The hero: the world map, coloured with the countries this player actually
+ * knows, and the screen's title set in a cartouche over it.
+ *
+ * A printed chart puts its title in an inset panel over open water, which is
+ * exactly the shape this needs — the map is the content, so the words have to
+ * sit on it rather than push it down the page. The colouring is derived from
+ * the SRS boxes the profile already keeps (js/progressmap.js), so it has been
+ * true of every profile since the day it was created; nothing new is tracked.
+ *
+ * The map is display-only. Making 256 country paths focusable would put the
+ * whole world between the header and the first card in the tab order, which is
+ * a worse deal than it sounds: the way in to a country is the Countries screen,
+ * which has search and a region filter.
+ */
+function heroMarkup(p, dailyDone) {
+  const lp = levelProgress(p.xp);
+  const countries = getData().countries || [];
+  const stats = discoveryStats(countryMastery(p.srs, countries), countries);
+  const fresh = p.totalAnswered === 0;
+
+  const readout = fresh
+    ? `<p class="hero-sub m-0">Nothing on the map yet — answer one question and the first country lights up.</p>`
+    : `<dl class="hero-readout">
+        <div class="readout"><dt>Level</dt><dd>${lp.level} <span class="readout-note">${esc(levelTitle(p.xp))}</span></dd></div>
+        <div class="readout"><dt>Streak</dt><dd>${p.currentStreak} <span class="readout-note">best ${p.bestStreak}</span></dd></div>
+        <div class="readout"><dt>World found</dt><dd>${stats.pct}% <span class="readout-note">${stats.known} of ${stats.total}</span></dd></div>
+      </dl>`;
+
+  return `
+    <section class="hero">
+      <div class="hero-map" id="heroMap"><div class="map-holder skel"></div></div>
+      <div class="hero-cartouche">
+        <h1 class="screen-title hero-title">Explore the world</h1>
+        <p class="hero-sub">Places, cultures, faiths, languages, music &amp; current events — learned by
+          active recall, so the map fills in as you go.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-go="${dailyDone ? 'mixed' : 'daily'}">${dailyDone ? 'Play a mixed round' : "Play today's set"}</button>
+          <button class="btn" data-go="countries">Browse all 198 countries</button>
+        </div>
+        ${readout}
+      </div>
+    </section>`;
+}
+
+/**
+ * Run `fn` when the browser has nothing better to do, and no later than `wait`.
+ *
+ * requestIdleCallback where it exists, a timeout everywhere else. Used for work
+ * that improves a screen but must never compete with what the player is
+ * actually doing on it.
+ */
+function whenIdle(fn, wait = 400) {
+  // window-qualified because eslint's browser globals do not yet include
+  // requestIdleCallback, and the feature detection has to survive its absence.
+  if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(fn, { timeout: wait });
+  else setTimeout(fn, 0);
+}
+
+/**
+ * Paint the hero map in, once its SVG has arrived.
+ *
+ * Deliberately after the screen has rendered, not before: world.svg is 1.2 MB,
+ * and blocking the whole home screen on it would trade a fast, useful page for
+ * a slow, prettier one. Guarded by the session counter so a slow fetch that
+ * lands after the player has navigated away cannot write into someone else's
+ * screen.
+ */
+async function mountHeroMap(gen) {
+  // Checked before the fetch as well as after it. The `await` below is a 1.2 MB
+  // download; a player who taps straight through to a quiz should not still be
+  // paying for a picture of a screen they have left, and the later guard alone
+  // would only stop the write, not the transfer.
+  if (gen !== sessionGen) return;
+  const mount = app.querySelector('#heroMap');
+  if (!mount) return;
+  let map;
+  try {
+    map = await loadMap('world');
+  } catch {
+    mount.remove(); // offline or blocked: the cartouche stands on its own
+    return;
+  }
+  if (gen !== sessionGen || !app.contains(mount)) return;
+  const p = getProfile();
+  const countries = getData().countries || [];
+  const view = createMapView({
+    svgText: map.svgText,
+    interactive: false,
+    // Region classes without the choropleth modifier: this is a progress map,
+    // not an eleven-hue categorical one, so it keeps the plain map styling.
+    paintClass: null,
+    regionClasses: masteryClasses(countryMastery(p.srs, countries)),
+    onPick: () => {},
+  });
+  mount.replaceChildren(view.el);
+}
+
 function showHome() {
   clearTimer(); // a challenge timer must never outlive its screen (crash-loop otherwise)
   leaveSession();
@@ -350,19 +535,19 @@ function showHome() {
   ];
   // Each category is its own tab instead of one long scrolling page.
   const tabs = [
-    { id: 'play', label: '🎮 Play', attr: 'data-go', cards: quickCards },
-    { id: 'quizzes', label: '🧠 Quizzes', attr: 'data-mode', cards: MODE_CARDS },
-    { id: 'maps', label: '🗺️ Maps', attr: 'data-map', cards: MAP_CARDS },
-    { id: 'explore', label: '🌐 Explore', attr: 'data-go', cards: journeyCards },
+    { id: 'play', label: 'Play', attr: 'data-go', cards: quickCards },
+    { id: 'quizzes', label: 'Quizzes', attr: 'data-mode', cards: MODE_CARDS },
+    { id: 'maps', label: 'Maps', attr: 'data-map', cards: MAP_CARDS },
+    { id: 'explore', label: 'Explore', attr: 'data-go', cards: journeyCards },
   ];
   if (!tabs.some((t) => t.id === homeTab)) homeTab = 'play';
 
   // First-visit explainer — dismissed once, never shown again.
   const onboarding = !p.onboarded ? `
     <div class="callout" role="note">
-      <strong>👋 New here?</strong> Every answer teaches a real fact · missed questions
-      come back until you know them (that's spaced repetition) · build 🔥 streaks with
-      the 📅 Daily Challenge.
+      <strong>New here?</strong> Every answer teaches a real fact, and anything you get wrong
+      comes back until it sticks. Play a set each day to keep a streak going — the world map
+      above fills in with every country you get right.
       <div class="btn-row mt-10">
         <button class="btn primary" id="onboardGotIt">Got it</button>
         <button class="btn ghost" id="onboardMore">Learn more</button>
@@ -370,10 +555,9 @@ function showHome() {
     </div>` : '';
 
   app.innerHTML = `
-    <h1 class="screen-title">Explore the world 🌍</h1>
-    <p class="screen-sub">Places, cultures, faiths, languages, music &amp; current events — learn it all through active recall.</p>
+    ${heroMarkup(p, dailyDone)}
     ${onboarding}
-    <div class="tabs" role="tablist">
+    <div class="tabs" role="tablist" aria-label="What to play">
       ${tabs.map((t) => `<button class="tab ${t.id === homeTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === homeTab}" tabindex="${t.id === homeTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
 
@@ -384,6 +568,13 @@ function showHome() {
 
   wireTabs((id) => { homeTab = id; });
   focusTitle(); // home doesn't use wireNav, so focus explicitly
+  // world.svg is 1.2 MB. Kicking the fetch off during idle time rather than
+  // immediately keeps it from competing with the first thing the player does —
+  // tapping a tab or opening a mode — on the one screen where they are most
+  // likely to do it straight away. data.js caches the parsed SVG, so this cost
+  // is paid once per session at most.
+  const gen = sessionGen;
+  whenIdle(() => mountHeroMap(gen));
   const gotIt = app.querySelector('#onboardGotIt');
   if (gotIt) {
     gotIt.addEventListener('click', () => { setOnboarded(); app.querySelector('.callout').remove(); });
@@ -440,9 +631,9 @@ function showNotFound() {
   app.innerHTML = `
     ${topNav()}
     <div class="question-card center-block">
-      <div class="score">🌍 404</div>
+      <span class="score">404</span>
       <p class="screen-sub">That page fell off the map.</p>
-      <div class="btn-row mt-18"><a class="btn primary" href="/">← Back to Worldly</a></div>
+      <div class="btn-row mt-18"><a class="btn primary" href="/">${icon('back')}Back to Worldly</a></div>
     </div>`;
   wireNav();
 }
@@ -526,7 +717,7 @@ function showAbout() {
       </ul>
     </div>
 
-    <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
+    <div class="btn-row"><button class="btn ghost" id="backHome">${icon('back')}Back</button></div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
 }
@@ -648,7 +839,7 @@ function showReligions() {
   const faiths = (getData().religions || []).map((r) => r.name);
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">World Religions 🕌</h1>
+    <h1 class="screen-title">World Religions</h1>
     <p class="screen-sub">Founders, sacred texts and major holidays. Study every faith, or focus on just one.</p>
     <div class="form-block">
       <h2>Choose a faith</h2>
@@ -659,7 +850,7 @@ function showReligions() {
     </div>
     <div class="btn-row">
       <button class="btn primary" id="startRel">▶ Start</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -681,7 +872,7 @@ function showMapRegions() {
   const subregions = getSubregions();
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Regions &amp; Continents 🌍</h1>
+    <h1 class="screen-title">Regions &amp; Continents</h1>
     <p class="screen-sub">Pick a continent or region — the map zooms in so you're only looking at that part of the world.</p>
     <div class="form-block">
       <h2>Continent / Region</h2>
@@ -702,7 +893,7 @@ function showMapRegions() {
     </div>
     <div class="btn-row">
       <button class="btn primary" id="startRegion">▶ Start</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -781,16 +972,16 @@ async function startMapQuiz(opts) {
 // bug below had to be fixed in four places -- and so never was.
 function quizChrome() {
   const multiPill = S.challenge
-    ? `<span class="pill">✖️<span class="accent">${S.multiplier.toFixed(1)}</span></span>`
+    ? `<span class="pill" title="Score multiplier">×<strong class="accent">${S.multiplier.toFixed(1)}</strong></span>`
     : '';
   return `
     <div class="quiz-top">
-      <button class="btn ghost" id="quitBtn" title="Quit quiz" aria-label="Quit quiz">✕</button>
+      <button class="btn ghost" id="quitBtn" title="Quit quiz" aria-label="Quit quiz">${icon('close')}</button>
       <div class="progress"><span></span></div>
-      <span class="pill">${S.index + 1}/${S.total}</span>
-      <span class="pill fire">🔥 ${S.runStreak}</span>
+      <span class="pill" title="Question ${S.index + 1} of ${S.total}"><strong>${S.index + 1}</strong>/${S.total}</span>
+      <span class="pill fire" title="Streak this run">${icon('flame')}<strong>${S.runStreak}</strong></span>
       ${multiPill}
-      <span class="pill">⭐ ${S.xpRun}</span>
+      <span class="pill" title="XP this run">XP <strong>${S.xpRun}</strong></span>
     </div>`;
 }
 
@@ -1153,13 +1344,13 @@ function renderFeedback(correct, q, xpGained) {
   fb.innerHTML = `
     <h2>${correct ? `✓ Correct! +${xpGained} XP` : `✗ The answer is ${esc(q.answer)}`}</h2>
     ${symbol}
-    <div class="fact">💡 <strong>Fun fact:</strong> ${esc(q.funFact)}</div>
-    ${q.history ? `<div class="fact">📜 <strong>History:</strong> ${esc(q.history)}</div>` : ''}
-    ${q.source?.note ? `<div class="fact muted">ℹ️ ${esc(q.source.note)}</div>` : ''}
+    <div class="fact"><strong>Fun fact:</strong> ${esc(q.funFact)}</div>
+    ${q.history ? `<div class="fact"><strong>History:</strong> ${esc(q.history)}</div>` : ''}
+    ${q.source?.note ? `<div class="fact muted">${esc(q.source.note)}</div>` : ''}
     <div><span class="muted-note">Learn more:</span>
       <div class="learn-more">${links}</div></div>
     <div class="btn-row mt-14">
-      <button class="btn primary" id="nextBtn">${S.index >= S.total ? 'See results →' : 'Next →'}</button>
+      <button class="btn primary" id="nextBtn">${S.index >= S.total ? 'See results' : 'Next question'}</button>
     </div>`;
   // The question just answered now counts toward progress. Without this the bar
   // only ever moved when the NEXT question rendered, so it read 0% for the
@@ -1193,7 +1384,7 @@ function finishQuiz() {
   const missedList = S.missed.length
     ? `<div class="section-h">Worth another look</div>
        <ul class="weak-list">${S.missed.map((q) => `<li><span>${esc(q.prompt)}</span><span class="ans">${esc(q.answer)}</span></li>`).join('')}</ul>`
-    : `<p class="screen-sub">Flawless run — nothing to review. 🌟</p>`;
+    : `<p class="screen-sub">A flawless run — nothing to review.</p>`;
 
   const lastOpts = S.lastOpts;
   const wasMap = S.kind === 'map';
@@ -1202,15 +1393,15 @@ function finishQuiz() {
   app.innerHTML = `
     ${topNav()}
     <div class="question-card result-hero">
-      <div class="score">${S.correct}/${S.total}</div>
-      <div class="sub">${acc}% accuracy · +${score} XP · best streak ${S.runBest}${perfect ? ' · 💯 perfect!' : ''}</div>
-      ${wasRemote ? '<div class="screen-sub" id="globalSyncNote">🌍 Syncing to the global leaderboard…</div>' : ''}
+      <span class="score">${S.correct}/${S.total}</span>
+      <div class="sub">${acc}% accuracy · +${score} XP · best streak ${S.runBest}${perfect ? ' · perfect round' : ''}</div>
+      ${wasRemote ? '<div class="screen-sub" id="globalSyncNote">Syncing to the global leaderboard…</div>' : ''}
     </div>
     ${missedList}
     <div class="btn-row mt-18">
-      <button class="btn primary" id="againBtn">↻ Play again</button>
-      ${S.missed.length ? '<button class="btn" id="reviewBtn">🔁 Review these now</button>' : ''}
-      <button class="btn ghost" id="homeBtn">🏠 Home</button>
+      <button class="btn primary" id="againBtn">Play again</button>
+      ${S.missed.length ? '<button class="btn" id="reviewBtn">Review these now</button>' : ''}
+      <button class="btn ghost" id="homeBtn">${icon('back')}Home</button>
     </div>`;
 
   wireNav();
@@ -1273,7 +1464,7 @@ function showCustom() {
   const continents = getContinents();
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Custom Study 🛠️</h1>
+    <h1 class="screen-title">Custom Study</h1>
     <p class="screen-sub">Tailor a session to exactly what you want to practice.</p>
 
     <div class="form-block">
@@ -1312,7 +1503,7 @@ function showCustom() {
 
     <div class="btn-row">
       <button class="btn primary" id="startCustom">▶ Start session</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
 
@@ -1364,9 +1555,9 @@ function showFlagKey() {
     const regions = getRegions(g.list);
     const region = flagKeyRegion[g.id];
     return `
-      <div class="form-block">
+      <div class="form-block filter-bar">
         <input type="text" class="type-input flagkey-search" data-group="${g.id}" placeholder="Search ${esc(g.label.toLowerCase())}…" value="${esc(flagKeySearch[g.id])}">
-        <select class="select mt-10 flagkey-region" data-group="${g.id}">
+        <select class="select flagkey-region" data-group="${g.id}" aria-label="Filter by region">
           <option value="">All regions</option>
           ${regions.map((r) => `<option value="${esc(r)}"${r === region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
         </select>
@@ -1387,7 +1578,7 @@ function showFlagKey() {
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Flag Key 🚩</h1>
+    <h1 class="screen-title">Flag Key</h1>
     <p class="screen-sub">A browsable reference — every country, US state, Mexican state and Canadian province, by flag and name. Not a quiz.</p>
 
     <div class="tabs" role="tablist">
@@ -1400,7 +1591,7 @@ function showFlagKey() {
       </div>`).join('')}
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
 
   wireNav();
@@ -1439,9 +1630,10 @@ function showFlagKey() {
 
   groups.forEach((g) => {
     const panel = panelOf(g.id);
+    const runFilter = debounce(() => applyFilter(g.id));
     panel.querySelector('.flagkey-search').addEventListener('input', (e) => {
       flagKeySearch[g.id] = e.target.value;
-      applyFilter(g.id);
+      runFilter();
     });
     panel.querySelector('.flagkey-region').addEventListener('change', (e) => {
       flagKeyRegion[g.id] = e.target.value;
@@ -1462,7 +1654,7 @@ async function showPhrases() {
   const entries = getData().phrases || [];
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Phrases 🗣️</h1>
+    <h1 class="screen-title">Phrases</h1>
     <p class="screen-sub">Pick a country to learn a few common phrases — and the sayings locals actually use. Tap 🔊 to hear them.</p>
     <div class="grid">
       ${entries.map((e) => `
@@ -1473,7 +1665,7 @@ async function showPhrases() {
         </button>`).join('')}
     </div>
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -1495,7 +1687,7 @@ function localText(text, lang) {
 
 function speakBtn(text, lang, fallback) {
   if (!ttsAvailable() || !text) return '';
-  return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" data-fallback="${esc(fallback || '')}" title="Hear it" aria-label="Hear pronunciation">🔊</button>`;
+  return `<button class="spk" type="button" data-speak="${esc(text)}" data-lang="${esc(lang || '')}" data-fallback="${esc(fallback || '')}" title="Hear it" aria-label="Hear pronunciation">${icon('speaker')}</button>`;
 }
 
 // nativeCountry.pron mixes a romanized name with a bracketed simple phonetic
@@ -1541,8 +1733,8 @@ function renderPhraseDetail(entry) {
     </div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backPhrases">← All countries</button>
-      <button class="btn ghost" id="backHome">🏠 Home</button>
+      <button class="btn ghost" id="backPhrases">${icon('back')}All countries</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Home</button>
     </div>`;
   wireNav();
   const bpt = app.querySelector('#backPhrasesTop');
@@ -1562,7 +1754,7 @@ async function showMusic() {
   const entries = getData().music || [];
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Music 🎵</h1>
+    <h1 class="screen-title">Music</h1>
     <p class="screen-sub">Pick a country and play songs that represent it. Powered by embedded YouTube.</p>
     <div class="grid">
       ${entries.map((e) => `
@@ -1573,7 +1765,7 @@ async function showMusic() {
         </button>`).join('')}
     </div>
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -1612,8 +1804,8 @@ function renderMusicDetail(entry) {
     </div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backMusic">← All countries</button>
-      <button class="btn ghost" id="backHome">🏠 Home</button>
+      <button class="btn ghost" id="backMusic">${icon('back')}All countries</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Home</button>
     </div>`;
   wireNav();
   const bmt = app.querySelector('#backMusicTop');
@@ -1675,15 +1867,15 @@ async function showLanguageMap() {
   const { map, rows } = loaded;
 
   const modes = [
-    { id: 'family', label: '🌳 By language family', blurb: 'Grouped into eleven families — the shape of who is related to whom.' },
-    { id: 'language', label: '🗣️ By language', blurb: 'The ten most widespread languages by number of countries, and everything else.' },
+    { id: 'family', label: 'By language family', blurb: 'Grouped into eleven families — the shape of who is related to whom.' },
+    { id: 'language', label: 'By language', blurb: 'The ten most widespread languages by number of countries, and everything else.' },
   ];
   if (!modes.some((m) => m.id === languageMapMode)) languageMapMode = 'family';
   const mode = modes.find((m) => m.id === languageMapMode);
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Language Map 🗺️</h1>
+    <h1 class="screen-title">Language Map</h1>
     <p class="screen-sub">What the world actually speaks. Tap a country for its greeting and culture, or tap a
       key below to show only that group.</p>
 
@@ -1699,8 +1891,8 @@ async function showLanguageMap() {
       over indigenous languages that are still spoken at home.</p>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="toHello">👋 Say Hello map</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="toHello">Say Hello map</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
 
@@ -1798,8 +1990,8 @@ async function showHelloMap() {
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Say Hello 👋</h1>
-    <p class="screen-sub">Tap any country to learn how to greet someone from it — then tap 🔊 to hear it.</p>
+    <h1 class="screen-title">Say Hello</h1>
+    <p class="screen-sub">Tap any country to learn how to greet someone from it — then tap the speaker to hear it said.</p>
 
     <div class="form-block">
       <label for="helloPick" class="muted-note">Or pick from the list</label>
@@ -1813,8 +2005,8 @@ async function showHelloMap() {
     <div id="helloPanel" aria-live="polite"><p class="hello-empty">No country picked yet.</p></div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="toLanguages">🗺️ Language map</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="toLanguages">Language map</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
 
@@ -1833,7 +2025,7 @@ async function showHelloMap() {
     svg().querySelectorAll('path.region-highlight').forEach((p) => p.classList.remove('region-highlight'));
     svg().querySelector(`#${CSS.escape(id)}`)?.classList.add('region-highlight');
     panel.innerHTML = greetingMarkup(row) + (getData().countries.some((c) => c.iso2.toLowerCase() === id)
-      ? `<div class="btn-row mt-14"><button class="btn ghost" data-country-page="${esc(id)}">Read about ${esc(row.name)} →</button></div>`
+      ? `<div class="btn-row mt-14"><button class="btn" data-country-page="${esc(id)}">Read about ${esc(row.name)}</button></div>`
       : '');
     panel.querySelectorAll('[data-speak]').forEach((b) =>
       b.addEventListener('click', () => speak(b.dataset.speak, b.dataset.lang, b.dataset.fallback)));
@@ -1882,13 +2074,13 @@ async function showCountryIndex() {
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Country Guides 🌐</h1>
+    <h1 class="screen-title">Country Guides</h1>
     <p class="screen-sub">Every country: how to greet someone from it, five people it is known for, the events that
       shaped it, and what its culture is actually like.</p>
 
-    <div class="form-block">
+    <div class="form-block filter-bar">
       <input type="text" class="type-input" id="countrySearch" placeholder="Search countries…" value="${esc(countrySearch.term)}">
-      <select class="select mt-10" id="countryRegion">
+      <select class="select" id="countryRegion" aria-label="Filter by region">
         <option value="">All regions</option>
         ${regions.map((r) => `<option value="${esc(r)}"${r === countrySearch.region ? ' selected' : ''}>${esc(r)}</option>`).join('')}
       </select>
@@ -1898,8 +2090,8 @@ async function showCountryIndex() {
     <p class="screen-sub hidden" id="countryEmpty">No matches.</p>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="toHello">👋 Say Hello map</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="toHello">Say Hello map</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
 
@@ -1935,9 +2127,10 @@ async function showCountryIndex() {
   }
   applyFilter();
 
+  const runFilter = debounce(applyFilter);
   app.querySelector('#countrySearch').addEventListener('input', (e) => {
     countrySearch.term = e.target.value;
-    applyFilter();
+    runFilter();
   });
   app.querySelector('#countryRegion').addEventListener('change', (e) => {
     countrySearch.region = e.target.value;
@@ -2015,13 +2208,15 @@ function renderCountryDetail(country, greeting, culture) {
         complete, and the facts below come from the main dataset.</p>` : '';
 
   app.innerHTML = `
-    ${topNav({ id: 'backCountriesTop', label: '← All countries' })}
-    <div class="phrase-head">
-      <img decoding="async" class="phrase-flag" alt="" src="${flagUrl(country.iso2, 'w160')}">
-      <div>
-        <h1 class="screen-title m-0">${esc(country.name)}</h1>
-        <p class="screen-sub m-tight">${esc(country.subregion)} · ${esc(country.region)}</p>
+    ${topNav({ id: 'backCountriesTop', label: 'All countries' })}
+    <div class="country-masthead">
+      <img decoding="async" class="country-flagfill" alt="" src="${flagUrl(country.iso2, 'w320')}">
+      <div class="country-mast-body">
+        <span class="badge ${continentClass(country.region)}">${esc(country.region)}</span>
+        <h1 class="screen-title">${esc(country.name)}</h1>
+        <p class="country-mast-meta">${esc(country.subregion)}</p>
       </div>
+      <img decoding="async" class="country-flag-plate" alt="Flag of ${esc(country.name)}" src="${flagUrl(country.iso2, 'w320')}">
     </div>
 
     ${greeting ? greetingMarkup(greeting, { heading: false }) : ''}
@@ -2029,11 +2224,19 @@ function renderCountryDetail(country, greeting, culture) {
 
     <div class="section-h">Fast facts</div>
     <div class="stat-grid">
-      <div class="stat"><div class="big">${esc(country.capital)}</div><div class="lbl">Capital</div></div>
-      <div class="stat"><div class="big">${Number(country.population).toLocaleString()}</div><div class="lbl">Population</div></div>
-      <div class="stat"><div class="big">${esc(country.currency)}</div><div class="lbl">Currency</div></div>
-      <div class="stat"><div class="big">${esc(country.religion)}</div><div class="lbl">Largest faith</div></div>
+      <div class="stat"><span class="big">${esc(country.capital)}</span><span class="lbl">Capital</span></div>
+      <div class="stat"><span class="big">${Number(country.population).toLocaleString()}</span><span class="lbl">Population</span></div>
+      <div class="stat"><span class="big">${esc(country.language)}</span><span class="lbl">Main language</span></div>
+      <div class="stat"><span class="big">${esc(country.currency)}</span><span class="lbl">Currency</span></div>
     </div>
+    <!-- The facts that do not fit four equal tiles. A definition list because
+         that is what it is, and because it keeps the tile count at the four the
+         layout (and the country-page test) is built around. -->
+    <dl class="facts-list">
+      <dt>Largest faith</dt><dd>${esc(country.religion)}</dd>
+      <dt>Region</dt><dd>${esc(country.subregion)} · ${esc(country.region)}</dd>
+      ${country.note ? `<dt>Note</dt><dd>${esc(country.note)}</dd>` : ''}
+    </dl>
 
     ${peopleBlock}
     ${eventsBlock}
@@ -2045,7 +2248,6 @@ function renderCountryDetail(country, greeting, culture) {
     <div class="crisis-body">
       <p>${esc(country.funFact)}</p>
       <p>${esc(country.history)}</p>
-      ${country.note ? `<p class="muted-note">${esc(country.note)}</p>` : ''}
       ${note ? `<p class="muted-note">${esc(note)}</p>` : ''}
       <div><span class="muted-note">Learn more:</span>
         <div class="learn-more">
@@ -2056,9 +2258,9 @@ function renderCountryDetail(country, greeting, culture) {
     </div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backCountries">← All countries</button>
-      <button class="btn ghost" id="toHelloFromCountry">👋 Say Hello map</button>
-      <button class="btn ghost" id="backHome">🏠 Home</button>
+      <button class="btn" id="backCountries">All countries</button>
+      <button class="btn ghost" id="toHelloFromCountry">Say Hello map</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Home</button>
     </div>`;
   wireNav();
   app.querySelectorAll('[data-speak]').forEach((b) =>
@@ -2080,12 +2282,12 @@ async function showCrises() {
   // Two independent axes: which time period (current vs. historical), and
   // which coverage tier within it (underreported vs. famous) — four pages total.
   const periods = [
-    { id: 'current', label: '📰 Current' },
-    { id: 'historical', label: '🏺 Historical' },
+    { id: 'current', label: 'Current' },
+    { id: 'historical', label: 'Historical' },
   ];
   const tiers = [
-    { id: 'underreported', label: '🔦 Underreported', blurb: 'Crises that receive far less attention than their scale deserves.' },
-    { id: 'famous', label: '🌐 Famous', blurb: 'The largest or most widely known crises, regardless of how heavily they are covered.' },
+    { id: 'underreported', label: 'Underreported', blurb: 'Crises that receive far less attention than their scale deserves.' },
+    { id: 'famous', label: 'Famous', blurb: 'The largest or most widely known crises, regardless of how heavily they are covered.' },
   ];
   if (!periods.some((p) => p.id === crisesPeriod)) crisesPeriod = 'current';
   if (!tiers.some((t) => t.id === crisesTab)) crisesTab = 'underreported';
@@ -2097,7 +2299,7 @@ async function showCrises() {
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Crises &amp; Events 📰</h1>
+    <h1 class="screen-title">Crises &amp; Events</h1>
     <p class="screen-sub">${crisesPeriod === 'historical'
       ? 'Famous and underreported crises from history — what happened, and why it still matters.'
       : 'Background on ongoing world situations, with links to live sources. Curated context — not real-time reporting.'}</p>
@@ -2127,7 +2329,7 @@ async function showCrises() {
     </div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   wireNav();
   wireTabs(async (id) => {
@@ -2167,8 +2369,8 @@ function renderCrisisDetail(entry) {
     </div>
 
     <div class="btn-row mt-18">
-      <button class="btn ghost" id="backCrises">← All crises</button>
-      <button class="btn ghost" id="backHome">🏠 Home</button>
+      <button class="btn ghost" id="backCrises">${icon('back')}All crises</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Home</button>
     </div>`;
   wireNav();
   const bct = app.querySelector('#backCrisesTop');
@@ -2180,14 +2382,45 @@ function renderCrisisDetail(entry) {
 // ============================================================================
 //  STATISTICS
 // ============================================================================
+/**
+ * Paint the dashboard's discovery map, once its SVG has arrived. Same
+ * derivation and the same session guard as the home hero — this is the same
+ * picture at reference size, so the two can never disagree.
+ */
+async function mountDiscoveryMap(gen) {
+  const mount = app.querySelector('#discoveryMap');
+  if (!mount) return;
+  let map;
+  try {
+    map = await loadMap('world');
+  } catch {
+    mount.replaceChildren();
+    return;
+  }
+  if (gen !== sessionGen || !app.contains(mount)) return;
+  const p = getProfile();
+  const countries = getData().countries || [];
+  const view = createMapView({
+    svgText: map.svgText,
+    interactive: false,
+    paintClass: null,
+    regionClasses: masteryClasses(countryMastery(p.srs, countries)),
+    onPick: () => {},
+  });
+  mount.replaceChildren(view.el);
+}
+
 function showStats() {
   leaveSession();
   const p = getProfile();
+  const lp = levelProgress(p.xp);
+  const countries = getData().countries || [];
+  const found = discoveryStats(countryMastery(p.srs, countries), countries);
   const cats = Object.entries(p.perCategory);
   const regs = Object.entries(p.perRegion);
-  const bar = (label, c) => {
+  const bar = (label, c, tint = '') => {
     const pct = c.answered ? Math.round((c.correct / c.answered) * 100) : 0;
-    return `<div class="bar-row"><span class="name">${esc(label)}</span>
+    return `<div class="bar-row ${tint}"><span class="name">${esc(label)}</span>
       <div class="bar-track"><span data-w="${pct}"></span></div>
       <span class="pct">${pct}%</span></div>`;
   };
@@ -2195,34 +2428,69 @@ function showStats() {
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Statistics 📊</h1>
-    <p class="screen-sub">Where you're strong, and where to focus next.</p>
-    <div class="stat-grid">
-      <div class="stat"><div class="big">${accuracy()}%</div><div class="lbl">Accuracy</div></div>
-      <div class="stat"><div class="big">${p.totalAnswered}</div><div class="lbl">Questions</div></div>
-      <div class="stat"><div class="big">${p.totalCorrect}</div><div class="lbl">Correct</div></div>
-      <div class="stat"><div class="big">${p.bestStreak}</div><div class="lbl">Best streak</div></div>
-      <div class="stat"><div class="big">${levelProgress(p.xp).level}</div><div class="lbl">Level · ${esc(levelTitle(p.xp))}</div></div>
-      <div class="stat"><div class="big">${fmtTime(p.studyTimeMs)}</div><div class="lbl">Study time</div></div>
-      <div class="stat"><div class="big">${weakCount(p.srs)}</div><div class="lbl">Weak items</div></div>
-      <div class="stat"><div class="big">${Object.keys(p.achievements).length}</div><div class="lbl">Badges</div></div>
+    <h1 class="screen-title">Statistics</h1>
+    <p class="screen-sub">How far you have got, where you are strong, and what to work on next.</p>
+
+    <div class="console">
+      <div class="console-card">
+        <span class="ring"><span class="ring-n">${lp.level}</span><span class="ring-lbl">Level</span></span>
+        <div class="console-body">
+          <p class="console-title">${esc(levelTitle(p.xp))}</p>
+          <p class="console-note">${p.xp} XP · ${Math.max(0, lp.span - lp.into)} to level ${lp.level + 1}</p>
+          <div class="bar-track"><span data-w="${lp.pct}"></span></div>
+        </div>
+      </div>
+      <div class="console-card">
+        <span class="ring"><span class="ring-n">${found.pct}<span class="ring-lbl">%</span></span></span>
+        <div class="console-body">
+          <p class="console-title">World found</p>
+          <p class="console-note">${found.known} of ${found.total} countries answered right at least once${found.mastered ? ` · ${found.mastered} mastered` : ''}</p>
+          <div class="bar-track"><span data-w="${found.pct}"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-h">The world you have found</div>
+    <div class="discovery">
+      <div class="map-mount" id="discoveryMap"><div class="map-holder skel"></div></div>
+      <ul class="continent-list">
+        ${found.byRegion.map((r) => `
+          <li class="continent ${continentClass(r.region)}">
+            <span class="c-name">${esc(r.region)}</span>
+            <span class="c-count">${r.known}/${r.total}</span>
+            <span class="c-track"><span data-w="${r.pct}"></span></span>
+          </li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="stat-grid mt-18">
+      <div class="stat"><span class="big">${accuracy()}%</span><span class="lbl">Accuracy</span></div>
+      <div class="stat"><span class="big">${p.totalAnswered}</span><span class="lbl">Questions</span></div>
+      <div class="stat"><span class="big">${p.totalCorrect}</span><span class="lbl">Correct</span></div>
+      <div class="stat"><span class="big">${p.bestStreak}</span><span class="lbl">Best streak</span></div>
+      <div class="stat"><span class="big">${fmtTime(p.studyTimeMs)}</span><span class="lbl">Study time</span></div>
+      <div class="stat"><span class="big">${weakCount(p.srs)}</span><span class="lbl">Weak items</span></div>
+      <div class="stat"><span class="big">${Object.keys(p.achievements).length}</span><span class="lbl">Badges</span></div>
+      <div class="stat"><span class="big">${p.dailyCompleted}</span><span class="lbl">Daily sets</span></div>
     </div>
 
     <div class="section-h">Performance by category</div>
     ${cats.length ? cats.map(([k, v]) => bar(catLabel(k), v)).join('') : '<p class="screen-sub">Play a round to see this.</p>'}
 
     <div class="section-h">Performance by region</div>
-    ${regs.length ? regs.map(([k, v]) => bar(k, v)).join('') : '<p class="screen-sub">No regional data yet.</p>'}
+    ${regs.length ? regs.map(([k, v]) => bar(k, v, `tinted ${continentClass(k)}`)).join('') : '<p class="screen-sub">No regional data yet.</p>'}
 
     <div class="section-h">Weak areas (most missed)</div>
-    ${missed.length ? `<ul class="weak-list">${missed.map(([, m]) => `<li><span>${esc(m.label)}</span><span class="ans">${esc(m.answer)} · missed ${m.wrong}×</span></li>`).join('')}</ul>` : '<p class="screen-sub">Nothing missed — keep it up!</p>'}
+    ${missed.length ? `<ul class="weak-list">${missed.map(([, m]) => `<li><span>${esc(m.label)}</span><span class="ans">${esc(m.answer)} · missed ${m.wrong}×</span></li>`).join('')}</ul>` : '<p class="screen-sub">Nothing missed yet. Play a round and anything you get wrong collects here.</p>'}
 
     <div class="btn-row mt-18">
-      <button class="btn" id="reviewW" ${missed.length ? '' : 'disabled'}>🔁 Practice weak areas</button>
-      <button class="btn ghost" id="backHome">← Back</button>
+      <button class="btn primary" id="reviewW" ${missed.length ? '' : 'disabled'}>Practice weak areas</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
     </div>`;
   app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
+  app.querySelectorAll('.ring').forEach((r, i) => r.style.setProperty('--arc', String(i === 0 ? lp.pct : found.pct)));
   wireNav();
+  mountDiscoveryMap(sessionGen);
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   const rw = app.querySelector('#reviewW');
   if (missed.length) rw.addEventListener('click', () => navigate('/quiz/review'));
@@ -2236,8 +2504,9 @@ function showAchievements() {
   const list = achievementStatus(getProfile());
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Achievements 🏆</h1>
-    <p class="screen-sub">${list.filter((a) => a.unlocked).length} of ${list.length} unlocked.</p>
+    <h1 class="screen-title">Achievements</h1>
+    <p class="screen-sub">${list.filter((a) => a.unlocked).length} of ${list.length} earned. Each one is a stamp
+      in the book — the outlines are the ones still to collect.</p>
     <div class="ach-grid">
       ${list.map((a) => `
         <div class="ach ${a.unlocked ? '' : 'locked'}">
@@ -2245,10 +2514,10 @@ function showAchievements() {
           <div class="nm">${esc(a.name)}</div>
           <div class="ds">${esc(a.desc)}</div>
           <div class="mini"><span data-w="${a.pct}"></span></div>
-          <div class="lbl ach-lbl">${a.current}/${a.threshold}</div>
+          <div class="lbl ach-lbl">${a.unlocked ? 'Earned' : `${a.current}/${a.threshold}`}</div>
         </div>`).join('')}
     </div>
-    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
+    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">${icon('back')}Back</button></div>`;
   app.querySelectorAll('[data-w]').forEach((s) => { s.style.width = s.dataset.w + '%'; });
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -2261,32 +2530,36 @@ function showLeaderboard() {
   leaveSession();
   const lb = getProfile().leaderboard;
   const tiers = [
-    { id: 'challenge', label: '⏱️ Challenge' },
-    { id: 'daily', label: '📅 Daily' },
-    { id: 'xp', label: '🎖️ Level/XP' },
+    { id: 'challenge', label: 'Challenge' },
+    { id: 'daily', label: 'Daily' },
+    { id: 'xp', label: 'Level/XP' },
   ];
   if (!tiers.some((t) => t.id === leaderboardTab)) leaderboardTab = 'challenge';
 
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Leaderboard 🏆</h1>
+    <h1 class="screen-title">Leaderboard</h1>
 
-    <div class="section-h">🌍 Global</div>
+    <div class="section-h">Global</div>
     <div class="tabs" role="tablist">
       ${tiers.map((t) => `<button class="tab ${t.id === leaderboardTab ? 'active' : ''}" role="tab" id="tab-${t.id}" aria-controls="panel-${t.id}" aria-selected="${t.id === leaderboardTab}" tabindex="${t.id === leaderboardTab ? 0 : -1}" data-tab="${t.id}">${t.label}</button>`).join('')}
     </div>
     ${tiers.map((t) => `
       <div class="tab-panel ${t.id === leaderboardTab ? 'active' : ''}" data-panel="${t.id}" id="panel-${t.id}" role="tabpanel" aria-labelledby="tab-${t.id}">
         ${t.id === 'xp' ? '<p class="screen-sub mb-10">Lifetime XP across every quiz mode, synced from your device — self-reported, unlike the Challenge &amp; Daily tabs.</p>' : ''}
-        <div class="form-block" id="globalList-${t.id}"><p class="screen-sub">Loading…</p></div>
+        <div class="form-block" id="globalList-${t.id}">
+          <div class="skel skel-block" role="status" aria-label="Loading the global leaderboard"></div>
+          <div class="skel skel-block"></div>
+          <div class="skel skel-block"></div>
+        </div>
       </div>`).join('')}
 
-    <div class="section-h">📱 Your personal bests</div>
+    <div class="section-h">Your personal bests</div>
     <div class="form-block">
       ${lb.length ? `<ul class="weak-list">${lb.map((e, i) => `<li><span>#${i + 1} · ${esc(e.mode)}</span><span class="ans">${e.score} XP</span></li>`).join('')}</ul>` : '<p class="screen-sub">Play Challenge or Daily to set a high score.</p>'}
     </div>
 
-    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">← Back</button></div>`;
+    <div class="btn-row mt-18"><button class="btn ghost" id="backHome">${icon('back')}Back</button></div>`;
   wireNav();
   wireTabs((id) => { leaderboardTab = id; });
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
@@ -2334,7 +2607,7 @@ function showProfile() {
   const p = getProfile();
   app.innerHTML = `
     ${topNav()}
-    <h1 class="screen-title">Profile 🧭</h1>
+    <h1 class="screen-title">Profile</h1>
     <div class="form-block">
       <h2>Display name</h2>
       <div class="btn-row">
@@ -2346,8 +2619,8 @@ function showProfile() {
       <h2>Backup &amp; transfer</h2>
       <p class="screen-sub mb-10">Progress lives only in this browser. Export it as a file to back it up or move it to another device / the web version.</p>
       <div class="btn-row">
-        <button class="btn" id="exportBtn">⬇️ Export progress</button>
-        <button class="btn" id="importBtn">⬆️ Import progress</button>
+        <button class="btn" id="exportBtn">Export progress</button>
+        <button class="btn" id="importBtn">Import progress</button>
         <input type="file" id="importFile" accept="application/json,.json" class="hidden">
       </div>
     </div>
@@ -2367,7 +2640,7 @@ function showProfile() {
       <p class="screen-sub mb-10">Reset all progress, stats and achievements. This cannot be undone.</p>
       <button class="btn danger" id="resetBtn">Reset all progress</button>
     </div>
-    <div class="btn-row"><button class="btn ghost" id="backHome">← Back</button></div>`;
+    <div class="btn-row"><button class="btn ghost" id="backHome">${icon('back')}Back</button></div>`;
   wireNav();
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#saveName').addEventListener('click', () => {
@@ -2493,13 +2766,14 @@ async function boot() {
            From the <code>Worldly/</code> folder run <code>python -m http.server</code> and open
            <code>http://localhost:8000</code>.</p>`
         : `<p>Please check your internet connection and try again.</p>
-           <div class="btn-row"><button class="btn primary" id="retryBtn">↻ Retry</button></div>`}
+           <div class="btn-row"><button class="btn primary" id="retryBtn">Try again</button></div>`}
       </div>`;
     const retry = document.getElementById('retryBtn');
     if (retry) retry.addEventListener('click', () => location.reload());
     return;
   }
   renderHUD();
+  renderNav();
 
   // The Pokédex screens live in their own module so this file does not grow by
   // another 500 lines. They need the same UI helpers every screen here uses, and
@@ -2513,6 +2787,13 @@ async function boot() {
   // The route table: URL → screen. Titles are set here for the static screens
   // (detail routes set their own from the entry). Order matters only in that the
   // first match wins; the patterns here are mutually exclusive, so it doesn't.
+  // Every route is wrapped so the nav highlight and the column width are set on
+  // entry, whichever way the screen was reached: an in-app click, Back/Forward,
+  // or a deep link on first load. Doing it here rather than inside router.js
+  // keeps that module screen-agnostic, which is what makes matchPath() testable
+  // without a DOM.
+  const withChrome = (r) => ({ ...r, render: (params) => { applyChrome(location.pathname); return r.render(params); } });
+
   router = createRouter({
     routes: [
       { path: '/', title: 'Worldly — World Knowledge & Culture', render: showHome },
@@ -2540,13 +2821,13 @@ async function boot() {
       { path: '/pokedex', title: 'Pokédex — Worldly', render: showPokedex },
       { path: '/pokedex/quiz/:mode', render: (p) => startPokeQuizByKey(p.mode) },
       { path: '/pokedex/:slug', render: (p) => showPokemonDetail(p.slug) },
-    ],
-    fallback: { title: 'Page not found — Worldly', noindex: true, render: showNotFound },
+    ].map(withChrome),
+    fallback: withChrome({ title: 'Page not found — Worldly', noindex: true, render: showNotFound }),
     onError: (err) => {
       // A screen renderer throwing must not leave the app blank.
       app.innerHTML = `<div class="question-card"><h2>Something went wrong</h2>
         <p class="screen-sub">${esc(err && err.message || String(err))}</p>
-        <div class="btn-row mt-18"><a class="btn primary" href="/">← Home</a></div></div>`;
+        <div class="btn-row mt-18"><a class="btn primary" href="/">Back to home</a></div></div>`;
     },
   });
 

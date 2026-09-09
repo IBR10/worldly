@@ -9,8 +9,8 @@
   "display": "standalone",
   "orientation": "any",
   "categories": ["education", "games"],
-  "background_color": "#0f1525",
-  "theme_color": "#0f1525",
+  "background_color": "#06171c",
+  "theme_color": "#06171c",
   "icons": [
     { "src": "/assets/worldly-icon.png", "sizes": "256x256", "type": "image/png", "purpose": "any" }
   ]
