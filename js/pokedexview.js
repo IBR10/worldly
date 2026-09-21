@@ -13,8 +13,9 @@
 
 import { icon } from './icons.js';
 import {
-  POKE_MODES, ALL_POKE_MODES, GENERATIONS, GEN_REGION, STAT_LABELS,
-  createPokeQuiz, typingOf, typeLabel,
+  POKE_MODES, ALL_POKE_MODES, GENERATIONS, GEN_REGION, STAT_LABELS, TYPES,
+  PRACTICE_SCOPES, createPokeQuiz, typingOf, typeLabel, filterDex,
+  defaultFilter, parsePracticeFilter, practiceFilterQuery, filterLabel,
 } from './pokedex.js';
 
 import {
@@ -37,12 +38,6 @@ let dexSearch = '';
 let dexType = '';
 let session = null;
 
-const TYPES = [
-  'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison',
-  'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark',
-  'steel', 'fairy',
-];
-
 const spriteUrl = (id) => `/assets/pokemon/${id}.png`;
 const padId = (id) => `#${String(id).padStart(4, '0')}`;
 
@@ -59,6 +54,7 @@ export async function showPokedex() {
   session = null;
   if (!(await ctx.ensureDataset('pokemon'))) return;
   if (!(await ctx.ensureDataset('pokemonTypes'))) return;
+  loadPracticeFilter();
   renderHub();
 }
 
@@ -277,11 +273,76 @@ function wireDexPanel() {
 
 // ---- practice tab ------------------------------------------------------------
 
+/**
+ * The filter the Practice tab is currently set to.
+ *
+ * Kept module-level like dexGen/dexSearch, but also written through to the
+ * progress store: learning one generation is a project that spans many visits,
+ * so re-picking "Gen 1" every time you open the app would be the wrong default.
+ */
+let practice = defaultFilter();
+
+/** Restore the saved filter, ignoring anything a stale store may hold. */
+function loadPracticeFilter() {
+  const saved = getPoke().filter;
+  practice = saved ? parsePracticeFilter(practiceFilterQuery(saved)) : defaultFilter();
+}
+
+function savePracticeFilter() {
+  getPoke().filter = practice;
+  savePoke();
+}
+
+/**
+ * The extra predicate behind the non-`all` scopes.
+ *
+ * Reads the store once and closes over it, so a session's set is fixed at the
+ * moment it starts: registering a Pokémon mid-session must not shrink the pool
+ * underneath the questions still to come.
+ */
+function scopeFilter(scope) {
+  const store = getPoke();
+  if (scope === 'unregistered') return (p) => !isRegistered(store, p.id);
+  if (scope === 'missed') return (p) => !!store.e[p.id] && store.e[p.id].w > 0;
+  return null;
+}
+
+/** True when the filter narrows anything at all. */
+function isFiltered(filter) {
+  return filter.gens !== 'all' || filter.types !== 'all' || filter.scope !== 'all';
+}
+
+/** A filter as the config buildPokePool takes. */
+function poolConfig(filter) {
+  return { gens: filter.gens, types: filter.types, include: scopeFilter(filter.scope) };
+}
+
 function practicePanel() {
   const { esc } = ctx;
+  const { dex } = datasets();
+  const set = filterDex(dex, poolConfig(practice));
+  const prog = dexProgress(getPoke(), set);
+  const gens = practice.gens === 'all' ? '' : String(practice.gens[0]);
+  const type = practice.types === 'all' ? '' : practice.types[0];
+
   return `
-    <p class="screen-sub">Every mode draws from all nine generations. Get a Pokémon right and
-      it is registered; get it right ${esc(3)} times in a row and it is mastered ★.</p>
+    <div class="form-block filter-bar">
+      <select class="select" id="pracGen" aria-label="Generation to practice">
+        <option value=""${gens === '' ? ' selected' : ''}>All generations</option>
+        ${GENERATIONS.map((g) => `<option value="${g}"${String(g) === gens ? ' selected' : ''}>Gen ${g} · ${esc(GEN_REGION[g])}</option>`).join('')}
+      </select>
+      <select class="select" id="pracType" aria-label="Type to practice">
+        <option value=""${type === '' ? ' selected' : ''}>All types</option>
+        ${TYPES.map((t) => `<option value="${t}"${t === type ? ' selected' : ''}>${esc(typeLabel(t))}</option>`).join('')}
+      </select>
+      <select class="select" id="pracScope" aria-label="Narrow the set by what you already know">
+        ${Object.entries(PRACTICE_SCOPES).map(([key, label]) =>
+    `<option value="${esc(key)}"${key === practice.scope ? ' selected' : ''}>${esc(label)}</option>`).join('')}
+      </select>
+    </div>
+
+    <p class="screen-sub" id="pracSummary">${esc(practiceSummary(set, prog))}</p>
+
     <div class="grid">
       ${ALL_POKE_MODES.map((key) => {
     const m = POKE_MODES[key];
@@ -294,9 +355,51 @@ function practicePanel() {
     </div>`;
 }
 
+/**
+ * The one line under the filters: what you picked, how big it is, how far in you
+ * are. This is the whole feedback loop for "learn every Gen 1 Pokémon" — the
+ * number has to move every session or the project has no shape.
+ */
+function practiceSummary(set, prog) {
+  const label = filterLabel(practice);
+  if (!set.length) return `${label} — nothing matches. Widen the filters to start practicing.`;
+  // The registered count only means something for the whole set; under the
+  // `unregistered` scope it is zero by definition and under `missed` it is noise.
+  const registered = practice.scope === 'all' ? `, ${prog.registered} registered` : '';
+  return `${label} — ${set.length} Pokémon${registered}.`
+    + ' Get one right and it is registered; three in a row and it is mastered ★.';
+}
+
 function wirePracticePanel() {
-  ctx.app.querySelectorAll('[data-poke-mode]').forEach((btn) =>
-    btn.addEventListener('click', () => ctx.navigate(`/pokedex/quiz/${btn.dataset.pokeMode}`)));
+  const { app } = ctx;
+  const gen = app.querySelector('#pracGen');
+  if (!gen) return;
+
+  // Re-render only the summary, not the panel: replacing the <select> the user
+  // just used would drop focus and close the native picker mid-choice.
+  const refresh = () => {
+    savePracticeFilter();
+    const { dex } = datasets();
+    const set = filterDex(dex, poolConfig(practice));
+    app.querySelector('#pracSummary').textContent = practiceSummary(set, dexProgress(getPoke(), set));
+  };
+
+  gen.addEventListener('change', (e) => {
+    practice.gens = e.target.value ? [Number(e.target.value)] : 'all';
+    refresh();
+  });
+  app.querySelector('#pracType').addEventListener('change', (e) => {
+    practice.types = e.target.value ? [e.target.value] : 'all';
+    refresh();
+  });
+  app.querySelector('#pracScope').addEventListener('change', (e) => {
+    practice.scope = e.target.value;
+    refresh();
+  });
+
+  app.querySelectorAll('[data-poke-mode]').forEach((btn) =>
+    btn.addEventListener('click', () =>
+      ctx.navigate(`/pokedex/quiz/${btn.dataset.pokeMode}${practiceFilterQuery(practice)}`)));
 }
 
 // ---- progress tab ------------------------------------------------------------
@@ -432,24 +535,62 @@ export async function showPokemonDetail(slug) {
 
 // ---- practice session --------------------------------------------------------
 
+/** How many questions a full session runs to. */
+const SESSION_LENGTH = 10;
+
 export async function startPokeQuizByKey(mode) {
   ctx.leaveSession();
   if (!POKE_MODES[mode]) return ctx.navigate('/404', { replace: true });
   if (!(await ctx.ensureDataset('pokemon'))) return;
   if (!(await ctx.ensureDataset('pokemonTypes'))) return;
 
+  // The URL is the session's filter, so a deep link, a reload and Back all open
+  // the same set. The Practice tab's own selection follows it, which is what
+  // makes "End practice" land you back on the filters you just used.
+  practice = parsePracticeFilter(location.search);
+  savePracticeFilter();
+
   const { dex, chart } = datasets();
+  const quiz = createPokeQuiz({ dex, chart, config: { modes: [mode], ...poolConfig(practice) } });
+
+  // A narrow filter can leave a mode with nothing to ask — "what does it evolve
+  // into" over the Fire types you have already registered may be an empty set.
+  // Say so, rather than opening a session that finishes on question zero.
+  if (!quiz.size) return renderEmptySet(mode);
+
   document.title = `${POKE_MODES[mode].label} — Pokédex — Worldly`;
   session = {
     mode,
-    total: 10,
+    // Short sets run to their own length instead of stalling at "question 7 of
+    // 10" with nothing left to draw.
+    total: Math.min(SESSION_LENGTH, quiz.size),
     index: 0,
     score: 0,
     registered: [],
-    quiz: createPokeQuiz({ dex, chart, config: { modes: [mode] } }),
+    quiz,
     current: null,
   };
   nextQuestion();
+}
+
+function renderEmptySet(mode) {
+  const { app, esc } = ctx;
+  session = null;
+  document.title = `${POKE_MODES[mode].label} — Pokédex — Worldly`;
+
+  app.innerHTML = `
+    ${ctx.topNav({ id: 'toPokedexTop', label: '← Pokédex' })}
+    <h1 class="screen-title">Nothing to practice</h1>
+    <p class="screen-sub">${esc(filterLabel(practice))} — no Pokémon in this set can be asked about
+      under <strong>${esc(POKE_MODES[mode].label)}</strong>. Widen the filters or pick another mode.</p>
+    <div class="btn-row mt-18">
+      <button class="btn primary" id="backPoke">Back to the Pokédex</button>
+    </div>`;
+
+  ctx.wireNav();
+  wireBackToDex();
+  app.querySelector('#backPoke').addEventListener('click', () => ctx.navigate('/pokedex'));
+  ctx.focusTitle();
 }
 
 function nextQuestion() {
@@ -468,6 +609,7 @@ function renderQuestion() {
     ${ctx.topNav({ id: 'toPokedexTop', label: '← Pokédex' })}
     <div class="quiz-head">
       <span class="pill">${esc(POKE_MODES[session.mode].label)}</span>
+      ${isFiltered(practice) ? `<span class="pill">${esc(filterLabel(practice))}</span>` : ''}
       <span class="pill">Question ${esc(session.index + 1)} / ${esc(session.total)}</span>
       <span class="pill">Score ${esc(session.score)}</span>
     </div>
@@ -519,7 +661,7 @@ function answer(choice) {
       ${mon ? `<p class="mt-10 m-0">${esc(mon.name)} · ${esc(typingOf(mon))} · Gen ${esc(mon.gen)}${mon.dex ? ` — ${esc(mon.dex)}` : ''}</p>` : ''}
       ${newlyRegistered ? '<p class="mt-10 m-0 ok">Registered to your Pokédex.</p>' : ''}
       ${newlyMastered ? '<p class="mt-10 m-0 ok">★ Mastered.</p>' : ''}
-      ${q.learnMore.length ? `<p class="mt-10 m-0">${q.learnMore.map((l) => `<a href="${ctx.safeUrl(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join(' · ')}</p>` : ''}
+      ${q.learnMore.length ? `<div class="learn-more">${q.learnMore.map((l) => `<a href="${ctx.safeUrl(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join('')}</div>` : ''}
     </div>
     <div class="btn-row mt-14">
       <button class="btn primary" id="pokeNext">${session.index + 1 >= session.total ? 'See results' : 'Next'}</button>
@@ -533,17 +675,26 @@ function answer(choice) {
 function finishPokeQuiz() {
   const { app, esc } = ctx;
   const { dex } = datasets();
-  const prog = dexProgress(getPoke(), dex);
+  const store = getPoke();
+  const prog = dexProgress(store, dex);
   const done = session;
   session = null;
+
+  // When a filter is on, the headline number people care about is that set's
+  // completion, not the full 1025 — "learn Gen 1" needs a 151 to count against.
+  // The scope filters are left out: "38 of 38 unregistered" is a tautology.
+  const scoped = isFiltered(practice) && practice.scope === 'all'
+    ? dexProgress(store, filterDex(dex, poolConfig(practice)))
+    : null;
 
   app.innerHTML = `
     ${ctx.topNav({ id: 'toPokedexTop', label: '← Pokédex' })}
     <h1 class="screen-title">Practice complete</h1>
-    <p class="screen-sub">${esc(done.score)} of ${esc(done.index)} correct.</p>
+    <p class="screen-sub">${esc(done.score)} of ${esc(done.index)} correct${isFiltered(practice) ? ` — ${esc(filterLabel(practice))}` : ''}.</p>
 
     <div class="stat-grid">
       <div class="stat"><div class="big">${esc(done.registered.length)}</div><div class="lbl">Newly registered</div></div>
+      ${scoped ? `<div class="stat"><div class="big">${esc(scoped.registered)}/${esc(scoped.total)}</div><div class="lbl">This set</div></div>` : ''}
       <div class="stat"><div class="big">${esc(prog.registered)}/${esc(prog.total)}</div><div class="lbl">Dex</div></div>
       <div class="stat"><div class="big">${esc(trainerRank(prog.pct))}</div><div class="lbl">Rank</div></div>
     </div>

@@ -30,6 +30,12 @@ export function defaultStore() {
     streak: 0,
     bestStreak: 0,
     lastPlayed: null,
+    // Last practice filter, so "learn Gen 1" survives a reload and you do not
+    // re-pick it every visit. Stored as the URL's own shape (see
+    // parsePracticeFilter) so there is one representation, not two.
+    filter: null,
+    // Whether the Dex grid reveals species you have not registered yet.
+    reveal: false,
   };
 }
 

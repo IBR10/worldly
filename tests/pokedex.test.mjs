@@ -14,9 +14,10 @@ import { ICON_NAMES } from '../js/icons.js';
 import { readFileSync } from 'node:fs';
 
 import {
-  POKE_MODES, ALL_POKE_MODES, GENERATIONS,
-  buildPokePool, makePokeQuestion, createPokeQuiz,
+  POKE_MODES, ALL_POKE_MODES, GENERATIONS, TYPES, PRACTICE_SCOPES,
+  buildPokePool, makePokeQuestion, createPokeQuiz, filterDex,
   typeEffectiveness, redactName, pokeDistractors,
+  defaultFilter, parsePracticeFilter, practiceFilterQuery, filterLabel,
 } from '../js/pokedex.js';
 
 import {
@@ -99,6 +100,80 @@ test('modes that need a field only pool species that have it', () => {
 test('pool ids are unique so no-repeat sampling works across modes', () => {
   const pool = buildPokePool(dex, { modes: ALL_POKE_MODES });
   assert.equal(new Set(pool.map((it) => it.id)).size, pool.length);
+});
+
+test('an include predicate narrows the pool on top of gen and type', () => {
+  const registered = new Set([1, 2, 3]);
+  const pool = buildPokePool(dex, {
+    modes: ['poke_who'],
+    gens: [1],
+    include: (p) => !registered.has(p.id),
+  });
+  assert.equal(pool.length, 148, 'Gen 1 minus the three already known');
+  assert.ok(pool.every((it) => !registered.has(it.mon.id)));
+});
+
+test('filterDex and buildPokePool select the same species', () => {
+  const filter = { gens: [1, 2], types: ['fire'] };
+  const set = filterDex(dex, filter);
+  const pool = buildPokePool(dex, { modes: ['poke_who'], ...filter });
+  assert.deepEqual(set.map((p) => p.id).sort((a, b) => a - b),
+    pool.map((it) => it.mon.id).sort((a, b) => a - b));
+  assert.ok(set.length > 0);
+});
+
+// ---- practice filter ---------------------------------------------------------
+
+test('a practice filter round-trips through its query string', () => {
+  for (const filter of [
+    defaultFilter(),
+    { gens: [1], types: 'all', scope: 'all' },
+    { gens: [1, 4], types: ['fire', 'water'], scope: 'unregistered' },
+    { gens: 'all', types: ['ghost'], scope: 'missed' },
+  ]) {
+    assert.deepEqual(parsePracticeFilter(practiceFilterQuery(filter)), filter);
+  }
+});
+
+test('an empty or absent query is the unfiltered default', () => {
+  assert.deepEqual(parsePracticeFilter(''), defaultFilter());
+  assert.deepEqual(parsePracticeFilter(undefined), defaultFilter());
+  assert.deepEqual(parsePracticeFilter('?'), defaultFilter());
+  assert.equal(practiceFilterQuery(defaultFilter()), '');
+});
+
+test('a hand-edited query widens rather than breaking', () => {
+  // Every value here is junk, so each field falls back to "all" instead of
+  // producing an empty pool or throwing on a screen the player cannot leave.
+  const f = parsePracticeFilter('?gen=0&gen=99&type=plastic&scope=cheat');
+  assert.deepEqual(f, defaultFilter());
+  // A part-valid list keeps only the parts that exist.
+  assert.deepEqual(parsePracticeFilter('?gen=3,99&type=fire,plastic'),
+    { gens: [3], types: ['fire'], scope: 'all' });
+});
+
+test('repeated keys and comma lists are the same filter', () => {
+  assert.deepEqual(parsePracticeFilter('?gen=1&gen=2'), parsePracticeFilter('?gen=1,2'));
+  assert.deepEqual(parsePracticeFilter('?type=FIRE'), { gens: 'all', types: ['fire'], scope: 'all' });
+});
+
+test('a parsed filter is directly usable as a pool config', () => {
+  const pool = buildPokePool(dex, { modes: ['poke_who'], ...parsePracticeFilter('?gen=1') });
+  assert.equal(pool.length, 151);
+  assert.ok(pool.every((it) => it.mon.gen === 1));
+});
+
+test('filterLabel names the set a player chose', () => {
+  assert.equal(filterLabel(defaultFilter()), 'All generations');
+  assert.equal(filterLabel({ gens: [1], types: 'all', scope: 'all' }), 'Gen 1 · Kanto');
+  assert.equal(
+    filterLabel({ gens: [1], types: ['fire'], scope: 'unregistered' }),
+    `Gen 1 · Kanto · Fire · ${PRACTICE_SCOPES.unregistered}`,
+  );
+});
+
+test('the type list matches the type chart exactly', () => {
+  assert.deepEqual([...TYPES].sort(), Object.keys(chart).sort());
 });
 
 // ---- questions ---------------------------------------------------------------

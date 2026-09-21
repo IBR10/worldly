@@ -88,6 +88,12 @@ evolution, base stats, type matchups). Identify one correctly and it is
 **mastered**. Dex completion drives a trainer rank that tops out at *Pokémon
 Master*, so it is earned only by actually knowing them.
 
+Practice can be **scoped to a set** — one generation, one type, or only the
+species you have not registered yet or have missed before — so "learn every
+Kanto Pokémon" is a project with a number that moves. The scope lives in the
+URL (`/pokedex/quiz/poke_who?gen=1`), so a filtered session survives a reload,
+a bookmark and the Back button, and *Practise again* repeats the same set.
+
 It is deliberately a **separate sandbox**: progress lives under its own
 `worldly_pokedex_v1` key and never touches your Worldly XP, level, streak,
 achievements or the leaderboard. Data and sprites are bundled locally, so it
@@ -139,7 +145,7 @@ Worldly/
 ├── assets/pokemon/*.png    # 1025 bundled sprites (~1.1 MB) — generated, see scripts/
 ├── assets/fonts/*.woff2    # Archivo variable (OFL) — self-hosted; the CSP allows no font CDN
 ├── scripts/build-pokedex.mjs  # dev-only: regenerates the dex data + sprites from PokéAPI
-├── tests/*.test.mjs        # 159 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
+├── tests/*.test.mjs        # 175 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
 ├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
 ├── _headers                # Cloudflare Pages security + caching headers
 └── robots.txt, sitemap.xml, site.webmanifest, LICENSE

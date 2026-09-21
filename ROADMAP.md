@@ -19,7 +19,8 @@ Living checklist of what's done and what's planned. Tick items as they ship.
       how the greeting is actually performed.
 - [x] Desktop launcher (`Worldly.bat`) + custom globe icon and Desktop shortcut.
 - [x] **Pokédex** (fun corner): all 1025 species bundled offline, browsable by
-      generation with search/type filters, seven practice modes, and a
+      generation with search/type filters, seven practice modes scopeable to a
+      generation, a type or what you still do not know, and a
       registration/mastery track to *Pokémon Master* — stored separately so it
       never affects Worldly XP, streaks or the leaderboard.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,

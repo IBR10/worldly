@@ -24,6 +24,7 @@ const browserGlobals = {
   SpeechSynthesisUtterance: 'readonly',
   Blob: 'readonly',
   URL: 'readonly',
+  URLSearchParams: 'readonly',
   CSS: 'readonly',
   PerformanceObserver: 'readonly',
   performance: 'readonly',
@@ -63,7 +64,7 @@ export default [
     // Node contexts: tests, build-ish scripts, Cloudflare Pages Functions.
     files: ['tests/**/*.mjs', 'scripts/**/*.mjs', 'functions/**/*.js'],
     languageOptions: {
-      globals: { process: 'readonly', console: 'readonly', crypto: 'readonly', Response: 'readonly', URL: 'readonly' },
+      globals: { process: 'readonly', console: 'readonly', crypto: 'readonly', Response: 'readonly', URL: 'readonly', URLSearchParams: 'readonly' },
     },
   },
   {

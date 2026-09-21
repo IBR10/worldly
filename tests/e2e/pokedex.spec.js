@@ -139,6 +139,63 @@ test('registration earned in practice shows up in the dex and progress tabs', as
   await expect(page.locator('.bar-row')).toHaveCount(9);   // one per generation
 });
 
+test('a practice filter scopes the session and travels in the URL', async ({ page }) => {
+  await openPokedex(page);
+  await page.getByRole('tab', { name: /Practice/ }).click();
+  await page.selectOption('#pracGen', '1');
+  await expect(page.locator('#pracSummary')).toContainText('Gen 1 · Kanto — 151 Pokémon');
+
+  await page.getByRole('button', { name: /Who's That/ }).click();
+  await page.waitForSelector('.choice');
+
+  // The filter is in the address, not only in memory — that is what makes the
+  // session reloadable, shareable and repeatable from the results screen.
+  expect(page.url()).toContain('gen=1');
+  await expect(page.locator('.quiz-head')).toContainText('Gen 1 · Kanto');
+});
+
+test('a filtered session only asks about species in the set', async ({ page }) => {
+  // Gen 1 is the smallest safe assertion: every choice offered under
+  // "Pokémon → Generation" for a Kanto species must answer Generation 1.
+  await page.goto('/pokedex/quiz/poke_gen?gen=1');
+  await page.waitForSelector('.choice');
+  for (let i = 0; i < 3; i++) {
+    await page.locator('.choice').first().click();
+    await page.waitForSelector('#pokeNext');
+    await expect(page.locator('#pokeReveal')).toContainText('Gen 1');
+    await page.locator('#pokeNext').click();
+    await page.waitForSelector('.choice:not([disabled])');
+  }
+});
+
+test('a filter that no mode can ask about says so instead of opening an empty session', async ({ page }) => {
+  // Every Gen 1 Pokémon is already registered, so the "unregistered" scope
+  // leaves nothing to draw from.
+  await page.addInitScript(([key, value]) => {
+    localStorage.setItem(key, value);
+  }, [DEX_KEY, JSON.stringify({
+    v: 1,
+    e: Object.fromEntries(Array.from({ length: 151 }, (_, i) => [i + 1, { c: 1, w: 0, s: 1 }])),
+    answered: 151, correct: 151, streak: 151, bestStreak: 151,
+  })]);
+
+  await page.goto('/pokedex/quiz/poke_who?gen=1&scope=unregistered');
+  await expect(page.locator('h1.screen-title')).toContainText('Nothing to practice');
+  await expect(page.locator('.choice')).toHaveCount(0);
+});
+
+test('reveal links use the app palette, never the browser default blue', async ({ page }) => {
+  await page.goto('/pokedex/quiz/poke_who');
+  await page.waitForSelector('.choice');
+  await page.locator('.choice').first().click();
+  await page.waitForSelector('#pokeNext');
+
+  const link = page.locator('.learn-more a').first();
+  await expect(link).toBeVisible();
+  const color = await link.evaluate((el) => getComputedStyle(el).color);
+  expect(color).not.toBe('rgb(0, 0, 238)');
+});
+
 test('resetting the Pokédex does not touch Worldly progress', async ({ page }) => {
   await page.addInitScript(([dexKey, dexVal, profKey, profVal]) => {
     localStorage.setItem(dexKey, dexVal);

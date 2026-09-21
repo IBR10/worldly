@@ -89,6 +89,27 @@ export const STAT_LABELS = {
   spa: 'Sp. Attack', spd: 'Sp. Defense', spe: 'Speed',
 };
 
+/** The eighteen types, in the games' own order. Also the keys of the type chart. */
+export const TYPES = [
+  'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison',
+  'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark',
+  'steel', 'fairy',
+];
+
+/**
+ * How much of the filtered set a practice session draws from.
+ *
+ * `all` is the whole set; the other two narrow it against your own record, which
+ * is what turns "practise Gen 1" into "practise the 14 of Gen 1 I still can't
+ * name". The predicate itself lives in the view because it needs the store —
+ * this is only the vocabulary, so parsing and labelling stay DOM-free.
+ */
+export const PRACTICE_SCOPES = {
+  all: 'Everything in the set',
+  unregistered: "Only ones I haven't registered",
+  missed: 'Only ones I have missed before',
+};
+
 // ---- helpers -----------------------------------------------------------------
 
 /** "electric" -> "Electric" */
@@ -157,16 +178,34 @@ export function redactName(text, name) {
 // ---- pool --------------------------------------------------------------------
 
 /**
+ * The species a filter selects.
+ *
+ * Separate from buildPokePool because the practice screen needs the same answer
+ * before it builds any questions — "Gen 1 · Fire" has to be able to say how many
+ * species that is, and how many of them you have registered, while you are still
+ * choosing. One definition, so the count you are shown and the set you are then
+ * asked about can never disagree.
+ *
+ * `include` is an arbitrary extra predicate, used for the scopes that filter
+ * against your own record (unregistered, previously missed). It is a function
+ * rather than another named option because the progress store lives in
+ * pokestate.js and this module deliberately knows nothing about it.
+ */
+export function filterDex(dex, { gens = 'all', types = 'all', include = null } = {}) {
+  const genOk = gens === 'all' ? () => true : (p) => gens.includes(p.gen);
+  const typeOk = types === 'all' ? () => true : (p) => p.types.some((t) => types.includes(t));
+  return dex.filter((p) => genOk(p) && typeOk(p) && (!include || include(p)));
+}
+
+/**
  * Build the question pool.
  *
  * One entry per (mode, species) pair that the mode can ask about. Pool item ids
  * are `mode:id` so drawWithoutRepeat can keep a session from asking the same
  * question twice while still allowing the same species under a different mode.
  */
-export function buildPokePool(dex, { modes = ALL_POKE_MODES, gens = 'all', types = 'all' } = {}) {
-  const genOk = gens === 'all' ? () => true : (p) => gens.includes(p.gen);
-  const typeOk = types === 'all' ? () => true : (p) => p.types.some((t) => types.includes(t));
-  const eligible = dex.filter((p) => genOk(p) && typeOk(p));
+export function buildPokePool(dex, { modes = ALL_POKE_MODES, ...filter } = {}) {
+  const eligible = filterDex(dex, filter);
 
   const pool = [];
   for (const mode of modes) {
@@ -178,6 +217,67 @@ export function buildPokePool(dex, { modes = ALL_POKE_MODES, gens = 'all', types
     }
   }
   return pool;
+}
+
+// ---- practice filter ---------------------------------------------------------
+
+/** The filter a session runs with when nothing has been chosen. */
+export function defaultFilter() {
+  return { gens: 'all', types: 'all', scope: 'all' };
+}
+
+/**
+ * Read a practice filter out of a URL query string.
+ *
+ * The filter lives in the URL rather than only in memory so that a scoped
+ * session is a real, shareable, reloadable address: `/pokedex/quiz/poke_who?gen=1`
+ * is "name a Kanto Pokémon from its silhouette", and it survives a refresh, a
+ * bookmark and the Back button. It is also what makes "Practise again" repeat
+ * the set you chose instead of quietly widening to all 1025.
+ *
+ * Anything unrecognised is dropped rather than rejected — a hand-edited or stale
+ * URL should fall back to the wider set, never to a broken screen or an empty
+ * pool. `gen` and `type` accept a comma list or repeated keys, because the pool
+ * builder takes arrays and there is no reason for the URL to be narrower than
+ * the engine.
+ *
+ * @param {string} search  e.g. location.search
+ * @returns {{gens: number[]|'all', types: string[]|'all', scope: string}}
+ */
+export function parsePracticeFilter(search) {
+  const q = new URLSearchParams(search || '');
+  const list = (key) => q.getAll(key).flatMap((v) => v.split(',')).map((v) => v.trim()).filter(Boolean);
+
+  const gens = [...new Set(list('gen').map(Number))].filter((n) => GENERATIONS.includes(n)).sort((a, b) => a - b);
+  const types = [...new Set(list('type').map((t) => t.toLowerCase()))].filter((t) => TYPES.includes(t));
+  const scope = q.get('scope');
+
+  return {
+    gens: gens.length ? gens : 'all',
+    types: types.length ? types : 'all',
+    scope: Object.prototype.hasOwnProperty.call(PRACTICE_SCOPES, scope) ? scope : 'all',
+  };
+}
+
+/** The inverse: a filter as a query string, empty when nothing is narrowed. */
+export function practiceFilterQuery({ gens = 'all', types = 'all', scope = 'all' } = {}) {
+  const q = new URLSearchParams();
+  if (gens !== 'all' && gens.length) q.set('gen', gens.join(','));
+  if (types !== 'all' && types.length) q.set('type', types.join(','));
+  if (scope && scope !== 'all') q.set('scope', scope);
+  const str = q.toString();
+  return str ? `?${str}` : '';
+}
+
+/** A filter as a short human label, for the practice screen and the quiz header. */
+export function filterLabel({ gens = 'all', types = 'all', scope = 'all' } = {}) {
+  const parts = [];
+  parts.push(gens === 'all'
+    ? 'All generations'
+    : gens.map((g) => `Gen ${g} · ${GEN_REGION[g]}`).join(', '));
+  if (types !== 'all') parts.push(types.map(typeLabel).join(', '));
+  if (scope !== 'all') parts.push(PRACTICE_SCOPES[scope]);
+  return parts.join(' · ');
 }
 
 // ---- questions ---------------------------------------------------------------
