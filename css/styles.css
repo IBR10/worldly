@@ -298,6 +298,23 @@ summary:focus-visible {
   outline-offset: 2px;
 }
 
+/* Links, everywhere one is not given a class of its own.
+   Without this they fall back to the user agent's #0000EE, which belongs to no
+   part of this palette and glares out of a callout on deep water. Brass is the
+   app's single accent and already clears 4.5:1 on every ground in both themes
+   (see the token notes above), so it is the colour a link should be.
+   The underline stays: colour alone must never be the only thing marking a
+   link. Hover thickens it rather than changing the colour, because the classed
+   links below (.navlink, .tabbar-link, .skip-link, .footer-link) set their own
+   colour in a single-class rule that an `a:hover` would outweigh. */
+a {
+  color: var(--brass);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--transition);
+}
+a:hover { text-decoration-thickness: 2px; }
+
 body {
   margin: 0;
   font-family: var(--font);
