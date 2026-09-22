@@ -38,8 +38,9 @@ test('profile export round-trips through import', async ({ page }) => {
   await page.goto('/');
   await page.waitForSelector('.card');
 
-  // Earn some XP so there is state worth preserving.
-  await page.getByRole('button', { name: /Mixed Quiz/ }).click();
+  // Earn some XP so there is state worth preserving. /quiz/mixed plays
+  // immediately; the Home card would stop at the setup panel first.
+  await page.goto('/quiz/mixed');
   await page.waitForSelector('.choice');
   await page.locator('.choice').first().click();
   await page.waitForSelector('#nextBtn');

@@ -26,12 +26,15 @@ import { icon } from './icons.js';
  *                choropleths, so they pass null and keep the plain map styling.
  *   repeat       when true, picking does not latch, so a browsing (non-quiz) map
  *                can be clicked country after country
+ *   onHover      (id, name, event) => void for the region under the pointer, and
+ *                (null, null, null) when it leaves. Fires on keyboard focus too.
  * @returns {{ el: HTMLElement, reveal: (clickedId, targetId) => void,
  *             paint: (regionClasses) => void }}
  */
 export function createMapView({
   svgText, onPick, highlightId = null, interactive = true, focusIds = null,
   regionClasses = null, repeat = false, paintClass = 'map-choropleth',
+  onHover = null,
 }) {
   const wrap = document.createElement('div');
   wrap.className = 'map-wrap';
@@ -210,6 +213,42 @@ export function createMapView({
     endPointer(e);
     if (pointers.size === 0) { dragging = false; pinched = false; }
   });
+
+  // --- hover reporting --------------------------------------------------------
+  // Event delegation on the <svg> rather than the isPointInFill sweep regionAt()
+  // uses: that sweep tests ~250 paths and is the right trade for a click, which
+  // must resolve an overlapped region correctly, but it would run on every
+  // pointermove. Hover only has to name what is visually under the cursor, and
+  // the topmost painted path IS that, so the event target is both cheaper and
+  // more honest here.
+  //
+  // `focusin` covers keyboard users, who never generate a pointerover. The out
+  // handlers ignore moves between two paths inside the map, so crossing a border
+  // does not flash the caller through an empty state.
+  if (onHover) {
+    let hovered = null;
+
+    const enter = (target, e) => {
+      const path = target && target.closest ? target.closest('path[id]') : null;
+      hovered = path ? { id: path.id, name: path.getAttribute('aria-label') || path.id } : null;
+      onHover(hovered && hovered.id, hovered && hovered.name, e || null);
+    };
+    const leave = (e) => {
+      if (e.relatedTarget && svg.contains(e.relatedTarget)) return;
+      hovered = null;
+      onHover(null, null, null);
+    };
+
+    svg.addEventListener('pointerover', (e) => enter(e.target, e));
+    svg.addEventListener('pointerout', leave);
+    svg.addEventListener('focusin', (e) => enter(e.target, null));
+    svg.addEventListener('focusout', leave);
+    // Keep a cursor-following card glued to the pointer without re-hit-testing:
+    // the region cannot have changed without a pointerover firing first.
+    svg.addEventListener('pointermove', (e) => {
+      if (hovered) onHover(hovered.id, hovered.name, e);
+    });
+  }
 
   // Find the region under a screen point. Small regions are often drawn UNDER a
   // larger neighbor (e.g. DC under Maryland, Andorra under France, Guanajuato

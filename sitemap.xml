@@ -7,6 +7,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://playworldly.pages.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://playworldly.pages.dev/flags</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playworldly.pages.dev/flagmap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/phrases</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playworldly.pages.dev/music</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://playworldly.pages.dev/languages</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

@@ -46,8 +46,19 @@ npm test        # Node tests over the quiz, SRS, map, router, language, progress
 | **Historic Flags** | Identify the nation from a flag of the past (34 entities) |
 | **Similar Flags** | Tell look-alike flags apart, with tips (12 confusion groups) |
 | **Mixed / Challenge / Daily** | Everything shuffled · timed with streak multiplier · one fixed set per day |
-| **Custom Study** | Choose topics, continents, difficulty, length — and multiple-choice or **typed answers** |
+| **Custom Study** | Choose topics, regions, difficulty, length — and multiple-choice or **typed answers** |
 | **Review Missed** | Practice exactly what you got wrong |
+
+**Narrowing a session.** Mixed and Custom Study share a setup panel: switch
+question types off (no population questions right now), and pick the parts of
+the world to be asked about from a checklist inside a checklist — a continent
+with its subregions folded underneath, so "Asia" is one tick and "just the
+Middle East" is two. The continent's own box is a roll-up of its children and
+shows an indeterminate state when only some are on. A live count says how many
+questions the current selection can actually produce, and the selection is
+remembered: `/quiz/mixed/setup` is where you choose, and `/quiz/mixed` — the
+hero's quick-play button and any deep link — starts a round on that selection
+straight away.
 
 ### Interactive maps
 Click-the-country (world), click-the-state (US, Mexico, Canada), plus
@@ -79,6 +90,10 @@ selectable.
 - **Flag Key** — a browsable reference (not a quiz) of every country, US
   state, and Mexican state by flag and name, with live search and a region
   filter on each tab.
+- **Flag Map** — the other direction: point at any country on the world map and
+  its flag appears at the cursor. A panel under the map keeps the last country
+  you looked at, with its capital and a link to the full guide — which is also
+  what a tap or a Tab gives you, since hover is a mouse idea.
 
 ### Pokédex (a fun corner)
 All 1025 Pokémon, browsable by generation with search and a type filter, plus
@@ -145,7 +160,7 @@ Worldly/
 ├── assets/pokemon/*.png    # 1025 bundled sprites (~1.1 MB) — generated, see scripts/
 ├── assets/fonts/*.woff2    # Archivo variable (OFL) — self-hosted; the CSP allows no font CDN
 ├── scripts/build-pokedex.mjs  # dev-only: regenerates the dex data + sprites from PokéAPI
-├── tests/*.test.mjs        # 175 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
+├── tests/*.test.mjs        # 181 Node tests for quiz.js, srs.js, maps.js, router.js, pokedex.js…
 ├── tests/e2e/*.spec.js     # 45 Playwright specs (screens, quiz, flag key, routing)
 ├── _headers                # Cloudflare Pages security + caching headers
 └── robots.txt, sitemap.xml, site.webmanifest, LICENSE

@@ -530,6 +530,79 @@
 }
 .filter-bar .type-input { flex: 1 1 240px; max-width: 420px; }
 .filter-bar .select { flex: 0 1 220px; }
+/* A form block's heading row, when the block has All/None shortcuts beside the
+   title. The h2 keeps its own margin so a block without a head is unaffected. */
+.block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+.block-head h2 { margin-bottom: var(--s3); }
+.block-actions { display: flex; gap: var(--s3); }
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: var(--t-xs);
+  font-weight: 650;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.link-btn:hover { color: var(--brass); }
+
+/* ---- nested checklist --------------------------------------------------------
+   A continent with its subregions folded underneath. The continent's own box is
+   a roll-up of its children (main.js keeps it in sync, including the
+   indeterminate state), so the two rows never claim different things.
+
+   The children are laid out as their own wrapping row rather than a list: they
+   are the same .check pills as everywhere else, just indented and rule-marked so
+   it reads as "inside" the continent above them. */
+.tree { display: flex; flex-direction: column; gap: var(--s2); }
+.tree-head { display: flex; align-items: center; gap: var(--s2); }
+.tree-head .check { flex: 1 1 auto; min-width: 0; }
+.tree-count {
+  font-size: var(--t-xs);
+  font-stretch: var(--wd-data);
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+.tree-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+}
+.tree-toggle svg { width: 16px; height: 16px; transition: transform var(--transition); }
+.tree-toggle:hover { color: var(--text); border-color: var(--muted); }
+.tree-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+.tree-kids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin: var(--s2) 0 var(--s3) var(--s4);
+  padding-left: var(--s4);
+  border-left: 2px solid var(--border);
+}
+.tree-kids .check { font-size: var(--t-xs); padding: 5px 12px; min-height: 36px; }
+/* `display: flex` above outranks the UA's `[hidden] { display: none }`, so the
+   collapsed state has to be restated here or every group renders open. */
+.tree-kids[hidden] { display: none; }
+
 .checks { display: flex; flex-wrap: wrap; gap: var(--s2); }
 .check {
   display: flex;

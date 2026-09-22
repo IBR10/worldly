@@ -5,8 +5,9 @@ import { test, expect } from '@playwright/test';
 // engines only.
 
 async function startMixedQuiz(page) {
-  await page.goto('/');
-  await page.getByRole('button', { name: /Mixed Quiz/ }).click();
+  // The deep link, not the Home card: the card opens the setup panel (question
+  // types + regions), and these tests are about the quiz screen it leads to.
+  await page.goto('/quiz/mixed');
   await page.waitForSelector('.choice');
 }
 

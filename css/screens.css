@@ -914,3 +914,70 @@
   .dex-hero { width: 120px; height: 120px; }
   .dex-quiz-sprite { width: 148px; height: 148px; }
 }
+
+/* ---- flag map ----------------------------------------------------------------
+   Hover a country, see its flag. Two surfaces: a card that follows the cursor,
+   and a panel under the map that holds the last country looked at.
+
+   The tip is position:fixed and pointer-events:none — it sits under the cursor
+   by definition, so letting it take a hover would make it flicker against the
+   country it is describing. It is mounted inside the screen (not <body>) but
+   outside the map's transform, so "fixed" still means the viewport. */
+.flag-tip {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  pointer-events: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+  padding: 7px 11px;
+  font-size: var(--t-sm);
+  font-weight: 650;
+  max-width: 260px;
+}
+/* `display: flex` above outranks the UA's `[hidden] { display: none }`, so the
+   hidden state has to be restated or the card never goes away. */
+.flag-tip[hidden] { display: none; }
+.flag-tip-img {
+  width: 34px;
+  height: auto;
+  border-radius: 2px;
+  border: 1px solid var(--border-soft);
+  flex: 0 0 auto;
+}
+
+/* The durable half: what touch and keyboard get, and where the mouse leaves the
+   last country it passed over. Reserves its height so the map does not jump as
+   the panel fills and empties. */
+.flag-card {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  min-height: 108px;
+  margin-top: var(--s4);
+  padding: var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+.flag-card-img {
+  width: 132px;
+  height: auto;
+  border-radius: var(--r-plate);
+  border: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+.flag-card-body { min-width: 0; }
+.flag-card-body h2 { font-size: var(--t-h3); font-stretch: var(--wd-wide); }
+.flag-card .btn { margin-top: var(--s2); }
+
+@media (width <= 560px) {
+  .flag-card { gap: var(--s3); padding: var(--s3); }
+  .flag-card-img { width: 92px; }
+  /* A touch device has no hover, so the tip is only ever noise there. */
+  .flag-tip { display: none; }
+}

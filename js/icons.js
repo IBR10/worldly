@@ -246,6 +246,9 @@ const PATHS = {
     '<path d="m5.8 11.2 6.2-6.2 6.2 6.2"/>',
   bolt: '<path d="M13.4 3 5.6 13.4h5.2L10.6 21l7.8-10.4h-5.2Z"/>',
   close: '<path d="M6.2 6.2l11.6 11.6M17.8 6.2 6.2 17.8"/>',
+  // Disclosure: a chevron, pointing right when closed. The control it sits in
+  // rotates it rather than swapping the glyph, so the two states animate.
+  chevron: '<path d="m9.5 5.5 6.5 6.5-6.5 6.5"/>',
   // Pronunciation: a speaker with two arcs, replacing the 🔊 that rendered at a
   // different size and color on every platform.
   speaker:

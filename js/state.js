@@ -47,6 +47,10 @@ const DEFAULT_PROFILE = () => ({
   // only changes what a first-time visitor sees.
   theme: null,
   onboarded: false, // first-visit explainer dismissed
+  // Last session setup (question types + subregions), shared by the Mixed round
+  // and Custom Study. null = everything, which is also what a fresh profile
+  // means, so there is no "have they chosen yet" flag to keep in step.
+  setup: null, // { modes: string[], subregions: string[] }
 });
 
 /** Today as YYYY-MM-DD in the player's LOCAL timezone (daily-challenge day). */
@@ -250,6 +254,23 @@ export function addLeaderboard(score, mode) {
   profile.leaderboard.sort((a, b) => b.score - a.score);
   profile.leaderboard = profile.leaderboard.slice(0, 10);
   saveProfile();
+}
+
+/**
+ * Remember the question types and subregions a session was set up with.
+ *
+ * Stored on the profile rather than per screen because the point is that the
+ * choice sticks: someone who has switched population questions off means it for
+ * the next round too, not only for the one they are about to play.
+ */
+export function setSessionSetup(setup) {
+  profile.setup = setup;
+  saveProfile();
+  return profile.setup;
+}
+
+export function getSessionSetup() {
+  return profile.setup;
 }
 
 export function setTheme(theme) {

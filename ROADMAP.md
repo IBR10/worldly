@@ -23,6 +23,11 @@ Living checklist of what's done and what's planned. Tick items as they ship.
       generation, a type or what you still do not know, and a
       registration/mastery track to *Pokémon Master* — stored separately so it
       never affects Worldly XP, streaks or the leaderboard.
+- [x] **Session scoping**: Mixed and Custom Study share a setup panel — switch
+      question types off, and pick regions from a nested continent/subregion
+      checklist with a live question count. The choice is remembered.
+- [x] **Flag Map**: point at a country on the world map to see its flag, with a
+      panel for touch and keyboard.
 - [x] **Launch readiness**: MIT LICENSE + About/credits/privacy screen,
       youtube-nocookie embeds, `_headers` (CSP/caching), 404/robots/manifest,
       OG meta, flag-load fallback UI, challenge-timer & review-missed bugfixes.

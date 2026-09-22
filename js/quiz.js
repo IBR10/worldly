@@ -208,15 +208,64 @@ export function learnMoreFor(source, isCountry) {
   return links;
 }
 
+// ---- geography tree ----------------------------------------------------------
+
+/**
+ * Continents, each with the subregions inside it, straight from the dataset.
+ *
+ * The setup screens render this as a checklist inside a checklist: tick
+ * "Africa" to get all five of its subregions, or open it and take only West
+ * Africa. Derived rather than hard-coded so adding a country in a new subregion
+ * shows up in the UI without a second list to remember to update — and so the
+ * tree can never offer a region the pool cannot fill.
+ *
+ * @returns {Array<{region: string, subregions: string[], count: number}>}
+ */
+export function regionTree(countries) {
+  const byRegion = new Map();
+  for (const c of countries) {
+    if (!c.region) continue;
+    const entry = byRegion.get(c.region) || { region: c.region, subs: new Map(), count: 0 };
+    entry.count += 1;
+    entry.subs.set(c.subregion || c.region, (entry.subs.get(c.subregion || c.region) || 0) + 1);
+    byRegion.set(c.region, entry);
+  }
+  return [...byRegion.values()]
+    .map((e) => ({ region: e.region, subregions: [...e.subs.keys()].sort(), count: e.count }))
+    .sort((a, b) => a.region.localeCompare(b.region));
+}
+
+/**
+ * Collapse a subregion selection to the smallest filter that means the same
+ * thing: `'all'` when every subregion is ticked, so a default session is not
+ * carrying a 24-item list around, and a plain array otherwise.
+ */
+export function narrowSubregions(selected, tree) {
+  const total = tree.reduce((n, r) => n + r.subregions.length, 0);
+  const picked = [...new Set(selected)];
+  return picked.length >= total ? 'all' : picked;
+}
+
 // ---- pool construction -------------------------------------------------------
 
 /**
  * Build the complete list of askable items for the given modes/continents.
  * Each item carries the data needed to render a question later.
+ *
+ * Two levels of geography, because a continent is a coarse thing to study:
+ * `continents` filters on a country's `region` ("Asia"), `subregions` on its
+ * `subregion` ("Middle East"). They are ANDed, so passing only `subregions` is
+ * the precise case and passing only `continents` is the old, still-supported
+ * one. Subregions partition continents exactly, so the setup screen can offer
+ * them as a nested checklist and send whichever level the player actually
+ * touched.
  */
-export function buildPool(data, { modes = ALL_MODES, continents = 'all', religionFilter = null } = {}) {
+export function buildPool(data, {
+  modes = ALL_MODES, continents = 'all', subregions = 'all', religionFilter = null,
+} = {}) {
   const pool = [];
-  const countryOK = (c) => continents === 'all' || continents.includes(c.region);
+  const countryOK = (c) => (continents === 'all' || continents.includes(c.region))
+    && (subregions === 'all' || subregions.includes(c.subregion));
 
   for (const mode of modes) {
     const src = MODES[mode]?.source;

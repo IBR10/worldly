@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from '../js/quiz.js';
+import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
 import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 
@@ -71,6 +71,52 @@ test('makeQuestion (ca_capital) mirrors the US/MX state-capital modes', () => {
 test('buildPool filters by continent for country modes', () => {
   const pool = buildPool(data, { modes: ['capital'], continents: ['Africa'] });
   assert.equal(pool.length, 3); // Egypt + Kenya + Tanzania
+});
+
+test('buildPool filters by subregion, one level finer than continent', () => {
+  const pool = buildPool(data, { modes: ['capital'], subregions: ['East Africa'] });
+  assert.deepEqual(pool.map((p) => p.source.name).sort(), ['Kenya', 'Tanzania']);
+});
+
+test('continent and subregion filters are ANDed, not ORed', () => {
+  // Asking for Africa AND East Africa is the narrower of the two, not both.
+  const both = buildPool(data, { modes: ['capital'], continents: ['Africa'], subregions: ['East Africa'] });
+  assert.deepEqual(both.map((p) => p.source.name).sort(), ['Kenya', 'Tanzania']);
+  // A contradictory pair is legitimately empty rather than silently widened.
+  const none = buildPool(data, { modes: ['capital'], continents: ['Europe'], subregions: ['East Africa'] });
+  assert.equal(none.length, 0);
+});
+
+test('a subregion filter leaves the state modes alone', () => {
+  // US/Mexico/Canada states carry no subregion, so a world filter must not
+  // silently empty them — unticking every continent still leaves these askable.
+  const pool = buildPool(data, { modes: ['us_capital', 'capital'], subregions: ['East Africa'] });
+  assert.equal(pool.filter((p) => p.mode === 'us_capital').length, 1);
+  assert.equal(pool.filter((p) => p.mode === 'capital').length, 2);
+});
+
+test('regionTree groups subregions under their continent', () => {
+  const tree = regionTree(data.countries);
+  assert.deepEqual(tree.map((r) => r.region), ['Africa', 'Asia', 'Europe', 'South America']);
+  const africa = tree.find((r) => r.region === 'Africa');
+  assert.deepEqual(africa.subregions, ['East Africa', 'North Africa']);
+  assert.equal(africa.count, 3, 'Egypt + Kenya + Tanzania');
+});
+
+test('regionTree ignores countries with no region rather than inventing one', () => {
+  const tree = regionTree([...data.countries, { name: 'Nowhere', iso2: 'ZZ' }]);
+  assert.ok(tree.every((r) => r.region));
+  assert.equal(tree.reduce((n, r) => n + r.count, 0), data.countries.length);
+});
+
+test('narrowSubregions collapses a full selection to "all"', () => {
+  const tree = regionTree(data.countries);
+  const every = tree.flatMap((r) => r.subregions);
+  assert.equal(narrowSubregions(every, tree), 'all');
+  assert.deepEqual(narrowSubregions(['East Africa'], tree), ['East Africa']);
+  assert.deepEqual(narrowSubregions([], tree), []);
+  // Duplicates must not fool the "is everything ticked" count into 'all'.
+  assert.deepEqual(narrowSubregions(['East Africa', 'East Africa'], tree), ['East Africa']);
 });
 
 test('buildPool builds one item per historic flag', () => {

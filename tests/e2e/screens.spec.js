@@ -43,6 +43,8 @@ const SCREENS = [
   { label: 'profile', tab: /Explore/, card: /Profile/ },
   { label: 'about', tab: /Explore/, card: /About Credits/ },
   { label: 'custom study', tab: /Explore/, card: /Custom Study/ },
+  { label: 'flag map', tab: /Explore/, card: /Flag Map/ },
+  { label: 'mixed setup', tab: null, card: /Mixed Quiz/ },
   { label: 'pokédex', tab: /Explore/, card: /Pokédex/ },
 ];
 
@@ -76,8 +78,7 @@ test.describe('rendered markup is structurally sound', () => {
 });
 
 test('quiz screen has a heading', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: /Mixed Quiz/ }).click();
+  await page.goto('/quiz/mixed');
   await page.waitForSelector('.choice');
 
   const headings = await page.evaluate(headingProbe);
@@ -85,8 +86,7 @@ test('quiz screen has a heading', async ({ page }) => {
 });
 
 test('quiz feedback keeps heading order', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: /Mixed Quiz/ }).click();
+  await page.goto('/quiz/mixed');
   await page.waitForSelector('.choice');
   await page.locator('.choice').first().click();
   await page.waitForSelector('#nextBtn');

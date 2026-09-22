@@ -6,9 +6,10 @@ import {
   loadProfile, getProfile, saveProfile, resetProfile, importProfile, levelProgress, accuracy,
   recordAnswer, recordStudyTime, recordPerfectQuiz, markDailyComplete,
   dailyDoneToday, addLeaderboard, setTheme, setName, setOnboarded, localDateStr,
+  setSessionSetup, getSessionSetup,
 } from './state.js';
 import { track, tag, loadAnalytics, analyticsOptedOut, setAnalyticsOptOut } from './analytics.js';
-import { createQuiz, MODES, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed } from './quiz.js';
+import { createQuiz, MODES, ALL_MODES, buildPool, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
 import { regionClassesFor, familyLegend, languageLegend } from './languages.js';
@@ -66,7 +67,7 @@ function renderNav() {
 // /country/:slug inherit their section's width.
 // Exact paths, not prefixes: /country is a grid of 198 cards and wants the room,
 // while /country/:slug is a page you read and would be worse for it.
-const WIDE_ROUTES = ['/', '/flags', '/country', '/languages', '/hello', '/stats', '/achievements', '/pokedex'];
+const WIDE_ROUTES = ['/', '/flags', '/flagmap', '/country', '/languages', '/hello', '/stats', '/achievements', '/pokedex'];
 // …with one prefix, because every map mode is a map.
 const WIDE_PREFIXES = ['/map/'];
 
@@ -519,7 +520,7 @@ function showHome() {
   const dailyDone = dailyDoneToday();
   const missedCount = reviewableMissedIds().length;
   const quickCards = [
-    { key: 'mixed', icon: 'dice', title: 'Mixed Quiz', desc: 'A bit of everything.' },
+    { key: 'mixed_setup', icon: 'dice', title: 'Mixed Quiz', desc: 'A bit of everything — or pick which types and regions.' },
     { key: 'challenge', icon: 'stopwatch', title: 'Challenge Mode', desc: 'Beat the clock for a high score.' },
     { key: 'daily', icon: 'calendar', title: `Daily Challenge${dailyDone ? ' ✓' : ''}`, desc: 'Same set for everyone, once a day.' },
     { key: 'religions', icon: 'temple', title: 'World Religions', desc: 'Founders, texts & holidays — pick a faith.' },
@@ -528,6 +529,7 @@ function showHome() {
   const journeyCards = [
     { key: 'phrases', icon: 'speech', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
     { key: 'flagkey', icon: 'flag', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
+    { key: 'flagmap', icon: 'flags', title: 'Flag Map', desc: 'Hover any country on the world map to see its flag.' },
     { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world colored by what it speaks.' },
     { key: 'hello', icon: 'wave', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
     { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
@@ -602,10 +604,11 @@ function showHome() {
 // Home Play/Explore cards (and the map-regions chooser) use short data-go keys;
 // this is the one place they map to real URLs.
 const GO_ROUTES = {
-  mixed: '/quiz/mixed', challenge: '/quiz/challenge', daily: '/quiz/daily', review: '/quiz/review',
+  mixed: '/quiz/mixed', mixed_setup: '/quiz/mixed/setup',
+  challenge: '/quiz/challenge', daily: '/quiz/daily', review: '/quiz/review',
   religions: '/religions', map_regions: '/regions',
   phrases: '/phrases', flagkey: '/flags', music: '/music', crises: '/crises',
-  languages: '/languages', hello: '/hello', countries: '/country',
+  languages: '/languages', hello: '/hello', countries: '/country', flagmap: '/flagmap',
   custom: '/custom', stats: '/stats', achievements: '/achievements', profile: '/profile', about: '/about',
   pokedex: '/pokedex',
 };
@@ -613,7 +616,18 @@ const GO_ROUTES = {
 // Start a quiz from a `/quiz/:mode` URL. Both a Home card and a direct deep link
 // land here, so the key→options mapping lives in exactly one place.
 function startQuizByKey(mode) {
-  if (mode === 'mixed') return startQuiz({ title: 'Mixed Quiz', modes: ALL_MODES, total: 12 });
+  if (mode === 'mixed') {
+    // Starts straight away, with whatever the setup screen last saved. The
+    // hero's "Play a mixed round" button and a bare /quiz/mixed deep link both
+    // mean "play now"; /quiz/mixed/setup is where you change what it asks.
+    const sel = currentSetup();
+    return startQuiz({
+      title: 'Mixed Quiz',
+      modes: sel.modes,
+      subregions: narrowSubregions(sel.subregions, sel.tree),
+      total: 12,
+    });
+  }
   if (mode === 'challenge') return startQuiz({ title: 'Challenge Mode', modes: ALL_MODES, total: 15, challenge: true });
   if (mode === 'daily') return startDaily();
   if (mode === 'review') return startReview();
@@ -741,10 +755,13 @@ function showAbout() {
 // that data only exists server-side — so there is nothing to "fall back to"
 // in that array once the server round trip has failed).
 function buildLocalEngine(opts) {
-  const { modes, continents = 'all', difficulty = 'medium', daily = false, reviewIds = null, seed = null, religionFilter = null } = opts;
+  const {
+    modes, continents = 'all', subregions = 'all', difficulty = 'medium',
+    daily = false, reviewIds = null, seed = null, religionFilter = null,
+  } = opts;
   const data = getData();
   const rng = seed != null ? seededRng(seed) : Math.random;
-  const config = { modes, continents, difficulty, choices: 4, rng, religionFilter };
+  const config = { modes, continents, subregions, difficulty, choices: 4, rng, religionFilter };
   // Daily uses plain seeded picking (same for everyone); other modes use SRS
   // weighting so forgotten/missed items resurface more often.
   const pick = daily ? null : (pool, srsMap) => pickWeighted(pool, srsMap, rng);
@@ -753,9 +770,9 @@ function buildLocalEngine(opts) {
 
 async function startQuiz(opts) {
   // Only the fields this function itself reads are destructured; the pool
-  // options (modes/continents/difficulty/reviewIds/seed/religionFilter) are
-  // consumed by buildLocalEngine(opts) below, which re-reads them from `opts`
-  // and applies its own defaults.
+  // options (modes/continents/subregions/difficulty/reviewIds/seed/
+  // religionFilter) are consumed by buildLocalEngine(opts) below, which
+  // re-reads them from `opts` and applies its own defaults.
   const { title, total = 10, challenge = false, daily = false, input = 'mcq' } = opts;
 
   // Every call — sync or async — stamps its own generation up front, so a
@@ -1464,29 +1481,241 @@ async function submitToGlobalLeaderboard(sessionId) {
 }
 
 // ============================================================================
+//  SESSION SETUP  (shared by the Mixed round and Custom Study)
+//
+//  Two checklists: which question types to ask, and which parts of the world to
+//  ask about. The geography one is a checklist inside a checklist — a continent
+//  with its subregions folded underneath — because "Asia" is 48 countries and
+//  wanting only the Middle East is an ordinary thing to want.
+//
+//  The selection is stored on the profile, so switching population questions off
+//  stays off for the next round instead of being a per-visit chore.
+// ============================================================================
+
+/** The saved setup, widened to the full set for anything the profile lacks. */
+function currentSetup() {
+  const saved = getSessionSetup() || {};
+  const tree = regionTree(getData().countries);
+  const allSubs = tree.flatMap((r) => r.subregions);
+  const modes = Array.isArray(saved.modes) ? saved.modes.filter((m) => MODES[m]) : ALL_MODES;
+  const subs = Array.isArray(saved.subregions) ? saved.subregions.filter((x) => allSubs.includes(x)) : allSubs;
+  return {
+    tree,
+    // An empty list can only come from a corrupted or stale profile — every UI
+    // path refuses to save one — so fall back to everything rather than to a
+    // session with no questions in it.
+    modes: modes.length ? modes : ALL_MODES,
+    subregions: subs.length ? subs : allSubs,
+  };
+}
+
+function modeChecksHtml(selected) {
+  return `
+    <div class="form-block">
+      <div class="block-head">
+        <h2>Question types</h2>
+        <div class="block-actions">
+          <button class="link-btn" type="button" data-all="modeChecks">All</button>
+          <button class="link-btn" type="button" data-none="modeChecks">None</button>
+        </div>
+      </div>
+      <div class="checks" id="modeChecks">
+        ${ALL_MODES.map((m) => `<label class="check"><input type="checkbox" value="${esc(m)}"${selected.includes(m) ? ' checked' : ''}>${esc(MODES[m].label)}</label>`).join('')}
+      </div>
+    </div>`;
+}
+
+/**
+ * The nested geography checklist.
+ *
+ * A continent's own checkbox is a roll-up of its children, not a separate
+ * filter: ticking it ticks all of them, and it shows `indeterminate` when only
+ * some are on. That keeps one source of truth — the leaf subregions are what
+ * actually reach buildPool — so the two levels can never disagree about what a
+ * session will ask.
+ */
+function regionTreeHtml(tree, selected) {
+  const slug = (r) => r.toLowerCase().replace(/[^a-z]+/g, '-');
+  return `
+    <div class="form-block">
+      <div class="block-head">
+        <h2>Parts of the world <span class="muted-note">(country modes only)</span></h2>
+        <div class="block-actions">
+          <button class="link-btn" type="button" data-all="regionTree">All</button>
+          <button class="link-btn" type="button" data-none="regionTree">None</button>
+        </div>
+      </div>
+      <div class="tree" id="regionTree">
+        ${tree.map((r) => {
+    const on = r.subregions.filter((x) => selected.includes(x)).length;
+    const id = `tg-${slug(r.region)}`;
+    // A continent whose subregions are all one name (South America) has
+    // nothing to expand into, so it renders as a plain checkbox.
+    const nested = r.subregions.length > 1;
+    // Open a continent you have part of: the point of a partial selection is
+    // seeing which parts, and a collapsed group hides exactly that.
+    const open = nested && on > 0 && on < r.subregions.length;
+    return `
+          <div class="tree-group">
+            <div class="tree-head">
+              <label class="check">
+                <input type="checkbox" data-region="${esc(r.region)}"${on === r.subregions.length ? ' checked' : ''}>
+                <span>${esc(r.region)}</span>
+              </label>
+              <span class="tree-count">${esc(r.count)}</span>
+              ${nested ? `<button class="tree-toggle" type="button" aria-expanded="${open}" aria-controls="${id}">
+                ${icon('chevron')}<span class="sr-only">Show ${esc(r.region)} regions</span></button>` : ''}
+            </div>
+            ${nested ? `<div class="tree-kids" id="${id}"${open ? '' : ' hidden'}>
+              ${r.subregions.map((sub) => `<label class="check"><input type="checkbox"
+                data-sub="${esc(sub)}" data-parent="${esc(r.region)}"${selected.includes(sub) ? ' checked' : ''}>${esc(sub)}</label>`).join('')}
+            </div>` : `<div class="tree-kids" id="${id}" hidden>
+              <label class="check"><input type="checkbox" data-sub="${esc(r.subregions[0])}"
+                data-parent="${esc(r.region)}"${selected.includes(r.subregions[0]) ? ' checked' : ''}>${esc(r.subregions[0])}</label>
+            </div>`}
+          </div>`;
+  }).join('')}
+      </div>
+    </div>`;
+}
+
+/** Wire both checklists. `onChange` fires after any tick, for a live count. */
+function wireSetupPanel(onChange = () => {}) {
+  const tree = app.querySelector('#regionTree');
+  const modes = app.querySelector('#modeChecks');
+  if (!tree || !modes) return;
+
+  const parents = () => [...tree.querySelectorAll('input[data-region]')];
+  const kidsOf = (region) => [...tree.querySelectorAll(`input[data-parent="${CSS.escape(region)}"]`)];
+
+  // Roll each continent's box up from its children: checked when all are on,
+  // indeterminate when some are. `indeterminate` is a DOM property with no HTML
+  // attribute, so it can only be set here, never in the markup above.
+  const syncParents = () => {
+    for (const parent of parents()) {
+      const kids = kidsOf(parent.dataset.region);
+      const on = kids.filter((k) => k.checked).length;
+      parent.checked = on === kids.length;
+      parent.indeterminate = on > 0 && on < kids.length;
+    }
+    onChange();
+  };
+
+  tree.addEventListener('change', (e) => {
+    const box = e.target;
+    if (box.dataset.region) kidsOf(box.dataset.region).forEach((k) => { k.checked = box.checked; });
+    syncParents();
+  });
+  modes.addEventListener('change', onChange);
+
+  tree.querySelectorAll('.tree-toggle').forEach((btn) => btn.addEventListener('click', () => {
+    const kids = app.querySelector(`#${CSS.escape(btn.getAttribute('aria-controls'))}`);
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    kids.hidden = open;
+  }));
+
+  app.querySelectorAll('[data-all], [data-none]').forEach((btn) => btn.addEventListener('click', () => {
+    const target = btn.dataset.all || btn.dataset.none;
+    const on = !!btn.dataset.all;
+    app.querySelectorAll(`#${target} input[type="checkbox"]`).forEach((b) => { b.checked = on; });
+    syncParents();
+  }));
+
+  syncParents();
+}
+
+/** Read both checklists back out. Subregions collapse to 'all' when untouched. */
+function readSetupPanel(tree) {
+  const modes = [...app.querySelectorAll('#modeChecks input:checked')].map((i) => i.value);
+  const subs = [...app.querySelectorAll('#regionTree input[data-sub]:checked')].map((i) => i.dataset.sub);
+  return { modes, subregions: subs, filter: narrowSubregions(subs, tree) };
+}
+
+/**
+ * How many questions the current selection can actually produce.
+ *
+ * Shown live under the checklists because the two filters interact in ways that
+ * are not obvious: the US/Mexico/Canada state modes ignore geography entirely,
+ * so unticking every continent does not empty a session that still has them on.
+ */
+function setupCountText(sel) {
+  if (!sel.modes.length) return 'No question types selected — pick at least one.';
+  if (!sel.subregions.length) {
+    const worldless = sel.modes.filter((m) => MODES[m].source !== 'country');
+    if (!worldless.length) return 'No regions selected — pick at least one.';
+  }
+  const pool = buildPool(getData(), { modes: sel.modes, subregions: sel.filter });
+  return `${pool.length} question${pool.length === 1 ? '' : 's'} available.`;
+}
+
+/**
+ * The Mixed round's setup screen.
+ *
+ * Mixed used to be all 18 question types over the whole world with no way to say
+ * "not population questions right now". That choice now lives here, and because
+ * it is remembered, /quiz/mixed itself still starts a round instantly — the hero
+ * button and a deep link both mean "play now", and this screen is where you
+ * change what "now" asks about.
+ *
+ * The Start button calls startQuiz directly rather than navigating, so the
+ * round's URL stays /quiz/mixed/setup and Back returns to the setup you used
+ * rather than replaying it.
+ */
+function showMixedSetup() {
+  leaveSession();
+  const sel = currentSetup();
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Mixed Quiz</h1>
+    <p class="screen-sub">A bit of everything — minus anything you switch off here.
+      Your choices are remembered, so the Mixed Quiz button plays this set from now on.</p>
+
+    ${modeChecksHtml(sel.modes)}
+    ${regionTreeHtml(sel.tree, sel.subregions)}
+
+    <p class="screen-sub" id="setupCount" aria-live="polite"></p>
+
+    <div class="btn-row">
+      <button class="btn primary" id="startMixed">▶ Start mixed round</button>
+      <button class="btn ghost" data-topnav="home">${icon('back')}Back</button>
+    </div>`;
+
+  wireNav();
+  const refresh = () => {
+    const now = readSetupPanel(sel.tree);
+    app.querySelector('#setupCount').textContent = setupCountText(now);
+  };
+  wireSetupPanel(refresh);
+
+  app.querySelector('#startMixed').addEventListener('click', () => {
+    const now = readSetupPanel(sel.tree);
+    if (!now.modes.length) return toast('warning', 'Pick at least one question type');
+    const pool = buildPool(getData(), { modes: now.modes, subregions: now.filter });
+    if (!pool.length) return toast('warning', 'Nothing to ask', 'That combination has no questions in it.');
+    setSessionSetup({ modes: now.modes, subregions: now.subregions });
+    startQuiz({ title: 'Mixed Quiz', modes: now.modes, subregions: now.filter, total: 12 });
+  });
+  focusTitle();
+}
+
+// ============================================================================
 //  CUSTOM STUDY
 // ============================================================================
 function showCustom() {
   leaveSession();
-  const continents = getContinents();
+  const sel = currentSetup();
+
   app.innerHTML = `
     ${topNav()}
     <h1 class="screen-title">Custom Study</h1>
     <p class="screen-sub">Tailor a session to exactly what you want to practice.</p>
 
-    <div class="form-block">
-      <h2>Question types</h2>
-      <div class="checks" id="modeChecks">
-        ${ALL_MODES.map((m) => `<label class="check"><input type="checkbox" value="${m}" checked>${esc(MODES[m].label)}</label>`).join('')}
-      </div>
-    </div>
+    ${modeChecksHtml(sel.modes)}
+    ${regionTreeHtml(sel.tree, sel.subregions)}
 
-    <div class="form-block">
-      <h2>Continents <span class="muted-note">(country modes only)</span></h2>
-      <div class="checks" id="contChecks">
-        ${continents.map((c) => `<label class="check"><input type="checkbox" value="${esc(c)}" checked>${esc(c)}</label>`).join('')}
-      </div>
-    </div>
+    <p class="screen-sub" id="setupCount" aria-live="polite"></p>
 
     <div class="form-block">
       <h2>Difficulty</h2>
@@ -1514,6 +1743,11 @@ function showCustom() {
     </div>`;
   wireNav();
 
+  const refresh = () => {
+    app.querySelector('#setupCount').textContent = setupCountText(readSetupPanel(sel.tree));
+  };
+  wireSetupPanel(refresh);
+
   let difficulty = 'medium', length = 10, input = 'mcq';
   app.querySelectorAll('#diffSeg button').forEach((b) => b.addEventListener('click', () => {
     app.querySelectorAll('#diffSeg button').forEach((x) => x.classList.remove('active'));
@@ -1529,11 +1763,21 @@ function showCustom() {
   }));
   app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
   app.querySelector('#startCustom').addEventListener('click', () => {
-    const modes = [...app.querySelectorAll('#modeChecks input:checked')].map((i) => i.value);
-    const conts = [...app.querySelectorAll('#contChecks input:checked')].map((i) => i.value);
-    if (modes.length === 0) return toast('warning', 'Pick at least one question type');
-    startQuiz({ title: 'Custom Study', modes, continents: conts.length ? conts : 'all', difficulty, total: length, input });
+    const now = readSetupPanel(sel.tree);
+    if (now.modes.length === 0) return toast('warning', 'Pick at least one question type');
+    const pool = buildPool(getData(), { modes: now.modes, subregions: now.filter });
+    if (!pool.length) return toast('warning', 'Nothing to ask', 'That combination has no questions in it.');
+    setSessionSetup({ modes: now.modes, subregions: now.subregions });
+    startQuiz({
+      title: 'Custom Study',
+      modes: now.modes,
+      subregions: now.filter,
+      difficulty,
+      total: length,
+      input,
+    });
   });
+  focusTitle();
 }
 
 // ============================================================================
@@ -1896,6 +2140,126 @@ async function loadWorldGreetings() {
   // rendering now would hijack whatever screen they are looking at.
   if (myGen !== sessionGen) return null;
   return { map, rows: getData().greetings || [] };
+}
+
+/**
+ * Flag Map — hover a country, see its flag.
+ *
+ * The Flag Key answers "what does Chad's flag look like?" from an alphabetical
+ * grid; this answers the other direction, "whose flag is that, and where is it?",
+ * by putting the flag where the country is. Together they are the reference pair
+ * behind the flag quiz modes.
+ *
+ * Three ways in, because hover is a mouse idea:
+ *   - pointer: a small card follows the cursor with the flag and the name;
+ *   - touch:   a tap fills the panel under the map (no hover exists to use);
+ *   - keyboard: Tab moves between regions and focus fills the same panel.
+ * The panel is the durable surface — it holds the last country you looked at,
+ * with its capital and a link to the full guide — so nothing here depends on
+ * being able to hover.
+ */
+async function showFlagMap() {
+  leaveSession();
+  const myGen = ++sessionGen;
+  app.innerHTML = '<p class="screen-sub">Loading the map…</p>';
+  let map;
+  try {
+    map = await loadMap('world');
+  } catch (err) {
+    if (myGen !== sessionGen) return;
+    toast('warning', "Couldn't load the map", err.message);
+    return navigate('/', { replace: true });
+  }
+  if (myGen !== sessionGen) return;
+
+  const countries = getData().countries;
+  const byId = new Map(countries.filter((c) => c.iso2).map((c) => [c.iso2.toLowerCase(), c]));
+
+  app.innerHTML = `
+    ${topNav()}
+    <h1 class="screen-title">Flag Map</h1>
+    <p class="screen-sub">Point at any country to see its flag. Tap one — or Tab to it — to keep it
+      in the panel below, and open its full guide from there.</p>
+
+    <div id="mapMount" class="map-mount"></div>
+    <div class="flag-card" id="flagPanel" aria-live="polite"></div>
+
+    <p class="muted-note mt-10">Borders come from the same bundled world map the quiz modes use.
+      Territories and dependencies are drawn but have no entry of their own, so they name themselves
+      without a flag.</p>
+
+    <div class="btn-row mt-18">
+      <button class="btn ghost" id="toFlagKey">Flag Key</button>
+      <button class="btn ghost" id="backHome">${icon('back')}Back</button>
+    </div>`;
+  wireNav();
+
+  const panel = app.querySelector('#flagPanel');
+
+  // The cursor-following card. Built here rather than in the template because it
+  // is positioned per pointer event, and CSSOM is the only way to set a position
+  // under a CSP with no unsafe-inline. It is position:fixed but mounted inside
+  // the screen, not on <body>: #mapMount is outside the map's own transform, so
+  // fixed still means "the viewport", and the next navigation's innerHTML swap
+  // takes the card away with the rest of the screen.
+  const tip = document.createElement('div');
+  tip.className = 'flag-tip';
+  tip.hidden = true;
+  app.querySelector('#mapMount').append(tip);
+
+  const flagImg = (c) => `<img class="flag-tip-img" src="${flagUrl(c.iso2, 'w160')}" alt="" decoding="async">`;
+
+  function renderPanel(country, name) {
+    if (!country) {
+      panel.innerHTML = name
+        ? `<p class="screen-sub m-0">${esc(name)} — no country entry, so no flag here.</p>`
+        : '<p class="screen-sub m-0">Point at a country to see its flag.</p>';
+      return;
+    }
+    panel.innerHTML = `
+      <img class="flag-card-img" src="${flagUrl(country.iso2, 'w320')}" alt="Flag of ${esc(country.name)}" decoding="async">
+      <div class="flag-card-body">
+        <h2 class="m-0">${esc(country.name)}</h2>
+        <p class="screen-sub m-0">${esc(country.capital)} · ${esc(country.subregion || country.region)}</p>
+        <a class="btn ghost mt-10" href="/country/${esc(slugify(country.name))}" data-link>Country guide</a>
+      </div>`;
+  }
+  renderPanel(null, null);
+
+  function showTip(country, name, e) {
+    if (!e) { tip.hidden = true; return; }
+    tip.innerHTML = country
+      ? `${flagImg(country)}<span>${esc(country.name)}</span>`
+      : `<span>${esc(name)}</span>`;
+    tip.hidden = false;
+    // Flip the card to the other side of the cursor near the right/bottom edge
+    // so it never hangs off the viewport.
+    const pad = 16;
+    const r = tip.getBoundingClientRect();
+    const x = e.clientX + pad + r.width > window.innerWidth ? e.clientX - pad - r.width : e.clientX + pad;
+    const y = e.clientY + pad + r.height > window.innerHeight ? e.clientY - pad - r.height : e.clientY + pad;
+    tip.style.left = `${Math.max(pad, x)}px`;
+    tip.style.top = `${Math.max(pad, y)}px`;
+  }
+
+  const view = createMapView({
+    svgText: map.svgText,
+    repeat: true,
+    onHover: (id, name, e) => {
+      const country = id ? byId.get(id) : null;
+      if (!id) { tip.hidden = true; return; }
+      showTip(country, name, e);
+      // Keyboard focus has no pointer event, so it fills the panel instead —
+      // otherwise tabbing the map would show nothing at all.
+      if (!e) renderPanel(country, name);
+    },
+    onPick: (id, name) => renderPanel(byId.get(id) || null, name),
+  });
+  app.querySelector('#mapMount').append(view.el);
+
+  app.querySelector('#toFlagKey').addEventListener('click', () => navigate('/flags'));
+  app.querySelector('#backHome').addEventListener('click', () => navigate('/'));
+  focusTitle();
 }
 
 function legendMarkup(items) {
@@ -2892,6 +3256,7 @@ async function boot() {
       { path: '/music', title: 'Music — Worldly', render: showMusic },
       { path: '/music/:slug', render: (p) => routeMusicDetail(p.slug) },
       { path: '/languages', title: 'Language Map — Worldly', render: showLanguageMap },
+      { path: '/flagmap', title: 'Flag Map — Worldly', render: showFlagMap },
       { path: '/hello', title: 'Say Hello — Worldly', render: showHelloMap },
       { path: '/country', title: 'Country Guides — Worldly', render: showCountryIndex },
       { path: '/country/:slug', render: (p) => routeCountryDetail(p.slug) },
@@ -2904,6 +3269,7 @@ async function boot() {
       { path: '/custom', title: 'Custom Study — Worldly', render: showCustom },
       { path: '/religions', title: 'World Religions — Worldly', render: showReligions },
       { path: '/regions', title: 'Regions & Continents — Worldly', render: showMapRegions },
+      { path: '/quiz/mixed/setup', title: 'Mixed Quiz — Worldly', render: showMixedSetup },
       { path: '/quiz/:mode', render: (p) => startQuizByKey(p.mode) },
       { path: '/map/:mode', render: (p) => startMapByKey(p.mode) },
       { path: '/pokedex', title: 'Pokédex — Worldly', render: showPokedex },
