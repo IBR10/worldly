@@ -24,12 +24,12 @@ dashboard.
 - **Ground.** Deep teal-black water (`#06171c`), surfaces rising out of it like
   a shelf. The light theme is the same chart printed on paper.
 - **Accents, three.** Brass acts (buttons, XP, progress, map highlight); jade is
-  correct; coral is wrong. A fourth colour, ice-cyan, is reserved for focus
+  correct; coral is wrong. A fourth color, ice-cyan, is reserved for focus
   rings alone — a brass ring would vanish on exactly the brass controls people
   tab to most.
 - **A continent key.** Six hues, deliberately clear of brass's 40°, used on
   region badges, continent bars and the dashboard map, so the same continent is
-  the same colour everywhere. Colour carrying information, not decorating.
+  the same color everywhere. Color carrying information, not decorating.
 - **The graticule.** Latitude/longitude lines are the structural device: section
   rules end in a ticked meridian, meters are scale bars rather than gradient
   pills, cards carry a faint grid at one corner, and the map's ocean is ruled.

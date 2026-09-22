@@ -16,7 +16,7 @@
    no-duplicate-selectors is per file, which is the other reason the split
    helps: each selector is declared exactly once, in exactly one place.
 
-   Every colour is a token, and the two themes redefine the same token names, so
+   Every color is a token, and the two themes redefine the same token names, so
    [data-theme] on <html> is the only switch. */
 
 /* ---- typeface -------------------------------------------------------------
@@ -114,8 +114,8 @@
 
 /* ---- dark (default) — a chart read at depth --------------------------------
    The ground is deep water, not navy: teal-black, with surfaces that rise out
-   of it like a shelf. Brass is the only colour that acts; jade and coral only
-   ever mean right and wrong. Nothing else is allowed to be colourful, which is
+   of it like a shelf. Brass is the only color that acts; jade and coral only
+   ever mean right and wrong. Nothing else is allowed to be colorful, which is
    what leaves room for 198 flags and an eleven-hue language map to be. */
 [data-theme="dark"] {
   --bg: #06171c;
@@ -143,14 +143,14 @@
   --land: #23505c;
   /* The three steps of "found". Explicit values rather than a mix with the
      land: mixing brass into a teal lands in olive, which reads as a fourth,
-     unexplained colour rather than as a weaker brass. */
+     unexplained color rather than as a weaker brass. */
   --known-1: #7a5f2a;
   --known-2: #bd8a33;
   --known-3: #f0a93f;
 
   /* Continent key. Six hues, deliberately clear of brass's 40° so a region
      badge is never mistaken for a progress fill. Used on region badges,
-     continent bars and the dashboard map — colour carrying information, not
+     continent bars and the dashboard map — color carrying information, not
      decorating. */
   --con-africa: #c775d8;
   --con-asia: #e86a87;
@@ -268,8 +268,8 @@
 }
 .skip-link:focus { top: var(--s2); }
 
-/* One focus ring everywhere, in a colour used for nothing else.
-   It is deliberately not brass: brass is the colour of primary buttons and
+/* One focus ring everywhere, in a color used for nothing else.
+   It is deliberately not brass: brass is the color of primary buttons and
    active tabs, so a brass ring would disappear on exactly the controls people
    tab to most. Ice-cyan sits opposite it and stays visible on every surface,
    in both themes. :focus-visible, so pointer users never see it. */
@@ -302,11 +302,11 @@ summary:focus-visible {
    Without this they fall back to the user agent's #0000EE, which belongs to no
    part of this palette and glares out of a callout on deep water. Brass is the
    app's single accent and already clears 4.5:1 on every ground in both themes
-   (see the token notes above), so it is the colour a link should be.
-   The underline stays: colour alone must never be the only thing marking a
-   link. Hover thickens it rather than changing the colour, because the classed
+   (see the token notes above), so it is the color a link should be.
+   The underline stays: color alone must never be the only thing marking a
+   link. Hover thickens it rather than changing the color, because the classed
    links below (.navlink, .tabbar-link, .skip-link, .footer-link) set their own
-   colour in a single-class rule that an `a:hover` would outweigh. */
+   color in a single-class rule that an `a:hover` would outweigh. */
 a {
   color: var(--brass);
   text-underline-offset: 3px;
@@ -443,7 +443,7 @@ h2, h3 { font-stretch: var(--wd-wide); }
   font-weight: 400;
 }
 .fact.muted { color: var(--muted); }
-/* The display-name field wears .btn for its shape, which also centres its text —
+/* The display-name field wears .btn for its shape, which also centers its text —
    fine on a button, wrong on something you type into. */
 .name-input { min-width: 200px; text-align: left; }
 /* !important, deliberately. This is the one utility whose whole job is to beat

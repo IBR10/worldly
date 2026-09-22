@@ -370,12 +370,12 @@
 .pill strong { color: var(--text); }
 .pill .accent { color: var(--brass); }
 /* `fire` is a second class on .pill, not a descendant -- this was `.pill .fire`,
-   which never matched, so the streak pill was never actually coloured. */
+   which never matched, so the streak pill was never actually colored. */
 .pill.fire { color: var(--brass); border-color: var(--brass); background: var(--brass-soft); }
 .pill.ok { color: var(--good); border-color: var(--good); background: var(--good-bg); }
 
-/* A region badge, coloured from the continent key so the same continent is the
-   same colour everywhere it appears. */
+/* A region badge, colored from the continent key so the same continent is the
+   same color everywhere it appears. */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -439,7 +439,7 @@
   margin: 7px 0;
 }
 .bar-row .name { font-size: var(--t-sm); }
-/* A region bar takes its continent's colour, so the bar on the dashboard and
+/* A region bar takes its continent's color, so the bar on the dashboard and
    the badge on that country's page are always the same hue. */
 .bar-row.tinted .bar-track > span { background: var(--con, var(--brass)); }
 .bar-row .pct {
@@ -830,7 +830,7 @@
    hover. Hover feedback is then given back by .map-choropleth, which brightens
    and outlines instead of recolouring.
 
-   Colour is never the only encoding here. The validator flags several slots
+   Color is never the only encoding here. The validator flags several slots
    below 3:1 against the page, which obliges relief: the legend carries a count
    per bucket, clicking a legend entry isolates that bucket, and clicking any
    country names its language outright. */
@@ -873,7 +873,7 @@
 .map-svg path.lf-nodata,
 .map-svg path.lg-other { fill: var(--cat-none); stroke: var(--cat-none); }
 
-/* Isolate mode: one bucket keeps its colour, everything else drops back to the
+/* Isolate mode: one bucket keeps its color, everything else drops back to the
    plain map fill, so no one has to tell eleven hues apart at once. */
 .map-svg.map-choropleth path.region-dim {
   fill: var(--land);

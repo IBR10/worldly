@@ -328,7 +328,7 @@ test('SRS weights unseen items moderately and missed items heavily', () => {
   assert.ok(wUnseen > wKnown, 'unseen items outrank freshly-mastered ones');
 });
 
-test('pickWeighted is deterministic with an injected rng and honours weights', () => {
+test('pickWeighted is deterministic with an injected rng and honors weights', () => {
   const pool = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
   const srs = { a: { box: 0, correct: 0, wrong: 4, lastSeen: 0 } }; // a is heavy
   // rng=0 should land in the first (heaviest) bucket.
@@ -527,7 +527,7 @@ test('answerMatches tolerates spacing differences from stripped punctuation', ()
 
 // ---- per-religion filter (World Religions "pick a faith") ------------------
 
-test('buildPool honours religionFilter for religion modes', () => {
+test('buildPool honors religionFilter for religion modes', () => {
   const pool = buildPool(data, { modes: ['religion_founder', 'religion_text'], religionFilter: 'Islam' });
   assert.equal(pool.length, 2, 'one item per religion mode, filtered to Islam');
   assert.ok(pool.every((p) => p.source.name === 'Islam'));

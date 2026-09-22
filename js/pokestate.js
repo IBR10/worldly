@@ -75,7 +75,7 @@ export function isMastered(store, id) {
   return !!rec && rec.s >= MASTER_AT;
 }
 
-/** Species answered wrong more often than right — the "keep practising" list. */
+/** Species answered wrong more often than right — the "keep practicing" list. */
 export function weakSpecies(store, dex, limit = 12) {
   return dex
     .filter((p) => {

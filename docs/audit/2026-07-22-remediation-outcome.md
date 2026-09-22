@@ -46,7 +46,7 @@ The linters were still worth adding. They were not worth the claim the audit mad
 
 ### E4. What the audit missed entirely: the free tier was the real deadline
 
-§3.8 criticised the KV rate limiter for being non-atomic — a correctness argument, graded High. That was right and far too small.
+§3.8 criticized the KV rate limiter for being non-atomic — a correctness argument, graded High. That was right and far too small.
 
 The audit reviewed the code and never checked the platform's limits. Cloudflare KV Free allows **1,000 writes/day** and **1 write/second/key**. A single 15-question Challenge run cost ~18 KV writes:
 
@@ -106,7 +106,7 @@ It survived review because the request *count* looks the same either way — a c
 | 3.11 | Analytics loads unconditionally | Medium | **Fixed** — see §9.5 below. |
 | 3.11 | Dropped connection scores the question wrong | — | **Partly fixed.** The run now degrades to a local engine with an honest toast, and the feedback screen no longer crashes on missing fields. The *current* question is still recorded as incorrect. |
 | 3.11 | `.flagkey-card` is a `div.card` that isn't interactive | — | **Open.** Cosmetic; no user-visible effect. |
-| 3.11 | Three identical Commons URL helpers | — | **Open.** Deliberate: collapsing them is churn with no behaviour change. |
+| 3.11 | Three identical Commons URL helpers | — | **Open.** Deliberate: collapsing them is churn with no behavior change. |
 
 ### §7 — Accessibility
 
@@ -141,13 +141,13 @@ It survived review because the request *count* looks the same either way — a c
 | Finding | Status |
 |---|---|
 | Line endings: all 58 tracked files permanently "modified" | **Fixed.** `.gitattributes`, no content rewrite needed — the index was already LF. |
-| Manual deploy; tested commit ≠ deployed artefact | **Fixed.** `deploy.yml` deploys `main` after tests, with a `deploy-production` concurrency group. |
-| CI configured for PRs that had never run | **Fixed.** Lint + 72 unit + 37 E2E on every PR; artefacts on failure. Four PRs have now run through it. |
+| Manual deploy; tested commit ≠ deployed artifact | **Fixed.** `deploy.yml` deploys `main` after tests, with a `deploy-production` concurrency group. |
+| CI configured for PRs that had never run | **Fixed.** Lint + 72 unit + 37 E2E on every PR; artifacts on failure. Four PRs have now run through it. |
 | No lint / format / types | **Partly.** ESLint (flat) + stylelint added. Prettier and `checkJs` deliberately skipped: reformatting 5,000 lines destroys `git blame` for no defect caught, and `checkJs` on untyped code produces noise that gets suppressed rather than fixed. |
 | No `SECURITY.md` / `CONTRIBUTING.md` / `.nvmrc` | **Fixed.** |
 | Quick win #26 — `<noscript>` | **Fixed (PR #7).** The page was previously blank without JS. |
 | Quick win #14 — `sitemap.xml` | **Dropped, deliberately.** With routing out of scope the site has exactly one URL. A one-entry sitemap tells Google nothing it cannot already see. Revisit with routing. |
-| Quick win #13 — 192/512/maskable icons | **Blocked.** No Pillow, no pip, no ImageMagick in this environment. Upscaling the 256 px source produces a blurry icon, and labelling a non-maskable icon `maskable` makes Android crop into the artwork. Both are worse than shipping one honest 256 px icon. |
+| Quick win #13 — 192/512/maskable icons | **Blocked.** No Pillow, no pip, no ImageMagick in this environment. Upscaling the 256 px source produces a blurry icon, and labeling a non-maskable icon `maskable` makes Android crop into the artwork. Both are worse than shipping one honest 256 px icon. |
 
 ---
 
@@ -258,7 +258,7 @@ The audit named four blockers. Three are cleared: the CI/CD gap, Flag Key perfor
 
 Partly, and the honest answer is that this document is weak evidence for it — the remediation was not done by the repository's author. What it does establish is that the gaps the audit identified were real, addressable, and correctly located: every fix landed roughly where the audit said it would, in roughly the time it estimated, except the two the audit got wrong.
 
-The audit's original read — *strong at hard problems, hasn't yet internalised production hygiene, six weeks of deliberate practice rather than six months* — is unchanged, and §1 of this document is the more useful artefact for the author to read than §5.
+The audit's original read — *strong at hard problems, hasn't yet internalised production hygiene, six weeks of deliberate practice rather than six months* — is unchanged, and §1 of this document is the more useful artifact for the author to read than §5.
 
 ---
 
@@ -276,4 +276,4 @@ Four things worth keeping from how this went.
 
 ---
 
-*Prepared 2026-07-22 against production at `f7d7c17`. Deterministic metrics re-verified today; timing metrics carried forward from the 2026-07-21/22 measurements and labelled as such, because today's host was too contended to produce honest numbers.*
+*Prepared 2026-07-22 against production at `f7d7c17`. Deterministic metrics re-verified today; timing metrics carried forward from the 2026-07-21/22 measurements and labeled as such, because today's host was too contended to produce honest numbers.*

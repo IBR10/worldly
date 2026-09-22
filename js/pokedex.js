@@ -100,9 +100,9 @@ export const TYPES = [
  * How much of the filtered set a practice session draws from.
  *
  * `all` is the whole set; the other two narrow it against your own record, which
- * is what turns "practise Gen 1" into "practise the 14 of Gen 1 I still can't
+ * is what turns "practice Gen 1" into "practice the 14 of Gen 1 I still can't
  * name". The predicate itself lives in the view because it needs the store —
- * this is only the vocabulary, so parsing and labelling stay DOM-free.
+ * this is only the vocabulary, so parsing and labeling stay DOM-free.
  */
 export const PRACTICE_SCOPES = {
   all: 'Everything in the set',
@@ -140,7 +140,7 @@ export function typeEffectiveness(chart, attackType, defenderTypes) {
  * Tiered like quiz.js's geoDistractors: same generation first, then anything
  * sharing a type, then the whole dex. A Gen 1 question whose three wrong answers
  * are all obscure Gen 9 species is guessable without knowing anything, so
- * plausible neighbours are what make the mode actually test recall.
+ * plausible neighbors are what make the mode actually test recall.
  */
 export function pokeDistractors(dex, target, n, rng = Math.random) {
   const tiers = [
@@ -232,7 +232,7 @@ export function defaultFilter() {
  * The filter lives in the URL rather than only in memory so that a scoped
  * session is a real, shareable, reloadable address: `/pokedex/quiz/poke_who?gen=1`
  * is "name a Kanto Pokémon from its silhouette", and it survives a refresh, a
- * bookmark and the Back button. It is also what makes "Practise again" repeat
+ * bookmark and the Back button. It is also what makes "Practice again" repeat
  * the set you chose instead of quietly widening to all 1025.
  *
  * Anything unrecognised is dropped rather than rejected — a hand-edited or stale

@@ -1,5 +1,5 @@
 // Unit tests for the router's one pure, load-bearing function: matchPath.
-// createRouter's other behaviour (history, clicks, popstate) is DOM-bound and
+// createRouter's other behavior (history, clicks, popstate) is DOM-bound and
 // is covered by tests/e2e/routing.spec.js instead.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';

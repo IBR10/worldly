@@ -339,7 +339,7 @@
       {
         "year": "1952–1960",
         "title": "The Mau Mau uprising",
-        "what": "A rebellion against British rule met with mass detention and torture; Britain apologised in 2013.",
+        "what": "A rebellion against British rule met with mass detention and torture; Britain apologized in 2013.",
         "wiki": "https://en.wikipedia.org/wiki/Mau_Mau_rebellion"
       },
       {
@@ -500,15 +500,15 @@
       {
         "name": "Ibn Battuta",
         "years": "1304–1369",
-        "field": "Traveller",
-        "why": "Travelled around 120,000 km across Africa, Asia and Europe — further than anyone before modern times.",
+        "field": "Traveler",
+        "why": "Traveled around 120,000 km across Africa, Asia and Europe — further than anyone before modern times.",
         "wiki": "https://en.wikipedia.org/wiki/Ibn_Battuta"
       },
       {
         "name": "Fatima al-Fihri",
         "years": "c. 800–880",
         "field": "Founder",
-        "why": "Founded al-Qarawiyyin in Fez, recognised as the oldest continuously operating university in the world.",
+        "why": "Founded al-Qarawiyyin in Fez, recognized as the oldest continuously operating university in the world.",
         "wiki": "https://en.wikipedia.org/wiki/Fatima_al-Fihri"
       },
       {
@@ -662,7 +662,7 @@
       {
         "icon": "🧵",
         "label": "Kente",
-        "text": "Handwoven Ashanti cloth where every pattern and colour carries a specific meaning."
+        "text": "Handwoven Ashanti cloth where every pattern and color carries a specific meaning."
       },
       {
         "icon": "🍲",
@@ -866,7 +866,7 @@
       {
         "icon": "🎶",
         "label": "Raï",
-        "text": "Born in Oran, blending Bedouin song with Western pop; it travelled to France and beyond."
+        "text": "Born in Oran, blending Bedouin song with Western pop; it traveled to France and beyond."
       },
       {
         "icon": "🏜️",
@@ -1278,7 +1278,7 @@
       {
         "icon": "🌊",
         "label": "The Niles",
-        "text": "The Blue and White Nile meet at Khartoum, visibly two different colours."
+        "text": "The Blue and White Nile meet at Khartoum, visibly two different colors."
       }
     ],
     "talkAbout": [
@@ -1337,7 +1337,7 @@
       {
         "year": "1983",
         "title": "Capital moved",
-        "what": "Houphouët-Boigny moved the capital to his home village of Yamoussoukro, though Abidjan remains the real centre.",
+        "what": "Houphouët-Boigny moved the capital to his home village of Yamoussoukro, though Abidjan remains the real center.",
         "wiki": "https://en.wikipedia.org/wiki/Yamoussoukro"
       },
       {
@@ -1442,7 +1442,7 @@
       {
         "year": "1300s–1591",
         "title": "Timbuktu",
-        "what": "A centre of scholarship with hundreds of thousands of manuscripts, many still preserved.",
+        "what": "A center of scholarship with hundreds of thousands of manuscripts, many still preserved.",
         "wiki": "https://en.wikipedia.org/wiki/Timbuktu"
       },
       {
@@ -1484,7 +1484,7 @@
       "The Mali Empire and Timbuktu's manuscripts.",
       "The joking-cousin tradition, which visitors find remarkable."
     ],
-    "avoid": "The conflict in the north and centre, and the current government's alignments, are dangerous topics."
+    "avoid": "The conflict in the north and center, and the current government's alignments, are dangerous topics."
   },
   {
     "iso2": "NE",
@@ -1547,7 +1547,7 @@
       {
         "year": "2023",
         "title": "The coup",
-        "what": "The army removed the elected president, and Niger joined its neighbours in the Alliance of Sahel States.",
+        "what": "The army removed the elected president, and Niger joined its neighbors in the Alliance of Sahel States.",
         "wiki": "https://en.wikipedia.org/wiki/2023_Nigerien_coup_d%27%C3%A9tat"
       }
     ],
@@ -1790,7 +1790,7 @@
         "name": "Angélique Kidjo",
         "years": "b. 1960",
         "field": "Musician",
-        "why": "Five Grammy Awards and one of the most recognisable African voices in the world.",
+        "why": "Five Grammy Awards and one of the most recognizable African voices in the world.",
         "wiki": "https://en.wikipedia.org/wiki/Ang%C3%A9lique_Kidjo"
       },
       {
@@ -1903,7 +1903,7 @@
         "name": "Tété-Michel Kpomassie",
         "years": "b. 1941",
         "field": "Writer",
-        "why": "Read a book about Greenland as a boy, spent years travelling there, and wrote a classic about it.",
+        "why": "Read a book about Greenland as a boy, spent years traveling there, and wrote a classic about it.",
         "wiki": "https://en.wikipedia.org/wiki/T%C3%A9t%C3%A9-Michel_Kpomassie"
       },
       {
@@ -2056,7 +2056,7 @@
       {
         "icon": "🎭",
         "label": "Masks",
-        "text": "Bwa and Bobo plank masks, several metres tall, danced at harvest and funerals."
+        "text": "Bwa and Bobo plank masks, several meters tall, danced at harvest and funerals."
       },
       {
         "icon": "🍲",
@@ -2194,7 +2194,7 @@
         "name": "Janani Luwum",
         "years": "1922–1977",
         "field": "Archbishop",
-        "why": "Criticised Idi Amin publicly and was killed for it; his statue stands at Westminster Abbey.",
+        "why": "Criticized Idi Amin publicly and was killed for it; his statue stands at Westminster Abbey.",
         "wiki": "https://en.wikipedia.org/wiki/Janani_Luwum"
       },
       {
@@ -2215,7 +2215,7 @@
         "name": "Joshua Cheptegei",
         "years": "b. 1996",
         "field": "Runner",
-        "why": "World record holder at 5,000 and 10,000 metres, and Olympic champion.",
+        "why": "World record holder at 5,000 and 10,000 meters, and Olympic champion.",
         "wiki": "https://en.wikipedia.org/wiki/Joshua_Cheptegei"
       }
     ],
@@ -2223,7 +2223,7 @@
       {
         "year": "1300s–1900s",
         "title": "The Kingdom of Buganda",
-        "what": "A centralised kingdom on Lake Victoria that still exists as a cultural institution.",
+        "what": "A centralized kingdom on Lake Victoria that still exists as a cultural institution.",
         "wiki": "https://en.wikipedia.org/wiki/Buganda"
       },
       {
@@ -2467,7 +2467,7 @@
       {
         "icon": "👨‍👩‍👧",
         "label": "Clan",
-        "text": "Clan lineage organises much of social life, and people can recite generations of ancestry."
+        "text": "Clan lineage organizes much of social life, and people can recite generations of ancestry."
       }
     ],
     "talkAbout": [
@@ -2566,7 +2566,7 @@
       {
         "icon": "🗣️",
         "label": "Nine groups",
-        "text": "Nine recognised ethnic groups and languages, with Tigrinya, Arabic and English in official use."
+        "text": "Nine recognized ethnic groups and languages, with Tigrinya, Arabic and English in official use."
       }
     ],
     "talkAbout": [
@@ -2604,7 +2604,7 @@
         "name": "Ayanleh Souleiman",
         "years": "b. 1992",
         "field": "Middle-distance runner",
-        "why": "World indoor champion and multiple medallist over 800 and 1500 metres.",
+        "why": "World indoor champion and multiple medallist over 800 and 1500 meters.",
         "wiki": "https://en.wikipedia.org/wiki/Ayanleh_Souleiman"
       },
       {
@@ -3106,7 +3106,7 @@
         "name": "Karinou",
         "years": "d. 1928",
         "field": "Resistance leader",
-        "why": "Led the Kongo-Wara rebellion against French forced labour across a huge area.",
+        "why": "Led the Kongo-Wara rebellion against French forced labor across a huge area.",
         "wiki": "https://en.wikipedia.org/wiki/Kongo-Wara_rebellion"
       }
     ],
@@ -3114,7 +3114,7 @@
       {
         "year": "1928–1931",
         "title": "The Kongo-Wara rebellion",
-        "what": "A large revolt against French forced labour, suppressed and long left out of colonial histories.",
+        "what": "A large revolt against French forced labor, suppressed and long left out of colonial histories.",
         "wiki": "https://en.wikipedia.org/wiki/Kongo-Wara_rebellion"
       },
       {
@@ -3160,7 +3160,7 @@
       {
         "icon": "💎",
         "label": "Resources",
-        "text": "Diamonds, gold and timber, whose control has fuelled much of the conflict."
+        "text": "Diamonds, gold and timber, whose control has fueled much of the conflict."
       }
     ],
     "talkAbout": [
@@ -3231,7 +3231,7 @@
       {
         "year": "2002",
         "title": "Peace",
-        "what": "Savimbi's death ended the war, and Angola began an oil-fuelled reconstruction boom.",
+        "what": "Savimbi's death ended the war, and Angola began an oil-fueled reconstruction boom.",
         "wiki": "https://en.wikipedia.org/wiki/Angolan_Civil_War"
       }
     ],
@@ -3411,7 +3411,7 @@
       {
         "year": "1885",
         "title": "The Bechuanaland Protectorate",
-        "what": "Three chiefs travelled to London to ask for British protection against the Boers and Rhodes.",
+        "what": "Three chiefs traveled to London to ask for British protection against the Boers and Rhodes.",
         "wiki": "https://en.wikipedia.org/wiki/Bechuanaland_Protectorate"
       },
       {
@@ -3693,7 +3693,7 @@
         "name": "Esther Phiri",
         "years": "b. 1983",
         "field": "Boxer",
-        "why": "A world champion who became one of Zambia's most recognisable sportspeople.",
+        "why": "A world champion who became one of Zambia's most recognizable sportspeople.",
         "wiki": "https://en.wikipedia.org/wiki/Esther_Phiri"
       },
       {
@@ -3843,7 +3843,7 @@
       {
         "icon": "🍲",
         "label": "Food",
-        "text": "Nsima with relish, and chambo — the lake fish that is the national favourite."
+        "text": "Nsima with relish, and chambo — the lake fish that is the national favorite."
       },
       {
         "icon": "🎭",
@@ -4090,7 +4090,7 @@
         "name": "Germano Almeida",
         "years": "b. 1945",
         "field": "Novelist",
-        "why": "Won the Camões Prize, the highest honour in Portuguese-language literature.",
+        "why": "Won the Camões Prize, the highest honor in Portuguese-language literature.",
         "wiki": "https://en.wikipedia.org/wiki/Germano_Almeida"
       },
       {
@@ -4619,7 +4619,7 @@
       {
         "year": "1974",
         "title": "Independence",
-        "what": "Portugal recognised Guinea-Bissau after the Carnation Revolution.",
+        "what": "Portugal recognized Guinea-Bissau after the Carnation Revolution.",
         "wiki": "https://en.wikipedia.org/wiki/Guinea-Bissau"
       }
     ],
@@ -4741,7 +4741,7 @@
       {
         "icon": "🎩",
         "label": "Mokorotlo",
-        "text": "The conical straw hat on the national flag, modelled on a mountain near Thaba Bosiu."
+        "text": "The conical straw hat on the national flag, modeled on a mountain near Thaba Bosiu."
       },
       {
         "icon": "🍲",
@@ -4754,7 +4754,7 @@
       "Pony trekking and the highlands.",
       "Moshoeshoe, who is genuinely revered."
     ],
-    "avoid": "Political instability, migrant labour in South African mines and HIV prevalence are all difficult topics."
+    "avoid": "Political instability, migrant labor in South African mines and HIV prevalence are all difficult topics."
   },
   {
     "iso2": "LR",
@@ -4924,7 +4924,7 @@
       {
         "icon": "🚂",
         "label": "The iron ore train",
-        "text": "Over two kilometres long, crossing the Sahara; locals ride free on top of the ore."
+        "text": "Over two kilometers long, crossing the Sahara; locals ride free on top of the ore."
       },
       {
         "icon": "📚",
@@ -4939,7 +4939,7 @@
       {
         "icon": "🎵",
         "label": "Ardin",
-        "text": "A harp played only by women, at the centre of Moorish griot music."
+        "text": "A harp played only by women, at the center of Moorish griot music."
       },
       {
         "icon": "🐟",
@@ -4948,7 +4948,7 @@
       }
     ],
     "talkAbout": [
-      "The iron ore train, which fascinates travellers.",
+      "The iron ore train, which fascinates travelers.",
       "Chinguetti and the desert libraries.",
       "Tea ritual and music."
     ],
@@ -5004,7 +5004,7 @@
       {
         "year": "1715–1810",
         "title": "Isle de France",
-        "what": "French rule brought sugar plantations and enslaved labour from Africa and Madagascar.",
+        "what": "French rule brought sugar plantations and enslaved labor from Africa and Madagascar.",
         "wiki": "https://en.wikipedia.org/wiki/Isle_de_France_(Mauritius)"
       },
       {
@@ -5266,7 +5266,7 @@
         "name": "Salva Kiir Mayardit",
         "years": "b. 1951",
         "field": "President",
-        "why": "South Sudan's first and so far only president, recognisable by his black cowboy hat.",
+        "why": "South Sudan's first and so far only president, recognizable by his black cowboy hat.",
         "wiki": "https://en.wikipedia.org/wiki/Salva_Kiir_Mayardit"
       },
       {
@@ -5280,7 +5280,7 @@
         "name": "Alek Wek",
         "years": "b. 1977",
         "field": "Model",
-        "why": "A refugee from the war who became one of the most recognisable models in the world.",
+        "why": "A refugee from the war who became one of the most recognizable models in the world.",
         "wiki": "https://en.wikipedia.org/wiki/Alek_Wek"
       },
       {
@@ -5341,7 +5341,7 @@
       {
         "icon": "🎶",
         "label": "Music",
-        "text": "Dinka ox songs, composed by young men in praise of their favourite cattle."
+        "text": "Dinka ox songs, composed by young men in praise of their favorite cattle."
       }
     ],
     "talkAbout": [
@@ -5425,12 +5425,12 @@
       {
         "icon": "⛺",
         "label": "Tents",
-        "text": "The khaima tent remains the centre of Sahrawi family life, including in the Algerian camps."
+        "text": "The khaima tent remains the center of Sahrawi family life, including in the Algerian camps."
       },
       {
         "icon": "👗",
         "label": "Melhfa",
-        "text": "The bright wrapped cloth worn by Sahrawi women, in colours that identify the wearer's mood and occasion."
+        "text": "The bright wrapped cloth worn by Sahrawi women, in colors that identify the wearer's mood and occasion."
       },
       {
         "icon": "🎵",

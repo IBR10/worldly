@@ -175,7 +175,7 @@ and the image remains `display: block`. **[measured]**
 - **Effort:** 15 min. **Priority: Medium**
 
 ### 3.4 `.pill .fire` is a descendant selector that never matches — **Low**
-`styles.css:168` `.pill .fire { color: var(--bad); }` vs markup `<span class="pill fire">` (`main.js:639, 698, 750, 912`). Computed colour of `.pill.fire` in a live quiz: `rgb(238,242,255)` — plain `--text`, not `--bad`. **[measured]** The streak pill has never been red. (Note `.pill .accent` on line 167 *is* correct — `<span class="accent">` really is a descendant. Easy mistake to make once you have both.)
+`styles.css:168` `.pill .fire { color: var(--bad); }` vs markup `<span class="pill fire">` (`main.js:639, 698, 750, 912`). Computed color of `.pill.fire` in a live quiz: `rgb(238,242,255)` — plain `--text`, not `--bad`. **[measured]** The streak pill has never been red. (Note `.pill .accent` on line 167 *is* correct — `<span class="accent">` really is a descendant. Easy mistake to make once you have both.)
 - **Fix:** `.pill.fire`. **Effort:** 1 min. **Priority: Low**
 
 ### 3.5 Flag Key: 251 images, no lazy-loading, no debounce, 1-second long tasks — **Critical (performance)**
@@ -195,7 +195,7 @@ Three compounding causes:
 ### 3.6 Map hit-testing is O(regions) with a forced layout per region — **High**
 `mapview.js:172-193` `regionAt()` iterates **every** `path[id]`, calling `isPointInFill()` and `getBBox()` on each, to find the smallest containing region.
 
-The intent is correct and well-documented (small regions like DC and Andorra are painted *under* larger neighbours, so `elementFromPoint` returns the wrong answer). The implementation costs 256 `isPointInFill` + 256 `getBBox` calls per click on the world map. `getBBox()` forces synchronous layout.
+The intent is correct and well-documented (small regions like DC and Andorra are painted *under* larger neighbors, so `elementFromPoint` returns the wrong answer). The implementation costs 256 `isPointInFill` + 256 `getBBox` calls per click on the world map. `getBBox()` forces synchronous layout.
 
 - **Fix:** precompute each path's bbox area **once** at map-mount time and cache it on the element (`el.__area`). Then use `elementFromPoint` first and only fall back to the full scan when the hit region contains smaller candidates. Or build a simple spatial index (grid buckets) at mount.
 - **Effort:** 2 h. **Priority: High** (this is the interaction cost on every single map answer, on the lowest-powered devices)
@@ -278,7 +278,7 @@ Three distinct problems, one of which is not a security issue but a **product bu
 | World map ready | 1,127 ms | Acceptable |
 | Mobile viewport overflow | `scrollWidth 401` vs `clientWidth 390` | **11 px horizontal scroll** |
 
-The cold-load story is genuinely strong and should be protected. **Every performance problem in this app is post-load interaction cost, not load cost.** That reframes the whole optimisation list.
+The cold-load story is genuinely strong and should be protected. **Every performance problem in this app is post-load interaction cost, not load cost.** That reframes the whole optimization list.
 
 ### Ranked by ROI
 
@@ -355,10 +355,10 @@ Problems, in the order a visitor hits them:
 **Typography** — one system stack, effectively three sizes (1.6rem / 1.05rem / 0.85rem), weights 600–800. No display face, no scale, no rhythm. The `h1` at 25.6 px is *smaller than the body copy on most marketing sites*. There is no typographic personality at all.
 → **Fix:** one characterful display face for `h1`/`.q-prompt`/`.score` (self-hosted, `font-display: swap`, subset — ~15 KB). Establish a real modular scale (1.250). Body stays system.
 
-**Colour** — `--primary: #4f8cff` (generic blue) carries everything; `--accent: #ffce54` (gold) appears almost nowhere (hover states, pronunciation text). The palette has no relationship to the subject matter.
+**Color** — `--primary: #4f8cff` (generic blue) carries everything; `--accent: #ffce54` (gold) appears almost nowhere (hover states, pronunciation text). The palette has no relationship to the subject matter.
 → **Fix:** commit to the gold as a genuine secondary — it's the more distinctive of the two and it reads as *maps, brass, old atlases*. Use it for XP/streak/achievement (the reward system) and keep blue purely for navigation/interactive affordances. One decision, large payoff.
 
-**Iconography** — emoji everywhere. Cheap to ship and it does convey warmth, but: rendering differs per OS, optical sizes are inconsistent (the 📅 renders as a full-colour "July 17" calendar next to a flat 🔁), and you've *already* had to work around it (`main.js:207-211` uses real flag images because Windows has no flag-emoji font). You've discovered the constraint and half-adopted the fix.
+**Iconography** — emoji everywhere. Cheap to ship and it does convey warmth, but: rendering differs per OS, optical sizes are inconsistent (the 📅 renders as a full-color "July 17" calendar next to a flat 🔁), and you've *already* had to work around it (`main.js:207-211` uses real flag images because Windows has no flag-emoji font). You've discovered the constraint and half-adopted the fix.
 → **Fix:** a small consistent SVG icon set (Lucide, ~1 KB per icon inlined) for structural UI. Keep emoji for content/personality (achievement toasts, crisis tiers) where the inconsistency doesn't hurt.
 
 **Visual hierarchy** — the single biggest miss. On home, the *dismissible onboarding note* and the *five equal cards* have the same visual weight. Nothing is primary.
@@ -391,7 +391,7 @@ At 390 px viewport: **30 of 51 US states are under 24 CSS px** in at least one d
 
 The exception for "essential" spatial targets is arguable for a map, but the *undisputed* failure is that there's no alternative path: no keyboard-accessible region list, no zoom-on-load, no hint that pinching is required, and the reverse "name it" MCQ modes aren't offered as a substitute.
 
-**Fix:** zoom-to-fit the target's neighbourhood on load; add a visible "pinch or use ＋ to zoom" hint on first map question; scale small-region hit areas by adding an invisible `stroke-width` halo (`stroke: transparent; stroke-width: 12; vector-effect: non-scaling-stroke` widens the hit area without changing the visual). **Effort: 4 h. Priority: Critical.**
+**Fix:** zoom-to-fit the target's neighborhood on load; add a visible "pinch or use ＋ to zoom" hint on first map question; scale small-region hit areas by adding an invisible `stroke-width` halo (`stroke: transparent; stroke-width: 12; vector-effect: non-scaling-stroke` widens the hit area without changing the visual). **Effort: 4 h. Priority: Critical.**
 
 ### 7.3 Focus on boot lands mid-page and skips the entire header — **Fail (2.4.3 Focus Order)** — **[measured]**
 `focusTitle()` runs on initial boot (`main.js:311`), focusing `.screen-title` with `tabindex="-1"`. Measured Tab order from a fresh load:
@@ -416,7 +416,7 @@ Home / Leaderboard / Theme are the **last** things a keyboard user reaches, afte
 
 | Issue | Location | Severity |
 |---|---|---|
-| `role="status" aria-live="assertive"` is contradictory — `role="status"` has an implicit `aria-live="polite"`; combining them is undefined behaviour across AT | `main.js:647, 714, 765, 924` | Medium — use `role="alert"`, or `aria-live="assertive"` alone |
+| `role="status" aria-live="assertive"` is contradictory — `role="status"` has an implicit `aria-live="polite"`; combining them is undefined behavior across AT | `main.js:647, 714, 765, 924` | Medium — use `role="alert"`, or `aria-live="assertive"` alone |
 | `<div id="brand" role="button" tabindex="0">` with hand-rolled Enter/Space handling instead of `<button>` | `index.html:28`, `main.js:1749-1751` | Medium — the platform element is free and correct |
 | No designed `:focus-visible` for `.btn`/`.card`/`.tab`/`.choice`; browser default only | `styles.css` | Medium |
 | No skip link | `index.html` | Medium |
@@ -424,7 +424,7 @@ Home / Leaderboard / Theme are the **last** things a keyboard user reaches, afte
 | Icon-only buttons rely on `title` + `aria-label` — correct — but the mid-quiz `✕` has only `title="Back to home"` and no `aria-label` | `main.js:636, 695, 747, 909` | Medium |
 | Achievement toasts fire into `aria-live="polite"` while the answer feedback fires `assertive` simultaneously — competing announcements | `index.html:39` + feedback regions | Low |
 | No `lang` attribute on foreign-language phrase text — a screen reader reads Japanese with an English voice | `main.js:1305-1319` | Medium — add `lang="${entry.langCode}"` on `.ph-local` / `.say-local` |
-| Colour contrast | `--muted #9aa7c7` on `--surface #18213a` ≈ 6.4:1; light theme `#5b6783` on `#fff` ≈ 5.6:1 | **Pass** |
+| Color contrast | `--muted #9aa7c7` on `--surface #18213a` ≈ 6.4:1; light theme `#5b6783` on `#fff` ≈ 5.6:1 | **Pass** |
 | `prefers-reduced-motion` | `styles.css:290` | **Pass — complete** |
 
 ---
@@ -495,9 +495,9 @@ XSS is correctly prevented (`esc()` at `main.js:1634`). The exposure is **brand 
 ### 9.5 Analytics loads before any consent gate — **Medium (compliance)**
 `analytics.js:10-20` is an IIFE that runs on import — Microsoft Clarity loads for every visitor, unconditionally, on first paint. Clarity performs **session recording and DOM capture**, not just event counting.
 
-The About screen (`main.js:351-355`) and README both describe this as "anonymous usage analytics (which screens and modes get used)". Clarity's default behaviour is broader than that description. For EU/UK visitors this is a GDPR/ePrivacy exposure: no consent banner, no opt-out, and no `Do Not Track` / `globalPrivacyControl` check.
+The About screen (`main.js:351-355`) and README both describe this as "anonymous usage analytics (which screens and modes get used)". Clarity's default behavior is broader than that description. For EU/UK visitors this is a GDPR/ePrivacy exposure: no consent banner, no opt-out, and no `Do Not Track` / `globalPrivacyControl` check.
 
-**Fix (minimum):** honour `navigator.globalPrivacyControl` and `navigator.doNotTrack` before loading; add an opt-out toggle in Profile; align the privacy copy with what Clarity actually records. **Fix (better):** replace Clarity with a cookieless, consent-exempt analytics product (Cloudflare Web Analytics is free, already on your platform, and needs no banner). That also removes 25.8 KB of third-party JS and the CSP error below.
+**Fix (minimum):** honor `navigator.globalPrivacyControl` and `navigator.doNotTrack` before loading; add an opt-out toggle in Profile; align the privacy copy with what Clarity actually records. **Fix (better):** replace Clarity with a cookieless, consent-exempt analytics product (Cloudflare Web Analytics is free, already on your platform, and needs no banner). That also removes 25.8 KB of third-party JS and the CSP error below.
 
 ### 9.6 A CSP violation fires on every single page load — **Low**
 **[measured]** — every load produces:
@@ -554,7 +554,7 @@ From `README.md:121-131`:
 > "a Cloudflare Pages project deployed by **direct upload**, not git integration — pushing to `main` runs the test suite in CI but does **not** publish the site."
 
 **Consequences:**
-1. **CI green means nothing.** The tested commit and the deployed artefact are unrelated. There is no mechanism preventing untested, uncommitted, or locally-modified code from being deployed.
+1. **CI green means nothing.** The tested commit and the deployed artifact are unrelated. There is no mechanism preventing untested, uncommitted, or locally-modified code from being deployed.
 2. **No deployment provenance.** Nothing records which commit is live.
 3. **No rollback path** beyond manually redeploying an older working tree.
 4. **Bus factor of one** — deployment lives entirely in one person's shell history.
@@ -628,7 +628,7 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 | **`site.webmanifest`** | **Weakest config file.** One 256×256 icon — Android's install prompt requires 192 and 512, and there is no `maskable` variant, so the icon will be letterboxed on Android. No `screenshots` (needed for the richer install UI). No `id`, no `orientation`, no `categories`. `theme_color: #0f1420` **does not match** the CSS `--bg: #0f1525` — a visible seam between the browser chrome and the page on installed PWAs. |
 | **`robots.txt`** | Functional, but no `Sitemap:` directive and no sitemap exists (§8). |
 | **`404.html`** | Correct: `noindex`, own lightweight CSS, links home. Note that `GET /api/session/start` returns this 404 page with `Content-Type: text/html` **[measured]** — an API path returning an HTML error page. Add a `onRequest` handler returning `405` JSON. |
-| **`.gitattributes`** | **Missing — and it is actively causing a problem.** `git status` on a clean checkout reports **every one of the 58 tracked text files as modified**, with `git diff` showing whole-file rewrites. Cause: the working tree has CRLF endings while the index has LF, and nothing normalises them. **[measured]** |
+| **`.gitattributes`** | **Missing — and it is actively causing a problem.** `git status` on a clean checkout reports **every one of the 58 tracked text files as modified**, with `git diff` showing whole-file rewrites. Cause: the working tree has CRLF endings while the index has LF, and nothing normalizes them. **[measured]** |
 | **Missing entirely** | `.gitattributes`, `tsconfig.json`, `eslint.config.js`, `.prettierrc`, `.editorconfig`, `.nvmrc`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `CODEOWNERS`, `.github/dependabot.yml`, `sitemap.xml`, `deploy.yml` |
 
 ### The line-ending problem deserves its own entry — **High**
@@ -637,7 +637,7 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 
 - **Why it matters:** `git status` is permanently noisy, so it stops being a signal. Real changes are invisible in the noise.
 - **Engineering impact:** one careless `git add -A` produces a ~5,000-line whitespace-only commit that destroys `git blame` across the entire repository. `git diff` is unusable for review. Any future contributor hits this on their first clone.
-- **Business impact:** if this project is ever handed over, audited, or opened to contributors, the version history is the primary artefact of engineering quality — and it is one commit away from being worthless.
+- **Business impact:** if this project is ever handed over, audited, or opened to contributors, the version history is the primary artifact of engineering quality — and it is one commit away from being worthless.
 - **Fix:**
   ```
   # .gitattributes
@@ -646,7 +646,7 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
   *.png binary
   *.ico binary
   ```
-  then `git add --renormalize . && git commit -m "chore: normalise line endings"` as a single isolated commit, and `git config core.autocrlf input`.
+  then `git add --renormalize . && git commit -m "chore: normalize line endings"` as a single isolated commit, and `git config core.autocrlf input`.
 - **Effort:** 20 min. **Priority: High** (trivial cost, and the downside is irreversible history damage)
 
 ---
@@ -668,13 +668,13 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 ### `js/quiz.js` (492 lines)
 **Purpose:** pure question-generation engine.
 **Assessment:** the best file in the repository. `geoDistractors()` (line 112) with its `normalize` hook is thoughtful, well-documented design. `answerMatches()` (line 145) handles diacritics, punctuation and spacing correctly. `sessionQuestionXp`/`challengeMultiplier` are deliberately self-contained so client and server agree — exactly right.
-**Problems:** `makeQuestion()` is a 180-line switch with per-mode special cases woven through the distractor logic — adding a mode means touching three places. `learnMoreFor()` (line 196) emits a **Google search URL** labelled "Culture Guide," which is filler dressed as a curated resource. No input validation — a malformed data record produces `undefined` in a prompt.
+**Problems:** `makeQuestion()` is a 180-line switch with per-mode special cases woven through the distractor logic — adding a mode means touching three places. `learnMoreFor()` (line 196) emits a **Google search URL** labeled "Culture Guide," which is filler dressed as a curated resource. No input validation — a malformed data record produces `undefined` in a prompt.
 **Recommendations:** move each mode to a `MODE_HANDLERS[mode] = { prompt, answer, distractors }` table so `MODES` becomes the single extension point. Replace or remove the Google-search link.
 **Priority:** Medium
 
 ### `js/state.js` (241 lines)
 **Purpose:** localStorage profile — the single source of truth for all progress.
-**Problems:** `saveProfile()` is called on **every single answer** — a full `JSON.stringify` of a profile whose `srs` and `missed` maps grow unbounded with play. A long-term player's profile will reach hundreds of KB, serialised synchronously on the main thread per question. `importProfile()` (line 89) validates only that `xp` is a number and `srs` is an object, then spreads arbitrary attacker-controlled JSON into the profile — a malicious export file can inject any field, including a forged `xp` for leaderboard submission. `profile.leaderboard` is capped at 10; `srs` and `missed` are capped at nothing.
+**Problems:** `saveProfile()` is called on **every single answer** — a full `JSON.stringify` of a profile whose `srs` and `missed` maps grow unbounded with play. A long-term player's profile will reach hundreds of KB, serialized synchronously on the main thread per question. `importProfile()` (line 89) validates only that `xp` is a number and `srs` is an object, then spreads arbitrary attacker-controlled JSON into the profile — a malicious export file can inject any field, including a forged `xp` for leaderboard submission. `profile.leaderboard` is capped at 10; `srs` and `missed` are capped at nothing.
 **Recommendations:** debounce/coalesce saves (or write on `visibilitychange`); validate imports against a schema; prune `srs` entries not seen in 180 days; version the profile and add a migration path (`version: 1` exists but is never checked).
 **Priority:** High
 
@@ -687,9 +687,9 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 
 ### `js/mapview.js` (255 lines)
 **Purpose:** the interactive map widget — SVG injection, pan/zoom/pinch, hit-testing, keyboard support.
-**Assessment:** the most impressive piece of engineering in the codebase. Pointer-event handling correctly distinguishes click / drag / pinch with a threshold. The smallest-region hit-test solves a real problem (nested regions painted under neighbours). Keyboard operability with `stopPropagation` to prevent feedback-skip is a bug that was found and fixed properly.
+**Assessment:** the most impressive piece of engineering in the codebase. Pointer-event handling correctly distinguishes click / drag / pinch with a threshold. The smallest-region hit-test solves a real problem (nested regions painted under neighbors). Keyboard operability with `stopPropagation` to prevent feedback-skip is a bug that was found and fixed properly.
 **Problems:** `regionAt()` is O(n) with a forced layout per region (§3.6). `svg.style.transform` on the root `<svg>` repaints the entire vector — transforming an inner `<g>` is cheaper. No zoom-to-fit on load for non-continent modes, which is what makes mobile unplayable (§7.2). No pinch/zoom affordance or hint. `focusIds` fitting runs in `requestAnimationFrame` with a comment explaining the assumption that `.el` is appended synchronously — correct today, fragile as a contract.
-**Recommendations:** cache bbox areas at mount; wrap paths in a `<g>` and transform that; auto-fit to the target region's neighbourhood on mobile; add transparent stroke halos to widen small hit areas.
+**Recommendations:** cache bbox areas at mount; wrap paths in a `<g>` and transform that; auto-fit to the target region's neighborhood on mobile; add transparent stroke halos to widen small hit areas.
 **Priority:** High
 
 ### `js/maps.js` (181 lines)
@@ -762,7 +762,7 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 
 ### `tests/engine.test.mjs` (568 lines) + `tests/maps.test.mjs` (221 lines)
 **Assessment:** 72 tests, all passing, no dependencies, fast (548 ms) **[measured]**. Well-written and readable.
-**Problems:** they test the 25% of the codebase that is already the most reliable. Zero coverage of `main.js`, the Functions, or any DOM behaviour. **Every defect in §3 lives in untested code.**
+**Problems:** they test the 25% of the codebase that is already the most reliable. Zero coverage of `main.js`, the Functions, or any DOM behavior. **Every defect in §3 lives in untested code.**
 **Recommendations:** add Playwright E2E covering the six core flows (start quiz → answer → feedback → results; map mode; Flag Key search; theme toggle; export/import; leaderboard load). Add Function tests via `wrangler dev`.
 **Priority:** High
 
@@ -772,7 +772,7 @@ No error tracking. No uptime monitoring. No Function logs or Logpush. No alertin
 **Priority:** High (a `0003` migration to `playerId` is required)
 
 ### `README.md`
-**Assessment:** genuinely above-average. Architecture diagram, extension guide, data-model notes, honest editorial disclaimers, credits with correct licence attribution (including the CC BY-NC constraint on the USA map — **note this legally prohibits commercial use of that asset**, which matters for any monetisation in §16).
+**Assessment:** genuinely above-average. Architecture diagram, extension guide, data-model notes, honest editorial disclaimers, credits with correct license attribution (including the CC BY-NC constraint on the USA map — **note this legally prohibits commercial use of that asset**, which matters for any monetisation in §16).
 **Problems:** says 48 tests (actual 72). Documents the manual-deploy footgun clearly but doesn't fix it. Doesn't link `docs/superpowers/`.
 **Priority:** Low
 
@@ -929,7 +929,7 @@ Ranked by expected business impact.
 
 ### Tier 1 — unlocks growth
 
-**1. URL routing + pre-rendered content pages.** ~240 indexable pages from data that already exists (§8). This is the only change in this document with a plausible path to 10× traffic. Everything else optimises a funnel that nothing is entering.
+**1. URL routing + pre-rendered content pages.** ~240 indexable pages from data that already exists (§8). This is the only change in this document with a plausible path to 10× traffic. Everything else optimizes a funnel that nothing is entering.
 *Impact: very high · Effort: 2 days routing + 2 days pre-render*
 
 **2. Shareable daily result (Wordle-style emoji grid).** Already in `ROADMAP.md` and still unbuilt. Wordle's entire growth engine was a copyable grid. You have a Daily Challenge with a deterministic seed — the hard part is done. Add a "Share" button producing `Worldly #412 — 8/10 🟩🟩🟥🟩... playworldly.pages.dev`.
@@ -940,7 +940,7 @@ Ranked by expected business impact.
 
 ### Tier 2 — retention
 
-**4. Streak calendar + streak-freeze.** Daily streaks are the single strongest retention mechanic in consumer learning apps (Duolingo's core loop). You track `lastDaily` and `dailyCompleted` already but never visualise them, and there's no loss-aversion device.
+**4. Streak calendar + streak-freeze.** Daily streaks are the single strongest retention mechanic in consumer learning apps (Duolingo's core loop). You track `lastDaily` and `dailyCompleted` already but never visualize them, and there's no loss-aversion device.
 *Impact: high · Effort: 1 day*
 
 **5. Push/email daily reminder.** Requires (3). The highest-leverage retention lever that exists for a daily-habit product.
@@ -957,7 +957,7 @@ Ranked by expected business impact.
 **8. Per-country deep-dive pages** (in `ROADMAP.md`). 156 pages combining flag, map position, capital, currency, language, religion, phrases, music, fun fact, history. Doubles as the strongest SEO asset available.
 *Impact: high (SEO) · Effort: 2 days after routing*
 
-**9. Landmark-recognition mode** (in `ROADMAP.md`). Needs an image pipeline and licence diligence — Wikimedia Commons has the assets but licences vary per file.
+**9. Landmark-recognition mode** (in `ROADMAP.md`). Needs an image pipeline and license diligence — Wikimedia Commons has the assets but licenses vary per file.
 *Impact: medium · Effort: 3 days*
 
 **10. Country → flag (reverse)** and **flag speed-round** (both in `ROADMAP.md`). Small additions to an engine that already supports flag choices via `map_country_flag`.
@@ -968,7 +968,7 @@ Weak candidates in a market where the closest comparables (Seterra, Worldle) are
 - **Most viable:** a "Worldly for Classrooms" tier — teacher dashboards, class leaderboards, assignment sets, progress export. Geography teachers are an underserved segment with real budget.
 - **Also viable:** one-time "supporter" unlock (custom themes, unlimited custom-study length, offline flag bundle). Low revenue, zero brand damage.
 - **Avoid:** ads. They would destroy the load-performance advantage that is currently one of the product's few genuine differentiators.
-- ⚠️ **Licence constraint:** `assets/maps/usa.svg` is **CC BY-NC 4.0** (non-commercial). Any commercial offering requires replacing that asset or licensing it. Resolve this *before* building a paid tier, not after.
+- ⚠️ **License constraint:** `assets/maps/usa.svg` is **CC BY-NC 4.0** (non-commercial). Any commercial offering requires replacing that asset or licensing it. Resolve this *before* building a paid tier, not after.
 
 ### Analytics
 Current tracking (`track()` calls) fires event names with no properties — you can see *that* a quiz started, never *which mode*, *what score*, or *whether it completed*. Add properties to every event, define a funnel (land → start → Q1 answered → completed → returned D1/D7), and instrument drop-off at each of the abandonment points in §5. Without this, every prioritisation decision after this document is guesswork.
@@ -1088,7 +1088,7 @@ A well-reasoned core wrapped in an unfinished production practice. The distribut
 **As a personal project on a free domain: yes, it's already there.**
 
 **As a company's product: no — pending four blockers.**
-1. CI/CD deploy pipeline (the tested artefact and the live artefact are unrelated).
+1. CI/CD deploy pipeline (the tested artifact and the live artifact are unrelated).
 2. URL routing (Back button exits the site; nothing is shareable).
 3. Flag Key performance (1.6 s freeze on a documented "live search").
 4. Map usability + WCAG 2.5.8 on mobile (30/51 targets under 24 px on the majority platform).
@@ -1127,7 +1127,7 @@ The distinguishing trait of a senior engineer isn't solving hard problems — it
 
 ## If I became tech lead tomorrow: the first five PRs
 
-### PR #0 — `chore: normalise line endings`
+### PR #0 — `chore: normalize line endings`
 `.gitattributes` with `* text=auto eol=lf`, then `git add --renormalize .` as one isolated commit.
 
 **Why before everything:** on a clean checkout `git status` currently reports all 58 tracked files as modified. Until that's fixed, no diff in any subsequent PR is readable and one `git add -A` permanently destroys `git blame`. Twenty minutes, and it has to be its own commit or it contaminates whatever it's bundled with.
@@ -1135,7 +1135,7 @@ The distinguishing trait of a senior engineer isn't solving hard problems — it
 ### PR #1 — `ci: deploy from GitHub Actions on green main`
 Add `deploy.yml`: test → `wrangler pages deploy . --project-name=playworldly` with `CLOUDFLARE_API_TOKEN` in secrets → tag the deployed commit. Add branch protection on `main` requiring a passing check. Delete the legacy git-connected Worker. Update the README.
 
-**Why first:** right now the tested commit and the deployed artefact have no relationship, there is no record of what's live, and there is no rollback. Every subsequent PR in this list is a change I'd have to hand-deploy from a laptop. This is two hours and it is the highest risk-reduction-per-hour available anywhere in this document. Nothing else should ship before it.
+**Why first:** right now the tested commit and the deployed artifact have no relationship, there is no record of what's live, and there is no rollback. Every subsequent PR in this list is a change I'd have to hand-deploy from a laptop. This is two hours and it is the highest risk-reduction-per-hour available anywhere in this document. Nothing else should ship before it.
 
 ### PR #2 — `chore: eslint, prettier, stylelint, checkJs`
 Flat ESLint config with `eslint-plugin-html`, Prettier, stylelint, and a `tsconfig.json` with `checkJs: true` and no emit. Wire all three into CI. Fix the fallout — which includes the duplicate `class`, the inline `onerror`, and `.pill .fire`.

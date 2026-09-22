@@ -1,7 +1,7 @@
 name: deploy
 
 # The site was previously deployed by hand (`wrangler pages deploy` from a
-# laptop), so the commit CI tested and the artefact actually serving traffic
+# laptop), so the commit CI tested and the artifact actually serving traffic
 # were unrelated -- no provenance, no rollback, and nothing stopping untested
 # local edits from going live. This workflow makes `main` the only thing that
 # ever reaches production.

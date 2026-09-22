@@ -98,7 +98,7 @@ async function mapLimit(items, limit, fn) {
 // ---- extraction --------------------------------------------------------------
 
 /**
- * Pick an English Pokédex entry and normalise it for display.
+ * Pick an English Pokédex entry and normalize it for display.
  *
  * The API's flavour text is wrapped for the original cartridge screens, so it
  * arrives full of hard newlines, form feeds and soft hyphens. Later entries are

@@ -104,7 +104,7 @@ Moldova, Montenegro, Mauritania, Mauritius, Maldives, Liberia, Lesotho, Syria,
 South Sudan, Tajikistan, Timor-Leste, Eswatini, Republic of Congo, Cape Verde,
 Comoros, Equatorial Guinea, Guinea-Bissau, São Tomé and Príncipe, Seychelles,
 the six Caribbean microstates, the five European microstates, Kosovo, Taiwan.
-Grey holes over Belarus and Syria would read as a bug.
+Gray holes over Belarus and Syria would read as a bug.
 
 This is also an explicit ROADMAP item ("full ~195 coverage remains a future
 stretch goal").
@@ -458,7 +458,7 @@ viewport:
 1. `/crises` — freshness line reads September 2026; open 3 current entries and
    confirm the newest paragraph describes 2026, and that every existing
    `/crises/:slug` link still resolves (titles unchanged).
-2. `/languages` — no unexplained grey over inhabited land; legend matches the
+2. `/languages` — no unexplained gray over inhabited land; legend matches the
    painted colors; hover still gives feedback on a painted country; toggle
    family↔language repaints without a visible reload; click a country → lands on
    its page.

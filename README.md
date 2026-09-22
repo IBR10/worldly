@@ -59,7 +59,7 @@ and smallest-region hit-testing so nested regions (DC, Andorra…) are always
 selectable.
 
 ### Explore
-- **Language Map** — the whole world coloured by what it actually speaks, either
+- **Language Map** — the whole world colored by what it actually speaks, either
   by language family or by the ten most widespread languages. Tap a key entry to
   show only that group; tap a country to open its page.
 - **Say Hello** — tap any country and get its greeting in the local script, with
@@ -92,7 +92,7 @@ Practice can be **scoped to a set** — one generation, one type, or only the
 species you have not registered yet or have missed before — so "learn every
 Kanto Pokémon" is a project with a number that moves. The scope lives in the
 URL (`/pokedex/quiz/poke_who?gen=1`), so a filtered session survives a reload,
-a bookmark and the Back button, and *Practise again* repeats the same set.
+a bookmark and the Back button, and *Practice again* repeats the same set.
 
 It is deliberately a **separate sandbox**: progress lives under its own
 `worldly_pokedex_v1` key and never touches your Worldly XP, level, streak,
@@ -179,9 +179,9 @@ bar, and the faint grid the cards sit on.
   correct, coral means wrong, and a separate ice-cyan is reserved for focus
   rings so they stay visible on brass controls. Everything else is a neutral —
   which is what leaves room for 198 flags and an eleven-hue language map.
-- **Colour that carries information.** A six-hue continent key runs across
+- **Color that carries information.** A six-hue continent key runs across
   region badges, the dashboard's continent bars and the country pages, so the
-  same continent is the same colour wherever it appears. The Language Map's
+  same continent is the same color wherever it appears. The Language Map's
   eleven-slot categorical palette is separate and unchanged.
 - **Progress you can see.** The home hero and the Statistics screen paint the
   world map with the countries you actually know, derived in `progressmap.js`

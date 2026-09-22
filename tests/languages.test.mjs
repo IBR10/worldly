@@ -146,7 +146,7 @@ test('regionClassesFor keys by lowercase svg id in family mode', () => {
 test('regionClassesFor gives each top language its own slot class', () => {
   const classes = regionClassesFor(rows, 'language', 2);
   assert.equal(classes.gb, 'lg-1');
-  assert.equal(classes.us, 'lg-1', 'colour follows the language, not the region');
+  assert.equal(classes.us, 'lg-1', 'color follows the language, not the region');
   assert.equal(classes.es, 'lg-2');
   assert.equal(classes.mx, 'lg-2');
   assert.equal(classes.fr, 'lg-other');

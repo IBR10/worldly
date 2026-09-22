@@ -2,14 +2,14 @@
 //
 // No DOM, no fetch, so this runs under plain `node --test` like quiz.js/maps.js.
 // It answers two questions: which bucket does a country belong to, and what CSS
-// class should its map region get. The colours themselves live in css/styles.css
+// class should its map region get. The colors themselves live in css/styles.css
 // as .lf-* / .lg-* rules, because the app has no build step and painting via a
-// class keeps both themes working with no JS colour table to keep in sync.
+// class keeps both themes working with no JS color table to keep in sync.
 //
 // Why bucket at all: data/greetings.json holds 120 distinct languages across 250
-// regions, and most appear exactly once. A colour per language is unreadable, so
+// regions, and most appear exactly once. A color per language is unreadable, so
 // the default view groups the 18 language-family values in the data into 11
-// display buckets, and the second view colours the ten most widespread
+// display buckets, and the second view colors the ten most widespread
 // individual languages plus "Other".
 
 /** Display buckets, in legend order. `families` lists the greetings.json values
@@ -21,7 +21,7 @@
  *  choropleth, where any two regions can end up side by side. Eleven slots clear
  *  the CVD target and the normal-vision floor; more slots do not. Groups that had
  *  to fold are folded along real lines (the East/Southeast Asian bucket is a
- *  geographic grouping and is labelled as one, not passed off as a family). */
+ *  geographic grouping and is labeled as one, not passed off as a family). */
 export const FAMILY_BUCKETS = [
   { key: 'romance', label: 'Romance', className: 'lf-romance', families: ['romance'] },
   { key: 'germanic', label: 'Germanic', className: 'lf-germanic', families: ['germanic'] },
@@ -39,7 +39,7 @@ export const FAMILY_BUCKETS = [
 /** Regions with no permanent population, and anything we cannot classify. */
 export const NO_DATA = { key: 'none', label: 'No permanent population', className: 'lf-nodata' };
 
-/** How many individual languages the "by language" view colours before Other. */
+/** How many individual languages the "by language" view colors before Other. */
 export const TOP_LANGUAGE_COUNT = 10;
 
 const BY_FAMILY = new Map();
@@ -92,9 +92,9 @@ export function topLanguages(rows, n = TOP_LANGUAGE_COUNT) {
 }
 
 /** Palette slots for the language view. Deliberately their own class names
- *  rather than reused .lf-* ones: colouring France with a class called
- *  "lf-germanic" would be a colour that works and a DOM that lies. css/styles.css
- *  aliases .lg-1 … .lg-10 onto the same colour tokens, so no new colours. */
+ *  rather than reused .lf-* ones: coloring France with a class called
+ *  "lf-germanic" would be a color that works and a DOM that lies. css/styles.css
+ *  aliases .lg-1 … .lg-10 onto the same color tokens, so no new colors. */
 const LANGUAGE_CLASSES = Array.from({ length: TOP_LANGUAGE_COUNT }, (_, i) => `lg-${i + 1}`);
 const LANGUAGE_OTHER = 'lg-other';
 

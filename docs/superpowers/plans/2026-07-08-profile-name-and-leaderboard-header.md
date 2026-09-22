@@ -320,17 +320,17 @@ git commit -m "Extract leaderboard into its own screen, reachable from the heade
 - [ ] **Step 1: Confirm the full list of British spellings in the repo**
 
 ```bash
-cd ~/github/worldly && grep -rniE "\b(colour|favour|organis|practise|practised|practising|licence|centre|behaviour|analyse|customis|recognis|categoris|apologis|travelling|travelled|modelling|modelled|labelled|programme|defence|offence|honour|neighbour|neighbours|grey|fulfil|artefact|whilst|amongst)\b" --include="*.md" --include="*.js" --include="*.html" --include="*.json" --include="*.css" .
+cd ~/github/worldly && grep -rniE "\b(color|favour|organis|practice|practiced|practicing|license|center|behavior|analyze|customis|recognis|categoris|apologis|traveling|traveled|modeling|modeled|labeled|program|defense|offense|honor|neighbor|neighbors|gray|fulfil|artifact|while|among)\b" --include="*.md" --include="*.js" --include="*.html" --include="*.json" --include="*.css" .
 ```
 
-Expected output (5 lines — the `data/crises.json` "Defence Forces" match, if any, is a proper noun and must be left alone; confirm it's not in this list before proceeding, since the grep above doesn't include "defence forces" as a standalone match target beyond generic `defence`):
+Expected output (5 lines — the `data/crises.json` "Defense Forces" match, if any, is a proper noun and must be left alone; confirm it's not in this list before proceeding, since the grep above doesn't include "defense forces" as a standalone match target beyond generic `defense`):
 
 ```
-README.md:48:| **Review Missed** | Practise exactly what you got wrong |
-ROADMAP.md:58:- [ ] Per-country deep-dive study pages (population, currency, neighbours…).
-js/mapview.js:167:  // larger neighbour (e.g. DC under Maryland, Andorra under France, Guanajuato
-js/mapview.js:218:  // a region, Enter/Space picks it, mirroring the click/hit-test behaviour.
-js/main.js:757:// quiz modes. Map-mode misses (ids like "map_us:Texas") are practised by
+README.md:48:| **Review Missed** | Practice exactly what you got wrong |
+ROADMAP.md:58:- [ ] Per-country deep-dive study pages (population, currency, neighbors…).
+js/mapview.js:167:  // larger neighbor (e.g. DC under Maryland, Andorra under France, Guanajuato
+js/mapview.js:218:  // a region, Enter/Space picks it, mirroring the click/hit-test behavior.
+js/main.js:757:// quiz modes. Map-mode misses (ids like "map_us:Texas") are practiced by
 ```
 
 If `data/crises.json`'s "People's Defence Forces" also matches your grep, exclude it manually — do not edit that file. It's a real organization's proper name, not a spelling style choice.
@@ -340,7 +340,7 @@ If `data/crises.json`'s "People's Defence Forces" also matches your grep, exclud
 Change line 48 from:
 
 ```
-| **Review Missed** | Practise exactly what you got wrong |
+| **Review Missed** | Practice exactly what you got wrong |
 ```
 
 to:
@@ -354,7 +354,7 @@ to:
 Change line 58 from:
 
 ```
-- [ ] Per-country deep-dive study pages (population, currency, neighbours…).
+- [ ] Per-country deep-dive study pages (population, currency, neighbors…).
 ```
 
 to:
@@ -368,7 +368,7 @@ to:
 Change line 167 from:
 
 ```
-  // larger neighbour (e.g. DC under Maryland, Andorra under France, Guanajuato
+  // larger neighbor (e.g. DC under Maryland, Andorra under France, Guanajuato
 ```
 
 to:
@@ -380,7 +380,7 @@ to:
 Change line 218 from:
 
 ```
-  // a region, Enter/Space picks it, mirroring the click/hit-test behaviour.
+  // a region, Enter/Space picks it, mirroring the click/hit-test behavior.
 ```
 
 to:
@@ -394,7 +394,7 @@ to:
 Change line 757 from:
 
 ```
-// quiz modes. Map-mode misses (ids like "map_us:Texas") are practised by
+// quiz modes. Map-mode misses (ids like "map_us:Texas") are practiced by
 ```
 
 to:
@@ -406,10 +406,10 @@ to:
 - [ ] **Step 6: Re-run the grep to confirm only the proper noun remains (if it matched at all)**
 
 ```bash
-cd ~/github/worldly && grep -rniE "\b(colour|favour|organis|practise|practised|practising|licence|centre|behaviour|analyse|customis|recognis|categoris|apologis|travelling|travelled|modelling|modelled|labelled|programme|defence|offence|honour|neighbour|neighbours|grey|fulfil|artefact|whilst|amongst)\b" --include="*.md" --include="*.js" --include="*.html" --include="*.json" --include="*.css" .
+cd ~/github/worldly && grep -rniE "\b(color|favour|organis|practice|practiced|practicing|license|center|behavior|analyze|customis|recognis|categoris|apologis|traveling|traveled|modeling|modeled|labeled|program|defense|offense|honor|neighbor|neighbors|gray|fulfil|artifact|while|among)\b" --include="*.md" --include="*.js" --include="*.html" --include="*.json" --include="*.css" .
 ```
 
-Expected: either no output, or only the `data/crises.json` "Defence Forces" line (untouched).
+Expected: either no output, or only the `data/crises.json` "Defense Forces" line (untouched).
 
 - [ ] **Step 7: Run the test suite (regression check — these are comment/copy-only edits, but confirm nothing else broke)**
 

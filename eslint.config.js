@@ -50,7 +50,7 @@ export default [
     },
     rules: {
       // The only control-character classes in this codebase are the deliberate
-      // name sanitisers in functions/api/{xp,session/finish}.js, where matching
+      // name sanitizers in functions/api/{xp,session/finish}.js, where matching
       // control characters is the entire point.
       'no-control-regex': 'off',
       eqeqeq: ['error', 'always', { null: 'ignore' }],

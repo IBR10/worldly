@@ -8,7 +8,7 @@
 //
 // Why not emoji, which the rest of the app still uses: emoji render differently
 // on every platform (Windows has no flag emoji at all), cannot take the brand's
-// colour, and are the single biggest reason the old header read as assembled
+// color, and are the single biggest reason the old header read as assembled
 // from defaults rather than designed. Emoji stay where they are *content* —
 // the mode cards, the culture grid, the achievements — and are gone from the
 // chrome, where they were standing in for an icon set that did not exist.
@@ -247,7 +247,7 @@ const PATHS = {
   bolt: '<path d="M13.4 3 5.6 13.4h5.2L10.6 21l7.8-10.4h-5.2Z"/>',
   close: '<path d="M6.2 6.2l11.6 11.6M17.8 6.2 6.2 17.8"/>',
   // Pronunciation: a speaker with two arcs, replacing the 🔊 that rendered at a
-  // different size and colour on every platform.
+  // different size and color on every platform.
   speaker:
     '<path d="M4 9.4h3.2L12 5.6v12.8L7.2 14.6H4Z"/>' +
     '<path d="M15.6 9.6a3.4 3.4 0 0 1 0 4.8"/>' +

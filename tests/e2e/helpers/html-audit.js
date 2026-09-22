@@ -1,6 +1,6 @@
 // Structural checks over the markup the app actually renders.
 //
-// Why raw strings and not the DOM: `outerHTML` is re-serialised from the parsed
+// Why raw strings and not the DOM: `outerHTML` is re-serialized from the parsed
 // DOM, and the HTML parser silently drops a repeated attribute. By the time
 // markup reaches the DOM, `<button class="btn" class="btn danger">` has already
 // become `class="btn"` -- the defect is invisible. So we capture every string

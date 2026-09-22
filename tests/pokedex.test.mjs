@@ -253,7 +253,7 @@ test('matchup questions do not register a species', () => {
   if (q.mode === 'poke_matchup') assert.equal(q.monId, null);
 });
 
-test('distractors are never the target and are drawn from plausible neighbours', () => {
+test('distractors are never the target and are drawn from plausible neighbors', () => {
   const target = dex.find((p) => p.name === 'Charizard');
   const picks = pokeDistractors(dex, target, 3, rngFrom(9));
   assert.equal(picks.length, 3);

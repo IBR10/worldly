@@ -5,7 +5,7 @@
       { "name": "Abraham Lincoln", "years": "1809–1865", "field": "President", "why": "Held the country together through civil war and ended slavery; assassinated five days after it ended.", "wiki": "https://en.wikipedia.org/wiki/Abraham_Lincoln" },
       { "name": "Martin Luther King Jr.", "years": "1929–1968", "field": "Civil rights leader", "why": "Led the movement that dismantled legal segregation, and made non-violent protest a global template.", "wiki": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr." },
       { "name": "Louis Armstrong", "years": "1901–1971", "field": "Musician", "why": "Turned jazz from ensemble music into an art of the individual soloist, and changed all popular music after him.", "wiki": "https://en.wikipedia.org/wiki/Louis_Armstrong" },
-      { "name": "Toni Morrison", "years": "1931–2019", "field": "Novelist", "why": "Nobel laureate whose work put Black American interior life at the centre of the literature.", "wiki": "https://en.wikipedia.org/wiki/Toni_Morrison" },
+      { "name": "Toni Morrison", "years": "1931–2019", "field": "Novelist", "why": "Nobel laureate whose work put Black American interior life at the center of the literature.", "wiki": "https://en.wikipedia.org/wiki/Toni_Morrison" },
       { "name": "Thomas Edison", "years": "1847–1931", "field": "Inventor", "why": "1,093 patents, and the industrial research lab itself may have been his most consequential invention.", "wiki": "https://en.wikipedia.org/wiki/Thomas_Edison" }
     ],
     "events": [
@@ -61,7 +61,7 @@
   {
     "iso2": "MX",
     "people": [
-      { "name": "Frida Kahlo", "years": "1907–1954", "field": "Painter", "why": "Turned her own pain and identity into the most recognisable body of self-portraits in modern art.", "wiki": "https://en.wikipedia.org/wiki/Frida_Kahlo" },
+      { "name": "Frida Kahlo", "years": "1907–1954", "field": "Painter", "why": "Turned her own pain and identity into the most recognizable body of self-portraits in modern art.", "wiki": "https://en.wikipedia.org/wiki/Frida_Kahlo" },
       { "name": "Benito Juárez", "years": "1806–1872", "field": "President", "why": "A Zapotec shepherd who became president, separated church and state, and defeated a French emperor.", "wiki": "https://en.wikipedia.org/wiki/Benito_Ju%C3%A1rez" },
       { "name": "Octavio Paz", "years": "1914–1998", "field": "Poet and essayist", "why": "The Labyrinth of Solitude is still the book Mexicans argue with about their own identity; Nobel 1990.", "wiki": "https://en.wikipedia.org/wiki/Octavio_Paz" },
       { "name": "Diego Rivera", "years": "1886–1957", "field": "Muralist", "why": "Put Mexican history on public walls at enormous scale and made muralism a political movement.", "wiki": "https://en.wikipedia.org/wiki/Diego_Rivera" },
@@ -78,7 +78,7 @@
       { "icon": "🌽", "label": "Food", "text": "Corn, chilli and beans across thirty regional cuisines; Mexican cooking is UNESCO-listed." },
       { "icon": "👨‍👩‍👧", "label": "Family", "text": "Extended family is the default social unit, and Sunday lunch is close to obligatory." },
       { "icon": "🎺", "label": "Music", "text": "Mariachi from Jalisco, banda from Sinaloa, son jarocho from Veracruz — regional and fiercely defended." },
-      { "icon": "🗣️", "label": "Language", "text": "68 Indigenous languages are recognised; Nahuatl gave English chocolate, tomato and avocado." }
+      { "icon": "🗣️", "label": "Language", "text": "68 Indigenous languages are recognized; Nahuatl gave English chocolate, tomato and avocado." }
     ],
     "talkAbout": [
       "Food, and which region does which dish properly.",
@@ -172,7 +172,7 @@
       "Wildlife and national parks.",
       "Coffee, and the region it comes from."
     ],
-    "avoid": "Ticos dislike being lumped in with their neighbours' conflicts. Nicaraguan immigration is a touchy domestic subject."
+    "avoid": "Ticos dislike being lumped in with their neighbors' conflicts. Nicaraguan immigration is a touchy domestic subject."
   },
   {
     "iso2": "PA",
@@ -206,7 +206,7 @@
   {
     "iso2": "JM",
     "people": [
-      { "name": "Bob Marley", "years": "1945–1981", "field": "Musician", "why": "Made reggae a global language and remains one of the most recognised figures on earth.", "wiki": "https://en.wikipedia.org/wiki/Bob_Marley" },
+      { "name": "Bob Marley", "years": "1945–1981", "field": "Musician", "why": "Made reggae a global language and remains one of the most recognized figures on earth.", "wiki": "https://en.wikipedia.org/wiki/Bob_Marley" },
       { "name": "Marcus Garvey", "years": "1887–1940", "field": "Activist", "why": "Built the largest Black mass movement in history and shaped Pan-Africanism and Rastafari.", "wiki": "https://en.wikipedia.org/wiki/Marcus_Garvey" },
       { "name": "Usain Bolt", "years": "b. 1986", "field": "Sprinter", "why": "Eight Olympic golds and world records that still stand — the fastest human ever timed.", "wiki": "https://en.wikipedia.org/wiki/Usain_Bolt" },
       { "name": "Nanny of the Maroons", "years": "c. 1686–1733", "field": "Maroon leader", "why": "Led escaped enslaved people against the British and is Jamaica's only national heroine.", "wiki": "https://en.wikipedia.org/wiki/Nanny_of_the_Maroons" },
@@ -222,7 +222,7 @@
       { "icon": "🎵", "label": "Music", "text": "Ska, rocksteady, reggae, dub and dancehall all came from one island in about twenty years." },
       { "icon": "🏃", "label": "Sprinting", "text": "A country of under three million dominates world sprinting; Champs, the school athletics meet, fills a stadium." },
       { "icon": "🔥", "label": "Food", "text": "Jerk seasoning was developed by the Maroons; ackee and saltfish is the national dish." },
-      { "icon": "🗣️", "label": "Patois", "text": "Jamaican Patois is a language in its own right, and its rhythm has travelled worldwide." },
+      { "icon": "🗣️", "label": "Patois", "text": "Jamaican Patois is a language in its own right, and its rhythm has traveled worldwide." },
       { "icon": "🦁", "label": "Rastafari", "text": "A faith and movement born in 1930s Jamaica, with real theology behind the imagery." }
     ],
     "talkAbout": [
@@ -309,7 +309,7 @@
       { "icon": "🫓", "label": "Pupusas", "text": "Stuffed corn flatbreads with curtido — the national dish, with its own national day." },
       { "icon": "🏄", "label": "Surfing", "text": "El Tunco and Punta Roca have some of the best right-hand point breaks in the Americas." },
       { "icon": "🌋", "label": "Landscape", "text": "The Land of Volcanoes: over twenty of them in a country the size of Wales." },
-      { "icon": "🎨", "label": "La Palma", "text": "Fernando Llort's naïf style turned a whole town into an artisan centre." },
+      { "icon": "🎨", "label": "La Palma", "text": "Fernando Llort's naïf style turned a whole town into an artisan center." },
       { "icon": "🌎", "label": "Diaspora", "text": "Roughly a quarter of Salvadorans live abroad, and remittances are a fifth of the economy." }
     ],
     "talkAbout": [
@@ -325,7 +325,7 @@
       { "name": "George Cadle Price", "years": "1919–2011", "field": "Prime minister", "why": "Led Belize to independence in 1981 and is called the father of the nation.", "wiki": "https://en.wikipedia.org/wiki/George_Price" },
       { "name": "Andy Palacio", "years": "1960–2008", "field": "Musician", "why": "His album Wátina brought Garífuna music to the world just before he died at 47.", "wiki": "https://en.wikipedia.org/wiki/Andy_Palacio" },
       { "name": "Zee Edgell", "years": "1940–2020", "field": "Novelist", "why": "Beka Lamb was the first widely read Belizean novel and is taught across the Caribbean.", "wiki": "https://en.wikipedia.org/wiki/Zee_Edgell" },
-      { "name": "Antonio Soberanis Gómez", "years": "1897–1975", "field": "Labour leader", "why": "Led the 1930s workers' movement that began the road to self-government.", "wiki": "https://en.wikipedia.org/wiki/Antonio_Soberanis_G%C3%B3mez" },
+      { "name": "Antonio Soberanis Gómez", "years": "1897–1975", "field": "Labor leader", "why": "Led the 1930s workers' movement that began the road to self-government.", "wiki": "https://en.wikipedia.org/wiki/Antonio_Soberanis_G%C3%B3mez" },
       { "name": "Marion Jones", "years": "1884–1965", "field": "Politician", "why": "An early campaigner for Belizean self-rule and constitutional reform.", "wiki": "https://en.wikipedia.org/wiki/Belize" }
     ],
     "events": [
@@ -395,7 +395,7 @@
     "culture": [
       { "icon": "🎨", "label": "Art", "text": "Haitian painting and metal sculpture, especially from Croix-des-Bouquets, are collected worldwide." },
       { "icon": "🥁", "label": "Music", "text": "Kompa is the national dance music; rara bands parade through the streets at Easter." },
-      { "icon": "🕯️", "label": "Vodou", "text": "An officially recognised religion with a full theology, not the horror-film version." },
+      { "icon": "🕯️", "label": "Vodou", "text": "An officially recognized religion with a full theology, not the horror-film version." },
       { "icon": "🍲", "label": "Food", "text": "Griot with pikliz, and soup joumou — pumpkin soup eaten every 1 January to mark independence." },
       { "icon": "🗣️", "label": "Kreyòl", "text": "Haitian Creole is spoken by everyone and is co-official with French." }
     ],
@@ -455,7 +455,7 @@
       { "icon": "🎭", "label": "Carnival", "text": "Two days of mas before Lent, starting with J'ouvert in mud and paint before dawn." },
       { "icon": "🎶", "label": "Music", "text": "Calypso, soca and chutney soca, the last blending Indian and Caribbean traditions." },
       { "icon": "🍛", "label": "Food", "text": "Doubles for breakfast, roti, bake and shark, and pelau — Indian, African and Creole on one island." },
-      { "icon": "🛢️", "label": "Economy", "text": "Oil and gas rather than tourism, which makes it unlike most of its neighbours." }
+      { "icon": "🛢️", "label": "Economy", "text": "Oil and gas rather than tourism, which makes it unlike most of its neighbors." }
     ],
     "talkAbout": [
       "Carnival, and whether they play mas.",
@@ -509,7 +509,7 @@
       { "year": "2021", "title": "Becoming a republic", "what": "Barbados removed the British monarch as head of state and installed its own president.", "wiki": "https://en.wikipedia.org/wiki/Barbados" }
     ],
     "culture": [
-      { "icon": "🥃", "label": "Rum", "text": "Rum was invented here; Mount Gay has been distilling since 1703 and rum shops are the social centre of every village." },
+      { "icon": "🥃", "label": "Rum", "text": "Rum was invented here; Mount Gay has been distilling since 1703 and rum shops are the social center of every village." },
       { "icon": "🏏", "label": "Cricket", "text": "Kensington Oval is a place of pilgrimage, and Barbados has produced West Indies greats out of all proportion." },
       { "icon": "🎭", "label": "Crop Over", "text": "A harvest festival turned into a summer carnival, ending in Grand Kadooment." },
       { "icon": "🐟", "label": "Food", "text": "Flying fish and cou-cou is the national dish; Oistins on a Friday night is a fish fry the whole island attends." },
@@ -532,7 +532,7 @@
       { "name": "Chief Charles Williams", "years": "b. 1950s", "field": "Kalinago leader", "why": "Long-serving chief of the Kalinago Territory, and a defender of Indigenous land rights.", "wiki": "https://en.wikipedia.org/wiki/Kalinago_Territory" }
     ],
     "events": [
-      { "year": "1493–1763", "title": "Kalinago resistance", "what": "Kalinago defence kept Europeans off the island for 250 years longer than its neighbours.", "wiki": "https://en.wikipedia.org/wiki/Island_Caribs" },
+      { "year": "1493–1763", "title": "Kalinago resistance", "what": "Kalinago defense kept Europeans off the island for 250 years longer than its neighbors.", "wiki": "https://en.wikipedia.org/wiki/Island_Caribs" },
       { "year": "1903", "title": "The Carib Reserve", "what": "Britain set aside land that is now the Kalinago Territory, the last Indigenous Caribbean territory.", "wiki": "https://en.wikipedia.org/wiki/Kalinago_Territory" },
       { "year": "1978", "title": "Independence", "what": "Dominica left British rule, then survived a hurricane and two coup attempts in its first years.", "wiki": "https://en.wikipedia.org/wiki/Dominica" },
       { "year": "2017", "title": "Hurricane Maria", "what": "Destroyed most of the island's buildings and crops; Dominica set out to become the first climate-resilient nation.", "wiki": "https://en.wikipedia.org/wiki/Hurricane_Maria" }
@@ -591,7 +591,7 @@
     ],
     "events": [
       { "year": "1623", "title": "The mother colony", "what": "St Kitts was the first English Caribbean colony, and the base for settling several others.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts" },
-      { "year": "1690s", "title": "Brimstone Hill", "what": "Enslaved labourers built a fortress called the Gibraltar of the West Indies, now World Heritage-listed.", "wiki": "https://en.wikipedia.org/wiki/Brimstone_Hill_Fortress_National_Park" },
+      { "year": "1690s", "title": "Brimstone Hill", "what": "Enslaved laborers built a fortress called the Gibraltar of the West Indies, now World Heritage-listed.", "wiki": "https://en.wikipedia.org/wiki/Brimstone_Hill_Fortress_National_Park" },
       { "year": "1983", "title": "Independence", "what": "St Kitts and Nevis became the newest sovereign state in the Americas, and remains the smallest.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis" },
       { "year": "2005", "title": "The end of sugar", "what": "After 350 years, the sugar industry closed, and the economy turned to tourism and citizenship sales.", "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis" }
     ],
@@ -607,7 +607,7 @@
       "Brimstone Hill and the island's forts.",
       "Kim Collins and athletics."
     ],
-    "avoid": "The Nevis secession question is live politics. Citizenship-by-investment gets criticised abroad and locals are tired of it."
+    "avoid": "The Nevis secession question is live politics. Citizenship-by-investment gets criticized abroad and locals are tired of it."
   },
   {
     "iso2": "LC",
@@ -615,7 +615,7 @@
       { "name": "Derek Walcott", "years": "1930–2017", "field": "Poet", "why": "Nobel laureate in 1992, whose Omeros transplants Homer to a St Lucian fishing village.", "wiki": "https://en.wikipedia.org/wiki/Derek_Walcott" },
       { "name": "Arthur Lewis", "years": "1915–1991", "field": "Economist", "why": "The first Black person to win a Nobel in a field other than peace, for development economics.", "wiki": "https://en.wikipedia.org/wiki/W._Arthur_Lewis" },
       { "name": "John Compton", "years": "1925–2007", "field": "Prime minister", "why": "Led St Lucia to independence and served as prime minister across four decades.", "wiki": "https://en.wikipedia.org/wiki/John_Compton_(politician)" },
-      { "name": "Julien Alfred", "years": "b. 2001", "field": "Sprinter", "why": "Won the Olympic 100 m in 2024 — St Lucia's first Olympic medal of any colour.", "wiki": "https://en.wikipedia.org/wiki/Julien_Alfred" },
+      { "name": "Julien Alfred", "years": "b. 2001", "field": "Sprinter", "why": "Won the Olympic 100 m in 2024 — St Lucia's first Olympic medal of any color.", "wiki": "https://en.wikipedia.org/wiki/Julien_Alfred" },
       { "name": "Dunstan St Omer", "years": "1927–2015", "field": "Painter", "why": "Designed the national flag and painted the altarpieces in churches across the island.", "wiki": "https://en.wikipedia.org/wiki/Dunstan_St_Omer" }
     ],
     "events": [

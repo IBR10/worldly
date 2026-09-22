@@ -435,7 +435,7 @@ function progressPanel() {
       </div>`).join('')}
 
     ${weak.length ? `
-      <h2 class="mt-18">Keep practising</h2>
+      <h2 class="mt-18">Keep practicing</h2>
       <p class="screen-sub">You have missed these more often than you have got them right.</p>
       <div class="dex-grid">
         ${weak.map((p) => dexCard(p, getPoke(), true)).join('')}
@@ -702,7 +702,7 @@ function finishPokeQuiz() {
     ${done.registered.length ? `<p class="callout mt-18">Added to your dex: ${esc(done.registered.join(', '))}.</p>` : ''}
 
     <div class="btn-row mt-18">
-      <button class="btn primary" id="againPoke">Practise again</button>
+      <button class="btn primary" id="againPoke">Practice again</button>
       <button class="btn ghost" id="backPoke">Back to the Pokédex</button>
     </div>`;
 

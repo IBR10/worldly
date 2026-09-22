@@ -79,12 +79,12 @@
       {
         "icon": "🍺",
         "label": "The pub",
-        "text": "The social centre of most communities. You order at the bar, and rounds are taken in turn."
+        "text": "The social center of most communities. You order at the bar, and rounds are taken in turn."
       },
       {
         "icon": "😐",
         "label": "Manner",
-        "text": "Understatement, apologising when someone else bumps into you, and queueing treated as a moral matter."
+        "text": "Understatement, apologizing when someone else bumps into you, and queueing treated as a moral matter."
       },
       {
         "icon": "⚽",
@@ -343,7 +343,7 @@
         "name": "Enzo Ferrari",
         "years": "1898–1988",
         "field": "Car maker",
-        "why": "Built the most recognisable name in motorsport out of a racing team in Modena.",
+        "why": "Built the most recognizable name in motorsport out of a racing team in Modena.",
         "wiki": "https://en.wikipedia.org/wiki/Enzo_Ferrari"
       }
     ],
@@ -909,7 +909,7 @@
         "name": "Nicolaus Copernicus",
         "years": "1473–1543",
         "field": "Astronomer",
-        "why": "Put the sun at the centre of the solar system and started the scientific revolution.",
+        "why": "Put the sun at the center of the solar system and started the scientific revolution.",
         "wiki": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus"
       },
       {
@@ -1000,7 +1000,7 @@
       "History — Poles know theirs in detail and will explain it well.",
       "Mountains, lakes and where they go in summer."
     ],
-    "avoid": "Never say 'Polish death camps' — the camps were German, built in occupied Poland, and the phrasing causes real offence. Politics is deeply polarised."
+    "avoid": "Never say 'Polish death camps' — the camps were German, built in occupied Poland, and the phrasing causes real offense. Politics is deeply polarised."
   },
   {
     "iso2": "SE",
@@ -1122,7 +1122,7 @@
         "name": "Edvard Munch",
         "years": "1863–1944",
         "field": "Painter",
-        "why": "The Scream is one of the few paintings everyone on earth recognises.",
+        "why": "The Scream is one of the few paintings everyone on earth recognizes.",
         "wiki": "https://en.wikipedia.org/wiki/Edvard_Munch"
       },
       {
@@ -1156,7 +1156,7 @@
       {
         "year": "1940–1945",
         "title": "Occupation and resistance",
-        "what": "German occupation, and the heavy-water sabotage at Vemork that set back the Nazi nuclear programme.",
+        "what": "German occupation, and the heavy-water sabotage at Vemork that set back the Nazi nuclear program.",
         "wiki": "https://en.wikipedia.org/wiki/Norwegian_heavy_water_sabotage"
       },
       {
@@ -1525,7 +1525,7 @@
         "name": "Carl Gustaf Mannerheim",
         "years": "1867–1951",
         "field": "Marshal and president",
-        "why": "Commanded Finland's defence in the Winter War and became president.",
+        "why": "Commanded Finland's defense in the Winter War and became president.",
         "wiki": "https://en.wikipedia.org/wiki/Carl_Gustaf_Emil_Mannerheim"
       },
       {
@@ -1757,7 +1757,7 @@
       {
         "year": "1958",
         "title": "Brussels becomes Europe's capital",
-        "what": "The EEC set up in Brussels, and the city became the administrative centre of the European project.",
+        "what": "The EEC set up in Brussels, and the city became the administrative center of the European project.",
         "wiki": "https://en.wikipedia.org/wiki/Brussels_and_the_European_Union"
       }
     ],
@@ -1838,13 +1838,13 @@
       {
         "year": "882–1240",
         "title": "Kyivan Rus",
-        "what": "A powerful medieval state centred on Kyiv, claimed as ancestor by several modern countries.",
+        "what": "A powerful medieval state centered on Kyiv, claimed as ancestor by several modern countries.",
         "wiki": "https://en.wikipedia.org/wiki/Kievan_Rus%27"
       },
       {
         "year": "1932–1933",
         "title": "The Holodomor",
-        "what": "A Soviet-engineered famine killed millions; many countries now recognise it as genocide.",
+        "what": "A Soviet-engineered famine killed millions; many countries now recognize it as genocide.",
         "wiki": "https://en.wikipedia.org/wiki/Holodomor"
       },
       {
@@ -1862,7 +1862,7 @@
       {
         "year": "2022",
         "title": "The full-scale invasion",
-        "what": "Russia invaded on 24 February; Ukraine's defence of Kyiv reshaped European security.",
+        "what": "Russia invaded on 24 February; Ukraine's defense of Kyiv reshaped European security.",
         "wiki": "https://en.wikipedia.org/wiki/Russian_invasion_of_Ukraine"
       }
     ],
@@ -1974,7 +1974,7 @@
       {
         "icon": "🥾",
         "label": "Hiking",
-        "text": "A national network of colour-marked trails, walked by families every weekend."
+        "text": "A national network of color-marked trails, walked by families every weekend."
       },
       {
         "icon": "😏",
@@ -2043,7 +2043,7 @@
       {
         "year": "896",
         "title": "The Magyar conquest",
-        "what": "Seven tribes settled the Carpathian Basin, bringing a language unrelated to any neighbour's.",
+        "what": "Seven tribes settled the Carpathian Basin, bringing a language unrelated to any neighbor's.",
         "wiki": "https://en.wikipedia.org/wiki/Hungarian_conquest_of_the_Carpathian_Basin"
       },
       {
@@ -2097,7 +2097,7 @@
       "Food, especially the arguments over goulash.",
       "The language, and how nothing else sounds like it."
     ],
-    "avoid": "Trianon and the Hungarian minorities in neighbouring states are emotive. Domestic politics is bitterly polarised."
+    "avoid": "Trianon and the Hungarian minorities in neighboring states are emotive. Domestic politics is bitterly polarised."
   },
   {
     "iso2": "DK",
@@ -2161,7 +2161,7 @@
       {
         "year": "1989",
         "title": "First registered partnerships",
-        "what": "Denmark became the first country in the world to legally recognise same-sex couples.",
+        "what": "Denmark became the first country in the world to legally recognize same-sex couples.",
         "wiki": "https://en.wikipedia.org/wiki/Recognition_of_same-sex_unions_in_Denmark"
       }
     ],
@@ -2212,7 +2212,7 @@
       {
         "name": "Marco Polo",
         "years": "c. 1254–1324",
-        "field": "Merchant traveller",
+        "field": "Merchant traveler",
         "why": "Croatia and Venice both claim him; Korčula insists he was born there.",
         "wiki": "https://en.wikipedia.org/wiki/Marco_Polo"
       },
@@ -2268,7 +2268,7 @@
       {
         "icon": "🏝️",
         "label": "Coast",
-        "text": "Over a thousand islands along the Adriatic, and the coast is the summer centre of national life."
+        "text": "Over a thousand islands along the Adriatic, and the coast is the summer center of national life."
       },
       {
         "icon": "👔",
@@ -2395,7 +2395,7 @@
       "Sport — tennis, basketball and water polo are all national strengths.",
       "Music, from brass bands to the Belgrade club scene."
     ],
-    "avoid": "Kosovo, the 1990s wars and the NATO bombing are all deeply contested. Don't assume a shared narrative with their neighbours."
+    "avoid": "Kosovo, the 1990s wars and the NATO bombing are all deeply contested. Don't assume a shared narrative with their neighbors."
   },
   {
     "iso2": "SI",
@@ -2567,7 +2567,7 @@
       {
         "icon": "🤝",
         "label": "Besa",
-        "text": "A code of honour requiring you to keep your word and protect a guest — Albanians sheltered Jews on this basis in the 1940s."
+        "text": "A code of honor requiring you to keep your word and protect a guest — Albanians sheltered Jews on this basis in the 1940s."
       },
       {
         "icon": "☕",
@@ -2595,7 +2595,7 @@
       "The coast and mountains, which few visitors expect.",
       "Coffee culture."
     ],
-    "avoid": "Organised crime clichés are resented. Kosovo, and relations with Serbia and Greece, need care."
+    "avoid": "Organized crime clichés are resented. Kosovo, and relations with Serbia and Greece, need care."
   },
   {
     "iso2": "MK",
@@ -2604,7 +2604,7 @@
         "name": "Saints Cyril and Methodius",
         "years": "9th century",
         "field": "Missionaries",
-        "why": "Created the first Slavic alphabet; their disciples worked at Ohrid, which became a centre of Slavic literacy.",
+        "why": "Created the first Slavic alphabet; their disciples worked at Ohrid, which became a center of Slavic literacy.",
         "wiki": "https://en.wikipedia.org/wiki/Saints_Cyril_and_Methodius"
       },
       {
@@ -2739,7 +2739,7 @@
       {
         "year": "106–271",
         "title": "Roman Dacia",
-        "what": "Rome's occupation left a Latin language surrounded by Slavic and Hungarian neighbours.",
+        "what": "Rome's occupation left a Latin language surrounded by Slavic and Hungarian neighbors.",
         "wiki": "https://en.wikipedia.org/wiki/Roman_Dacia"
       },
       {
@@ -2765,7 +2765,7 @@
       {
         "icon": "🗣️",
         "label": "Language",
-        "text": "A Romance language, closer to Italian than to any neighbour, which surprises most visitors."
+        "text": "A Romance language, closer to Italian than to any neighbor, which surprises most visitors."
       },
       {
         "icon": "⛪",
@@ -2802,7 +2802,7 @@
         "name": "Vasil Levski",
         "years": "1837–1873",
         "field": "Revolutionary",
-        "why": "Organised the independence movement and was hanged by the Ottomans; the national hero.",
+        "why": "Organized the independence movement and was hanged by the Ottomans; the national hero.",
         "wiki": "https://en.wikipedia.org/wiki/Vasil_Levski"
       },
       {
@@ -2964,7 +2964,7 @@
       {
         "icon": "⛰️",
         "label": "Tatras",
-        "text": "The High Tatras are the smallest alpine range in the world and the centre of Slovak outdoor life."
+        "text": "The High Tatras are the smallest alpine range in the world and the center of Slovak outdoor life."
       },
       {
         "icon": "🏰",
@@ -2979,7 +2979,7 @@
       {
         "icon": "🎻",
         "label": "Fujara",
-        "text": "A three-metre shepherd's flute played over the shoulder, UNESCO-listed."
+        "text": "A three-meter shepherd's flute played over the shoulder, UNESCO-listed."
       },
       {
         "icon": "💦",
@@ -3121,7 +3121,7 @@
         "name": "Mark Rothko",
         "years": "1903–1970",
         "field": "Painter",
-        "why": "Born in Daugavpils; his colour fields are among the most recognisable images in modern art.",
+        "why": "Born in Daugavpils; his color fields are among the most recognizable images in modern art.",
         "wiki": "https://en.wikipedia.org/wiki/Mark_Rothko"
       },
       {
@@ -3136,7 +3136,7 @@
       {
         "year": "1201",
         "title": "Riga founded",
-        "what": "A Hanseatic trading city whose Art Nouveau centre is World Heritage-listed.",
+        "what": "A Hanseatic trading city whose Art Nouveau center is World Heritage-listed.",
         "wiki": "https://en.wikipedia.org/wiki/Riga"
       },
       {
@@ -3404,7 +3404,7 @@
         "name": "Guillem d'Areny-Plandolit",
         "years": "1822–1876",
         "field": "Reformer",
-        "why": "Led the New Reform of 1866, which broadened the vote and modernised the co-principality.",
+        "why": "Led the New Reform of 1866, which broadened the vote and modernized the co-principality.",
         "wiki": "https://en.wikipedia.org/wiki/Guillem_d%27Areny-Plandolit"
       },
       {
@@ -3623,7 +3623,7 @@
         "name": "Edin Džeko",
         "years": "b. 1986",
         "field": "Footballer",
-        "why": "Bosnia's record scorer and its most recognisable sportsman.",
+        "why": "Bosnia's record scorer and its most recognizable sportsman.",
         "wiki": "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
       }
     ],
@@ -3662,12 +3662,12 @@
       {
         "icon": "🕌",
         "label": "Sarajevo",
-        "text": "A mosque, an Orthodox church, a Catholic cathedral and a synagogue within a few hundred metres."
+        "text": "A mosque, an Orthodox church, a Catholic cathedral and a synagogue within a few hundred meters."
       },
       {
         "icon": "🍖",
         "label": "Food",
-        "text": "Ćevapi in somun bread, burek by the metre, and a strong pastry tradition."
+        "text": "Ćevapi in somun bread, burek by the meter, and a strong pastry tradition."
       },
       {
         "icon": "🎶",
@@ -3841,7 +3841,7 @@
       {
         "year": "2008",
         "title": "Independence",
-        "what": "Kosovo declared independence; about half of UN members recognise it, and Serbia does not.",
+        "what": "Kosovo declared independence; about half of UN members recognize it, and Serbia does not.",
         "wiki": "https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence"
       },
       {
@@ -3964,7 +3964,7 @@
       {
         "icon": "🦷",
         "label": "Industry",
-        "text": "Highly specialised manufacturing — including being the world's largest producer of false teeth."
+        "text": "Highly specialized manufacturing — including being the world's largest producer of false teeth."
       },
       {
         "icon": "⛷️",
@@ -3980,7 +3980,7 @@
     "talkAbout": [
       "Skiing and the mountains.",
       "National Day at the castle.",
-      "How a country of 40,000 organises itself."
+      "How a country of 40,000 organizes itself."
     ],
     "avoid": "Tax-haven and 'you could walk across it' jokes are well worn. Liechtenstein is not part of Switzerland or Austria."
   },
@@ -4073,12 +4073,12 @@
       {
         "icon": "⛪",
         "label": "Catholicism",
-        "text": "Deeply Catholic, though divorce was only legalised in 2011."
+        "text": "Deeply Catholic, though divorce was only legalized in 2011."
       }
     ],
     "talkAbout": [
       "The temples and how old they are.",
-      "Village festas and the rivalry between neighbouring bands.",
+      "Village festas and the rivalry between neighboring bands.",
       "The language and how it works."
     ],
     "avoid": "Caruana Galizia's murder and the corruption it exposed are still live and painful. Don't call Maltese a dialect of Italian."
@@ -4153,7 +4153,7 @@
       {
         "icon": "🍷",
         "label": "Wine",
-        "text": "Cricova and Mileștii Mici have hundreds of kilometres of cellars; the latter holds the largest collection in the world."
+        "text": "Cricova and Mileștii Mici have hundreds of kilometers of cellars; the latter holds the largest collection in the world."
       },
       {
         "icon": "🎻",
@@ -4197,7 +4197,7 @@
         "name": "Rainier III",
         "years": "1923–2005",
         "field": "Prince",
-        "why": "Ruled for 56 years and turned Monaco from a fading casino town into a financial centre.",
+        "why": "Ruled for 56 years and turned Monaco from a fading casino town into a financial center.",
         "wiki": "https://en.wikipedia.org/wiki/Rainier_III,_Prince_of_Monaco"
       },
       {
@@ -4267,7 +4267,7 @@
       {
         "icon": "🏙️",
         "label": "Density",
-        "text": "The most densely populated country in the world, on two square kilometres."
+        "text": "The most densely populated country in the world, on two square kilometers."
       },
       {
         "icon": "🍲",
@@ -4330,8 +4330,8 @@
       },
       {
         "year": "1878",
-        "title": "Recognised independence",
-        "what": "The Congress of Berlin recognised Montenegro as a sovereign state.",
+        "title": "Recognized independence",
+        "what": "The Congress of Berlin recognized Montenegro as a sovereign state.",
         "wiki": "https://en.wikipedia.org/wiki/Montenegro"
       },
       {
@@ -4494,7 +4494,7 @@
         "name": "Pope John Paul II",
         "years": "1920–2005",
         "field": "Pope",
-        "why": "Travelled more than any pope in history and helped bring down communism in Europe.",
+        "why": "Traveled more than any pope in history and helped bring down communism in Europe.",
         "wiki": "https://en.wikipedia.org/wiki/Pope_John_Paul_II"
       },
       {

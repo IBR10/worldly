@@ -74,9 +74,9 @@ export function createMapView({
     }
   }
 
-  // Choropleth painting. Colours live in css/styles.css as .lf-* / .lg-* rules
+  // Choropleth painting. Colors live in css/styles.css as .lf-* / .lg-* rules
   // and are applied as classes, not inline fills: the CSP has no unsafe-inline,
-  // and a class keeps both themes working with no JS colour table to sync.
+  // and a class keeps both themes working with no JS color table to sync.
   // map-choropleth also restores hover feedback, which a painted fill would
   // otherwise swallow (see the note beside those rules in the stylesheet).
   if (regionClasses) {
@@ -248,7 +248,7 @@ export function createMapView({
   controls.className = 'map-controls';
   // The glyphs are drawn (js/icons.js) rather than the fullwidth ＋ － ⟳
   // characters these used to be: those render at wildly different sizes across
-  // platforms and cannot take the theme's colour. innerHTML is safe here — the
+  // platforms and cannot take the theme's color. innerHTML is safe here — the
   // markup is a constant from our own module, never data.
   const mkBtn = (name, title, fn) => {
     const b = document.createElement('button');
@@ -316,7 +316,7 @@ export function createMapView({
 
   /**
    * Apply a { svgId: cssClass } map to the regions, replacing any previous
-   * paint. Lets the Language Map switch between colouring by family and by
+   * paint. Lets the Language Map switch between coloring by family and by
    * language without re-injecting a 1.2 MB SVG.
    */
   function paint(classes) {

@@ -2,7 +2,7 @@
 // the profile already stores.
 //
 // The home hero and the Progress dashboard both want the same picture: the
-// world map with the countries you know coloured in. Nothing new is tracked to
+// world map with the countries you know colored in. Nothing new is tracked to
 // produce it. Every quiz and map question is filed in the profile's Leitner
 // boxes under an id of the form `${mode}:${name}` (see quiz.js#buildPool and
 // maps.js#buildPool), so the country a box belongs to is already in the key —
@@ -98,7 +98,7 @@ export function masteryClasses(mastery) {
  *
  * "Known" is level >= 1: one correct answer about a country counts as having
  * found it. `pct` is rounded, but never rounded up to 100 while anything is
- * still missing — a map with three grey countries left must not claim to be
+ * still missing — a map with three gray countries left must not claim to be
  * finished.
  *
  * @param {Record<string, number>} mastery

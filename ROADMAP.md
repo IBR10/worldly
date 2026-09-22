@@ -67,7 +67,7 @@ Flag → country already exists. Planned extensions:
       distance.
 - [x] Reusable `MapMode` component (`js/mapview.js`) — all maps share
       pan/zoom + native SVG hit-testing; pure logic lives in `js/maps.js`.
-- [x] **Language Map** (`/languages`) — the world coloured by language family or
+- [x] **Language Map** (`/languages`) — the world colored by language family or
       by the ten most widespread languages, with a key that isolates one group.
 - [x] **Say Hello map** (`/hello`) — tap any country for its greeting in the
       local script, with pronunciation and text-to-speech.

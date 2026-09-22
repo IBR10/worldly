@@ -18,12 +18,12 @@ test.describe('language map', () => {
     await page.waitForSelector('.map-svg path.lf-romance');
 
     const painted = await page.locator('.map-svg path[class*="lf-"]').count();
-    expect(painted, 'regions given a family colour').toBeGreaterThan(200);
+    expect(painted, 'regions given a family color').toBeGreaterThan(200);
 
     // Nothing may be left unpainted: an unstyled region reads as a rendering bug.
     const unpainted = await page.evaluate(() =>
       [...document.querySelectorAll('.map-svg path[id]')].filter((p) => ![...p.classList].some((c) => c.startsWith('lf-'))).map((p) => p.id));
-    expect(unpainted, `regions with no colour: ${unpainted.join(' ')}`).toEqual([]);
+    expect(unpainted, `regions with no color: ${unpainted.join(' ')}`).toEqual([]);
 
     // Every key entry's swatch class is one the map actually used.
     const legendClasses = await page.evaluate(() =>
@@ -45,7 +45,7 @@ test.describe('language map', () => {
 
     // The 1.2 MB SVG must be reused, not re-injected.
     expect(svgRequests.length, 'world.svg fetched again on repaint').toBe(1);
-    // And the previous mode's classes must be gone, or colours would stack.
+    // And the previous mode's classes must be gone, or colors would stack.
     expect(await page.locator('.map-svg path[class*="lf-romance"]').count()).toBe(0);
   });
 

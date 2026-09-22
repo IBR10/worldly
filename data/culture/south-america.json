@@ -9,10 +9,10 @@
       { "name": "Ayrton Senna", "years": "1960–1994", "field": "Racing driver", "why": "Three-time Formula One champion whose death in 1994 brought Brazil to a standstill.", "wiki": "https://en.wikipedia.org/wiki/Ayrton_Senna" }
     ],
     "events": [
-      { "year": "1500", "title": "Cabral lands in Bahia", "what": "Portugal claimed the coast, beginning three centuries of colonial rule built on sugar and enslaved labour.", "wiki": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral" },
+      { "year": "1500", "title": "Cabral lands in Bahia", "what": "Portugal claimed the coast, beginning three centuries of colonial rule built on sugar and enslaved labor.", "wiki": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral" },
       { "year": "1822", "title": "Independence", "what": "The Portuguese king's own son declared Brazil independent and crowned himself emperor — a monarchy in the Americas that lasted until 1889.", "wiki": "https://en.wikipedia.org/wiki/Independence_of_Brazil" },
       { "year": "1888", "title": "The Golden Law", "what": "Brazil abolished slavery — the last country in the Americas to do so, after importing more enslaved Africans than anywhere else.", "wiki": "https://en.wikipedia.org/wiki/Lei_%C3%81urea" },
-      { "year": "1960", "title": "Brasília opens", "what": "A capital built from nothing in 41 months, in the empty centre of the country, to pull development inland.", "wiki": "https://en.wikipedia.org/wiki/Bras%C3%ADlia" },
+      { "year": "1960", "title": "Brasília opens", "what": "A capital built from nothing in 41 months, in the empty center of the country, to pull development inland.", "wiki": "https://en.wikipedia.org/wiki/Bras%C3%ADlia" },
       { "year": "1985", "title": "Return to democracy", "what": "Twenty-one years of military dictatorship ended; the 1988 constitution is still called the Citizen's Constitution.", "wiki": "https://en.wikipedia.org/wiki/Brazilian_military_dictatorship" }
     ],
     "culture": [
@@ -64,7 +64,7 @@
     "people": [
       { "name": "Gabriel García Márquez", "native": "Gabo", "years": "1927–2014", "field": "Novelist", "why": "One Hundred Years of Solitude made magical realism the world's shorthand for Latin American writing; Nobel Prize, 1982.", "wiki": "https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez" },
       { "name": "Shakira", "years": "b. 1977", "field": "Musician", "why": "The best-selling Latin artist of all time, from Barranquilla on the Caribbean coast.", "wiki": "https://en.wikipedia.org/wiki/Shakira" },
-      { "name": "Fernando Botero", "years": "1932–2023", "field": "Artist", "why": "His inflated, rounded figures are instantly recognisable and fill public squares in Medellín.", "wiki": "https://en.wikipedia.org/wiki/Fernando_Botero" },
+      { "name": "Fernando Botero", "years": "1932–2023", "field": "Artist", "why": "His inflated, rounded figures are instantly recognizable and fill public squares in Medellín.", "wiki": "https://en.wikipedia.org/wiki/Fernando_Botero" },
       { "name": "Simón Bolívar", "years": "1783–1830", "field": "Liberator", "why": "Venezuelan-born, but Colombia was the heart of his Gran Colombia; he died near Santa Marta.", "wiki": "https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar" },
       { "name": "Juan Manuel Santos", "years": "b. 1951", "field": "Politician", "why": "Won the Nobel Peace Prize in 2016 for the deal that ended a fifty-year war with the FARC.", "wiki": "https://en.wikipedia.org/wiki/Juan_Manuel_Santos" }
     ],
@@ -151,7 +151,7 @@
     "people": [
       { "name": "Simón Bolívar", "years": "1783–1830", "field": "Liberator", "why": "Born in Caracas, he freed six countries from Spanish rule and is invoked by every side of Venezuelan politics.", "wiki": "https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar" },
       { "name": "Teresa Carreño", "years": "1853–1917", "field": "Pianist", "why": "A child prodigy who played for Lincoln at the White House and toured the world for fifty years.", "wiki": "https://en.wikipedia.org/wiki/Teresa_Carre%C3%B1o" },
-      { "name": "Gustavo Dudamel", "years": "b. 1981", "field": "Conductor", "why": "Product of El Sistema, the free youth-orchestra programme, and now one of the world's leading conductors.", "wiki": "https://en.wikipedia.org/wiki/Gustavo_Dudamel" },
+      { "name": "Gustavo Dudamel", "years": "b. 1981", "field": "Conductor", "why": "Product of El Sistema, the free youth-orchestra program, and now one of the world's leading conductors.", "wiki": "https://en.wikipedia.org/wiki/Gustavo_Dudamel" },
       { "name": "Rómulo Gallegos", "years": "1884–1969", "field": "Novelist and president", "why": "Wrote Doña Bárbara, the great novel of the Venezuelan plains, and briefly led the country.", "wiki": "https://en.wikipedia.org/wiki/R%C3%B3mulo_Gallegos" },
       { "name": "Hugo Chávez", "years": "1954–2013", "field": "President", "why": "Reshaped Venezuela and much of Latin American politics for a generation; still fiercely argued over.", "wiki": "https://en.wikipedia.org/wiki/Hugo_Ch%C3%A1vez" }
     ],
@@ -165,7 +165,7 @@
       { "icon": "🫓", "label": "Food", "text": "Arepas at any hour, and hallacas — banana-leaf parcels made by the whole family — at Christmas." },
       { "icon": "🎻", "label": "Music", "text": "El Sistema has put instruments in the hands of hundreds of thousands of children since 1975." },
       { "icon": "⚾", "label": "Sport", "text": "Baseball, not football, is the national game, and Venezuelan players fill Major League rosters." },
-      { "icon": "🏞️", "label": "Landscape", "text": "Angel Falls drops nearly a kilometre off a flat-topped tepui in the Gran Sabana." },
+      { "icon": "🏞️", "label": "Landscape", "text": "Angel Falls drops nearly a kilometer off a flat-topped tepui in the Gran Sabana." },
       { "icon": "🤝", "label": "Manner", "text": "Loud, funny and quick to include a stranger; humour under pressure is a point of pride." }
     ],
     "talkAbout": [
@@ -194,7 +194,7 @@
       { "icon": "🐢", "label": "Nature", "text": "The Galápagos sit 900 km offshore and are the reason half the world knows the country's name." },
       { "icon": "🍲", "label": "Food", "text": "Encebollado, a tuna and cassava soup, is the coastal cure for a hangover. Ceviche here comes with popcorn." },
       { "icon": "🎩", "label": "Craft", "text": "The 'Panama' hat is Ecuadorian — woven in Montecristi and Cuenca, and named after where it was sold." },
-      { "icon": "🏔️", "label": "Geography", "text": "Quito sits at 2,850 m; the summit of Chimborazo is the furthest point on the surface from the earth's centre." },
+      { "icon": "🏔️", "label": "Geography", "text": "Quito sits at 2,850 m; the summit of Chimborazo is the furthest point on the surface from the earth's center." },
       { "icon": "🧵", "label": "Otavalo", "text": "The Otavaleño people run one of the Americas' great textile markets and have kept their dress and language." }
     ],
     "talkAbout": [
@@ -202,7 +202,7 @@
       "Coast versus highlands — the rivalry between Guayaquil and Quito is good-natured and constant.",
       "That the Panama hat is actually theirs."
     ],
-    "avoid": "Ecuador has had a lot of political turbulence and recent problems with organised crime; ask rather than assert. Don't call the hat Panamanian without expecting a correction."
+    "avoid": "Ecuador has had a lot of political turbulence and recent problems with organized crime; ask rather than assert. Don't call the hat Panamanian without expecting a correction."
   },
   {
     "iso2": "BO",
@@ -246,7 +246,7 @@
       { "year": "1828", "title": "Independence", "what": "Britain brokered a settlement creating a buffer state between Argentina and Brazil.", "wiki": "https://en.wikipedia.org/wiki/Uruguay#Independence" },
       { "year": "1930", "title": "The first World Cup", "what": "Uruguay hosted and won the first football World Cup, in a stadium built for it in six months.", "wiki": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup" },
       { "year": "1950", "title": "The Maracanazo", "what": "Beating Brazil in front of 200,000 people in Rio — probably the most famous upset in football history.", "wiki": "https://en.wikipedia.org/wiki/Maracanazo" },
-      { "year": "2013", "title": "First to legalise cannabis", "what": "Uruguay became the first country in the world to regulate the whole cannabis market by law.", "wiki": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay" }
+      { "year": "2013", "title": "First to legalize cannabis", "what": "Uruguay became the first country in the world to regulate the whole cannabis market by law.", "wiki": "https://en.wikipedia.org/wiki/Cannabis_in_Uruguay" }
     ],
     "culture": [
       { "icon": "🧉", "label": "Mate", "text": "Uruguayans carry a thermos under one arm all day. Consumption per head is the highest anywhere." },
@@ -269,7 +269,7 @@
       { "name": "José Gaspar Rodríguez de Francia", "years": "1766–1840", "field": "Dictator", "why": "Sealed Paraguay off from the world for a quarter-century and built a self-sufficient state.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Gaspar_Rodr%C3%ADguez_de_Francia" },
       { "name": "Josefina Plá", "years": "1903–1999", "field": "Writer and artist", "why": "Shaped modern Paraguayan letters and ceramics across seventy years of work.", "wiki": "https://en.wikipedia.org/wiki/Josefina_Pl%C3%A1" },
       { "name": "Agustín Barrios", "native": "Mangoré", "years": "1885–1944", "field": "Guitarist and composer", "why": "One of the greatest classical guitar composers, and the first to record on the instrument.", "wiki": "https://en.wikipedia.org/wiki/Agust%C3%ADn_Barrios" },
-      { "name": "José Luis Chilavert", "years": "b. 1965", "field": "Footballer", "why": "A goalkeeper who took free kicks and scored 67 goals — an international curiosity and a national favourite.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" }
+      { "name": "José Luis Chilavert", "years": "b. 1965", "field": "Footballer", "why": "A goalkeeper who took free kicks and scored 67 goals — an international curiosity and a national favorite.", "wiki": "https://en.wikipedia.org/wiki/Jos%C3%A9_Luis_Chilavert" }
     ],
     "events": [
       { "year": "1609–1767", "title": "The Jesuit reductions", "what": "Mission towns where Guaraní people kept their language and built an economy, until Spain expelled the Jesuits.", "wiki": "https://en.wikipedia.org/wiki/Jesuit_reductions" },
@@ -302,7 +302,7 @@
     ],
     "events": [
       { "year": "1763", "title": "The Berbice slave uprising", "what": "Enslaved people held the colony for almost a year; its leader Cuffy is now a national hero.", "wiki": "https://en.wikipedia.org/wiki/Berbice_slave_uprising" },
-      { "year": "1838", "title": "Indentured labour begins", "what": "After abolition, planters brought in workers from India — which is why Guyana is roughly 40% Indo-Guyanese today.", "wiki": "https://en.wikipedia.org/wiki/Indo-Guyanese" },
+      { "year": "1838", "title": "Indentured labor begins", "what": "After abolition, planters brought in workers from India — which is why Guyana is roughly 40% Indo-Guyanese today.", "wiki": "https://en.wikipedia.org/wiki/Indo-Guyanese" },
       { "year": "1966", "title": "Independence", "what": "Guyana left British rule as the only English-speaking country in South America.", "wiki": "https://en.wikipedia.org/wiki/Guyana" },
       { "year": "2015", "title": "Oil offshore", "what": "An enormous find off the coast has made Guyana one of the fastest-growing economies on earth.", "wiki": "https://en.wikipedia.org/wiki/Stabroek_Block" }
     ],
@@ -331,7 +331,7 @@
     ],
     "events": [
       { "year": "1667", "title": "Traded for New York", "what": "The Dutch took Suriname from England and gave up New Amsterdam — now Manhattan — in exchange.", "wiki": "https://en.wikipedia.org/wiki/Treaty_of_Breda_(1667)" },
-      { "year": "1760", "title": "The Maroon treaties", "what": "The Dutch were forced to recognise the independence of escaped-slave communities in the interior, a century before abolition.", "wiki": "https://en.wikipedia.org/wiki/Surinamese_Maroons" },
+      { "year": "1760", "title": "The Maroon treaties", "what": "The Dutch were forced to recognize the independence of escaped-slave communities in the interior, a century before abolition.", "wiki": "https://en.wikipedia.org/wiki/Surinamese_Maroons" },
       { "year": "1863", "title": "Abolition", "what": "Slavery ended, followed by indentured workers from India and Java — the origin of today's mix.", "wiki": "https://en.wikipedia.org/wiki/Slavery_in_Suriname" },
       { "year": "1975", "title": "Independence", "what": "Suriname left the Netherlands, and about a third of the population moved to the Dutch mainland.", "wiki": "https://en.wikipedia.org/wiki/Suriname" }
     ],

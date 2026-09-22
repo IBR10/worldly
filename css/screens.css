@@ -64,7 +64,7 @@
 .hero-actions .btn { padding: 12px 20px; font-size: 0.95rem; }
 
 /* The readout strip: level and explorer title, streak, and how much of the
-   world is coloured in. Numbers wide, labels compressed — the same contrast the
+   world is colored in. Numbers wide, labels compressed — the same contrast the
    whole type system runs on. */
 .hero-readout {
   display: flex;
@@ -134,7 +134,7 @@
   max-width: 760px;
   margin: 0 auto;
 }
-/* Centred card body — used by the client-rendered 404 screen. */
+/* Centered card body — used by the client-rendered 404 screen. */
 .center-block { text-align: center; }
 .center-block .btn-row { justify-content: center; }
 .center-block .score { font-size: 3rem; font-weight: 800; font-stretch: var(--wd-display); }
@@ -239,8 +239,8 @@
 .choice.correct .key, .choice.wrong .key { border-color: currentcolor; color: currentcolor; }
 .choice:disabled { cursor: default; }
 
-/* feedback — a field note on the answer, not a coloured slab. The verdict is
-   carried by one rule down the left edge and the heading's colour. */
+/* feedback — a field note on the answer, not a colored slab. The verdict is
+   carried by one rule down the left edge and the heading's color. */
 .feedback {
   margin-top: var(--s5);
   border: 1px solid var(--border);
@@ -284,7 +284,7 @@
 
 /* ---- dashboard ---------------------------------------------------------------
    The Progress screen, read like an instrument panel: one large gauge for the
-   level, the world coloured by what you know beside the continents you have
+   level, the world colored by what you know beside the continents you have
    worked through, then the detail. */
 .console {
   display: grid;
@@ -356,8 +356,8 @@
 .console-note { color: var(--muted); font-size: var(--t-sm); margin: var(--s1) 0 var(--s3); }
 
 /* The discovery map: the same picture as the home hero, at reference size, with
-   the continent bars beside it in the continent key so the colour on the bar
-   and the colour of the badge always agree. */
+   the continent bars beside it in the continent key so the color on the bar
+   and the color of the badge always agree. */
 .discovery { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
 .discovery .map-holder { height: clamp(220px, 34vh, 340px); cursor: default; }
 .discovery .map-controls, .discovery .map-hint { display: none; }
@@ -544,7 +544,7 @@
   background: var(--surface);
 }
 /* A border, because flags that are mostly white (Japan, Poland…) otherwise
-   dissolve into the panel and read as a stray coloured dot. */
+   dissolve into the panel and read as a stray colored dot. */
 .hello-panel .hello-flag {
   width: 84px;
   border: 1px solid var(--border);
@@ -746,8 +746,8 @@
 
 /* ---- Pokédex -----------------------------------------------------------------
    Everything here uses the shared theme tokens so both themes work without a
-   second palette. The one exception is the type colours: a Pokémon type's
-   colour is part of its identity, not a themeable surface, so those are
+   second palette. The one exception is the type colors: a Pokémon type's
+   color is part of its identity, not a themeable surface, so those are
    literals — declared once here and referenced by class, never inlined.
 
    Theme-scoped rules below are written as descendant selectors
@@ -793,7 +793,7 @@
 
 /* An unregistered entry is a black cut-out of the real sprite, so revealing it
    later costs no second request. Pure brightness(0) would vanish against the
-   dark theme's surface, so that theme lifts it to a mid grey instead. */
+   dark theme's surface, so that theme lifts it to a mid gray instead. */
 .dex-card.unseen .dex-sprite { filter: brightness(0) opacity(0.65); }
 .dex-card.unseen .dex-name { color: var(--muted); letter-spacing: 0.12em; }
 [data-theme="dark"] .dex-card.unseen .dex-sprite { filter: brightness(0) invert(0.42); }

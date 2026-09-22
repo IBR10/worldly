@@ -8,13 +8,13 @@
 //
 // The profile below is seeded rather than real so the shot is reproducible and
 // shows the hero map doing its job: a believable mid-game player, with plenty of
-// the world still grey.
+// the world still gray.
 import { chromium } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 const countries = JSON.parse(readFileSync('data/countries.json', 'utf8'));
 const srs = {};
-// A believable mid-game profile: a bit of everything, plenty still grey.
+// A believable mid-game profile: a bit of everything, plenty still gray.
 countries.filter((c) => ['Europe', 'South America', 'Asia'].includes(c.region))
   .slice(0, 58).forEach((c, i) => { srs[`capital:${c.name}`] = { box: (i % 5) + 1, correct: 3, wrong: 1, lastSeen: Date.now() }; });
 countries.filter((c) => c.region === 'Africa').slice(0, 14)

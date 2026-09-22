@@ -415,12 +415,12 @@ function homeCard(attr, m) {
 }
 
 /**
- * The hero: the world map, coloured with the countries this player actually
+ * The hero: the world map, colored with the countries this player actually
  * knows, and the screen's title set in a cartouche over it.
  *
  * A printed chart puts its title in an inset panel over open water, which is
  * exactly the shape this needs — the map is the content, so the words have to
- * sit on it rather than push it down the page. The colouring is derived from
+ * sit on it rather than push it down the page. The coloring is derived from
  * the SRS boxes the profile already keeps (js/progressmap.js), so it has been
  * true of every profile since the day it was created; nothing new is tracked.
  *
@@ -528,7 +528,7 @@ function showHome() {
   const journeyCards = [
     { key: 'phrases', icon: 'speech', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
     { key: 'flagkey', icon: 'flag', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
-    { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world coloured by what it speaks.' },
+    { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world colored by what it speaks.' },
     { key: 'hello', icon: 'wave', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
     { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
     { key: 'music', icon: 'note', title: 'Music', desc: 'Songs that represent each country.' },
@@ -1870,7 +1870,7 @@ function renderMusicDetail(entry) {
 // ============================================================================
 //  LANGUAGE MAP  (Explore -> /languages)
 // ============================================================================
-// Which colouring the map is showing. Module-level, like crisesTab, so the
+// Which coloring the map is showing. Module-level, like crisesTab, so the
 // choice survives navigating away and back.
 let languageMapMode = 'family';
 // The isolated bucket key, or null for "show everything". Isolating is the
@@ -1926,7 +1926,7 @@ async function showLanguageMap() {
     <p class="screen-sub">What the world actually speaks. Tap a country for its greeting and culture, or tap a
       key below to show only that group.</p>
 
-    <div class="tabs" id="langModeTabs" role="tablist" aria-label="Colour the map by">
+    <div class="tabs" id="langModeTabs" role="tablist" aria-label="Color the map by">
       ${modes.map((m) => `<button class="tab ${m.id === languageMapMode ? 'active' : ''}" role="tab" id="langmode-${m.id}" aria-selected="${m.id === languageMapMode}" tabindex="${m.id === languageMapMode ? 0 : -1}" data-tab="${m.id}">${m.label}</button>`).join('')}
     </div>
     <p class="screen-sub">${esc(mode.blurb)}</p>
