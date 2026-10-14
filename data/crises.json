@@ -137,6 +137,26 @@
     "note": "A fast-moving situation reported under wartime conditions; casualty figures and the status of Iran’s nuclear facilities are contested and likely to be revised."
   },
   {
+    "title": "Lebanon — Israel–Hezbollah War",
+    "country": "Lebanon",
+    "iso2": "LB",
+    "region": "Asia",
+    "tier": "famous",
+    "asOf": "October 2026",
+    "summary": [
+      "Lebanon's modern politics were shaped by a fifteen-year civil war, from 1975 to 1990, fought among sectarian militias and drawing in Syria, Israel and the Palestine Liberation Organization. Hezbollah emerged in the early 1980s, backed by Iran, to fight the Israeli invasion of 1982, and kept its weapons after the 1989 Taif Agreement disarmed the other militias. Israel occupied a strip of the south until 2000 and fought a 34-day war with Hezbollah in 2006. From 2019 the country suffered one of the world's worst economic collapses, with the lira losing more than 90 percent of its value, and on 4 August 2020 an explosion of stored ammonium nitrate at the port of Beirut killed more than 200 people.",
+      "Hezbollah began firing on northern Israel on 8 October 2023, the day after Hamas's attack, opening a second front of the Gaza war. In September 2024 Israel detonated thousands of pagers and radios carried by Hezbollah members, killed its leader Hassan Nasrallah in an airstrike on Beirut, and launched a ground invasion of the south. A US-brokered ceasefire on 27 November 2024 ended that war, and a new government — President Joseph Aoun, elected in January 2025, and Prime Minister Nawaf Salam — pledged to bring all weapons under state control, but Israel kept troops on hilltop positions inside Lebanon and continued near-daily strikes.",
+      "The 2026 Iran war pulled Lebanon back in. Hezbollah joined Iran's side on 2 March 2026, and Israel answered with a bombing campaign across the south, the Bekaa Valley and Beirut's southern suburbs and a ground offensive that occupied a band of southern Lebanon behind a self-declared 'yellow line' roughly 10 kilometers from the border. A ceasefire took effect in mid-April and has been repeatedly extended, but Israeli strikes never stopped: nearly 600 people were killed in its first four weeks alone. By late September Lebanese government figures put the death toll since March at more than 4,300, with over a million people displaced, many of whom have nothing to return to.",
+      "On 26 June 2026 the United States, Israel and Lebanon signed a framework agreement trading the phased disarmament of Hezbollah for a phased Israeli withdrawal, beginning with 'pilot zones' handed to the Lebanese army. Hezbollah rejected it, and one of its lawmakers warned that any attempt to enforce it would mean civil war; Israel says it will not withdraw while Hezbollah is armed, and some Israeli ministers talk of staying longer. As of October 2026 the deal is frozen, Israeli strikes continue — including a raid near Nabatiyeh in September that killed at least 12 people — and Israeli troops still hold territory in the south."
+    ],
+    "links": [
+      { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/2026_Lebanon_war" },
+      { "label": "ReliefWeb", "url": "https://reliefweb.int/country/lbn" },
+      { "label": "Latest news", "url": "https://news.google.com/search?q=Lebanon%20Israel%20Hezbollah" }
+    ],
+    "note": "Casualty and displacement figures come from the Lebanese government and differ between sources; they are likely to be revised."
+  },
+  {
     "title": "DR Congo — Eastern Conflict",
     "country": "Democratic Republic of the Congo",
     "iso2": "CD",
