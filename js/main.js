@@ -9,7 +9,7 @@ import {
   setSessionSetup, getSessionSetup,
 } from './state.js';
 import { track, tag, loadAnalytics, analyticsOptedOut, setAnalyticsOptOut } from './analytics.js';
-import { createQuiz, MODES, ALL_MODES, buildPool, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from './quiz.js';
+import { createQuiz, MODES, ALL_MODES, buildPool, drawWithoutRepeat, answerMatches, searchMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from './quiz.js';
 import { buildMapPool, makeMapQuestion, MAP_MODES, ALL_MAP_MODES } from './maps.js';
 import { createMapView } from './mapview.js';
 import { regionClassesFor, familyLegend, languageLegend } from './languages.js';
@@ -37,9 +37,9 @@ const tabbar = document.getElementById('tabbar');
 // The primary destinations, rendered into both the header rail (wide viewports)
 // and the bottom bar (narrow ones). Only one of the two is ever displayed, and
 // `display: none` also takes the other out of the accessibility tree, so a
-// screen reader is never offered the same four links twice.
+// screen reader is never offered the same links twice.
 //
-// These are the four things a player comes back for. Everything else — the quiz
+// These are the five things a player comes back for. Everything else — the quiz
 // and map modes, the leaderboard, the profile — is reachable from Home or the
 // header, which is where it belongs: a nav bar that lists twenty screens is a
 // sitemap, not navigation.
@@ -47,6 +47,7 @@ const NAV = [
   { href: '/', icon: 'home', label: 'Home' },
   { href: '/country', icon: 'map', label: 'Countries' },
   { href: '/flags', icon: 'flag', label: 'Flags' },
+  { href: '/explore', icon: 'compass', label: 'Explore' },
   { href: '/stats', icon: 'gauge', label: 'Stats' },
 ];
 
@@ -67,7 +68,7 @@ function renderNav() {
 // /country/:slug inherit their section's width.
 // Exact paths, not prefixes: /country is a grid of 198 cards and wants the room,
 // while /country/:slug is a page you read and would be worse for it.
-const WIDE_ROUTES = ['/', '/flags', '/flagmap', '/country', '/languages', '/hello', '/stats', '/achievements', '/pokedex'];
+const WIDE_ROUTES = ['/', '/explore', '/flags', '/flagmap', '/country', '/languages', '/hello', '/stats', '/achievements', '/pokedex'];
 // …with one prefix, because every map mode is a map.
 const WIDE_PREFIXES = ['/map/'];
 
@@ -116,6 +117,22 @@ function slugify(s) {
   return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
+// Other names people search by, keyed by iso2. Searching "Ivory Coast" or
+// "Burma" should still find the country whatever name the dataset uses.
+const COUNTRY_ALIASES = {
+  CI: ["Côte d'Ivoire"], CZ: ['Czech Republic'], MM: ['Burma'], SZ: ['Swaziland'],
+  TL: ['East Timor'], CV: ['Cabo Verde'], CD: ['DRC', 'Congo-Kinshasa', 'Zaire'],
+  CG: ['Congo-Brazzaville'], US: ['USA', 'America'], GB: ['UK', 'Great Britain', 'Britain', 'England'],
+  AE: ['UAE'], VA: ['Holy See'], FM: ['Micronesia'], MK: ['Macedonia'], TR: ['Türkiye'],
+  KR: ['Korea'], KP: ['DPRK'], NL: ['Holland'], ST: ['Sao Tome'], CN: ['PRC'],
+  TW: ['Republic of China'], BA: ['Bosnia'], LA: ['Lao'], VN: ['Viet Nam'], RU: ['Russian Federation'],
+};
+
+/** A country's searchable names (name plus aliases), "|"-joined for searchMatches. */
+function countrySearchText(c) {
+  return [c.name, ...(COUNTRY_ALIASES[c.iso2] || [])].join('|');
+}
+
 // Which home tab is selected (persists while navigating in and out of home).
 let homeTab = 'play';
 // Which crises period (current vs. historical) and coverage tab are selected
@@ -379,6 +396,8 @@ const MAP_CARDS = [
   // Unlike the cards below (which start a specific MAP_MODES key directly),
   // this opens a chooser screen — so it overrides the tab's default attr.
   { key: 'map_regions', attr: 'data-go', icon: 'globe', title: 'Regions & Continents', desc: 'Pick a continent or region — the map zooms in so you only see that part of the world.' },
+  // Not a quiz, but people look for it under Maps, so it's listed here too.
+  { key: 'hello', attr: 'data-go', icon: 'wave', title: 'Say Hello Map', desc: 'Tap any country to learn its greeting.' },
   // Grouped by entity (world, US, Mexico, Canada) so each pair of forward/
   // reverse modes for the same place sits next to each other.
   { key: 'map_country', icon: 'crosshair', title: 'Find the Country', desc: 'Click the country on a world map.' },
@@ -526,28 +545,12 @@ function showHome() {
     { key: 'religions', icon: 'temple', title: 'World Religions', desc: 'Founders, texts & holidays — pick a faith.' },
     { key: 'review', icon: 'repeat', title: `Review Missed (${missedCount})`, desc: 'Practice what you got wrong.' },
   ];
-  const journeyCards = [
-    { key: 'phrases', icon: 'speech', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
-    { key: 'flagkey', icon: 'flag', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
-    { key: 'flagmap', icon: 'flags', title: 'Flag Map', desc: 'Hover any country on the world map to see its flag.' },
-    { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world colored by what it speaks.' },
-    { key: 'hello', icon: 'wave', title: 'Say Hello', desc: 'Tap any country to learn its greeting.' },
-    { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
-    { key: 'music', icon: 'note', title: 'Music', desc: 'Songs that represent each country.' },
-    { key: 'crises', icon: 'news', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
-    { key: 'custom', icon: 'sliders', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
-    { key: 'stats', icon: 'gauge', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
-    { key: 'achievements', icon: 'trophy', title: 'Achievements', desc: 'Badges & milestones.' },
-    { key: 'profile', icon: 'compass', title: 'Profile', desc: 'Name & reset.' },
-    { key: 'pokedex', icon: 'bolt', title: 'Pokédex', desc: 'All 1025 Pokémon, plus practice modes. A fun corner — kept separate from your Worldly progress.' },
-    { key: 'about', icon: 'info', title: 'About', desc: 'Credits, data sources & privacy.' },
-  ];
-  // Each category is its own tab instead of one long scrolling page.
+  // Each category is its own tab instead of one long scrolling page. Explore
+  // has its own page in the primary nav (/explore).
   const tabs = [
     { id: 'play', label: 'Play', attr: 'data-go', cards: quickCards },
     { id: 'quizzes', label: 'Quizzes', attr: 'data-mode', cards: MODE_CARDS },
     { id: 'maps', label: 'Maps', attr: 'data-map', cards: MAP_CARDS },
-    { id: 'explore', label: 'Explore', attr: 'data-go', cards: journeyCards },
   ];
   if (!tabs.some((t) => t.id === homeTab)) homeTab = 'play';
 
@@ -601,7 +604,37 @@ function showHome() {
     b.addEventListener('click', () => navigate(GO_ROUTES[b.dataset.go] || '/')));
 }
 
-// Home Play/Explore cards (and the map-regions chooser) use short data-go keys;
+// The Explore page: everything that isn't a quiz. Say Hello and Crises lead
+// because they were the hardest to find when they sat mid-grid.
+const EXPLORE_CARDS = [
+  { key: 'hello', icon: 'wave', title: 'Say Hello Map', desc: 'Tap any country to learn its greeting.' },
+  { key: 'crises', icon: 'news', title: 'Crises & Events', desc: 'Background on major ongoing world situations.' },
+  { key: 'phrases', icon: 'speech', title: 'Phrases', desc: 'Common phrases & local sayings around the world.' },
+  { key: 'flagkey', icon: 'flag', title: 'Flag Key', desc: 'Browse every country, US state, Mexican state & Canadian province by flag and name.' },
+  { key: 'flagmap', icon: 'flags', title: 'Flag Map', desc: 'Hover any country on the world map to see its flag.' },
+  { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world colored by what it speaks.' },
+  { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
+  { key: 'music', icon: 'note', title: 'Music', desc: 'Songs that represent each country.' },
+  { key: 'custom', icon: 'sliders', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
+  { key: 'stats', icon: 'gauge', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
+  { key: 'achievements', icon: 'trophy', title: 'Achievements', desc: 'Badges & milestones.' },
+  { key: 'profile', icon: 'compass', title: 'Profile', desc: 'Name & reset.' },
+  { key: 'pokedex', icon: 'bolt', title: 'Pokédex', desc: 'All 1025 Pokémon, plus practice modes. A fun corner — kept separate from your Worldly progress.' },
+  { key: 'about', icon: 'info', title: 'About', desc: 'Credits, data sources & privacy.' },
+];
+
+function showExplore() {
+  leaveSession();
+  app.innerHTML = `
+    <h1 class="screen-title">Explore</h1>
+    <p class="screen-sub">Maps, guides, music and world events. Learn without a quiz.</p>
+    <div class="grid">${EXPLORE_CARDS.map((m) => homeCard('data-go', m)).join('')}</div>`;
+  app.querySelectorAll('[data-go]').forEach((b) =>
+    b.addEventListener('click', () => navigate(GO_ROUTES[b.dataset.go] || '/')));
+  focusTitle();
+}
+
+// Home Play cards, Explore cards (and the map-regions chooser) use short data-go keys;
 // this is the one place they map to real URLs.
 const GO_ROUTES = {
   mixed: '/quiz/mixed', mixed_setup: '/quiz/mixed/setup',
@@ -1841,7 +1874,7 @@ function showFlagKey() {
   // toggle rather than a rebuild. Rebuilding discarded and recreated up to 251
   // <img> elements per keystroke, which is what made typing cost ~1.6s.
   const cardFor = (g, x) => `
-    <div class="card flagkey-card" data-name="${esc(String(x.name).toLowerCase())}" data-region="${esc(x.region || '')}">
+    <div class="card flagkey-card" data-name="${esc(String(x.name).toLowerCase())}" data-search="${esc(x.iso2 ? countrySearchText(x) : x.name)}" data-region="${esc(x.region || '')}">
       <img class="emoji-flag" alt="" loading="lazy" decoding="async" src="${g.flagFn(x)}">
       <span class="card-title">${esc(x.name)}</span>
       <span class="card-desc">${esc(x.capital)}</span>
@@ -1903,11 +1936,11 @@ function showFlagKey() {
   /** Show/hide already-rendered cards. No markup is regenerated. */
   function applyFilter(id) {
     const panel = panelOf(id);
-    const term = flagKeySearch[id].trim().toLowerCase();
+    const term = flagKeySearch[id];
     const region = flagKeyRegion[id];
     let shown = 0;
     panel.querySelectorAll('.flagkey-card').forEach((card) => {
-      const match = (!term || card.dataset.name.includes(term))
+      const match = searchMatches(term, card.dataset.search)
         && (!region || card.dataset.region === region);
       card.classList.toggle('hidden', !match);
       if (match) shown++;
@@ -2297,6 +2330,7 @@ async function showLanguageMap() {
 
     <div id="mapMount" class="map-mount"></div>
     <div id="legendMount"></div>
+    <div id="langListMount"></div>
     <p class="muted-note mt-10">One language per country — the one most widely spoken. Most countries speak many
       more, and across much of Africa, the Americas and the Pacific the language shown is a colonial one layered
       over indigenous languages that are still spoken at home.</p>
@@ -2339,12 +2373,34 @@ async function showLanguageMap() {
     applyIsolate(items, classes);
   }
 
-  /** Dim every region outside the isolated bucket. */
+  /** Dim every region outside the isolated bucket, and list its countries. */
   function applyIsolate(items, classes) {
     const target = items.find((i) => i.key === languageMapIsolated);
     for (const path of svg.querySelectorAll('path[id]')) {
       path.classList.toggle('region-dim', !!target && classes[path.id] !== target.className);
     }
+    renderIsolatedList(target, classes);
+  }
+
+  /** The isolated bucket's countries as links to their guides. Territories
+   *  have no guide, so they're listed as plain text. */
+  function renderIsolatedList(target, classes) {
+    const mount = app.querySelector('#langListMount');
+    if (!target) { mount.innerHTML = ''; return; }
+    const byIso = new Map(getData().countries.map((c) => [c.iso2.toLowerCase(), c]));
+    const members = rows
+      .filter((r) => r.iso2 && classes[r.iso2.toLowerCase()] === target.className)
+      .map((r) => ({ name: byIso.get(r.iso2.toLowerCase())?.name || r.name, country: byIso.get(r.iso2.toLowerCase()) }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    mount.innerHTML = `
+      <div class="form-block mt-10">
+        <h2>${esc(target.label)} <span class="legend-count">${members.length}</span></h2>
+        <ul class="lang-country-list">
+          ${members.map((m) => `<li>${m.country
+            ? `<a href="/country/${esc(slugify(m.country.name))}">${esc(m.name)}</a>`
+            : esc(m.name)}</li>`).join('')}
+        </ul>
+      </div>`;
   }
 
   refresh();
@@ -2540,7 +2596,7 @@ async function showCountryIndex() {
   grid.innerHTML = sorted.map((c) => {
     const g = greetings.get(c.iso2.toLowerCase());
     return `<button class="card" data-slug="${esc(slugify(c.name))}"
-      data-name="${esc(c.name.toLowerCase())}" data-region="${esc(c.region)}">
+      data-search="${esc(countrySearchText(c))}" data-region="${esc(c.region)}">
       <img class="emoji-flag" alt="" loading="lazy" decoding="async" src="${flagUrl(c.iso2, 'w80')}">
       <span class="card-title">${esc(c.name)}</span>
       <span class="card-desc">${g ? esc(g.hello) + ' · ' + esc(c.language) : esc(c.language)}</span>
@@ -2563,10 +2619,9 @@ async function showCountryIndex() {
   }
 
   function applyFilter() {
-    const term = countrySearch.term.trim().toLowerCase();
     let shown = 0;
     grid.querySelectorAll('.card').forEach((card) => {
-      const match = (!term || card.dataset.name.includes(term))
+      const match = searchMatches(countrySearch.term, card.dataset.search)
         && (!countrySearch.region || card.dataset.region === countrySearch.region);
       card.classList.toggle('hidden', !match);
       if (match) shown++;
@@ -3250,6 +3305,7 @@ async function boot() {
     routes: [
       { path: '/', title: 'Worldly — World Knowledge & Culture', render: showHome },
       { path: '/about', title: 'About — Worldly', render: showAbout },
+      { path: '/explore', title: 'Explore — Worldly', render: showExplore },
       { path: '/flags', title: 'Flag Key — Worldly', render: showFlagKey },
       { path: '/phrases', title: 'Phrases — Worldly', render: showPhrases },
       { path: '/phrases/:slug', render: (p) => routePhraseDetail(p.slug) },

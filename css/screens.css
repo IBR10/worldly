@@ -981,3 +981,13 @@
   /* A touch device has no hover, so the tip is only ever noise there. */
   .flag-tip { display: none; }
 }
+
+/* Language Map: the isolated bucket's countries, under the map. */
+.lang-country-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 3 11rem;
+  column-gap: var(--s4, 24px);
+}
+.lang-country-list li { break-inside: avoid; padding: 2px 0; }

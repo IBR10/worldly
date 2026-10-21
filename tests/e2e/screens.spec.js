@@ -11,11 +11,13 @@ import {
 // they cover are invisible to ESLint (all markup lives in JS template literals)
 // and invisible to the DOM (the parser silently drops duplicate attributes).
 
-/** Open a screen from the home tabs and return the raw HTML rendered for it. */
+/** Open a screen from the home tabs (or the Explore page, which lives in the
+ *  primary nav) and return the raw HTML rendered for it. */
 async function gotoScreen(page, tab, cardName) {
   await page.goto('/');
   await page.waitForSelector('.card');
-  if (tab) await page.getByRole('tab', { name: tab }).click();
+  if (tab === 'explore') await page.getByRole('link', { name: 'Explore', exact: true }).click();
+  else if (tab) await page.getByRole('tab', { name: tab }).click();
   if (cardName) {
     await page.getByRole('button', { name: cardName }).click();
     // Wait for the destination's own heading rather than a fixed 400ms. Screens
@@ -31,21 +33,21 @@ async function gotoScreen(page, tab, cardName) {
 
 const SCREENS = [
   { label: 'home', tab: null, card: null },
-  { label: 'flag key', tab: /Explore/, card: /Flag Key/ },
-  { label: 'phrases', tab: /Explore/, card: /Phrases/ },
-  { label: 'language map', tab: /Explore/, card: /Language Map/ },
-  { label: 'say hello', tab: /Explore/, card: /Say Hello/ },
-  { label: 'country guides', tab: /Explore/, card: /Country Guides/ },
-  { label: 'music', tab: /Explore/, card: /Music/ },
-  { label: 'crises', tab: /Explore/, card: /Crises & Events/ },
-  { label: 'statistics', tab: /Explore/, card: /Statistics/ },
-  { label: 'achievements', tab: /Explore/, card: /Achievements/ },
-  { label: 'profile', tab: /Explore/, card: /Profile/ },
-  { label: 'about', tab: /Explore/, card: /About Credits/ },
-  { label: 'custom study', tab: /Explore/, card: /Custom Study/ },
-  { label: 'flag map', tab: /Explore/, card: /Flag Map/ },
+  { label: 'flag key', tab: 'explore', card: /Flag Key/ },
+  { label: 'phrases', tab: 'explore', card: /Phrases/ },
+  { label: 'language map', tab: 'explore', card: /Language Map/ },
+  { label: 'say hello', tab: 'explore', card: /Say Hello/ },
+  { label: 'country guides', tab: 'explore', card: /Country Guides/ },
+  { label: 'music', tab: 'explore', card: /Music/ },
+  { label: 'crises', tab: 'explore', card: /Crises & Events/ },
+  { label: 'statistics', tab: 'explore', card: /Statistics/ },
+  { label: 'achievements', tab: 'explore', card: /Achievements/ },
+  { label: 'profile', tab: 'explore', card: /Profile/ },
+  { label: 'about', tab: 'explore', card: /About Credits/ },
+  { label: 'custom study', tab: 'explore', card: /Custom Study/ },
+  { label: 'flag map', tab: 'explore', card: /Flag Map/ },
   { label: 'mixed setup', tab: null, card: /Mixed Quiz/ },
-  { label: 'pokédex', tab: /Explore/, card: /Pokédex/ },
+  { label: 'pokédex', tab: 'explore', card: /Pokédex/ },
 ];
 
 test.describe('rendered markup is structurally sound', () => {

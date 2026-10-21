@@ -188,7 +188,7 @@
 .icon-btn:hover { background: var(--surface); color: var(--text); border-color: var(--border); }
 
 /* ---- bottom tab bar (small screens) ----------------------------------------
-   The mobile "native feel" ask: the four primary destinations always within
+   The mobile "native feel" ask: the primary destinations always within
    thumb reach, rather than a home button in the far corner of the header. */
 .tabbar {
   display: none;
