@@ -8,7 +8,7 @@ import { test, expect } from '@playwright/test';
 async function openFlagKey(page) {
   await page.goto('/');
   await page.waitForSelector('.card');
-  await page.getByRole('tab', { name: /Explore/ }).click();
+  await page.getByRole('link', { name: 'Explore', exact: true }).click();
   await page.getByRole('button', { name: /Flag Key/ }).click();
   await page.waitForSelector('.flagkey-card');
 }
@@ -22,7 +22,7 @@ test('opening Flag Key does not request every flag at once', async ({ page }) =>
     if (r.resourceType() === 'image') imageRequests++;
   });
 
-  await page.getByRole('tab', { name: /Explore/ }).click();
+  await page.getByRole('link', { name: 'Explore', exact: true }).click();
   await page.getByRole('button', { name: /Flag Key/ }).click();
   await page.waitForSelector('.flagkey-card');
   await page.waitForTimeout(1500);

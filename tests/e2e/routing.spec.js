@@ -11,11 +11,13 @@ import { test, expect } from '@playwright/test';
 test('clicking a card changes the URL, and Back returns to Home', async ({ page }) => {
   await page.goto('/');
   await page.waitForSelector('.card');
-  await page.getByRole('tab', { name: /Explore/ }).click();
+  await page.getByRole('link', { name: 'Explore', exact: true }).click();
   await page.getByRole('button', { name: /Flag Key/ }).click();
   await page.waitForSelector('.flagkey-card');
   await expect(page).toHaveURL(/\/flags$/);
 
+  await page.goBack();
+  await expect(page).toHaveURL(/\/explore$/);
   await page.goBack();
   await expect(page).toHaveURL(/\/$/); // back at root
   await expect(page.locator('h1')).toContainText('Explore the world');

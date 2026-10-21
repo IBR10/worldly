@@ -153,17 +153,36 @@ export function currencyUnit(currency) {
   return unit.charAt(0).toUpperCase() + unit.slice(1);
 }
 
-// Accent- and case-insensitive comparison for the typed-answer mode. Folds
-// diacritics, lowercases, and collapses punctuation/whitespace so "Cote d'Ivoire"
-// matches "Côte d’Ivoire" and "  united  states " matches "United States".
-export function answerMatches(input, answer) {
-  const norm = (s) => String(s)
+// Folds diacritics, lowercases, and collapses punctuation/whitespace so
+// "Cote d'Ivoire" and "Côte d’Ivoire" fold to the same text.
+export function foldText(s) {
+  return String(s)
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
-    .replace(/[.,'’`()-]/g, ' ')
+    .replace(/[.,'’`()&-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+// Substring search that ignores accents, case and punctuation, so typing
+// "sao tome" finds "São Tomé and Príncipe". Also matches with spaces removed
+// ("saotome", "guineabissau"). `haystack` may hold several names
+// joined by "|" (a name plus its aliases).
+export function searchMatches(term, haystack) {
+  const t = foldText(term);
+  if (!t) return true;
+  return String(haystack).split('|').some((name) => {
+    const h = foldText(name);
+    return h.includes(t) || h.replace(/ /g, '').includes(t.replace(/ /g, ''));
+  });
+}
+
+// Accent- and case-insensitive comparison for the typed-answer mode, so
+// "Cote d'Ivoire" matches "Côte d’Ivoire" and "  united  states " matches
+// "United States".
+export function answerMatches(input, answer) {
+  const norm = foldText;
   if (!input) return false;
   const a = norm(input), b = norm(answer);
   if (b === '') return false;

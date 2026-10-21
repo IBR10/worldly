@@ -114,7 +114,13 @@ export function createRouter({ routes, fallback, onError }) {
     const path = to.replace(/[?#].*$/, ''); // match on the path; keep query/hash in the URL
     if (path === location.pathname && !replace) return render(path);
     if (replace) history.replaceState({ path }, '', to);
-    else history.pushState({ path }, '', to);
+    else {
+      history.pushState({ path }, '', to);
+      // A new page starts at the top. Without this the window keeps the
+      // previous screen's scroll, so a country picked from a scrolled-down map
+      // opened halfway down its guide.
+      if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo(0, 0);
+    }
     return render(path);
   }
 

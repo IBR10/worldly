@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, currencyUnit, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from '../js/quiz.js';
+import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, currencyUnit, searchMatches, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
 import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 
@@ -637,4 +637,14 @@ test('seededRng is deterministic for a given seed', () => {
 test('dateSeed is deterministic for a given date string and differs across dates', () => {
   assert.equal(dateSeed('2026-07-09'), dateSeed('2026-07-09'));
   assert.notEqual(dateSeed('2026-07-09'), dateSeed('2026-07-10'));
+});
+
+test('searchMatches ignores accents, case, punctuation and spacing', () => {
+  assert.ok(searchMatches('sao tome', 'São Tomé and Príncipe'));
+  assert.ok(searchMatches('SAOTOME', 'São Tomé and Príncipe'));
+  assert.ok(searchMatches('cote d ivoire', "Ivory Coast|Côte d'Ivoire"));
+  assert.ok(searchMatches('guinea bissau', 'Guinea-Bissau'));
+  assert.ok(searchMatches('curacao', 'Curaçao'));
+  assert.ok(searchMatches('', 'anything'), 'an empty search matches everything');
+  assert.ok(!searchMatches('peru', 'Brazil'));
 });

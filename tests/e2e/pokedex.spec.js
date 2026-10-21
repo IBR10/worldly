@@ -14,16 +14,16 @@ import { test, expect } from '@playwright/test';
 const DEX_KEY = 'worldly_pokedex_v1';
 const PROFILE_KEY = 'worldly_profile_v1';
 
-/** Open the Pokédex the way a player would: Explore tab → the card. */
+/** Open the Pokédex the way a player would: Explore page → the card. */
 async function openPokedex(page) {
   await page.goto('/');
   await page.waitForSelector('.card');
-  await page.getByRole('tab', { name: /Explore/ }).click();
+  await page.getByRole('link', { name: 'Explore', exact: true }).click();
   await page.getByRole('button', { name: /Pokédex/ }).click();
   await page.waitForSelector('.dex-card');
 }
 
-test('is reachable from the Explore tab and lists the full dex', async ({ page }) => {
+test('is reachable from the Explore page and lists the full dex', async ({ page }) => {
   await openPokedex(page);
   await expect(page.locator('h1.screen-title')).toContainText('Pokédex');
   await expect(page.locator('.screen-sub').first()).toContainText('1025');
