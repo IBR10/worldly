@@ -4,7 +4,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from '../js/quiz.js';
+import { buildPool, makeQuestion, createQuiz, shuffle, geoDistractors, currencyUnit, ALL_MODES, drawWithoutRepeat, answerMatches, challengeMultiplier, sessionQuestionXp, seededRng, dateSeed, regionTree, narrowSubregions } from '../js/quiz.js';
 import { weightFor, pickWeighted, weakCount } from '../js/srs.js';
 import { historicFlagUrl, stateFlagUrl } from '../js/data.js';
 
@@ -452,12 +452,38 @@ test('makeQuestion (currency) uses geography-tiered distractors, falling back pa
   // Kenya and Tanzania share the identical currency value ("Kenyan shilling")
   // in this fixture, so Tanzania can't supply a *distinct* subregion-tier
   // distractor — must fall through to the region tier (Africa) and pick up
-  // Egypt's "Egyptian pound" instead.
+  // Egypt's pound instead. Options show the unit only.
   const q = makeQuestion({ id: 'currency:Kenya', mode: 'currency', region: 'Africa', source: kenya }, data, { choices: 2 });
   assert.equal(q.prompt, 'What is the official currency of Kenya?');
-  assert.equal(q.choices.length, 2);
-  assert.ok(q.choices.includes('Kenyan shilling'), 'the answer is present');
-  assert.ok(q.choices.includes('Egyptian pound'), 'falls back to the region tier since Tanzania has no distinct currency value');
+  assert.equal(q.answer, 'Shilling');
+  assert.deepEqual([...q.choices].sort(), ['Pound', 'Shilling'], 'falls back to the region tier since Tanzania has no distinct currency value');
+});
+
+test('currencyUnit strips the country adjective so the answer does not name the country', () => {
+  assert.equal(currencyUnit('Peruvian sol'), 'Sol');
+  assert.equal(currencyUnit('Trinidad and Tobago dollar'), 'Dollar');
+  assert.equal(currencyUnit('Mongolian tögrög'), 'Tögrög');
+  assert.equal(currencyUnit('Euro'), 'Euro');
+  assert.equal(currencyUnit('Pound sterling'), 'Pound sterling');
+  assert.equal(currencyUnit('West African CFA franc'), 'CFA franc');
+  assert.equal(currencyUnit('Israeli new shekel'), 'New shekel');
+  assert.equal(currencyUnit('Bosnia and Herzegovina convertible mark'), 'Convertible mark');
+});
+
+test('makeQuestion (currency) never offers two options with the same unit', () => {
+  const countries = [
+    { name: 'Peru', subregion: 'South America', region: 'South America', currency: 'Peruvian sol' },
+    { name: 'Suriname', subregion: 'South America', region: 'South America', currency: 'Surinamese dollar' },
+    { name: 'Guyana', subregion: 'South America', region: 'South America', currency: 'Guyanese dollar' },
+    { name: 'Brazil', subregion: 'South America', region: 'South America', currency: 'Brazilian real' },
+    { name: 'Ecuador', subregion: 'South America', region: 'South America', currency: 'US dollar' },
+  ];
+  for (let seed = 1; seed <= 20; seed++) {
+    const q = makeQuestion({ id: 'currency:Suriname', mode: 'currency', region: 'South America', source: countries[1] }, { countries }, { choices: 3, rng: seededRng(seed) });
+    assert.equal(q.answer, 'Dollar');
+    assert.equal(new Set(q.choices).size, 3);
+    assert.deepEqual([...q.choices].sort(), ['Dollar', 'Real', 'Sol']);
+  }
 });
 
 test('makeQuestion (population) formats the answer and distractors as comma-grouped numbers', () => {

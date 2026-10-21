@@ -139,6 +139,20 @@ export function geoDistractors(countries, target, field, n, rng, normalize = (v)
   return chosen;
 }
 
+// Currency names mostly lead with the country's own adjective ("Peruvian sol"),
+// which gives the answer away the moment the prompt names Peru. Currency
+// questions show just the unit instead ("Sol"). A few units are more than one
+// word and keep their full form; everything else is the last word.
+const MULTIWORD_UNITS = ['pound sterling', 'cfa franc', 'convertible mark', 'new shekel'];
+
+export function currencyUnit(currency) {
+  const s = String(currency).trim();
+  const lower = s.toLowerCase();
+  const multi = MULTIWORD_UNITS.find((u) => lower.endsWith(u));
+  const unit = multi ? s.slice(s.length - multi.length) : s.split(/\s+/).pop();
+  return unit.charAt(0).toUpperCase() + unit.slice(1);
+}
+
 // Accent- and case-insensitive comparison for the typed-answer mode. Folds
 // diacritics, lowercases, and collapses punctuation/whitespace so "Cote d'Ivoire"
 // matches "Côte d’Ivoire" and "  united  states " matches "United States".
@@ -460,8 +474,17 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
     // "Christianity/Irreligion") that are all the same base religion —
     // normalize to the text before "(" or "/" so same-base variants don't
     // count as valid distractors for each other (see geoDistractors' doc).
-    const normalize = mode === 'religion' ? (v) => String(v).split(/[/(]/)[0].trim() : undefined;
+    // Currencies are shown by unit only, so two currencies sharing a unit
+    // ("Surinamese dollar", "Guyanese dollar") would display identically —
+    // dedupe on the unit.
+    const normalize = mode === 'religion' ? (v) => String(v).split(/[/(]/)[0].trim()
+      : mode === 'currency' ? currencyUnit
+      : undefined;
     distractors = geoDistractors(data.countries, c, geoField, choices - 1, rng, normalize);
+    if (mode === 'currency') {
+      answer = currencyUnit(answer);
+      distractors = distractors.map(currencyUnit);
+    }
     // Population is numeric — format both the answer and its distractors as
     // comma-grouped strings only after distractor selection, so proximity
     // selection above still compares real numbers, not formatted text.
