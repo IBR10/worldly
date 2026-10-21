@@ -655,6 +655,9 @@ function answer(choice) {
     else if (btn.dataset.choice === choice) btn.classList.add('wrong');
   });
 
+  // Who's That Pokémon: color the silhouette in once the guess is in.
+  app.querySelector('.dex-quiz-sprite.silhouette')?.classList.remove('silhouette');
+
   app.querySelector('#pokeReveal').innerHTML = `
     <div class="callout mt-14">
       <p class="m-0"><strong>${correct ? 'Correct' : 'Not quite'}</strong> — the answer is ${esc(q.answer)}.</p>
@@ -669,7 +672,9 @@ function answer(choice) {
 
   const next = app.querySelector('#pokeNext');
   next.addEventListener('click', () => { session.index += 1; nextQuestion(); });
-  next.focus();
+  // Focus Next so Enter advances, but don't scroll the page down to it — the
+  // picture and the answer reveal should stay in view.
+  next.focus({ preventScroll: true });
 }
 
 function finishPokeQuiz() {

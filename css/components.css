@@ -120,6 +120,8 @@
   cursor: pointer;
   max-width: 13ch;
   overflow: hidden;
+  /* Never squeezed by a crowded header: below its text it read as just "E". */
+  flex-shrink: 0;
 }
 .hud .chip.chip-name strong { overflow: hidden; text-overflow: ellipsis; }
 .hud .chip.chip-name:hover strong,
@@ -1023,6 +1025,21 @@
    compositions in screens.css). */
 @media (min-width: 900px) {
   .navrail { display: flex; }
+}
+
+/* Laptop widths: five labeled links plus the HUD don't fit, so the nav goes
+   icon-only. The label stays in the accessibility tree (same rules as .sr-only)
+   and on hover via the link's title. */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .navlink { padding: 8px 10px; }
+  .navlink span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 899px) {

@@ -55,7 +55,7 @@ const NAV = [
  *  intercepts internal absolute links, so no click handler is needed here. */
 function renderNav() {
   navrail.innerHTML = NAV.map((n) =>
-    `<a class="navlink" href="${n.href}">${icon(n.icon)}<span>${n.label}</span></a>`).join('');
+    `<a class="navlink" href="${n.href}" title="${n.label}">${icon(n.icon)}<span>${n.label}</span></a>`).join('');
   tabbar.innerHTML = NAV.map((n) =>
     `<a class="tabbar-link" href="${n.href}">${icon(n.icon)}<span>${n.label}</span></a>`).join('');
   document.getElementById('brandMark').innerHTML = icon('globe');
