@@ -482,7 +482,7 @@ export function makeQuestion(item, data, { choices = 4, rng = Math.random } = {}
   // The five country-based modes always draw distractors from nearby
   // countries (same subregion, falling back to region, falling back to the
   // whole world) so wrong answers can't be eliminated just by "that's not
-  // even close." This applies unconditionally, regardless of `difficulty`.
+  // even close."
   const GEO_FIELD = { capital: 'capital', country: 'name', language: 'language', religion: 'religion', currency: 'currency', population: 'population', flag: 'name' };
   const geoField = GEO_FIELD[mode];
   let distractors;
@@ -561,7 +561,7 @@ export function makeQuestion(item, data, { choices = 4, rng = Math.random } = {}
  * Create a stateful quiz session.
  * @param {object} cfg
  *   data        the loaded datasets
- *   config      { modes, continents, difficulty, choices }
+ *   config      { modes, continents, choices }
  *   srsMap      spaced-repetition records (for weighting); optional
  *   reviewIds   if provided, restrict the pool to these item ids (review mode)
  *   pick        injectable weighted-picker (item, pool) for tests

@@ -35,7 +35,7 @@ export async function onRequest(context) {
     rng = seededRng(crypto.getRandomValues(new Uint32Array(1))[0]);
   }
 
-  const config = { modes: ALL_MODES, continents: 'all', difficulty: 'medium', choices: 4, rng };
+  const config = { modes: ALL_MODES, continents: 'all', choices: 4, rng };
   const engine = createQuiz({ data: DATA, config, rng });
   if (engine.size === 0) return json({ error: 'empty_pool' }, 500);
 
