@@ -67,6 +67,7 @@
   align-items: center;
   gap: var(--s1);
   margin-left: var(--s3);
+  flex: 0 0 auto;
 }
 .navlink {
   display: inline-flex;
@@ -94,7 +95,10 @@
   align-items: center;
   gap: var(--s4);
   margin-left: auto;
-  min-width: 0;
+  /* Never shrunk: a squeezed HUD spilled its chips under the help button, which
+     then painted over the accuracy reading. fitHeader() in main.js makes room
+     by dropping the nav labels instead. */
+  flex: 0 0 auto;
 }
 .hud .chip {
   display: flex;
@@ -182,6 +186,7 @@
   border-radius: var(--r-sm);
   width: 40px;
   height: 40px;
+  flex: 0 0 auto;
   cursor: pointer;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
   font-size: 1.05rem;
@@ -1029,7 +1034,18 @@
 
 /* Laptop widths: five labeled links plus the HUD don't fit, so the nav goes
    icon-only. The label stays in the accessibility tree (same rules as .sr-only)
-   and on hover via the link's title. */
+   and on hover via the link's title. `.compact` is the same thing for wider
+   viewports that still can't fit it all (browser zoom, a long name, big XP);
+   fitHeader() in main.js sets it by measuring. */
+.topbar.compact .navlink { padding: 8px 10px; }
+.topbar.compact .navlink span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 @media (min-width: 900px) and (max-width: 1199px) {
   .navlink { padding: 8px 10px; }
   .navlink span {
