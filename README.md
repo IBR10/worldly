@@ -46,7 +46,7 @@ npm test        # Node tests over the quiz, SRS, map, router, language, progress
 | **Historic Flags** | Identify the nation from a flag of the past (34 entities) |
 | **Similar Flags** | Tell look-alike flags apart, with tips (12 confusion groups) |
 | **Mixed / Challenge / Daily** | Everything shuffled · timed with streak multiplier · one fixed set per day |
-| **Custom Study** | Choose topics, regions, difficulty, length — and multiple-choice or **typed answers** |
+| **Custom Study** | Choose topics, regions, length — and multiple-choice or **typed answers** |
 | **Review Missed** | Practice exactly what you got wrong |
 
 **Narrowing a session.** Mixed and Custom Study share a setup panel: switch

@@ -628,7 +628,7 @@ const EXPLORE_CARDS = [
   { key: 'languages', icon: 'map', title: 'Language Map', desc: 'The world colored by what it speaks.' },
   { key: 'countries', icon: 'globe', title: 'Country Guides', desc: 'People, events & culture, country by country.' },
   { key: 'music', icon: 'note', title: 'Music', desc: 'Songs that represent each country.' },
-  { key: 'custom', icon: 'sliders', title: 'Custom Study', desc: 'Choose topics, continents, difficulty & input.' },
+  { key: 'custom', icon: 'sliders', title: 'Custom Study', desc: 'Choose topics, continents, length & input.' },
   { key: 'stats', icon: 'gauge', title: 'Statistics', desc: 'Accuracy, weak areas & study time.' },
   { key: 'achievements', icon: 'trophy', title: 'Achievements', desc: 'Badges & milestones.' },
   { key: 'profile', icon: 'compass', title: 'Profile', desc: 'Name & reset.' },
@@ -802,12 +802,12 @@ function showAbout() {
 // in that array once the server round trip has failed).
 function buildLocalEngine(opts) {
   const {
-    modes, continents = 'all', subregions = 'all', difficulty = 'medium',
+    modes, continents = 'all', subregions = 'all',
     daily = false, reviewIds = null, seed = null, religionFilter = null,
   } = opts;
   const data = getData();
   const rng = seed != null ? seededRng(seed) : Math.random;
-  const config = { modes, continents, subregions, difficulty, choices: 4, rng, religionFilter };
+  const config = { modes, continents, subregions, choices: 4, rng, religionFilter };
   // Daily uses plain seeded picking (same for everyone); other modes use SRS
   // weighting so forgotten/missed items resurface more often.
   const pick = daily ? null : (pool, srsMap) => pickWeighted(pool, srsMap, rng);
@@ -816,7 +816,7 @@ function buildLocalEngine(opts) {
 
 async function startQuiz(opts) {
   // Only the fields this function itself reads are destructured; the pool
-  // options (modes/continents/subregions/difficulty/reviewIds/seed/
+  // options (modes/continents/subregions/reviewIds/seed/
   // religionFilter) are consumed by buildLocalEngine(opts) below, which
   // re-reads them from `opts` and applies its own defaults.
   const { title, total = 10, challenge = false, daily = false, input = 'mcq' } = opts;
@@ -1162,7 +1162,7 @@ function renderQuestion() {
 }
 
 function renderMcqQuestion(q) {
-  const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
+  const flagSrc = questionFlagSrc(q);
   const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
 
   app.innerHTML = `
@@ -1345,7 +1345,7 @@ async function answer(value) {
 // Typed-answer mode: same questions as MCQ, but the player types the answer and
 // it's checked with accent/case-insensitive matching (answerMatches).
 function renderTypedQuestion(q) {
-  const flagSrc = q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
+  const flagSrc = questionFlagSrc(q);
   const flag = flagSrc ? `<img decoding="async" class="q-flag" alt="Flag to identify" src="${flagSrc}">` : '';
   app.innerHTML = `
     ${quizChrome()}
@@ -1438,6 +1438,19 @@ function renderFeedback(correct, q, xpGained) {
   fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+/** The flag a question shows, if any: a country's, or a historic or state one. */
+function questionFlagSrc(q) {
+  return q.flagIso ? flagUrl(q.flagIso) : (q.flagImg ? historicFlagUrl(q.flagImg) : null);
+}
+
+/** One row of the end-of-round recap. Flag questions all read "Which country
+ *  does this flag belong to?", so the row carries the flag to say which. */
+function recapRow(q) {
+  const src = questionFlagSrc(q);
+  const flag = src ? `<img decoding="async" class="recap-flag" alt="" src="${src}">` : '';
+  return `<li><span class="recap-q">${flag}<span>${esc(q.prompt)}</span></span><span class="ans">${esc(q.answer)}</span></li>`;
+}
+
 function finishQuiz() {
   clearTimer();
   recordStudyTime(Date.now() - S.startTime);
@@ -1457,11 +1470,11 @@ function finishQuiz() {
 
   const missedList = S.missed.length
     ? `<div class="section-h">Worth another look</div>
-       <ul class="weak-list">${S.missed.map((q) => `<li><span>${esc(q.prompt)}</span><span class="ans">${esc(q.answer)}</span></li>`).join('')}</ul>`
+       <ul class="weak-list">${S.missed.map(recapRow).join('')}</ul>`
     : `<p class="screen-sub">A flawless run — nothing to review.</p>`;
   const gotList = S.got.length
     ? `<div class="section-h">What you got right</div>
-       <ul class="weak-list got-list">${S.got.map((q) => `<li><span>${esc(q.prompt)}</span><span class="ans">${esc(q.answer)}</span></li>`).join('')}</ul>`
+       <ul class="weak-list got-list">${S.got.map(recapRow).join('')}</ul>`
     : '';
 
   const lastOpts = S.lastOpts;
@@ -1773,13 +1786,7 @@ function showCustom() {
     <p class="screen-sub" id="setupCount" aria-live="polite"></p>
 
     <div class="form-block">
-      <h2>Difficulty</h2>
-      <div class="seg" id="diffSeg">
-        <button data-d="easy">Easy</button>
-        <button data-d="medium" class="active">Medium</button>
-        <button data-d="hard">Hard</button>
-      </div>
-      <h2 class="mt-16">Length</h2>
+      <h2>Length</h2>
       <div class="seg" id="lenSeg">
         <button data-n="10" class="active">10</button>
         <button data-n="20">20</button>
@@ -1803,11 +1810,7 @@ function showCustom() {
   };
   wireSetupPanel(refresh);
 
-  let difficulty = 'medium', length = 10, input = 'mcq';
-  app.querySelectorAll('#diffSeg button').forEach((b) => b.addEventListener('click', () => {
-    app.querySelectorAll('#diffSeg button').forEach((x) => x.classList.remove('active'));
-    b.classList.add('active'); difficulty = b.dataset.d;
-  }));
+  let length = 10, input = 'mcq';
   app.querySelectorAll('#lenSeg button').forEach((b) => b.addEventListener('click', () => {
     app.querySelectorAll('#lenSeg button').forEach((x) => x.classList.remove('active'));
     b.classList.add('active'); length = parseInt(b.dataset.n, 10);
@@ -1827,7 +1830,6 @@ function showCustom() {
       title: 'Custom Study',
       modes: now.modes,
       subregions: now.filter,
-      difficulty,
       total: length,
       input,
     });

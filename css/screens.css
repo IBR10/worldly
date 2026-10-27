@@ -861,10 +861,10 @@
   image-rendering: pixelated;
   display: block;
   margin: 0 auto var(--s2);
+  transition: filter 0.45s ease;
 }
 /* "Who's That Pokémon?" — the silhouette is the question, so it must read as a
    solid shape on both themes. */
-.dex-quiz-sprite { transition: filter 0.45s ease; }
 @media (prefers-reduced-motion: reduce) { .dex-quiz-sprite { transition: none; } }
 .dex-quiz-sprite.silhouette { filter: brightness(0) opacity(0.85); }
 [data-theme="dark"] .dex-quiz-sprite.silhouette { filter: brightness(0) invert(0.3); }

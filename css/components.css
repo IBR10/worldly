@@ -505,6 +505,16 @@
   font-size: var(--t-sm);
 }
 .weak-list .ans { color: var(--good); font-weight: 700; white-space: nowrap; }
+.recap-q { display: flex; align-items: center; gap: var(--s3); min-width: 0; }
+/* A flag row is taller than its text, so center rather than baseline-align. */
+.weak-list li:has(.recap-flag) { align-items: center; }
+.recap-flag {
+  height: 22px;
+  width: auto;
+  flex: none;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
 
 /* ---- forms ------------------------------------------------------------------ */
 .form-block {
