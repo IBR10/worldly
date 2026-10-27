@@ -92,8 +92,15 @@ export function createMapView({
   // "Home" view — plain scale=1/centered by default, but re-anchored to a
   // continent's bounding box by fitToIds() below. Reset view returns here.
   let homeScale = 1, homeTx = 0, homeTy = 0;
-  const apply = () => { svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; };
-  const clampScale = (s) => Math.min(8, Math.max(1, s));
+  // --map-zoom lets the stylesheet keep borders hairline at any zoom: the
+  // zoom is a CSS transform, which vector-effect: non-scaling-stroke ignores.
+  const apply = () => {
+    svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    svg.style.setProperty('--map-zoom', String(scale));
+  };
+  // 32x, not 8x: island nations like Cabo Verde or Tonga are still only a few
+  // pixels across at 8x on a world map.
+  const clampScale = (s) => Math.min(32, Math.max(1, s));
 
   // Zoom the initial view to fit the union of the given region ids (e.g. every
   // country in one continent), so a region/continent mode opens already zoomed
@@ -123,6 +130,46 @@ export function createMapView({
     apply();
   }
   if (focusIds && focusIds.length) requestAnimationFrame(() => fitToIds(focusIds));
+
+  // A highlighted microstate (Tonga, Nauru, Malta) is a couple of pixels on the
+  // world map, so a "which country is this?" question could not be answered
+  // without hunting for it. Anything under SMALL_PX gets zoomed toward until it
+  // spans TARGET_PX, centered, and ringed: an island chain can span TARGET_PX
+  // while each island is still a dot. Display-only maps only: on a
+  // click-the-map question the zoom would give the answer away.
+  function focusSmallHighlight(el) {
+    const holderRect = holder.getBoundingClientRect();
+    const vb = svg.viewBox?.baseVal;
+    if (!holderRect.width || !vb || !vb.width) return;
+    const SMALL_PX = 20, TARGET_PX = 40;
+    const r = el.getBoundingClientRect();
+    const size = Math.max(r.width, r.height);
+    if (size >= SMALL_PX) return;
+    const next = clampScale(scale * (TARGET_PX / Math.max(size, 0.5)));
+    // Content point under the highlight's center (transform-origin is 0 0).
+    const cx = (r.left + r.width / 2 - holderRect.left - tx) / scale;
+    const cy = (r.top + r.height / 2 - holderRect.top - ty) / scale;
+    homeScale = next;
+    homeTx = holderRect.width / 2 - cx * next;
+    homeTy = holderRect.height / 2 - cy * next;
+    scale = homeScale; tx = homeTx; ty = homeTy;
+    apply();
+    const bb = el.getBBox();
+    const pxPerUnit = (holderRect.width / vb.width) * next;
+    const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('class', 'region-ring');
+    ring.setAttribute('cx', String(bb.x + bb.width / 2));
+    ring.setAttribute('cy', String(bb.y + bb.height / 2));
+    ring.setAttribute('r', String(Math.max(bb.width, bb.height) / 2 + 14 / pxPerUnit));
+    // In SVG units: the zoom is a CSS transform, which non-scaling-stroke ignores.
+    ring.setAttribute('stroke-width', String(2.5 / pxPerUnit));
+    svg.appendChild(ring);
+  }
+  if (!interactive && highlightId) {
+    const hl = svg.querySelector(`#${CSS.escape(highlightId)}`);
+    // Queued after fitToIds above, so a continent-zoomed view zooms further.
+    if (hl) requestAnimationFrame(() => focusSmallHighlight(hl));
+  }
 
   function zoomAt(cx, cy, factor) {
     const rect = holder.getBoundingClientRect();
@@ -276,7 +323,26 @@ export function createMapView({
     }
     // Fallback for older engines: topmost painted path under the point.
     const el = document.elementFromPoint(clientX, clientY);
-    return el && el.closest ? el.closest('path[id]') : null;
+    const hit = el && el.closest ? el.closest('path[id]') : null;
+    return hit || smallRegionNear(clientX, clientY);
+  }
+
+  // A click on open water just off a tiny region (an island, a microstate)
+  // counts as that region: hitting a 3px island exactly is a test of aim, not
+  // geography. Only regions that are small on screen get the slack, so a big
+  // country's coastline never swallows clicks out at sea.
+  function smallRegionNear(clientX, clientY) {
+    const SMALL_PX = 24, SLACK_PX = 10;
+    let best = null, bestDist = Infinity;
+    for (const el of svg.querySelectorAll('path[id]')) {
+      const r = el.getBoundingClientRect();
+      if (Math.max(r.width, r.height) > SMALL_PX) continue;
+      const dx = Math.max(r.left - clientX, 0, clientX - r.right);
+      const dy = Math.max(r.top - clientY, 0, clientY - r.bottom);
+      const d = Math.hypot(dx, dy);
+      if (d <= SLACK_PX && d < bestDist) { bestDist = d; best = el; }
+    }
+    return best;
   }
 
   // --- state ------------------------------------------------------------------

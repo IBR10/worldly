@@ -180,6 +180,20 @@
   border: 1px solid var(--border);
   display: block;
 }
+/* Each flag's country, kept hidden while answering (it is the answer) and
+   shown on hover once the question is locked, so a wrong flag can be learned
+   too. Touch has no hover, so there every name shows after answering. */
+.choice-flag .flag-name {
+  visibility: hidden;
+  font-size: var(--t-sm);
+  font-weight: 650;
+}
+.choice-flag:disabled:hover .flag-name,
+.choice-flag.correct .flag-name,
+.choice-flag.wrong .flag-name { visibility: visible; }
+@media (hover: none) {
+  .choice-flag:disabled .flag-name { visibility: visible; }
+}
 
 /* Religious-symbol reveal image (many Commons symbol SVGs are dark line art,
    so a white backing keeps them visible against the dark theme). */

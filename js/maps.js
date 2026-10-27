@@ -6,7 +6,7 @@
 // Like quiz.js / srs.js it is pure (no DOM, no fetch) so the Node test suite can
 // exercise it directly — the SVG text and parsed region tables are passed in.
 
-import { learnMoreFor, shuffle, sampleDistinct } from './quiz.js';
+import { learnMoreFor, shuffle, sampleDistinct, geoDistractors } from './quiz.js';
 
 // Each mode names the dataset slice it draws from and the SVG that backs it.
 // "reverse" modes highlight a region and ask the player to NAME it (multiple
@@ -156,8 +156,13 @@ export function makeMapQuestion(item, { data = null, rng = Math.random, choices 
   if (item.reverse) {
     const listBySource = { country: data?.countries, us: data?.usStates, mx: data?.mxStates, ca: data?.caStates };
     const sourceKey = MAP_MODES[item.mode]?.source;
-    const names = (listBySource[sourceKey] || []).map((x) => x.name);
-    const distractors = sampleDistinct(names, c.name, choices - 1, rng);
+    const list = listBySource[sourceKey] || [];
+    // Countries draw from the same subregion, then continent, like the quiz
+    // modes: a choice from another continent can be ruled out without
+    // looking at the map. States and provinces are all one country already.
+    const distractors = sourceKey === 'country'
+      ? geoDistractors(list, c, 'name', choices - 1, rng)
+      : sampleDistinct(list.map((x) => x.name), c.name, choices - 1, rng);
     q.reverse = true;
     q.highlightId = item.targetId;
     q.prompt = REVERSE_PROMPTS[base] || 'Which region is highlighted?';

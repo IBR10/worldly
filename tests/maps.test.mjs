@@ -161,6 +161,24 @@ test('regionIdFor resolves reverse modes like their forward twin', () => {
   assert.equal(regionIdFor('map_ca_reverse', data.caStates[0], regionsByMap.canada), 'ab');
 });
 
+test('makeMapQuestion (reverse country) offers neighbors, not other continents', () => {
+  const countries = [
+    { name: 'Kenya', iso2: 'KE', region: 'Africa', subregion: 'East Africa' },
+    { name: 'Tanzania', iso2: 'TZ', region: 'Africa', subregion: 'East Africa' },
+    { name: 'Uganda', iso2: 'UG', region: 'Africa', subregion: 'East Africa' },
+    { name: 'Egypt', iso2: 'EG', region: 'Africa', subregion: 'North Africa' },
+    { name: 'Japan', iso2: 'JP', region: 'Asia', subregion: 'East Asia' },
+    { name: 'India', iso2: 'IN', region: 'Asia', subregion: 'South Asia' },
+    { name: 'France', iso2: 'FR', region: 'Europe', subregion: 'Western Europe' },
+  ];
+  const item = { id: 'map_country_reverse:Kenya', mode: 'map_country_reverse', reverse: true, region: 'Africa', targetId: 'ke', svg: 'world', source: countries[0] };
+  for (let i = 0; i < 20; i++) {
+    const q = makeMapQuestion(item, { data: { countries } });
+    assert.equal(q.choices.length, 4);
+    assert.deepEqual([...q.choices].sort(), ['Egypt', 'Kenya', 'Tanzania', 'Uganda']);
+  }
+});
+
 test('makeMapQuestion (map_ca) mirrors map_us/map_mx', () => {
   const item = buildMapPool(data, regionsByMap, { modes: ['map_ca'] })[0];
   const q = makeMapQuestion(item);

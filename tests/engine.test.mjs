@@ -526,17 +526,22 @@ test('makeQuestion (language/religion/country/flag) also use geography-tiered di
   assert.ok(flagQ.choices.includes('Tanzania'), 'flag mode also prefers the subregion neighbor');
 });
 
-test('makeQuestion (historic_flag) region-preference is still gated by difficulty (unchanged behavior)', () => {
+test('makeQuestion (historic_flag) prefers same-region entities at every difficulty', () => {
+  const item = { id: 'historic_flag:Soviet Union', mode: 'historic_flag', region: 'Europe', source: data.historicFlags[0] };
+  // Yugoslavia is the only other Europe entry; with one distractor to fill it
+  // must be the one picked, on medium as well as hard.
+  for (let i = 0; i < 20; i++) {
+    const q = makeQuestion(item, data, { choices: 2 });
+    assert.deepEqual([...q.choices].sort(), ['Soviet Union', 'Yugoslavia']);
+  }
+});
+
+test('makeQuestion (historic_flag) tops up from other regions when its own is short', () => {
   const item = { id: 'historic_flag:Rhodesia', mode: 'historic_flag', region: 'Africa', source: data.historicFlags[2] };
-  // Only Rhodesia is Africa-region among the 4 historic flags; the other 3
-  // (Soviet Union, Ottoman Empire, Yugoslavia) are Europe/Asia. With
-  // difficulty left at its 'medium' default (not 'hard'), the pre-existing
-  // same-region gate must NOT kick in, so all 4 entries stay eligible — with
-  // choices=4 and exactly 4 total entries, every one of them must appear.
+  // Rhodesia is the only Africa entry, so all three others fill the choices.
   const q = makeQuestion(item, data, { choices: 4 });
   assert.equal(q.choices.length, 4);
-  const nonAfrica = ['Soviet Union', 'Ottoman Empire', 'Yugoslavia'];
-  assert.ok(nonAfrica.every((n) => q.choices.includes(n)), 'medium difficulty still pulls from every region, unaffected by the new always-on country-mode tiering');
+  assert.ok(['Soviet Union', 'Ottoman Empire', 'Yugoslavia'].every((n) => q.choices.includes(n)));
 });
 
 // ---- no-duplicate sessions (the core fix) ----------------------------------
