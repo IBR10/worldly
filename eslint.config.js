@@ -20,6 +20,7 @@ const browserGlobals = {
   setInterval: 'readonly',
   clearInterval: 'readonly',
   requestAnimationFrame: 'readonly',
+  ResizeObserver: 'readonly',
   CustomEvent: 'readonly',
   SpeechSynthesisUtterance: 'readonly',
   Blob: 'readonly',

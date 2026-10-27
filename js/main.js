@@ -344,7 +344,20 @@ function renderHUD() {
   hud.querySelector('.xpbar > span').style.width = lp.pct + '%';
   hud.querySelector('.gauge').style.setProperty('--arc', String(lp.pct));
   hud.querySelector('#hudName').addEventListener('click', () => navigate('/profile'));
+  fitHeader();
 }
+
+/** Drop the nav labels when the full header won't fit. Measured rather than a
+ *  breakpoint, because zoom, the player's name and XP digits all move the line. */
+const topbar = document.querySelector('.topbar');
+function fitHeader() {
+  topbar.classList.remove('compact');
+  topbar.classList.toggle('compact', topbar.scrollWidth > topbar.clientWidth);
+}
+// The bar itself for viewport changes; the nav and HUD for content changes the
+// bar doesn't feel, like the web font arriving and widening every label.
+const headerFit = new ResizeObserver(fitHeader);
+for (const el of [topbar, navrail, hud]) headerFit.observe(el);
 
 // ---- theme -------------------------------------------------------------------
 /** The OS preference, used when the player has not chosen explicitly. */
