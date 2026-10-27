@@ -858,7 +858,7 @@ async function startQuiz(opts) {
       S = {
         title, engine, total: remote.questions.length, challenge, daily, input, lastOpts: opts,
         index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
-        missed: [], startTime: Date.now(), phase: 'answer', current: null,
+        missed: [], got: [], startTime: Date.now(), phase: 'answer', current: null,
         timer: null, multiplier: 1,
         remote: true, sessionId: remote.sessionId,
       };
@@ -882,7 +882,7 @@ async function startQuiz(opts) {
   S = {
     title, engine, total: Math.min(total, engine.size), challenge, daily, input, lastOpts: opts,
     index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
-    missed: [], startTime: Date.now(), phase: 'answer', current: null,
+    missed: [], got: [], startTime: Date.now(), phase: 'answer', current: null,
     timer: null, multiplier: 1,
     remote: false, sessionId: null,
   };
@@ -1031,7 +1031,7 @@ async function startMapQuiz(opts) {
   S = {
     kind: 'map', title, engine, total: Math.min(total, pool.length), challenge: false, daily: false,
     lastOpts: opts, index: 0, correct: 0, runStreak: 0, runBest: 0, xpRun: 0,
-    missed: [], startTime: Date.now(), phase: 'answer', current: null, timer: null, multiplier: 1,
+    missed: [], got: [], startTime: Date.now(), phase: 'answer', current: null, timer: null, multiplier: 1,
     svgText: map.svgText, mapView: null, focusIds,
   };
   renderQuestion();
@@ -1098,6 +1098,7 @@ function mapAnswer(clickedId) {
   S.index += 1;
   if (correct) {
     S.correct += 1;
+    S.got.push(q);
     S.runStreak += 1;
     S.runBest = Math.max(S.runBest, S.runStreak);
     S.xpRun += res.xpGained;
@@ -1129,6 +1130,7 @@ function renderReverseMapQuestion(q) {
         ${q.choices.map((c, i) => q.flagChoices
           ? `<button class="choice choice-flag" data-val="${esc(c)}" aria-label="Flag of ${esc(c)}">
                <span class="key">${i + 1}</span><img decoding="async" src="${flagUrl(q.flagByName[c], 'w160')}" alt="Flag of ${esc(c)}">
+               <span class="flag-name" aria-hidden="true">${esc(c)}</span>
              </button>`
           : `<button class="choice" data-val="${esc(c)}">
                <span class="key">${i + 1}</span><span>${esc(c)}</span>
@@ -1319,6 +1321,7 @@ async function answer(value) {
   S.index += 1;
   if (correct) {
     S.correct += 1;
+    S.got.push(q);
     S.runStreak += 1;
     S.runBest = Math.max(S.runBest, S.runStreak);
   } else {
@@ -1385,6 +1388,7 @@ function answerTyped(value) {
   S.index += 1;
   if (correct) {
     S.correct += 1;
+    S.got.push(q);
     S.runStreak += 1;
     S.runBest = Math.max(S.runBest, S.runStreak);
     S.xpRun += res.xpGained;
@@ -1455,6 +1459,10 @@ function finishQuiz() {
     ? `<div class="section-h">Worth another look</div>
        <ul class="weak-list">${S.missed.map((q) => `<li><span>${esc(q.prompt)}</span><span class="ans">${esc(q.answer)}</span></li>`).join('')}</ul>`
     : `<p class="screen-sub">A flawless run — nothing to review.</p>`;
+  const gotList = S.got.length
+    ? `<div class="section-h">What you got right</div>
+       <ul class="weak-list got-list">${S.got.map((q) => `<li><span>${esc(q.prompt)}</span><span class="ans">${esc(q.answer)}</span></li>`).join('')}</ul>`
+    : '';
 
   const lastOpts = S.lastOpts;
   const wasMap = S.kind === 'map';
@@ -1468,6 +1476,7 @@ function finishQuiz() {
       ${wasRemote ? '<div class="screen-sub" id="globalSyncNote">Syncing to the global leaderboard…</div>' : ''}
     </div>
     ${missedList}
+    ${gotList}
     <div class="btn-row mt-18">
       <button class="btn primary" id="againBtn">Play again</button>
       ${S.missed.length ? '<button class="btn" id="reviewBtn">Review these now</button>' : ''}

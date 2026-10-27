@@ -851,7 +851,9 @@
 .map-svg path {
   fill: var(--land);
   stroke: var(--border);
-  stroke-width: 0.4;
+  /* Divided by the pan/zoom scale (set by mapview.js) so borders stay hairline
+     at 32x instead of thickening into blobs that hide small islands. */
+  stroke-width: calc(0.4px / var(--map-zoom, 1));
   vector-effect: non-scaling-stroke;
   cursor: pointer;
   transition: fill 0.12s ease;
@@ -866,6 +868,12 @@
 .map-svg.map-static path:hover { fill: var(--land); }
 .map-svg path.region-highlight,
 .map-svg.map-static path.region-highlight { fill: var(--accent); stroke: var(--accent); }
+/* Ring around a highlighted region too small to see even zoomed in (mapview.js). */
+.map-svg .region-ring {
+  fill: none;
+  stroke: var(--accent);
+  pointer-events: none;
+}
 
 .map-controls {
   position: absolute;

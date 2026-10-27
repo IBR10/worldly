@@ -354,7 +354,7 @@ export function buildPool(data, {
 // ---- question construction ---------------------------------------------------
 
 /** Turn one pool item into a full multiple-choice question. */
-export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, rng = Math.random } = {}) {
+export function makeQuestion(item, data, { choices = 4, rng = Math.random } = {}) {
   const c = item.source;
   const mode = item.mode;
   let prompt, answer, distractorValues, flagIso = null, flagImg = null, symbolImg = null, isCountry = true;
@@ -440,15 +440,13 @@ export function makeQuestion(item, data, { difficulty = 'medium', choices = 4, r
       answer = c.name;
       flagImg = c.img;
       isCountry = false;
-      // Keep options coherent: distractors are other historic entities. On
-      // hard, prefer same-region entities; fall back to the full set when a
-      // region is short so we can always fill the requested number of
-      // choices. (Unchanged — historic flags are out of scope for the
-      // always-on geography tiering used by the country modes below.)
+      // Keep options coherent: distractors are other historic entities, from
+      // the same region first so none can be ruled out on geography alone,
+      // topped up from the rest when the region is short.
       const all = data.historicFlags || [];
-      const sameRegionHist = all.filter((x) => x.region === c.region);
-      const histPool = difficulty === 'hard' && sameRegionHist.length >= choices ? sameRegionHist : all;
-      distractorValues = histPool.map((x) => x.name);
+      const near = shuffle(all.filter((x) => x !== c && x.region === c.region), rng);
+      const far = shuffle(all.filter((x) => x !== c && x.region !== c.region), rng);
+      distractorValues = [...near, ...far].slice(0, choices - 1).map((x) => x.name);
       break;
     }
     // The three state/province modes carry their region's own flag. Every record
